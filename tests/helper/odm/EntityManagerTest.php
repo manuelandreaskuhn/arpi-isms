@@ -8,7 +8,7 @@ use ARPI\Helper\ODM\Snapshots\SnapshotStorage;
 class EntityManagerTest extends TestCase
 {
     private $entityManager;
-    private $mongoUri = 'mongodb://localhost:27017';
+    private $mongoUri = 'mongodb://localhost:28017';
     private $dbName = 'testdb';
     private $sessionId = 'session123';
 

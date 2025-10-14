@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install zip
 
 # Install MongoDB extension
-RUN pecl install mongodb-1.20.1 \
+RUN pecl install mongodb-2.1.4 \
     && docker-php-ext-enable mongodb
 
 # Install Redis extension
@@ -28,10 +28,13 @@ WORKDIR /var/www/html/arpi-isms
 # Copy composer files
 COPY composer.json composer.lock* ./
 
-# Install dependencies
-RUN composer install --prefer-dist --no-progress --no-interaction
+# Install dependencies without generating autoload (src/ not copied yet)
+RUN composer install --prefer-dist --no-progress --no-interaction --no-autoloader
 
 # Copy application files
 COPY . .
+
+# Generate optimized autoload after app files are present
+RUN composer dump-autoload -o
 
 CMD ["tail", "-f", "/dev/null"]

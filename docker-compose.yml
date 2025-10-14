@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   php:
     build:
@@ -21,7 +19,7 @@ services:
     image: mongo:latest
     container_name: arpi-isms-mongo
     ports:
-      - "27017:27017"
+      - "28017:27017"
     volumes:
       - mongo-data:/data/db
     healthcheck:
