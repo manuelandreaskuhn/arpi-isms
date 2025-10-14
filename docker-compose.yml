@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: arpi-isms-php
+    volumes:
+      - .:/var/www/html/arpi-isms
+    working_dir: /var/www/html/arpi-isms
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017
+    networks:
+      - arpi-network
+
+  mongo:
+    image: mongo:latest
+    container_name: arpi-isms-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - arpi-network
+
+volumes:
+  mongo-data:
+
+networks:
+  arpi-network:
+    driver: bridge
