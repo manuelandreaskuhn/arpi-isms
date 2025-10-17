@@ -9,7 +9,6 @@ use ARPI\Helper\Template\TemplateModule;
 class Template
 {
     private array $modules = [];
-    private array $globals = [];
     private string $templateDir;
 
     public function __construct(string $templateDir = '')
@@ -43,30 +42,6 @@ class Template
     {
         $this->modules[$module->getName()] = $module;
         $module->initialize($this);
-    }
-
-    /**
-     * Setzt eine globale Variable
-     */
-    public function setGlobal(string $name, $value): void
-    {
-        $this->globals[$name] = $value;
-    }
-
-    /**
-     * Gibt eine globale Variable zurück
-     */
-    public function getGlobal(string $name, $default = null)
-    {
-        return $this->globals[$name] ?? $default;
-    }
-
-    /**
-     * Gibt alle globalen Variablen zurück
-     */
-    public function getGlobals(): array
-    {
-        return $this->globals;
     }
 
     /**
@@ -130,7 +105,7 @@ class Template
     public function process(string $content, array $data = []): string
     {
         // Merge data with globals
-        $data = array_merge($this->globals, $data);
+        $data = array_merge($GLOBALS, $data);
 
         // Process modules in order
         foreach ($this->modules as $module) {
