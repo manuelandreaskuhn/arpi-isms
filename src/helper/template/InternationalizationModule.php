@@ -105,7 +105,7 @@ class InternationalizationModule extends TemplateModule
     /**
      * Übersetzt einen Key mit Variablen
      */
-    private function translate(string $key, array $variables = []): string
+    public function translate(string $key, array $variables = []): string
     {
         $text = $this->translations[$key] ?? $key;
 

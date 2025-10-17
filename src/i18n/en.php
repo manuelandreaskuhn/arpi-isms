@@ -10,4 +10,22 @@ return [
     'cancel' => 'Cancel',
     'delete' => 'Delete',
     'edit' => 'Edit',
+    
+    // Time references
+    'time_ago' => 'ago',
+    'time_since' => 'since',
+    'time_unit_seconds_singular' => 'second',
+    'time_unit_seconds_plural' => 'seconds',
+    'time_unit_minutes_singular' => 'minute',
+    'time_unit_minutes_plural' => 'minutes',
+    'time_unit_hours_singular' => 'hour',
+    'time_unit_hours_plural' => 'hours',
+    'time_unit_days_singular' => 'day',
+    'time_unit_days_plural' => 'days',
+    'time_unit_weeks_singular' => 'week',
+    'time_unit_weeks_plural' => 'weeks',
+    'time_unit_months_singular' => 'month',
+    'time_unit_months_plural' => 'months',
+    'time_unit_years_singular' => 'year',
+    'time_unit_years_plural' => 'years',
 ];

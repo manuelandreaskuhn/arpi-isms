@@ -32,6 +32,8 @@ class Template
         $this->registerModule(new Template\EnumModule());
         $this->registerModule(new Template\ListArrayModule());
         $this->registerModule(new Template\PropertyModule());
+        $this->registerModule(new Template\DateModule());
+        $this->registerModule(new Template\ConditionalModule());
     }
 
     /**
