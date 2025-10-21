@@ -1,0 +1,19 @@
+RewriteEngine On
+RewriteBase /
+
+# Verhindere direkte Zugriffe auf PHP-Dateien außer index.php
+RewriteCond %{REQUEST_URI} !^/index\.php$
+RewriteCond %{REQUEST_FILENAME} \.php$
+RewriteRule ^(.*)$ - [F,L]
+
+# Erlaube direkten Zugriff auf existierende Dateien (CSS, JS, Bilder, etc.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route alles durch index.php
+# Beispiel: /onboarding.html -> index.php?site=Onboarding
+# Beispiel: /user/profile.html -> index.php?site=User/Profile
+RewriteRule ^([a-zA-Z0-9/_-]+)\.html$ index.php?site=$1 [QSA,L]
+
+# Fallback für URLs ohne .html
+RewriteRule ^([a-zA-Z0-9/_-]+)$ index.php?site=$1 [QSA,L]
