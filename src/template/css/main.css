@@ -1,0 +1,224 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --font-color: #333333;
+    --background-color: #f5f5f5;
+    --font-stack: 'Helvetica Neue', sans-serif;
+}
+
+html, body {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+
+    font-family: var(--font-stack);
+    color: var(--font-color);
+    background-color: var(--background-color);
+    font-weight: 400;
+    font-size: 14pt;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    min-width: 1024px;
+    max-width: 1920px;
+}
+
+body > header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    
+    min-width: 330px;
+    max-width: 330px;
+    height: -webkit-fill-available;
+    height: --moz-fill-available;
+    height: fill-available;
+}
+
+body > header > div#logo {
+    padding: 10px;
+    height: 130px;
+    margin: 0 auto;
+}
+
+body > header > div#logo > img {
+    height: 100%;
+}
+
+body > header > div#quicksearch {
+    width: calc(100% - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body > header > div#quicksearch > input[type="text"] {
+    width: 100%;
+    padding: 8px 40px 8px 16px;
+    border: none;
+    border-radius: 14px;
+    background: #f0f4fa;
+    font-size: 14pt;
+    color: var(--font-color);
+    transition: box-shadow 0.2s, background 0.2s;
+    outline: none;
+}
+
+body > header > div#quicksearch > input[type="text"]:focus {
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(22, 106, 161, 0.425);
+}
+
+body > header > div#quicksearch::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    width: 25px;
+    height: 25px;
+    background: url("/template/images/search-icon.svg") no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 2;
+}
+
+body > header > div#quicksearch {
+    position: relative;
+}
+
+body > header > nav {
+    margin-top: 20px;
+}
+
+body > header > nav > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+body > header > nav > ul > strong {
+    display: block;
+    padding: 15px 0;
+    padding-bottom: 5px;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-emphasis: none;
+    text-align: center;
+}
+
+body > header > nav > ul > li {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+}
+
+body > header > nav > ul > li > a {
+    display: block;
+    padding: 8px 0;
+    text-decoration: none;
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+body > header > nav > ul > li > a:hover,
+body > header > nav > ul > li > a.active,
+body > header > nav > ul > li > a:active,
+body > header > nav > ul > li > a:focus,
+body > header > nav > ul > li > a:focus-visible,
+body > header > nav > ul > li > a.selected,
+body > header > nav > ul > li > a.current {
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body > header > div#account {
+    margin-top: auto;
+    width: calc(100% - 2px);
+    box-shadow: 0 -2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+body > header > div#account > figure {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 0px;
+}
+
+body > header > div#account > figure > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+body > header > div#account > figure > figcaption {
+    font-weight: 500;
+}
+
+body > header > div#account > figure > figcaption > strong {
+    display: block;
+    font-size: 1em;
+    color: var(--font-color);
+}
+
+body > header > div#account > figure > figcaption > a {
+    text-decoration: none;
+    color: var(--font-color);
+    font-size: 0.84em;
+}
+
+
+
+
+
+
+
+
+
+
+body > main {
+    flex-grow: 1;
+    padding: 20px;
+    padding-left: 50px;
+}
+
+body > main > aside {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 15px;
+    color: #a9a9a9;
+}
+
+body > main > aside > p {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 1px solid #a9a9a9;
+}
+
+body > main > aside > i {
+    pointer-events: none;
+    font-size: 1.2em;
+    align-self: center;
+}

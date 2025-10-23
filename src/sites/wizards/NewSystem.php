@@ -1,9 +1,9 @@
 <?php
-namespace ARPI\Sites;
+namespace ARPI\Sites\Wizards;
 
 use ARPI\Helper\BaseSite;
 
-class Home extends BaseSite
+class NewSystem extends BaseSite
 {
     public function prepare(): void
     {
@@ -12,6 +12,6 @@ class Home extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/home.tpl');
+        return $this->renderTemplate('pages/wizards/system/newsystem.tpl');
     }
 }

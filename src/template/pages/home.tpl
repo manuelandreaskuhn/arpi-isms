@@ -1,9 +1,24 @@
-<h1>{{property:title}}</h1>
-<p>{{property:message}}</p>
+<aside>
+    <p>Dashboard</p>
+    <i>&gt;</i>
+    <p>Manuel</p>
+</aside>
 
-<nav>
-    <ul>
-        <li><a href="/onboarding.html">Onboarding</a></li>
-        <li><a href="/dashboard.html">Dashboard</a></li>
-    </ul>
-</nav>
+
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>
+Hallo <br/>

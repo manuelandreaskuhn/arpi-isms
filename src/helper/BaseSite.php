@@ -51,6 +51,17 @@ abstract class BaseSite implements SiteInterface
         return $this->template->render($contentTemplate, $this->data);
     }
 
+    protected function renderTemplate(string $templateName): string
+    {
+        //Header, Navi, Footer
+        $headertemplate = $this->render('partials/header.tpl');
+        $footertemplate = $this->render('partials/footer.tpl');
+
+        $template = $this->template->render($templateName, $this->data);
+
+        return $headertemplate . $template . $footertemplate;
+    }
+
     /**
      * Hilfsmethode für Redirects
      */
