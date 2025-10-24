@@ -1,6 +1,9 @@
 <?php
 namespace ARPI\Helper;
 
+use ARPI\Entities\Annotations\Css as CssAttr;
+use ARPI\Entities\Annotations\Js as JsAttr;
+
 /**
  * Abstrakte Basis-Klasse für Sites
  * Bietet gemeinsame Funktionalität
@@ -10,10 +13,19 @@ abstract class BaseSite implements SiteInterface
     protected Template $template;
     protected array $data = [];
 
+    /**
+     * Asset-Listen für die Seite
+     */
+    protected array $cssFiles = [];
+    protected array $jsFiles = [];
+
     public function __construct()
     {
         $this->template = new Template();
         $this->initGlobals();
+
+        // Annotationen der Kindklasse einlesen (@css / @js)
+        $this->parseClassAssetAnnotations();
     }
 
     /**
@@ -51,9 +63,77 @@ abstract class BaseSite implements SiteInterface
         return $this->template->render($contentTemplate, $this->data);
     }
 
+    /**
+     * Ermöglicht das Setzen mehrerer CSS-Dateien auf einmal
+     */
+    public function setCssFiles(array $files): void
+    {
+        $this->cssFiles = array_values(array_unique($files));
+    }
+
+    /**
+     * Einzelne CSS-Datei hinzufügen
+     */
+    public function addCssFile(string $file): void
+    {
+        if (!in_array($file, $this->cssFiles, true)) {
+            $this->cssFiles[] = $file;
+        }
+    }
+
+    /**
+     * Ermöglicht das Setzen mehrerer JS-Dateien auf einmal
+     */
+    public function setJsFiles(array $files): void
+    {
+        $this->jsFiles = array_values(array_unique($files));
+    }
+
+    /**
+     * Einzelne JS-Datei hinzufügen
+     */
+    public function addJsFile(string $file): void
+    {
+        if (!in_array($file, $this->jsFiles, true)) {
+            $this->jsFiles[] = $file;
+        }
+    }
+
+    // Optional: Getter, falls benötigt
+    public function getCssFiles(): array { return $this->cssFiles; }
+    public function getJsFiles(): array { return $this->jsFiles; }
+
+    /**
+     * Klassen-Annotationen (@css / @js) einlesen und Assets übernehmen.
+     * Unterstützt mehrere Annotationen sowie Komma-separierte Listen.
+     */
+    protected function parseClassAssetAnnotations(): void
+    {
+        try {
+            $rc = new \ReflectionClass($this);
+            foreach ($rc->getAttributes(CssAttr::class) as $attr) {
+                $inst = $attr->newInstance();
+                foreach ($inst->files as $css) {
+                    $this->addCssFile($css);
+                }
+            }
+            foreach ($rc->getAttributes(JsAttr::class) as $attr) {
+                $inst = $attr->newInstance();
+                foreach ($inst->files as $js) {
+                    $this->addJsFile($js);
+                }
+            }
+        } catch (\ReflectionException $e) {
+            // still proceed without annotations
+        }
+    }
+
     protected function renderTemplate(string $templateName): string
     {
-        //Header, Navi, Footer
+        // Header, Navi, Footer etc. einbinden
+        $GLOBALS['assetcss'] = $this->cssFiles;
+        $GLOBALS['assetjs'] = $this->jsFiles;
+
         $headertemplate = $this->render('partials/header.tpl');
         $footertemplate = $this->render('partials/footer.tpl');
 

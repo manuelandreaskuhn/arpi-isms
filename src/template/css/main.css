@@ -67,7 +67,7 @@ body > header > div#quicksearch > input[type="text"] {
     border: none;
     border-radius: 14px;
     background: #f0f4fa;
-    font-size: 14pt;
+    font-size: 1em;
     color: var(--font-color);
     transition: box-shadow 0.2s, background 0.2s;
     outline: none;
@@ -202,23 +202,37 @@ body > main > aside {
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
-    margin-bottom: 15px;
-    color: #a9a9a9;
+    margin-bottom: 30px;
+    font-size: 0.93em;
+    background-color: #f0f4fa;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #d7d7d7;
+    border-radius: 8px;
 }
 
 body > main > aside > p {
     padding-left: 20px;
     padding-right: 20px;
     margin: 0;
-    background-color: white;
     margin-left: 10px;
     margin-right: 10px;
-    border-radius: 8px;
-    border: 1px solid #a9a9a9;
+    color: #4a5568;
+}
+
+body > main > aside > p:first-of-type {
+    margin-left: 0;
+}
+
+body > main > aside > p:last-of-type {
+    margin-right: 0;
+    font-weight: 600;
+    color: #2d3748;
 }
 
 body > main > aside > i {
     pointer-events: none;
-    font-size: 1.2em;
     align-self: center;
+    font-style: normal;
+    color: #a0aec0;
 }

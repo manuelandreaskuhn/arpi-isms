@@ -13,11 +13,15 @@
     <meta name="theme-color" content="#007E9E">
 
     <link rel="stylesheet" href="/template/css/main.css">
-    <script type="module" src="js/{sfsbuildnumber}/autoload.js"></script>
+    {{foreach:assetcss}}
+        <link rel="stylesheet" href="{{property:value}}">
+    {{/foreach}}
+    {{foreach:assetjs}}
+        <script type="module" src="{{property:value}}"></script>
+    {{/foreach}}
 </head>
 
 <body>
-
     <header>
         <div id="logo">
             <img src="/template/images/logo.png">
