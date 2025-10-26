@@ -76,23 +76,26 @@ div.columnlist > div.infobox > i {
 }
 
 div.columnlist > h2 {
-    font-size: 0.85em;
-
-    background: #2c3e50;
-    color: white;
+    font-size: 0.93em;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding-top: 5px;
-    padding-left: 15px;
-    padding-bottom: 3px;
-    margin-bottom: 5px;
-
-    border-radius: 4px;
-    cursor: pointer;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-bottom: 2px solid #e2e8f0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    user-select: none;
+    transition: all 0.3s;
+}
+
+div.columnlist > h2::before {
+    content: "■";
+    margin-bottom: 3px;
+    margin-left: 2px;
+    margin-right: -2px;
 }
 
 div.columnlist > div.list {

@@ -30,6 +30,9 @@
                     <span class="tag">Komponente 2</span>
                     <span class="tag">Applikation 1</span>
                 </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
             </div>
 
             <div class="entry">
@@ -40,6 +43,9 @@
                     <span class="tag">Komponente 3</span>
                     <span class="tag">Applikation 1</span>
                     <span class="tag">Applikation 2</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
                 </div>
             </div>
         </div>
@@ -53,6 +59,9 @@
                     <span class="tag">Komponente 2</span>
                     <span class="tag">Applikation 1</span>
                 </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
             </div>
 
             <div class="entry">
@@ -61,6 +70,9 @@
                     <span class="tag">Komponente 1</span>
                     <span class="tag">Komponente 2</span>
                     <span class="tag">Applikation 1</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
                 </div>
             </div>
         </div>
@@ -74,6 +86,9 @@
                     <span class="tag">Komponente 2</span>
                     <span class="tag">Applikation 1</span>
                 </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
             </div>
         </div>
 
@@ -81,6 +96,10 @@
         <div class="list">
             <div class="entry">
                 <strong>Systemname 1</strong>
+                <div class="taginfo"></div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
             </div>
         </div>
 

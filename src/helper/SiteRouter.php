@@ -1,6 +1,7 @@
 <?php
 namespace ARPI\Helper;
 
+
 /**
  * Site Router
  * Verarbeitet HTTP-Requests und lädt entsprechende Site-Klassen

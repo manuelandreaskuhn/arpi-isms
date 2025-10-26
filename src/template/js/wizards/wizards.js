@@ -272,7 +272,11 @@ function updateSectionCounter(sectionElement) {
     const customSelectElements = sectionContent.querySelectorAll('.custom-select');
     customSelectElements.forEach(selectEl => {
         const name = selectEl.dataset.name;
-        const customSelect = customSelects[name];
+        const index = (selectEl.dataset.index !== undefined) ? selectEl.dataset.index : 0;
+        const category = (selectEl.dataset.category !== undefined) ? selectEl.dataset.category : '';
+        const uniqueName = `${name}_${category}_${index}`;
+
+        const customSelect = customSelects[uniqueName];
         if (!customSelect) return;
 
         totalFields++;
@@ -306,13 +310,35 @@ function updateSectionCounter(sectionElement) {
     }
 }
 
+function removeCustomSelects(entry) {
+    entry.querySelectorAll('.custom-select').forEach(element => {
+        const name = element.dataset.name;
+        const index = (element.dataset.index !== undefined) ? element.dataset.index : 0;
+        const category = (element.dataset.category !== undefined) ? element.dataset.category : '';
+        const uniqueName = `${name}_${category}_${index}`;
+
+        if (customSelects[uniqueName]) {
+            delete customSelects[uniqueName];
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize all custom selects
     customSelects = {};
     document.querySelectorAll('.custom-select').forEach(element => {
         const name = element.dataset.name;
-        customSelects[name] = new CustomSelect(element);
+        const index = (element.dataset.index !== undefined) ? element.dataset.index : 0;
+        const category = (element.dataset.category !== undefined) ? element.dataset.category : '';
+        const uniqueName = `${name}_${category}_${index}`;
+
+        if(!customSelects[uniqueName]) {
+            customSelects[uniqueName] = new CustomSelect(element);
+        }
+        else {
+            console.error(`CustomSelect with name "${uniqueName}" is already initialized. Duplicate names may cause unexpected behavior.`);
+        }
     });
 
     // Section toggle functionality
@@ -330,10 +356,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial counter update
     document.querySelectorAll('.form-section').forEach(section => {
         updateSectionCounter(section);
+        updateListenersForDynamicEntry(section);
     });
-    
-    // Add event listeners to all inputs
-    document.querySelectorAll('.form-section input[type="text"], .form-section input[type="number"], .form-section input[type="checkbox"], .form-section textarea').forEach(input => {
+
+});
+
+function updateListenersForDynamicEntry(entryElement) {
+    // Text/Number/Textarea inputs
+    entryElement.querySelectorAll('input[type="text"], input[type="number"], input[type="checkbox"], textarea').forEach(input => {
         input.addEventListener('input', function() {
             const section = this.closest('.form-section');
             if (section) {
@@ -342,7 +372,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-});
+    // Custom selects
+    entryElement.querySelectorAll('.custom-select').forEach(element => {
+        const name = element.dataset.name;
+        const index = (element.dataset.index !== undefined) ? element.dataset.index : 0;
+        const category = (element.dataset.category !== undefined) ? element.dataset.category : '';
+        const uniqueName = `${name}_${category}_${index}`;
+
+        if (!customSelects[uniqueName]) {
+            customSelects[uniqueName] = new CustomSelect(element);
+        }
+    });
+}
+
 
 // Export for external access
-export { CustomSelect };
+export { CustomSelect, updateListenersForDynamicEntry, updateSectionCounter, removeCustomSelects };

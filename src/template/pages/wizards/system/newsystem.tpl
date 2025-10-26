@@ -396,4 +396,425 @@
     </div>
 
 
+    <!-- Virtuelle Maschinen -->
+    <div class="form-section collapsed" data-name="virtualmachines">
+        <div class="section-title">
+            <span>Virtuelle Maschinen</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text" style="margin-bottom: 15px;">Fügen Sie virtuelle Maschinen hinzu, die zu diesem System gehören.</div>
+            
+            <div id="vmList" class="dynamic-list">
+                <!-- VM entries will be added here -->
+            </div>
+            
+            <div class="buttonlist">
+                <button type="button" class="btn-add-item" onclick="addVMEntry()">
+                    <span>+</span> Virtuelle Maschine hinzufügen
+                </button>
+
+                <button type="button" class="btn-search-cmdb" onclick="openCMDBSearch('vm')">
+                    <span></span> Suche existierende Virtuelle Maschinen
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hardware Server -->
+    <div class="form-section collapsed" data-name="hardwareservers">
+        <div class="section-title">
+            <span>Hardware Server</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text" style="margin-bottom: 15px;">Fügen Sie physische Server hinzu, die zu diesem System gehören.</div>
+            
+            <div id="hardwareList" class="dynamic-list">
+                <!-- Hardware entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addHardwareEntry()">
+                <span>+</span> Hardware Server hinzufügen
+            </button>
+        </div>
+    </div>
+
 </form>
+
+<!-- Templates for dynamic entries -->
+<template id="vmEntryTemplate">
+    <div class="dynamic-entry">
+        <div class="entry-header">
+            <span class="entry-title">VM #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'vm')">×</button>
+        </div>
+        <div class="entry-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hostname <span class="required">*</span></label>
+                    <input type="text" name="hostname" class="vm-field" placeholder="z.B. srv-kis-prod-01" required>
+                </div>
+                <div class="form-group">
+                    <label>IP-Adresse</label>
+                    <input type="text" name="ipaddress" class="vm-field" placeholder="z.B. 192.168.1.10">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Betriebssystem</label>
+                    <div class="custom-select" data-name="operatingsystem" data-index="0" data-category="vm">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-search">
+                                <input type="search" placeholder="Suchen...">
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-group-header">Windows</div>
+                                <div class="select-option" data-value="windowsserver2003">Windows Server 2003</div>
+                                <div class="select-option" data-value="windowsserver2003r2">Windows Server 2003 R2</div>
+                                <div class="select-option" data-value="windowsserver2008">Windows Server 2008</div>
+                                <div class="select-option" data-value="windowsserver2008r2">Windows Server 2008 R2</div>
+                                <div class="select-option" data-value="windowsserver2012">Windows Server 2012</div>
+                                <div class="select-option" data-value="windowsserver2012r2">Windows Server 2012 R2</div>
+                                <div class="select-option" data-value="windowsserver2016">Windows Server 2016</div>
+                                <div class="select-option" data-value="windowsserver2019">Windows Server 2019</div>
+                                <div class="select-option" data-value="windowsserver2022">Windows Server 2022</div>
+                                <div class="select-option" data-value="windowsserver2025">Windows Server 2025</div>
+                                <div class="select-group-header">Linux</div>
+                                <div class="select-option" data-value="centos7">CentOS 7</div>
+                                <div class="select-option" data-value="centos8">CentOS 8</div>
+                                <div class="select-option" data-value="centosstream8">CentOS Stream 8</div>
+                                <div class="select-option" data-value="centosstream9">CentOS Stream 9</div>
+                                <div class="select-option" data-value="debian8">Debian 8</div>
+                                <div class="select-option" data-value="debian9">Debian 9</div>
+                                <div class="select-option" data-value="debian10">Debian 10</div>
+                                <div class="select-option" data-value="debian11">Debian 11</div>
+                                <div class="select-option" data-value="debian12">Debian 12</div>
+                                <div class="select-option" data-value="debian13">Debian 13</div>
+                                <div class="select-option" data-value="redhatenterpriselinux7">Red Hat Enterprise Linux 7</div>
+                                <div class="select-option" data-value="redhatenterpriselinux8">Red Hat Enterprise Linux 8</div>
+                                <div class="select-option" data-value="redhatenterpriselinux9">Red Hat Enterprise Linux 9</div>
+                                <div class="select-option" data-value="redhatenterpriselinux10">Red Hat Enterprise Linux 10</div>
+                                <div class="select-option" data-value="suselinuxenterpriseserver15">SUSE Linux Enterprise Server 15</div>
+                                <div class="select-option" data-value="ubuntuserver1404lts">Ubuntu Server 14.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver1604lts">Ubuntu Server 16.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver1804lts">Ubuntu Server 18.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver2004lts">Ubuntu Server 20.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver2204lts">Ubuntu Server 22.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver2404lts">Ubuntu Server 24.04 LTS</div>
+                                <div class="select-group-header">Virtualisierung / Hypervisor</div>
+                                <div class="select-option" data-value="vmwareesxi90">VMware ESXi 9.0</div>
+                                <div class="select-option" data-value="vmwareesxi80">VMware ESXi 8.0</div>
+                                <div class="select-option" data-value="vmwareesxi70">VMware ESXi 7.0</div>
+                                <div class="select-option" data-value="vmwareesxi67">VMware ESXi 6.7</div>
+                                <div class="select-option" data-value="vmwareesxi65">VMware ESXi 6.5</div>
+                                <div class="select-option" data-value="vmwareesxi60">VMware ESXi 6.0</div>
+                                <div class="select-option" data-value="microsofthyperv2025">Microsoft Hyper-V 2025</div>
+                                <div class="select-option" data-value="microsofthyperv2022">Microsoft Hyper-V 2022</div>
+                                <div class="select-option" data-value="microsofthyperv2019">Microsoft Hyper-V 2019</div>
+                                <div class="select-option" data-value="microsofthyperv2016">Microsoft Hyper-V 2016</div>
+                                <div class="select-option" data-value="proxmoxve9">Proxmox VE 9</div>
+                                <div class="select-option" data-value="proxmoxve8">Proxmox VE 8</div>
+                                <div class="select-option" data-value="proxmoxve7">Proxmox VE 7</div>
+                                <div class="select-option" data-value="proxmoxve6">Proxmox VE 6</div>
+                                <div class="select-option" data-value="xenserver84">XenServer 8.4</div>
+                                <div class="select-option" data-value="citrixhypervisor82">Citrix Hypervisor 8.2</div>
+                                <div class="select-option" data-value="citrixhypervisor81">Citrix Hypervisor 8.1</div>
+                                <div class="select-option" data-value="citrixhypervisor80">Citrix Hypervisor 8.0</div>
+                                <div class="select-option" data-value="oraclevmserver">Oracle VM Server</div>
+                                <div class="select-option" data-value="nutanixahv">Nutanix AHV</div>
+                                <div class="select-option" data-value="redhatvirtualization">Red Hat Virtualisierung</div>
+                                <div class="select-option" data-value="xcpng">XCP-ng</div>
+                                <div class="select-group-header">Sonstige</div>
+                                <div class="select-option" data-value="kvm">KVM</div>
+                                <div class="select-option" data-value="other">Sonstiges / Anderes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rolle / Funktion</label>
+                    <div class="custom-select" data-name="serverrole" data-index="0" data-category="vm">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-search">
+                                <input type="search" placeholder="Suchen...">
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-group-header">Applikation</div>
+                                <div class="select-option" data-value="applikationsserver">Applikationsserver</div>
+                                <div class="select-option" data-value="archivierungsserver">Archivierungsserver</div>
+                                <div class="select-option" data-value="fileserver">Fileserver</div>
+                                <div class="select-option" data-value="mailserver">Mailserver</div>
+                                <div class="select-option" data-value="terminalserver">Terminal Server</div>
+                                <div class="select-option" data-value="webserver">Webserver</div>
+                                <div class="select-group-header">Datenbank</div>
+                                <div class="select-option" data-value="datenbankserver">Datenbankserver</div>
+                                <div class="select-group-header">Infrastruktur</div>
+                                <div class="select-option" data-value="backupserver">Backup Server</div>
+                                <div class="select-option" data-value="domaincontroller">Domain Controller</div>
+                                <div class="select-option" data-value="jumphostbastion">Jump Host / Bastion</div>
+                                <div class="select-option" data-value="loadbalancer">Load Balancer</div>
+                                <div class="select-option" data-value="monitoringserver">Monitoring Server</div>
+                                <div class="select-option" data-value="reverseproxy">Reverse Proxy</div>
+                                <div class="select-option" data-value="storagecontroller">Storage Controller</div>
+                                <div class="select-option" data-value="virtualisierungshost">Virtualisierungshost</div>
+                                <div class="select-option" data-value="logserver">Log Server / SIEM</div>
+                                <div class="select-option" data-value="pkicertificateauthority">PKI / Certificate Authority</div>
+                                <div class="select-group-header">Netzwerk</div>
+                                <div class="select-option" data-value="dhcpserver">DHCP Server</div>
+                                <div class="select-option" data-value="dnsserver">DNS Server</div>
+                                <div class="select-option" data-value="vpngateway">VPN Gateway</div>
+                                <div class="select-group-header">Sicherheit</div>
+                                <div class="select-option" data-value="firewall">Firewall</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>vCPU</label>
+                    <input type="number" name="vcpu" class="vm-field" placeholder="z.B. 4">
+                </div>
+                <div class="form-group">
+                    <label>RAM (GB)</label>
+                    <input type="number" name="ramingb" class="vm-field" placeholder="z.B. 16">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Storage (GB)</label>
+                    <input type="number" name="storageingb" class="vm-field" placeholder="z.B. 500">
+                </div>
+                <div class="form-group">
+                    <label>Hypervisor</label>
+                    <div class="custom-select" data-name="hypervisor" data-index="0">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-search">
+                                <input type="search" placeholder="Suchen...">
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="vmwareesxi90">VMware ESXi 9.0</div>
+                                <div class="select-option" data-value="vmwareesxi80">VMware ESXi 8.0</div>
+                                <div class="select-option" data-value="vmwareesxi70">VMware ESXi 7.0</div>
+                                <div class="select-option" data-value="vmwareesxi67">VMware ESXi 6.7</div>
+                                <div class="select-option" data-value="vmwareesxi65">VMware ESXi 6.5</div>
+                                <div class="select-option" data-value="vmwareesxi60">VMware ESXi 6.0</div>
+                                <div class="select-option" data-value="microsofthyperv2025">Microsoft Hyper-V 2025</div>
+                                <div class="select-option" data-value="microsofthyperv2022">Microsoft Hyper-V 2022</div>
+                                <div class="select-option" data-value="microsofthyperv2019">Microsoft Hyper-V 2019</div>
+                                <div class="select-option" data-value="microsofthyperv2016">Microsoft Hyper-V 2016</div>
+                                <div class="select-option" data-value="proxmoxve9">Proxmox VE 9</div>
+                                <div class="select-option" data-value="proxmoxve8">Proxmox VE 8</div>
+                                <div class="select-option" data-value="proxmoxve7">Proxmox VE 7</div>
+                                <div class="select-option" data-value="proxmoxve6">Proxmox VE 6</div>
+                                <div class="select-option" data-value="kvm">KVM</div>
+                                <div class="select-option" data-value="xenserver84">XenServer 8.4</div>
+                                <div class="select-option" data-value="citrixhypervisor82">Citrix Hypervisor 8.2</div>
+                                <div class="select-option" data-value="citrixhypervisor81">Citrix Hypervisor 8.1</div>
+                                <div class="select-option" data-value="citrixhypervisor80">Citrix Hypervisor 8.0</div>
+                                <div class="select-option" data-value="oraclevmserver">Oracle VM Server</div>
+                                <div class="select-option" data-value="nutanixahv">Nutanix AHV</div>
+                                <div class="select-option" data-value="redhatvirtualization">Red Hat Virtualisierung</div>
+                                <div class="select-option" data-value="xcpng">XCP-ng</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="hardwareEntryTemplate">
+    <div class="dynamic-entry">
+        <div class="entry-header">
+            <span class="entry-title">Server #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'hardware')">×</button>
+        </div>
+        <div class="entry-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hostname <span class="required">*</span></label>
+                    <input type="text" name="hostname" class="hw-field" placeholder="z.B. srv-db-prod-01" required>
+                </div>
+                <div class="form-group">
+                    <label>IP-Adresse</label>
+                    <input type="text" name="ipaddress" class="hw-field" placeholder="z.B. 192.168.1.20">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hersteller & Modell</label>
+                    <input type="text" name="model" class="hw-field" placeholder="z.B. Dell PowerEdge R750">
+                </div>
+                <div class="form-group">
+                    <label>Seriennummer</label>
+                    <input type="text" name="serialnumber" class="hw-field" placeholder="z.B. SN123456789">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Betriebssystem</label>
+                    <div class="custom-select" data-name="operatingsystem" data-index="0" data-category="hardware">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-search">
+                                <input type="search" placeholder="Suchen...">
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-group-header">Windows</div>
+                                <div class="select-option" data-value="windowsserver2003">Windows Server 2003</div>
+                                <div class="select-option" data-value="windowsserver2003r2">Windows Server 2003 R2</div>
+                                <div class="select-option" data-value="windowsserver2008">Windows Server 2008</div>
+                                <div class="select-option" data-value="windowsserver2008r2">Windows Server 2008 R2</div>
+                                <div class="select-option" data-value="windowsserver2012">Windows Server 2012</div>
+                                <div class="select-option" data-value="windowsserver2012r2">Windows Server 2012 R2</div>
+                                <div class="select-option" data-value="windowsserver2016">Windows Server 2016</div>
+                                <div class="select-option" data-value="windowsserver2019">Windows Server 2019</div>
+                                <div class="select-option" data-value="windowsserver2022">Windows Server 2022</div>
+                                <div class="select-option" data-value="windowsserver2025">Windows Server 2025</div>
+                                <div class="select-group-header">Linux</div>
+                                <div class="select-option" data-value="centos7">CentOS 7</div>
+                                <div class="select-option" data-value="centos8">CentOS 8</div>
+                                <div class="select-option" data-value="centosstream8">CentOS Stream 8</div>
+                                <div class="select-option" data-value="centosstream9">CentOS Stream 9</div>
+                                <div class="select-option" data-value="debian8">Debian 8</div>
+                                <div class="select-option" data-value="debian9">Debian 9</div>
+                                <div class="select-option" data-value="debian10">Debian 10</div>
+                                <div class="select-option" data-value="debian11">Debian 11</div>
+                                <div class="select-option" data-value="debian12">Debian 12</div>
+                                <div class="select-option" data-value="debian13">Debian 13</div>
+                                <div class="select-option" data-value="redhatenterpriselinux7">Red Hat Enterprise Linux 7</div>
+                                <div class="select-option" data-value="redhatenterpriselinux8">Red Hat Enterprise Linux 8</div>
+                                <div class="select-option" data-value="redhatenterpriselinux9">Red Hat Enterprise Linux 9</div>
+                                <div class="select-option" data-value="redhatenterpriselinux10">Red Hat Enterprise Linux 10</div>
+                                <div class="select-option" data-value="suselinuxenterpriseserver15">SUSE Linux Enterprise Server 15</div>
+                                <div class="select-option" data-value="ubuntuserver1404lts">Ubuntu Server 14.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver1604lts">Ubuntu Server 16.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver1804lts">Ubuntu Server 18.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver2004lts">Ubuntu Server 20.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver2204lts">Ubuntu Server 22.04 LTS</div>
+                                <div class="select-option" data-value="ubuntuserver2404lts">Ubuntu Server 24.04 LTS</div>
+                                <div class="select-group-header">Virtualisierung / Hypervisor</div>
+                                <div class="select-option" data-value="vmwareesxi90">VMware ESXi 9.0</div>
+                                <div class="select-option" data-value="vmwareesxi80">VMware ESXi 8.0</div>
+                                <div class="select-option" data-value="vmwareesxi70">VMware ESXi 7.0</div>
+                                <div class="select-option" data-value="vmwareesxi67">VMware ESXi 6.7</div>
+                                <div class="select-option" data-value="vmwareesxi65">VMware ESXi 6.5</div>
+                                <div class="select-option" data-value="vmwareesxi60">VMware ESXi 6.0</div>
+                                <div class="select-option" data-value="microsofthyperv2025">Microsoft Hyper-V 2025</div>
+                                <div class="select-option" data-value="microsofthyperv2022">Microsoft Hyper-V 2022</div>
+                                <div class="select-option" data-value="microsofthyperv2019">Microsoft Hyper-V 2019</div>
+                                <div class="select-option" data-value="microsofthyperv2016">Microsoft Hyper-V 2016</div>
+                                <div class="select-option" data-value="proxmoxve9">Proxmox VE 9</div>
+                                <div class="select-option" data-value="proxmoxve8">Proxmox VE 8</div>
+                                <div class="select-option" data-value="proxmoxve7">Proxmox VE 7</div>
+                                <div class="select-option" data-value="proxmoxve6">Proxmox VE 6</div>
+                                <div class="select-option" data-value="xenserver84">XenServer 8.4</div>
+                                <div class="select-option" data-value="citrixhypervisor82">Citrix Hypervisor 8.2</div>
+                                <div class="select-option" data-value="citrixhypervisor81">Citrix Hypervisor 8.1</div>
+                                <div class="select-option" data-value="citrixhypervisor80">Citrix Hypervisor 8.0</div>
+                                <div class="select-option" data-value="oraclevmserver">Oracle VM Server</div>
+                                <div class="select-option" data-value="nutanixahv">Nutanix AHV</div>
+                                <div class="select-option" data-value="redhatvirtualization">Red Hat Virtualisierung</div>
+                                <div class="select-option" data-value="xcpng">XCP-ng</div>
+                                <div class="select-group-header">Sonstige</div>
+                                <div class="select-option" data-value="kvm">KVM</div>
+                                <div class="select-option" data-value="other">Sonstiges / Anderes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rolle / Funktion</label>
+                    <div class="custom-select" data-name="serverrole" data-index="0" data-category="hardware">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-search">
+                                <input type="search" placeholder="Suchen...">
+                            </div>
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-group-header">Applikation</div>
+                                <div class="select-option" data-value="applikationsserver">Applikationsserver</div>
+                                <div class="select-option" data-value="archivierungsserver">Archivierungsserver</div>
+                                <div class="select-option" data-value="fileserver">Fileserver</div>
+                                <div class="select-option" data-value="mailserver">Mailserver</div>
+                                <div class="select-option" data-value="terminalserver">Terminal Server</div>
+                                <div class="select-option" data-value="webserver">Webserver</div>
+                                <div class="select-group-header">Datenbank</div>
+                                <div class="select-option" data-value="datenbankserver">Datenbankserver</div>
+                                <div class="select-group-header">Infrastruktur</div>
+                                <div class="select-option" data-value="backupserver">Backup Server</div>
+                                <div class="select-option" data-value="domaincontroller">Domain Controller</div>
+                                <div class="select-option" data-value="jumphostbastion">Jump Host / Bastion</div>
+                                <div class="select-option" data-value="loadbalancer">Load Balancer</div>
+                                <div class="select-option" data-value="monitoringserver">Monitoring Server</div>
+                                <div class="select-option" data-value="reverseproxy">Reverse Proxy</div>
+                                <div class="select-option" data-value="storagecontroller">Storage Controller</div>
+                                <div class="select-option" data-value="virtualisierungshost">Virtualisierungshost</div>
+                                <div class="select-option" data-value="logserver">Log Server / SIEM</div>
+                                <div class="select-option" data-value="pkicertificateauthority">PKI / Certificate Authority</div>
+                                <div class="select-group-header">Netzwerk</div>
+                                <div class="select-option" data-value="dhcpserver">DHCP Server</div>
+                                <div class="select-option" data-value="dnsserver">DNS Server</div>
+                                <div class="select-option" data-value="vpngateway">VPN Gateway</div>
+                                <div class="select-group-header">Sicherheit</div>
+                                <div class="select-option" data-value="firewall">Firewall</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>CPU</label>
+                    <input type="text" name="cpu" class="hw-field" placeholder="z.B. 2x Intel Xeon Gold 6248R">
+                </div>
+                <div class="form-group">
+                    <label>RAM (GB)</label>
+                    <input type="number" name="ramingb" class="hw-field" placeholder="z.B. 128">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Storage</label>
+                    <input type="text" name="storage" class="hw-field" placeholder="z.B. 4x 960GB SSD RAID 10">
+                </div>
+                <div class="form-group">
+                    <label>Standort / Rack</label>
+                    <input type="text" name="location" class="hw-field" placeholder="z.B. RZ1-Rack-A12-U10">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Garantie / Support bis</label>
+                <input type="text" name="warranty" class="hw-field" placeholder="z.B. 12/2027">
+            </div>
+        </div>
+    </div>
+</template>
