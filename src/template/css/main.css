@@ -236,3 +236,7 @@ body > main > aside > i {
     font-style: normal;
     color: #a0aec0;
 }
+
+body > main > div.removeaside aside {
+    display: none;
+}

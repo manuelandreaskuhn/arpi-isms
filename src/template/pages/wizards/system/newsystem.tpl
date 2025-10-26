@@ -57,9 +57,6 @@
                             <span class="arrow">▼</span>
                         </div>
                         <div class="select-dropdown">
-                            <div class="select-search">
-                                <input type="search" placeholder="Suchen...">
-                            </div>
                             <div class="select-options">
                                 <div class="select-option" data-value="">Bitte wählen</div>
                                 <div class="select-option" data-value="commercial">Kommerziell</div>
@@ -388,6 +385,10 @@
                 <div class="checkbox-item">
                     <input type="checkbox" id="meddevice" name="components" value="meddevice">
                     <label for="meddevice">Medizingeräte</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="gematicti" name="components" value="gematicti">
+                    <label for="gematicti">TI-Infrastruktur</label>
                 </div>
             </div>
 

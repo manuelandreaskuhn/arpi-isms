@@ -120,6 +120,7 @@ class SiteRouter
         // Versuche Error-Site zu laden
         try {
             $errorSite = $this->loadSite('Error');
+            $errorSite->setException($e);
             $errorSite->prepare();
             return $errorSite->main();
         } catch (\Exception $innerException) {

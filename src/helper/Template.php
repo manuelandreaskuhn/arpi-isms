@@ -33,6 +33,7 @@ class Template
         $this->registerModule(new Template\PropertyModule());
         $this->registerModule(new Template\DateModule());
         $this->registerModule(new Template\ConditionalModule());
+        $this->registerModule(new Template\IncludeModule());
     }
 
     /**

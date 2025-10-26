@@ -537,6 +537,34 @@ Formatierung von Datumswerten mit Internationalisierung:
 - `isnumeric` - Ist numerisch
 - `isbool` - Ist Boolean
 
+### 8. Include (Templates einbinden)
+
+Binde ein anderes Template an beliebiger Stelle ein. Der aktuelle Kontext wird standardmäßig vererbt, optionale Variablen können übergeben werden.
+
+```html
+<!-- Einfaches Include -->
+{{include:pages/wizards/newsystem.tpl}}
+
+<!-- Mit Variablen-Overrides -->
+{{include:pages/wizards/newsystem.tpl|with:systemId:{{property:currentSystem.id}}|with:mode:edit}}
+```
+
+Registrierung des Moduls (z. B. im Bootstrap Ihrer Template-Engine):
+
+```php
+$template = new Template();
+$include = new IncludeModule($template);
+$template->registerModule('include', $include);
+```
+
+Pfadangabe:
+- Relativ zum Template-Ordner (z. B. pages/wizards/newsystem.tpl)
+- Dateiendung kann optional weggelassen werden (wird als .tpl angenommen)
+
+Kontext:
+- Der aktuelle Render-Kontext wird vererbt.
+- Mit `|with:key:value` können Werte überschrieben/ergänzt werden (mehrfach nutzbar).
+
 ## Konfiguration
 
 ### Template-Ordner setzen
