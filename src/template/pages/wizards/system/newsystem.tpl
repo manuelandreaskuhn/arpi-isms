@@ -83,90 +83,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Fachbereich</label>
-                    <div class="custom-select" data-name="department" data-multi="true">
-                        <div class="select-trigger">
-                            <span class="placeholder">Auswählen...</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-search">
-                                <input type="search" placeholder="Suchen...">
-                            </div>
-                            <div class="select-options">
-                                <div class="select-group-header">Diagnostik & Bildgebung</div>
-                                <div class="select-option" data-value="radiology">Radiologie</div>
-                                <div class="select-option" data-value="nuclearmedicine">Nuklearmedizin</div>
-                                <div class="select-option" data-value="laboratorymedicine">Laboratoriumsmedizin</div>
-                                <div class="select-option" data-value="pathology">Pathologie</div>
-                                <div class="select-option" data-value="microbiology">Mikrobiologie</div>
-                                <div class="select-option" data-value="functionaldiagnostics">Funktionsdiagnostik</div>
-
-                                <div class="select-group-header">Klinische Fachrichtungen</div>
-                                <div class="select-option" data-value="internalmedicine">Innere Medizin</div>
-                                <div class="select-option" data-value="surgery">Chirurgie</div>
-                                <div class="select-option" data-value="anesthesiology">Anästhesiologie</div>
-                                <div class="select-option" data-value="neurology">Neurologie</div>
-                                <div class="select-option" data-value="neurosurgery">Neurochirurgie</div>
-                                <div class="select-option" data-value="gynecology">Gynäkologie und Geburtshilfe</div>
-                                <div class="select-option" data-value="pediatrics">Pädiatrie (Kinder- und Jugendmedizin)</div>
-                                <div class="select-option" data-value="geriatrics">Geriatrie (Altersmedizin)</div>
-                                <div class="select-option" data-value="psychiatry">Psychiatrie und Psychotherapie</div>
-                                <div class="select-option" data-value="psychosomatics">Psychosomatik</div>
-                                <div class="select-option" data-value="urology">Urologie</div>
-                                <div class="select-option" data-value="dermatology">Dermatologie</div>
-                                <div class="select-option" data-value="ent">HNO (Hals-Nasen-Ohren-Heilkunde)</div>
-                                <div class="select-option" data-value="ophthalmology">Augenheilkunde</div>
-                                <div class="select-option" data-value="oncology">Onkologie / Hämatologie</div>
-                                <div class="select-option" data-value="orthopedics">Orthopädie</div>
-                                <div class="select-option" data-value="rheumatology">Rheumatologie</div>
-                                <div class="select-option" data-value="endocrinology">Endokrinologie / Diabetologie</div>
-                                <div class="select-option" data-value="infectiology">Infektiologie</div>
-                                <div class="select-option" data-value="palliativecare">Palliativmedizin</div>
-                                <div class="select-option" data-value="paintherapy">Schmerztherapie</div>
-                                <div class="select-option" data-value="emergencymedicine">Notfallmedizin / Zentrale Notaufnahme</div>
-                                <div class="select-option" data-value="intensivecare">Intensivmedizin</div>
-
-                                <div class="select-group-header">Verwaltung & Organisation</div>
-                                <div class="select-option" data-value="hospitaladministration">Krankenhausverwaltung</div>
-                                <div class="select-option" data-value="patientadmission">Patientenaufnahme & -management</div>
-                                <div class="select-option" data-value="controlling">Controlling & Finanzen</div>
-                                <div class="select-option" data-value="humanresources">Personalwesen</div>
-                                <div class="select-option" data-value="qualitymanagement">Qualitätsmanagement</div>
-                                <div class="select-option" data-value="legal">Rechtsabteilung</div>
-                                <div class="select-option" data-value="publicrelations">Öffentlichkeitsarbeit / Marketing</div>
-                                <div class="select-option" data-value="it">IT-Abteilung / Medizininformatik</div>
-
-                                <div class="select-group-header">Technischer & infrastruktureller Dienst</div>
-                                <div class="select-option" data-value="technicalservice">Technischer Dienst / Haustechnik</div>
-                                <div class="select-option" data-value="medicaltechnology">Medizintechnik</div>
-                                <div class="select-option" data-value="cleaning">Reinigung & Hygiene</div>
-                                <div class="select-option" data-value="security">Sicherheitsdienst</div>
-                                <div class="select-option" data-value="transport">Transportdienst</div>
-                                <div class="select-option" data-value="laundry">Wäscherei</div>
-                                <div class="select-option" data-value="kitchen">Küche & Verpflegung</div>
-                                <div class="select-option" data-value="archive">Archiv / Dokumentation</div>
-
-                                <div class="select-group-header">Bildung & Forschung</div>
-                                <div class="select-option" data-value="academicteaching">Akademisches Lehrzentrum</div>
-                                <div class="select-option" data-value="medicalschools">Pflege- und Medizinschulen</div>
-                                <div class="select-option" data-value="research">Forschungsabteilungen</div>
-                                <div class="select-option" data-value="studycoordination">Studienkoordination / Ethikkommission</div>
-
-                                <div class="select-group-header">Pflege & Therapie</div>
-                                <div class="select-option" data-value="nursingmanagement">Pflegedienstleitung</div>
-                                <div class="select-option" data-value="wardnursing">Stationspflege</div>
-                                <div class="select-option" data-value="operatingroomnursing">OP- und Anästhesiepflege</div>
-                                <div class="select-option" data-value="intensivecarenursing">Intensivpflege</div>
-                                <div class="select-option" data-value="physiotherapy">Physiotherapie</div>
-                                <div class="select-option" data-value="occupationaltherapy">Ergotherapie</div>
-                                <div class="select-option" data-value="speechtherapy">Logopädie</div>
-                                <div class="select-option" data-value="socialservice">Sozialdienst</div>
-                                <div class="select-option" data-value="pastoralcare">Seelsorge</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="selected-badges" data-target="department"></div>
-
+                    {{include:pages/wizards/system/departmentcombobox.tpl}}
                 </div>
                 <div class="form-group">
                     <label>Kritikalität</label>
@@ -442,11 +359,33 @@
         </div>
     </div>
 
+    <!-- Datenbanken -->
+    <div class="form-section collapsed" data-name="databases">
+        <div class="section-title">
+            <span>Datenbanken</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text" style="margin-bottom: 15px;">
+                Dokumentieren Sie Datenbanken mit ihren Eigenschaften, Cluster-Konfiguration und Host-Zuordnung.
+            </div>
+            
+            <div id="databaseList" class="dynamic-list">
+                <!-- Database entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addDatabaseEntry()">
+                <span>+</span> Datenbank hinzufügen
+            </button>
+        </div>
+    </div>
+
 </form>
 
 <!-- Templates for dynamic entries -->
 <template id="vmEntryTemplate">
-    <div class="dynamic-entry">
+    <div class="dynamic-entry" data-type="vm">
         <div class="entry-header">
             <span class="entry-title">VM #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'vm')">×</button>
@@ -465,122 +404,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Betriebssystem</label>
-                    <div class="custom-select" data-name="operatingsystem" data-index="0" data-category="vm">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-search">
-                                <input type="search" placeholder="Suchen...">
-                            </div>
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-group-header">Windows</div>
-                                <div class="select-option" data-value="windowsserver2003">Windows Server 2003</div>
-                                <div class="select-option" data-value="windowsserver2003r2">Windows Server 2003 R2</div>
-                                <div class="select-option" data-value="windowsserver2008">Windows Server 2008</div>
-                                <div class="select-option" data-value="windowsserver2008r2">Windows Server 2008 R2</div>
-                                <div class="select-option" data-value="windowsserver2012">Windows Server 2012</div>
-                                <div class="select-option" data-value="windowsserver2012r2">Windows Server 2012 R2</div>
-                                <div class="select-option" data-value="windowsserver2016">Windows Server 2016</div>
-                                <div class="select-option" data-value="windowsserver2019">Windows Server 2019</div>
-                                <div class="select-option" data-value="windowsserver2022">Windows Server 2022</div>
-                                <div class="select-option" data-value="windowsserver2025">Windows Server 2025</div>
-                                <div class="select-group-header">Linux</div>
-                                <div class="select-option" data-value="centos7">CentOS 7</div>
-                                <div class="select-option" data-value="centos8">CentOS 8</div>
-                                <div class="select-option" data-value="centosstream8">CentOS Stream 8</div>
-                                <div class="select-option" data-value="centosstream9">CentOS Stream 9</div>
-                                <div class="select-option" data-value="debian8">Debian 8</div>
-                                <div class="select-option" data-value="debian9">Debian 9</div>
-                                <div class="select-option" data-value="debian10">Debian 10</div>
-                                <div class="select-option" data-value="debian11">Debian 11</div>
-                                <div class="select-option" data-value="debian12">Debian 12</div>
-                                <div class="select-option" data-value="debian13">Debian 13</div>
-                                <div class="select-option" data-value="redhatenterpriselinux7">Red Hat Enterprise Linux 7</div>
-                                <div class="select-option" data-value="redhatenterpriselinux8">Red Hat Enterprise Linux 8</div>
-                                <div class="select-option" data-value="redhatenterpriselinux9">Red Hat Enterprise Linux 9</div>
-                                <div class="select-option" data-value="redhatenterpriselinux10">Red Hat Enterprise Linux 10</div>
-                                <div class="select-option" data-value="suselinuxenterpriseserver15">SUSE Linux Enterprise Server 15</div>
-                                <div class="select-option" data-value="ubuntuserver1404lts">Ubuntu Server 14.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver1604lts">Ubuntu Server 16.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver1804lts">Ubuntu Server 18.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver2004lts">Ubuntu Server 20.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver2204lts">Ubuntu Server 22.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver2404lts">Ubuntu Server 24.04 LTS</div>
-                                <div class="select-group-header">Virtualisierung / Hypervisor</div>
-                                <div class="select-option" data-value="vmwareesxi90">VMware ESXi 9.0</div>
-                                <div class="select-option" data-value="vmwareesxi80">VMware ESXi 8.0</div>
-                                <div class="select-option" data-value="vmwareesxi70">VMware ESXi 7.0</div>
-                                <div class="select-option" data-value="vmwareesxi67">VMware ESXi 6.7</div>
-                                <div class="select-option" data-value="vmwareesxi65">VMware ESXi 6.5</div>
-                                <div class="select-option" data-value="vmwareesxi60">VMware ESXi 6.0</div>
-                                <div class="select-option" data-value="microsofthyperv2025">Microsoft Hyper-V 2025</div>
-                                <div class="select-option" data-value="microsofthyperv2022">Microsoft Hyper-V 2022</div>
-                                <div class="select-option" data-value="microsofthyperv2019">Microsoft Hyper-V 2019</div>
-                                <div class="select-option" data-value="microsofthyperv2016">Microsoft Hyper-V 2016</div>
-                                <div class="select-option" data-value="proxmoxve9">Proxmox VE 9</div>
-                                <div class="select-option" data-value="proxmoxve8">Proxmox VE 8</div>
-                                <div class="select-option" data-value="proxmoxve7">Proxmox VE 7</div>
-                                <div class="select-option" data-value="proxmoxve6">Proxmox VE 6</div>
-                                <div class="select-option" data-value="xenserver84">XenServer 8.4</div>
-                                <div class="select-option" data-value="citrixhypervisor82">Citrix Hypervisor 8.2</div>
-                                <div class="select-option" data-value="citrixhypervisor81">Citrix Hypervisor 8.1</div>
-                                <div class="select-option" data-value="citrixhypervisor80">Citrix Hypervisor 8.0</div>
-                                <div class="select-option" data-value="oraclevmserver">Oracle VM Server</div>
-                                <div class="select-option" data-value="nutanixahv">Nutanix AHV</div>
-                                <div class="select-option" data-value="redhatvirtualization">Red Hat Virtualisierung</div>
-                                <div class="select-option" data-value="xcpng">XCP-ng</div>
-                                <div class="select-group-header">Sonstige</div>
-                                <div class="select-option" data-value="kvm">KVM</div>
-                                <div class="select-option" data-value="other">Sonstiges / Anderes</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{include:pages/wizards/system/operatingsystemcombobox.tpl|with:category:vm}}
                 </div>
                 <div class="form-group">
                     <label>Rolle / Funktion</label>
-                    <div class="custom-select" data-name="serverrole" data-index="0" data-category="vm">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-search">
-                                <input type="search" placeholder="Suchen...">
-                            </div>
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-group-header">Applikation</div>
-                                <div class="select-option" data-value="applikationsserver">Applikationsserver</div>
-                                <div class="select-option" data-value="archivierungsserver">Archivierungsserver</div>
-                                <div class="select-option" data-value="fileserver">Fileserver</div>
-                                <div class="select-option" data-value="mailserver">Mailserver</div>
-                                <div class="select-option" data-value="terminalserver">Terminal Server</div>
-                                <div class="select-option" data-value="webserver">Webserver</div>
-                                <div class="select-group-header">Datenbank</div>
-                                <div class="select-option" data-value="datenbankserver">Datenbankserver</div>
-                                <div class="select-group-header">Infrastruktur</div>
-                                <div class="select-option" data-value="backupserver">Backup Server</div>
-                                <div class="select-option" data-value="domaincontroller">Domain Controller</div>
-                                <div class="select-option" data-value="jumphostbastion">Jump Host / Bastion</div>
-                                <div class="select-option" data-value="loadbalancer">Load Balancer</div>
-                                <div class="select-option" data-value="monitoringserver">Monitoring Server</div>
-                                <div class="select-option" data-value="reverseproxy">Reverse Proxy</div>
-                                <div class="select-option" data-value="storagecontroller">Storage Controller</div>
-                                <div class="select-option" data-value="virtualisierungshost">Virtualisierungshost</div>
-                                <div class="select-option" data-value="logserver">Log Server / SIEM</div>
-                                <div class="select-option" data-value="pkicertificateauthority">PKI / Certificate Authority</div>
-                                <div class="select-group-header">Netzwerk</div>
-                                <div class="select-option" data-value="dhcpserver">DHCP Server</div>
-                                <div class="select-option" data-value="dnsserver">DNS Server</div>
-                                <div class="select-option" data-value="vpngateway">VPN Gateway</div>
-                                <div class="select-group-header">Sicherheit</div>
-                                <div class="select-option" data-value="firewall">Firewall</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{include:pages/wizards/system/serverrolecombobox.tpl|with:category:vm}}
                 </div>
             </div>
             <div class="form-row">
@@ -600,43 +428,7 @@
                 </div>
                 <div class="form-group">
                     <label>Hypervisor</label>
-                    <div class="custom-select" data-name="hypervisor" data-index="0">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-search">
-                                <input type="search" placeholder="Suchen...">
-                            </div>
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="vmwareesxi90">VMware ESXi 9.0</div>
-                                <div class="select-option" data-value="vmwareesxi80">VMware ESXi 8.0</div>
-                                <div class="select-option" data-value="vmwareesxi70">VMware ESXi 7.0</div>
-                                <div class="select-option" data-value="vmwareesxi67">VMware ESXi 6.7</div>
-                                <div class="select-option" data-value="vmwareesxi65">VMware ESXi 6.5</div>
-                                <div class="select-option" data-value="vmwareesxi60">VMware ESXi 6.0</div>
-                                <div class="select-option" data-value="microsofthyperv2025">Microsoft Hyper-V 2025</div>
-                                <div class="select-option" data-value="microsofthyperv2022">Microsoft Hyper-V 2022</div>
-                                <div class="select-option" data-value="microsofthyperv2019">Microsoft Hyper-V 2019</div>
-                                <div class="select-option" data-value="microsofthyperv2016">Microsoft Hyper-V 2016</div>
-                                <div class="select-option" data-value="proxmoxve9">Proxmox VE 9</div>
-                                <div class="select-option" data-value="proxmoxve8">Proxmox VE 8</div>
-                                <div class="select-option" data-value="proxmoxve7">Proxmox VE 7</div>
-                                <div class="select-option" data-value="proxmoxve6">Proxmox VE 6</div>
-                                <div class="select-option" data-value="kvm">KVM</div>
-                                <div class="select-option" data-value="xenserver84">XenServer 8.4</div>
-                                <div class="select-option" data-value="citrixhypervisor82">Citrix Hypervisor 8.2</div>
-                                <div class="select-option" data-value="citrixhypervisor81">Citrix Hypervisor 8.1</div>
-                                <div class="select-option" data-value="citrixhypervisor80">Citrix Hypervisor 8.0</div>
-                                <div class="select-option" data-value="oraclevmserver">Oracle VM Server</div>
-                                <div class="select-option" data-value="nutanixahv">Nutanix AHV</div>
-                                <div class="select-option" data-value="redhatvirtualization">Red Hat Virtualisierung</div>
-                                <div class="select-option" data-value="xcpng">XCP-ng</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{include:pages/wizards/system/hypervisorcombobox.tpl}}
                 </div>
             </div>
         </div>
@@ -644,7 +436,7 @@
 </template>
 
 <template id="hardwareEntryTemplate">
-    <div class="dynamic-entry">
+    <div class="dynamic-entry" data-type="hardware">
         <div class="entry-header">
             <span class="entry-title">Server #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'hardware')">×</button>
@@ -673,122 +465,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Betriebssystem</label>
-                    <div class="custom-select" data-name="operatingsystem" data-index="0" data-category="hardware">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-search">
-                                <input type="search" placeholder="Suchen...">
-                            </div>
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-group-header">Windows</div>
-                                <div class="select-option" data-value="windowsserver2003">Windows Server 2003</div>
-                                <div class="select-option" data-value="windowsserver2003r2">Windows Server 2003 R2</div>
-                                <div class="select-option" data-value="windowsserver2008">Windows Server 2008</div>
-                                <div class="select-option" data-value="windowsserver2008r2">Windows Server 2008 R2</div>
-                                <div class="select-option" data-value="windowsserver2012">Windows Server 2012</div>
-                                <div class="select-option" data-value="windowsserver2012r2">Windows Server 2012 R2</div>
-                                <div class="select-option" data-value="windowsserver2016">Windows Server 2016</div>
-                                <div class="select-option" data-value="windowsserver2019">Windows Server 2019</div>
-                                <div class="select-option" data-value="windowsserver2022">Windows Server 2022</div>
-                                <div class="select-option" data-value="windowsserver2025">Windows Server 2025</div>
-                                <div class="select-group-header">Linux</div>
-                                <div class="select-option" data-value="centos7">CentOS 7</div>
-                                <div class="select-option" data-value="centos8">CentOS 8</div>
-                                <div class="select-option" data-value="centosstream8">CentOS Stream 8</div>
-                                <div class="select-option" data-value="centosstream9">CentOS Stream 9</div>
-                                <div class="select-option" data-value="debian8">Debian 8</div>
-                                <div class="select-option" data-value="debian9">Debian 9</div>
-                                <div class="select-option" data-value="debian10">Debian 10</div>
-                                <div class="select-option" data-value="debian11">Debian 11</div>
-                                <div class="select-option" data-value="debian12">Debian 12</div>
-                                <div class="select-option" data-value="debian13">Debian 13</div>
-                                <div class="select-option" data-value="redhatenterpriselinux7">Red Hat Enterprise Linux 7</div>
-                                <div class="select-option" data-value="redhatenterpriselinux8">Red Hat Enterprise Linux 8</div>
-                                <div class="select-option" data-value="redhatenterpriselinux9">Red Hat Enterprise Linux 9</div>
-                                <div class="select-option" data-value="redhatenterpriselinux10">Red Hat Enterprise Linux 10</div>
-                                <div class="select-option" data-value="suselinuxenterpriseserver15">SUSE Linux Enterprise Server 15</div>
-                                <div class="select-option" data-value="ubuntuserver1404lts">Ubuntu Server 14.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver1604lts">Ubuntu Server 16.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver1804lts">Ubuntu Server 18.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver2004lts">Ubuntu Server 20.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver2204lts">Ubuntu Server 22.04 LTS</div>
-                                <div class="select-option" data-value="ubuntuserver2404lts">Ubuntu Server 24.04 LTS</div>
-                                <div class="select-group-header">Virtualisierung / Hypervisor</div>
-                                <div class="select-option" data-value="vmwareesxi90">VMware ESXi 9.0</div>
-                                <div class="select-option" data-value="vmwareesxi80">VMware ESXi 8.0</div>
-                                <div class="select-option" data-value="vmwareesxi70">VMware ESXi 7.0</div>
-                                <div class="select-option" data-value="vmwareesxi67">VMware ESXi 6.7</div>
-                                <div class="select-option" data-value="vmwareesxi65">VMware ESXi 6.5</div>
-                                <div class="select-option" data-value="vmwareesxi60">VMware ESXi 6.0</div>
-                                <div class="select-option" data-value="microsofthyperv2025">Microsoft Hyper-V 2025</div>
-                                <div class="select-option" data-value="microsofthyperv2022">Microsoft Hyper-V 2022</div>
-                                <div class="select-option" data-value="microsofthyperv2019">Microsoft Hyper-V 2019</div>
-                                <div class="select-option" data-value="microsofthyperv2016">Microsoft Hyper-V 2016</div>
-                                <div class="select-option" data-value="proxmoxve9">Proxmox VE 9</div>
-                                <div class="select-option" data-value="proxmoxve8">Proxmox VE 8</div>
-                                <div class="select-option" data-value="proxmoxve7">Proxmox VE 7</div>
-                                <div class="select-option" data-value="proxmoxve6">Proxmox VE 6</div>
-                                <div class="select-option" data-value="xenserver84">XenServer 8.4</div>
-                                <div class="select-option" data-value="citrixhypervisor82">Citrix Hypervisor 8.2</div>
-                                <div class="select-option" data-value="citrixhypervisor81">Citrix Hypervisor 8.1</div>
-                                <div class="select-option" data-value="citrixhypervisor80">Citrix Hypervisor 8.0</div>
-                                <div class="select-option" data-value="oraclevmserver">Oracle VM Server</div>
-                                <div class="select-option" data-value="nutanixahv">Nutanix AHV</div>
-                                <div class="select-option" data-value="redhatvirtualization">Red Hat Virtualisierung</div>
-                                <div class="select-option" data-value="xcpng">XCP-ng</div>
-                                <div class="select-group-header">Sonstige</div>
-                                <div class="select-option" data-value="kvm">KVM</div>
-                                <div class="select-option" data-value="other">Sonstiges / Anderes</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{include:pages/wizards/system/operatingsystemcombobox.tpl|with:category:hardware}}
                 </div>
                 <div class="form-group">
                     <label>Rolle / Funktion</label>
-                    <div class="custom-select" data-name="serverrole" data-index="0" data-category="hardware">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-search">
-                                <input type="search" placeholder="Suchen...">
-                            </div>
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-group-header">Applikation</div>
-                                <div class="select-option" data-value="applikationsserver">Applikationsserver</div>
-                                <div class="select-option" data-value="archivierungsserver">Archivierungsserver</div>
-                                <div class="select-option" data-value="fileserver">Fileserver</div>
-                                <div class="select-option" data-value="mailserver">Mailserver</div>
-                                <div class="select-option" data-value="terminalserver">Terminal Server</div>
-                                <div class="select-option" data-value="webserver">Webserver</div>
-                                <div class="select-group-header">Datenbank</div>
-                                <div class="select-option" data-value="datenbankserver">Datenbankserver</div>
-                                <div class="select-group-header">Infrastruktur</div>
-                                <div class="select-option" data-value="backupserver">Backup Server</div>
-                                <div class="select-option" data-value="domaincontroller">Domain Controller</div>
-                                <div class="select-option" data-value="jumphostbastion">Jump Host / Bastion</div>
-                                <div class="select-option" data-value="loadbalancer">Load Balancer</div>
-                                <div class="select-option" data-value="monitoringserver">Monitoring Server</div>
-                                <div class="select-option" data-value="reverseproxy">Reverse Proxy</div>
-                                <div class="select-option" data-value="storagecontroller">Storage Controller</div>
-                                <div class="select-option" data-value="virtualisierungshost">Virtualisierungshost</div>
-                                <div class="select-option" data-value="logserver">Log Server / SIEM</div>
-                                <div class="select-option" data-value="pkicertificateauthority">PKI / Certificate Authority</div>
-                                <div class="select-group-header">Netzwerk</div>
-                                <div class="select-option" data-value="dhcpserver">DHCP Server</div>
-                                <div class="select-option" data-value="dnsserver">DNS Server</div>
-                                <div class="select-option" data-value="vpngateway">VPN Gateway</div>
-                                <div class="select-group-header">Sicherheit</div>
-                                <div class="select-option" data-value="firewall">Firewall</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{include:pages/wizards/system/serverrolecombobox.tpl|with:category:hardware}}
                 </div>
             </div>
             <div class="form-row">
@@ -818,3 +499,200 @@
         </div>
     </div>
 </template>
+
+<template id="databaseEntryTemplate">
+    <div class="dynamic-entry" data-type="database">
+        <div class="entry-header">
+            <span class="entry-title">Datenbank #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'database')">×</button>
+        </div>
+        <div class="entry-content">
+            <!-- Basis-Informationen -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Datenbankname <span class="required">*</span></label>
+                    <input type="text" name="dbname" class="db-field" placeholder="z.B. KIS_PROD, PACS_DB" required>
+                </div>
+                <div class="form-group">
+                    <label>Datenbank-Typ</label>
+                    {{include:pages/wizards/system/dbtypecombobox.tpl}}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Version</label>
+                    <input type="text" name="dbversion" class="db-field" placeholder="z.B. 19c, 2022, 8.0.35">
+                </div>
+                <div class="form-group">
+                    <label>Zeichensatz / Charset</label>
+                    <input type="text" name="charset" class="db-field" placeholder="z.B. UTF8, AL32UTF8, utf8mb4">
+                </div>
+            </div>
+
+            <!-- Cluster-Konfiguration -->
+            <div class="form-group">
+                <label style="display:flex;align-items:center;gap:8px;margin-bottom:0;">
+                    <input type="checkbox" class="db-cluster-check" style="width:auto;margin:0;">
+                    <span>Datenbank-Cluster / High Availability</span>
+                </label>
+            </div>
+
+            <div class="cluster-config" style="display:none;background:#f0f4ff;padding:16px;border-radius:8px;margin-top:10px;margin-bottom:20px;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cluster-Typ</label>
+                        {{include:pages/wizards/system/dbclustertypecombobox.tpl}}
+                    </div>
+                    <div class="form-group">
+                        <label>Cluster-Name</label>
+                        <input type="text" name="clustername" class="db-field" placeholder="z.B. KIS-DB-CLUSTER-01">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Anzahl Knoten</label>
+                        <input type="number" name="clusternodes" class="db-field" placeholder="z.B. 2, 3, 5" min="2">
+                    </div>
+                    <div class="form-group">
+                        <label>Failover-Modus</label>
+                        <div class="custom-select" data-name="failovermode" data-index="0" data-category="database">
+                            <div class="select-trigger">
+                                <span class="placeholder">Bitte wählen</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="select-dropdown">
+                                <div class="select-options">
+                                    <div class="select-option" data-value="">Bitte wählen</div>
+                                    <div class="select-option" data-value="automatic">Automatisch</div>
+                                    <div class="select-option" data-value="manual">Manuell</div>
+                                    <div class="select-option" data-value="semiautomatic">Semi-Automatisch</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Host-Zuordnung -->
+            <div class="form-group" style="border:1px solid #e2e8f0;padding:15px;border-radius:8px;background:#fafafa;">
+                <label>Läuft auf folgenden Hosts</label>
+                <div class="help-text" style="margin-bottom:12px;">
+                    Wählen Sie die VM(s) und/oder Hardware-Server aus, auf denen diese Datenbank betrieben wird.
+                </div>
+                <div class="host-assignment" data-hostlist>
+                    <div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>
+                </div>
+            </div>
+
+            <!-- Größe & Performance -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Datenbankgröße (GB)</label>
+                    <input type="number" name="dbsize" class="db-field" placeholder="z.B. 500">
+                </div>
+                <div class="form-group">
+                    <label>Max. Verbindungen</label>
+                    <input type="number" name="maxconnections" class="db-field" placeholder="z.B. 100">
+                </div>
+            </div>
+
+            <!-- Backup & Recovery -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Backup-Strategie</label>
+                    <div class="custom-select" data-name="backupstrategy" data-index="0" data-category="database">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="full-daily">Full Backup täglich</div>
+                                <div class="select-option" data-value="full-incremental">Full + Incremental</div>
+                                <div class="select-option" data-value="full-differential">Full + Differential</div>
+                                <div class="select-option" data-value="continuous">Continuous Backup / WAL</div>
+                                <div class="select-option" data-value="snapshot">Snapshot-basiert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Backup Retention (Tage)</label>
+                    <input type="number" name="backupretention" class="db-field" placeholder="z.B. 30, 90">
+                </div>
+            </div>
+
+            <!-- Sicherheit -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Verschlüsselung</label>
+                    <div class="custom-select" data-name="dbencryption" data-index="0" data-category="database">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="tde">Transparent Data Encryption (TDE)</div>
+                                <div class="select-option" data-value="column">Column-Level Encryption</div>
+                                <div class="select-option" data-value="connection">Nur Verbindungsverschlüsselung (TLS)</div>
+                                <div class="select-option" data-value="none">Keine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Authentifizierung</label>
+                    <div class="custom-select" data-name="dbauthentication" data-index="0" data-category="database">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="integrated">Integrierte Windows Auth</div>
+                                <div class="select-option" data-value="ldap">LDAP / Active Directory</div>
+                                <div class="select-option" data-value="native">Native Datenbank-Auth</div>
+                                <div class="select-option" data-value="kerberos">Kerberos</div>
+                                <div class="select-option" data-value="certificate">Zertifikatsbasiert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Port & Notizen -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Port</label>
+                    <input type="number" name="dbport" class="db-field" placeholder="z.B. 1521, 1433, 3306, 5432">
+                </div>
+                <div class="form-group">
+                    <label>Tablespace / Schema</label>
+                    <input type="text" name="tablespace" class="db-field" placeholder="z.B. USERS, dbo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Notizen / Besonderheiten</label>
+                <textarea name="dbnotes" class="db-field" rows="3" placeholder="Zusätzliche Informationen zur Datenbank, Besonderheiten der Konfiguration..."></textarea>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+// Toggle cluster configuration
+document.addEventListener('change', function(e) {
+    if (e.target.classList.contains('db-cluster-check')) {
+        const clusterConfig = e.target.closest('.entry-content').querySelector('.cluster-config');
+        if (clusterConfig) {
+            clusterConfig.style.display = e.target.checked ? 'block' : 'none';
+        }
+    }
+});
+</script>
