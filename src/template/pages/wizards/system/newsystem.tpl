@@ -142,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group" id="cloudProviderGroup" style="display: none;">
+            <div class="form-group" id="cloudProviderGroup">
                 <label>Cloud-Anbieter</label>
                 <input type="text" id="cloudProvider" placeholder="z.B. Microsoft Azure, AWS, Google Cloud">
             </div>
@@ -244,7 +244,7 @@
                     <label for="medizinprodukt">Medizinprodukt</label>
                 </div>
             </div>
-            <div class="form-group" style="margin-top: 20px;">
+            <div class="form-group">
                 <label>Letzte Sicherheitsüberprüfung</label>
                 <input type="text" id="lastAudit" placeholder="z.B. Q2 2024, oder Datum">
             </div>
@@ -321,7 +321,7 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <div class="help-text" style="margin-bottom: 15px;">Fügen Sie virtuelle Maschinen hinzu, die zu diesem System gehören.</div>
+            <div class="help-text">Fügen Sie virtuelle Maschinen hinzu, die zu diesem System gehören.</div>
             
             <div id="vmList" class="dynamic-list">
                 <!-- VM entries will be added here -->
@@ -347,7 +347,7 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <div class="help-text" style="margin-bottom: 15px;">Fügen Sie physische Server hinzu, die zu diesem System gehören.</div>
+            <div class="help-text">Fügen Sie physische Server hinzu, die zu diesem System gehören.</div>
             
             <div id="hardwareList" class="dynamic-list">
                 <!-- Hardware entries will be added here -->
@@ -367,7 +367,7 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <div class="help-text" style="margin-bottom: 15px;">
+            <div class="help-text">
                 Dokumentieren Sie Datenbanken mit ihren Eigenschaften, Cluster-Konfiguration und Host-Zuordnung.
             </div>
             
@@ -532,13 +532,13 @@
 
             <!-- Cluster-Konfiguration -->
             <div class="form-group">
-                <label style="display:flex;align-items:center;gap:8px;margin-bottom:0;">
-                    <input type="checkbox" class="db-cluster-check" style="width:auto;margin:0;">
+                <label class="cluster-label">
+                    <input type="checkbox" class="db-cluster-check">
                     <span>Datenbank-Cluster / High Availability</span>
                 </label>
             </div>
 
-            <div class="cluster-config" style="display:none;background:#f0f4ff;padding:16px;border-radius:8px;margin-top:10px;margin-bottom:20px;">
+            <div class="cluster-config">
                 <div class="form-row">
                     <div class="form-group">
                         <label>Cluster-Typ</label>
@@ -575,11 +575,9 @@
             </div>
 
             <!-- Host-Zuordnung -->
-            <div class="form-group" style="border:1px solid #e2e8f0;padding:15px;border-radius:8px;background:#fafafa;">
+            <div class="form-group host-assignment-box">
                 <label>Läuft auf folgenden Hosts</label>
-                <div class="help-text" style="margin-bottom:12px;">
-                    Wählen Sie die VM(s) und/oder Hardware-Server aus, auf denen diese Datenbank betrieben wird.
-                </div>
+                <div class="help-text">Wählen Sie die VM(s) und/oder Hardware-Server aus, auf denen diese Datenbank betrieben wird.</div>
                 <div class="host-assignment" data-hostlist>
                     <div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>
                 </div>
@@ -684,15 +682,3 @@
         </div>
     </div>
 </template>
-
-<script>
-// Toggle cluster configuration
-document.addEventListener('change', function(e) {
-    if (e.target.classList.contains('db-cluster-check')) {
-        const clusterConfig = e.target.closest('.entry-content').querySelector('.cluster-config');
-        if (clusterConfig) {
-            clusterConfig.style.display = e.target.checked ? 'block' : 'none';
-        }
-    }
-});
-</script>

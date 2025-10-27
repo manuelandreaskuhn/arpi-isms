@@ -309,4 +309,55 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     background-color: var(--primary-color);
 }
 
+#cloudProviderGroup {
+    display: none;
+}
+
+/* Entfernte inline help-text margins innerhalb von form-sections */
+.form-section .help-text {
+    margin-bottom: 15px;
+}
+
+/* Spezifisch etwas kleinere margin für Host-Assignment help-text */
+.host-assignment .help-text {
+    margin-bottom: 12px;
+}
+
+/* Cluster config box (vormals inline style) */
+.cluster-config {
+    display: none;
+    background: #f0f4ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Host assignment container styling (vormals inline style) */
+.host-assignment-box {
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+/* Checkbox sizing/margins die vorher inline gesetzt waren */
+.db-cluster-check {
+    width: auto;
+    margin: 0;
+}
+
+/* Label für Cluster-Checkbox (vormals inline style) */
+.cluster-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+/* Utility class für margin-top:20px */
+.mt-20 {
+    margin-top: 20px;
+}
+
 

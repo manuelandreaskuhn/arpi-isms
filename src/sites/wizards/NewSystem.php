@@ -5,7 +5,7 @@ use ARPI\Helper\BaseSite;
 use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 
-#[Css('/template/css/wizard.css')]
+#[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/systemwizard.js')]
 class NewSystem extends BaseSite
 {

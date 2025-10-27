@@ -247,6 +247,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Cluster-Konfiguration anzeigen/ausblenden
+    document.addEventListener('change', function(e) {
+        if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
+            const clusterConfig = e.target.closest('.entry-content')?.querySelector('.cluster-config');
+            if (clusterConfig) {
+                clusterConfig.style.display = e.target.checked ? 'block' : 'none';
+            }
+        }
+    });
 });
 
 // Make functions globally accessible for onclick handlers
