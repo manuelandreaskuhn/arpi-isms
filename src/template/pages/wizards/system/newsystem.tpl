@@ -413,6 +413,8 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'vm')">×</button>
         </div>
         <div class="entry-content">
+            <!-- Basis-Informationen -->
+            <div class="subsection-header">Basis-Informationen</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Hostname <span class="required">*</span></label>
@@ -423,6 +425,9 @@
                     <input type="text" name="ipaddress" class="vm-field" placeholder="z.B. 192.168.1.10">
                 </div>
             </div>
+
+            <!-- System-Konfiguration -->
+            <div class="subsection-header">System-Konfiguration</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Betriebssystem</label>
@@ -433,6 +438,9 @@
                     {{include:pages/wizards/system/serverrolecombobox.tpl|with:category:vm}}
                 </div>
             </div>
+
+            <!-- Ressourcen -->
+            <div class="subsection-header">Ressourcen</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>vCPU</label>
@@ -464,6 +472,8 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'hardware')">×</button>
         </div>
         <div class="entry-content">
+            <!-- Basis-Informationen -->
+            <div class="subsection-header">Basis-Informationen</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Hostname <span class="required">*</span></label>
@@ -474,6 +484,9 @@
                     <input type="text" name="ipaddress" class="hw-field" placeholder="z.B. 192.168.1.20">
                 </div>
             </div>
+
+            <!-- Hardware-Details -->
+            <div class="subsection-header">Hardware-Details</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Hersteller & Modell</label>
@@ -484,6 +497,9 @@
                     <input type="text" name="serialnumber" class="hw-field" placeholder="z.B. SN123456789">
                 </div>
             </div>
+
+            <!-- System-Konfiguration -->
+            <div class="subsection-header">System-Konfiguration</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Betriebssystem</label>
@@ -494,6 +510,9 @@
                     {{include:pages/wizards/system/serverrolecombobox.tpl|with:category:hardware}}
                 </div>
             </div>
+
+            <!-- Ressourcen -->
+            <div class="subsection-header">Ressourcen</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>CPU</label>
@@ -514,6 +533,9 @@
                     <input type="text" name="location" class="hw-field" placeholder="z.B. RZ1-Rack-A12-U10">
                 </div>
             </div>
+
+            <!-- Support & Garantie -->
+            <div class="subsection-header">Support & Garantie</div>
             <div class="form-group">
                 <label>Garantie / Support bis</label>
                 <input type="text" name="warranty" class="hw-field" placeholder="z.B. 12/2027">
@@ -530,6 +552,7 @@
         </div>
         <div class="entry-content">
             <!-- Basis-Informationen -->
+            <div class="subsection-header">Basis-Informationen</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Datenbankname <span class="required">*</span></label>
@@ -552,7 +575,19 @@
                 </div>
             </div>
 
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Port</label>
+                    <input type="number" name="dbport" class="db-field" placeholder="z.B. 1521, 1433, 3306, 5432">
+                </div>
+                <div class="form-group">
+                    <label>Tablespace / Schema</label>
+                    <input type="text" name="tablespace" class="db-field" placeholder="z.B. USERS, dbo">
+                </div>
+            </div>
+
             <!-- Cluster-Konfiguration -->
+            <div class="subsection-header">High Availability & Cluster</div>
             <div class="form-group">
                 <label class="cluster-label">
                     <input type="checkbox" class="db-cluster-check">
@@ -597,8 +632,8 @@
             </div>
 
             <!-- Host-Zuordnung -->
+            <div class="subsection-header">Host-Zuordnung</div>
             <div class="form-group host-assignment-box">
-                <label>Läuft auf folgenden Hosts</label>
                 <div class="help-text">Wählen Sie die VM(s) und/oder Hardware-Server aus, auf denen diese Datenbank betrieben wird.</div>
                 <div class="host-assignment" data-hostlist>
                     <div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>
@@ -606,6 +641,7 @@
             </div>
 
             <!-- Größe & Performance -->
+            <div class="subsection-header">Größe & Performance</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Datenbankgröße (GB)</label>
@@ -618,6 +654,7 @@
             </div>
 
             <!-- Sicherheit -->
+            <div class="subsection-header">Sicherheit & Authentifizierung</div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Verschlüsselung</label>
@@ -658,18 +695,8 @@
                 </div>
             </div>
 
-            <!-- Port & Notizen -->
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Port</label>
-                    <input type="number" name="dbport" class="db-field" placeholder="z.B. 1521, 1433, 3306, 5432">
-                </div>
-                <div class="form-group">
-                    <label>Tablespace / Schema</label>
-                    <input type="text" name="tablespace" class="db-field" placeholder="z.B. USERS, dbo">
-                </div>
-            </div>
-
+            <!-- Notizen -->
+            <div class="subsection-header">Zusätzliche Informationen</div>
             <div class="form-group">
                 <label>Notizen / Besonderheiten</label>
                 <textarea name="dbnotes" class="db-field" rows="3" placeholder="Zusätzliche Informationen zur Datenbank, Besonderheiten der Konfiguration..."></textarea>
