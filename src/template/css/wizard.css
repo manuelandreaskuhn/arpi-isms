@@ -475,3 +475,37 @@ div.buttonlist {
     background: url("/template/images/search-icon.svg") no-repeat center center;
     display: inline-block;
 }
+
+
+/* Subsection headers for better visual separation */
+.subsection-header {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+}
+
+.subsection-header::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: var(--primary-color);
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+/* First subsection header has less top margin */
+.entry-content > .subsection-header:first-child {
+    margin-top: 0;
+}
+
+/* Entfernte inline help-text margins innerhalb von form-sections */
+.form-section .help-text {
+    margin-bottom: 15px;
+}

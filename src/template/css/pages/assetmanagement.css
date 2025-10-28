@@ -313,11 +313,6 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     display: none;
 }
 
-/* Entfernte inline help-text margins innerhalb von form-sections */
-.form-section .help-text {
-    margin-bottom: 15px;
-}
-
 /* Spezifisch etwas kleinere margin für Host-Assignment help-text */
 .host-assignment .help-text {
     margin-bottom: 12px;
@@ -360,4 +355,28 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     margin-top: 20px;
 }
 
+/* Backup 3-2-1 config box */
+.backup-321-config {
+    display: none;
+    background: #f0f8ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
 
+/* Checkbox für 3-2-1 Regel */
+.backup-321-check {
+    width: auto;
+    margin: 0;
+}
+
+/* Label für 3-2-1 Checkbox */
+.backup-321-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+    font-weight: 500;
+}

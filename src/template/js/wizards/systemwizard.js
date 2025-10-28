@@ -3,6 +3,7 @@ import { updateListenersForDynamicEntry, updateSectionCounter, removeCustomSelec
 let vmCounter = 0;
 let hardwareCounter = 0;
 let databaseCounter = 0;
+let backupCounter = 0;
 
 function addVMEntry() {
     vmCounter++;
@@ -82,6 +83,33 @@ function addDatabaseEntry() {
     refreshHostAssignments();
 }
 
+function addBackupEntry() {
+    backupCounter++;
+    const backupList = document.getElementById('backupList');
+    const template = document.getElementById('backupEntryTemplate');
+    
+    const backupEntry = template.content.cloneNode(true);
+    const entryDiv = backupEntry.querySelector('.dynamic-entry');
+    
+    entryDiv.dataset.id = backupCounter;
+    backupEntry.querySelector('.entry-number').textContent = backupCounter;
+    
+    backupEntry.querySelectorAll('.custom-select').forEach(element => {
+        element.dataset.index = backupCounter;
+    });
+    
+    backupList.appendChild(backupEntry);
+    
+    const addedEntry = backupList.querySelector(`.dynamic-entry[data-id="${backupCounter}"]`);
+    updateListenersForDynamicEntry(addedEntry);
+    
+    // Setup conditional visibility handlers for this entry
+    setupBackupConditionalFields(addedEntry);
+    
+    // Initial host assignment rendering
+    refreshBackupHostAssignments();
+}
+
 function removeEntry(button, type) {
     const entry = button.closest('.dynamic-entry');
     entry.remove();
@@ -102,13 +130,19 @@ function removeEntry(button, type) {
         vmCounter = entries.length + 1;
         updateSectionCounter(document.querySelector('.form-section[data-name="virtualmachines"]'));
         refreshHostAssignments();
+        refreshBackupHostAssignments();
     } else if (type === 'hardware') {
         hardwareCounter = entries.length + 1;
         updateSectionCounter(document.querySelector('.form-section[data-name="hardwareservers"]'));
         refreshHostAssignments();
+        refreshBackupHostAssignments();
     } else if (type === 'database') {
         databaseCounter = entries.length + 1;
         updateSectionCounter(document.querySelector('.form-section[data-name="databases"]'));
+        refreshBackupHostAssignments();
+    } else if (type === 'backup') {
+        backupCounter = entries.length + 1;
+        updateSectionCounter(document.querySelector('.form-section[data-name="backups"]'));
     }
 }
 
@@ -190,16 +224,195 @@ function refreshHostAssignments() {
     });
 }
 
-// Handle VM/Hardware/Database checkbox toggle
+// Setup conditional field visibility for backup entries
+function setupBackupConditionalFields(entryElement) {
+    // GFS Schema - show/hide GFS fields based on selection
+    const gfsEnabledSelect = entryElement.querySelector('[data-name="gfsenabled"]');
+    if (gfsEnabledSelect) {
+        const gfsFieldsRows = [
+            entryElement.querySelector('input[name="gfsdaily"]')?.closest('.form-row'),
+            entryElement.querySelector('input[name="gfsweekly"]')?.closest('.form-row'),
+            entryElement.querySelector('input[name="gfsmonthly"]')?.closest('.form-row'),
+            entryElement.querySelector('input[name="gfsyearly"]')?.closest('.form-row')
+        ].filter(Boolean);
+        
+        // Initially hide GFS fields
+        gfsFieldsRows.forEach(row => row.style.display = 'none');
+        
+        // Listen for changes on the custom select
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-value') {
+                    const value = gfsEnabledSelect.dataset.value;
+                    if (value === 'yes') {
+                        gfsFieldsRows.forEach(row => row.style.display = 'flex');
+                    } else {
+                        gfsFieldsRows.forEach(row => row.style.display = 'none');
+                    }
+                }
+            });
+        });
+        observer.observe(gfsEnabledSelect, { attributes: true });
+    }
+    
+    // 3-2-1 Backup Rule - show/hide offsite fields
+    const backup321Check = entryElement.querySelector('.backup-321-check');
+    if (backup321Check) {
+        const backup321Config = entryElement.querySelector('.backup-321-config');
+        
+        backup321Check.addEventListener('change', function() {
+            if (this.checked) {
+                backup321Config.style.display = 'block';
+            } else {
+                backup321Config.style.display = 'none';
+            }
+        });
+        // Set initial visibility based on checked state
+        backup321Config.style.display = backup321Check.checked ? 'block' : 'none';
+    }
+    
+    // Immutability - show/hide period field
+    const immutabilitySelect = entryElement.querySelector('[data-name="immutability"]');
+    if (immutabilitySelect) {
+        const periodField = entryElement.querySelector('input[name="immutabilityperiod"]')?.closest('.form-group');
+        
+        if (periodField) {
+            // Initially hide period field
+            periodField.style.display = 'none';
+            
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'data-value') {
+                        const value = immutabilitySelect.dataset.value;
+                        if (value === 'enabled' || value === 'partial') {
+                            periodField.style.display = 'block';
+                        } else {
+                            periodField.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            observer.observe(immutabilitySelect, { attributes: true });
+        }
+    }
+}
+
+// Update host assignments in all backup entries
+function refreshBackupHostAssignments() {
+    const backupEntries = document.querySelectorAll('#backupList .dynamic-entry[data-type="backup"]');
+    if (!backupEntries.length) return;
+
+    // Collect VMs
+    const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
+    const vms = Array.from(vmEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `VM #${id}`;
+        return { id, hostname };
+    });
+
+    // Collect Hardware
+    const hwEntries = document.querySelectorAll('#hardwareList .dynamic-entry[data-type="hardware"]');
+    const hw = Array.from(hwEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `Server #${id}`;
+        return { id, hostname };
+    });
+
+    // Collect Databases
+    const dbEntries = document.querySelectorAll('#databaseList .dynamic-entry[data-type="database"]');
+    const dbs = Array.from(dbEntries).map((e) => {
+        const id = e.dataset.id;
+        const nameInput = e.querySelector('input[name="dbname"]');
+        const dbname = (nameInput && nameInput.value.trim()) || `Datenbank #${id}`;
+        return { id, dbname };
+    });
+
+    backupEntries.forEach((backupEntry) => {
+        const container = backupEntry.querySelector('[data-hostlist]');
+        if (!container) return;
+
+        // Remember previous selections
+        const prevChecked = new Set(
+            Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(inp => `${inp.dataset.type}:${inp.dataset.refId}`)
+        );
+
+        const backupId = backupEntry.dataset.id;
+        let html = '';
+
+        // VMs section
+        if (vms.length) {
+            html += '<div style="margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Virtuelle Maschinen</strong></div>';
+            html += '<div class="checkbox-group">';
+            vms.forEach(vm => {
+                const checkId = `backup${backupId}-vm-${vm.id}`;
+                const key = `vm:${vm.id}`;
+                const checked = prevChecked.has(key) ? 'checked' : '';
+                html += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${checkId}" data-type="vm" data-ref-id="${vm.id}" ${checked}>
+                        <label for="${checkId}">${vm.hostname}</label>
+                    </div>`;
+            });
+            html += '</div>';
+        }
+
+        // Hardware section
+        if (hw.length) {
+            html += '<div style="margin-top:15px;margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Hardware Server</strong></div>';
+            html += '<div class="checkbox-group">';
+            hw.forEach(server => {
+                const checkId = `backup${backupId}-hw-${server.id}`;
+                const key = `hardware:${server.id}`;
+                const checked = prevChecked.has(key) ? 'checked' : '';
+                html += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${checkId}" data-type="hardware" data-ref-id="${server.id}" ${checked}>
+                        <label for="${checkId}">${server.hostname}</label>
+                    </div>`;
+            });
+            html += '</div>';
+        }
+
+        // Databases section
+        if (dbs.length) {
+            html += '<div style="margin-top:15px;margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Datenbanken</strong></div>';
+            html += '<div class="checkbox-group">';
+            dbs.forEach(db => {
+                const checkId = `backup${backupId}-db-${db.id}`;
+                const key = `database:${db.id}`;
+                const checked = prevChecked.has(key) ? 'checked' : '';
+                html += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${checkId}" data-type="database" data-ref-id="${db.id}" ${checked}>
+                        <label for="${checkId}">${db.dbname}</label>
+                    </div>`;
+            });
+            html += '</div>';
+        }
+
+        if (!vms.length && !hw.length && !dbs.length) {
+            html = '<div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs, Hardware Server oder Datenbanken hinzu.</div>';
+        }
+
+        container.innerHTML = html;
+    });
+}
+
+// Handle VM/Hardware/Database/Backup checkbox toggle
 document.addEventListener('DOMContentLoaded', function() {
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
     const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');
     const databaseSection = document.querySelector('.form-section[data-name="databases"]');
+    const backupSection = document.querySelector('.form-section[data-name="backups"]');
     
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
     if (databaseSection) databaseSection.style.display = 'none';
+    if (backupSection) backupSection.style.display = 'none';
     
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
@@ -213,6 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 vmCounter = 0;
                 updateSectionCounter(vmSection);
                 refreshHostAssignments();
+                refreshBackupHostAssignments();
             }
         });
     }
@@ -229,6 +443,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 hardwareCounter = 0;
                 updateSectionCounter(hardwareSection);
                 refreshHostAssignments();
+                refreshBackupHostAssignments();
             }
         });
     }
@@ -244,6 +459,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('databaseList').innerHTML = '';
                 databaseCounter = 0;
                 updateSectionCounter(databaseSection);
+                refreshBackupHostAssignments();
+            }
+        });
+    }
+
+    // Backup checkbox handler
+    const backupCheckbox = document.getElementById('backup');
+    if (backupCheckbox) {
+        backupCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                backupSection.style.display = 'block';
+            } else {
+                backupSection.style.display = 'none';
+                document.getElementById('backupList').innerHTML = '';
+                backupCounter = 0;
+                updateSectionCounter(backupSection);
             }
         });
     }
@@ -263,5 +494,6 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addVMEntry = addVMEntry;
 window.addHardwareEntry = addHardwareEntry;
 window.addDatabaseEntry = addDatabaseEntry;
+window.addBackupEntry = addBackupEntry;
 window.removeEntry = removeEntry;
 
