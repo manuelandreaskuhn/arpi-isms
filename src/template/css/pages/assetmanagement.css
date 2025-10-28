@@ -380,3 +380,19 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     margin-bottom: 0;
     font-weight: 500;
 }
+
+/* Load Balancer HA config box */
+.lb-ha-config {
+    display: none;
+    background: #f0f4ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Checkbox für LB HA */
+.lb-ha-check {
+    width: auto;
+    margin: 0;
+}

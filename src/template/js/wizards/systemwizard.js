@@ -4,6 +4,7 @@ let vmCounter = 0;
 let hardwareCounter = 0;
 let databaseCounter = 0;
 let backupCounter = 0;
+let loadbalancerCounter = 0;
 
 function addVMEntry() {
     vmCounter++;
@@ -110,6 +111,33 @@ function addBackupEntry() {
     refreshBackupHostAssignments();
 }
 
+function addLoadBalancerEntry() {
+    loadbalancerCounter++;
+    const lbList = document.getElementById('loadbalancerList');
+    const template = document.getElementById('loadbalancerEntryTemplate');
+    
+    const lbEntry = template.content.cloneNode(true);
+    const entryDiv = lbEntry.querySelector('.dynamic-entry');
+    
+    entryDiv.dataset.id = loadbalancerCounter;
+    lbEntry.querySelector('.entry-number').textContent = loadbalancerCounter;
+    
+    lbEntry.querySelectorAll('.custom-select').forEach(element => {
+        element.dataset.index = loadbalancerCounter;
+    });
+    
+    lbList.appendChild(lbEntry);
+    
+    const addedEntry = lbList.querySelector(`.dynamic-entry[data-id="${loadbalancerCounter}"]`);
+    updateListenersForDynamicEntry(addedEntry);
+    
+    // Setup conditional visibility handlers
+    setupLoadBalancerConditionalFields(addedEntry);
+    
+    // Refresh host assignments
+    refreshLoadBalancerHostAssignments();
+}
+
 function removeEntry(button, type) {
     const entry = button.closest('.dynamic-entry');
     entry.remove();
@@ -143,6 +171,9 @@ function removeEntry(button, type) {
     } else if (type === 'backup') {
         backupCounter = entries.length + 1;
         updateSectionCounter(document.querySelector('.form-section[data-name="backups"]'));
+    } else if (type === 'loadbalancer') {
+        loadbalancerCounter = entries.length + 1;
+        updateSectionCounter(document.querySelector('.form-section[data-name="loadbalancers"]'));
     }
 }
 
@@ -401,18 +432,115 @@ function refreshBackupHostAssignments() {
     });
 }
 
-// Handle VM/Hardware/Database/Backup checkbox toggle
+// Setup conditional field visibility for load balancer entries
+function setupLoadBalancerConditionalFields(entryElement) {
+    // HA Configuration - show/hide HA fields
+    const lbHACheck = entryElement.querySelector('.lb-ha-check');
+    if (lbHACheck) {
+        const lbHAConfig = entryElement.querySelector('.lb-ha-config');
+        
+        lbHACheck.addEventListener('change', function() {
+            if (this.checked) {
+                lbHAConfig.style.display = 'block';
+            } else {
+                lbHAConfig.style.display = 'none';
+            }
+        });
+        lbHAConfig.style.display = lbHACheck.checked ? 'block' : 'none';
+    }
+}
+
+// Update host assignments in all load balancer entries
+function refreshLoadBalancerHostAssignments() {
+    const lbEntries = document.querySelectorAll('#loadbalancerList .dynamic-entry[data-type="loadbalancer"]');
+    if (!lbEntries.length) return;
+
+    // Collect VMs
+    const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
+    const vms = Array.from(vmEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `VM #${id}`;
+        return { id, hostname };
+    });
+
+    // Collect Hardware
+    const hwEntries = document.querySelectorAll('#hardwareList .dynamic-entry[data-type="hardware"]');
+    const hw = Array.from(hwEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `Server #${id}`;
+        return { id, hostname };
+    });
+
+    lbEntries.forEach((lbEntry) => {
+        const container = lbEntry.querySelector('[data-hostlist]');
+        if (!container) return;
+
+        const prevChecked = new Set(
+            Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(inp => `${inp.dataset.type}:${inp.dataset.refId}`)
+        );
+
+        const lbId = lbEntry.dataset.id;
+        let html = '';
+
+        // VMs section
+        if (vms.length) {
+            html += '<div style="margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Virtuelle Maschinen</strong></div>';
+            html += '<div class="checkbox-group">';
+            vms.forEach(vm => {
+                const checkId = `lb${lbId}-vm-${vm.id}`;
+                const key = `vm:${vm.id}`;
+                const checked = prevChecked.has(key) ? 'checked' : '';
+                html += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${checkId}" data-type="vm" data-ref-id="${vm.id}" ${checked}>
+                        <label for="${checkId}">${vm.hostname}</label>
+                    </div>`;
+            });
+            html += '</div>';
+        }
+
+        // Hardware section
+        if (hw.length) {
+            html += '<div style="margin-top:15px;margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Hardware Server</strong></div>';
+            html += '<div class="checkbox-group">';
+            hw.forEach(server => {
+                const checkId = `lb${lbId}-hw-${server.id}`;
+                const key = `hardware:${server.id}`;
+                const checked = prevChecked.has(key) ? 'checked' : '';
+                html += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${checkId}" data-type="hardware" data-ref-id="${server.id}" ${checked}>
+                        <label for="${checkId}">${server.hostname}</label>
+                    </div>`;
+            });
+            html += '</div>';
+        }
+
+        if (!vms.length && !hw.length) {
+            html = '<div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>';
+        }
+
+        container.innerHTML = html;
+    });
+}
+
+// Handle VM/Hardware/Database/Backup/LoadBalancer checkbox toggle
 document.addEventListener('DOMContentLoaded', function() {
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
     const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');
     const databaseSection = document.querySelector('.form-section[data-name="databases"]');
     const backupSection = document.querySelector('.form-section[data-name="backups"]');
+    const loadbalancerSection = document.querySelector('.form-section[data-name="loadbalancers"]');
     
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
     if (databaseSection) databaseSection.style.display = 'none';
     if (backupSection) backupSection.style.display = 'none';
+    if (loadbalancerSection) loadbalancerSection.style.display = 'none';
     
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
@@ -479,6 +607,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Load Balancer checkbox handler
+    const loadbalancerCheckbox = document.getElementById('loadbalancer');
+    if (loadbalancerCheckbox) {
+        loadbalancerCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                loadbalancerSection.style.display = 'block';
+            } else {
+                loadbalancerSection.style.display = 'none';
+                document.getElementById('loadbalancerList').innerHTML = '';
+                loadbalancerCounter = 0;
+                updateSectionCounter(loadbalancerSection);
+            }
+        });
+    }
+
     // Cluster-Konfiguration anzeigen/ausblenden
     document.addEventListener('change', function(e) {
         if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
@@ -495,5 +638,6 @@ window.addVMEntry = addVMEntry;
 window.addHardwareEntry = addHardwareEntry;
 window.addDatabaseEntry = addDatabaseEntry;
 window.addBackupEntry = addBackupEntry;
+window.addLoadBalancerEntry = addLoadBalancerEntry;
 window.removeEntry = removeEntry;
 

@@ -403,6 +403,28 @@
         </div>
     </div>
 
+    <!-- Load Balancer -->
+    <div class="form-section collapsed" data-name="loadbalancers">
+        <div class="section-title">
+            <span>Load Balancer</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Konfigurieren Sie zentrale Load Balancer für dieses System. Dokumentieren Sie Frontend-IPs, Backend-Pools, Health Checks und Routing-Regeln.
+            </div>
+            
+            <div id="loadbalancerList" class="dynamic-list">
+                <!-- Load balancer entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addLoadBalancerEntry()">
+                <span>+</span> Load Balancer Konfiguration hinzufügen
+            </button>
+        </div>
+    </div>
+
 </form>
 
 <!-- Templates for dynamic entries -->
@@ -443,5 +465,15 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'backup')">×</button>
         </div>
         {{include:pages/wizards/system/backupincludetemplate.tpl}}
+    </div>
+</template>
+
+<template id="loadbalancerEntryTemplate">
+    <div class="dynamic-entry" data-type="loadbalancer">
+        <div class="entry-header">
+            <span class="entry-title">Load Balancer #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'loadbalancer')">×</button>
+        </div>
+        {{include:pages/wizards/system/loadbalancerincludetemplate.tpl}}
     </div>
 </template>
