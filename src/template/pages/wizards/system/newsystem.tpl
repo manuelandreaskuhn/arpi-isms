@@ -303,6 +303,10 @@
                     <input type="checkbox" id="gematicti" name="components" value="gematicti">
                     <label for="gematicti">TI-Infrastruktur</label>
                 </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="proxy" name="components" value="proxy">
+                    <label for="proxy">Proxy-Server</label>
+                </div>
             </div>
 
         </div>
@@ -478,6 +482,22 @@
             </div>
 
             {{include:pages/wizards/system/tiinfrastrukturincludetemplate.tpl}}
+        </div>
+    </div>
+
+    <!-- Proxy-Server -->
+    <div class="form-section collapsed" data-name="proxy">
+        <div class="section-title">
+            <span>Proxy-Server</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie die Proxy-Konfiguration für dieses System, einschließlich Proxy-Typ, Authentifizierung und Ausnahmen.
+            </div>
+
+            {{include:pages/wizards/system/proxyincludetemplate.tpl}}
         </div>
     </div>
 

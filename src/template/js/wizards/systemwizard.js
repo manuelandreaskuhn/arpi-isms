@@ -1015,10 +1015,26 @@ document.addEventListener('DOMContentLoaded', function() {
         gematictiCheckbox.addEventListener('change', function() {
             if (this.checked) {
                 gematictiSection.style.display = 'block';
-                // Setup conditional fields when section is shown
                 setupTIConditionalFields(gematictiSection);
             } else {
                 gematictiSection.style.display = 'none';
+            }
+        });
+    }
+
+    // Proxy checkbox handler
+    const proxyCheckbox = document.getElementById('proxy');
+    const proxySection = document.querySelector('.form-section[data-name="proxy"]');
+    
+    if (proxyCheckbox && proxySection) {
+        proxySection.style.display = 'none';
+        
+        proxyCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                proxySection.style.display = 'block';
+                setupProxyConditionalFields(proxySection);
+            } else {
+                proxySection.style.display = 'none';
             }
         });
     }
@@ -1069,4 +1085,52 @@ function setupTIConditionalFields(entryElement) {
         tiErezeptConfig.style.display = tiErezeptActiveCheck.checked ? 'block' : 'none';
     }
 }
+
+// Setup conditional field visibility for Proxy entries
+function setupProxyConditionalFields(entryElement) {
+    // Proxy Enabled toggle
+    const proxyEnabledCheck = entryElement.querySelector('.proxy-enabled-check');
+    const proxyConfig = entryElement.querySelector('.proxy-config');
+    
+    if (proxyEnabledCheck && proxyConfig) {
+        proxyEnabledCheck.addEventListener('change', function() {
+            proxyConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        proxyConfig.style.display = proxyEnabledCheck.checked ? 'block' : 'none';
+    }
+
+    // Proxy Failover toggle
+    const proxyFailoverCheck = entryElement.querySelector('.proxy-failover-check');
+    const proxyFailoverConfig = entryElement.querySelector('.proxy-failover-config');
+    
+    if (proxyFailoverCheck && proxyFailoverConfig) {
+        proxyFailoverCheck.addEventListener('change', function() {
+            proxyFailoverConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        proxyFailoverConfig.style.display = proxyFailoverCheck.checked ? 'block' : 'none';
+    }
+}
+
+// Make functions globally accessible for onclick handlers
+window.addVMEntry = addVMEntry;
+window.addHardwareEntry = addHardwareEntry;
+window.addDatabaseEntry = addDatabaseEntry;
+window.addBackupEntry = addBackupEntry;
+window.addLoadBalancerEntry = addLoadBalancerEntry;
+window.addFirewallEntry = addFirewallEntry;
+window.addClientEntry = addClientEntry;
+window.removeEntry = removeEntry;
+window.refreshHostAssignments = refreshHostAssignments;
+window.refreshBackupHostAssignments = refreshBackupHostAssignments;
+window.refreshLoadBalancerHostAssignments = refreshLoadBalancerHostAssignments;
+window.refreshFirewallHostAssignments = refreshFirewallHostAssignments;
+window.refreshClientHostAssignments = refreshClientHostAssignments;
+window.refreshVMHypervisors = refreshVMHypervisors;
+window.refreshBackupSystems = refreshBackupSystems;
+window.setupBackupConditionalFields = setupBackupConditionalFields;
+window.setupLoadBalancerConditionalFields = setupLoadBalancerConditionalFields;
+window.setupFirewallConditionalFields = setupFirewallConditionalFields;
+window.setupClientConditionalFields = setupClientConditionalFields;
+window.setupTIConditionalFields = setupTIConditionalFields;
+window.setupProxyConditionalFields = setupProxyConditionalFields;
 
