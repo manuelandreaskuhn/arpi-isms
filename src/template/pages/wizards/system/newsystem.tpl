@@ -465,6 +465,22 @@
         </div>
     </div>
 
+    <!-- Gematik TI-Infrastruktur -->
+    <div class="form-section collapsed" data-name="gematicti">
+        <div class="section-title">
+            <span>Gematik TI-Infrastruktur</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie die Anbindung an die Telematikinfrastruktur (TI) der Gematik, verwendete Dienste und Konnektoren.
+            </div>
+
+            {{include:pages/wizards/system/tiinfrastrukturincludetemplate.tpl}}
+        </div>
+    </div>
+
 </form>
 
 <!-- Templates for dynamic entries -->

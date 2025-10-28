@@ -1005,6 +1005,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Gematik TI checkbox handler
+    const gematictiCheckbox = document.getElementById('gematicti');
+    const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
+    
+    if (gematictiCheckbox && gematictiSection) {
+        gematictiSection.style.display = 'none';
+        
+        gematictiCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                gematictiSection.style.display = 'block';
+                // Setup conditional fields when section is shown
+                setupTIConditionalFields(gematictiSection);
+            } else {
+                gematictiSection.style.display = 'none';
+            }
+        });
+    }
+
     // Cluster-Konfiguration anzeigen/ausblenden
     document.addEventListener('change', function(e) {
         if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
@@ -1016,13 +1034,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Make functions globally accessible for onclick handlers
-window.addVMEntry = addVMEntry;
-window.addHardwareEntry = addHardwareEntry;
-window.addDatabaseEntry = addDatabaseEntry;
-window.addBackupEntry = addBackupEntry;
-window.addLoadBalancerEntry = addLoadBalancerEntry;
-window.addFirewallEntry = addFirewallEntry;
-window.addClientEntry = addClientEntry;
-window.removeEntry = removeEntry;
+// Setup conditional field visibility for TI entries
+function setupTIConditionalFields(entryElement) {
+    // TI Connection toggle
+    const tiConnectedCheck = entryElement.querySelector('.ti-connected-check');
+    const tiConnectionConfig = entryElement.querySelector('.ti-connection-config');
+    
+    if (tiConnectedCheck && tiConnectionConfig) {
+        tiConnectedCheck.addEventListener('change', function() {
+            tiConnectionConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        tiConnectionConfig.style.display = tiConnectedCheck.checked ? 'block' : 'none';
+    }
+
+    // KIM Configuration toggle
+    const tiKimActiveCheck = entryElement.querySelector('.ti-kim-active-check');
+    const tiKimConfig = entryElement.querySelector('.ti-kim-config');
+    
+    if (tiKimActiveCheck && tiKimConfig) {
+        tiKimActiveCheck.addEventListener('change', function() {
+            tiKimConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        tiKimConfig.style.display = tiKimActiveCheck.checked ? 'block' : 'none';
+    }
+
+    // E-Rezept Configuration toggle
+    const tiErezeptActiveCheck = entryElement.querySelector('.ti-erezept-active-check');
+    const tiErezeptConfig = entryElement.querySelector('.ti-erezept-config');
+    
+    if (tiErezeptActiveCheck && tiErezeptConfig) {
+        tiErezeptActiveCheck.addEventListener('change', function() {
+            tiErezeptConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        tiErezeptConfig.style.display = tiErezeptActiveCheck.checked ? 'block' : 'none';
+    }
+}
 
