@@ -877,6 +877,223 @@ function refreshAllBackupSystems() {
     });
 }
 
+// Refresh SIEM host assignments
+function refreshSIEMHostAssignments() {
+    const siemSection = document.querySelector('.form-section[data-name="siem"]');
+    if (!siemSection) return;
+    
+    const container = siemSection.querySelector('[data-siem-hostlist]');
+    if (!container) return;
+
+    // Collect VMs
+    const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
+    const vms = Array.from(vmEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `VM #${id}`;
+        return { id, hostname };
+    });
+
+    // Collect Hardware
+    const hwEntries = document.querySelectorAll('#hardwareList .dynamic-entry[data-type="hardware"]');
+    const hw = Array.from(hwEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `Server #${id}`;
+        return { id, hostname };
+    });
+
+    // Remember previous selections
+    const prevChecked = new Set(
+        Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+            .map(inp => `${inp.dataset.type}:${inp.dataset.refId}`)
+    );
+
+    let html = '';
+
+    // VMs section
+    if (vms.length) {
+        html += '<div style="margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Virtuelle Maschinen</strong></div>';
+        html += '<div class="checkbox-group">';
+        vms.forEach(vm => {
+            const checkId = `siem-vm-${vm.id}`;
+            const key = `vm:${vm.id}`;
+            const checked = prevChecked.has(key) ? 'checked' : '';
+            html += `
+                <div class="checkbox-item">
+                    <input type="checkbox" id="${checkId}" data-type="vm" data-ref-id="${vm.id}" ${checked}>
+                    <label for="${checkId}">${vm.hostname}</label>
+                </div>`;
+        });
+        html += '</div>';
+    }
+
+    // Hardware section
+    if (hw.length) {
+        html += '<div style="margin-top:15px;margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Hardware Server</strong></div>';
+        html += '<div class="checkbox-group">';
+        hw.forEach(server => {
+            const checkId = `siem-hw-${server.id}`;
+            const key = `hardware:${server.id}`;
+            const checked = prevChecked.has(key) ? 'checked' : '';
+            html += `
+                <div class="checkbox-item">
+                    <input type="checkbox" id="${checkId}" data-type="hardware" data-ref-id="${server.id}" ${checked}>
+                    <label for="${checkId}">${server.hostname}</label>
+                </div>`;
+        });
+        html += '</div>';
+    }
+
+    if (!vms.length && !hw.length) {
+        html = '<div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>';
+    }
+
+    container.innerHTML = html;
+    
+    // Also refresh database assignments
+    refreshSIEMDatabaseAssignments();
+}
+
+// Refresh SIEM database assignments
+function refreshSIEMDatabaseAssignments() {
+    const siemSection = document.querySelector('.form-section[data-name="siem"]');
+    if (!siemSection) return;
+    
+    const container = siemSection.querySelector('[data-siem-dblist]');
+    if (!container) return;
+
+    // Collect Databases
+    const dbEntries = document.querySelectorAll('#databaseList .dynamic-entry[data-type="database"]');
+    const dbs = Array.from(dbEntries).map((e) => {
+        const id = e.dataset.id;
+        const nameInput = e.querySelector('input[name="dbname"]');
+        const dbname = (nameInput && nameInput.value.trim()) || `Datenbank #${id}`;
+        return { id, dbname };
+    });
+
+    // Remember previous selections
+    const prevChecked = new Set(
+        Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+            .map(inp => `database:${inp.dataset.refId}`)
+    );
+
+    let html = '';
+
+    if (dbs.length) {
+        html += '<div class="checkbox-group">';
+        dbs.forEach(db => {
+            const checkId = `siem-db-${db.id}`;
+            const key = `database:${db.id}`;
+            const checked = prevChecked.has(key) ? 'checked' : '';
+            html += `
+                <div class="checkbox-item">
+                    <input type="checkbox" id="${checkId}" data-type="database" data-ref-id="${db.id}" ${checked}>
+                    <label for="${checkId}">${db.dbname}</label>
+                </div>`;
+        });
+        html += '</div>';
+    } else {
+        html = '<div class="help-text">Keine Datenbanken verfügbar. Fügen Sie zuerst Datenbanken hinzu.</div>';
+    }
+
+    container.innerHTML = html;
+}
+
+// Setup conditional field visibility for TI entries
+function setupTIConditionalFields(entryElement) {
+    // TI Connection toggle
+    const tiConnectedCheck = entryElement.querySelector('.ti-connected-check');
+    const tiConnectionConfig = entryElement.querySelector('.ti-connection-config');
+    
+    if (tiConnectedCheck && tiConnectionConfig) {
+        tiConnectedCheck.addEventListener('change', function() {
+            tiConnectionConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        tiConnectionConfig.style.display = tiConnectedCheck.checked ? 'block' : 'none';
+    }
+
+    // KIM Configuration toggle
+    const tiKimActiveCheck = entryElement.querySelector('.ti-kim-active-check');
+    const tiKimConfig = entryElement.querySelector('.ti-kim-config');
+    
+    if (tiKimActiveCheck && tiKimConfig) {
+        tiKimActiveCheck.addEventListener('change', function() {
+            tiKimConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        tiKimConfig.style.display = tiKimActiveCheck.checked ? 'block' : 'none';
+    }
+
+    // E-Rezept Configuration toggle
+    const tiErezeptActiveCheck = entryElement.querySelector('.ti-erezept-active-check');
+    const tiErezeptConfig = entryElement.querySelector('.ti-erezept-config');
+    
+    if (tiErezeptActiveCheck && tiErezeptConfig) {
+        tiErezeptActiveCheck.addEventListener('change', function() {
+            tiErezeptConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        tiErezeptConfig.style.display = tiErezeptActiveCheck.checked ? 'block' : 'none';
+    }
+}
+
+// Setup conditional field visibility for Proxy entries
+function setupProxyConditionalFields(entryElement) {
+    // Proxy Enabled toggle
+    const proxyEnabledCheck = entryElement.querySelector('.proxy-enabled-check');
+    const proxyConfig = entryElement.querySelector('.proxy-config');
+    
+    if (proxyEnabledCheck && proxyConfig) {
+        proxyEnabledCheck.addEventListener('change', function() {
+            proxyConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        proxyConfig.style.display = proxyEnabledCheck.checked ? 'block' : 'none';
+    }
+
+    // Proxy Failover toggle
+    const proxyFailoverCheck = entryElement.querySelector('.proxy-failover-check');
+    const proxyFailoverConfig = entryElement.querySelector('.proxy-failover-config');
+    
+    if (proxyFailoverCheck && proxyFailoverConfig) {
+        proxyFailoverCheck.addEventListener('change', function() {
+            proxyFailoverConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        proxyFailoverConfig.style.display = proxyFailoverCheck.checked ? 'block' : 'none';
+    }
+}
+
+// Setup conditional field visibility for SIEM entries
+function setupSIEMConditionalFields(entryElement) {
+    // SIEM Enabled toggle
+    const siemEnabledCheck = entryElement.querySelector('.siem-enabled-check');
+    const siemConfig = entryElement.querySelector('.siem-config');
+    
+    if (siemEnabledCheck && siemConfig) {
+        siemEnabledCheck.addEventListener('change', function() {
+            siemConfig.style.display = this.checked ? 'block' : 'none';
+            if (this.checked) {
+                refreshSIEMHostAssignments();
+            }
+        });
+        siemConfig.style.display = siemEnabledCheck.checked ? 'block' : 'none';
+    }
+    
+    // Database Logs toggle
+    const databaseLogsCheck = entryElement.querySelector('.siem-database-logs-check');
+    const databaseSelection = entryElement.querySelector('.siem-database-selection');
+    
+    if (databaseLogsCheck && databaseSelection) {
+        databaseLogsCheck.addEventListener('change', function() {
+            databaseSelection.style.display = this.checked ? 'block' : 'none';
+            if (this.checked) {
+                refreshSIEMDatabaseAssignments();
+            }
+        });
+        databaseSelection.style.display = databaseLogsCheck.checked ? 'block' : 'none';
+    }
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
@@ -1039,6 +1256,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // SIEM checkbox handler
+    const siemCheckbox = document.getElementById('siem');
+    const siemSection = document.querySelector('.form-section[data-name="siem"]');
+    
+    if (siemCheckbox && siemSection) {
+        siemSection.style.display = 'none';
+        
+        siemCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                siemSection.style.display = 'block';
+                setupSIEMConditionalFields(siemSection);
+            } else {
+                siemSection.style.display = 'none';
+            }
+        });
+    }
+
     // Cluster-Konfiguration anzeigen/ausblenden
     document.addEventListener('change', function(e) {
         if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
@@ -1049,67 +1283,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-// Setup conditional field visibility for TI entries
-function setupTIConditionalFields(entryElement) {
-    // TI Connection toggle
-    const tiConnectedCheck = entryElement.querySelector('.ti-connected-check');
-    const tiConnectionConfig = entryElement.querySelector('.ti-connection-config');
-    
-    if (tiConnectedCheck && tiConnectionConfig) {
-        tiConnectedCheck.addEventListener('change', function() {
-            tiConnectionConfig.style.display = this.checked ? 'block' : 'none';
-        });
-        tiConnectionConfig.style.display = tiConnectedCheck.checked ? 'block' : 'none';
-    }
-
-    // KIM Configuration toggle
-    const tiKimActiveCheck = entryElement.querySelector('.ti-kim-active-check');
-    const tiKimConfig = entryElement.querySelector('.ti-kim-config');
-    
-    if (tiKimActiveCheck && tiKimConfig) {
-        tiKimActiveCheck.addEventListener('change', function() {
-            tiKimConfig.style.display = this.checked ? 'block' : 'none';
-        });
-        tiKimConfig.style.display = tiKimActiveCheck.checked ? 'block' : 'none';
-    }
-
-    // E-Rezept Configuration toggle
-    const tiErezeptActiveCheck = entryElement.querySelector('.ti-erezept-active-check');
-    const tiErezeptConfig = entryElement.querySelector('.ti-erezept-config');
-    
-    if (tiErezeptActiveCheck && tiErezeptConfig) {
-        tiErezeptActiveCheck.addEventListener('change', function() {
-            tiErezeptConfig.style.display = this.checked ? 'block' : 'none';
-        });
-        tiErezeptConfig.style.display = tiErezeptActiveCheck.checked ? 'block' : 'none';
-    }
-}
-
-// Setup conditional field visibility for Proxy entries
-function setupProxyConditionalFields(entryElement) {
-    // Proxy Enabled toggle
-    const proxyEnabledCheck = entryElement.querySelector('.proxy-enabled-check');
-    const proxyConfig = entryElement.querySelector('.proxy-config');
-    
-    if (proxyEnabledCheck && proxyConfig) {
-        proxyEnabledCheck.addEventListener('change', function() {
-            proxyConfig.style.display = this.checked ? 'block' : 'none';
-        });
-        proxyConfig.style.display = proxyEnabledCheck.checked ? 'block' : 'none';
-    }
-
-    // Proxy Failover toggle
-    const proxyFailoverCheck = entryElement.querySelector('.proxy-failover-check');
-    const proxyFailoverConfig = entryElement.querySelector('.proxy-failover-config');
-    
-    if (proxyFailoverCheck && proxyFailoverConfig) {
-        proxyFailoverCheck.addEventListener('change', function() {
-            proxyFailoverConfig.style.display = this.checked ? 'block' : 'none';
-        });
-        proxyFailoverConfig.style.display = proxyFailoverCheck.checked ? 'block' : 'none';
-    }
-}
 
 // Make functions globally accessible for onclick handlers
 window.addVMEntry = addVMEntry;
@@ -1133,4 +1306,7 @@ window.setupFirewallConditionalFields = setupFirewallConditionalFields;
 window.setupClientConditionalFields = setupClientConditionalFields;
 window.setupTIConditionalFields = setupTIConditionalFields;
 window.setupProxyConditionalFields = setupProxyConditionalFields;
+window.setupSIEMConditionalFields = setupSIEMConditionalFields;
+window.refreshSIEMHostAssignments = refreshSIEMHostAssignments;
+window.refreshSIEMDatabaseAssignments = refreshSIEMDatabaseAssignments;
 

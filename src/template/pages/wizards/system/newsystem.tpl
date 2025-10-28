@@ -272,10 +272,6 @@
                     <label for="hardware">Hardware Server</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="network" name="components" value="network">
-                    <label for="network">Netzwerk-Komponenten</label>
-                </div>
-                <div class="checkbox-item">
                     <input type="checkbox" id="database" name="components" value="database">
                     <label for="database">Datenbank</label>
                 </div>
@@ -306,6 +302,10 @@
                 <div class="checkbox-item">
                     <input type="checkbox" id="proxy" name="components" value="proxy">
                     <label for="proxy">Proxy-Server</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="siem" name="components" value="siem">
+                    <label for="siem">SIEM-System</label>
                 </div>
             </div>
 
@@ -498,6 +498,22 @@
             </div>
 
             {{include:pages/wizards/system/proxyincludetemplate.tpl}}
+        </div>
+    </div>
+
+    <!-- SIEM-System -->
+    <div class="form-section collapsed" data-name="siem">
+        <div class="section-title">
+            <span>SIEM-System</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie die SIEM-Integration für dieses System, einschließlich Log-Quellen, Use Cases und Alerting-Konfiguration.
+            </div>
+
+            {{include:pages/wizards/system/siemincludetemplate.tpl}}
         </div>
     </div>
 
