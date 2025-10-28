@@ -17,31 +17,38 @@
                 </div>
             </div>
         </div>
-        <div class="help-text">Wählen Sie die zentrale Firewall aus, über die dieses System geschützt wird</div>
+        <div class="help-text">Wählen Sie die zentrale Firewall aus, auf der diese Regel konfiguriert wird</div>
     </div>
 
-    <!-- Firewall-Regeln für dieses System -->
-    <div class="subsection-header">Firewall-Regeln für dieses System</div>
-    <div class="form-group">
-        <label>Regelname / Policy</label>
-        <input type="text" name="rulename" class="fw-field" placeholder="z.B. Allow-KIS-Access, Deny-External-RDP">
+    <!-- Firewall-Regel -->
+    <div class="subsection-header">Regel-Definition</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Regelname / Policy <span class="required">*</span></label>
+            <input type="text" name="rulename" class="fw-field" placeholder="z.B. Allow-KIS-HTTPS, Deny-External-RDP" required>
+        </div>
+        <div class="form-group">
+            <label>Regel-Priorität</label>
+            <input type="number" name="rulepriority" class="fw-field" placeholder="z.B. 100, 200">
+            <div class="help-text">Niedrigere Werte = höhere Priorität</div>
+        </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
             <label>Quell-Zone</label>
-            <input type="text" name="sourcezone" class="fw-field" placeholder="z.B. Internal, DMZ">
+            <input type="text" name="sourcezone" class="fw-field" placeholder="z.B. Internal, DMZ, any">
         </div>
         <div class="form-group">
             <label>Ziel-Zone</label>
-            <input type="text" name="destzone" class="fw-field" placeholder="z.B. DMZ, External">
+            <input type="text" name="destzone" class="fw-field" placeholder="z.B. DMZ, External, any">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
             <label>Quell-Adresse(n)</label>
-            <input type="text" name="sourceaddr" class="fw-field" placeholder="z.B. 10.0.1.0/24, any">
+            <input type="text" name="sourceaddr" class="fw-field" placeholder="z.B. 10.0.1.0/24, Client-Network, any">
         </div>
         <div class="form-group">
             <label>Ziel-Adresse(n)</label>
@@ -51,11 +58,11 @@
 
     <div class="form-row">
         <div class="form-group">
-            <label>Protokoll / Ports</label>
-            <input type="text" name="protocol" class="fw-field" placeholder="z.B. TCP/443, UDP/53, HTTPS">
+            <label>Service / Ports <span class="required">*</span></label>
+            <input type="text" name="service" class="fw-field" placeholder="z.B. TCP/443, UDP/53, HTTPS, SSH" required>
         </div>
         <div class="form-group">
-            <label>Aktion</label>
+            <label>Aktion <span class="required">*</span></label>
             <div class="custom-select" data-name="ruleaction" data-index="0" data-category="firewall">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -74,12 +81,50 @@
         </div>
     </div>
 
-    <!-- NAT-Konfiguration für dieses System -->
-    <div class="subsection-header">NAT-Konfiguration</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Logging</label>
+            <div class="custom-select" data-name="rulelogging" data-index="0" data-category="firewall">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="all">Alle Pakete loggen</div>
+                        <div class="select-option" data-value="session-start">Nur Session Start</div>
+                        <div class="select-option" data-value="session-end">Nur Session End</div>
+                        <div class="select-option" data-value="none">Kein Logging</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Regel Status</label>
+            <div class="custom-select" data-name="rulestatus" data-index="0" data-category="firewall">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="enabled">Aktiviert</div>
+                        <div class="select-option" data-value="disabled">Deaktiviert</div>
+                        <div class="select-option" data-value="scheduled">Zeitgesteuert</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAT-Konfiguration für diese Regel -->
+    <div class="subsection-header">NAT-Konfiguration (optional)</div>
     <div class="form-group">
         <label class="cluster-label">
             <input type="checkbox" class="fw-nat-check">
-            <span>NAT-Regel für dieses System</span>
+            <span>NAT für diese Regel aktivieren</span>
         </label>
     </div>
 
@@ -105,34 +150,27 @@
             </div>
             <div class="form-group">
                 <label>NAT Pool / Adresse</label>
-                <input type="text" name="natpool" class="fw-field" placeholder="z.B. 203.0.113.10">
+                <input type="text" name="natpool" class="fw-field" placeholder="z.B. 203.0.113.10, NAT-Pool-1">
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label>Interne IP (Original)</label>
-                <input type="text" name="natinternalip" class="fw-field" placeholder="z.B. 10.0.1.100">
+                <label>Original IP/Port</label>
+                <input type="text" name="natoriginal" class="fw-field" placeholder="z.B. 10.0.1.100:8080">
             </div>
             <div class="form-group">
-                <label>Externe IP (Translated)</label>
-                <input type="text" name="natexternalip" class="fw-field" placeholder="z.B. 203.0.113.10">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group">
-                <label>Port Mapping</label>
-                <input type="text" name="portmapping" class="fw-field" placeholder="z.B. 443:8443, 80:8080">
+                <label>Translated IP/Port</label>
+                <input type="text" name="nattranslated" class="fw-field" placeholder="z.B. 203.0.113.10:443">
             </div>
         </div>
     </div>
 
-    <!-- Geschützte Komponenten -->
-    <div class="subsection-header">Geschützte Komponenten</div>
+    <!-- Betroffene Komponenten -->
+    <div class="subsection-header">Betroffene Komponenten</div>
     <div class="form-group">
         <label>Zugeordnete VMs / Server</label>
-        <div class="help-text">Wählen Sie die VMs oder Hardware-Server aus, die durch diese Firewall-Regel geschützt werden.</div>
+        <div class="help-text">Wählen Sie die Komponenten aus, für die diese Regel gilt (optional, zur Dokumentation)</div>
         <div class="host-assignment-box">
             <div class="host-assignment" data-hostlist>
                 <div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>
@@ -140,10 +178,35 @@
         </div>
     </div>
 
+    <!-- Zeitplan & Gültigkeit -->
+    <div class="subsection-header">Zeitplan & Gültigkeit (optional)</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Gültig von</label>
+            <input type="text" name="validfrom" class="fw-field" placeholder="z.B. 01.01.2024, immer">
+        </div>
+        <div class="form-group">
+            <label>Gültig bis</label>
+            <input type="text" name="validto" class="fw-field" placeholder="z.B. 31.12.2024, unbegrenzt">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Zeitplan</label>
+        <input type="text" name="schedule" class="fw-field" placeholder="z.B. Mo-Fr 08:00-18:00, 24/7">
+        <div class="help-text">Zeitfenster, in dem die Regel aktiv ist</div>
+    </div>
+
     <!-- Notizen -->
     <div class="subsection-header">Zusätzliche Informationen</div>
     <div class="form-group">
+        <label>Business Justification</label>
+        <input type="text" name="justification" class="fw-field" placeholder="z.B. Zugriff für Arzt-Arbeitsplätze auf KIS-Server">
+        <div class="help-text">Geschäftliche Begründung für diese Regel</div>
+    </div>
+
+    <div class="form-group">
         <label>Notizen / Regeldetails</label>
-        <textarea name="fwnotes" class="fw-field" rows="3" placeholder="Zusätzliche Informationen zu dieser Regel, Ausnahmen, Gültigkeitszeitraum..."></textarea>
+        <textarea name="fwnotes" class="fw-field" rows="3" placeholder="Zusätzliche Informationen zu dieser Regel, Ausnahmen, Change-Ticket-Nummer..."></textarea>
     </div>
 </div>

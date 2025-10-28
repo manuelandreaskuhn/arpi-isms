@@ -428,13 +428,13 @@
     <!-- Firewalls -->
     <div class="form-section collapsed" data-name="firewalls">
         <div class="section-title">
-            <span>Firewalls</span>
+            <span>Firewall-Regeln</span>
             <span class="section-counter">0/0</span>
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
             <div class="help-text">
-                Konfigurieren Sie zentrale Firewalls für dieses System. Dokumentieren Sie Firewall-Regeln, Zonen, NAT-Konfigurationen und Sicherheitsrichtlinien.
+                Dokumentieren Sie Firewall-Regeln für dieses System. Jede Regel definiert Zugriffe, NAT-Konfigurationen und Sicherheitsrichtlinien.
             </div>
             
             <div id="firewallList" class="dynamic-list">
@@ -442,7 +442,7 @@
             </div>
             
             <button type="button" class="btn-add-item" onclick="addFirewallEntry()">
-                <span>+</span> Firewall Konfiguration hinzufügen
+                <span>+</span> Firewall-Regel hinzufügen
             </button>
         </div>
     </div>
@@ -503,7 +503,7 @@
 <template id="firewallEntryTemplate">
     <div class="dynamic-entry" data-type="firewall">
         <div class="entry-header">
-            <span class="entry-title">Firewall #<span class="entry-number"></span></span>
+            <span class="entry-title">Firewall-Regel #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'firewall')">×</button>
         </div>
         {{include:pages/wizards/system/firewallincludetemplate.tpl}}
