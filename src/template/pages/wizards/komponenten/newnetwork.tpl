@@ -1,0 +1,888 @@
+<aside>
+    <p>Assetmanagement</p>
+    <i>›</i>
+    <p>Komponenten</p>
+    <i>›</i>
+    <p>Neues Netzwerk anlegen</p>
+</aside>
+
+<form id="newNetworkForm">
+
+    <!-- Basis-Informationen -->
+    <div class="form-section">
+        <div class="section-title">
+            <span>Basis-Informationen</span>
+            <span class="section-badge">Pflicht</span>
+            <span class="section-counter">0/4</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Netzwerk-Name <span class="required">*</span></label>
+                    <input type="text" id="networkname" required placeholder="z.B. Prod-Network, VLAN-100-KIS">
+                </div>
+                <div class="form-group">
+                    <label>Netzwerk-Typ <span class="required">*</span></label>
+                    <div class="custom-select" data-name="networktype">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="lan">LAN (Local Area Network)</div>
+                                <div class="select-option" data-value="vlan">VLAN (Virtual LAN)</div>
+                                <div class="select-option" data-value="wan">WAN (Wide Area Network)</div>
+                                <div class="select-option" data-value="dmz">DMZ (Demilitarized Zone)</div>
+                                <div class="select-option" data-value="management">Management Network</div>
+                                <div class="select-option" data-value="storage">Storage Network (SAN)</div>
+                                <div class="select-option" data-value="wifi">WiFi / WLAN</div>
+                                <div class="select-option" data-value="vpn">VPN Network</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>VLAN-ID</label>
+                    <input type="number" id="vlanid" placeholder="z.B. 100, 200">
+                    <div class="help-text">Falls zutreffend (bei VLAN-basierter Segmentierung)</div>
+                </div>
+                <div class="form-group">
+                    <label>Standort</label>
+                    <input type="text" id="networklocation" placeholder="z.B. RZ1, Hauptgebäude, Cloud">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IP-Adressierung -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>IP-Adressierung & Subnetting</span>
+            <span class="section-counter">0/6</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Netzwerk-Adresse (CIDR) <span class="required">*</span></label>
+                    <input type="text" id="networkcidr" required placeholder="z.B. 192.168.100.0/24, 10.0.0.0/16">
+                </div>
+                <div class="form-group">
+                    <label>Subnetz-Maske</label>
+                    <input type="text" id="subnetmask" placeholder="z.B. 255.255.255.0">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Gateway / Router</label>
+                    <input type="text" id="gateway" placeholder="z.B. 192.168.100.1">
+                </div>
+                <div class="form-group">
+                    <label>IP-Adressbereich (nutzbar)</label>
+                    <input type="text" id="iprange" placeholder="z.B. 192.168.100.10 - 192.168.100.254">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>DNS-Server (Primär)</label>
+                    <input type="text" id="dnsprimary" placeholder="z.B. 8.8.8.8, 192.168.1.10">
+                </div>
+                <div class="form-group">
+                    <label>DNS-Server (Sekundär)</label>
+                    <input type="text" id="dnssecondary" placeholder="z.B. 8.8.4.4, 192.168.1.11">
+                </div>
+            </div>
+
+            <div class="subsection-header">DHCP-Konfiguration</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>DHCP aktiviert</label>
+                    <div class="custom-select" data-name="dhcpenabled">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="yes">Ja</div>
+                                <div class="select-option" data-value="no">Nein (statische IPs)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>DHCP-Server</label>
+                    <input type="text" id="dhcpserver" placeholder="z.B. 192.168.100.1, dhcp-srv-01">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>DHCP-Pool (Start)</label>
+                    <input type="text" id="dhcpstart" placeholder="z.B. 192.168.100.100">
+                </div>
+                <div class="form-group">
+                    <label>DHCP-Pool (Ende)</label>
+                    <input type="text" id="dhcpend" placeholder="z.B. 192.168.100.200">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>DHCP-Lease-Zeit</label>
+                    <input type="text" id="dhcplease" placeholder="z.B. 24h, 7d, 86400s">
+                </div>
+                <div class="form-group">
+                    <label>DHCP-Reservierungen</label>
+                    <input type="text" id="dhcpreservations" placeholder="z.B. 10 reservierte IPs">
+                    <div class="help-text">Anzahl oder Details zu DHCP-Reservierungen</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Netzwerk-Segmentierung -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Netzwerk-Segmentierung & Zonen</span>
+            <span class="section-counter">0/4</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Sicherheitszone</label>
+                    <div class="custom-select" data-name="securityzone">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="internal">Internal / Trusted</div>
+                                <div class="select-option" data-value="dmz">DMZ</div>
+                                <div class="select-option" data-value="external">External / Untrusted</div>
+                                <div class="select-option" data-value="management">Management Zone</div>
+                                <div class="select-option" data-value="guest">Guest Network</div>
+                                <div class="select-option" data-value="restricted">Restricted / High Security</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Trust-Level</label>
+                    <div class="custom-select" data-name="trustlevel">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="high">Hoch (Trusted)</div>
+                                <div class="select-option" data-value="medium">Mittel</div>
+                                <div class="select-option" data-value="low">Niedrig (Untrusted)</div>
+                                <div class="select-option" data-value="zero">Zero Trust</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Netzwerk-Isolation</label>
+                    <div class="custom-select" data-name="isolation">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="full">Vollständig isoliert</div>
+                                <div class="select-option" data-value="partial">Teilweise isoliert</div>
+                                <div class="select-option" data-value="none">Keine Isolation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Inter-VLAN Routing</label>
+                    <div class="custom-select" data-name="intervlanrouting">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="enabled">Aktiviert</div>
+                                <div class="select-option" data-value="restricted">Eingeschränkt (ACLs)</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Verbundene Netzwerke / Routing</label>
+                <textarea id="connectednetworks" rows="2" placeholder="z.B. VLAN-200 (via FW), External Network (via Router), Storage-Network"></textarea>
+                <div class="help-text">Welche anderen Netzwerke sind erreichbar?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Netzwerk-Hardware -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Netzwerk-Hardware & Infrastruktur</span>
+            <span class="section-counter">0/6</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="subsection-header">Switches</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Core Switch(es)</label>
+                    <input type="text" id="coreswitch" placeholder="z.B. Core-SW-01, Core-SW-02 (HA)">
+                </div>
+                <div class="form-group">
+                    <label>Distribution Switches</label>
+                    <input type="text" id="distributionswitch" placeholder="z.B. Dist-SW-01, Dist-SW-02">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Access Switches</label>
+                    <input type="text" id="accessswitch" placeholder="z.B. Access-SW-Floor1, Access-SW-Floor2">
+                </div>
+                <div class="form-group">
+                    <label>Switch Management-IP</label>
+                    <input type="text" id="switchmgmtip" placeholder="z.B. 192.168.100.250, 10.0.0.10">
+                </div>
+            </div>
+
+            <div class="subsection-header">Router & Gateways</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Router / L3-Switch</label>
+                    <input type="text" id="router" placeholder="z.B. Router-01, Core-L3-Switch">
+                </div>
+                <div class="form-group">
+                    <label>Router-Typ</label>
+                    <div class="custom-select" data-name="routertype">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="edge">Edge Router</div>
+                                <div class="select-option" data-value="core">Core Router</div>
+                                <div class="select-option" data-value="distribution">Distribution Router</div>
+                                <div class="select-option" data-value="l3-switch">Layer 3 Switch</div>
+                                <div class="select-option" data-value="virtual">Virtual Router / vRouter</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection-header">Firewall-Integration</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Firewall</label>
+                    <input type="text" id="firewall" placeholder="z.B. FW-01, Perimeter-Firewall">
+                </div>
+                <div class="form-group">
+                    <label>Firewall-Position</label>
+                    <div class="custom-select" data-name="firewallposition">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="perimeter">Perimeter (Internet-facing)</div>
+                                <div class="select-option" data-value="internal">Internal Segmentation</div>
+                                <div class="select-option" data-value="dmz">DMZ-Firewall</div>
+                                <div class="select-option" data-value="none">Keine Firewall</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sicherheits-Features -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Sicherheits-Features</span>
+            <span class="section-counter">0/8</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="subsection-header">Access Control & Authentication</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>802.1X (Port-based NAC)</label>
+                    <div class="custom-select" data-name="dot1x">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="enabled">Aktiviert</div>
+                                <div class="select-option" data-value="partial">Teilweise aktiviert</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>RADIUS-Server</label>
+                    <input type="text" id="radiusserver" placeholder="z.B. radius.example.com, 192.168.1.50">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>MAC-Adress-Filtering</label>
+                    <div class="custom-select" data-name="macfiltering">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="whitelist">Whitelist (erlaubte MACs)</div>
+                                <div class="select-option" data-value="blacklist">Blacklist (blockierte MACs)</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Port Security</label>
+                    <div class="custom-select" data-name="portsecurity">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="enabled">Aktiviert</div>
+                                <div class="select-option" data-value="sticky">Sticky MAC</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection-header">Layer 2 Security</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>DHCP Snooping</label>
+                    <div class="custom-select" data-name="dhcpsnooping">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="enabled">Aktiviert</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Dynamic ARP Inspection (DAI)</label>
+                    <div class="custom-select" data-name="arpinspection">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="enabled">Aktiviert</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>IP Source Guard</label>
+                    <div class="custom-select" data-name="ipsourceguard">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="enabled">Aktiviert</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Storm Control</label>
+                    <div class="custom-select" data-name="stormcontrol">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="enabled">Aktiviert (Broadcast/Multicast)</div>
+                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection-header">Monitoring & Detection</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>IDS/IPS Integration</label>
+                    <div class="custom-select" data-name="idsips">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="ips">IPS (Prevention)</div>
+                                <div class="select-option" data-value="ids">IDS (Detection only)</div>
+                                <div class="select-option" data-value="none">Keine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>NetFlow / sFlow / IPFIX</label>
+                    <div class="custom-select" data-name="flowmonitoring">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="netflow">NetFlow</div>
+                                <div class="select-option" data-value="sflow">sFlow</div>
+                                <div class="select-option" data-value="ipfix">IPFIX</div>
+                                <div class="select-option" data-value="none">Keine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>SPAN/Mirror Port</label>
+                    <div class="custom-select" data-name="spanport">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="configured">Konfiguriert</div>
+                                <div class="select-option" data-value="not-configured">Nicht konfiguriert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Network Monitoring Tool</label>
+                    <input type="text" id="monitoringtool" placeholder="z.B. PRTG, Nagios, Zabbix, SolarWinds">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VPN & Remote Access -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>VPN & Remote Access</span>
+            <span class="section-counter">0/5</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>VPN-Zugang verfügbar</label>
+                    <div class="custom-select" data-name="vpnenabled">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="yes">Ja</div>
+                                <div class="select-option" data-value="no">Nein</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>VPN-Typ</label>
+                    <div class="custom-select" data-name="vpntype">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="site-to-site">Site-to-Site VPN</div>
+                                <div class="select-option" data-value="remote-access">Remote Access VPN</div>
+                                <div class="select-option" data-value="both">Beides</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>VPN-Protokoll</label>
+                    <div class="custom-select" data-name="vpnprotocol">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="ipsec">IPSec</div>
+                                <div class="select-option" data-value="ssl-vpn">SSL VPN</div>
+                                <div class="select-option" data-value="openvpn">OpenVPN</div>
+                                <div class="select-option" data-value="wireguard">WireGuard</div>
+                                <div class="select-option" data-value="l2tp">L2TP/IPSec</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>VPN-Gateway</label>
+                    <input type="text" id="vpngateway" placeholder="z.B. vpn.example.com, 203.0.113.10">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>VPN-Pool (IP-Range)</label>
+                    <input type="text" id="vpnpool" placeholder="z.B. 10.8.0.0/24, 172.16.0.0/16">
+                </div>
+                <div class="form-group">
+                    <label>Max. VPN-Verbindungen</label>
+                    <input type="number" id="vpnmaxconnections" placeholder="z.B. 50, 100, 500">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Redundanz & Hochverfügbarkeit -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Redundanz & Hochverfügbarkeit</span>
+            <span class="section-counter">0/5</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Redundanz vorhanden</label>
+                    <div class="custom-select" data-name="redundancy">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="full">Vollständig redundant</div>
+                                <div class="select-option" data-value="partial">Teilweise redundant</div>
+                                <div class="select-option" data-value="none">Keine Redundanz</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>STP/RSTP/MSTP</label>
+                    <div class="custom-select" data-name="spanningtree">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="rstp">RSTP (802.1w)</div>
+                                <div class="select-option" data-value="mstp">MSTP (802.1s)</div>
+                                <div class="select-option" data-value="stp">STP (802.1d)</div>
+                                <div class="select-option" data-value="none">Deaktiviert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Link Aggregation (LACP)</label>
+                    <div class="custom-select" data-name="lacp">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="active">Aktiviert (802.3ad)</div>
+                                <div class="select-option" data-value="static">Static Port Channel</div>
+                                <div class="select-option" data-value="none">Keine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>VRRP/HSRP/GLBP (Gateway Redundancy)</label>
+                    <div class="custom-select" data-name="gatewayredundancy">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="vrrp">VRRP</div>
+                                <div class="select-option" data-value="hsrp">HSRP (Cisco)</div>
+                                <div class="select-option" data-value="glbp">GLBP (Cisco)</div>
+                                <div class="select-option" data-value="none">Keine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Uplink-Redundanz</label>
+                <input type="text" id="uplinkredundancy" placeholder="z.B. Dual Uplinks, Multi-Homing, 2x 10Gbit">
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance & QoS -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Performance & Quality of Service</span>
+            <span class="section-counter">0/4</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Bandbreite</label>
+                    <input type="text" id="bandwidth" placeholder="z.B. 1 Gbit/s, 10 Gbit/s, 100 Mbit/s">
+                </div>
+                <div class="form-group">
+                    <label>QoS aktiviert</label>
+                    <div class="custom-select" data-name="qosenabled">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="yes">Ja</div>
+                                <div class="select-option" data-value="no">Nein</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>QoS-Mechanismus</label>
+                    <div class="custom-select" data-name="qosmechanism">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="diffserv">DiffServ (DSCP)</div>
+                                <div class="select-option" data-value="cos">CoS (802.1p)</div>
+                                <div class="select-option" data-value="both">DiffServ + CoS</div>
+                                <div class="select-option" data-value="none">Keine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Traffic Shaping/Policing</label>
+                    <div class="custom-select" data-name="trafficshaping">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="shaping">Traffic Shaping</div>
+                                <div class="select-option" data-value="policing">Policing</div>
+                                <div class="select-option" data-value="both">Beides</div>
+                                <div class="select-option" data-value="none">Keine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Priorisierte Dienste / Traffic-Klassen</label>
+                <textarea id="prioritizedservices" rows="2" placeholder="z.B. VoIP (EF), Video (AF4), Management (CS6), Best Effort"></textarea>
+                <div class="help-text">Welche Dienste/Protokolle werden priorisiert?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dokumentation & Compliance -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Dokumentation & Compliance</span>
+            <span class="section-counter">0/4</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Netzwerk-Diagramm vorhanden</label>
+                    <div class="custom-select" data-name="networkdiagram">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="yes">Ja</div>
+                                <div class="select-option" data-value="outdated">Ja (veraltet)</div>
+                                <div class="select-option" data-value="no">Nein</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>IP-Adress-Management (IPAM)</label>
+                    <input type="text" id="ipam" placeholder="z.B. phpIPAM, NetBox, Excel">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Letzte Netzwerk-Audit</label>
+                    <input type="text" id="lastaudit" placeholder="z.B. Q2 2024, 15.06.2024">
+                </div>
+                <div class="form-group">
+                    <label>Compliance-Anforderungen</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comp-pci" value="pci-dss">
+                            <label for="comp-pci">PCI DSS</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comp-hipaa" value="hipaa">
+                            <label for="comp-hipaa">HIPAA</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comp-dsgvo" value="dsgvo">
+                            <label for="comp-dsgvo">DSGVO</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comp-kritis" value="kritis">
+                            <label for="comp-kritis">KRITIS</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Verantwortlichkeiten -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Verantwortlichkeiten</span>
+            <span class="section-counter">0/2</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Netzwerk-Administrator</label>
+                    <input type="text" id="networkadmin" placeholder="z.B. Network-Team, Max Mustermann">
+                </div>
+                <div class="form-group">
+                    <label>Support-Kontakt</label>
+                    <input type="text" id="networksupport" placeholder="z.B. network-support@example.com, Tel: +49...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notizen -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Zusätzliche Informationen</span>
+            <span class="section-counter">0/1</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-group">
+                <label>Notizen / Netzwerk-Besonderheiten</label>
+                <textarea id="networknotes" rows="4" placeholder="Zusätzliche Informationen zum Netzwerk, spezielle Konfigurationen, bekannte Probleme, geplante Änderungen..."></textarea>
+            </div>
+        </div>
+    </div>
+
+</form>
