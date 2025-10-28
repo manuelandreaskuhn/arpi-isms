@@ -307,6 +307,10 @@
                     <input type="checkbox" id="siem" name="components" value="siem">
                     <label for="siem">SIEM-System</label>
                 </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="vpn" name="components" value="vpn">
+                    <label for="vpn">VPN-Zugang</label>
+                </div>
             </div>
 
         </div>
@@ -514,6 +518,22 @@
             </div>
 
             {{include:pages/wizards/system/siemincludetemplate.tpl}}
+        </div>
+    </div>
+
+    <!-- VPN-Zugang -->
+    <div class="form-section collapsed" data-name="vpn">
+        <div class="section-title">
+            <span>VPN-Zugang</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie den VPN-Zugang zu diesem System, einschließlich berechtigter Benutzergruppen und Zugriffsbeschränkungen.
+            </div>
+
+            {{include:pages/wizards/system/vpnincludetemplate.tpl}}
         </div>
     </div>
 
