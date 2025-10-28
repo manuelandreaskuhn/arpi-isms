@@ -33,6 +33,9 @@ function addVMEntry() {
     
     // Update host assignments in database entries
     refreshHostAssignments();
+
+    // Refresh hypervisor list
+    refreshVMHypervisors(addedEntry);
 }
 
 function addHardwareEntry() {
@@ -831,6 +834,46 @@ function refreshClientHostAssignments() {
         
         // Also refresh load balancer targets
         refreshClientTargets(clientEntry);
+    });
+}
+
+// Refresh Hypervisor selections in VM entries
+function refreshVMHypervisors(vmEntry) {
+    const hypervisorSelect = vmEntry.querySelector('[data-name="hypervisorid"]');
+    if (!hypervisorSelect) return;
+    
+    // Note: This would need to fetch from actual hypervisor components
+    // For now, it's a placeholder that shows the structure
+    const dropdown = hypervisorSelect.querySelector('.select-options');
+    if (!dropdown) return;
+    
+    // Keep first option (empty)
+    const firstOption = dropdown.querySelector('[data-value=""]');
+    dropdown.innerHTML = '';
+    if (firstOption) dropdown.appendChild(firstOption);
+    
+    // TODO: Fetch hypervisors from component API/database
+    // Example structure:
+    const exampleHypervisors = [
+        { id: 'hv-1', name: 'ESXi-Cluster-01', type: 'VMware vSphere 8.0' },
+        { id: 'hv-2', name: 'Hyper-V-Host-DC1', type: 'Hyper-V 2022' },
+        { id: 'hv-3', name: 'Proxmox-VE-Cluster', type: 'Proxmox VE 8.1' }
+    ];
+    
+    exampleHypervisors.forEach((hv) => {
+        const option = document.createElement('div');
+        option.className = 'select-option';
+        option.dataset.value = hv.id;
+        option.textContent = `${hv.name} (${hv.type})`;
+        dropdown.appendChild(option);
+    });
+}
+
+// Refresh all VM hypervisor selections when needed
+function refreshAllVMHypervisors() {
+    const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
+    vmEntries.forEach(vmEntry => {
+        refreshVMHypervisors(vmEntry);
     });
 }
 
