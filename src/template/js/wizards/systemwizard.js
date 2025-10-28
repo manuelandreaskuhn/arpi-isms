@@ -114,6 +114,9 @@ function addBackupEntry() {
     
     // Initial host assignment rendering
     refreshBackupHostAssignments();
+
+    // Refresh backup system list
+    refreshBackupSystems(addedEntry);
 }
 
 function addLoadBalancerEntry() {
@@ -350,47 +353,6 @@ function setupBackupConditionalFields(entryElement) {
             });
         });
         observer.observe(gfsEnabledSelect, { attributes: true });
-    }
-    
-    // 3-2-1 Backup Rule - show/hide offsite fields
-    const backup321Check = entryElement.querySelector('.backup-321-check');
-    if (backup321Check) {
-        const backup321Config = entryElement.querySelector('.backup-321-config');
-        
-        backup321Check.addEventListener('change', function() {
-            if (this.checked) {
-                backup321Config.style.display = 'block';
-            } else {
-                backup321Config.style.display = 'none';
-            }
-        });
-        // Set initial visibility based on checked state
-        backup321Config.style.display = backup321Check.checked ? 'block' : 'none';
-    }
-    
-    // Immutability - show/hide period field
-    const immutabilitySelect = entryElement.querySelector('[data-name="immutability"]');
-    if (immutabilitySelect) {
-        const periodField = entryElement.querySelector('input[name="immutabilityperiod"]')?.closest('.form-group');
-        
-        if (periodField) {
-            // Initially hide period field
-            periodField.style.display = 'none';
-            
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'data-value') {
-                        const value = immutabilitySelect.dataset.value;
-                        if (value === 'enabled' || value === 'partial') {
-                            periodField.style.display = 'block';
-                        } else {
-                            periodField.style.display = 'none';
-                        }
-                    }
-                });
-            });
-            observer.observe(immutabilitySelect, { attributes: true });
-        }
     }
 }
 
@@ -874,6 +836,44 @@ function refreshAllVMHypervisors() {
     const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
     vmEntries.forEach(vmEntry => {
         refreshVMHypervisors(vmEntry);
+    });
+}
+
+// Refresh Backup System selections in backup entries
+function refreshBackupSystems(backupEntry) {
+    const backupSystemSelect = backupEntry.querySelector('[data-name="backupsystemid"]');
+    if (!backupSystemSelect) return;
+    
+    const dropdown = backupSystemSelect.querySelector('.select-options');
+    if (!dropdown) return;
+    
+    // Keep first option (empty)
+    const firstOption = dropdown.querySelector('[data-value=""]');
+    dropdown.innerHTML = '';
+    if (firstOption) dropdown.appendChild(firstOption);
+    
+    // TODO: Fetch backup systems from component API/database
+    // Example structure:
+    const exampleBackupSystems = [
+        { id: 'bs-1', name: 'Veeam-Prod', type: 'Veeam Backup & Replication' },
+        { id: 'bs-2', name: 'Backup-Server-01', type: 'Commvault' },
+        { id: 'bs-3', name: 'Azure-Backup', type: 'Azure Backup' }
+    ];
+    
+    exampleBackupSystems.forEach((bs) => {
+        const option = document.createElement('div');
+        option.className = 'select-option';
+        option.dataset.value = bs.id;
+        option.textContent = `${bs.name} (${bs.type})`;
+        dropdown.appendChild(option);
+    });
+}
+
+// Refresh all backup system selections when needed
+function refreshAllBackupSystems() {
+    const backupEntries = document.querySelectorAll('#backupList .dynamic-entry[data-type="backup"]');
+    backupEntries.forEach(backupEntry => {
+        refreshBackupSystems(backupEntry);
     });
 }
 
