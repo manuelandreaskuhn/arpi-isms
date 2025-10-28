@@ -276,10 +276,6 @@
                     <label for="network">Netzwerk-Komponenten</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="storage" name="components" value="storage">
-                    <label for="storage">Storage / SAN</label>
-                </div>
-                <div class="checkbox-item">
                     <input type="checkbox" id="database" name="components" value="database">
                     <label for="database">Datenbank</label>
                 </div>
@@ -447,6 +443,28 @@
         </div>
     </div>
 
+    <!-- Client-Arbeitsplätze -->
+    <div class="form-section collapsed" data-name="clients">
+        <div class="section-title">
+            <span>Client-Arbeitsplätze</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie, wie Client-Arbeitsplätze auf dieses System zugreifen. Definieren Sie Client-Typen, Zugriffsmethoden, Protokolle und Verbindungswege.
+            </div>
+            
+            <div id="clientList" class="dynamic-list">
+                <!-- Client entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addClientEntry()">
+                <span>+</span> Client-Zugriff hinzufügen
+            </button>
+        </div>
+    </div>
+
 </form>
 
 <!-- Templates for dynamic entries -->
@@ -507,5 +525,15 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'firewall')">×</button>
         </div>
         {{include:pages/wizards/system/firewallincludetemplate.tpl}}
+    </div>
+</template>
+
+<template id="clientEntryTemplate">
+    <div class="dynamic-entry" data-type="client">
+        <div class="entry-header">
+            <span class="entry-title">Client-Zugriff #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'client')">×</button>
+        </div>
+        {{include:pages/wizards/system/clientincludetemplate.tpl}}
     </div>
 </template>

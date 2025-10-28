@@ -434,3 +434,23 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     width: auto;
     margin: 0;
 }
+
+/* Client Load Balancer config box */
+.client-lb-config {
+    display: none;
+    background: #f0f8ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Client Server config box */
+.client-server-config {
+    display: none;
+    background: #f0fff4;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

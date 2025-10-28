@@ -116,6 +116,7 @@
                     <select name="komponentenTyp">
                         <option value="server">Physischer Server</option>
                         <option value="vm">Virtuelle Maschine</option>
+                        <option value="hypervisor">Hypervisor</option>
                         <option value="firewall">Firewall</option>
                         <option value="switch">Switch</option>
                         <option value="nas">Netzwerkspeicher</option>
