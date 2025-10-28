@@ -5,6 +5,7 @@ let hardwareCounter = 0;
 let databaseCounter = 0;
 let backupCounter = 0;
 let loadbalancerCounter = 0;
+let firewallCounter = 0;
 
 function addVMEntry() {
     vmCounter++;
@@ -138,6 +139,33 @@ function addLoadBalancerEntry() {
     refreshLoadBalancerHostAssignments();
 }
 
+function addFirewallEntry() {
+    firewallCounter++;
+    const fwList = document.getElementById('firewallList');
+    const template = document.getElementById('firewallEntryTemplate');
+    
+    const fwEntry = template.content.cloneNode(true);
+    const entryDiv = fwEntry.querySelector('.dynamic-entry');
+    
+    entryDiv.dataset.id = firewallCounter;
+    fwEntry.querySelector('.entry-number').textContent = firewallCounter;
+    
+    fwEntry.querySelectorAll('.custom-select').forEach(element => {
+        element.dataset.index = firewallCounter;
+    });
+    
+    fwList.appendChild(fwEntry);
+    
+    const addedEntry = fwList.querySelector(`.dynamic-entry[data-id="${firewallCounter}"]`);
+    updateListenersForDynamicEntry(addedEntry);
+    
+    // Setup conditional visibility handlers
+    setupFirewallConditionalFields(addedEntry);
+    
+    // Refresh host assignments
+    refreshFirewallHostAssignments();
+}
+
 function removeEntry(button, type) {
     const entry = button.closest('.dynamic-entry');
     entry.remove();
@@ -174,6 +202,9 @@ function removeEntry(button, type) {
     } else if (type === 'loadbalancer') {
         loadbalancerCounter = entries.length + 1;
         updateSectionCounter(document.querySelector('.form-section[data-name="loadbalancers"]'));
+    } else if (type === 'firewall') {
+        firewallCounter = entries.length + 1;
+        updateSectionCounter(document.querySelector('.form-section[data-name="firewalls"]'));
     }
 }
 
@@ -527,6 +558,115 @@ function refreshLoadBalancerHostAssignments() {
     });
 }
 
+// Setup conditional field visibility for firewall entries
+function setupFirewallConditionalFields(entryElement) {
+    // NAT Configuration
+    const fwNATCheck = entryElement.querySelector('.fw-nat-check');
+    if (fwNATCheck) {
+        const fwNATConfig = entryElement.querySelector('.fw-nat-config');
+        
+        fwNATCheck.addEventListener('change', function() {
+            fwNATConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        fwNATConfig.style.display = fwNATCheck.checked ? 'block' : 'none';
+    }
+
+    // VPN Configuration
+    const fwVPNCheck = entryElement.querySelector('.fw-vpn-check');
+    if (fwVPNCheck) {
+        const fwVPNConfig = entryElement.querySelector('.fw-vpn-config');
+        
+        fwVPNCheck.addEventListener('change', function() {
+            fwVPNConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        fwVPNConfig.style.display = fwVPNCheck.checked ? 'block' : 'none';
+    }
+
+    // HA Configuration
+    const fwHACheck = entryElement.querySelector('.fw-ha-check');
+    if (fwHACheck) {
+        const fwHAConfig = entryElement.querySelector('.fw-ha-config');
+        
+        fwHACheck.addEventListener('change', function() {
+            fwHAConfig.style.display = this.checked ? 'block' : 'none';
+        });
+        fwHAConfig.style.display = fwHACheck.checked ? 'block' : 'none';
+    }
+}
+
+// Update host assignments in all firewall entries
+function refreshFirewallHostAssignments() {
+    const fwEntries = document.querySelectorAll('#firewallList .dynamic-entry[data-type="firewall"]');
+    if (!fwEntries.length) return;
+
+    const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
+    const vms = Array.from(vmEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `VM #${id}`;
+        return { id, hostname };
+    });
+
+    const hwEntries = document.querySelectorAll('#hardwareList .dynamic-entry[data-type="hardware"]');
+    const hw = Array.from(hwEntries).map((e) => {
+        const id = e.dataset.id;
+        const hostInput = e.querySelector('input[name="hostname"]');
+        const hostname = (hostInput && hostInput.value.trim()) || `Server #${id}`;
+        return { id, hostname };
+    });
+
+    fwEntries.forEach((fwEntry) => {
+        const container = fwEntry.querySelector('[data-hostlist]');
+        if (!container) return;
+
+        const prevChecked = new Set(
+            Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(inp => `${inp.dataset.type}:${inp.dataset.refId}`)
+        );
+
+        const fwId = fwEntry.dataset.id;
+        let html = '';
+
+        if (vms.length) {
+            html += '<div style="margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Virtuelle Maschinen</strong></div>';
+            html += '<div class="checkbox-group">';
+            vms.forEach(vm => {
+                const checkId = `fw${fwId}-vm-${vm.id}`;
+                const key = `vm:${vm.id}`;
+                const checked = prevChecked.has(key) ? 'checked' : '';
+                html += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${checkId}" data-type="vm" data-ref-id="${vm.id}" ${checked}>
+                        <label for="${checkId}">${vm.hostname}</label>
+                    </div>`;
+            });
+            html += '</div>';
+        }
+
+        if (hw.length) {
+            html += '<div style="margin-top:15px;margin-bottom:10px;"><strong style="font-size:0.8em;color:#4a5568;">Hardware Server</strong></div>';
+            html += '<div class="checkbox-group">';
+            hw.forEach(server => {
+                const checkId = `fw${fwId}-hw-${server.id}`;
+                const key = `hardware:${server.id}`;
+                const checked = prevChecked.has(key) ? 'checked' : '';
+                html += `
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="${checkId}" data-type="hardware" data-ref-id="${server.id}" ${checked}>
+                        <label for="${checkId}">${server.hostname}</label>
+                    </div>`;
+            });
+            html += '</div>';
+        }
+
+        if (!vms.length && !hw.length) {
+            html = '<div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>';
+        }
+
+        container.innerHTML = html;
+    });
+}
+
 // Handle VM/Hardware/Database/Backup/LoadBalancer checkbox toggle
 document.addEventListener('DOMContentLoaded', function() {
     // Initially hide sections
@@ -535,12 +675,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const databaseSection = document.querySelector('.form-section[data-name="databases"]');
     const backupSection = document.querySelector('.form-section[data-name="backups"]');
     const loadbalancerSection = document.querySelector('.form-section[data-name="loadbalancers"]');
+    const firewallSection = document.querySelector('.form-section[data-name="firewalls"]');
     
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
     if (databaseSection) databaseSection.style.display = 'none';
     if (backupSection) backupSection.style.display = 'none';
     if (loadbalancerSection) loadbalancerSection.style.display = 'none';
+    if (firewallSection) firewallSection.style.display = 'none';
     
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
@@ -622,6 +764,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Firewall checkbox handler
+    const firewallCheckbox = document.getElementById('firewall');
+    if (firewallCheckbox) {
+        firewallCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                firewallSection.style.display = 'block';
+            } else {
+                firewallSection.style.display = 'none';
+                document.getElementById('firewallList').innerHTML = '';
+                firewallCounter = 0;
+                updateSectionCounter(firewallSection);
+            }
+        });
+    }
+
     // Cluster-Konfiguration anzeigen/ausblenden
     document.addEventListener('change', function(e) {
         if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
@@ -639,5 +796,6 @@ window.addHardwareEntry = addHardwareEntry;
 window.addDatabaseEntry = addDatabaseEntry;
 window.addBackupEntry = addBackupEntry;
 window.addLoadBalancerEntry = addLoadBalancerEntry;
+window.addFirewallEntry = addFirewallEntry;
 window.removeEntry = removeEntry;
 

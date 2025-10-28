@@ -396,3 +396,41 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     width: auto;
     margin: 0;
 }
+
+/* Firewall NAT config box */
+.fw-nat-config {
+    display: none;
+    background: #f0f8ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Firewall VPN config box */
+.fw-vpn-config {
+    display: none;
+    background: #f0fff4;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Firewall HA config box */
+.fw-ha-config {
+    display: none;
+    background: #f0f4ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Checkboxen für Firewall */
+.fw-nat-check,
+.fw-vpn-check,
+.fw-ha-check {
+    width: auto;
+    margin: 0;
+}
