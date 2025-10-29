@@ -3,11 +3,17 @@
     <div class="subsection-header">Client-Typ & Zugriffsbeschreibung</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Zugriffsbezeichnung <span class="required">*</span></label>
+            <label>
+                Zugriffsbezeichnung <span class="required">*</span>
+                <span class="help-icon" data-tooltip="client-access-name">?</span>
+            </label>
             <input type="text" name="clientaccessname" class="client-field" placeholder="z.B. Ärzte-Arbeitsplätze, Admin-Zugriff, Patient-Portal" required>
         </div>
         <div class="form-group">
-            <label>Client-Typ <span class="required">*</span></label>
+            <label>
+                Client-Typ <span class="required">*</span>
+                <span class="help-icon" data-tooltip="client-type">?</span>
+            </label>
             <div class="custom-select" data-name="clienttype" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -45,11 +51,17 @@
 
     <div class="form-row">
         <div class="form-group">
-            <label>Betriebssystem(e)</label>
+            <label>
+                Betriebssystem(e)
+                <span class="help-icon" data-tooltip="client-os">?</span>
+            </label>
             <input type="text" name="clientos" class="client-field" placeholder="z.B. Windows 10/11, macOS 13+, iOS 16+">
         </div>
         <div class="form-group">
-            <label>Anzahl Clients (ca.)</label>
+            <label>
+                Anzahl Clients (ca.)
+                <span class="help-icon" data-tooltip="client-count">?</span>
+            </label>
             <input type="number" name="clientcount" class="client-field" placeholder="z.B. 50, 200, 1000">
         </div>
     </div>
@@ -58,7 +70,10 @@
     <div class="subsection-header">Zugriffsmethode & Protokoll</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Zugriffsprotokoll <span class="required">*</span></label>
+            <label>
+                Zugriffsprotokoll <span class="required">*</span>
+                <span class="help-icon" data-tooltip="access-protocol">?</span>
+            </label>
             <div class="custom-select" data-name="accessprotocol" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -101,14 +116,20 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Port(s)</label>
+            <label>
+                Port(s)
+                <span class="help-icon" data-tooltip="client-port">?</span>
+            </label>
             <input type="text" name="clientport" class="client-field" placeholder="z.B. 443, 8080, 3389, 1433">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>Verschlüsselung</label>
+            <label>
+                Verschlüsselung
+                <span class="help-icon" data-tooltip="client-encryption">?</span>
+            </label>
             <div class="custom-select" data-name="clientencryption" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -129,7 +150,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Authentifizierung</label>
+            <label>
+                Authentifizierung
+                <span class="help-icon" data-tooltip="client-auth">?</span>
+            </label>
             <div class="custom-select" data-name="clientauth" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -157,7 +181,10 @@
     <!-- Verbindungsziel -->
     <div class="subsection-header">Verbindungsziel & Routing</div>
     <div class="form-group">
-        <label>Verbindungsziel <span class="required">*</span></label>
+        <label>
+            Verbindungsziel <span class="required">*</span>
+            <span class="help-icon" data-tooltip="connection-target">?</span>
+        </label>
         <div class="custom-select" data-name="connectiontarget" data-index="0" data-category="client">
             <div class="select-trigger">
                 <span class="placeholder">Bitte wählen</span>
@@ -180,7 +207,10 @@
     <!-- Load Balancer Selection (conditional) -->
     <div class="client-lb-config">
         <div class="form-group">
-            <label>Verwendeter Load Balancer</label>
+            <label>
+                Verwendeter Load Balancer
+                <span class="help-icon" data-tooltip="target-lb">?</span>
+            </label>
             <div class="custom-select" data-name="targetloadbalancer" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Wählen Sie einen Load Balancer</span>
@@ -200,7 +230,10 @@
     <!-- VM/Server Selection (conditional) -->
     <div class="client-server-config">
         <div class="form-group">
-            <label>Ziel VMs / Server</label>
+            <label>
+                Ziel VMs / Server
+                <span class="help-icon" data-tooltip="target-servers">?</span>
+            </label>
             <div class="help-text">Wählen Sie die VMs oder Server aus, zu denen direkt verbunden wird</div>
             <div class="host-assignment-box">
                 <div class="host-assignment" data-hostlist>
@@ -212,11 +245,17 @@
 
     <div class="form-row">
         <div class="form-group">
-            <label>Zugriffs-URL / Adresse</label>
+            <label>
+                Zugriffs-URL / Adresse
+                <span class="help-icon" data-tooltip="access-url">?</span>
+            </label>
             <input type="text" name="accessurl" class="client-field" placeholder="z.B. https://kis.klinik.de, kis-client.local">
         </div>
         <div class="form-group">
-            <label>DNS Name</label>
+            <label>
+                DNS Name
+                <span class="help-icon" data-tooltip="dns-name">?</span>
+            </label>
             <input type="text" name="dnsname" class="client-field" placeholder="z.B. kis.klinik.de">
         </div>
     </div>
@@ -225,11 +264,17 @@
     <div class="subsection-header">Client-Software & Installation</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Client-Software / App</label>
+            <label>
+                Client-Software / App
+                <span class="help-icon" data-tooltip="client-software">?</span>
+            </label>
             <input type="text" name="clientsoftware" class="client-field" placeholder="z.B. KIS Client 5.2, Google Chrome, Orbis App">
         </div>
         <div class="form-group">
-            <label>Installations-Methode</label>
+            <label>
+                Installations-Methode
+                <span class="help-icon" data-tooltip="install-method">?</span>
+            </label>
             <div class="custom-select" data-name="installmethod" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -256,7 +301,10 @@
 
     <div class="form-row">
         <div class="form-group">
-            <label>Update-Mechanismus</label>
+            <label>
+                Update-Mechanismus
+                <span class="help-icon" data-tooltip="update-mechanism">?</span>
+            </label>
             <div class="custom-select" data-name="updatemechanism" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -275,7 +323,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Lizenzierung</label>
+            <label>
+                Lizenzierung
+                <span class="help-icon" data-tooltip="client-licensing">?</span>
+            </label>
             <div class="custom-select" data-name="clientlicensing" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -300,18 +351,27 @@
     <div class="subsection-header">Netzwerk & Performance</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Netzwerk-Segment</label>
+            <label>
+                Netzwerk-Segment
+                <span class="help-icon" data-tooltip="network-segment">?</span>
+            </label>
             <input type="text" name="networksegment" class="client-field" placeholder="z.B. Intern (LAN), VPN, DMZ, Internet">
         </div>
         <div class="form-group">
-            <label>Bandbreiten-Anforderung</label>
+            <label>
+                Bandbreiten-Anforderung
+                <span class="help-icon" data-tooltip="bandwidth">?</span>
+            </label>
             <input type="text" name="bandwidth" class="client-field" placeholder="z.B. > 10 Mbit/s, 100 Mbit/s empfohlen">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>Offline-Fähigkeit</label>
+            <label>
+                Offline-Fähigkeit
+                <span class="help-icon" data-tooltip="offline-capability">?</span>
+            </label>
             <div class="custom-select" data-name="offlinecapability" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -329,7 +389,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Session-Verwaltung</label>
+            <label>
+                Session-Verwaltung
+                <span class="help-icon" data-tooltip="session-management">?</span>
+            </label>
             <div class="custom-select" data-name="sessionmanagement" data-index="0" data-category="client">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -352,29 +415,47 @@
     <div class="subsection-header">Besonderheiten & Anforderungen</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Benutzergruppe</label>
+            <label>
+                Benutzergruppe
+                <span class="help-icon" data-tooltip="user-group">?</span>
+            </label>
             <input type="text" name="usergroup" class="client-field" placeholder="z.B. Ärzte, Pflegepersonal, Verwaltung, IT-Support">
         </div>
         <div class="form-group">
-            <label>Arbeitszeiten</label>
+            <label>
+                Arbeitszeiten
+                <span class="help-icon" data-tooltip="working-hours">?</span>
+            </label>
             <input type="text" name="workinghoursaccess" class="client-field" placeholder="z.B. 24/7, Mo-Fr 07:00-20:00">
         </div>
     </div>
 
     <div class="form-group">
-        <label>System-Anforderungen (Client)</label>
+        <label>
+            System-Anforderungen (Client)
+            <span class="help-icon" data-tooltip="system-requirements">?</span>
+        </label>
         <textarea name="systemrequirements" class="client-field" rows="2" placeholder="z.B. Min. 8GB RAM, Windows 10, Browser: Chrome 90+, Bildschirmauflösung mind. 1920x1080"></textarea>
     </div>
 
     <div class="form-group">
-        <label>Besondere Anforderungen</label>
+        <label>
+            Besondere Anforderungen
+            <span class="help-icon" data-tooltip="special-requirements">?</span>
+        </label>
         <textarea name="specialrequirements" class="client-field" rows="2" placeholder="z.B. Kartenleser für eGK, Barcode-Scanner, Drucker-Integration, Signatur-Pad"></textarea>
     </div>
 
     <!-- Notizen -->
     <div class="subsection-header">Zusätzliche Informationen</div>
     <div class="form-group">
-        <label>Notizen / Zugriffsdetails</label>
+        <label>
+            Notizen / Zugriffsdetails
+            <span class="help-icon" data-tooltip="client-notes">?</span>
+        </label>
         <textarea name="clientnotes" class="client-field" rows="3" placeholder="Zusätzliche Informationen zum Client-Zugriff, bekannte Probleme, Supporthinweise..."></textarea>
     </div>
 </div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/clienthelp.tpl}}

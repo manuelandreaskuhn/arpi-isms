@@ -19,11 +19,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Netzwerk-Name <span class="required">*</span></label>
+                    <label>
+                        Netzwerk-Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="network-name">?</span>
+                    </label>
                     <input type="text" id="networkname" required placeholder="z.B. Prod-Network, VLAN-100-KIS">
                 </div>
                 <div class="form-group">
-                    <label>Netzwerk-Typ <span class="required">*</span></label>
+                    <label>
+                        Netzwerk-Typ <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="network-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="networktype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -48,7 +54,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>VLAN-ID</label>
+                    <label>
+                        VLAN-ID
+                        <span class="help-icon" data-tooltip="network-vlan-id">?</span>
+                    </label>
                     <input type="number" id="vlanid" placeholder="z.B. 100, 200">
                     <div class="help-text">Falls zutreffend (bei VLAN-basierter Segmentierung)</div>
                 </div>
@@ -70,7 +79,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Netzwerk-Adresse (CIDR) <span class="required">*</span></label>
+                    <label>
+                        Netzwerk-Adresse (CIDR) <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="network-cidr">?</span>
+                    </label>
                     <input type="text" id="networkcidr" required placeholder="z.B. 192.168.100.0/24, 10.0.0.0/16">
                 </div>
                 <div class="form-group">
@@ -81,7 +93,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Gateway / Router</label>
+                    <label>
+                        Gateway / Router
+                        <span class="help-icon" data-tooltip="network-gateway">?</span>
+                    </label>
                     <input type="text" id="gateway" placeholder="z.B. 192.168.100.1">
                 </div>
                 <div class="form-group">
@@ -104,7 +119,10 @@
             <div class="subsection-header">DHCP-Konfiguration</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>DHCP aktiviert</label>
+                    <label>
+                        DHCP aktiviert
+                        <span class="help-icon" data-tooltip="network-dhcp">?</span>
+                    </label>
                     <div class="custom-select" data-name="dhcpenabled">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -127,7 +145,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>DHCP-Pool (Start)</label>
+                    <label>
+                        DHCP-Pool (Start)
+                        <span class="help-icon" data-tooltip="network-dhcp-pool">?</span>
+                    </label>
                     <input type="text" id="dhcpstart" placeholder="z.B. 192.168.100.100">
                 </div>
                 <div class="form-group">
@@ -138,7 +159,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>DHCP-Lease-Zeit</label>
+                    <label>
+                        DHCP-Lease-Zeit
+                        <span class="help-icon" data-tooltip="network-dhcp-lease">?</span>
+                    </label>
                     <input type="text" id="dhcplease" placeholder="z.B. 24h, 7d, 86400s">
                 </div>
                 <div class="form-group">
@@ -160,7 +184,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Sicherheitszone</label>
+                    <label>
+                        Sicherheitszone
+                        <span class="help-icon" data-tooltip="network-security-zone">?</span>
+                    </label>
                     <div class="custom-select" data-name="securityzone">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -201,7 +228,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Netzwerk-Isolation</label>
+                    <label>
+                        Netzwerk-Isolation
+                        <span class="help-icon" data-tooltip="network-isolation">?</span>
+                    </label>
                     <div class="custom-select" data-name="isolation">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -358,7 +388,10 @@
             <div class="subsection-header">Access Control & Authentication</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>802.1X (Port-based NAC)</label>
+                    <label>
+                        802.1X (Port-based NAC)
+                        <span class="help-icon" data-tooltip="network-802-1x">?</span>
+                    </label>
                     <div class="custom-select" data-name="dot1x">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -382,7 +415,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>MAC-Adress-Filtering</label>
+                    <label>
+                        MAC-Adress-Filtering
+                        <span class="help-icon" data-tooltip="network-mac-filtering">?</span>
+                    </label>
                     <div class="custom-select" data-name="macfiltering">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -420,7 +456,10 @@
             <div class="subsection-header">Layer 2 Security</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>DHCP Snooping</label>
+                    <label>
+                        DHCP Snooping
+                        <span class="help-icon" data-tooltip="network-dhcp-snooping">?</span>
+                    </label>
                     <div class="custom-select" data-name="dhcpsnooping">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -436,7 +475,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Dynamic ARP Inspection (DAI)</label>
+                    <label>
+                        Dynamic ARP Inspection (DAI)
+                        <span class="help-icon" data-tooltip="network-arp-inspection">?</span>
+                    </label>
                     <div class="custom-select" data-name="arpinspection">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -508,7 +550,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>NetFlow / sFlow / IPFIX</label>
+                    <label>
+                        NetFlow / sFlow / IPFIX
+                        <span class="help-icon" data-tooltip="network-netflow">?</span>
+                    </label>
                     <div class="custom-select" data-name="flowmonitoring">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -562,7 +607,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>VPN-Zugang verfügbar</label>
+                    <label>
+                        VPN-Zugang verfügbar
+                        <span class="help-icon" data-tooltip="network-vpn">?</span>
+                    </label>
                     <div class="custom-select" data-name="vpnenabled">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -662,7 +710,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>STP/RSTP/MSTP</label>
+                    <label>
+                        STP/RSTP/MSTP
+                        <span class="help-icon" data-tooltip="network-spanning-tree">?</span>
+                    </label>
                     <div class="custom-select" data-name="spanningtree">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -683,7 +734,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Link Aggregation (LACP)</label>
+                    <label>
+                        Link Aggregation (LACP)
+                        <span class="help-icon" data-tooltip="network-lacp">?</span>
+                    </label>
                     <div class="custom-select" data-name="lacp">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -700,7 +754,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>VRRP/HSRP/GLBP (Gateway Redundancy)</label>
+                    <label>
+                        VRRP/HSRP/GLBP (Gateway Redundancy)
+                        <span class="help-icon" data-tooltip="network-vrrp">?</span>
+                    </label>
                     <div class="custom-select" data-name="gatewayredundancy">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -740,7 +797,10 @@
                     <input type="text" id="bandwidth" placeholder="z.B. 1 Gbit/s, 10 Gbit/s, 100 Mbit/s">
                 </div>
                 <div class="form-group">
-                    <label>QoS aktiviert</label>
+                    <label>
+                        QoS aktiviert
+                        <span class="help-icon" data-tooltip="network-qos">?</span>
+                    </label>
                     <div class="custom-select" data-name="qosenabled">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -831,7 +891,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>IP-Adress-Management (IPAM)</label>
+                    <label>
+                        IP-Adress-Management (IPAM)
+                        <span class="help-icon" data-tooltip="network-ipam">?</span>
+                    </label>
                     <input type="text" id="ipam" placeholder="z.B. phpIPAM, NetBox, Excel">
                 </div>
             </div>
@@ -842,7 +905,10 @@
                     <input type="text" id="lastaudit" placeholder="z.B. Q2 2024, 15.06.2024">
                 </div>
                 <div class="form-group">
-                    <label>Compliance-Anforderungen</label>
+                    <label>
+                        Compliance-Anforderungen
+                        <span class="help-icon" data-tooltip="network-compliance">?</span>
+                    </label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" id="comp-pci" value="pci-dss">
@@ -896,10 +962,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / Netzwerk-Besonderheiten</label>
+                <label>
+                    Notizen / Netzwerk-Besonderheiten
+                    <span class="help-icon" data-tooltip="network-notes">?</span>
+                </label>
                 <textarea id="networknotes" rows="4" placeholder="Zusätzliche Informationen zum Netzwerk, spezielle Konfigurationen, bekannte Probleme, geplante Änderungen..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/network-help.tpl}}

@@ -5,12 +5,16 @@
         <label class="cluster-label">
             <input type="checkbox" class="proxy-enabled-check">
             <span>System verwendet Proxy-Server</span>
+            <span class="help-icon" data-tooltip="proxy-enabled">?</span>
         </label>
     </div>
 
     <div class="proxy-config" style="display:none;">
         <div class="form-group">
-            <label>Proxy-Server Komponente <span class="required">*</span></label>
+            <label>
+                Proxy-Server Komponente <span class="required">*</span>
+                <span class="help-icon" data-tooltip="proxy-component">?</span>
+            </label>
             <div class="custom-select" data-name="proxyid" data-index="0" data-category="proxy">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -29,7 +33,10 @@
 
         <div class="subsection-header">Systemspezifische Proxy-Ausnahmen</div>
         <div class="form-group">
-            <label>Zusätzliche Ausnahmen für dieses System</label>
+            <label>
+                Zusätzliche Ausnahmen für dieses System
+                <span class="help-icon" data-tooltip="proxy-exceptions">?</span>
+            </label>
             <textarea name="proxyexceptions" class="proxy-field" rows="3" placeholder="z.B. internal-api.example.com, 192.168.100.0/24"></textarea>
             <div class="help-text">Zusätzliche Hosts oder Netzwerke, die für dieses System den Proxy umgehen sollen</div>
         </div>
@@ -37,7 +44,10 @@
         <div class="subsection-header">Proxy-Nutzung</div>
         <div class="form-row">
             <div class="form-group">
-                <label>Verwendete Protokolle</label>
+                <label>
+                    Verwendete Protokolle
+                    <span class="help-icon" data-tooltip="proxy-protocols">?</span>
+                </label>
                 <div class="checkbox-group">
                     <div class="checkbox-item">
                         <input type="checkbox" name="proxyprotocols" value="http">
@@ -54,7 +64,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Proxy-Authentifizierung</label>
+                <label>
+                    Proxy-Authentifizierung
+                    <span class="help-icon" data-tooltip="proxy-auth">?</span>
+                </label>
                 <div class="custom-select" data-name="proxyauth" data-index="0" data-category="proxy">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
@@ -73,14 +86,23 @@
         </div>
 
         <div class="form-group">
-            <label>Benutzer / Dienstkonto (falls benutzerdefiniert)</label>
+            <label>
+                Benutzer / Dienstkonto (falls benutzerdefiniert)
+                <span class="help-icon" data-tooltip="proxy-user">?</span>
+            </label>
             <input type="text" name="proxyuser" class="proxy-field" placeholder="z.B. DOMAIN\system-service-account">
         </div>
 
         <div class="subsection-header">Zusätzliche Informationen</div>
         <div class="form-group">
-            <label>Systemspezifische Proxy-Notizen</label>
+            <label>
+                Systemspezifische Proxy-Notizen
+                <span class="help-icon" data-tooltip="proxy-notes">?</span>
+            </label>
             <textarea name="proxynotes" class="proxy-field" rows="3" placeholder="Besonderheiten der Proxy-Nutzung für dieses System, spezielle Konfigurationen..."></textarea>
         </div>
     </div>
 </div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/proxy-help.tpl}}

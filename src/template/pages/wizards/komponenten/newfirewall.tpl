@@ -19,11 +19,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Firewall Name <span class="required">*</span></label>
+                    <label>
+                        Firewall Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="firewall-name">?</span>
+                    </label>
                     <input type="text" id="fwname" required placeholder="z.B. FW-DMZ-01, Perimeter-Firewall">
                 </div>
                 <div class="form-group">
-                    <label>Typ / Hersteller</label>
+                    <label>
+                        Typ / Hersteller
+                        <span class="help-icon" data-tooltip="firewall-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="fwtype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -53,11 +59,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Modell / Version</label>
+                    <label>
+                        Modell / Version
+                        <span class="help-icon" data-tooltip="firewall-model">?</span>
+                    </label>
                     <input type="text" id="fwmodel" placeholder="z.B. PA-3220, FortiGate 200F, v9.1">
                 </div>
                 <div class="form-group">
-                    <label>Seriennummer</label>
+                    <label>
+                        Seriennummer
+                        <span class="help-icon" data-tooltip="firewall-serial">?</span>
+                    </label>
                     <input type="text" id="serialnumber" placeholder="z.B. SN123456789">
                 </div>
             </div>
@@ -74,17 +86,26 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Management IP <span class="required">*</span></label>
+                    <label>
+                        Management IP <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="firewall-mgmt-ip">?</span>
+                    </label>
                     <input type="text" id="fwmgmtip" required placeholder="z.B. 192.168.10.1">
                 </div>
                 <div class="form-group">
-                    <label>Standort / Zone</label>
+                    <label>
+                        Standort / Zone
+                        <span class="help-icon" data-tooltip="firewall-location">?</span>
+                    </label>
                     <input type="text" id="fwlocation" placeholder="z.B. Perimeter, DMZ, Internal">
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Funktion</label>
+                <label>
+                    Funktion
+                    <span class="help-icon" data-tooltip="firewall-function">?</span>
+                </label>
                 <div class="custom-select" data-name="fwfunction">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
@@ -106,12 +127,18 @@
             <div class="subsection-header">Netzwerk-Interfaces & Zonen</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Externe Interface / IP</label>
+                    <label>
+                        Externe Interface / IP
+                        <span class="help-icon" data-tooltip="firewall-external-if">?</span>
+                    </label>
                     <input type="text" id="externalif" placeholder="z.B. WAN, 203.0.113.1">
                     <div class="help-text">Public/Internet-facing Interface</div>
                 </div>
                 <div class="form-group">
-                    <label>Interne Interface / IP</label>
+                    <label>
+                        Interne Interface / IP
+                        <span class="help-icon" data-tooltip="firewall-internal-if">?</span>
+                    </label>
                     <input type="text" id="internalif" placeholder="z.B. LAN, 10.0.0.1">
                     <div class="help-text">Internes Netzwerk Interface</div>
                 </div>
@@ -119,11 +146,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>DMZ Interface / IP</label>
+                    <label>
+                        DMZ Interface / IP
+                        <span class="help-icon" data-tooltip="firewall-dmz-if">?</span>
+                    </label>
                     <input type="text" id="dmzif" placeholder="z.B. DMZ, 172.16.0.1">
                 </div>
                 <div class="form-group">
-                    <label>Weitere Zonen</label>
+                    <label>
+                        Weitere Zonen
+                        <span class="help-icon" data-tooltip="firewall-other-zones">?</span>
+                    </label>
                     <input type="text" id="otherzones" placeholder="z.B. Guest, Management, VPN">
                 </div>
             </div>
@@ -140,7 +173,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>IPS/IDS</label>
+                    <label>
+                        IPS/IDS
+                        <span class="help-icon" data-tooltip="firewall-ips">?</span>
+                    </label>
                     <div class="custom-select" data-name="ips">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -157,7 +193,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Application Control</label>
+                    <label>
+                        Application Control
+                        <span class="help-icon" data-tooltip="firewall-appcontrol">?</span>
+                    </label>
                     <div class="custom-select" data-name="appcontrol">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -176,7 +215,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>URL Filtering</label>
+                    <label>
+                        URL Filtering
+                        <span class="help-icon" data-tooltip="firewall-urlfilter">?</span>
+                    </label>
                     <div class="custom-select" data-name="urlfilter">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -192,7 +234,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Anti-Malware / Virus Scan</label>
+                    <label>
+                        Anti-Malware / Virus Scan
+                        <span class="help-icon" data-tooltip="firewall-antimalware">?</span>
+                    </label>
                     <div class="custom-select" data-name="antimalware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -211,7 +256,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>SSL/TLS Inspection</label>
+                    <label>
+                        SSL/TLS Inspection
+                        <span class="help-icon" data-tooltip="firewall-ssl-inspection">?</span>
+                    </label>
                     <div class="custom-select" data-name="sslinspection">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -228,7 +276,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>DDoS Protection</label>
+                    <label>
+                        DDoS Protection
+                        <span class="help-icon" data-tooltip="firewall-ddos">?</span>
+                    </label>
                     <div class="custom-select" data-name="ddos">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -259,13 +310,17 @@
                 <label class="cluster-label">
                     <input type="checkbox" id="fw-ha-check">
                     <span>High Availability / Clustering aktiviert</span>
+                    <span class="help-icon" data-tooltip="firewall-ha">?</span>
                 </label>
             </div>
 
             <div id="fw-ha-config" style="display:none;">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>HA-Modus</label>
+                        <label>
+                            HA-Modus
+                            <span class="help-icon" data-tooltip="firewall-ha-mode">?</span>
+                        </label>
                         <div class="custom-select" data-name="hamode">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -282,7 +337,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Partner/Standby Firewall</label>
+                        <label>
+                            Partner/Standby Firewall
+                            <span class="help-icon" data-tooltip="firewall-partner">?</span>
+                        </label>
                         <input type="text" id="partnerfirewall" placeholder="z.B. FW-DMZ-02">
                     </div>
                 </div>
@@ -300,7 +358,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Log Level</label>
+                    <label>
+                        Log Level
+                        <span class="help-icon" data-tooltip="firewall-log-level">?</span>
+                    </label>
                     <div class="custom-select" data-name="loglevel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -318,18 +379,27 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>SIEM Integration</label>
+                    <label>
+                        SIEM Integration
+                        <span class="help-icon" data-tooltip="firewall-siem">?</span>
+                    </label>
                     <input type="text" id="siem" placeholder="z.B. Splunk, QRadar, Syslog-Server">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Log Retention (Tage)</label>
+                    <label>
+                        Log Retention (Tage)
+                        <span class="help-icon" data-tooltip="firewall-log-retention">?</span>
+                    </label>
                     <input type="number" id="logretention" placeholder="z.B. 90, 365">
                 </div>
                 <div class="form-group">
-                    <label>Monitoring / Alerting</label>
+                    <label>
+                        Monitoring / Alerting
+                        <span class="help-icon" data-tooltip="firewall-monitoring">?</span>
+                    </label>
                     <input type="text" id="monitoring" placeholder="z.B. SNMP, Prometheus, E-Mail">
                 </div>
             </div>
@@ -345,10 +415,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / Besonderheiten</label>
+                <label>
+                    Notizen / Besonderheiten
+                    <span class="help-icon" data-tooltip="firewall-notes">?</span>
+                </label>
                 <textarea id="fwnotes" rows="4" placeholder="Zusätzliche Informationen zur Firewall, allgemeine Konfiguration, Change-Prozesse..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/firewall-help.tpl}}

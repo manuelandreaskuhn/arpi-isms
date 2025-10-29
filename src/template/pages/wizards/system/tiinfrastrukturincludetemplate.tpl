@@ -5,12 +5,16 @@
         <label class="cluster-label">
             <input type="checkbox" class="ti-connected-check">
             <span>System nutzt TI-Infrastruktur</span>
+            <span class="help-icon" data-tooltip="ti-connected">?</span>
         </label>
     </div>
 
     <div class="ti-connection-config" style="display:none;">
         <div class="form-group">
-            <label>TI-Infrastruktur Komponente <span class="required">*</span></label>
+            <label>
+                TI-Infrastruktur Komponente <span class="required">*</span>
+                <span class="help-icon" data-tooltip="ti-component">?</span>
+            </label>
             <div class="custom-select" data-name="tiinfrastrukturid" data-index="0" data-category="ti">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -28,7 +32,10 @@
         </div>
 
         <div class="subsection-header">Verwendete TI-Dienste in diesem System</div>
-        <label>Aktive Fachdienste</label>
+        <label>
+            Aktive Fachdienste
+            <span class="help-icon" data-tooltip="ti-dienste">?</span>
+        </label>
         <div class="checkbox-group">
             <div class="checkbox-item">
                 <input type="checkbox" name="tidienste" value="kim">
@@ -73,18 +80,25 @@
             <label class="cluster-label">
                 <input type="checkbox" class="ti-kim-active-check">
                 <span>KIM ist aktiv konfiguriert</span>
+                <span class="help-icon" data-tooltip="ti-kim-active">?</span>
             </label>
         </div>
 
         <div class="ti-kim-config" style="display:none;">
             <div class="form-row">
                 <div class="form-group">
-                    <label>KIM-Adresse(n)</label>
+                    <label>
+                        KIM-Adresse(n)
+                        <span class="help-icon" data-tooltip="kim-address">?</span>
+                    </label>
                     <input type="text" name="tikimaddress" class="ti-field" placeholder="z.B. praxis@kim.telematik, krankenhaus@ambulant.kim.telematik">
                     <div class="help-text">Mehrere Adressen kommagetrennt</div>
                 </div>
                 <div class="form-group">
-                    <label>KIM-Anbieter</label>
+                    <label>
+                        KIM-Anbieter
+                        <span class="help-icon" data-tooltip="kim-provider">?</span>
+                    </label>
                     <div class="custom-select" data-name="tikimprovider" data-index="0" data-category="ti">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -105,11 +119,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>KIM-Client</label>
+                    <label>
+                        KIM-Client
+                        <span class="help-icon" data-tooltip="kim-client">?</span>
+                    </label>
                     <input type="text" name="tikimclient" class="ti-field" placeholder="z.B. KIM-Desktop, Primärsystem-Integration">
                 </div>
                 <div class="form-group">
-                    <label>Verschlüsselung</label>
+                    <label>
+                        Verschlüsselung
+                        <span class="help-icon" data-tooltip="kim-encryption">?</span>
+                    </label>
                     <div class="custom-select" data-name="tikimencryption" data-index="0" data-category="ti">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -133,24 +153,34 @@
             <label class="cluster-label">
                 <input type="checkbox" class="ti-erezept-active-check">
                 <span>E-Rezept ist aktiv konfiguriert</span>
+                <span class="help-icon" data-tooltip="ti-erezept-active">?</span>
             </label>
         </div>
 
         <div class="ti-erezept-config" style="display:none;">
             <div class="form-row">
                 <div class="form-group">
-                    <label>E-Rezept-Modul</label>
+                    <label>
+                        E-Rezept-Modul
+                        <span class="help-icon" data-tooltip="erezept-module">?</span>
+                    </label>
                     <input type="text" name="tierezeptmodule" class="ti-field" placeholder="z.B. Primärsystem-Integration, Standalone-Modul">
                 </div>
                 <div class="form-group">
-                    <label>Fachdienst-Version</label>
+                    <label>
+                        Fachdienst-Version
+                        <span class="help-icon" data-tooltip="erezept-version">?</span>
+                    </label>
                     <input type="text" name="tierezeptversion" class="ti-field" placeholder="z.B. E-Rezept FD v1.3">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Unterstützte Rezept-Typen</label>
+                    <label>
+                        Unterstützte Rezept-Typen
+                        <span class="help-icon" data-tooltip="erezept-types">?</span>
+                    </label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" name="tierezepttype" value="pkv">
@@ -167,7 +197,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>AVS-Anbindung (Apothekenverwaltungssystem)</label>
+                    <label>
+                        AVS-Anbindung (Apothekenverwaltungssystem)
+                        <span class="help-icon" data-tooltip="erezept-avs">?</span>
+                    </label>
                     <input type="text" name="tierezeptavs" class="ti-field" placeholder="z.B. ADG, Noventi, CGM">
                 </div>
             </div>
@@ -175,8 +208,14 @@
 
         <div class="subsection-header">Zusätzliche Informationen</div>
         <div class="form-group">
-            <label>Systemspezifische TI-Notizen</label>
+            <label>
+                Systemspezifische TI-Notizen
+                <span class="help-icon" data-tooltip="ti-notes">?</span>
+            </label>
             <textarea name="tisystemnotes" class="ti-field" rows="3" placeholder="Systemspezifische TI-Konfiguration, Besonderheiten für dieses System..."></textarea>
         </div>
     </div>
 </div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/ti-help.tpl}}

@@ -19,7 +19,10 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Systemname <span class="required">*</span></label>
+                <label>
+                    Systemname <span class="required">*</span>
+                    <span class="help-icon" data-tooltip="system-name">?</span>
+                </label>
                 <input type="text" id="systemName" required placeholder="z.B. KIS-Produktiv, Radiologie-PACS">
                 <div class="help-text">Eindeutiger Name zur Identifikation des Systems</div>
             </div>
@@ -36,21 +39,33 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Software / Produkt</label>
+                    <label>
+                        Software / Produkt
+                        <span class="help-icon" data-tooltip="software-product">?</span>
+                    </label>
                     <input type="text" id="software" placeholder="z.B. SAP ERP, Orbis KIS">
                 </div>
                 <div class="form-group">
-                    <label>Hersteller</label>
+                    <label>
+                        Hersteller
+                        <span class="help-icon" data-tooltip="vendor">?</span>
+                    </label>
                     <input type="text" id="vendor" placeholder="z.B. Dedalus, Siemens">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Version</label>
+                    <label>
+                        Version
+                        <span class="help-icon" data-tooltip="version">?</span>
+                    </label>
                     <input type="text" id="version" placeholder="z.B. 2024.1">
                 </div>
                 <div class="form-group">
-                    <label>Lizenztyp</label>
+                    <label>
+                        Lizenztyp
+                        <span class="help-icon" data-tooltip="license-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="licenseType">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -82,11 +97,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Fachbereich</label>
+                    <label>
+                        Fachbereich
+                        <span class="help-icon" data-tooltip="department">?</span>
+                    </label>
                     {{include:pages/wizards/system/departmentcombobox.tpl}}
                 </div>
                 <div class="form-group">
-                    <label>Kritikalität</label>
+                    <label>
+                        Kritikalität
+                        <span class="help-icon" data-tooltip="criticality">?</span>
+                    </label>
                     <div class="custom-select" data-name="criticality">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -106,7 +127,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Umgebung</label>
+                    <label>
+                        Umgebung
+                        <span class="help-icon" data-tooltip="environment">?</span>
+                    </label>
                     <div class="custom-select" data-name="environment">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -124,7 +148,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Hosting / Standort</label>
+                    <label>
+                        Hosting / Standort
+                        <span class="help-icon" data-tooltip="hosting">?</span>
+                    </label>
                     <div class="custom-select" data-name="hosting">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -143,7 +170,10 @@
                 </div>
             </div>
             <div class="form-group" id="cloudProviderGroup">
-                <label>Cloud-Anbieter</label>
+                <label>
+                    Cloud-Anbieter
+                    <span class="help-icon" data-tooltip="cloud-provider">?</span>
+                </label>
                 <input type="text" id="cloudProvider" placeholder="z.B. Microsoft Azure, AWS, Google Cloud">
             </div>
         </div>
@@ -160,7 +190,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Datenschutz-Klassifizierung</label>
+                    <label>
+                        Datenschutz-Klassifizierung
+                        <span class="help-icon" data-tooltip="data-classification">?</span>
+                    </label>
                     <div class="custom-select" data-name="dataClassification">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -178,7 +211,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Verschlüsselung</label>
+                    <label>
+                        Verschlüsselung
+                        <span class="help-icon" data-tooltip="encryption">?</span>
+                    </label>
                     <div class="custom-select" data-name="encryption">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -198,7 +234,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Authentifizierung</label>
+                    <label>
+                        Authentifizierung
+                        <span class="help-icon" data-tooltip="authentication">?</span>
+                    </label>
                     <div class="custom-select" data-name="authentication">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -217,7 +256,10 @@
                     </div>
                 </div>
             </div>
-            <label>Compliance & Zertifizierungen</label>
+            <label>
+                Compliance & Zertifizierungen
+                <span class="help-icon" data-tooltip="compliance">?</span>
+            </label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
                     <input type="checkbox" id="dsgvo" name="compliance" value="dsgvo">
@@ -245,7 +287,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Letzte Sicherheitsüberprüfung</label>
+                <label>
+                    Letzte Sicherheitsüberprüfung
+                    <span class="help-icon" data-tooltip="last-audit">?</span>
+                </label>
                 <input type="text" id="lastAudit" placeholder="z.B. Q2 2024, oder Datum">
             </div>
         </div>
@@ -260,7 +305,10 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <label>Zugehörige IT-Objekte</label>
+            <label>
+                Zugehörige IT-Objekte
+                <span class="help-icon" data-tooltip="it-components">?</span>
+            </label>
             <div class="help-text">Wählen Sie die IT-Komponenten aus, aus denen das System besteht oder mit denen es verbunden ist.</div>
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -590,6 +638,9 @@
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/newsystem-help.tpl}}
 
 <!-- Templates for dynamic entries -->
 <template id="vmEntryTemplate">

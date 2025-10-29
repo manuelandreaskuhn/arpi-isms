@@ -19,11 +19,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>SIEM-System Name <span class="required">*</span></label>
+                    <label>
+                        SIEM-System Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="siem-name">?</span>
+                    </label>
                     <input type="text" id="siemname" required placeholder="z.B. SIEM-Prod, Security-Monitoring">
                 </div>
                 <div class="form-group">
-                    <label>SIEM-Software <span class="required">*</span></label>
+                    <label>
+                        SIEM-Software <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="siem-software">?</span>
+                    </label>
                     <div class="custom-select" data-name="siemsoftware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -61,7 +67,10 @@
                     <input type="text" id="siemversion" placeholder="z.B. 9.1, 2024.1">
                 </div>
                 <div class="form-group">
-                    <label>Lizenzmodell</label>
+                    <label>
+                        Lizenzmodell
+                        <span class="help-icon" data-tooltip="siem-license">?</span>
+                    </label>
                     <div class="custom-select" data-name="siemlicensemodel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -95,7 +104,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Deployment-Typ</label>
+                    <label>
+                        Deployment-Typ
+                        <span class="help-icon" data-tooltip="siem-deployment">?</span>
+                    </label>
                     <div class="custom-select" data-name="siemdeployment">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -174,7 +186,10 @@
                     <input type="number" id="siemlogsources" placeholder="z.B. 50, 200, 1000">
                 </div>
                 <div class="form-group">
-                    <label>Events per Second (EPS)</label>
+                    <label>
+                        Events per Second (EPS)
+                        <span class="help-icon" data-tooltip="siem-eps">?</span>
+                    </label>
                     <input type="number" id="siemeps" placeholder="z.B. 1000, 5000, 10000">
                 </div>
             </div>
@@ -191,7 +206,10 @@
             </div>
 
             <div class="subsection-header">Log-Quellen Typen</div>
-            <label>Integrierte Log-Quellen</label>
+            <label>
+                Integrierte Log-Quellen
+                <span class="help-icon" data-tooltip="siem-logsources">?</span>
+            </label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
                     <input type="checkbox" id="source-firewalls" name="logsources" value="firewalls">
@@ -247,7 +265,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Anzahl aktiver Use Cases</label>
+                    <label>
+                        Anzahl aktiver Use Cases
+                        <span class="help-icon" data-tooltip="siem-usecases">?</span>
+                    </label>
                     <input type="number" id="siemusecases" placeholder="z.B. 50, 100, 200">
                     <div class="help-text">Anzahl der konfigurierten Detection Rules / Use Cases</div>
                 </div>
@@ -259,7 +280,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Machine Learning / UEBA</label>
+                    <label>
+                        Machine Learning / UEBA
+                        <span class="help-icon" data-tooltip="siem-ueba">?</span>
+                    </label>
                     <div class="custom-select" data-name="siemueba">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -275,7 +299,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Threat Intelligence Integration</label>
+                    <label>
+                        Threat Intelligence Integration
+                        <span class="help-icon" data-tooltip="siem-threatintel">?</span>
+                    </label>
                     <div class="custom-select" data-name="siemthreatintel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -299,7 +326,10 @@
             </div>
 
             <div class="subsection-header">Detection Frameworks</div>
-            <label>Verwendete Frameworks</label>
+            <label>
+                Verwendete Frameworks
+                <span class="help-icon" data-tooltip="siem-mitre">?</span>
+            </label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
                     <input type="checkbox" id="framework-mitre" name="frameworks" value="mitre">
@@ -332,20 +362,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Incident Management</label>
-                    <div class="custom-select" data-name="siemincidentmgmt">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="integrated">Integriert im SIEM</div>
-                                <div class="select-option" data-value="external">Externes System</div>
-                                <div class="select-option" data-value="none">Nicht konfiguriert</div>
-                            </div>
-                        </div>
-                    </div>
+                    <input type="text" id="siemincidentmgmt" placeholder="z.B. Integriert, ServiceNow, TheHive">
                 </div>
                 <div class="form-group">
                     <label>Ticketing-System Integration</label>
@@ -355,7 +372,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>SOAR Integration</label>
+                    <label>
+                        SOAR Integration
+                        <span class="help-icon" data-tooltip="siem-soar">?</span>
+                    </label>
                     <div class="custom-select" data-name="siemsoar">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -389,7 +409,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Log-Retention (Tage)</label>
+                    <label>
+                        Log-Retention (Tage)
+                        <span class="help-icon" data-tooltip="siem-retention">?</span>
+                    </label>
                     <input type="number" id="siemretention" placeholder="z.B. 90, 365, 2555">
                     <div class="help-text">Aufbewahrungsdauer der Logs in Tagen</div>
                 </div>
@@ -456,7 +479,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Alert-Empfänger (E-Mail)</label>
+                    <label>
+                        Alert-Empfänger (E-Mail)
+                        <span class="help-icon" data-tooltip="siem-alerting">?</span>
+                    </label>
                     <input type="text" id="siemalertmail" placeholder="z.B. soc@example.com, security-team@example.com">
                 </div>
                 <div class="form-group">
@@ -509,7 +535,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>SOC-Typ</label>
+                    <label>
+                        SOC-Typ
+                        <span class="help-icon" data-tooltip="siem-soc">?</span>
+                    </label>
                     <div class="custom-select" data-name="soctype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -607,10 +636,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / SIEM-Besonderheiten</label>
+                <label>
+                    Notizen / SIEM-Besonderheiten
+                    <span class="help-icon" data-tooltip="siem-notes">?</span>
+                </label>
                 <textarea id="siemnotes" rows="4" placeholder="Zusätzliche Informationen zum SIEM-System, spezielle Konfigurationen, bekannte Limitierungen, geplante Erweiterungen..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/siem-help.tpl}}

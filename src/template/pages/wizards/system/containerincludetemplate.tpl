@@ -3,12 +3,18 @@
     <div class="subsection-header">Grundlegende Informationen</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Container-Name <span class="required">*</span></label>
+            <label>
+                Container-Name <span class="required">*</span>
+                <span class="help-icon" data-tooltip="container-name">?</span>
+            </label>
             <input type="text" name="containerName" required placeholder="z.B. kis-webapp, pacs-db, nginx-proxy">
             <div class="help-text">Eindeutiger Name des Containers</div>
         </div>
         <div class="form-group">
-            <label>Container-Typ</label>
+            <label>
+                Container-Typ
+                <span class="help-icon" data-tooltip="container-type">?</span>
+            </label>
             <div class="custom-select" data-name="containerType" data-multiple="true">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -39,7 +45,10 @@
     <div class="subsection-header">Container-Plattform & Runtime</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Container-Runtime</label>
+            <label>
+                Container-Runtime
+                <span class="help-icon" data-tooltip="container-runtime">?</span>
+            </label>
             <div class="custom-select" data-name="containerRuntime">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -58,7 +67,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Orchestrierung</label>
+            <label>
+                Orchestrierung
+                <span class="help-icon" data-tooltip="container-orchestration">?</span>
+            </label>
             <div class="custom-select" data-name="containerOrchestration">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -83,21 +95,33 @@
     <div class="container-k8s-config" style="display: none;">
         <div class="form-row">
             <div class="form-group">
-                <label>Namespace</label>
+                <label>
+                    Namespace
+                    <span class="help-icon" data-tooltip="k8s-namespace">?</span>
+                </label>
                 <input type="text" name="containerK8sNamespace" placeholder="z.B. production, medical-apps">
             </div>
             <div class="form-group">
-                <label>Deployment / Pod Name</label>
+                <label>
+                    Deployment / Pod Name
+                    <span class="help-icon" data-tooltip="k8s-deployment">?</span>
+                </label>
                 <input type="text" name="containerK8sDeployment" placeholder="z.B. kis-deployment">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
-                <label>Replicas</label>
+                <label>
+                    Replicas
+                    <span class="help-icon" data-tooltip="k8s-replicas">?</span>
+                </label>
                 <input type="number" name="containerK8sReplicas" placeholder="z.B. 3" min="1">
             </div>
             <div class="form-group">
-                <label>Service Name</label>
+                <label>
+                    Service Name
+                    <span class="help-icon" data-tooltip="k8s-service">?</span>
+                </label>
                 <input type="text" name="containerK8sService" placeholder="z.B. kis-service">
             </div>
         </div>
@@ -107,12 +131,18 @@
     <div class="subsection-header">Container-Image</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Image-Name</label>
+            <label>
+                Image-Name
+                <span class="help-icon" data-tooltip="container-image">?</span>
+            </label>
             <input type="text" name="containerImage" placeholder="z.B. nginx:1.24, postgres:15-alpine">
             <div class="help-text">Registry/Image:Tag</div>
         </div>
         <div class="form-group">
-            <label>Image-Registry</label>
+            <label>
+                Image-Registry
+                <span class="help-icon" data-tooltip="container-registry">?</span>
+            </label>
             <div class="custom-select" data-name="containerRegistry">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -139,6 +169,7 @@
         <label class="cluster-label">
             <input type="checkbox" name="containerImageScan" class="container-scan-check">
             <span>Image Security Scanning aktiviert</span>
+            <span class="help-icon" data-tooltip="image-scan">?</span>
         </label>
         <div class="help-text">Wird das Container-Image auf Schwachstellen gescannt?</div>
     </div>
@@ -147,12 +178,18 @@
     <div class="subsection-header">Ressourcen & Limits</div>
     <div class="form-row">
         <div class="form-group">
-            <label>CPU-Limit</label>
+            <label>
+                CPU-Limit
+                <span class="help-icon" data-tooltip="cpu-limit">?</span>
+            </label>
             <input type="text" name="containerCPULimit" placeholder="z.B. 2, 500m, 0.5">
             <div class="help-text">CPU Cores oder Millicores (m)</div>
         </div>
         <div class="form-group">
-            <label>Memory-Limit</label>
+            <label>
+                Memory-Limit
+                <span class="help-icon" data-tooltip="memory-limit">?</span>
+            </label>
             <input type="text" name="containerMemoryLimit" placeholder="z.B. 4Gi, 2048Mi, 2G">
             <div class="help-text">In Gi (Gibibytes) oder Mi (Mebibytes)</div>
         </div>
@@ -160,12 +197,18 @@
 
     <div class="form-row">
         <div class="form-group">
-            <label>CPU-Request</label>
+            <label>
+                CPU-Request
+                <span class="help-icon" data-tooltip="cpu-request">?</span>
+            </label>
             <input type="text" name="containerCPURequest" placeholder="z.B. 1, 250m, 0.25">
             <div class="help-text">Minimale garantierte CPU</div>
         </div>
         <div class="form-group">
-            <label>Memory-Request</label>
+            <label>
+                Memory-Request
+                <span class="help-icon" data-tooltip="memory-request">?</span>
+            </label>
             <input type="text" name="containerMemoryRequest" placeholder="z.B. 2Gi, 1024Mi, 1G">
             <div class="help-text">Minimaler garantierter Speicher</div>
         </div>
@@ -175,12 +218,18 @@
     <div class="subsection-header">Netzwerk & Ports</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Exposed Ports</label>
+            <label>
+                Exposed Ports
+                <span class="help-icon" data-tooltip="exposed-ports">?</span>
+            </label>
             <input type="text" name="containerPorts" placeholder="z.B. 80, 443, 8080:80">
             <div class="help-text">Kommagetrennte Liste: Port oder HostPort:ContainerPort</div>
         </div>
         <div class="form-group">
-            <label>Netzwerk-Modus</label>
+            <label>
+                Netzwerk-Modus
+                <span class="help-icon" data-tooltip="network-mode">?</span>
+            </label>
             <div class="custom-select" data-name="containerNetworkMode">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -206,17 +255,24 @@
         <label class="cluster-label">
             <input type="checkbox" name="containerHasVolumes" class="container-volumes-check">
             <span>Persistent Volumes verwendet</span>
+            <span class="help-icon" data-tooltip="volumes-check">?</span>
         </label>
     </div>
 
     <div class="container-volumes-config" style="display: none;">
         <div class="form-group">
-            <label>Volume-Mounts</label>
+            <label>
+                Volume-Mounts
+                <span class="help-icon" data-tooltip="volume-mounts">?</span>
+            </label>
             <textarea name="containerVolumes" rows="3" placeholder="Liste der Volumes, z.B.:&#10;/var/lib/app/data → app-data-volume&#10;/var/log → logs-volume&#10;/etc/config → config-map"></textarea>
             <div class="help-text">Container-Pfad → Volume/Mount-Name (eine pro Zeile)</div>
         </div>
         <div class="form-group">
-            <label>Volume-Typ</label>
+            <label>
+                Volume-Typ
+                <span class="help-icon" data-tooltip="volume-type">?</span>
+            </label>
             <div class="custom-select" data-name="containerVolumeType">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -245,12 +301,16 @@
         <label class="cluster-label">
             <input type="checkbox" name="containerHasEnv" class="container-env-check">
             <span>Umgebungsvariablen / ConfigMaps verwendet</span>
+            <span class="help-icon" data-tooltip="env-vars-check">?</span>
         </label>
     </div>
 
     <div class="container-env-config" style="display: none;">
         <div class="form-group">
-            <label>Wichtige Umgebungsvariablen</label>
+            <label>
+                Wichtige Umgebungsvariablen
+                <span class="help-icon" data-tooltip="env-vars-list">?</span>
+            </label>
             <textarea name="containerEnvVars" rows="3" placeholder="z.B.:&#10;DATABASE_URL&#10;API_KEY&#10;LOG_LEVEL"></textarea>
             <div class="help-text">Namen der wichtigsten Konfigurationsvariablen (ohne Werte!)</div>
         </div>
@@ -260,6 +320,7 @@
         <label class="cluster-label">
             <input type="checkbox" name="containerHasSecrets">
             <span>Secrets / Sensitive Daten verwendet</span>
+            <span class="help-icon" data-tooltip="secrets-check">?</span>
         </label>
         <div class="help-text">Z.B. Passwörter, API-Keys, Zertifikate</div>
     </div>
@@ -271,19 +332,24 @@
             <label class="cluster-label">
                 <input type="checkbox" name="containerHealthCheck">
                 <span>Health Check konfiguriert</span>
+                <span class="help-icon" data-tooltip="health-check">?</span>
             </label>
         </div>
         <div class="form-group">
             <label class="cluster-label">
                 <input type="checkbox" name="containerReadinessProbe">
                 <span>Readiness Probe konfiguriert</span>
+                <span class="help-icon" data-tooltip="readiness-probe">?</span>
             </label>
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>Restart-Policy</label>
+            <label>
+                Restart-Policy
+                <span class="help-icon" data-tooltip="restart-policy">?</span>
+            </label>
             <div class="custom-select" data-name="containerRestartPolicy">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -301,7 +367,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Log-Driver</label>
+            <label>
+                Log-Driver
+                <span class="help-icon" data-tooltip="log-driver">?</span>
+            </label>
             <div class="custom-select" data-name="containerLogDriver">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -325,7 +394,10 @@
     <!-- Host-Zuordnung -->
     <div class="subsection-header">Host-Zuordnung</div>
     <div class="form-group">
-        <label>Läuft auf Host (optional)</label>
+        <label>
+            Läuft auf Host (optional)
+            <span class="help-icon" data-tooltip="container-host">?</span>
+        </label>
         <div class="custom-select" data-name="containerHost">
             <div class="select-trigger">
                 <span class="placeholder">Keine spezifische Zuordnung</span>
@@ -343,7 +415,13 @@
 
     <!-- Zusätzliche Informationen -->
     <div class="form-group">
-        <label>Anmerkungen</label>
+        <label>
+            Anmerkungen
+            <span class="help-icon" data-tooltip="container-notes">?</span>
+        </label>
         <textarea name="containerNotes" rows="3" placeholder="z.B. Besonderheiten, Dependencies, bekannte Probleme..."></textarea>
     </div>
 </div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/containerhelp.tpl}}

@@ -19,18 +19,27 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Gerätename / Bezeichnung <span class="required">*</span></label>
+                    <label>
+                        Gerätename / Bezeichnung <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="meddevice-name">?</span>
+                    </label>
                     <input type="text" id="devicename" required placeholder="z.B. CT-Scanner Raum 3, Ultraschall-Station-A">
                 </div>
                 <div class="form-group">
-                    <label>Inventarnummer <span class="required">*</span></label>
+                    <label>
+                        Inventarnummer <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="meddevice-inventory">?</span>
+                    </label>
                     <input type="text" id="inventorynumber" required placeholder="z.B. MD-2024-001, INV-12345">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Hersteller <span class="required">*</span></label>
+                    <label>
+                        Hersteller <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="meddevice-manufacturer">?</span>
+                    </label>
                     <input type="text" id="manufacturer" required placeholder="z.B. Siemens Healthineers, GE Healthcare">
                 </div>
                 <div class="form-group">
@@ -45,7 +54,10 @@
                     <input type="text" id="serialnumber" placeholder="z.B. SN123456789">
                 </div>
                 <div class="form-group">
-                    <label>Geräte-Kategorie <span class="required">*</span></label>
+                    <label>
+                        Geräte-Kategorie <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="meddevice-category">?</span>
+                    </label>
                     <div class="custom-select" data-name="devicecategory">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -106,7 +118,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Risikoklasse (MDR) <span class="required">*</span></label>
+                    <label>
+                        Risikoklasse (MDR) <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="meddevice-riskclass">?</span>
+                    </label>
                     <div class="custom-select" data-name="riskclass">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -125,7 +140,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>CE-Kennzeichnung</label>
+                    <label>
+                        CE-Kennzeichnung
+                        <span class="help-icon" data-tooltip="meddevice-ce">?</span>
+                    </label>
                     <div class="custom-select" data-name="cemarking">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -145,11 +163,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>UDI (Unique Device Identification)</label>
+                    <label>
+                        UDI (Unique Device Identification)
+                        <span class="help-icon" data-tooltip="meddevice-udi">?</span>
+                    </label>
                     <input type="text" id="udi" placeholder="z.B. (01)04987654321115(11)220531(21)A1B2C3">
                 </div>
                 <div class="form-group">
-                    <label>Benannte Stelle / Notified Body</label>
+                    <label>
+                        Benannte Stelle / Notified Body
+                        <span class="help-icon" data-tooltip="meddevice-notified-body">?</span>
+                    </label>
                     <input type="text" id="notifiedbody" placeholder="z.B. TÜV SÜD, CE 0123">
                 </div>
             </div>
@@ -166,7 +190,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Standort / Raum <span class="required">*</span></label>
+                    <label>
+                        Standort / Raum <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="meddevice-location">?</span>
+                    </label>
                     <input type="text" id="location" required placeholder="z.B. Gebäude A, Raum 3.12, Radiologie">
                 </div>
                 <div class="form-group">
@@ -177,7 +204,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Nutzungsstatus</label>
+                    <label>
+                        Nutzungsstatus
+                        <span class="help-icon" data-tooltip="meddevice-usage-status">?</span>
+                    </label>
                     <div class="custom-select" data-name="usagestatus">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -227,13 +257,17 @@
                 <label class="cluster-label">
                     <input type="checkbox" id="device-network-check">
                     <span>Gerät ist netzwerkfähig / IT-vernetzt</span>
+                    <span class="help-icon" data-tooltip="meddevice-network">?</span>
                 </label>
             </div>
 
             <div id="device-network-config" style="display:none;">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Netzwerk-Anbindung</label>
+                        <label>
+                            Netzwerk-Anbindung
+                            <span class="help-icon" data-tooltip="meddevice-network-connection">?</span>
+                        </label>
                         <div class="custom-select" data-name="networkconnection">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -272,7 +306,10 @@
                 <div class="subsection-header">Integrationen & Schnittstellen</div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>PACS-Integration</label>
+                        <label>
+                            PACS-Integration
+                            <span class="help-icon" data-tooltip="meddevice-pacs">?</span>
+                        </label>
                         <div class="custom-select" data-name="pacsintegration">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -290,7 +327,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>RIS/HIS-Integration</label>
+                        <label>
+                            RIS/HIS-Integration
+                            <span class="help-icon" data-tooltip="meddevice-ris-his">?</span>
+                        </label>
                         <div class="custom-select" data-name="rishisintegration">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -311,7 +351,10 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Kommunikationsprotokoll (Gerät)</label>
+                        <label>
+                            Kommunikationsprotokoll (Gerät)
+                            <span class="help-icon" data-tooltip="meddevice-protocol">?</span>
+                        </label>
                         <input type="text" id="protocol" placeholder="z.B. DICOM, HL7, FHIR, Modality Worklist, proprietary">
                     </div>
                     <div class="form-group">
@@ -326,6 +369,7 @@
                     <label class="cluster-label">
                         <input type="checkbox" id="device-gateway-check">
                         <span>Gateway / Konverter / Middleware wird verwendet</span>
+                        <span class="help-icon" data-tooltip="meddevice-gateway">?</span>
                     </label>
                 </div>
 
@@ -385,7 +429,10 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Gateway-Funktionen</label>
+                            <label>
+                                Gateway-Funktionen
+                                <span class="help-icon" data-tooltip="meddevice-gateway-functions">?</span>
+                            </label>
                             <textarea id="gatewayfunctions" rows="2" placeholder="z.B. Protokoll-Konvertierung, DICOM Modality Worklist, Anonymisierung, Bildkompression, Metadaten-Anpassung"></textarea>
                         </div>
                     </div>
@@ -448,7 +495,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Wartungsvertrag</label>
+                    <label>
+                        Wartungsvertrag
+                        <span class="help-icon" data-tooltip="meddevice-maintenance-contract">?</span>
+                    </label>
                     <div class="custom-select" data-name="maintenancecontract">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -488,7 +538,10 @@
                     <input type="text" id="nextmaintenance" placeholder="z.B. 15.05.2025">
                 </div>
                 <div class="form-group">
-                    <label>MTK-Prüfung (Medizintechnik)</label>
+                    <label>
+                        MTK-Prüfung (Medizintechnik)
+                        <span class="help-icon" data-tooltip="meddevice-mtk">?</span>
+                    </label>
                     <input type="text" id="mtkcheck" placeholder="z.B. jährlich, 24 Monate, letzte: 01.12.2024">
                 </div>
             </div>
@@ -505,7 +558,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Betriebssystem</label>
+                    <label>
+                        Betriebssystem
+                        <span class="help-icon" data-tooltip="meddevice-os">?</span>
+                    </label>
                     <input type="text" id="operatingsystem" placeholder="z.B. Windows 10 IoT, Linux, Embedded">
                 </div>
                 <div class="form-group">
@@ -526,7 +582,10 @@
             </div>
 
             <div class="form-group">
-                <label>Update-Politik</label>
+                <label>
+                    Update-Politik
+                    <span class="help-icon" data-tooltip="meddevice-update-policy">?</span>
+                </label>
                 <div class="custom-select" data-name="updatepolicy">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
@@ -556,7 +615,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Antivirus / Endpoint Protection</label>
+                    <label>
+                        Antivirus / Endpoint Protection
+                        <span class="help-icon" data-tooltip="meddevice-antivirus">?</span>
+                    </label>
                     <div class="custom-select" data-name="antivirus">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -574,7 +636,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Firewall / Netzwerk-Isolation</label>
+                    <label>
+                        Firewall / Netzwerk-Isolation
+                        <span class="help-icon" data-tooltip="meddevice-firewall">?</span>
+                    </label>
                     <div class="custom-select" data-name="firewall">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -595,7 +660,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Datenverschlüsselung</label>
+                    <label>
+                        Datenverschlüsselung
+                        <span class="help-icon" data-tooltip="meddevice-encryption">?</span>
+                    </label>
                     <div class="custom-select" data-name="encryption">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -613,7 +681,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Zugriffskontrolle</label>
+                    <label>
+                        Zugriffskontrolle
+                        <span class="help-icon" data-tooltip="meddevice-access-control">?</span>
+                    </label>
                     <div class="custom-select" data-name="accesscontrol">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -634,7 +705,10 @@
             </div>
 
             <div class="form-group">
-                <label>Sicherheitsbewertung / Risikoanalyse</label>
+                <label>
+                    Sicherheitsbewertung / Risikoanalyse
+                    <span class="help-icon" data-tooltip="meddevice-security-assessment">?</span>
+                </label>
                 <textarea id="securityassessment" rows="3" placeholder="Ergebnis der Sicherheitsbewertung, identifizierte Risiken, Kompensationsmaßnahmen..."></textarea>
             </div>
         </div>
@@ -650,7 +724,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Medizinprodukte-Beauftragter</label>
+                    <label>
+                        Medizinprodukte-Beauftragter
+                        <span class="help-icon" data-tooltip="meddevice-mp-beauftragter">?</span>
+                    </label>
                     <input type="text" id="mpbeauftragter" placeholder="z.B. Dr. med. Schmidt, M.Eng.">
                 </div>
                 <div class="form-group">
@@ -681,10 +758,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / Besonderheiten</label>
+                <label>
+                    Notizen / Besonderheiten
+                    <span class="help-icon" data-tooltip="meddevice-notes">?</span>
+                </label>
                 <textarea id="devicenotes" rows="4" placeholder="Zusätzliche Informationen zum Gerät, bekannte Probleme, Besonderheiten im Betrieb, Dokumentation..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/medicaldevice-help.tpl}}

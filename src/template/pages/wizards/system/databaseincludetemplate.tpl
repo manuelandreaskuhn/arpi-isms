@@ -3,33 +3,51 @@
     <div class="subsection-header">Basis-Informationen</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Datenbankname <span class="required">*</span></label>
+            <label>
+                Datenbankname <span class="required">*</span>
+                <span class="help-icon" data-tooltip="db-name">?</span>
+            </label>
             <input type="text" name="dbname" class="db-field" placeholder="z.B. KIS_PROD, PACS_DB" required>
         </div>
         <div class="form-group">
-            <label>Datenbank-Typ</label>
+            <label>
+                Datenbank-Typ
+                <span class="help-icon" data-tooltip="db-type">?</span>
+            </label>
             {{include:pages/wizards/system/dbtypecombobox.tpl}}
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>Version</label>
+            <label>
+                Version
+                <span class="help-icon" data-tooltip="db-version">?</span>
+            </label>
             <input type="text" name="dbversion" class="db-field" placeholder="z.B. 19c, 2022, 8.0.35">
         </div>
         <div class="form-group">
-            <label>Zeichensatz / Charset</label>
+            <label>
+                Zeichensatz / Charset
+                <span class="help-icon" data-tooltip="db-charset">?</span>
+            </label>
             <input type="text" name="charset" class="db-field" placeholder="z.B. UTF8, AL32UTF8, utf8mb4">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>Port</label>
+            <label>
+                Port
+                <span class="help-icon" data-tooltip="db-port">?</span>
+            </label>
             <input type="number" name="dbport" class="db-field" placeholder="z.B. 1521, 1433, 3306, 5432">
         </div>
         <div class="form-group">
-            <label>Tablespace / Schema</label>
+            <label>
+                Tablespace / Schema
+                <span class="help-icon" data-tooltip="db-tablespace">?</span>
+            </label>
             <input type="text" name="tablespace" class="db-field" placeholder="z.B. USERS, dbo">
         </div>
     </div>
@@ -40,27 +58,40 @@
         <label class="cluster-label">
             <input type="checkbox" class="db-cluster-check">
             <span>Datenbank-Cluster / High Availability</span>
+            <span class="help-icon" data-tooltip="db-cluster-check">?</span>
         </label>
     </div>
 
     <div class="cluster-config">
         <div class="form-row">
             <div class="form-group">
-                <label>Cluster-Typ</label>
+                <label>
+                    Cluster-Typ
+                    <span class="help-icon" data-tooltip="cluster-type">?</span>
+                </label>
                 {{include:pages/wizards/system/dbclustertypecombobox.tpl}}
             </div>
             <div class="form-group">
-                <label>Cluster-Name</label>
+                <label>
+                    Cluster-Name
+                    <span class="help-icon" data-tooltip="cluster-name">?</span>
+                </label>
                 <input type="text" name="clustername" class="db-field" placeholder="z.B. KIS-DB-CLUSTER-01">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
-                <label>Anzahl Knoten</label>
+                <label>
+                    Anzahl Knoten
+                    <span class="help-icon" data-tooltip="cluster-nodes">?</span>
+                </label>
                 <input type="number" name="clusternodes" class="db-field" placeholder="z.B. 2, 3, 5" min="2">
             </div>
             <div class="form-group">
-                <label>Failover-Modus</label>
+                <label>
+                    Failover-Modus
+                    <span class="help-icon" data-tooltip="failover-mode">?</span>
+                </label>
                 <div class="custom-select" data-name="failovermode" data-index="0" data-category="database">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
@@ -80,7 +111,10 @@
     </div>
 
     <!-- Host-Zuordnung -->
-    <div class="subsection-header">Host-Zuordnung</div>
+    <div class="subsection-header">
+        Host-Zuordnung
+        <span class="help-icon" data-tooltip="db-host-assignment">?</span>
+    </div>
     <div class="form-group host-assignment-box">
         <div class="help-text">Wählen Sie die VM(s) und/oder Hardware-Server aus, auf denen diese Datenbank betrieben wird.</div>
         <div class="host-assignment" data-hostlist>
@@ -92,11 +126,17 @@
     <div class="subsection-header">Größe & Performance</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Datenbankgröße (GB)</label>
+            <label>
+                Datenbankgröße (GB)
+                <span class="help-icon" data-tooltip="db-size">?</span>
+            </label>
             <input type="number" name="dbsize" class="db-field" placeholder="z.B. 500">
         </div>
         <div class="form-group">
-            <label>Max. Verbindungen</label>
+            <label>
+                Max. Verbindungen
+                <span class="help-icon" data-tooltip="max-connections">?</span>
+            </label>
             <input type="number" name="maxconnections" class="db-field" placeholder="z.B. 100">
         </div>
     </div>
@@ -105,7 +145,10 @@
     <div class="subsection-header">Sicherheit & Authentifizierung</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Verschlüsselung</label>
+            <label>
+                Verschlüsselung
+                <span class="help-icon" data-tooltip="db-encryption">?</span>
+            </label>
             <div class="custom-select" data-name="dbencryption" data-index="0" data-category="database">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -123,7 +166,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Authentifizierung</label>
+            <label>
+                Authentifizierung
+                <span class="help-icon" data-tooltip="db-authentication">?</span>
+            </label>
             <div class="custom-select" data-name="dbauthentication" data-index="0" data-category="database">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -146,7 +192,13 @@
     <!-- Notizen -->
     <div class="subsection-header">Zusätzliche Informationen</div>
     <div class="form-group">
-        <label>Notizen / Besonderheiten</label>
+        <label>
+            Notizen / Besonderheiten
+            <span class="help-icon" data-tooltip="db-notes">?</span>
+        </label>
         <textarea name="dbnotes" class="db-field" rows="3" placeholder="Zusätzliche Informationen zur Datenbank, Besonderheiten der Konfiguration..."></textarea>
     </div>
 </div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/databasehelp.tpl}}

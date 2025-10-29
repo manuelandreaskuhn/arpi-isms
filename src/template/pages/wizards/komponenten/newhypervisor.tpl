@@ -19,11 +19,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Hypervisor Name <span class="required">*</span></label>
+                    <label>
+                        Hypervisor Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="hypervisor-name">?</span>
+                    </label>
                     <input type="text" id="hypervisorname" required placeholder="z.B. ESXi-Cluster-01, Hyper-V-Host-DC1">
                 </div>
                 <div class="form-group">
-                    <label>Typ / Hersteller <span class="required">*</span></label>
+                    <label>
+                        Typ / Hersteller <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="hypervisor-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="hypervisortype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -59,11 +65,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Version</label>
+                    <label>
+                        Version
+                        <span class="help-icon" data-tooltip="hypervisor-version">?</span>
+                    </label>
                     <input type="text" id="hypervisorversion" placeholder="z.B. ESXi 8.0 U2, Hyper-V 2022">
                 </div>
                 <div class="form-group">
-                    <label>Management IP / URL</label>
+                    <label>
+                        Management IP / URL
+                        <span class="help-icon" data-tooltip="hypervisor-mgmt-url">?</span>
+                    </label>
                     <input type="text" id="mgmturl" placeholder="z.B. vcenter.example.com, 192.168.10.50">
                 </div>
             </div>
@@ -82,24 +94,34 @@
                 <label class="cluster-label">
                     <input type="checkbox" id="hypervisor-cluster-check">
                     <span>Cluster-Konfiguration (mehrere Hosts)</span>
+                    <span class="help-icon" data-tooltip="hypervisor-cluster">?</span>
                 </label>
             </div>
 
             <div id="hypervisor-cluster-config" style="display:none;">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Cluster Name</label>
+                        <label>
+                            Cluster Name
+                            <span class="help-icon" data-tooltip="hypervisor-cluster-name">?</span>
+                        </label>
                         <input type="text" id="clustername" placeholder="z.B. Production-Cluster, HA-Cluster-01">
                     </div>
                     <div class="form-group">
-                        <label>Anzahl Hosts im Cluster</label>
+                        <label>
+                            Anzahl Hosts im Cluster
+                            <span class="help-icon" data-tooltip="hypervisor-cluster-hosts">?</span>
+                        </label>
                         <input type="number" id="clusterhosts" placeholder="z.B. 3, 5, 8" min="2">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>HA (High Availability)</label>
+                        <label>
+                            HA (High Availability)
+                            <span class="help-icon" data-tooltip="hypervisor-ha">?</span>
+                        </label>
                         <div class="custom-select" data-name="ha">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -115,7 +137,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>DRS / Load Balancing</label>
+                        <label>
+                            DRS / Load Balancing
+                            <span class="help-icon" data-tooltip="hypervisor-drs">?</span>
+                        </label>
                         <div class="custom-select" data-name="drs">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -138,14 +163,20 @@
             <div class="subsection-header">Host-Details</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Host-Liste / Hostnames</label>
+                    <label>
+                        Host-Liste / Hostnames
+                        <span class="help-icon" data-tooltip="hypervisor-hostlist">?</span>
+                    </label>
                     <textarea id="hostlist" rows="3" placeholder="Liste der physischen Hosts (einer pro Zeile)&#10;z.B.:&#10;esxi-host-01.example.com&#10;esxi-host-02.example.com&#10;esxi-host-03.example.com"></textarea>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Standort / Rechenzentrum</label>
+                    <label>
+                        Standort / Rechenzentrum
+                        <span class="help-icon" data-tooltip="hypervisor-location">?</span>
+                    </label>
                     <input type="text" id="location" placeholder="z.B. RZ1, Datacenter Berlin">
                 </div>
                 <div class="form-group">
@@ -166,12 +197,18 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Gesamt CPU Cores</label>
+                    <label>
+                        Gesamt CPU Cores
+                        <span class="help-icon" data-tooltip="hypervisor-total-cpu">?</span>
+                    </label>
                     <input type="number" id="totalcpu" placeholder="z.B. 128, 256">
                     <div class="help-text">Gesamte physische CPU Cores (alle Hosts)</div>
                 </div>
                 <div class="form-group">
-                    <label>Gesamt RAM (GB)</label>
+                    <label>
+                        Gesamt RAM (GB)
+                        <span class="help-icon" data-tooltip="hypervisor-total-ram">?</span>
+                    </label>
                     <input type="number" id="totalram" placeholder="z.B. 1024, 2048">
                     <div class="help-text">Gesamter physischer RAM (alle Hosts)</div>
                 </div>
@@ -179,12 +216,18 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Gesamt Storage (TB)</label>
+                    <label>
+                        Gesamt Storage (TB)
+                        <span class="help-icon" data-tooltip="hypervisor-total-storage">?</span>
+                    </label>
                     <input type="number" id="totalstorage" step="0.1" placeholder="z.B. 10.5, 50">
                     <div class="help-text">Gesamter zugewiesener Storage</div>
                 </div>
                 <div class="form-group">
-                    <label>Storage-Typ</label>
+                    <label>
+                        Storage-Typ
+                        <span class="help-icon" data-tooltip="hypervisor-storage-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="storagetype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -207,11 +250,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Anzahl VMs (aktuell)</label>
+                    <label>
+                        Anzahl VMs (aktuell)
+                        <span class="help-icon" data-tooltip="hypervisor-vm-count">?</span>
+                    </label>
                     <input type="number" id="vmcount" placeholder="z.B. 50, 200">
                 </div>
                 <div class="form-group">
-                    <label>Overcommitment Ratio (CPU)</label>
+                    <label>
+                        Overcommitment Ratio (CPU)
+                        <span class="help-icon" data-tooltip="hypervisor-cpu-overcommit">?</span>
+                    </label>
                     <input type="text" id="cpuovercommit" placeholder="z.B. 4:1, 8:1">
                 </div>
             </div>
@@ -228,28 +277,43 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Management Netzwerk</label>
+                    <label>
+                        Management Netzwerk
+                        <span class="help-icon" data-tooltip="hypervisor-mgmt-network">?</span>
+                    </label>
                     <input type="text" id="mgmtnetwork" placeholder="z.B. 192.168.10.0/24, VLAN 10">
                 </div>
                 <div class="form-group">
-                    <label>vMotion / Live Migration Netzwerk</label>
+                    <label>
+                        vMotion / Live Migration Netzwerk
+                        <span class="help-icon" data-tooltip="hypervisor-vmotion-network">?</span>
+                    </label>
                     <input type="text" id="vmotionnetwork" placeholder="z.B. 192.168.20.0/24, VLAN 20">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Storage Netzwerk</label>
+                    <label>
+                        Storage Netzwerk
+                        <span class="help-icon" data-tooltip="hypervisor-storage-network">?</span>
+                    </label>
                     <input type="text" id="storagenetwork" placeholder="z.B. 192.168.30.0/24, VLAN 30">
                 </div>
                 <div class="form-group">
-                    <label>VM Netzwerke / Port Groups</label>
+                    <label>
+                        VM Netzwerke / Port Groups
+                        <span class="help-icon" data-tooltip="hypervisor-vm-networks">?</span>
+                    </label>
                     <input type="text" id="vmnetworks" placeholder="z.B. Prod-VLAN100, DMZ-VLAN200">
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Distributed Switch / Virtual Switch</label>
+                <label>
+                    Distributed Switch / Virtual Switch
+                    <span class="help-icon" data-tooltip="hypervisor-vswitch">?</span>
+                </label>
                 <input type="text" id="vswitch" placeholder="z.B. vDS-Production, vSwitch0">
             </div>
         </div>
@@ -265,7 +329,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Management-Tool</label>
+                    <label>
+                        Management-Tool
+                        <span class="help-icon" data-tooltip="hypervisor-mgmt-tool">?</span>
+                    </label>
                     <div class="custom-select" data-name="mgmttool">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -292,11 +359,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Monitoring / Alerting</label>
+                    <label>
+                        Monitoring / Alerting
+                        <span class="help-icon" data-tooltip="hypervisor-monitoring">?</span>
+                    </label>
                     <input type="text" id="monitoring" placeholder="z.B. vROps, PRTG, Zabbix">
                 </div>
                 <div class="form-group">
-                    <label>Backup-Lösung</label>
+                    <label>
+                        Backup-Lösung
+                        <span class="help-icon" data-tooltip="hypervisor-backup">?</span>
+                    </label>
                     <input type="text" id="backupsolution" placeholder="z.B. Veeam, Altaro, Commvault">
                 </div>
             </div>
@@ -313,7 +386,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Lizenzmodell</label>
+                    <label>
+                        Lizenzmodell
+                        <span class="help-icon" data-tooltip="hypervisor-license-model">?</span>
+                    </label>
                     <div class="custom-select" data-name="licensemodel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -333,7 +409,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Support-Level</label>
+                    <label>
+                        Support-Level
+                        <span class="help-icon" data-tooltip="hypervisor-support-level">?</span>
+                    </label>
                     <div class="custom-select" data-name="supportlevel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -369,10 +448,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / Besonderheiten</label>
+                <label>
+                    Notizen / Besonderheiten
+                    <span class="help-icon" data-tooltip="hypervisor-notes">?</span>
+                </label>
                 <textarea id="hypervisornotes" rows="4" placeholder="Zusätzliche Informationen zum Hypervisor, spezielle Konfigurationen, geplante Updates..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/hypervisor-help.tpl}}

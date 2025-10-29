@@ -19,11 +19,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Backup-System Name <span class="required">*</span></label>
+                    <label>
+                        Backup-System Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="backup-system-name">?</span>
+                    </label>
                     <input type="text" id="backupsystemname" required placeholder="z.B. Veeam-Prod, Backup-Server-01">
                 </div>
                 <div class="form-group">
-                    <label>Backup-Software <span class="required">*</span></label>
+                    <label>
+                        Backup-Software <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="backup-software">?</span>
+                    </label>
                     <div class="custom-select" data-name="backupsoftware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -67,11 +73,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Version</label>
+                    <label>
+                        Version
+                        <span class="help-icon" data-tooltip="backup-version">?</span>
+                    </label>
                     <input type="text" id="backupversion" placeholder="z.B. v12.1, 2024 Update 2">
                 </div>
                 <div class="form-group">
-                    <label>Lizenzmodell</label>
+                    <label>
+                        Lizenzmodell
+                        <span class="help-icon" data-tooltip="backup-license-model">?</span>
+                    </label>
                     <div class="custom-select" data-name="backuplicensemodel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -105,7 +117,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Backup-Server / Hostname</label>
+                    <label>
+                        Backup-Server / Hostname
+                        <span class="help-icon" data-tooltip="backup-server-id">?</span>
+                    </label>
                     <div class="custom-select" data-name="backupserverid" data-component-type="vm,hardware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen (VM/Hardware)</span>
@@ -139,11 +154,17 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Betriebssystem</label>
+                    <label>
+                        Betriebssystem
+                        <span class="help-icon" data-tooltip="backup-os">?</span>
+                    </label>
                     <input type="text" id="backupos" placeholder="z.B. Windows Server 2022, Linux Ubuntu 22.04">
                 </div>
                 <div class="form-group">
-                    <label>Standort</label>
+                    <label>
+                        Standort
+                        <span class="help-icon" data-tooltip="backup-location">?</span>
+                    </label>
                     <input type="text" id="backuplocation" placeholder="z.B. RZ1, Backup-Raum, Cloud">
                 </div>
             </div>
@@ -154,7 +175,10 @@
                     <input type="text" id="backupresources" placeholder="z.B. 8 vCPU, 32GB RAM">
                 </div>
                 <div class="form-group">
-                    <label>Management-URL</label>
+                    <label>
+                        Management-URL
+                        <span class="help-icon" data-tooltip="backup-mgmt-url">?</span>
+                    </label>
                     <input type="text" id="backupmgmturl" placeholder="z.B. https://backup.example.com:9443">
                 </div>
             </div>
@@ -171,7 +195,10 @@
         <div class="section-content">
             <div class="subsection-header">Backup-Architektur</div>
             <div class="form-group">
-                <label>Storage-Stufen</label>
+                <label>
+                    Storage-Stufen
+                    <span class="help-icon" data-tooltip="storage-levels">?</span>
+                </label>
                 <div class="custom-select" data-name="storagelevels">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
@@ -191,7 +218,10 @@
             <div class="subsection-header">Stufe 1: Primärer Backup-Storage</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Storage-Typ (Primär)</label>
+                    <label>
+                        Storage-Typ (Primär)
+                        <span class="help-icon" data-tooltip="primary-storage-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="primarystoragetype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -212,7 +242,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Kapazität (TB)</label>
+                    <label>
+                        Kapazität (TB)
+                        <span class="help-icon" data-tooltip="primary-storage-capacity">?</span>
+                    </label>
                     <input type="number" id="primarystoragecapacity" step="0.1" placeholder="z.B. 50, 100">
                 </div>
             </div>
@@ -223,7 +256,10 @@
                     <input type="text" id="primarystoragepath" placeholder="z.B. \\NAS01\Backups, /mnt/backup">
                 </div>
                 <div class="form-group">
-                    <label>Deduplizierung</label>
+                    <label>
+                        Deduplizierung
+                        <span class="help-icon" data-tooltip="primary-deduplication">?</span>
+                    </label>
                     <div class="custom-select" data-name="primarydeduplication">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -244,7 +280,10 @@
             <div id="secondary-storage-config">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Storage-Typ (Sekundär)</label>
+                        <label>
+                            Storage-Typ (Sekundär)
+                            <span class="help-icon" data-tooltip="secondary-storage-type">?</span>
+                        </label>
                         <div class="custom-select" data-name="secondarystoragetype">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -296,7 +335,10 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Replikationsfrequenz</label>
+                        <label>
+                            Replikationsfrequenz
+                            <span class="help-icon" data-tooltip="secondary-replication-freq">?</span>
+                        </label>
                         <div class="custom-select" data-name="secondaryreplicationfreq">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -314,7 +356,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Immutability (Unveränderbarkeit)</label>
+                        <label>
+                            Immutability (Unveränderbarkeit)
+                            <span class="help-icon" data-tooltip="secondary-immutability">?</span>
+                        </label>
                         <div class="custom-select" data-name="secondaryimmutability">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -342,7 +387,10 @@
             <div id="tertiary-storage-config" style="display:none;">
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Storage-Typ (Archiv)</label>
+                        <label>
+                            Storage-Typ (Archiv)
+                            <span class="help-icon" data-tooltip="tertiary-storage-type">?</span>
+                        </label>
                         <div class="custom-select" data-name="tertiarystoragetype">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -373,7 +421,10 @@
                         <input type="text" id="tertiarystoragepath" placeholder="z.B. glacier://backup-archive, Tape-Library-03">
                     </div>
                     <div class="form-group">
-                        <label>Archivierungsfrequenz</label>
+                        <label>
+                            Archivierungsfrequenz
+                            <span class="help-icon" data-tooltip="tertiary-archive-freq">?</span>
+                        </label>
                         <div class="custom-select" data-name="tertiaryarchivefreq">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
@@ -434,7 +485,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Unterstützte Backup-Typen</label>
+                    <label>
+                        Unterstützte Backup-Typen
+                        <span class="help-icon" data-tooltip="backup-types">?</span>
+                    </label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
                             <input type="checkbox" id="feature-full" value="full">
@@ -458,7 +512,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Kompression</label>
+                    <label>
+                        Kompression
+                        <span class="help-icon" data-tooltip="backup-compression">?</span>
+                    </label>
                     <div class="custom-select" data-name="compression">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -476,7 +533,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Verschlüsselung</label>
+                    <label>
+                        Verschlüsselung
+                        <span class="help-icon" data-tooltip="backup-encryption">?</span>
+                    </label>
                     <div class="custom-select" data-name="backupencryption">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -497,7 +557,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Application-Aware Backup</label>
+                    <label>
+                        Application-Aware Backup
+                        <span class="help-icon" data-tooltip="application-aware">?</span>
+                    </label>
                     <div class="custom-select" data-name="applicationaware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -513,7 +576,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Instant Recovery / VM</label>
+                    <label>
+                        Instant Recovery / VM
+                        <span class="help-icon" data-tooltip="instant-recovery">?</span>
+                    </label>
                     <div class="custom-select" data-name="instantrecovery">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -535,7 +601,10 @@
                 <div class="checkbox-group">
                     <div class="checkbox-item">
                         <input type="checkbox" id="feature-replication" value="replication">
-                        <label for="feature-replication">Backup-Replikation</label>
+                        <label for="feature-replication">
+                            Backup-Replikation
+                            <span class="help-icon" data-tooltip="backup-replication">?</span>
+                        </label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="feature-archiving" value="archiving">
@@ -543,7 +612,10 @@
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="feature-cdp" value="cdp">
-                        <label for="feature-cdp">CDP (Continuous Data Protection)</label>
+                        <label for="feature-cdp">
+                            CDP (Continuous Data Protection)
+                            <span class="help-icon" data-tooltip="backup-cdp">?</span>
+                        </label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="feature-cloud-tier" value="cloud-tier">
@@ -564,11 +636,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Monitoring-Integration</label>
+                    <label>
+                        Monitoring-Integration
+                        <span class="help-icon" data-tooltip="monitoring-integration">?</span>
+                    </label>
                     <input type="text" id="monitoringintegration" placeholder="z.B. PRTG, Zabbix, Prometheus, E-Mail">
                 </div>
                 <div class="form-group">
-                    <label>Reporting</label>
+                    <label>
+                        Reporting
+                        <span class="help-icon" data-tooltip="backup-reporting">?</span>
+                    </label>
                     <div class="custom-select" data-name="reporting">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -593,7 +671,10 @@
                     <input type="text" id="alertemail" placeholder="z.B. backup-admins@example.com">
                 </div>
                 <div class="form-group">
-                    <label>Log-Aufbewahrung</label>
+                    <label>
+                        Log-Aufbewahrung
+                        <span class="help-icon" data-tooltip="log-retention">?</span>
+                    </label>
                     <input type="text" id="logretention" placeholder="z.B. 90 Tage, 1 Jahr">
                 </div>
             </div>
@@ -610,11 +691,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Backup-Administrator</label>
+                    <label>
+                        Backup-Administrator
+                        <span class="help-icon" data-tooltip="backup-admin">?</span>
+                    </label>
                     <input type="text" id="backupadmin" placeholder="z.B. IT-Team, Max Mustermann">
                 </div>
                 <div class="form-group">
-                    <label>Support-Vertrag</label>
+                    <label>
+                        Support-Vertrag
+                        <span class="help-icon" data-tooltip="support-contract">?</span>
+                    </label>
                     <div class="custom-select" data-name="supportcontract">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -649,10 +736,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / Besonderheiten</label>
+                <label>
+                    Notizen / Besonderheiten
+                    <span class="help-icon" data-tooltip="backup-notes">?</span>
+                </label>
                 <textarea id="backupsystemnotes" rows="4" placeholder="Zusätzliche Informationen zum Backup-System, spezielle Konfigurationen, bekannte Einschränkungen..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/backup-help.tpl}}

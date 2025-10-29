@@ -1,4 +1,9 @@
+import { initializeHelpTooltips } from './helptooltip.js';
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize help tooltips
+    initializeHelpTooltips();
+    
     // Network Configuration toggle
     const networkCheck = document.getElementById('device-network-check');
     const networkConfig = document.getElementById('device-network-config');

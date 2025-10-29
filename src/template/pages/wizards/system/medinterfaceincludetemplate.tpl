@@ -3,12 +3,18 @@
     <div class="subsection-header">Grundlegende Informationen</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Schnittstellenname</label>
+            <label>
+                Schnittstellenname
+                <span class="help-icon" data-tooltip="interface-name">?</span>
+            </label>
             <input type="text" name="interfaceName" placeholder="z.B. KIS-Labor HL7, PACS-RIS DICOM">
             <div class="help-text">Beschreibender Name für diese Schnittstelle</div>
         </div>
         <div class="form-group">
-            <label>Schnittstellentyp <span class="required">*</span></label>
+            <label>
+                Schnittstellentyp <span class="required">*</span>
+                <span class="help-icon" data-tooltip="interface-type">?</span>
+            </label>
             <div class="custom-select" data-name="interfaceType">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -34,7 +40,10 @@
     </div>
 
     <div class="form-group">
-        <label>Datenflussrichtung</label>
+        <label>
+            Datenflussrichtung
+            <span class="help-icon" data-tooltip="data-direction">?</span>
+        </label>
         <div class="custom-select" data-name="dataDirection">
             <div class="select-trigger">
                 <span class="placeholder">Bitte wählen</span>
@@ -56,12 +65,18 @@
         <h4 class="subsection-title">Quellsystem / Sender</h4>
         <div class="form-row">
             <div class="form-group">
-                <label>Quellsystem</label>
+                <label>
+                    Quellsystem
+                    <span class="help-icon" data-tooltip="source-system">?</span>
+                </label>
                 <input type="text" name="sourceSystem" placeholder="z.B. KIS, Labor-System">
                 <div class="help-text">Name des sendenden Systems</div>
             </div>
             <div class="form-group">
-                <label>Quell-Komponente (optional)</label>
+                <label>
+                    Quell-Komponente (optional)
+                    <span class="help-icon" data-tooltip="source-component">?</span>
+                </label>
                 <div class="custom-select" data-name="sourceComponent">
                     <div class="select-trigger">
                         <span class="placeholder">Keine spezifische Auswahl</span>
@@ -83,7 +98,10 @@
     <div class="interface-connection-section">
         <h4 class="subsection-title">Verbindungsart & Übertragung</h4>
         <div class="form-group">
-            <label>Verbindungstyp</label>
+            <label>
+                Verbindungstyp
+                <span class="help-icon" data-tooltip="connection-type">?</span>
+            </label>
             <div class="custom-select" data-name="connectionType">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -106,11 +124,17 @@
         <div class="connection-direct" style="display: none;">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Port</label>
+                    <label>
+                        Port
+                        <span class="help-icon" data-tooltip="direct-port">?</span>
+                    </label>
                     <input type="text" name="targetPort" placeholder="z.B. 2575, 443, 11112">
                 </div>
                 <div class="form-group">
-                    <label>Verschlüsselung</label>
+                    <label>
+                        Verschlüsselung
+                        <span class="help-icon" data-tooltip="direct-encryption">?</span>
+                    </label>
                     <div class="custom-select" data-name="directEncryption">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -133,7 +157,10 @@
         <!-- Kommunikationsserver -->
         <div class="connection-commserver" style="display: none;">
             <div class="form-group">
-                <label>Kommunikationsserver auswählen</label>
+                <label>
+                    Kommunikationsserver auswählen
+                    <span class="help-icon" data-tooltip="commserver-select">?</span>
+                </label>
                 <div class="custom-select" data-name="commServerSelect">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen oder manuell eingeben</span>
@@ -180,7 +207,10 @@
             </div>
 
             <div class="form-group">
-                <label>Channel/Route Name (optional)</label>
+                <label>
+                    Channel/Route Name (optional)
+                    <span class="help-icon" data-tooltip="commserver-channel">?</span>
+                </label>
                 <input type="text" name="commServerChannel" placeholder="z.B. KIS-to-Labor, ADT-Feed">
                 <div class="help-text">Name des Channels oder der Route auf dem Kommunikationsserver</div>
             </div>
@@ -207,7 +237,10 @@
         <!-- File Share -->
         <div class="connection-fileshare" style="display: none;">
             <div class="form-group">
-                <label>File Share Pfad</label>
+                <label>
+                    File Share Pfad
+                    <span class="help-icon" data-tooltip="fileshare-path">?</span>
+                </label>
                 <input type="text" name="fileSharePath" placeholder="z.B. \\fileserver\hl7\inbox, /mnt/interfaces/labor">
                 <div class="help-text">UNC-Pfad oder Mount-Point des File Shares</div>
             </div>
@@ -217,7 +250,10 @@
                     <input type="text" name="fileShareServer" placeholder="z.B. fileserver01.example.com">
                 </div>
                 <div class="form-group">
-                    <label>Protokoll</label>
+                    <label>
+                        Protokoll
+                        <span class="help-icon" data-tooltip="fileshare-protocol">?</span>
+                    </label>
                     <div class="custom-select" data-name="fileShareProtocol">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -238,7 +274,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Dateiformat/-muster</label>
+                    <label>
+                        Dateiformat/-muster
+                        <span class="help-icon" data-tooltip="file-pattern">?</span>
+                    </label>
                     <input type="text" name="filePattern" placeholder="z.B. *.hl7, ADT_*.xml">
                 </div>
                 <div class="form-group">
@@ -266,13 +305,19 @@
         <!-- Message Queue -->
         <div class="connection-messagequeue" style="display: none;">
             <div class="form-group">
-                <label>Message Queue System</label>
+                <label>
+                    Message Queue System
+                    <span class="help-icon" data-tooltip="mq-system">?</span>
+                </label>
                 <input type="text" name="mqSystemName" placeholder="z.B. RabbitMQ, IBM MQ, Kafka">
                 <div class="help-text">Name und Typ des Message Queue Systems</div>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Queue/Topic Name</label>
+                    <label>
+                        Queue/Topic Name
+                        <span class="help-icon" data-tooltip="mq-queue">?</span>
+                    </label>
                     <input type="text" name="mqQueueName" placeholder="z.B. hospital.adt.queue">
                 </div>
                 <div class="form-group">
@@ -305,12 +350,18 @@
         <h4 class="subsection-title">Zielsystem / Empfänger</h4>
         <div class="form-row">
             <div class="form-group">
-                <label>Zielsystem</label>
+                <label>
+                    Zielsystem
+                    <span class="help-icon" data-tooltip="target-system">?</span>
+                </label>
                 <input type="text" name="targetSystem" placeholder="z.B. Radiologie-PACS, Archiv">
                 <div class="help-text">Name des empfangenden Systems</div>
             </div>
             <div class="form-group">
-                <label>Ziel-Komponente (optional)</label>
+                <label>
+                    Ziel-Komponente (optional)
+                    <span class="help-icon" data-tooltip="target-component">?</span>
+                </label>
                 <div class="custom-select" data-name="targetComponent">
                     <div class="select-trigger">
                         <span class="placeholder">Keine spezifische Auswahl</span>
@@ -329,7 +380,10 @@
     </div>
 
     <!-- Übertragene Daten -->
-    <div class="subsection-header">Übertragene Datentypen</div>
+    <div class="subsection-header">
+        Übertragene Datentypen
+        <span class="help-icon" data-tooltip="data-types">?</span>
+    </div>
     <div class="help-text">Wählen Sie alle medizinischen Datentypen, die über diese Schnittstelle übertragen werden</div>
     <div class="checkbox-group interface-data-types">
         <div class="checkbox-item">
@@ -389,11 +443,15 @@
             <label>Sonstiges</label>
         </div>
     </div>
+
     <!-- Technische Details -->
     <div class="subsection-header">Technische Details</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Protokoll/Transport</label>
+            <label>
+                Protokoll/Transport
+                <span class="help-icon" data-tooltip="transport-protocol">?</span>
+            </label>
             <div class="custom-select" data-name="transportProtocol">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -416,14 +474,20 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Nachrichtenvolumen (pro Tag)</label>
+            <label>
+                Nachrichtenvolumen (pro Tag)
+                <span class="help-icon" data-tooltip="message-volume">?</span>
+            </label>
             <input type="text" name="messageVolume" placeholder="z.B. ca. 10.000 Nachrichten">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>SLA / Kritikalität</label>
+            <label>
+                SLA / Kritikalität
+                <span class="help-icon" data-tooltip="interface-criticality">?</span>
+            </label>
             <div class="custom-select" data-name="interfaceCriticality">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -441,13 +505,22 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Timeout (Sekunden)</label>
+            <label>
+                Timeout (Sekunden)
+                <span class="help-icon" data-tooltip="timeout">?</span>
+            </label>
             <input type="text" name="timeoutSeconds" placeholder="z.B. 30">
         </div>
     </div>
 
     <div class="form-group">
-        <label>Anmerkungen / Besonderheiten</label>
+        <label>
+            Anmerkungen / Besonderheiten
+            <span class="help-icon" data-tooltip="interface-notes">?</span>
+        </label>
         <textarea name="interfaceNotes" rows="3" placeholder="z.B. Transformationsregeln, Mapping-Details, bekannte Einschränkungen..."></textarea>
     </div>
 </div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/medinterface-help.tpl}}

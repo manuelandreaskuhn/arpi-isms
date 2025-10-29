@@ -19,7 +19,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>TI-Infrastruktur Name <span class="required">*</span></label>
+                    <label>
+                        TI-Infrastruktur Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="ti-name">?</span>
+                    </label>
                     <input type="text" id="tiname" required placeholder="z.B. TI-Anbindung-Hauptstandort, TI-Praxis-01">
                 </div>
                 <div class="form-group">
@@ -45,7 +48,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Konnektor-Hersteller <span class="required">*</span></label>
+                    <label>
+                        Konnektor-Hersteller <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="ti-konnektor-vendor">?</span>
+                    </label>
                     <div class="custom-select" data-name="konnektorvendor">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -70,7 +76,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Firmware-Version</label>
+                    <label>
+                        Firmware-Version
+                        <span class="help-icon" data-tooltip="ti-konnektor-firmware">?</span>
+                    </label>
                     <input type="text" id="konnektorfirmware" placeholder="z.B. 5.2.1, 2024-Q2">
                 </div>
                 <div class="form-group">
@@ -102,7 +111,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>TI-Gateway / VPN-Zugangsdienst</label>
+                    <label>
+                        TI-Gateway / VPN-Zugangsdienst
+                        <span class="help-icon" data-tooltip="ti-gateway">?</span>
+                    </label>
                     <div class="custom-select" data-name="tigatewaytype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -147,7 +159,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>SMC-B Kartentyp</label>
+                    <label>
+                        SMC-B Kartentyp
+                        <span class="help-icon" data-tooltip="ti-smcb">?</span>
+                    </label>
                     <div class="custom-select" data-name="smcbtype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -191,7 +206,10 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <label>Aktivierte Fachdienste</label>
+            <label>
+                Aktivierte Fachdienste
+                <span class="help-icon" data-tooltip="ti-fachdienste">?</span>
+            </label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
                     <input type="checkbox" id="ti-kim" name="tifachdienste" value="kim">
@@ -243,7 +261,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>TI-Sicherheitsrichtlinien erfüllt</label>
+                    <label>
+                        TI-Sicherheitsrichtlinien erfüllt
+                        <span class="help-icon" data-tooltip="ti-security">?</span>
+                    </label>
                     <div class="custom-select" data-name="tisecurity">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -267,7 +288,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Gematik-Zulassung</label>
+                    <label>
+                        Gematik-Zulassung
+                        <span class="help-icon" data-tooltip="ti-gematik-zulassung">?</span>
+                    </label>
                     <div class="custom-select" data-name="tigematikzulassung">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -302,11 +326,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>TI-Verantwortlicher</label>
+                    <label>
+                        TI-Verantwortlicher
+                        <span class="help-icon" data-tooltip="ti-verantwortlicher">?</span>
+                    </label>
                     <input type="text" id="tiverantwortlicher" placeholder="z.B. Dr. Müller, IT-Abteilung">
                 </div>
                 <div class="form-group">
-                    <label>TI-Support / Dienstleister</label>
+                    <label>
+                        TI-Support / Dienstleister
+                        <span class="help-icon" data-tooltip="ti-support">?</span>
+                    </label>
                     <input type="text" id="tisupport" placeholder="z.B. TI-Dienstleister, KV-Support">
                 </div>
             </div>
@@ -327,10 +357,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / TI-Besonderheiten</label>
+                <label>
+                    Notizen / TI-Besonderheiten
+                    <span class="help-icon" data-tooltip="ti-notes">?</span>
+                </label>
                 <textarea id="tinotes" rows="4" placeholder="Zusätzliche Informationen zur TI-Infrastruktur, bekannte Probleme, Besonderheiten, Wartungsfenster..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/tiinfrastruktur-help.tpl}}

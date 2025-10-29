@@ -50,8 +50,12 @@ import {
     setupContainerConditionalFields,
     refreshContainerHostAssignments
 } from './system/container.js';
+import { initializeHelpTooltips } from './helptooltip.js';
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize help tooltips
+    initializeHelpTooltips();
+    
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
     const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');

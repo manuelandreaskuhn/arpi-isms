@@ -19,11 +19,17 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>VPN-Name <span class="required">*</span></label>
+                    <label>
+                        VPN-Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="vpn-name">?</span>
+                    </label>
                     <input type="text" id="vpnname" required placeholder="z.B. Corporate-VPN, Site-to-Site-Berlin">
                 </div>
                 <div class="form-group">
-                    <label>VPN-Typ <span class="required">*</span></label>
+                    <label>
+                        VPN-Typ <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="vpn-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="vpntype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -132,7 +138,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>VPN-Software / Lösung</label>
+                    <label>
+                        VPN-Software / Lösung
+                        <span class="help-icon" data-tooltip="vpn-software">?</span>
+                    </label>
                     <div class="custom-select" data-name="vpnsoftware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -194,7 +203,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>VPN-Protokoll <span class="required">*</span></label>
+                    <label>
+                        VPN-Protokoll <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="vpn-protocol">?</span>
+                    </label>
                     <div class="custom-select" data-name="vpnprotocol">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -224,7 +236,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Verschlüsselungs-Algorithmus</label>
+                    <label>
+                        Verschlüsselungs-Algorithmus
+                        <span class="help-icon" data-tooltip="vpn-encryption">?</span>
+                    </label>
                     <div class="custom-select" data-name="encryptionalgo">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -315,7 +330,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Authentifizierungs-Methode <span class="required">*</span></label>
+                    <label>
+                        Authentifizierungs-Methode <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="vpn-auth">?</span>
+                    </label>
                     <div class="custom-select" data-name="authmethod">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -421,7 +439,10 @@
             <div class="subsection-header">Routing-Konfiguration</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Routing-Modus</label>
+                    <label>
+                        Routing-Modus
+                        <span class="help-icon" data-tooltip="vpn-routing-mode">?</span>
+                    </label>
                     <div class="custom-select" data-name="routingmode">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -551,7 +572,10 @@
             <div class="subsection-header">Endpoint-Sicherheit</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Endpoint Compliance Check</label>
+                    <label>
+                        Endpoint Compliance Check
+                        <span class="help-icon" data-tooltip="vpn-compliance-check">?</span>
+                    </label>
                     <div class="custom-select" data-name="compliancecheck">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -625,7 +649,10 @@
             <div class="subsection-header">Traffic-Kontrolle</div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Kill Switch / Drop-on-Disconnect</label>
+                    <label>
+                        Kill Switch / Drop-on-Disconnect
+                        <span class="help-icon" data-tooltip="vpn-kill-switch">?</span>
+                    </label>
                     <div class="custom-select" data-name="killswitch">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -641,7 +668,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Always-On VPN</label>
+                    <label>
+                        Always-On VPN
+                        <span class="help-icon" data-tooltip="vpn-always-on">?</span>
+                    </label>
                     <div class="custom-select" data-name="alwayson">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -708,7 +738,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Logging-Level</label>
+                    <label>
+                        Logging-Level
+                        <span class="help-icon" data-tooltip="vpn-logging">?</span>
+                    </label>
                     <div class="custom-select" data-name="logginglevel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -781,7 +814,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Hochverfügbarkeit (HA)</label>
+                    <label>
+                        Hochverfügbarkeit (HA)
+                        <span class="help-icon" data-tooltip="vpn-ha">?</span>
+                    </label>
                     <div class="custom-select" data-name="havpn">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -934,10 +970,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / VPN-Besonderheiten</label>
+                <label>
+                    Notizen / VPN-Besonderheiten
+                    <span class="help-icon" data-tooltip="vpn-notes">?</span>
+                </label>
                 <textarea id="vpnnotes" rows="4" placeholder="Zusätzliche Informationen zum VPN, spezielle Konfigurationen, bekannte Probleme, geplante Änderungen..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/vpn-help.tpl}}

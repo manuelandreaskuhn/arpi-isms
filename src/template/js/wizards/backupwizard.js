@@ -1,8 +1,12 @@
 import { initializeAllComponentSelects } from './componentlinking.js';
+import { initializeHelpTooltips } from './helptooltip.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize component linking
     initializeAllComponentSelects();
+
+    // Initialize help tooltips
+    initializeHelpTooltips();
 
     // Storage Levels (2-tier / 3-tier) toggle
     const storageLevelsSelect = document.querySelector('[data-name="storagelevels"]');

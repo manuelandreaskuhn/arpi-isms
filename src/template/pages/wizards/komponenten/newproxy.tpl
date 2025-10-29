@@ -19,7 +19,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Proxy-Server Name <span class="required">*</span></label>
+                    <label>
+                        Proxy-Server Name <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="proxy-name">?</span>
+                    </label>
                     <input type="text" id="proxyname" required placeholder="z.B. Proxy-01, Corporate-Proxy">
                 </div>
                 <div class="form-group">
@@ -49,7 +52,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Proxy-Port <span class="required">*</span></label>
+                    <label>
+                        Proxy-Port <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="proxy-port">?</span>
+                    </label>
                     <input type="number" id="proxyport" required placeholder="z.B. 8080, 3128">
                 </div>
                 <div class="form-group">
@@ -70,7 +76,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Proxy-Typ <span class="required">*</span></label>
+                    <label>
+                        Proxy-Typ <span class="required">*</span>
+                        <span class="help-icon" data-tooltip="proxy-type">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxytype">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -110,7 +119,10 @@
             </div>
 
             <div class="form-group">
-                <label>Proxy-Software</label>
+                <label>
+                    Proxy-Software
+                    <span class="help-icon" data-tooltip="proxy-software">?</span>
+                </label>
                 <div class="custom-select" data-name="proxysoftware">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
@@ -145,7 +157,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Authentifizierung erforderlich</label>
+                    <label>
+                        Authentifizierung erforderlich
+                        <span class="help-icon" data-tooltip="proxy-auth">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxyauth">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -187,7 +202,10 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Standard Ausnahmen / Bypass-Liste</label>
+                <label>
+                    Standard Ausnahmen / Bypass-Liste
+                    <span class="help-icon" data-tooltip="proxy-exceptions">?</span>
+                </label>
                 <textarea id="proxyexceptions" rows="4" placeholder="z.B. localhost, 127.0.0.1, *.local, 10.0.0.0/8, internal.example.com"></textarea>
                 <div class="help-text">Hosts oder Netzwerke, die den Proxy standardmäßig umgehen (kommagetrennt oder zeilenweise)</div>
             </div>
@@ -204,12 +222,18 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>PAC-Datei (Proxy Auto-Config)</label>
+                    <label>
+                        PAC-Datei (Proxy Auto-Config)
+                        <span class="help-icon" data-tooltip="proxy-pac">?</span>
+                    </label>
                     <input type="text" id="proxypac" placeholder="z.B. http://proxy.example.com/proxy.pac">
                     <div class="help-text">URL zur automatischen Proxy-Konfigurationsdatei</div>
                 </div>
                 <div class="form-group">
-                    <label>WPAD (Web Proxy Auto-Discovery)</label>
+                    <label>
+                        WPAD (Web Proxy Auto-Discovery)
+                        <span class="help-icon" data-tooltip="proxy-wpad">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxywpad">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -228,7 +252,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>SSL-Interception / HTTPS-Inspection</label>
+                    <label>
+                        SSL-Interception / HTTPS-Inspection
+                        <span class="help-icon" data-tooltip="proxy-ssl-interception">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxysslinterception">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -253,7 +280,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Proxy-Cache</label>
+                    <label>
+                        Proxy-Cache
+                        <span class="help-icon" data-tooltip="proxy-cache">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxycache">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -288,6 +318,7 @@
                 <label class="cluster-label">
                     <input type="checkbox" id="proxy-failover-check">
                     <span>Failover / Sekundärer Proxy konfiguriert</span>
+                    <span class="help-icon" data-tooltip="proxy-failover">?</span>
                 </label>
             </div>
 
@@ -349,7 +380,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>URL-Filtering</label>
+                    <label>
+                        URL-Filtering
+                        <span class="help-icon" data-tooltip="proxy-url-filtering">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxyurlfiltering">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -384,7 +418,10 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Malware-Scanning</label>
+                    <label>
+                        Malware-Scanning
+                        <span class="help-icon" data-tooltip="proxy-malware-scanning">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxymalwarescanning">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -400,7 +437,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>DLP (Data Loss Prevention)</label>
+                    <label>
+                        DLP (Data Loss Prevention)
+                        <span class="help-icon" data-tooltip="proxy-dlp">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxydlp">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -429,7 +469,10 @@
         <div class="section-content">
             <div class="form-row">
                 <div class="form-group">
-                    <label>Access Logging</label>
+                    <label>
+                        Access Logging
+                        <span class="help-icon" data-tooltip="proxy-logging">?</span>
+                    </label>
                     <div class="custom-select" data-name="proxyaccesslog">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -488,10 +531,16 @@
         </div>
         <div class="section-content">
             <div class="form-group">
-                <label>Notizen / Proxy-Besonderheiten</label>
+                <label>
+                    Notizen / Proxy-Besonderheiten
+                    <span class="help-icon" data-tooltip="proxy-notes">?</span>
+                </label>
                 <textarea id="proxynotes" rows="4" placeholder="Zusätzliche Informationen zum Proxy-Server, bekannte Probleme, spezielle Konfigurationen..."></textarea>
             </div>
         </div>
     </div>
 
 </form>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/komponenten/help/proxy-help.tpl}}

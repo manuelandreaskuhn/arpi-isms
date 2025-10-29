@@ -3,11 +3,17 @@
     <div class="subsection-header">Basis-Informationen</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Load Balancer Name <span class="required">*</span></label>
+            <label>
+                Load Balancer Name <span class="required">*</span>
+                <span class="help-icon" data-tooltip="lb-name">?</span>
+            </label>
             <input type="text" name="lbname" class="lb-field" placeholder="z.B. LB-KIS-PROD, F5-BigIP-01" required>
         </div>
         <div class="form-group">
-            <label>Typ / Hersteller</label>
+            <label>
+                Typ / Hersteller
+                <span class="help-icon" data-tooltip="lb-type">?</span>
+            </label>
             <div class="custom-select" data-name="lbtype" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -33,11 +39,17 @@
 
     <div class="form-row">
         <div class="form-group">
-            <label>Management IP</label>
+            <label>
+                Management IP
+                <span class="help-icon" data-tooltip="lb-mgmt-ip">?</span>
+            </label>
             <input type="text" name="lbmgmtip" class="lb-field" placeholder="z.B. 192.168.10.100">
         </div>
         <div class="form-group">
-            <label>Standort</label>
+            <label>
+                Standort
+                <span class="help-icon" data-tooltip="lb-location">?</span>
+            </label>
             <input type="text" name="lblocation" class="lb-field" placeholder="z.B. RZ1, DMZ, Cloud">
         </div>
     </div>
@@ -46,19 +58,28 @@
     <div class="subsection-header">Frontend-Konfiguration (Virtual Server)</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Virtual IP (VIP) <span class="required">*</span></label>
+            <label>
+                Virtual IP (VIP) <span class="required">*</span>
+                <span class="help-icon" data-tooltip="vip">?</span>
+            </label>
             <input type="text" name="vip" class="lb-field" placeholder="z.B. 10.0.1.100" required>
             <div class="help-text">Öffentliche/Frontend IP-Adresse</div>
         </div>
         <div class="form-group">
-            <label>Port(s)</label>
+            <label>
+                Port(s)
+                <span class="help-icon" data-tooltip="lb-ports">?</span>
+            </label>
             <input type="text" name="lbports" class="lb-field" placeholder="z.B. 443, 80, 8080">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>Protokoll</label>
+            <label>
+                Protokoll
+                <span class="help-icon" data-tooltip="lb-protocol">?</span>
+            </label>
             <div class="custom-select" data-name="lbprotocol" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -77,7 +98,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Load Balancing Algorithmus</label>
+            <label>
+                Load Balancing Algorithmus
+                <span class="help-icon" data-tooltip="lb-algorithm">?</span>
+            </label>
             <div class="custom-select" data-name="lbalgorithm" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -98,7 +122,10 @@
     </div>
 
     <!-- Backend-Pool -->
-    <div class="subsection-header">Backend-Pool / Server</div>
+    <div class="subsection-header">
+        Backend-Pool / Server
+        <span class="help-icon" data-tooltip="lb-backend">?</span>
+    </div>
     <div class="form-group">
         <label>Backend-Server</label>
         <div class="help-text">Wählen Sie die VMs oder Hardware-Server aus, die als Backend-Ziele dienen.</div>
@@ -111,12 +138,18 @@
 
     <div class="form-row">
         <div class="form-group">
-            <label>Backend Port</label>
+            <label>
+                Backend Port
+                <span class="help-icon" data-tooltip="backend-port">?</span>
+            </label>
             <input type="number" name="backendport" class="lb-field" placeholder="z.B. 8080, 443">
             <div class="help-text">Port auf den Backend-Servern</div>
         </div>
         <div class="form-group">
-            <label>Session Persistence</label>
+            <label>
+                Session Persistence
+                <span class="help-icon" data-tooltip="session-persistence">?</span>
+            </label>
             <div class="custom-select" data-name="sessionpersistence" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -139,7 +172,10 @@
     <div class="subsection-header">Health Checks & Monitoring</div>
     <div class="form-row">
         <div class="form-group">
-            <label>Health Check Methode</label>
+            <label>
+                Health Check Methode
+                <span class="help-icon" data-tooltip="health-check-method">?</span>
+            </label>
             <div class="custom-select" data-name="healthcheckmethod" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -158,18 +194,27 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Health Check Pfad</label>
+            <label>
+                Health Check Pfad
+                <span class="help-icon" data-tooltip="health-check-path">?</span>
+            </label>
             <input type="text" name="healthcheckpath" class="lb-field" placeholder="z.B. /health, /status">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>Check Intervall (Sekunden)</label>
+            <label>
+                Check Intervall (Sekunden)
+                <span class="help-icon" data-tooltip="check-interval">?</span>
+            </label>
             <input type="number" name="checkinterval" class="lb-field" placeholder="z.B. 5, 10, 30">
         </div>
         <div class="form-group">
-            <label>Timeout (Sekunden)</label>
+            <label>
+                Timeout (Sekunden)
+                <span class="help-icon" data-tooltip="check-timeout">?</span>
+            </label>
             <input type="number" name="checktimeout" class="lb-field" placeholder="z.B. 3, 5">
         </div>
     </div>
@@ -178,7 +223,10 @@
     <div class="subsection-header">SSL/TLS & Sicherheit</div>
     <div class="form-row">
         <div class="form-group">
-            <label>SSL/TLS Terminierung</label>
+            <label>
+                SSL/TLS Terminierung
+                <span class="help-icon" data-tooltip="ssl-termination">?</span>
+            </label>
             <div class="custom-select" data-name="ssltermination" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -196,14 +244,20 @@
             </div>
         </div>
         <div class="form-group">
-            <label>SSL Zertifikat</label>
+            <label>
+                SSL Zertifikat
+                <span class="help-icon" data-tooltip="ssl-certificate">?</span>
+            </label>
             <input type="text" name="sslcertificate" class="lb-field" placeholder="z.B. *.example.com">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group">
-            <label>TLS Version (Minimum)</label>
+            <label>
+                TLS Version (Minimum)
+                <span class="help-icon" data-tooltip="tls-version">?</span>
+            </label>
             <div class="custom-select" data-name="tlsversion" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -220,7 +274,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label>WAF (Web Application Firewall)</label>
+            <label>
+                WAF (Web Application Firewall)
+                <span class="help-icon" data-tooltip="waf">?</span>
+            </label>
             <div class="custom-select" data-name="waf" data-index="0" data-category="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
@@ -244,13 +301,17 @@
         <label class="cluster-label">
             <input type="checkbox" class="lb-ha-check">
             <span>High Availability / Redundanz aktiviert</span>
+            <span class="help-icon" data-tooltip="lb-ha-check">?</span>
         </label>
     </div>
 
     <div class="lb-ha-config">
         <div class="form-row">
             <div class="form-group">
-                <label>HA-Modus</label>
+                <label>
+                    HA-Modus
+                    <span class="help-icon" data-tooltip="ha-mode">?</span>
+                </label>
                 <div class="custom-select" data-name="hamode" data-index="0" data-category="loadbalancer">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
@@ -267,7 +328,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Partner/Standby LB</label>
+                <label>
+                    Partner/Standby LB
+                    <span class="help-icon" data-tooltip="partner-lb">?</span>
+                </label>
                 <input type="text" name="partnerlb" class="lb-field" placeholder="z.B. LB-KIS-PROD-02">
             </div>
         </div>
@@ -276,7 +340,13 @@
     <!-- Notizen -->
     <div class="subsection-header">Zusätzliche Informationen</div>
     <div class="form-group">
-        <label>Notizen / Routing-Regeln</label>
+        <label>
+            Notizen / Routing-Regeln
+            <span class="help-icon" data-tooltip="lb-notes">?</span>
+        </label>
         <textarea name="lbnotes" class="lb-field" rows="3" placeholder="Zusätzliche Informationen, spezielle Routing-Regeln, URL-Rewriting..."></textarea>
     </div>
 </div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/loadbalancer-help.tpl}}
