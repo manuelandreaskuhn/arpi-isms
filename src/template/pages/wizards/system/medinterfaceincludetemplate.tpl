@@ -133,31 +133,52 @@
         <!-- Kommunikationsserver -->
         <div class="connection-commserver" style="display: none;">
             <div class="form-group">
-                <label>Kommunikationsserver / Interface Engine</label>
-                <input type="text" name="commServerName" placeholder="z.B. HL7 Interface Engine, Mirth Connect">
-                <div class="help-text">Name des Kommunikationsservers, der die Nachrichten vermittelt</div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Server-Hostname/IP</label>
-                    <input type="text" name="commServerHost" placeholder="z.B. hl7server.example.com">
-                </div>
-                <div class="form-group">
-                    <label>Server-Komponente (optional)</label>
-                    <div class="custom-select" data-name="commServerComponent">
-                        <div class="select-trigger">
-                            <span class="placeholder">Keine spezifische Auswahl</span>
-                            <span class="arrow">▼</span>
+                <label>Kommunikationsserver auswählen</label>
+                <div class="custom-select" data-name="commServerSelect">
+                    <div class="select-trigger">
+                        <span class="placeholder">Bitte wählen oder manuell eingeben</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="select-dropdown">
+                        <div class="select-options interface-commserver-list">
+                            <div class="select-option" data-value="">Bitte wählen</div>
+                            <div class="select-option" data-value="manual">Manuell eingeben</div>
+                            <!-- Will be populated dynamically from existing comm servers -->
                         </div>
-                        <div class="select-dropdown">
-                            <div class="select-options interface-commserver-components">
-                                <div class="select-option" data-value="">Keine spezifische Auswahl</div>
-                                <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+                <div class="help-text">Wählen Sie einen bereits angelegten Kommunikationsserver oder geben Sie manuell ein</div>
+            </div>
+
+            <div class="commserver-manual-fields">
+                <div class="form-group">
+                    <label>Kommunikationsserver / Interface Engine</label>
+                    <input type="text" name="commServerName" placeholder="z.B. HL7 Interface Engine, Mirth Connect">
+                    <div class="help-text">Name des Kommunikationsservers, der die Nachrichten vermittelt</div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Server-Hostname/IP</label>
+                        <input type="text" name="commServerHost" placeholder="z.B. hl7server.example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Server-Komponente (optional)</label>
+                        <div class="custom-select" data-name="commServerComponent">
+                            <div class="select-trigger">
+                                <span class="placeholder">Keine spezifische Auswahl</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="select-dropdown">
+                                <div class="select-options interface-commserver-components">
+                                    <div class="select-option" data-value="">Keine spezifische Auswahl</div>
+                                    <!-- Will be populated dynamically -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label>Channel/Route Name (optional)</label>
                 <input type="text" name="commServerChannel" placeholder="z.B. KIS-to-Labor, ADT-Feed">

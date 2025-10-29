@@ -57,7 +57,10 @@ export function setupInterfaceConditionalFields(entry) {
                     if (directSection) directSection.style.display = 'block';
                     break;
                 case 'commserver':
-                    if (commServerSection) commServerSection.style.display = 'block';
+                    if (commServerSection) {
+                        commServerSection.style.display = 'block';
+                        setupCommServerSelection(entry);
+                    }
                     break;
                 case 'fileshare':
                     if (fileShareSection) fileShareSection.style.display = 'block';
@@ -68,6 +71,74 @@ export function setupInterfaceConditionalFields(entry) {
             }
         }
     });
+}
+
+function setupCommServerSelection(entry) {
+    const commServerSelect = entry.querySelector('[data-name="commServerSelect"]');
+    const manualFields = entry.querySelector('.commserver-manual-fields');
+    
+    if (!commServerSelect || !manualFields) return;
+    
+    // Populate existing comm servers
+    populateExistingCommServers(entry);
+    
+    // Listen for comm server selection
+    commServerSelect.addEventListener('click', function(e) {
+        if (e.target.classList.contains('select-option')) {
+            const value = e.target.getAttribute('data-value');
+            
+            if (value === 'manual' || value === '') {
+                // Show manual input fields
+                manualFields.style.display = 'block';
+            } else {
+                // Hide manual fields and populate with selected comm server data
+                manualFields.style.display = 'none';
+                populateCommServerData(entry, value);
+            }
+        }
+    });
+}
+
+function populateExistingCommServers(entry) {
+    const selectElement = entry.querySelector('.interface-commserver-list');
+    if (!selectElement) return;
+    
+    // Keep existing options
+    const existingOptions = Array.from(selectElement.querySelectorAll('.select-option'));
+    
+    // TODO: Fetch from API or global store
+    // For now, use placeholder data
+    const commServers = [
+        { id: 'cs1', name: 'Mirth Connect Produktiv', hostname: 'mirth-prod.example.com' },
+        { id: 'cs2', name: 'HL7 Interface Engine Test', hostname: 'hl7-test.example.com' }
+    ];
+    
+    commServers.forEach(cs => {
+        const option = document.createElement('div');
+        option.className = 'select-option';
+        option.setAttribute('data-value', cs.id);
+        option.setAttribute('data-hostname', cs.hostname);
+        option.setAttribute('data-name', cs.name);
+        option.textContent = cs.name;
+        selectElement.appendChild(option);
+    });
+}
+
+function populateCommServerData(entry, commServerId) {
+    // Get comm server data (from API or global store)
+    // For now, get from data attributes
+    const option = entry.querySelector(`.select-option[data-value="${commServerId}"]`);
+    if (!option) return;
+    
+    const hostname = option.getAttribute('data-hostname');
+    const name = option.getAttribute('data-name');
+    
+    // Populate fields
+    const nameField = entry.querySelector('[name="commServerName"]');
+    const hostField = entry.querySelector('[name="commServerHost"]');
+    
+    if (nameField) nameField.value = name;
+    if (hostField) hostField.value = hostname;
 }
 
 export function refreshInterfaceComponents(entryOrNull = null) {

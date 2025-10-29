@@ -1,0 +1,484 @@
+<aside>
+    <p>Assetmanagement</p>
+    <i>›</i>
+    <p>Komponenten</p>
+    <i>›</i>
+    <p>Neuer Kommunikationsserver</p>
+</aside>
+
+<form id="newCommServerForm">
+    <!-- Basis Informationen -->
+    <div class="form-section">
+        <div class="section-title">
+            <span>Basis-Informationen</span>
+            <span class="section-badge">Pflicht</span>
+            <span class="section-counter">0/3</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-group">
+                <label>Name des Kommunikationsservers <span class="required">*</span></label>
+                <input type="text" id="commServerName" name="commServerName" required placeholder="z.B. HL7 Interface Engine, Mirth Connect Prod">
+                <div class="help-text">Eindeutiger Name zur Identifikation des Servers</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Typ / Produkt <span class="required">*</span></label>
+                    <div class="custom-select" data-name="commServerType">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="mirth">Mirth Connect / NextGen Connect</div>
+                                <div class="select-option" data-value="rhapsody">Rhapsody Integration Engine</div>
+                                <div class="select-option" data-value="ensemble">InterSystems Ensemble/HealthConnect</div>
+                                <div class="select-option" data-value="cloverleaf">Infor Cloverleaf</div>
+                                <div class="select-option" data-value="interfaceware">Interfaceware Iguana</div>
+                                <div class="select-option" data-value="corepoint">Corepoint Integration Engine</div>
+                                <div class="select-option" data-value="qvera">Qvera Interface Engine</div>
+                                <div class="select-option" data-value="custom">Eigenentwicklung</div>
+                                <div class="select-option" data-value="other">Sonstiges</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Hersteller</label>
+                    <input type="text" name="commServerVendor" placeholder="z.B. NextGen Healthcare, InterSystems">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Version <span class="required">*</span></label>
+                    <input type="text" name="commServerVersion" required placeholder="z.B. 4.4.0, 2024.1">
+                </div>
+                <div class="form-group">
+                    <label>Kritikalität</label>
+                    <div class="custom-select" data-name="commServerCriticality">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="critical">Kritisch (24/7)</div>
+                                <div class="select-option" data-value="high">Hoch</div>
+                                <div class="select-option" data-value="medium">Mittel</div>
+                                <div class="select-option" data-value="low">Niedrig</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technische Konfiguration -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Technische Konfiguration</span>
+            <span class="section-counter">0/5</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hostname/FQDN</label>
+                    <input type="text" name="commServerHostname" placeholder="z.B. hl7engine.example.com">
+                </div>
+                <div class="form-group">
+                    <label>IP-Adresse</label>
+                    <input type="text" name="commServerIP" placeholder="z.B. 10.0.1.100">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Betriebssystem</label>
+                    <div class="custom-select" data-name="commServerOS">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="windows">Windows Server</div>
+                                <div class="select-option" data-value="linux">Linux</div>
+                                <div class="select-option" data-value="unix">Unix</div>
+                                <div class="select-option" data-value="docker">Docker Container</div>
+                                <div class="select-option" data-value="kubernetes">Kubernetes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Web-Management-Port</label>
+                    <input type="text" name="commServerAdminPort" placeholder="z.B. 8443, 9090">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Umgebung</label>
+                <div class="custom-select" data-name="commServerEnvironment">
+                    <div class="select-trigger">
+                        <span class="placeholder">Bitte wählen</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="select-dropdown">
+                        <div class="select-options">
+                            <div class="select-option" data-value="">Bitte wählen</div>
+                            <div class="select-option" data-value="production">Produktion</div>
+                            <div class="select-option" data-value="staging">Test/Staging</div>
+                            <div class="select-option" data-value="development">Entwicklung</div>
+                            <div class="select-option" data-value="training">Schulung</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Protokolle & Standards -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Unterstützte Protokolle & Standards</span>
+            <span class="section-counter">0/1</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <label>Protokoll-Support</label>
+            <div class="help-text">Wählen Sie die Protokolle und Standards, die dieser Server unterstützt</div>
+            <div class="checkbox-group interface-data-types">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="hl7v2">
+                    <label>HL7 v2.x</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="fhir">
+                    <label>HL7 FHIR</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="dicom">
+                    <label>DICOM</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="xds">
+                    <label>IHE XDS</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="rest">
+                    <label>REST API</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="soap">
+                    <label>SOAP/Web Services</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="mllp">
+                    <label>MLLP</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="http">
+                    <label>HTTP/HTTPS</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="tcp">
+                    <label>TCP/IP</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="file">
+                    <label>File-basiert</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="ftp">
+                    <label>FTP/SFTP</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="commServerProtocols" value="mq">
+                    <label>Message Queue</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Channels & Routen -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Channels & Routen</span>
+            <span class="section-counter">0/2</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-group">
+                <label>Anzahl aktiver Channels/Routen</label>
+                <input type="number" name="commServerChannelCount" placeholder="z.B. 25">
+                <div class="help-text">Geschätzte oder exakte Anzahl der konfigurierten Channels</div>
+            </div>
+
+            <div class="form-group">
+                <label>Nachrichtendurchsatz (pro Tag)</label>
+                <input type="text" name="commServerThroughput" placeholder="z.B. ca. 500.000 Nachrichten">
+            </div>
+
+            <div class="form-group">
+                <label>Wichtige Channels (optional)</label>
+                <textarea name="commServerChannels" rows="4" placeholder="Listen Sie wichtige Channels auf, z.B.:&#10;- ADT-Feed (KIS → Labor)&#10;- ORU-Results (Labor → KIS)&#10;- DICOM-Routing (Modalität → PACS)"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hochverfügbarkeit -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Hochverfügbarkeit & Performance</span>
+            <span class="section-counter">0/1</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-group">
+                <label class="cluster-label">
+                    <input type="checkbox" id="commServerHA" name="commServerHA" class="commserver-ha-check">
+                    <span>Hochverfügbarkeits-Konfiguration (HA/Cluster)</span>
+                </label>
+            </div>
+
+            <div class="commserver-ha-config" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cluster-Typ</label>
+                        <div class="custom-select" data-name="commServerClusterType">
+                            <div class="select-trigger">
+                                <span class="placeholder">Bitte wählen</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="select-dropdown">
+                                <div class="select-options">
+                                    <div class="select-option" data-value="">Bitte wählen</div>
+                                    <div class="select-option" data-value="activeactive">Active-Active</div>
+                                    <div class="select-option" data-value="activepassive">Active-Passive</div>
+                                    <div class="select-option" data-value="loadbalanced">Load Balanced</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Anzahl Knoten</label>
+                        <input type="number" name="commServerNodeCount" placeholder="z.B. 2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monitoring & Logging -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Monitoring & Logging</span>
+            <span class="section-counter">0/3</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Monitoring-Tool</label>
+                    <input type="text" name="commServerMonitoring" placeholder="z.B. Nagios, Zabbix, eingebautes Dashboard">
+                </div>
+                <div class="form-group">
+                    <label>Log-Retention (Tage)</label>
+                    <input type="number" name="commServerLogRetention" placeholder="z.B. 90">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="cluster-label">
+                    <input type="checkbox" id="commServerSIEM" name="commServerSIEM" class="commserver-siem-check">
+                    <span>SIEM-Integration aktiviert</span>
+                </label>
+                <div class="help-text">Werden Logs an ein zentrales SIEM-System gesendet?</div>
+            </div>
+
+            <div class="commserver-siem-config" style="display: none;">
+                <div class="form-group">
+                    <label>SIEM-System auswählen</label>
+                    <div class="custom-select" data-name="commServerSIEMSystem">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options commserver-siem-list">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <!-- Will be populated dynamically from existing SIEM systems -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="help-text">Wählen Sie das SIEM-System, an das Logs gesendet werden</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Log-Format</label>
+                        <div class="custom-select" data-name="commServerSIEMLogFormat">
+                            <div class="select-trigger">
+                                <span class="placeholder">Bitte wählen</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="select-dropdown">
+                                <div class="select-options">
+                                    <div class="select-option" data-value="">Bitte wählen</div>
+                                    <div class="select-option" data-value="syslog">Syslog</div>
+                                    <div class="select-option" data-value="json">JSON</div>
+                                    <div class="select-option" data-value="cef">CEF (Common Event Format)</div>
+                                    <div class="select-option" data-value="leef">LEEF (Log Event Extended Format)</div>
+                                    <div class="select-option" data-value="custom">Custom</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Transport-Protokoll</label>
+                        <div class="custom-select" data-name="commServerSIEMTransport">
+                            <div class="select-trigger">
+                                <span class="placeholder">Bitte wählen</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="select-dropdown">
+                                <div class="select-options">
+                                    <div class="select-option" data-value="">Bitte wählen</div>
+                                    <div class="select-option" data-value="tcp">TCP</div>
+                                    <div class="select-option" data-value="udp">UDP</div>
+                                    <div class="select-option" data-value="tls">TLS/SSL</div>
+                                    <div class="select-option" data-value="https">HTTPS</div>
+                                    <div class="select-option" data-value="beats">Elastic Beats</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Log-Kategorien</label>
+                    <div class="help-text">Welche Log-Kategorien werden an das SIEM gesendet?</div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="commServerSIEMLogTypes" value="application">
+                            <label>Application Logs</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="commServerSIEMLogTypes" value="security">
+                            <label>Security Events</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="commServerSIEMLogTypes" value="access">
+                            <label>Access Logs</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="commServerSIEMLogTypes" value="error">
+                            <label>Error Logs</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="commServerSIEMLogTypes" value="audit">
+                            <label>Audit Logs</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="commServerSIEMLogTypes" value="performance">
+                            <label>Performance Logs</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sicherheit -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Sicherheit & Zugriff</span>
+            <span class="section-counter">0/3</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Authentifizierung</label>
+                    <div class="custom-select" data-name="commServerAuth">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="ad">Active Directory</div>
+                                <div class="select-option" data-value="ldap">LDAP</div>
+                                <div class="select-option" data-value="local">Lokale Benutzer</div>
+                                <div class="select-option" data-value="sso">Single Sign-On</div>
+                                <div class="select-option" data-value="cert">Zertifikatsbasiert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>TLS/SSL für Admin-Zugriff</label>
+                    <div class="custom-select" data-name="commServerTLS">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="yes">Ja, TLS aktiviert</div>
+                                <div class="select-option" data-value="no">Nein</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Zugriffsberechtigung</label>
+                <input type="text" name="commServerAccess" placeholder="z.B. Interface-Team, IT-Operations">
+                <div class="help-text">Welche Teams/Personen haben Zugriff auf den Server?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wartung & Support -->
+    <div class="form-section collapsed">
+        <div class="section-title">
+            <span>Wartung & Support</span>
+            <span class="section-counter">0/3</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Wartungsfenster</label>
+                    <input type="text" name="commServerMaintenance" placeholder="z.B. Sonntag 02:00-06:00 Uhr">
+                </div>
+                <div class="form-group">
+                    <label>Letztes Update</label>
+                    <input type="text" name="commServerLastUpdate" placeholder="z.B. 15.01.2024">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Support-Kontakt</label>
+                <input type="text" name="commServerSupport" placeholder="z.B. interface-support@example.com">
+            </div>
+
+            <div class="form-group">
+                <label>Anmerkungen</label>
+                <textarea name="commServerNotes" rows="3" placeholder="z.B. Besonderheiten, geplante Upgrades, bekannte Probleme..."></textarea>
+            </div>
+        </div>
+    </div>
+</form>

@@ -398,49 +398,26 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     border: 1px solid #e2e8f0;
 }
 
-.subsection-title {
-    font-size: 0.95em;
-    font-weight: 600;
-    color: #2c3e50;
-    margin: 0 0 12px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #dee2e6;
+.commserver-ha-config {
+    background: #f0f4ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-.interface-data-types {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 8px;
+.commserver-siem-config {
+    background: #fff3e0;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-left: 3px solid #ff9800;
 }
 
-.interface-data-types .checkbox-item {
+.commserver-manual-fields {
     background: #f8f9fa;
-    padding: 8px 10px;
-    border-radius: 4px;
-    border: 1px solid #e9ecef;
-}
-
-.interface-data-types .checkbox-item:hover {
-    background: #e9ecef;
-}
-
-.select-option-group {
-    border-top: 1px solid #e2e8f0;
-    padding-top: 4px;
-    margin-top: 4px;
-}
-
-.select-option-group:first-child {
-    border-top: none;
-    margin-top: 0;
-    padding-top: 0;
-}
-
-.select-option-group-label {
-    font-size: 0.75em;
-    font-weight: 600;
-    color: #64748b;
-    text-transform: uppercase;
-    padding: 6px 12px;
-    letter-spacing: 0.5px;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
 }
