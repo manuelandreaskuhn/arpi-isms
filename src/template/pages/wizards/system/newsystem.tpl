@@ -315,6 +315,10 @@
                     <input type="checkbox" id="medinterface" name="components" value="medinterface">
                     <label for="medinterface">Medizinische Schnittstellen</label>
                 </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="container" name="components" value="container">
+                    <label for="container">Container</label>
+                </div>
             </div>
 
         </div>
@@ -563,6 +567,28 @@
         </div>
     </div>
 
+    <!-- Container -->
+    <div class="form-section collapsed" data-name="containers">
+        <div class="section-title">
+            <span>Container</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie Container (Docker, Podman, Kubernetes Pods, etc.), die für dieses System verwendet werden. Definieren Sie Container-Typen, Konfigurationen und Orchestrierung.
+            </div>
+            
+            <div id="containerList" class="dynamic-list">
+                <!-- Container entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addContainerEntry()">
+                <span>+</span> Container hinzufügen
+            </button>
+        </div>
+    </div>
+
 </form>
 
 <!-- Templates for dynamic entries -->
@@ -643,5 +669,15 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'medinterface')">×</button>
         </div>
         {{include:pages/wizards/system/medinterfaceincludetemplate.tpl}}
+    </div>
+</template>
+
+<template id="containerEntryTemplate">
+    <div class="dynamic-entry" data-type="container">
+        <div class="entry-header">
+            <span class="entry-title">Container #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'container')">×</button>
+        </div>
+        {{include:pages/wizards/system/containerincludetemplate.tpl}}
     </div>
 </template>

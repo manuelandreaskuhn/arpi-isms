@@ -45,6 +45,11 @@ import {
     addMedInterfaceEntry,
     refreshInterfaceComponents 
 } from './system/medinterface.js';
+import {
+    addContainerEntry,
+    setupContainerConditionalFields,
+    refreshContainerHostAssignments
+} from './system/container.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initially hide sections
@@ -56,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const firewallSection = document.querySelector('.form-section[data-name="firewalls"]');
     const clientSection = document.querySelector('.form-section[data-name="clients"]');
     const medInterfaceSection = document.querySelector('.form-section[data-name="medinterfaces"]');
+    const containerSection = document.querySelector('.form-section[data-name="containers"]');
     
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
@@ -65,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (firewallSection) firewallSection.style.display = 'none';
     if (clientSection) clientSection.style.display = 'none';
     if (medInterfaceSection) medInterfaceSection.style.display = 'none';
+    if (containerSection) containerSection.style.display = 'none';
     
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
@@ -184,6 +191,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Container checkbox handler
+    const containerCheckbox = document.getElementById('container');
+    
+    if (containerCheckbox && containerSection) {
+        containerCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                containerSection.style.display = 'block';
+            } else {
+                containerSection.style.display = 'none';
+                document.getElementById('containerList').innerHTML = '';
+                updateSectionCounter(containerSection);
+            }
+        });
+    }
+
     // Gematik TI checkbox handler
     const gematictiCheckbox = document.getElementById('gematicti');
     const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
@@ -291,4 +313,7 @@ window.refreshSIEMDatabaseAssignments = refreshSIEMDatabaseAssignments;
 window.refreshVPNHostAssignments = refreshVPNHostAssignments;
 window.addMedInterfaceEntry = addMedInterfaceEntry;
 window.refreshInterfaceComponents = refreshInterfaceComponents;
+window.addContainerEntry = addContainerEntry;
+window.setupContainerConditionalFields = setupContainerConditionalFields;
+window.refreshContainerHostAssignments = refreshContainerHostAssignments;
 

@@ -17,7 +17,9 @@ export function setupCustomSelect(selectElement) {
     const dropdown = selectElement.querySelector('.select-dropdown');
     const options = selectElement.querySelectorAll('.select-option');
     const searchInput = selectElement.querySelector('.select-search input');
-    const isMultiple = selectElement.dataset.multiple === 'true';
+    // Fix: Check both dataset.multiple and data-multiple attribute
+    const isMultiple = selectElement.dataset.multiple === 'true' || 
+                      selectElement.getAttribute('data-multiple') === 'true';
     
     if (!trigger || !dropdown) return;
     
@@ -57,10 +59,18 @@ export function setupCustomSelect(selectElement) {
             e.stopPropagation();
             const value = option.dataset.value;
             
-            if (isMultiple) {
+            // Get the current isMultiple state from registry
+            const selectInfo = customSelectsRegistry.get(selectElement);
+            const currentIsMultiple = selectInfo ? selectInfo.isMultiple : isMultiple;
+            
+            if (currentIsMultiple) {
                 handleMultipleSelection(selectElement, option, value);
+                // Don't close dropdown for multi-select
             } else {
                 handleSingleSelection(selectElement, option, value);
+                // Close dropdown for single select
+                dropdown.classList.remove('active');
+                trigger.classList.remove('active');
             }
             
             // Update section counter if in a form section
@@ -131,10 +141,6 @@ function handleSingleSelection(selectElement, option, value) {
     // Set data-value on select element
     selectElement.dataset.value = value;
     
-    // Close dropdown
-    dropdown.classList.remove('active');
-    trigger.classList.remove('active');
-    
     // Trigger change event
     selectElement.dispatchEvent(new CustomEvent('change', { 
         detail: { value } 
@@ -148,25 +154,28 @@ function handleMultipleSelection(selectElement, option, value) {
     if (value === '') return; // Skip empty option in multi-select
     
     const trigger = selectElement.querySelector('.select-trigger');
+    const placeholder = trigger.querySelector('.placeholder');
     let selectedBadges = selectElement.querySelector('.selected-badges');
     
     // Create badges container if it doesn't exist
     if (!selectedBadges) {
         selectedBadges = document.createElement('div');
         selectedBadges.className = 'selected-badges';
-        trigger.appendChild(selectedBadges);
+        // Insert after placeholder
+        placeholder.parentNode.insertBefore(selectedBadges, placeholder.nextSibling);
     }
     
     // Toggle selected state
+    const wasSelected = option.classList.contains('selected');
     option.classList.toggle('selected');
     
-    if (option.classList.contains('selected')) {
+    if (!wasSelected) {
         // Add badge
         const badge = document.createElement('div');
         badge.className = 'badge';
         badge.dataset.value = value;
         badge.innerHTML = `
-            ${option.textContent}
+            <span class="badge-text">${option.textContent}</span>
             <span class="badge-remove" data-value="${value}">×</span>
         `;
         selectedBadges.appendChild(badge);
@@ -177,10 +186,15 @@ function handleMultipleSelection(selectElement, option, value) {
             badge.remove();
             option.classList.remove('selected');
             updateMultiSelectValue(selectElement);
+            
+            // Trigger change event
+            selectElement.dispatchEvent(new CustomEvent('change', { 
+                detail: { values: getSelectedValues(selectElement) } 
+            }));
         });
     } else {
         // Remove badge
-        const badge = selectedBadges.querySelector(`[data-value="${value}"]`);
+        const badge = selectedBadges.querySelector(`.badge[data-value="${value}"]`);
         if (badge) badge.remove();
     }
     

@@ -421,3 +421,79 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     border-radius: 6px;
     margin-top: 10px;
 }
+
+.container-k8s-config,
+.container-volumes-config,
+.container-env-config {
+    background: #e3f2fd;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-left: 3px solid #2196f3;
+}
+
+.subsection-title {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Multi-select badges styling */
+.selected-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.selected-badges .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #2196f3;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+
+.selected-badges .badge-text {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.selected-badges .badge-remove {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 4px;
+    margin-left: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.selected-badges .badge-remove:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Hide placeholder when badges are shown */
+.custom-select[data-multiple="true"] .select-trigger .placeholder {
+    display: inline;
+}
+
+.custom-select[data-multiple="true"] .select-trigger:has(.selected-badges .badge) .placeholder {
+    display: none;
+}

@@ -1,4 +1,4 @@
-<div class="custom-select" data-name="department" data-multi="true">
+<div class="custom-select" data-name="department" data-multiple="true">
     <div class="select-trigger">
         <span class="placeholder">Auswählen...</span>
         <span class="arrow">▼</span>
