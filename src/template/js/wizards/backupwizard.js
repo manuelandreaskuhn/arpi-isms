@@ -1,4 +1,9 @@
+import { initializeAllComponentSelects } from './componentlinking.js';
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize component linking
+    initializeAllComponentSelects();
+
     // Storage Levels (2-tier / 3-tier) toggle
     const storageLevelsSelect = document.querySelector('[data-name="storagelevels"]');
     const tertiaryStorageHeader = document.getElementById('tertiary-storage-header');

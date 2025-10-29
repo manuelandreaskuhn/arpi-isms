@@ -1,6 +1,8 @@
+import { initializeAllComponentSelects } from './componentlinking.js';
+
 document.addEventListener('DOMContentLoaded', function() {
-    // No specific conditional fields needed for SIEM wizard at the moment
-    // All sections are straightforward without complex dependencies
+    // Initialize component linking
+    initializeAllComponentSelects();
     
-    console.log('SIEM Wizard initialized');
+    console.log('SIEM Wizard initialized with component linking');
 });

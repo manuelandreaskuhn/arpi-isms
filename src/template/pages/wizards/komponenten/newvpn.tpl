@@ -83,8 +83,32 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>VPN-Gateway / Concentrator <span class="required">*</span></label>
+                    <div class="custom-select" data-name="vpngatewayid" data-component-type="vm,hardware,firewall">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen (VM/Hardware/Firewall)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Virtuelle Maschinen</div>
+                                <!-- Dynamic VM entries -->
+                                <div class="select-group-header">Hardware Server</div>
+                                <!-- Dynamic Hardware entries -->
+                                <div class="select-group-header">Firewall-Komponenten</div>
+                                <!-- Dynamic Firewall entries -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="vpn-gateway-manual" style="display:none;">
+                    <label>VPN-Gateway (manuell)</label>
                     <input type="text" id="vpngateway" required placeholder="z.B. vpn.example.com, vpn-gw-01">
                 </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>Gateway-Typ</label>
                     <div class="custom-select" data-name="gatewaytype">
@@ -776,6 +800,27 @@
                 </div>
                 <div class="form-group">
                     <label>Sekundäres VPN-Gateway</label>
+                    <div class="custom-select" data-name="secondarygatewayid" data-component-type="vm,hardware,firewall">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen oder manuell eingeben</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Virtuelle Maschinen</div>
+                                <!-- Dynamic VM entries -->
+                                <div class="select-group-header">Hardware Server</div>
+                                <!-- Dynamic Hardware entries -->
+                                <div class="select-group-header">Firewall-Komponenten</div>
+                                <!-- Dynamic Firewall entries -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="secondary-gateway-manual" style="display:none;">
+                    <label>Sekundäres Gateway (manuell)</label>
                     <input type="text" id="secondarygateway" placeholder="z.B. vpn-backup.example.com">
                 </div>
             </div>

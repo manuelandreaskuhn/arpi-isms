@@ -106,8 +106,31 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Backup-Server / Hostname</label>
+                    <div class="custom-select" data-name="backupserverid" data-component-type="vm,hardware">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen (VM/Hardware)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Virtuelle Maschinen</div>
+                                <!-- Dynamic VM entries -->
+                                <div class="select-group-header">Hardware Server</div>
+                                <!-- Dynamic Hardware entries -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="help-text">Wählen Sie den Server aus oder geben Sie manuell ein</div>
+                </div>
+                <div class="form-group" id="backup-server-manual" style="display:none;">
+                    <label>Server-Name (manuell)</label>
                     <input type="text" id="backupservername" placeholder="z.B. backup-srv-01.example.com">
                 </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>IP-Adresse</label>
                     <input type="text" id="backupserverip" placeholder="z.B. 192.168.50.10">

@@ -26,6 +26,7 @@ export function addVMEntry() {
     // Trigger refreshes in other modules
     if (window.refreshHostAssignments) window.refreshHostAssignments();
     if (window.refreshVPNHostAssignments) window.refreshVPNHostAssignments();
+    if (window.refreshAllComponentSelects) window.refreshAllComponentSelects();
     refreshVMHypervisors(addedEntry);
 }
 
@@ -52,6 +53,7 @@ export function addHardwareEntry() {
     // Trigger refreshes in other modules
     if (window.refreshHostAssignments) window.refreshHostAssignments();
     if (window.refreshVPNHostAssignments) window.refreshVPNHostAssignments();
+    if (window.refreshAllComponentSelects) window.refreshAllComponentSelects();
 }
 
 export function removeEntry(button, type) {
@@ -89,6 +91,7 @@ export function removeEntry(button, type) {
             if (window.refreshHostAssignments) window.refreshHostAssignments();
             if (window.refreshBackupHostAssignments) window.refreshBackupHostAssignments();
             if (window.refreshVPNHostAssignments) window.refreshVPNHostAssignments();
+            if (window.refreshAllComponentSelects) window.refreshAllComponentSelects();
         } else if (type === 'database') {
             if (window.refreshBackupHostAssignments) window.refreshBackupHostAssignments();
         }

@@ -1,6 +1,8 @@
+import { initializeAllComponentSelects } from './componentlinking.js';
+
 document.addEventListener('DOMContentLoaded', function() {
-    // No specific conditional fields needed for VPN wizard at the moment
-    // All sections are straightforward without complex dependencies
+    // Initialize component linking
+    initializeAllComponentSelects();
     
-    console.log('VPN Wizard initialized');
+    console.log('VPN Wizard initialized with component linking');
 });

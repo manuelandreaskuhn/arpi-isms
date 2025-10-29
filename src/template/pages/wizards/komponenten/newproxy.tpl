@@ -24,6 +24,25 @@
                 </div>
                 <div class="form-group">
                     <label>Proxy-Server <span class="required">*</span></label>
+                    <div class="custom-select" data-name="proxyserverid" data-component-type="vm,hardware">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen (VM/Hardware)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Virtuelle Maschinen</div>
+                                <!-- Dynamic VM entries -->
+                                <div class="select-group-header">Hardware Server</div>
+                                <!-- Dynamic Hardware entries -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="proxy-server-manual" style="display:none;">
+                    <label>Proxy-Server (manuell)</label>
                     <input type="text" id="proxyserver" required placeholder="z.B. proxy.example.com, 192.168.1.100">
                 </div>
             </div>
@@ -276,11 +295,26 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Sekundärer Proxy-Server</label>
-                        <input type="text" id="proxysecondary" placeholder="z.B. proxy-backup.example.com">
+                        <div class="custom-select" data-name="proxysecondaryid" data-component-type="vm,hardware">
+                            <div class="select-trigger">
+                                <span class="placeholder">Bitte wählen oder manuell eingeben</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="select-dropdown">
+                                <div class="select-options">
+                                    <div class="select-option" data-value="">Bitte wählen</div>
+                                    <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                    <div class="select-group-header">Virtuelle Maschinen</div>
+                                    <!-- Dynamic VM entries -->
+                                    <div class="select-group-header">Hardware Server</div>
+                                    <!-- Dynamic Hardware entries -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Sekundärer Proxy-Port</label>
-                        <input type="number" id="proxysecondaryport" placeholder="z.B. 8080">
+                    <div class="form-group" id="proxy-secondary-manual" style="display:none;">
+                        <label>Sekundärer Proxy (manuell)</label>
+                        <input type="text" id="proxysecondary" placeholder="z.B. proxy-backup.example.com">
                     </div>
                 </div>
 

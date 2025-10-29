@@ -1,4 +1,9 @@
+import { initializeAllComponentSelects } from './componentlinking.js';
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize component linking
+    initializeAllComponentSelects();
+    
     // Proxy Failover toggle
     const proxyFailoverCheck = document.getElementById('proxy-failover-check');
     const proxyFailoverConfig = document.getElementById('proxy-failover-config');
@@ -9,5 +14,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    console.log('Proxy Wizard initialized');
+    console.log('Proxy Wizard initialized with component linking');
 });

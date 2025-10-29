@@ -256,8 +256,28 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Core Switch(es)</label>
+                    <div class="custom-select" data-name="coreswitchid" data-component-type="hardware">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen oder manuell eingeben</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Hardware Server / Switches</div>
+                                <!-- Dynamic Hardware entries -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="coreswitch-manual" style="display:none;">
+                    <label>Core Switch (manuell)</label>
                     <input type="text" id="coreswitch" placeholder="z.B. Core-SW-01, Core-SW-02 (HA)">
                 </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>Distribution Switches</label>
                     <input type="text" id="distributionswitch" placeholder="z.B. Dist-SW-01, Dist-SW-02">
@@ -279,26 +299,24 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Router / L3-Switch</label>
-                    <input type="text" id="router" placeholder="z.B. Router-01, Core-L3-Switch">
-                </div>
-                <div class="form-group">
-                    <label>Router-Typ</label>
-                    <div class="custom-select" data-name="routertype">
+                    <div class="custom-select" data-name="routerid" data-component-type="hardware">
                         <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
+                            <span class="placeholder">Bitte wählen oder manuell eingeben</span>
                             <span class="arrow">▼</span>
                         </div>
                         <div class="select-dropdown">
                             <div class="select-options">
                                 <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="edge">Edge Router</div>
-                                <div class="select-option" data-value="core">Core Router</div>
-                                <div class="select-option" data-value="distribution">Distribution Router</div>
-                                <div class="select-option" data-value="l3-switch">Layer 3 Switch</div>
-                                <div class="select-option" data-value="virtual">Virtual Router / vRouter</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Hardware Server / Router</div>
+                                <!-- Dynamic Hardware entries -->
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="form-group" id="router-manual" style="display:none;">
+                    <label>Router (manuell)</label>
+                    <input type="text" id="router" placeholder="z.B. Router-01, Core-L3-Switch">
                 </div>
             </div>
 
@@ -306,25 +324,24 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Firewall</label>
-                    <input type="text" id="firewall" placeholder="z.B. FW-01, Perimeter-Firewall">
-                </div>
-                <div class="form-group">
-                    <label>Firewall-Position</label>
-                    <div class="custom-select" data-name="firewallposition">
+                    <div class="custom-select" data-name="firewallid" data-component-type="firewall">
                         <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
+                            <span class="placeholder">Bitte wählen oder manuell eingeben</span>
                             <span class="arrow">▼</span>
                         </div>
                         <div class="select-dropdown">
                             <div class="select-options">
                                 <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="perimeter">Perimeter (Internet-facing)</div>
-                                <div class="select-option" data-value="internal">Internal Segmentation</div>
-                                <div class="select-option" data-value="dmz">DMZ-Firewall</div>
-                                <div class="select-option" data-value="none">Keine Firewall</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Firewall-Komponenten</div>
+                                <!-- Dynamic Firewall entries -->
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="form-group" id="firewall-manual" style="display:none;">
+                    <label>Firewall (manuell)</label>
+                    <input type="text" id="firewall" placeholder="z.B. FW-01, Perimeter-Firewall">
                 </div>
             </div>
         </div>

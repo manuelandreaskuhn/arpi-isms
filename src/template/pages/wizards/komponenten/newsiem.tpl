@@ -112,7 +112,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>SIEM-Server / Hostname</label>
+                    <label>SIEM-Server <span class="required">*</span></label>
+                    <div class="custom-select" data-name="siemserverid" data-component-type="vm,hardware">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen (VM/Hardware)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Virtuelle Maschinen</div>
+                                <!-- Dynamic VM entries -->
+                                <div class="select-group-header">Hardware Server</div>
+                                <!-- Dynamic Hardware entries -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="siem-server-manual" style="display:none;">
+                    <label>SIEM-Server (manuell)</label>
                     <input type="text" id="siemserver" placeholder="z.B. siem-01.example.com">
                 </div>
             </div>

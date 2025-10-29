@@ -1,6 +1,8 @@
+import { initializeAllComponentSelects } from './componentlinking.js';
+
 document.addEventListener('DOMContentLoaded', function() {
-    // No specific conditional fields needed for network wizard at the moment
-    // All sections are straightforward without complex dependencies
+    // Initialize component linking
+    initializeAllComponentSelects();
     
-    console.log('Network Wizard initialized');
+    console.log('Network Wizard initialized with component linking');
 });
