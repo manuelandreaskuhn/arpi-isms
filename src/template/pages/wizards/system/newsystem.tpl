@@ -311,6 +311,10 @@
                     <input type="checkbox" id="vpn" name="components" value="vpn">
                     <label for="vpn">VPN-Zugang</label>
                 </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="medinterface" name="components" value="medinterface">
+                    <label for="medinterface">Medizinische Schnittstellen</label>
+                </div>
             </div>
 
         </div>
@@ -537,6 +541,28 @@
         </div>
     </div>
 
+    <!-- Medizinische Schnittstellen -->
+    <div class="form-section collapsed" data-name="medinterfaces">
+        <div class="section-title">
+            <span>Medizinische Schnittstellen</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie medizinische Schnittstellen (HL7v2, FHIR, DICOM, etc.) zwischen diesem System und anderen Systemen im Krankenhaus. Definieren Sie Quell- und Zielsysteme, Protokolle und übertragene Datentypen.
+            </div>
+            
+            <div id="medInterfaceList" class="dynamic-list">
+                <!-- Interface entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addMedInterfaceEntry()">
+                <span>+</span> Medizinische Schnittstelle hinzufügen
+            </button>
+        </div>
+    </div>
+
 </form>
 
 <!-- Templates for dynamic entries -->
@@ -607,5 +633,15 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'client')">×</button>
         </div>
         {{include:pages/wizards/system/clientincludetemplate.tpl}}
+    </div>
+</template>
+
+<template id="medInterfaceEntryTemplate">
+    <div class="dynamic-entry" data-type="medinterface">
+        <div class="entry-header">
+            <span class="entry-title">Schnittstelle #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'medinterface')">×</button>
+        </div>
+        {{include:pages/wizards/system/medinterfaceincludetemplate.tpl}}
     </div>
 </template>

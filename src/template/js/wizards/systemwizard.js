@@ -41,6 +41,10 @@ import {
     refreshSIEMDatabaseAssignments 
 } from './system/siem.js';
 import { setupVPNConditionalFields, refreshVPNHostAssignments } from './system/vpn.js';
+import { 
+    addMedInterfaceEntry,
+    refreshInterfaceComponents 
+} from './system/medinterface.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initially hide sections
@@ -51,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadbalancerSection = document.querySelector('.form-section[data-name="loadbalancers"]');
     const firewallSection = document.querySelector('.form-section[data-name="firewalls"]');
     const clientSection = document.querySelector('.form-section[data-name="clients"]');
+    const medInterfaceSection = document.querySelector('.form-section[data-name="medinterfaces"]');
     
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
@@ -59,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loadbalancerSection) loadbalancerSection.style.display = 'none';
     if (firewallSection) firewallSection.style.display = 'none';
     if (clientSection) clientSection.style.display = 'none';
+    if (medInterfaceSection) medInterfaceSection.style.display = 'none';
     
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
@@ -159,6 +165,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 clientSection.style.display = 'none';
                 document.getElementById('clientList').innerHTML = '';
                 updateSectionCounter(clientSection);
+            }
+        });
+    }
+
+    // Medical Interface checkbox handler
+    const medInterfaceCheckbox = document.getElementById('medinterface');
+    
+    if (medInterfaceCheckbox && medInterfaceSection) {
+        medInterfaceCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                medInterfaceSection.style.display = 'block';
+            } else {
+                medInterfaceSection.style.display = 'none';
+                document.getElementById('medInterfaceList').innerHTML = '';
+                updateSectionCounter(medInterfaceSection);
             }
         });
     }
@@ -268,4 +289,6 @@ window.setupSIEMConditionalFields = setupSIEMConditionalFields;
 window.refreshSIEMHostAssignments = refreshSIEMHostAssignments;
 window.refreshSIEMDatabaseAssignments = refreshSIEMDatabaseAssignments;
 window.refreshVPNHostAssignments = refreshVPNHostAssignments;
+window.addMedInterfaceEntry = addMedInterfaceEntry;
+window.refreshInterfaceComponents = refreshInterfaceComponents;
 
