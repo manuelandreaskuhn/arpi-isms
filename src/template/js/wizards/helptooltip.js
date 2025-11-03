@@ -5,7 +5,6 @@ let activeTooltip = null;
  */
 export function initializeHelpTooltips() {
     document.addEventListener('click', handleTooltipClick);
-    document.addEventListener('scroll', closeActiveTooltip, true);
     window.addEventListener('resize', closeActiveTooltip);
 }
 

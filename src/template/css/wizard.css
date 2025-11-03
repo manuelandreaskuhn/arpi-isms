@@ -509,3 +509,220 @@ div.buttonlist {
 .form-section .help-text {
     margin-bottom: 15px;
 }
+
+/* Multi-select badges styling */
+.selected-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.selected-badges .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #2196f3;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+
+.selected-badges .badge-text {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.selected-badges .badge-remove {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 4px;
+    margin-left: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.selected-badges .badge-remove:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Hide placeholder when badges are shown */
+.custom-select[data-multiple="true"] .select-trigger .placeholder {
+    display: inline;
+}
+
+.custom-select[data-multiple="true"] .select-trigger:has(.selected-badges .badge) .placeholder {
+    display: none;
+}
+
+
+/* Tooltip Styling */
+.help-tooltip {
+    position: absolute;
+    background: var(--background-color);
+    color: var(--font-color);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.80em;
+    line-height: 1.2;
+    max-width: 600px;
+    width: max-content;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.help-tooltip > p {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    color: var(--primary-color);
+}
+
+.help-tooltip.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.help-tooltip strong {
+    color: var(--primary-color);
+}
+
+.help-tooltip > h2 {
+    font-size: 1.1em;
+    margin-bottom: 2px;
+    border-bottom: 1px dashed var(--primary-color);
+    color: var(--primary-color);
+}
+
+.help-tooltip > div > h3 {
+    font-size: 0.95em;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    border-bottom: 1px dashed white;
+}
+
+.help-tooltip ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.help-tooltip li {
+    margin: 4px 0;
+}
+
+.help-tooltip em {
+    display: block;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #81d4fa;
+    font-style: normal;
+    font-size: 0.95em;
+}
+
+.help-tooltip ul em {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    display: inline;
+}
+
+.help-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid var(--background-color);
+}
+
+.help-tooltip.tooltip-bottom::before {
+    top: auto;
+    bottom: -6px;
+    border-bottom: none;
+    border-top: 6px solid var(--background-color);
+}
+
+.help-tooltip.tooltip-left::before {
+    left: auto;
+    right: 20px;
+}
+
+/* Close button for tooltips on mobile */
+.help-tooltip-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .help-tooltip {
+        max-width: 90vw;
+        position: fixed;
+        left: 5vw !important;
+        top: 50% !important;
+        transform: translateY(-50%);
+        pointer-events: auto;
+    }
+    
+    .help-tooltip-close {
+        display: flex;
+    }
+    
+    .help-tooltip::before {
+        display: none;
+    }
+}
+
+
+/* Help Icon Styling */
+.help-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: #2196f3;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75em;
+    font-weight: bold;
+    cursor: help;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.help-icon:hover {
+    background: #1976d2;
+    transform: scale(1.1);
+}
