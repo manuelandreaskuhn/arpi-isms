@@ -46,7 +46,7 @@ jobs:
       - name: Wait for MongoDB to be ready
         run: |
           for i in {1..60}; do 
-            mongosh --quiet --eval 'db.runCommand({ ping: 1 })' && echo "MongoDB is up" && exit 0 
+            mongosh "mongodb://localhost:28017" --quiet --eval 'db.runCommand({ ping: 1 })' && echo "MongoDB is up" && exit 0 
             sleep 1 
           done
           echo "MongoDB did not start in time" && exit 1
