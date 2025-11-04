@@ -16,7 +16,7 @@ services:
       - arpi-network
 
   mongo:
-    image: mongo:latest
+    image: mongo:8.0.15
     container_name: arpi-isms-mongo
     ports:
       - "28017:27017"
