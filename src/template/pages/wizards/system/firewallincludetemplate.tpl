@@ -1,0 +1,279 @@
+<div class="entry-content">
+    <!-- Firewall-Auswahl -->
+    <div class="subsection-header">Firewall-Auswahl</div>
+    <div class="form-group">
+        <label>
+            Zentrale Firewall <span class="required">*</span>
+            <span class="help-icon" data-tooltip="firewall-selection">?</span>
+        </label>
+        <div class="custom-select" data-name="firewallid" data-index="0" data-category="firewall">
+            <div class="select-trigger">
+                <span class="placeholder">Bitte wählen</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="select-dropdown">
+                <div class="select-options">
+                    <div class="select-option" data-value="">Bitte wählen</div>
+                    <div class="select-option" data-value="fw-dmz-01">FW-DMZ-01 (Perimeter)</div>
+                    <div class="select-option" data-value="fw-internal-01">FW-Internal-01 (Segmentation)</div>
+                    <div class="select-option" data-value="fw-datacenter-01">FW-Datacenter-01</div>
+                </div>
+            </div>
+        </div>
+        <div class="help-text">Wählen Sie die zentrale Firewall aus, auf der diese Regel konfiguriert wird</div>
+    </div>
+
+    <!-- Firewall-Regel -->
+    <div class="subsection-header">Regel-Definition</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Regelname / Policy <span class="required">*</span>
+                <span class="help-icon" data-tooltip="rule-name">?</span>
+            </label>
+            <input type="text" name="rulename" class="fw-field" placeholder="z.B. Allow-KIS-HTTPS, Deny-External-RDP" required>
+        </div>
+        <div class="form-group">
+            <label>
+                Regel-Priorität
+                <span class="help-icon" data-tooltip="rule-priority">?</span>
+            </label>
+            <input type="number" name="rulepriority" class="fw-field" placeholder="z.B. 100, 200">
+            <div class="help-text">Niedrigere Werte = höhere Priorität</div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Quell-Zone
+                <span class="help-icon" data-tooltip="source-zone">?</span>
+            </label>
+            <input type="text" name="sourcezone" class="fw-field" placeholder="z.B. Internal, DMZ, any">
+        </div>
+        <div class="form-group">
+            <label>
+                Ziel-Zone
+                <span class="help-icon" data-tooltip="dest-zone">?</span>
+            </label>
+            <input type="text" name="destzone" class="fw-field" placeholder="z.B. DMZ, External, any">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Quell-Adresse(n)
+                <span class="help-icon" data-tooltip="source-address">?</span>
+            </label>
+            <input type="text" name="sourceaddr" class="fw-field" placeholder="z.B. 10.0.1.0/24, Client-Network, any">
+        </div>
+        <div class="form-group">
+            <label>
+                Ziel-Adresse(n)
+                <span class="help-icon" data-tooltip="dest-address">?</span>
+            </label>
+            <input type="text" name="destaddr" class="fw-field" placeholder="z.B. 172.16.1.10, KIS-Server-Group">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Service / Ports <span class="required">*</span>
+                <span class="help-icon" data-tooltip="service-port">?</span>
+            </label>
+            <input type="text" name="service" class="fw-field" placeholder="z.B. TCP/443, UDP/53, HTTPS, SSH" required>
+        </div>
+        <div class="form-group">
+            <label>
+                Aktion <span class="required">*</span>
+                <span class="help-icon" data-tooltip="rule-action">?</span>
+            </label>
+            <div class="custom-select" data-name="ruleaction" data-index="0" data-category="firewall">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="allow">Allow / Permit</div>
+                        <div class="select-option" data-value="deny">Deny / Block</div>
+                        <div class="select-option" data-value="reject">Reject (with response)</div>
+                        <div class="select-option" data-value="inspect">Inspect / Deep Packet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Logging
+                <span class="help-icon" data-tooltip="rule-logging">?</span>
+            </label>
+            <div class="custom-select" data-name="rulelogging" data-index="0" data-category="firewall">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="all">Alle Pakete loggen</div>
+                        <div class="select-option" data-value="session-start">Nur Session Start</div>
+                        <div class="select-option" data-value="session-end">Nur Session End</div>
+                        <div class="select-option" data-value="none">Kein Logging</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                Regel Status
+                <span class="help-icon" data-tooltip="rule-status">?</span>
+            </label>
+            <div class="custom-select" data-name="rulestatus" data-index="0" data-category="firewall">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="enabled">Aktiviert</div>
+                        <div class="select-option" data-value="disabled">Deaktiviert</div>
+                        <div class="select-option" data-value="scheduled">Zeitgesteuert</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAT-Konfiguration für diese Regel -->
+    <div class="subsection-header">NAT-Konfiguration (optional)</div>
+    <div class="form-group">
+        <label class="cluster-label">
+            <input type="checkbox" class="fw-nat-check">
+            <span>NAT für diese Regel aktivieren</span>
+            <span class="help-icon" data-tooltip="nat-enabled">?</span>
+        </label>
+    </div>
+
+    <div class="fw-nat-config">
+        <div class="form-row">
+            <div class="form-group">
+                <label>
+                    NAT-Typ
+                    <span class="help-icon" data-tooltip="nat-type">?</span>
+                </label>
+                <div class="custom-select" data-name="nattype" data-index="0" data-category="firewall">
+                    <div class="select-trigger">
+                        <span class="placeholder">Bitte wählen</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="select-dropdown">
+                        <div class="select-options">
+                            <div class="select-option" data-value="">Bitte wählen</div>
+                            <div class="select-option" data-value="snat">Source NAT (SNAT)</div>
+                            <div class="select-option" data-value="dnat">Destination NAT (DNAT)</div>
+                            <div class="select-option" data-value="pat">Port Address Translation (PAT)</div>
+                            <div class="select-option" data-value="static">Static NAT (1:1)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    NAT Pool / Adresse
+                    <span class="help-icon" data-tooltip="nat-pool">?</span>
+                </label>
+                <input type="text" name="natpool" class="fw-field" placeholder="z.B. 203.0.113.10, NAT-Pool-1">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>
+                    Original IP/Port
+                    <span class="help-icon" data-tooltip="nat-original">?</span>
+                </label>
+                <input type="text" name="natoriginal" class="fw-field" placeholder="z.B. 10.0.1.100:8080">
+            </div>
+            <div class="form-group">
+                <label>
+                    Translated IP/Port
+                    <span class="help-icon" data-tooltip="nat-translated">?</span>
+                </label>
+                <input type="text" name="nattranslated" class="fw-field" placeholder="z.B. 203.0.113.10:443">
+            </div>
+        </div>
+    </div>
+
+    <!-- Betroffene Komponenten -->
+    <div class="subsection-header">
+        Betroffene Komponenten
+        <span class="help-icon" data-tooltip="fw-host-assignment">?</span>
+    </div>
+    <div class="form-group">
+        <label>Zugeordnete VMs / Server</label>
+        <div class="help-text">Wählen Sie die Komponenten aus, für die diese Regel gilt (optional, zur Dokumentation)</div>
+        <div class="host-assignment-box">
+            <div class="host-assignment" data-hostlist>
+                <div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zeitplan & Gültigkeit -->
+    <div class="subsection-header">Zeitplan & Gültigkeit (optional)</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Gültig von
+                <span class="help-icon" data-tooltip="valid-from">?</span>
+            </label>
+            <input type="text" name="validfrom" class="fw-field" placeholder="z.B. 01.01.2024, immer">
+        </div>
+        <div class="form-group">
+            <label>
+                Gültig bis
+                <span class="help-icon" data-tooltip="valid-to">?</span>
+            </label>
+            <input type="text" name="validto" class="fw-field" placeholder="z.B. 31.12.2024, unbegrenzt">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            Zeitplan
+            <span class="help-icon" data-tooltip="schedule">?</span>
+        </label>
+        <input type="text" name="schedule" class="fw-field" placeholder="z.B. Mo-Fr 08:00-18:00, 24/7">
+        <div class="help-text">Zeitfenster, in dem die Regel aktiv ist</div>
+    </div>
+
+    <!-- Notizen -->
+    <div class="subsection-header">Zusätzliche Informationen</div>
+    <div class="form-group">
+        <label>
+            Business Justification
+            <span class="help-icon" data-tooltip="justification">?</span>
+        </label>
+        <input type="text" name="justification" class="fw-field" placeholder="z.B. Zugriff für Arzt-Arbeitsplätze auf KIS-Server">
+        <div class="help-text">Geschäftliche Begründung für diese Regel</div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            Notizen / Regeldetails
+            <span class="help-icon" data-tooltip="fw-notes">?</span>
+        </label>
+        <textarea name="fwnotes" class="fw-field" rows="3" placeholder="Zusätzliche Informationen zu dieser Regel, Ausnahmen, Change-Ticket-Nummer..."></textarea>
+    </div>
+</div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/firewall-help.tpl}}

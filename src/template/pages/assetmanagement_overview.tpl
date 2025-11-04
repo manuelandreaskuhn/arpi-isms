@@ -1,0 +1,331 @@
+<aside>
+    <p>Assetmanagement</p>
+</aside>
+
+<div class="threecolumnlist">
+
+    <div class="columnlist">
+        <div class="infobox">
+            <h3>Systeme <i class="count">157</i></h3>
+            <i>Was sind Systeme: Eine Ansammlung von Komponenten, die zusammenarbeiten, um ein bestimmtes Ziel zu erreichen.</i>
+
+            <form id="newSystemQuickForm">
+                <div class="newentry">
+                    <input type="text" name="systemName" placeholder="Neues System hinzufügen...">
+                    <button type="submit" title="Hinzufügen"><i>+</i></button>
+                </div>
+            </form>
+        </div>
+
+        <div class="search">
+            <input type="search" placeholder="Systeme durchsuchen...">
+        </div>
+        
+        <h2>Radiologie</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Systemname 1</strong>
+                <div class="taginfo">
+                    <span class="tag">Komponente 1</span>
+                    <span class="tag">Komponente 2</span>
+                    <span class="tag">Applikation 1</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+
+            <div class="entry">
+                <strong>Systemname 2</strong>
+                <div class="taginfo">
+                    <span class="tag">Komponente 1</span>
+                    <span class="tag">Komponente 2</span>
+                    <span class="tag">Komponente 3</span>
+                    <span class="tag">Applikation 1</span>
+                    <span class="tag">Applikation 2</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Krankenhausverwaltung</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Systemname 1 lkasdlksa kasdfjd</strong>
+                <div class="taginfo">
+                    <span class="tag">Komponente 1</span>
+                    <span class="tag">Komponente 2</span>
+                    <span class="tag">Applikation 1</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+
+            <div class="entry">
+                <strong>Systemname 2</strong>
+                <div class="taginfo">
+                    <span class="tag">Komponente 1</span>
+                    <span class="tag">Komponente 2</span>
+                    <span class="tag">Applikation 1</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Intensivpflege</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Systemname 1</strong>
+                <div class="taginfo">
+                    <span class="tag">Komponente 1</span>
+                    <span class="tag">Komponente 2</span>
+                    <span class="tag">Applikation 1</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Unbekannt</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Systemname 1</strong>
+                <div class="taginfo"></div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="columnlist">
+        <div class="infobox">
+            <h3>Komponenten <i class="count">4845</i></h3>
+            <i>Was sind Komponenten: Eine Reihe von Bausteinen, darunter Hardware und Netzwerke, die zusammen ein System bilden.</i>
+
+            <form id="newKomponentQuickForm">
+                <div class="newentry">
+                    <input type="text" name="komponentenName" placeholder="Neue Komponente hinzufügen...">
+                    <select name="komponentenTyp">
+                        <option value="server">Physischer Server</option>
+                        <option value="vm">Virtuelle Maschine</option>
+                        <option value="hypervisor">Hypervisor</option>
+                        <option value="firewall">Firewall</option>
+                        <option value="switch">Switch</option>
+                        <option value="nas">Netzwerkspeicher</option>
+                        <option value="san">Storage Area Network</option>
+                        <option value="backup">Backup-System</option>
+                    </select>
+                    <button type="submit" title="Hinzufügen"><i>+</i></button>
+                </div>
+            </form>
+        </div>
+
+        <div class="search">
+            <input type="search" placeholder="Komponenten durchsuchen...">
+        </div>
+
+        <h2>Server</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>server123</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.1</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Physischer Server</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>vm-1235</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.2</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Virtuelle Maschine</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>db-server-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.3</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Datenbankserver</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Netzwerkgeräte</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>firewall-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.4</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Firewall</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>switch-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.5</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Switch</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Speichersysteme</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>nas-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.6</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Netzwerkspeicher</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>san-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.7</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Storage Area Network</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>backup-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.8</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Backup-System</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="columnlist">
+        <div class="infobox">
+            <h3>Applikationen <i class="count">100</i></h3>
+            <i>Was sind Applikationen: Softwarelösungen die entweder direkt oder indirekt Geschäftsprozesse unterstützen.</i>
+
+            <form id="newSoftwareQuickForm">
+                <div class="newentry">
+                    <input type="text" name="softwareName" placeholder="Neue Applikation hinzufügen...">
+                    <button type="submit" title="Hinzufügen"><i>+</i></button>
+                </div>
+            </form>
+        </div>
+
+        <div class="search">
+            <input type="search" placeholder="Applikationen durchsuchen...">
+        </div>
+
+        <h2>Krankenhausverwaltung</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>KIS-System</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="none">0 CVE</span>
+                    <span class="status" data-status="up-to-date">Aktuell</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller A</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>Abrechnungssystem</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="medium">1 CVE</span>
+                    <span class="status" data-status="updates-available">Update verfügbar</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller B</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>Terminplanung</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="high">5 CVE</span>
+                    <span class="status" data-status="outdated">Veraltet</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller C</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Radiologie</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>PACS-System</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="none">0 CVE</span>
+                    <span class="status" data-status="up-to-date">Aktuell</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller D</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>RIS-System</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="critical">2 CVE</span>
+                    <span class="status" data-status="updates-available">Update verfügbar</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller E</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>IT Tools</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Ticketing-System</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="low">1 CVE</span>
+                    <span class="status" data-status="up-to-date">Aktuell</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller F</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>Monitoring-Tool</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="none">0 CVE</span>
+                    <span class="status" data-status="up-to-date">Aktuell</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller G</span>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>Notepad++</strong>
+                <div class="securitystatus">
+                    <span class="cvestatus" data-status="none">0 CVE</span>
+                    <span class="status" data-status="up-to-date">Aktuell</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Hersteller H</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

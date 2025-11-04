@@ -1,0 +1,24 @@
+{
+    "name": "manuelandreaskuhn/arpi-isms",
+    "description": "ISMS with automatic asset management, risk management, process management and incident management - ARPI ISMS",
+    "require": {
+        "php": ">=8.3",
+        "ext-redis": "*",
+        "ext-mongodb": "*",
+        "mongodb/mongodb": "^2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "ARPI\\": "src/"
+        },
+        "classmap": [
+            "src/"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

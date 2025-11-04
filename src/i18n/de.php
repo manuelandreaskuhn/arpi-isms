@@ -1,0 +1,31 @@
+<?php
+return [
+    'welcome' => 'Willkommen',
+    'greeting' => 'Hallo {name}!',
+    'goodbye' => 'Auf Wiedersehen',
+    'items_count' => 'Sie haben {count} Artikel',
+    'error_not_found' => 'Nicht gefunden',
+    'error_access_denied' => 'Zugriff verweigert',
+    'save' => 'Speichern',
+    'cancel' => 'Abbrechen',
+    'delete' => 'Löschen',
+    'edit' => 'Bearbeiten',
+    
+    // Zeitangaben
+    'time_ago' => 'vor',
+    'time_since' => 'seit',
+    'time_unit_seconds_singular' => 'Sekunde',
+    'time_unit_seconds_plural' => 'Sekunden',
+    'time_unit_minutes_singular' => 'Minute',
+    'time_unit_minutes_plural' => 'Minuten',
+    'time_unit_hours_singular' => 'Stunde',
+    'time_unit_hours_plural' => 'Stunden',
+    'time_unit_days_singular' => 'Tag',
+    'time_unit_days_plural' => 'Tagen',
+    'time_unit_weeks_singular' => 'Woche',
+    'time_unit_weeks_plural' => 'Wochen',
+    'time_unit_months_singular' => 'Monat',
+    'time_unit_months_plural' => 'Monaten',
+    'time_unit_years_singular' => 'Jahr',
+    'time_unit_years_plural' => 'Jahren',
+];

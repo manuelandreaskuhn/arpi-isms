@@ -1,0 +1,106 @@
+<div class="entry-content">
+    <!-- Basis-Informationen -->
+    <div class="subsection-header">Basis-Informationen</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Hostname <span class="required">*</span>
+                <span class="help-icon" data-tooltip="hw-hostname">?</span>
+            </label>
+            <input type="text" name="hostname" class="hw-field" placeholder="z.B. srv-db-prod-01" required>
+        </div>
+        <div class="form-group">
+            <label>
+                IP-Adresse
+                <span class="help-icon" data-tooltip="hw-ip">?</span>
+            </label>
+            <input type="text" name="ipaddress" class="hw-field" placeholder="z.B. 192.168.1.20">
+        </div>
+    </div>
+
+    <!-- Hardware-Details -->
+    <div class="subsection-header">Hardware-Details</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Hersteller & Modell
+                <span class="help-icon" data-tooltip="hw-manufacturer">?</span>
+            </label>
+            <input type="text" name="model" class="hw-field" placeholder="z.B. Dell PowerEdge R750">
+        </div>
+        <div class="form-group">
+            <label>
+                Seriennummer
+                <span class="help-icon" data-tooltip="hw-serial">?</span>
+            </label>
+            <input type="text" name="serialnumber" class="hw-field" placeholder="z.B. SN123456789">
+        </div>
+    </div>
+
+    <!-- System-Konfiguration -->
+    <div class="subsection-header">System-Konfiguration</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Betriebssystem
+                <span class="help-icon" data-tooltip="hw-os">?</span>
+            </label>
+            {{include:pages/wizards/system/operatingsystemcombobox.tpl|with:category:hardware}}
+        </div>
+        <div class="form-group">
+            <label>
+                Rolle / Funktion
+                <span class="help-icon" data-tooltip="hw-role">?</span>
+            </label>
+            {{include:pages/wizards/system/serverrolecombobox.tpl|with:category:hardware}}
+        </div>
+    </div>
+
+    <!-- Ressourcen -->
+    <div class="subsection-header">Ressourcen</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                CPU
+                <span class="help-icon" data-tooltip="hw-cpu">?</span>
+            </label>
+            <input type="text" name="cpu" class="hw-field" placeholder="z.B. 2x Intel Xeon Gold 6248R">
+        </div>
+        <div class="form-group">
+            <label>
+                RAM (GB)
+                <span class="help-icon" data-tooltip="hw-ram">?</span>
+            </label>
+            <input type="number" name="ramingb" class="hw-field" placeholder="z.B. 128">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Storage
+                <span class="help-icon" data-tooltip="hw-storage">?</span>
+            </label>
+            <input type="text" name="storage" class="hw-field" placeholder="z.B. 4x 960GB SSD RAID 10">
+        </div>
+        <div class="form-group">
+            <label>
+                Standort / Rack
+                <span class="help-icon" data-tooltip="hw-location">?</span>
+            </label>
+            <input type="text" name="location" class="hw-field" placeholder="z.B. RZ1-Rack-A12-U10">
+        </div>
+    </div>
+
+    <!-- Support & Garantie -->
+    <div class="subsection-header">Support & Garantie</div>
+    <div class="form-group">
+        <label>
+            Garantie / Support bis
+            <span class="help-icon" data-tooltip="hw-warranty">?</span>
+        </label>
+        <input type="text" name="warranty" class="hw-field" placeholder="z.B. 12/2027">
+    </div>
+</div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/hardware-help.tpl}}

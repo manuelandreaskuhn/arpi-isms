@@ -1,0 +1,171 @@
+<div class="entry-content">
+    <!-- Basis-Informationen -->
+    <div class="subsection-header">Basis-Informationen</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Hostname <span class="required">*</span>
+                <span class="help-icon" data-tooltip="vm-hostname">?</span>
+            </label>
+            <input type="text" name="hostname" class="vm-field" placeholder="z.B. srv-kis-prod-01" required>
+        </div>
+        <div class="form-group">
+            <label>
+                IP-Adresse
+                <span class="help-icon" data-tooltip="vm-ip">?</span>
+            </label>
+            <input type="text" name="ipaddress" class="vm-field" placeholder="z.B. 192.168.1.10">
+        </div>
+    </div>
+
+    <!-- System-Konfiguration -->
+    <div class="subsection-header">System-Konfiguration</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Betriebssystem
+                <span class="help-icon" data-tooltip="vm-os">?</span>
+            </label>
+            {{include:pages/wizards/system/operatingsystemcombobox.tpl|with:category:vm}}
+        </div>
+        <div class="form-group">
+            <label>
+                Rolle / Funktion
+                <span class="help-icon" data-tooltip="vm-role">?</span>
+            </label>
+            {{include:pages/wizards/system/serverrolecombobox.tpl|with:category:vm}}
+        </div>
+    </div>
+
+    <!-- Hypervisor & Ressourcen -->
+    <div class="subsection-header">Hypervisor & Ressourcen</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Hypervisor <span class="required">*</span>
+                <span class="help-icon" data-tooltip="vm-hypervisor">?</span>
+            </label>
+            <div class="custom-select" data-name="hypervisorid" data-index="0" data-category="vm">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <!-- Will be populated dynamically from hypervisor components -->
+                        <div class="select-option" data-value="hypervisor-1">ESXi-Cluster-01 (VMware vSphere)</div>
+                        <div class="select-option" data-value="hypervisor-2">Hyper-V-Host-DC1 (Hyper-V 2022)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="help-text">Wird aus angelegten Hypervisor-Komponenten befüllt</div>
+        </div>
+        <div class="form-group">
+            <label>
+                ESXi Host / Physical Host
+                <span class="help-icon" data-tooltip="vm-esxi-host">?</span>
+            </label>
+            <input type="text" name="esxihost" class="vm-field" placeholder="z.B. esxi-host-01.example.com">
+            <div class="help-text">Spezifischer Host innerhalb des Clusters</div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                vCPU
+                <span class="help-icon" data-tooltip="vm-vcpu">?</span>
+            </label>
+            <input type="number" name="vcpu" class="vm-field" placeholder="z.B. 4">
+        </div>
+        <div class="form-group">
+            <label>
+                RAM (GB)
+                <span class="help-icon" data-tooltip="vm-ram">?</span>
+            </label>
+            <input type="number" name="ramingb" class="vm-field" placeholder="z.B. 16">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Storage (GB)
+                <span class="help-icon" data-tooltip="vm-storage">?</span>
+            </label>
+            <input type="number" name="storageingb" class="vm-field" placeholder="z.B. 500">
+        </div>
+        <div class="form-group">
+            <label>
+                Datastore / Storage Pool
+                <span class="help-icon" data-tooltip="vm-datastore">?</span>
+            </label>
+            <input type="text" name="datastore" class="vm-field" placeholder="z.B. Datastore-PROD-01, Storage-Pool-SSD">
+        </div>
+    </div>
+
+    <!-- VM-spezifische Features -->
+    <div class="subsection-header">VM-Features & Konfiguration</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                VM Hardware Version
+                <span class="help-icon" data-tooltip="vm-hw-version">?</span>
+            </label>
+            <input type="text" name="hwversion" class="vm-field" placeholder="z.B. vmx-19, Generation 2">
+        </div>
+        <div class="form-group">
+            <label>
+                VM Tools Status
+                <span class="help-icon" data-tooltip="vm-tools">?</span>
+            </label>
+            <div class="custom-select" data-name="vmtools" data-index="0" data-category="vm">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="installed-running">Installiert & Aktuell</div>
+                        <div class="select-option" data-value="installed-outdated">Installiert (veraltet)</div>
+                        <div class="select-option" data-value="not-installed">Nicht installiert</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Snapshots vorhanden
+                <span class="help-icon" data-tooltip="vm-snapshots">?</span>
+            </label>
+            <div class="custom-select" data-name="snapshots" data-index="0" data-category="vm">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="none">Keine</div>
+                        <div class="select-option" data-value="backup">Backup-Snapshots</div>
+                        <div class="select-option" data-value="production">Produktiv-Snapshots (Achtung!)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                Boot-Reihenfolge
+                <span class="help-icon" data-tooltip="vm-boot-order">?</span>
+            </label>
+            <input type="text" name="bootorder" class="vm-field" placeholder="z.B. HDD, Network, CD-ROM">
+        </div>
+    </div>
+</div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/vm-help.tpl}}

@@ -1,0 +1,59 @@
+name: PHPUnit with MongoDB
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:8.0.15
+        ports:
+          - 28017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, json, mongodb, redis, zip
+          coverage: none
+
+      - name: Set up Node.js (für mongosh)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install mongosh
+        run: npm install -g mongosh
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Wait for MongoDB to be ready
+        run: |
+          for i in {1..60}; do 
+            mongosh "mongodb://localhost:28017" --quiet --eval 'db.runCommand({ ping: 1 })' && echo "MongoDB is up" && exit 0 
+            sleep 1 
+          done
+          echo "MongoDB did not start in time" && exit 1
+
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --configuration phpunit.xml
+        env:
+          MONGODB_URI: mongodb://localhost:28017
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379

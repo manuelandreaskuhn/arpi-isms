@@ -1,0 +1,221 @@
+<div class="entry-content">
+    <!-- TI-Anbindung -->
+    <div class="subsection-header">TI-Anbindung</div>
+    <div class="form-group">
+        <label class="cluster-label">
+            <input type="checkbox" class="ti-connected-check">
+            <span>System nutzt TI-Infrastruktur</span>
+            <span class="help-icon" data-tooltip="ti-connected">?</span>
+        </label>
+    </div>
+
+    <div class="ti-connection-config" style="display:none;">
+        <div class="form-group">
+            <label>
+                TI-Infrastruktur Komponente <span class="required">*</span>
+                <span class="help-icon" data-tooltip="ti-component">?</span>
+            </label>
+            <div class="custom-select" data-name="tiinfrastrukturid" data-index="0" data-category="ti">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="ti-1">TI-Anbindung-Hauptstandort (Secunet)</div>
+                        <div class="select-option" data-value="ti-2">TI-Praxis-01 (T-Systems)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="help-text">Wird aus angelegten TI-Infrastruktur-Komponenten befüllt</div>
+        </div>
+
+        <div class="subsection-header">Verwendete TI-Dienste in diesem System</div>
+        <label>
+            Aktive Fachdienste
+            <span class="help-icon" data-tooltip="ti-dienste">?</span>
+        </label>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="kim">
+                <label>KIM (Kommunikation im Medizinwesen)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="erezept">
+                <label>E-Rezept</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="epa">
+                <label>ePA (elektronische Patientenakte)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="nfdm">
+                <label>NFDM (Notfalldatenmanagement)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="vsdm">
+                <label>VSDM (Versichertenstammdaten)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="vsdd">
+                <label>VSDD (Versichertenstammdaten-Dienst)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="tisqsig">
+                <label>TI-SQSig (Qualifizierte Signatur)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="eml">
+                <label>eML (elektronischer Medikationsplan)</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" name="tidienste" value="eau">
+                <label>eAU (elektronische Arbeitsunfähigkeitsbescheinigung)</label>
+            </div>
+        </div>
+
+        <div class="subsection-header">KIM-Konfiguration (falls aktiviert)</div>
+        <div class="form-group">
+            <label class="cluster-label">
+                <input type="checkbox" class="ti-kim-active-check">
+                <span>KIM ist aktiv konfiguriert</span>
+                <span class="help-icon" data-tooltip="ti-kim-active">?</span>
+            </label>
+        </div>
+
+        <div class="ti-kim-config" style="display:none;">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        KIM-Adresse(n)
+                        <span class="help-icon" data-tooltip="kim-address">?</span>
+                    </label>
+                    <input type="text" name="tikimaddress" class="ti-field" placeholder="z.B. praxis@kim.telematik, krankenhaus@ambulant.kim.telematik">
+                    <div class="help-text">Mehrere Adressen kommagetrennt</div>
+                </div>
+                <div class="form-group">
+                    <label>
+                        KIM-Anbieter
+                        <span class="help-icon" data-tooltip="kim-provider">?</span>
+                    </label>
+                    <div class="custom-select" data-name="tikimprovider" data-index="0" data-category="ti">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="telekom">Telekom</div>
+                                <div class="select-option" data-value="cgm">CGM</div>
+                                <div class="select-option" data-value="akquinet">akquinet</div>
+                                <div class="select-option" data-value="kv-telematik">KV Telematik</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        KIM-Client
+                        <span class="help-icon" data-tooltip="kim-client">?</span>
+                    </label>
+                    <input type="text" name="tikimclient" class="ti-field" placeholder="z.B. KIM-Desktop, Primärsystem-Integration">
+                </div>
+                <div class="form-group">
+                    <label>
+                        Verschlüsselung
+                        <span class="help-icon" data-tooltip="kim-encryption">?</span>
+                    </label>
+                    <div class="custom-select" data-name="tikimencryption" data-index="0" data-category="ti">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="s-mime">S/MIME (Standard)</div>
+                                <div class="select-option" data-value="pgp">PGP</div>
+                                <div class="select-option" data-value="tls-only">Nur TLS (Transport)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-header">E-Rezept-Konfiguration (falls aktiviert)</div>
+        <div class="form-group">
+            <label class="cluster-label">
+                <input type="checkbox" class="ti-erezept-active-check">
+                <span>E-Rezept ist aktiv konfiguriert</span>
+                <span class="help-icon" data-tooltip="ti-erezept-active">?</span>
+            </label>
+        </div>
+
+        <div class="ti-erezept-config" style="display:none;">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        E-Rezept-Modul
+                        <span class="help-icon" data-tooltip="erezept-module">?</span>
+                    </label>
+                    <input type="text" name="tierezeptmodule" class="ti-field" placeholder="z.B. Primärsystem-Integration, Standalone-Modul">
+                </div>
+                <div class="form-group">
+                    <label>
+                        Fachdienst-Version
+                        <span class="help-icon" data-tooltip="erezept-version">?</span>
+                    </label>
+                    <input type="text" name="tierezeptversion" class="ti-field" placeholder="z.B. E-Rezept FD v1.3">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        Unterstützte Rezept-Typen
+                        <span class="help-icon" data-tooltip="erezept-types">?</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="tierezepttype" value="pkv">
+                            <label>PKV</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="tierezepttype" value="gkv">
+                            <label>GKV</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="tierezepttype" value="direktabrechnung">
+                            <label>Direktabrechnung</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>
+                        AVS-Anbindung (Apothekenverwaltungssystem)
+                        <span class="help-icon" data-tooltip="erezept-avs">?</span>
+                    </label>
+                    <input type="text" name="tierezeptavs" class="ti-field" placeholder="z.B. ADG, Noventi, CGM">
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-header">Zusätzliche Informationen</div>
+        <div class="form-group">
+            <label>
+                Systemspezifische TI-Notizen
+                <span class="help-icon" data-tooltip="ti-notes">?</span>
+            </label>
+            <textarea name="tisystemnotes" class="ti-field" rows="3" placeholder="Systemspezifische TI-Konfiguration, Besonderheiten für dieses System..."></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/ti-help.tpl}}

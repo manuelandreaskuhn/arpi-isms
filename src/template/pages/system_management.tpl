@@ -1,0 +1,72 @@
+<aside>
+    <p>Assetmanagement</p>
+    <i>›</i>
+    <p>Systeme</p>
+</aside>
+
+<div class="onetwocolumnlist removeaside">
+
+    <div class="columnlist">
+        <div class="infobox">
+            <h3>Systeme <i class="count">157</i></h3>
+            <i>Was sind Systeme: Eine Ansammlung von Komponenten, die zusammenarbeiten, um ein bestimmtes Ziel zu erreichen.</i>
+
+            <form id="newSystemQuickForm">
+                <div class="newentry">
+                    <input type="text" name="systemName" placeholder="Neues System hinzufügen...">
+                    <button type="submit" title="Hinzufügen"><i>+</i></button>
+                </div>
+            </form>
+        </div>
+
+        <div class="search">
+            <input type="search" placeholder="Systeme durchsuchen...">
+        </div>
+
+        <!-- Beispielgruppen/Liste (bei Bedarf dynamisch ersetzen) -->
+        <h2>Radiologie</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Systemname 1</strong>
+                <div class="taginfo">
+                    <span class="tag">Komponente 1</span>
+                    <span class="tag">Komponente 2</span>
+                    <span class="tag">Applikation 1</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+            <div class="entry">
+                <strong>Systemname 2</strong>
+                <div class="taginfo">
+                    <span class="tag">Komponente 1</span>
+                    <span class="tag">Komponente 2</span>
+                    <span class="tag">Komponente 3</span>
+                    <span class="tag">Applikation 1</span>
+                    <span class="tag">Applikation 2</span>
+                </div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Unbekannt</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Systemname X</strong>
+                <div class="taginfo"></div>
+                <div class="editbutton">
+                    <button title="System bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wizard -->
+    <div class="columnlist">
+        {{include:pages/wizards/system/newsystem.tpl}}
+    </div>
+
+</div>
