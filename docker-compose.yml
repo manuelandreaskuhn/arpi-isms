@@ -11,7 +11,9 @@ services:
       mongo:
         condition: service_healthy
     environment:
-      - MONGODB_URI=mongodb://mongo:27017
+      - MONGODB_URI=mongodb://mongo:28017
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     networks:
       - arpi-network
 

@@ -37,11 +37,15 @@ jobs:
 
       - name: Wait for MongoDB to be ready
         run: |
-          for i in {1..30}; do
-            nc -z localhost 28017 && echo "MongoDB is up" && exit 0
-            sleep 1
+          for i in {1..60}; do 
+            mongosh --quiet --eval 'db.runCommand({ ping: 1 })' && echo "MongoDB is up" && exit 0 
+            sleep 1 
           done
           echo "MongoDB did not start in time" && exit 1
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --configuration phpunit.xml --version=12.4
+        run: vendor/bin/phpunit --configuration phpunit.xml
+        env:
+          MONGODB_URI: mongodb://localhost:28017
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
