@@ -101,7 +101,7 @@
                         Fachbereich
                         <span class="help-icon" data-tooltip="department">?</span>
                     </label>
-                    {{include:pages/wizards/system/departmentcombobox.tpl}}
+                    {{include:pages/wizards/system/department-combobox.html}}
                 </div>
                 <div class="form-group">
                     <label>
@@ -541,7 +541,7 @@
                 Dokumentieren Sie die Anbindung an die Telematikinfrastruktur (TI) der Gematik, verwendete Dienste und Konnektoren.
             </div>
 
-            {{include:pages/wizards/system/tiinfrastrukturincludetemplate.tpl}}
+            {{include:pages/wizards/system/tiinfrastruktur-include-template.html}}
         </div>
     </div>
 
@@ -557,7 +557,7 @@
                 Dokumentieren Sie die Proxy-Konfiguration für dieses System, einschließlich Proxy-Typ, Authentifizierung und Ausnahmen.
             </div>
 
-            {{include:pages/wizards/system/proxyincludetemplate.tpl}}
+            {{include:pages/wizards/system/proxy-include-template.html}}
         </div>
     </div>
 
@@ -573,7 +573,7 @@
                 Dokumentieren Sie die SIEM-Integration für dieses System, einschließlich Log-Quellen, Use Cases und Alerting-Konfiguration.
             </div>
 
-            {{include:pages/wizards/system/siemincludetemplate.tpl}}
+            {{include:pages/wizards/system/siem-include-template.html}}
         </div>
     </div>
 
@@ -589,7 +589,7 @@
                 Dokumentieren Sie den VPN-Zugang zu diesem System, einschließlich berechtigter Benutzergruppen und Zugriffsbeschränkungen.
             </div>
 
-            {{include:pages/wizards/system/vpnincludetemplate.tpl}}
+            {{include:pages/wizards/system/vpn-include-template.html}}
         </div>
     </div>
 
@@ -640,7 +640,7 @@
 </form>
 
 <!-- Include help tooltips -->
-{{include:pages/wizards/system/help/newsystem-help.tpl}}
+{{include:pages/wizards/system/help/new-system-help.html}}
 
 <!-- Templates for dynamic entries -->
 <template id="vmEntryTemplate">
@@ -649,7 +649,7 @@
             <span class="entry-title">VM #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'vm')">×</button>
         </div>
-        {{include:pages/wizards/system/vmincludetemplate.tpl}}
+        {{include:pages/wizards/system/vm-include-template.html}}
     </div>
 </template>
 
@@ -659,7 +659,7 @@
             <span class="entry-title">Server #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'hardware')">×</button>
         </div>
-        {{include:pages/wizards/system/hardwareincludetemplate.tpl}}
+        {{include:pages/wizards/system/hardware-include-template.html}}
     </div>
 </template>
 
@@ -669,7 +669,7 @@
             <span class="entry-title">Datenbank #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'database')">×</button>
         </div>
-        {{include:pages/wizards/system/databaseincludetemplate.tpl}}
+        {{include:pages/wizards/system/database-include-template.html}}
     </div>
 </template>
 
@@ -679,7 +679,7 @@
             <span class="entry-title">Backup #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'backup')">×</button>
         </div>
-        {{include:pages/wizards/system/backupincludetemplate.tpl}}
+        {{include:pages/wizards/system/backup-include-template.html}}
     </div>
 </template>
 
@@ -689,7 +689,7 @@
             <span class="entry-title">Load Balancer #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'loadbalancer')">×</button>
         </div>
-        {{include:pages/wizards/system/loadbalancerincludetemplate.tpl}}
+        {{include:pages/wizards/system/loadbalancer-include-template.html}}
     </div>
 </template>
 
@@ -699,7 +699,7 @@
             <span class="entry-title">Firewall-Regel #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'firewall')">×</button>
         </div>
-        {{include:pages/wizards/system/firewallincludetemplate.tpl}}
+        {{include:pages/wizards/system/firewall-include-template.html}}
     </div>
 </template>
 
@@ -709,7 +709,7 @@
             <span class="entry-title">Client-Zugriff #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'client')">×</button>
         </div>
-        {{include:pages/wizards/system/clientincludetemplate.tpl}}
+        {{include:pages/wizards/system/client-include-template.html}}
     </div>
 </template>
 
@@ -719,7 +719,7 @@
             <span class="entry-title">Schnittstelle #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'medinterface')">×</button>
         </div>
-        {{include:pages/wizards/system/medinterfaceincludetemplate.tpl}}
+        {{include:pages/wizards/system/medinterface-include-template.html}}
     </div>
 </template>
 
@@ -729,6 +729,6 @@
             <span class="entry-title">Container #<span class="entry-number"></span></span>
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'container')">×</button>
         </div>
-        {{include:pages/wizards/system/containerincludetemplate.tpl}}
+        {{include:pages/wizards/system/container-include-template.html}}
     </div>
 </template>

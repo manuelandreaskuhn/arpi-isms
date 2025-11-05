@@ -16,6 +16,6 @@ class NewVPN extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newvpn.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-vpn.html');
     }
 }

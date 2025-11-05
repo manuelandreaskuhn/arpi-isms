@@ -16,6 +16,6 @@ class NewBackup extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newbackup.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-backup.html');
     }
 }

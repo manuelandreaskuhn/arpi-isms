@@ -134,8 +134,8 @@ abstract class BaseSite implements SiteInterface
         $GLOBALS['assetcss'] = $this->cssFiles;
         $GLOBALS['assetjs'] = $this->jsFiles;
 
-        $headertemplate = $this->render('partials/header.tpl');
-        $footertemplate = $this->render('partials/footer.tpl');
+        $headertemplate = $this->render('partials/header.html');
+        $footertemplate = $this->render('partials/footer.html');
 
         $template = $this->template->render($templateName, $this->data);
 

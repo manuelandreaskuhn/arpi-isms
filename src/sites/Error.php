@@ -34,6 +34,6 @@ class Error extends BaseSite
 
     public function main(): string
     {
-        return $this->render('pages/error.tpl');
+        return $this->render('pages/error.html');
     }
 }

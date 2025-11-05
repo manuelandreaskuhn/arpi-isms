@@ -19,6 +19,6 @@ class Onboarding extends BaseSite
 
     public function main(): string
     {
-        return $this->render('pages/onboarding.tpl');
+        return $this->render('pages/onboarding.html');
     }
 }

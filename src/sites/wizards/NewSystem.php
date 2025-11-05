@@ -16,6 +16,6 @@ class NewSystem extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/system/newsystem.tpl');
+        return $this->renderTemplate('pages/wizards/system/new-system.html');
     }
 }

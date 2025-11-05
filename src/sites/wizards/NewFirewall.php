@@ -16,6 +16,6 @@ class NewFirewall extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newfirewall.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-firewall.html');
     }
 }

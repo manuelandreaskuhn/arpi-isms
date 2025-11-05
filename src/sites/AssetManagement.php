@@ -14,6 +14,6 @@ class AssetManagement extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/assetmanagement_overview.tpl');
+        return $this->renderTemplate('pages/assetmanagement-overview.html');
     }
 }

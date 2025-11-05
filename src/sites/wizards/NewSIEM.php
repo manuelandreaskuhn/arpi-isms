@@ -16,6 +16,6 @@ class NewSIEM extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newsiem.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-siem.html');
     }
 }

@@ -16,6 +16,6 @@ class NewHypervisor extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newhypervisor.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-hypervisor.html');
     }
 }
