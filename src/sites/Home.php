@@ -12,6 +12,6 @@ class Home extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/home.tpl');
+        return $this->renderTemplate('pages/home.html');
     }
 }

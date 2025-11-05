@@ -16,6 +16,6 @@ class SystemManagement extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/system_management.tpl');
+        return $this->renderTemplate('pages/system-management.html');
     }
 }

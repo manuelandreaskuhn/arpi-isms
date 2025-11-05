@@ -16,6 +16,6 @@ class NewTIInfrastruktur extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newtiinfrastruktur.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-tiinfrastruktur.html');
     }
 }

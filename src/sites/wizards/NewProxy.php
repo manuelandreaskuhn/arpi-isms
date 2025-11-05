@@ -16,6 +16,6 @@ class NewProxy extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newproxy.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-proxy.html');
     }
 }

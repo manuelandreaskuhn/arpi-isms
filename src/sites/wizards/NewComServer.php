@@ -16,6 +16,6 @@ class NewComServer extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newcomserver.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-comserver.html');
     }
 }

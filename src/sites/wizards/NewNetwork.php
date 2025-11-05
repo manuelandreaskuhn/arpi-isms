@@ -16,6 +16,6 @@ class NewNetwork extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/newnetwork.tpl');
+        return $this->renderTemplate('pages/wizards/komponenten/new-network.html');
     }
 }
