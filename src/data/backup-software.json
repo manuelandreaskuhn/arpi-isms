@@ -1,0 +1,340 @@
+{
+  "backupSoftware": [
+    {
+      "id": "veeam",
+      "name": "Veeam Backup & Replication",
+      "category": "Enterprise Backup",
+      "vendor": "Veeam Software",
+      "description": "Enterprise-Level Backup und Disaster Recovery für virtuelle, physische und Cloud-Umgebungen",
+      "features": ["VM Backup", "Instant Recovery", "Replication", "Cloud Integration", "Ransomware Protection"],
+      "platforms": ["Windows", "Linux", "VMware", "Hyper-V", "Cloud"],
+      "licenseModel": ["Per Socket", "Per VM", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:veeam:backup_&_replication:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:veeam:backup_and_replication:*:*:*:*:*:*:*:*",
+        "cpe:/a:veeam:backup_and_replication",
+        "cpe:2.3:a:veeam:backup_and_replication_console:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "commvault",
+      "name": "Commvault",
+      "category": "Enterprise Backup",
+      "vendor": "Commvault Systems",
+      "description": "Umfassende Datenmanagement-Plattform für Backup, Recovery und Archivierung",
+      "features": ["Unified Platform", "Data Protection", "Disaster Recovery", "Cloud Integration", "Compliance"],
+      "platforms": ["Windows", "Linux", "Unix", "VMware", "Cloud"],
+      "licenseModel": ["Per TB", "Per VM", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:commvault:commvault:*:*:*:*:*:*:*:*",
+        "cpe:/a:commvault:simpana",
+        "cpe:2.3:a:commvault:platform:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "veritas-netbackup",
+      "name": "Veritas NetBackup",
+      "category": "Enterprise Backup",
+      "vendor": "Veritas Technologies",
+      "description": "Enterprise Backup und Recovery für heterogene Umgebungen",
+      "features": ["Multi-Platform Support", "Deduplication", "Cloud Integration", "Disaster Recovery"],
+      "platforms": ["Windows", "Linux", "Unix", "VMware", "Cloud"],
+      "licenseModel": ["Per TB", "Per Socket", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:veritas:netbackup:*:*:*:*:*:*:*:*",
+        "cpe:/a:symantec:netbackup",
+        "cpe:2.3:a:veritas:netbackup_appliance:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "ibm-spectrum",
+      "name": "IBM Spectrum Protect",
+      "category": "Enterprise Backup",
+      "vendor": "IBM",
+      "description": "Enterprise Data Protection und Recovery-Lösung (ehemals TSM/Tivoli Storage Manager, jetzt IBM Storage Protect)",
+      "features": ["Deduplication", "Encryption", "Cloud Tiering", "Long-term Archiving"],
+      "platforms": ["Windows", "Linux", "Unix", "AIX", "Cloud"],
+      "licenseModel": ["Per TB", "Per PVU", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:ibm:spectrum_protect:*:*:*:*:*:*:*:*",
+        "cpe:/a:ibm:tivoli_storage_manager",
+        "cpe:2.3:a:ibm:storage_protect:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "dell-emc-avamar",
+      "name": "Dell EMC Avamar",
+      "category": "Enterprise Backup",
+      "vendor": "Dell Technologies",
+      "description": "Deduplication-basierte Backup- und Recovery-Lösung",
+      "features": ["Source-Side Deduplication", "Fast Recovery", "VMware Integration", "Cloud Tiering"],
+      "platforms": ["Windows", "Linux", "VMware", "Cloud"],
+      "licenseModel": ["Per TB", "Appliance-based"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:dell:emc_avamar:*:*:*:*:*:*:*:*",
+        "cpe:/a:emc:avamar",
+        "cpe:2.3:a:dell:avamar_virtual_edition:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "veeam-vmware",
+      "name": "Veeam für VMware",
+      "category": "VMware / Virtualisierung",
+      "vendor": "Veeam Software",
+      "description": "Spezialisierte Backup-Lösung für VMware vSphere-Umgebungen",
+      "features": ["VMware vSphere Integration", "Instant VM Recovery", "Changed Block Tracking", "Application-Aware Processing"],
+      "platforms": ["VMware vSphere"],
+      "licenseModel": ["Per Socket", "Per VM", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:veeam:backup_&_replication:*:*:*:*:*:vmware:*:*",
+        "cpe:2.3:a:veeam:backup_and_replication:*:*:*:*:*:vmware:*:*"
+      ]
+    },
+    {
+      "id": "altaro",
+      "name": "Altaro VM Backup",
+      "category": "VMware / Virtualisierung",
+      "vendor": "Altaro (Hornetsecurity)",
+      "description": "Backup-Lösung für VMware und Hyper-V (seit 2021 Teil von Hornetsecurity)",
+      "features": ["VM Backup", "Instant Boot", "Augmented Inline Deduplication", "Cloud Integration"],
+      "platforms": ["VMware", "Hyper-V"],
+      "licenseModel": ["Per VM", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:altaro:vm_backup:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:hornetsecurity:vm_backup:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "vmware-data-protection",
+      "name": "VMware Data Protection (VDP)",
+      "category": "VMware / Virtualisierung",
+      "vendor": "VMware",
+      "description": "VMware-native Backup-Lösung (basiert auf EMC Avamar, abgekündigt, ersetzt durch VADP)",
+      "features": ["vSphere Integration", "Deduplication", "Application-Level Recovery"],
+      "platforms": ["VMware vSphere"],
+      "licenseModel": ["Included with vSphere (bis vSphere 6.5)"],
+      "status": "Abgekündigt",
+      "cpe": [
+        "cpe:2.3:a:vmware:data_protection:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:vmware:vsphere_data_protection:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:vmware:vstorage_apis_for_data_protection:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "nakivo",
+      "name": "Nakivo Backup & Replication",
+      "category": "VMware / Virtualisierung",
+      "vendor": "Nakivo",
+      "description": "Backup und Replication für VMware, Hyper-V, Nutanix und Cloud",
+      "features": ["VM Replication", "Instant Recovery", "Multi-Tenancy", "Cloud Integration", "Microsoft 365 Backup"],
+      "platforms": ["VMware", "Hyper-V", "Nutanix AHV", "AWS", "Azure", "Proxmox"],
+      "licenseModel": ["Per Socket", "Per Workload", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:nakivo:backup_&_replication:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:nakivo:backup_and_replication:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "windows-server-backup",
+      "name": "Windows Server Backup",
+      "category": "Windows / Microsoft",
+      "vendor": "Microsoft",
+      "description": "Native Windows Server Backup-Funktion (weiterhin Bestandteil von Windows Server 2016–2025)",
+      "features": ["System State Backup", "Bare Metal Recovery", "Volume Backup", "Scheduled Backup"],
+      "platforms": ["Windows Server 2016", "2019", "2022", "2025"],
+      "licenseModel": ["Included with Windows Server"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:microsoft:windows_server_backup:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "azure-backup",
+      "name": "Azure Backup",
+      "category": "Windows / Microsoft",
+      "vendor": "Microsoft",
+      "description": "Cloud-basierte Backup-Lösung für Azure und On-Premises",
+      "features": ["Cloud Storage", "Application-Consistent Backup", "Long-term Retention", "Ransomware Protection", "Vaulted Backup"],
+      "platforms": ["Azure", "Windows", "Linux"],
+      "licenseModel": ["Pay-as-you-go", "Reserved Capacity"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:microsoft:azure_backup:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:azure_recovery_services:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "dpm",
+      "name": "System Center Data Protection Manager (DPM)",
+      "category": "Windows / Microsoft",
+      "vendor": "Microsoft",
+      "description": "Data Protection Manager für Microsoft-Umgebungen (Teil von System Center 2025)",
+      "features": ["Disk-based Backup", "Application Protection", "Hyper-V Backup", "SharePoint Protection", "Azure Integration"],
+      "platforms": ["Windows Server", "Hyper-V"],
+      "licenseModel": ["Per Server", "System Center Suite"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:microsoft:system_center_data_protection_manager:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:data_protection_manager:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "bacula",
+      "name": "Bacula",
+      "category": "Open Source / Linux",
+      "vendor": "Bacula Systems",
+      "description": "Open-Source Enterprise Backup-Lösung (Community & Enterprise Edition)",
+      "features": ["Network Backup", "Multi-Platform", "Tape Support", "Encryption", "Cloud Integration"],
+      "platforms": ["Linux", "Windows", "Unix", "macOS"],
+      "licenseModel": ["Open Source (AGPLv3)", "Enterprise Edition"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:bacula:bacula:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:bacula:enterprise_edition:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "bareos",
+      "name": "Bareos",
+      "category": "Open Source / Linux",
+      "vendor": "Bareos GmbH",
+      "description": "Bacula-Fork mit erweiterten Features und kommerziellem Support",
+      "features": ["Network Backup", "Deduplication", "Cloud Support", "VMware Plugin", "TapeAlert"],
+      "platforms": ["Linux", "Windows", "Unix", "macOS"],
+      "licenseModel": ["Open Source (AGPLv3)", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:bareos:bareos:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "amanda",
+      "name": "Amanda",
+      "category": "Open Source / Linux",
+      "vendor": "Amanda Network Backup / Zmanda",
+      "description": "Advanced Maryland Automatic Network Disk Archiver (Community 3.5.4, kommerziell als Zmanda Pro)",
+      "features": ["Network Backup", "Tape Support", "Encryption", "Compression", "Cloud Support"],
+      "platforms": ["Linux", "Unix", "Windows"],
+      "licenseModel": ["Open Source (BSD)", "Enterprise Edition (Zmanda Pro)"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:amanda:amanda:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:zmanda:amanda_enterprise:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "duplicity",
+      "name": "Duplicity",
+      "category": "Open Source / Linux",
+      "vendor": "Duplicity Project",
+      "description": "Encrypted bandwidth-efficient backup using the rsync algorithm",
+      "features": ["Encryption", "Incremental Backup", "Cloud Backend Support", "Compression"],
+      "platforms": ["Linux", "Unix", "macOS"],
+      "licenseModel": ["Open Source (GPL)"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:duplicity_project:duplicity:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:duplicity:duplicity:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "restic",
+      "name": "Restic",
+      "category": "Open Source / Linux",
+      "vendor": "Restic Project",
+      "description": "Fast, secure, efficient backup program",
+      "features": ["Encryption", "Deduplication", "Cloud Support", "Incremental Backup"],
+      "platforms": ["Linux", "Windows", "macOS", "BSD"],
+      "licenseModel": ["Open Source (BSD)"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:restic:restic:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "aws-backup",
+      "name": "AWS Backup",
+      "category": "Cloud Backup",
+      "vendor": "Amazon Web Services",
+      "description": "Zentrale Backup-Verwaltung für AWS-Services (inkl. Cross-Region/Account, Vault Lock, Compliance, 2025)",
+      "features": ["Centralized Backup", "Cross-Region Backup", "Cross-Account Backup", "Compliance Management", "Lifecycle Policies"],
+      "platforms": ["AWS Cloud"],
+      "licenseModel": ["Pay-as-you-go"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:amazon:aws_backup:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:amazon:web_services_backup:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "acronis",
+      "name": "Acronis Cyber Backup / Cyber Protect",
+      "category": "Cloud Backup",
+      "vendor": "Acronis",
+      "description": "Hybrid Cloud Backup mit Cyber Protection (integriert in Acronis Cyber Protect, Stand 2025)",
+      "features": ["Ransomware Protection", "Active Protection", "Cloud Backup", "Disaster Recovery", "Endpoint Security"],
+      "platforms": ["Windows", "Linux", "VMware", "Cloud"],
+      "licenseModel": ["Per Workload", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:acronis:cyber_backup:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:acronis:cyber_protect:*:*:*:*:*:*:*:*",
+        "cpe:/a:acronis:true_image"
+      ]
+    },
+    {
+      "id": "rubrik",
+      "name": "Rubrik Cloud Data Management",
+      "category": "Cloud Backup",
+      "vendor": "Rubrik Inc.",
+      "description": "Cloud Data Management Platform für Backup, Recovery und Data Governance",
+      "features": ["Instant Recovery", "Cloud Archival", "SLA Policies", "Ransomware Recovery", "Zero Trust Data Security"],
+      "platforms": ["VMware", "Hyper-V", "Cloud", "Physical"],
+      "licenseModel": ["Subscription", "Appliance-based"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:rubrik:cloud_data_management:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:rubrik:cdm:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "cohesity",
+      "name": "Cohesity DataProtect / DataPlatform",
+      "category": "Cloud Backup",
+      "vendor": "Cohesity Inc.",
+      "description": "Hyperconverged Secondary Storage Platform mit integrierter Backup-Lösung",
+      "features": ["Data Protection", "Test/Dev", "Analytics", "Cloud Tiering", "Ransomware Protection"],
+      "platforms": ["VMware", "Hyper-V", "Cloud", "Physical"],
+      "licenseModel": ["Subscription", "Appliance-based"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:cohesity:dataplatform:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:cohesity:dataprotect:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "description": "Andere Backup-Lösungen",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-01-15",
+    "description": "Backup Software Katalog mit CPE-Identifikatoren für Vulnerability Management"
+  }
+}
