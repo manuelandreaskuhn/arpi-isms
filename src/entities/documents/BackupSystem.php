@@ -42,7 +42,7 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $backupsystemname;
+    public string $name;
 
     /**
      * Verwendete Backup-Software (ID)
@@ -51,7 +51,7 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $backupsoftware;
+    public string $software;
 
     /**
      * Version der Backup-Software
@@ -59,7 +59,7 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $backupversion;
+    public string $version;
 
     /**
      * Lizenzmodell der Backup-Software
@@ -68,7 +68,7 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $backuplicensemodel;
+    public string $licensemodel;
 
     // ==================== Infrastruktur & Server ====================
 
@@ -79,25 +79,25 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var null|string
      */
-    public ?string $backupserverid;
+    public ?string $serverid;
 
     /**
      * Hostname des Backup-Servers
-     * Wenn backupserverid nicht gesetzt ist, wird der Hostname hier angegeben
+     * Wenn serverid nicht gesetzt ist, wird der Hostname hier angegeben
      * 
      * @ODM\Field(type="string", nullable=true)
      * @var null|string
      */
-    public ?string $backupserverhostname;
+    public ?string $serverhostname;
 
     /**
      * IP-Adresse des Backup-Servers
-     * Wenn backupserverid nicht gesetzt ist, wird die IP-Adresse hier angegeben
+     * Wenn serverid nicht gesetzt ist, wird die IP-Adresse hier angegeben
      * 
      * @ODM\Field(type="string", nullable=true)
      * @var null|string
      */
-    public ?string $backupserverip;
+    public ?string $serverip;
 
     /**
      * Betriebssystem des Backup-Servers
@@ -105,7 +105,7 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $backupos;
+    public string $serveroperatingystem;
 
     /**
      * Physischer Standort des Backup-Servers
@@ -113,7 +113,7 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $backuplocation;
+    public string $serverlocation;
 
     /**
      * URL der Management-Konsole
@@ -121,7 +121,7 @@ class BackupSystem
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $backupmgmturl;
+    public string $backupmanagementurl;
 
     // ==================== Storage-Konfiguration ====================
 

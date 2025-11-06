@@ -21,7 +21,7 @@
                     Name des Kommunikationsservers <span class="required">*</span>
                     <span class="help-icon" data-tooltip="commserver-name">?</span>
                 </label>
-                <input type="text" id="commServerName" name="commServerName" required placeholder="z.B. HL7 Interface Engine, Mirth Connect Prod">
+                <input type="text" id="name" name="name" required placeholder="z.B. HL7 Interface Engine, Mirth Connect Prod">
                 <div class="help-text">Eindeutiger Name zur Identifikation des Servers</div>
             </div>
 
@@ -31,7 +31,7 @@
                         Typ / Produkt <span class="required">*</span>
                         <span class="help-icon" data-tooltip="commserver-type">?</span>
                     </label>
-                    <div class="custom-select" data-name="commServerType">
+                    <div class="custom-select" data-name="type">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -57,7 +57,7 @@
                         Hersteller
                         <span class="help-icon" data-tooltip="commserver-vendor">?</span>
                     </label>
-                    <input type="text" name="commServerVendor" placeholder="z.B. NextGen Healthcare, InterSystems">
+                    <input type="text" id="vendor" name="vendor" placeholder="z.B. NextGen Healthcare, InterSystems">
                 </div>
             </div>
 
@@ -67,14 +67,14 @@
                         Version <span class="required">*</span>
                         <span class="help-icon" data-tooltip="commserver-version">?</span>
                     </label>
-                    <input type="text" name="commServerVersion" required placeholder="z.B. 4.4.0, 2024.1">
+                    <input type="text" id="version" name="version" required placeholder="z.B. 4.4.0, 2024.1">
                 </div>
                 <div class="form-group">
                     <label>
                         Kritikalität
                         <span class="help-icon" data-tooltip="commserver-criticality">?</span>
                     </label>
-                    <div class="custom-select" data-name="commServerCriticality">
+                    <div class="custom-select" data-name="criticality">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -105,14 +105,37 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>
-                        Hostname/FQDN
-                        <span class="help-icon" data-tooltip="commserver-hostname">?</span>
+                        Kommunikations-Server / Hostname
+                        <span class="help-icon" data-tooltip="commserver-id">?</span>
                     </label>
-                    <input type="text" name="commServerHostname" placeholder="z.B. hl7engine.example.com">
+                    <div class="custom-select" data-name="serverid" data-component-type="vm,hardware">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen (VM/Hardware)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Virtuelle Maschinen</div>
+                                <!-- Dynamic VM entries -->
+                                <div class="select-group-header">Hardware Server</div>
+                                <!-- Dynamic Hardware entries -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="help-text">Wählen Sie den Server aus oder geben Sie manuell ein</div>
                 </div>
+                <div class="form-group" id="commserver-manual" style="display:none;">
+                    <label>Server-Name (manuell)</label>
+                    <input type="text" id="serverhostname" name="serverhostname" placeholder="z.B. comm-srv-01.example.com">
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>IP-Adresse</label>
-                    <input type="text" name="commServerIP" placeholder="z.B. 10.0.1.100">
+                    <input type="text" id="serverip" name="serverip" placeholder="z.B. 192.168.50.10">
                 </div>
             </div>
 
@@ -122,7 +145,7 @@
                         Betriebssystem
                         <span class="help-icon" data-tooltip="commserver-os">?</span>
                     </label>
-                    <div class="custom-select" data-name="commServerOS">
+                    <div class="custom-select" data-name="serveroperatingystem">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -141,10 +164,10 @@
                 </div>
                 <div class="form-group">
                     <label>
-                        Web-Management-Port
-                        <span class="help-icon" data-tooltip="commserver-admin-port">?</span>
+                        Management-URL
+                        <span class="help-icon" data-tooltip="commserver-management-url">?</span>
                     </label>
-                    <input type="text" name="commServerAdminPort" placeholder="z.B. 8443, 9090">
+                    <input type="text" id="commservermanagementurl" name="commservermanagementurl" placeholder="z.B. https://comm-srv-01.example.com:8443">
                 </div>
             </div>
 
@@ -153,7 +176,7 @@
                     Umgebung
                     <span class="help-icon" data-tooltip="commserver-environment">?</span>
                 </label>
-                <div class="custom-select" data-name="commServerEnvironment">
+                <div class="custom-select" data-name="environment">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
                         <span class="arrow">▼</span>
@@ -187,88 +210,53 @@
             <div class="help-text">Wählen Sie die Protokolle und Standards, die dieser Server unterstützt</div>
             <div class="checkbox-group interface-data-types">
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="hl7v2">
+                    <input type="checkbox" name="protocols" value="hl7v2">
                     <label>HL7 v2.x</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="fhir">
+                    <input type="checkbox" name="protocols" value="fhir">
                     <label>HL7 FHIR</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="dicom">
+                    <input type="checkbox" name="protocols" value="dicom">
                     <label>DICOM</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="xds">
+                    <input type="checkbox" name="protocols" value="xds">
                     <label>IHE XDS</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="rest">
+                    <input type="checkbox" name="protocols" value="rest">
                     <label>REST API</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="soap">
+                    <input type="checkbox" name="protocols" value="soap">
                     <label>SOAP/Web Services</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="mllp">
+                    <input type="checkbox" name="protocols" value="mllp">
                     <label>MLLP</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="http">
+                    <input type="checkbox" name="protocols" value="http">
                     <label>HTTP/HTTPS</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="tcp">
+                    <input type="checkbox" name="protocols" value="tcp">
                     <label>TCP/IP</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="file">
+                    <input type="checkbox" name="protocols" value="file">
                     <label>File-basiert</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="ftp">
+                    <input type="checkbox" name="protocols" value="ftp">
                     <label>FTP/SFTP</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" name="commServerProtocols" value="mq">
+                    <input type="checkbox" name="protocols" value="mq">
                     <label>Message Queue</label>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Channels & Routen -->
-    <div class="form-section collapsed">
-        <div class="section-title">
-            <span>Channels & Routen</span>
-            <span class="section-counter">0/2</span>
-            <span class="section-toggle-icon">▼</span>
-        </div>
-        <div class="section-content">
-            <div class="form-group">
-                <label>
-                    Anzahl aktiver Channels/Routen
-                    <span class="help-icon" data-tooltip="commserver-channel-count">?</span>
-                </label>
-                <input type="number" name="commServerChannelCount" placeholder="z.B. 25">
-                <div class="help-text">Geschätzte oder exakte Anzahl der konfigurierten Channels</div>
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Nachrichtendurchsatz (pro Tag)
-                    <span class="help-icon" data-tooltip="commserver-throughput">?</span>
-                </label>
-                <input type="text" name="commServerThroughput" placeholder="z.B. ca. 500.000 Nachrichten">
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Wichtige Channels (optional)
-                    <span class="help-icon" data-tooltip="commserver-channels">?</span>
-                </label>
-                <textarea name="commServerChannels" rows="4" placeholder="Listen Sie wichtige Channels auf, z.B.:&#10;- ADT-Feed (KIS → Labor)&#10;- ORU-Results (Labor → KIS)&#10;- DICOM-Routing (Modalität → PACS)"></textarea>
             </div>
         </div>
     </div>
@@ -283,7 +271,7 @@
         <div class="section-content">
             <div class="form-group">
                 <label class="cluster-label">
-                    <input type="checkbox" id="commServerHA" name="commServerHA" class="commserver-ha-check">
+                    <input type="checkbox" id="serverhighavailability" name="serverhighavailability" class="commserver-ha-check">
                     <span>Hochverfügbarkeits-Konfiguration (HA/Cluster)</span>
                     <span class="help-icon" data-tooltip="commserver-ha">?</span>
                 </label>
@@ -296,7 +284,7 @@
                             Cluster-Typ
                             <span class="help-icon" data-tooltip="commserver-cluster-type">?</span>
                         </label>
-                        <div class="custom-select" data-name="commServerClusterType">
+                        <div class="custom-select" data-name="serverclustertype">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
                                 <span class="arrow">▼</span>
@@ -316,7 +304,7 @@
                             Anzahl Knoten
                             <span class="help-icon" data-tooltip="commserver-node-count">?</span>
                         </label>
-                        <input type="number" name="commServerNodeCount" placeholder="z.B. 2">
+                        <input type="number" id="servernodecount" name="servernodecount" placeholder="z.B. 2">
                     </div>
                 </div>
             </div>
@@ -337,20 +325,20 @@
                         Monitoring-Tool
                         <span class="help-icon" data-tooltip="commserver-monitoring">?</span>
                     </label>
-                    <input type="text" name="commServerMonitoring" placeholder="z.B. Nagios, Zabbix, eingebautes Dashboard">
+                    <input type="text" id="monitoringtool" name="monitoringtool" placeholder="z.B. Nagios, Zabbix, eingebautes Dashboard">
                 </div>
                 <div class="form-group">
                     <label>
                         Log-Retention (Tage)
                         <span class="help-icon" data-tooltip="commserver-log-retention">?</span>
                     </label>
-                    <input type="number" name="commServerLogRetention" placeholder="z.B. 90">
+                    <input type="number" id="monitoringlogretention" name="monitoringlogretention" placeholder="z.B. 90">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="cluster-label">
-                    <input type="checkbox" id="commServerSIEM" name="commServerSIEM" class="commserver-siem-check">
+                    <input type="checkbox" id="siemserverintegration" name="siemserverintegration" class="commserver-siem-check">
                     <span>SIEM-Integration aktiviert</span>
                     <span class="help-icon" data-tooltip="commserver-siem">?</span>
                 </label>
@@ -360,7 +348,7 @@
             <div class="commserver-siem-config" style="display: none;">
                 <div class="form-group">
                     <label>SIEM-System auswählen</label>
-                    <div class="custom-select" data-name="commServerSIEMSystem">
+                    <div class="custom-select" data-name="siemserverid">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -381,7 +369,7 @@
                             Log-Format
                             <span class="help-icon" data-tooltip="commserver-siem-log-format">?</span>
                         </label>
-                        <div class="custom-select" data-name="commServerSIEMLogFormat">
+                        <div class="custom-select" data-name="siemlogformat">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
                                 <span class="arrow">▼</span>
@@ -403,7 +391,7 @@
                             Transport-Protokoll
                             <span class="help-icon" data-tooltip="commserver-siem-transport">?</span>
                         </label>
-                        <div class="custom-select" data-name="commServerSIEMTransport">
+                        <div class="custom-select" data-name="siemtransportprotocol">
                             <div class="select-trigger">
                                 <span class="placeholder">Bitte wählen</span>
                                 <span class="arrow">▼</span>
@@ -430,27 +418,27 @@
                     <div class="help-text">Welche Log-Kategorien werden an das SIEM gesendet?</div>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" name="commServerSIEMLogTypes" value="application">
+                            <input type="checkbox" name="siemlogtypes" value="application">
                             <label>Application Logs</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="commServerSIEMLogTypes" value="security">
+                            <input type="checkbox" name="siemlogtypes" value="security">
                             <label>Security Events</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="commServerSIEMLogTypes" value="access">
+                            <input type="checkbox" name="siemlogtypes" value="access">
                             <label>Access Logs</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="commServerSIEMLogTypes" value="error">
+                            <input type="checkbox" name="siemlogtypes" value="error">
                             <label>Error Logs</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="commServerSIEMLogTypes" value="audit">
+                            <input type="checkbox" name="siemlogtypes" value="audit">
                             <label>Audit Logs</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" name="commServerSIEMLogTypes" value="performance">
+                            <input type="checkbox" name="siemlogtypes" value="performance">
                             <label>Performance Logs</label>
                         </div>
                     </div>
@@ -473,7 +461,7 @@
                         Authentifizierung
                         <span class="help-icon" data-tooltip="commserver-auth">?</span>
                     </label>
-                    <div class="custom-select" data-name="commServerAuth">
+                    <div class="custom-select" data-name="serverauth">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -495,7 +483,7 @@
                         TLS/SSL für Admin-Zugriff
                         <span class="help-icon" data-tooltip="commserver-tls">?</span>
                     </label>
-                    <div class="custom-select" data-name="commServerTLS">
+                    <div class="custom-select" data-name="servertls">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -516,7 +504,7 @@
                     Zugriffsberechtigung
                     <span class="help-icon" data-tooltip="commserver-access">?</span>
                 </label>
-                <input type="text" name="commServerAccess" placeholder="z.B. Interface-Team, IT-Operations">
+                <input type="text" id="serveraccesspermissions" name="serveraccesspermissions" placeholder="z.B. Interface-Team, IT-Operations">
                 <div class="help-text">Welche Teams/Personen haben Zugriff auf den Server?</div>
             </div>
         </div>
@@ -536,14 +524,14 @@
                         Wartungsfenster
                         <span class="help-icon" data-tooltip="commserver-maintenance">?</span>
                     </label>
-                    <input type="text" name="commServerMaintenance" placeholder="z.B. Sonntag 02:00-06:00 Uhr">
+                    <input type="text" id="servermaintenancewindow" name="servermaintenancewindow" placeholder="z.B. Sonntag 02:00-06:00 Uhr">
                 </div>
                 <div class="form-group">
                     <label>
                         Letztes Update
                         <span class="help-icon" data-tooltip="commserver-last-update">?</span>
                     </label>
-                    <input type="text" name="commServerLastUpdate" placeholder="z.B. 15.01.2024">
+                    <input type="text" id="serverlastupdated" name="serverlastupdated" placeholder="z.B. 15.01.2024">
                 </div>
             </div>
 
@@ -552,7 +540,7 @@
                     Support-Kontakt
                     <span class="help-icon" data-tooltip="commserver-support">?</span>
                 </label>
-                <input type="text" name="commServerSupport" placeholder="z.B. interface-support@example.com">
+                <input type="text" id="serversupportcontact" name="serversupportcontact" placeholder="z.B. interface-support@example.com">
             </div>
 
             <div class="form-group">
@@ -560,7 +548,7 @@
                     Anmerkungen
                     <span class="help-icon" data-tooltip="commserver-notes">?</span>
                 </label>
-                <textarea name="commServerNotes" rows="3" placeholder="z.B. Besonderheiten, geplante Upgrades, bekannte Probleme..."></textarea>
+                <textarea id="notes" name="notes" rows="3" placeholder="z.B. Besonderheiten, geplante Upgrades, bekannte Probleme..."></textarea>
             </div>
         </div>
     </div>

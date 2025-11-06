@@ -202,6 +202,55 @@
         </div>
     </div>
 
+    <div data-tooltip-id="commserver-id">
+        <h2>Kommunikations-Server / Hostname</h2>
+        <p>Wählen Sie den physischen oder virtuellen Server aus, auf dem die Interface Engine läuft.</p>
+        <div>
+            <h3>Optionen:</h3>
+            <ul>
+                <li><strong>Bestehende VM/Hardware:</strong> Wählen Sie aus bereits erfassten Servern</li>
+                <li><strong>Manuell eingeben:</strong> Wenn Server noch nicht im System erfasst ist</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Vorteile der Verknüpfung:</h3>
+            <ul>
+                <li>Automatische Übernahme von IP-Adresse und Hostname</li>
+                <li>Zentrale Verwaltung von Server-Informationen</li>
+                <li>Übersicht über alle auf einem Server laufenden Dienste</li>
+                <li>Abhängigkeiten nachvollziehen</li>
+            </ul>
+        </div>
+        <em>Empfehlung: Server zuerst als VM/Hardware anlegen, dann hier verknüpfen</em>
+    </div>
+
+    <div data-tooltip-id="commserver-management-url">
+        <h2>Management-URL</h2>
+        <p>Die vollständige URL zur Web-Administrationsoberfläche der Interface Engine.</p>
+        <div>
+            <h3>Format:</h3>
+            https://hostname:port/pfad
+        </div>
+        <div>
+            <h3>Typische URLs:</h3>
+            <ul>
+                <li><strong>Mirth Connect:</strong> https://mirth-prod.example.com:8443</li>
+                <li><strong>Rhapsody:</strong> https://rhapsody.example.com:9090</li>
+                <li><strong>Ensemble:</strong> https://ensemble.example.com:52773/csp/sys/UtilHome.csp</li>
+                <li><strong>Cloverleaf:</strong> https://cloverleaf.example.com:8080/websvcs</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Wichtig:</h3>
+            <ul>
+                <li>HTTPS verwenden (TLS/SSL-verschlüsselt)</li>
+                <li>Port dokumentieren (oft nicht Standard 443)</li>
+                <li>URL muss für Admins erreichbar sein</li>
+            </ul>
+        </div>
+        <em>Diese URL benötigen Sie für den täglichen Zugriff auf die Interface Engine!</em>
+    </div>
+
     <div data-tooltip-id="commserver-admin-port">
         <h2>Web-Management-Port</h2>
         <p>Der Port für die Web-Administrationsoberfläche.</p>
@@ -210,15 +259,20 @@
             <ul>
                 <li><strong>8443:</strong> Mirth Connect (HTTPS)</li>
                 <li><strong>9090:</strong> Rhapsody Web Console</li>
-                <li><strong>8080:</strong> HTTP (unsicher, nicht empfohlen)</li>
-                <li><strong>443:</strong> Standard HTTPS</li>
+                <li><strong>52773:</strong> InterSystems IRIS/Ensemble</li>
+                <li><strong>8080:</strong> HTTP (unsicher, nicht empfohlen für Produktion)</li>
+                <li><strong>443:</strong> Standard HTTPS (wenn dedizierter Server)</li>
             </ul>
         </div>
         <div>
-            <h3>Wichtig:</h3>
-            Port sollte nur für Admins erreichbar sein (Firewall!)
+            <h3>Sicherheit:</h3>
+            <ul>
+                <li>Port sollte nur für Admins erreichbar sein (Firewall!)</li>
+                <li>Nicht direkt aus dem Internet erreichbar</li>
+                <li>VPN oder Jump-Host für externen Zugriff</li>
+            </ul>
         </div>
-        <em>Niemals Standard-Ports offen ins Internet!</em>
+        <em>Niemals Management-Ports offen ins Internet - hohes Sicherheitsrisiko!</em>
     </div>
 
     <div data-tooltip-id="commserver-environment">
@@ -309,25 +363,32 @@
 
     <div data-tooltip-id="commserver-channels">
         <h2>Wichtige Channels</h2>
-        <p>Listen Sie die kritischsten oder wichtigsten Channels auf.</p>
+        <p>Listen Sie die kritischsten oder wichtigsten Channels/Routen auf.</p>
         <div>
             <h3>Warum dokumentieren?</h3>
             <ul>
                 <li>Schnelle Übersicht bei Störungen</li>
                 <li>Priorisierung bei Problemen</li>
                 <li>Onboarding neuer Admins</li>
+                <li>Impact-Analyse bei geplanten Änderungen</li>
             </ul>
         </div>
         <div>
-            <h3>Beispiele:</h3>
+            <h3>Beispiele kritischer Channels:</h3>
             <ul>
-                <li>"ADT-Feed (KIS → Labor)" - Patientenbewegungen</li>
-                <li>"ORU-Results (Labor → KIS)" - Labor-Befunde</li>
-                <li>"DICOM-Routing (Modalität → PACS)" - Bildrouting</li>
-                <li>"ORM-Orders (KIS → Radiologie)" - Aufträge</li>
-                <li>"HL7-to-FHIR-Converter" - Protokoll-Übersetzung</li>
+                <li><strong>"ADT-Feed (KIS → Labor)"</strong> - Patientenbewegungen, -aufnahmen, -entlassungen</li>
+                <li><strong>"ORU-Results (Labor → KIS)"</strong> - Labor-Befunde zurück ins KIS</li>
+                <li><strong>"DICOM-Routing (Modalität → PACS)"</strong> - Bildrouting von CT/MRT zu PACS</li>
+                <li><strong>"ORM-Orders (KIS → Radiologie)"</strong> - Untersuchungsaufträge</li>
+                <li><strong>"HL7-to-FHIR-Converter"</strong> - Moderne Protokoll-Übersetzung</li>
+                <li><strong>"Notaufnahme-Feed"</strong> - Echtzeit-Daten für Emergency Department</li>
             </ul>
         </div>
+        <div>
+            <h3>Was dokumentieren:</h3>
+            Channel-Name, Quelle → Ziel, Nachrichtentyp, Kritikalität
+        </div>
+        <em>Diese Liste hilft bei Notfällen: "Welcher Channel ist ausgefallen und was ist der Impact?"</em>
     </div>
 
     <div data-tooltip-id="commserver-ha">
@@ -462,25 +523,37 @@
 
     <div data-tooltip-id="commserver-siem">
         <h2>SIEM-Integration</h2>
-        <p>Werden Logs an ein zentrales SIEM gesendet?</p>
+        <p>Werden Logs an ein zentrales SIEM-System gesendet?</p>
         <div>
             <h3>Was ist SIEM?</h3>
-            Security Information and Event Management - zentrale Log-Sammlung und Sicherheitsüberwachung
+            Security Information and Event Management - zentrale Plattform zur Sammlung, Analyse und Korrelation von Security-Events und Logs aus allen IT-Systemen
         </div>
         <div>
-            <h3>Warum SIEM für Interface Engine?</h3>
+            <h3>Warum SIEM für Interface Engine kritisch ist:</h3>
             <ul>
-                <li>Zentrale Übersicht über alle Systeme</li>
-                <li>Sicherheits-Events erkennen (unbefugte Zugriffe)</li>
-                <li>Korrelation über Systeme hinweg</li>
-                <li>Compliance (DSGVO, KRITIS)</li>
+                <li><strong>Sicherheitsüberwachung:</strong> Unbefugte Zugriffe, Failed Logins, verdächtige Aktivitäten</li>
+                <li><strong>Zentrale Übersicht:</strong> Logs von allen Systemen an einer Stelle</li>
+                <li><strong>Korrelation:</strong> Events über Systemgrenzen hinweg verbinden</li>
+                <li><strong>Compliance:</strong> DSGVO, KRITIS, NIS2-Anforderungen erfüllen</li>
+                <li><strong>Forensik:</strong> Bei Incidents nachvollziehen, was passiert ist</li>
+                <li><strong>Alerting:</strong> Sofortige Benachrichtigung bei kritischen Events</li>
             </ul>
         </div>
         <div>
-            <h3>Typische SIEM-Systeme:</h3>
-            Splunk, QRadar, Elastic, Microsoft Sentinel
+            <h3>Typische SIEM-Systeme im Healthcare:</h3>
+            <ul>
+                <li><strong>Splunk:</strong> Sehr verbreitet, mächtig, teuer</li>
+                <li><strong>IBM QRadar:</strong> Enterprise-Grade, gut für Compliance</li>
+                <li><strong>Elastic (ELK Stack):</strong> Open Source, flexibel</li>
+                <li><strong>Microsoft Sentinel:</strong> Cloud-basiert, Azure-Integration</li>
+                <li><strong>ArcSight:</strong> Traditionell stark im Healthcare</li>
+            </ul>
         </div>
-        <em>Bei kritischen Interface Engines: SIEM ist sehr empfohlen!</em>
+        <div>
+            <h3>Was wird geloggt:</h3>
+            Login-Versuche, Channel-Änderungen, Fehler, Performance-Metriken, Zugriffe auf sensible Daten
+        </div>
+        <em>Bei kritischen Interface Engines: SIEM ist nicht optional - es ist Pflicht für Compliance und Security!</em>
     </div>
 
     <div data-tooltip-id="commserver-siem-log-format">

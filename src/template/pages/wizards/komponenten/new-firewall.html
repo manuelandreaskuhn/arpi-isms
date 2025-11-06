@@ -23,14 +23,14 @@
                         Firewall Name <span class="required">*</span>
                         <span class="help-icon" data-tooltip="firewall-name">?</span>
                     </label>
-                    <input type="text" id="fwname" required placeholder="z.B. FW-DMZ-01, Perimeter-Firewall">
+                    <input type="text" id="name" name="name" required placeholder="z.B. FW-DMZ-01, Perimeter-Firewall">
                 </div>
                 <div class="form-group">
                     <label>
                         Typ / Hersteller
                         <span class="help-icon" data-tooltip="firewall-type">?</span>
                     </label>
-                    <div class="custom-select" data-name="fwtype">
+                    <div class="custom-select" data-name="type">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -63,14 +63,14 @@
                         Modell / Version
                         <span class="help-icon" data-tooltip="firewall-model">?</span>
                     </label>
-                    <input type="text" id="fwmodel" placeholder="z.B. PA-3220, FortiGate 200F, v9.1">
+                    <input type="text" id="model" name="model" placeholder="z.B. PA-3220, FortiGate 200F, v9.1">
                 </div>
                 <div class="form-group">
                     <label>
                         Seriennummer
                         <span class="help-icon" data-tooltip="firewall-serial">?</span>
                     </label>
-                    <input type="text" id="serialnumber" placeholder="z.B. SN123456789">
+                    <input type="text" id="serialnumber" name="serialnumber" placeholder="z.B. SN123456789">
                 </div>
             </div>
         </div>
@@ -90,35 +90,44 @@
                         Management IP <span class="required">*</span>
                         <span class="help-icon" data-tooltip="firewall-mgmt-ip">?</span>
                     </label>
-                    <input type="text" id="fwmgmtip" required placeholder="z.B. 192.168.10.1">
+                    <input type="text" id="managementip" name="managementip" required placeholder="z.B. 192.168.10.1">
                 </div>
+                <div class="form-group">
+                    <label>
+                        Management-URL
+                        <span class="help-icon" data-tooltip="firewall-management-url">?</span>
+                    </label>
+                    <input type="text" id="managementurl" name="managementurl" placeholder="z.B. https://frwl-srv-01.example.com:8443">
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>
                         Standort / Zone
                         <span class="help-icon" data-tooltip="firewall-location">?</span>
                     </label>
-                    <input type="text" id="fwlocation" placeholder="z.B. Perimeter, DMZ, Internal">
+                    <input type="text" id="location" name="location" placeholder="z.B. Perimeter, DMZ, Internal">
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Funktion
-                    <span class="help-icon" data-tooltip="firewall-function">?</span>
-                </label>
-                <div class="custom-select" data-name="fwfunction">
-                    <div class="select-trigger">
-                        <span class="placeholder">Bitte wählen</span>
-                        <span class="arrow">▼</span>
-                    </div>
-                    <div class="select-dropdown">
-                        <div class="select-options">
-                            <div class="select-option" data-value="">Bitte wählen</div>
-                            <div class="select-option" data-value="perimeter">Perimeter Firewall</div>
-                            <div class="select-option" data-value="internal">Internal Segmentation</div>
-                            <div class="select-option" data-value="dmz">DMZ Firewall</div>
-                            <div class="select-option" data-value="datacenter">Datacenter Firewall</div>
-                            <div class="select-option" data-value="ngfw">Next-Gen Firewall (NGFW)</div>
+                <div class="form-group">
+                    <label>
+                        Funktion
+                        <span class="help-icon" data-tooltip="firewall-function">?</span>
+                    </label>
+                    <div class="custom-select" data-name="function">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="perimeter">Perimeter Firewall</div>
+                                <div class="select-option" data-value="internal">Internal Segmentation</div>
+                                <div class="select-option" data-value="dmz">DMZ Firewall</div>
+                                <div class="select-option" data-value="datacenter">Datacenter Firewall</div>
+                                <div class="select-option" data-value="ngfw">Next-Gen Firewall (NGFW)</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,7 +140,7 @@
                         Externe Interface / IP
                         <span class="help-icon" data-tooltip="firewall-external-if">?</span>
                     </label>
-                    <input type="text" id="externalif" placeholder="z.B. WAN, 203.0.113.1">
+                    <input type="text" id="externalif" name="externalif" placeholder="z.B. WAN, 203.0.113.1">
                     <div class="help-text">Public/Internet-facing Interface</div>
                 </div>
                 <div class="form-group">
@@ -139,7 +148,7 @@
                         Interne Interface / IP
                         <span class="help-icon" data-tooltip="firewall-internal-if">?</span>
                     </label>
-                    <input type="text" id="internalif" placeholder="z.B. LAN, 10.0.0.1">
+                    <input type="text" id="internalif" name="internalif" placeholder="z.B. LAN, 10.0.0.1">
                     <div class="help-text">Internes Netzwerk Interface</div>
                 </div>
             </div>
@@ -150,14 +159,14 @@
                         DMZ Interface / IP
                         <span class="help-icon" data-tooltip="firewall-dmz-if">?</span>
                     </label>
-                    <input type="text" id="dmzif" placeholder="z.B. DMZ, 172.16.0.1">
+                    <input type="text" id="dmzif" name="dmzif" placeholder="z.B. DMZ, 172.16.0.1">
                 </div>
                 <div class="form-group">
                     <label>
                         Weitere Zonen
                         <span class="help-icon" data-tooltip="firewall-other-zones">?</span>
                     </label>
-                    <input type="text" id="otherzones" placeholder="z.B. Guest, Management, VPN">
+                    <input type="text" id="otherzones" name="otherzones" placeholder="z.B. Guest, Management, VPN">
                 </div>
             </div>
         </div>
@@ -308,7 +317,7 @@
         <div class="section-content">
             <div class="form-group">
                 <label class="cluster-label">
-                    <input type="checkbox" id="fw-ha-check">
+                    <input type="checkbox" id="serverhighavailability" name="serverhighavailability">
                     <span>High Availability / Clustering aktiviert</span>
                     <span class="help-icon" data-tooltip="firewall-ha">?</span>
                 </label>
@@ -341,7 +350,7 @@
                             Partner/Standby Firewall
                             <span class="help-icon" data-tooltip="firewall-partner">?</span>
                         </label>
-                        <input type="text" id="partnerfirewall" placeholder="z.B. FW-DMZ-02">
+                        <input type="text" id="partnerfirewall" name="partnerfirewall" placeholder="z.B. FW-DMZ-02">
                     </div>
                 </div>
             </div>
@@ -383,7 +392,7 @@
                         SIEM Integration
                         <span class="help-icon" data-tooltip="firewall-siem">?</span>
                     </label>
-                    <input type="text" id="siem" placeholder="z.B. Splunk, QRadar, Syslog-Server">
+                    <input type="text" id="siem" name="siem" placeholder="z.B. Splunk, QRadar, Syslog-Server">
                 </div>
             </div>
 
@@ -393,14 +402,14 @@
                         Log Retention (Tage)
                         <span class="help-icon" data-tooltip="firewall-log-retention">?</span>
                     </label>
-                    <input type="number" id="logretention" placeholder="z.B. 90, 365">
+                    <input type="number" id="logretention" name="logretention" placeholder="z.B. 90, 365">
                 </div>
                 <div class="form-group">
                     <label>
                         Monitoring / Alerting
                         <span class="help-icon" data-tooltip="firewall-monitoring">?</span>
                     </label>
-                    <input type="text" id="monitoring" placeholder="z.B. SNMP, Prometheus, E-Mail">
+                    <input type="text" id="monitoring" name="monitoring" placeholder="z.B. SNMP, Prometheus, E-Mail">
                 </div>
             </div>
         </div>
@@ -419,7 +428,7 @@
                     Notizen / Besonderheiten
                     <span class="help-icon" data-tooltip="firewall-notes">?</span>
                 </label>
-                <textarea id="fwnotes" rows="4" placeholder="Zusätzliche Informationen zur Firewall, allgemeine Konfiguration, Change-Prozesse..."></textarea>
+                <textarea id="fwnotes" name="fwnotes" rows="4" placeholder="Zusätzliche Informationen zur Firewall, allgemeine Konfiguration, Change-Prozesse..."></textarea>
             </div>
         </div>
     </div>
