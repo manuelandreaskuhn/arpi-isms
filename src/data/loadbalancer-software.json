@@ -1,0 +1,184 @@
+{
+  "loadbalancerSoftware": [
+    {
+      "id": "f5-bigip",
+      "name": "F5 BIG-IP",
+      "category": "Enterprise Application Delivery Controller",
+      "vendor": "F5 Networks",
+      "type": "Commercial",
+      "description": "Der Enterprise-Standard für Application Delivery - umfassendste Feature-Set im Markt",
+      "features": ["Layer 4-7 Load Balancing", "SSL/TLS Offloading", "WAF", "Advanced Traffic Management", "iRules (Programmable)", "Global Server Load Balancing", "Application Security"],
+      "platforms": ["Hardware Appliance", "Virtual Edition (VE)", "Cloud (AWS, Azure, GCP)"],
+      "licenseModel": ["Per Appliance", "Per Throughput", "Subscription", "Good/Better/Best Tiers"],
+      "pricing": "€20.000 - €500.000+ (Hardware) / VE ab €3.000/Jahr",
+      "marketShare": "~35% (Enterprise ADC Marktführer)",
+      "status": "Active",
+      "useCases": ["Large Enterprise", "Mission-Critical Applications", "Complex Traffic Management", "Multi-Site Load Balancing", "Advanced Security Requirements"],
+      "notes": "F5 BIG-IP ist der Goldstandard bei Enterprise Load Balancern. Extrem feature-reich: WAF, GSLB, SSL Offload, iRules (Turing-complete scripting language für Traffic-Manipulation). Sehr teuer, aber sehr mächtig. iRules = einzigartig (Traffic-Logik programmieren). TMOS OS. Gartner Leader seit Jahren.",
+      "cpe": [
+        "cpe:2.3:a:f5:big-ip_access_policy_manager:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:f5:big-ip_local_traffic_manager:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:f5:tmos:*:*:*:*:*:*:*:*",
+        "cpe:/a:f5:big-ip"
+      ]
+    },
+    {
+      "id": "citrix-netscaler",
+      "name": "Citrix NetScaler / ADC",
+      "category": "Enterprise Application Delivery Controller",
+      "vendor": "Citrix (jetzt Cloud Software Group)",
+      "type": "Commercial",
+      "description": "Enterprise ADC mit Fokus auf Citrix-Integration und Cloud-Native Applications",
+      "features": ["Layer 4-7 Load Balancing", "SSL Offloading", "Content Switching", "GSLB", "AppFirewall (WAF)", "Citrix Virtual Apps/Desktops Integration", "Bot Management"],
+      "platforms": ["Hardware Appliance (MPX)", "Virtual (VPX)", "Container (CPX)", "Cloud (AWS, Azure, GCP)"],
+      "licenseModel": ["Per Appliance", "Per Throughput (Mbps)", "Subscription", "Platinum/Enterprise/Standard"],
+      "pricing": "€15.000 - €300.000+ (Hardware) / VPX ab €2.500/Jahr",
+      "marketShare": "~20% (stark bei Citrix-Kunden)",
+      "status": "Active",
+      "useCases": ["Citrix Environments", "Enterprise Applications", "Cloud-Native Apps", "Service Provider"],
+      "notes": "NetScaler (umbenannt zu Citrix ADC 2018, jetzt wieder NetScaler seit 2022 nach Spin-off) ist technisch sehr gut. Exzellente Citrix Virtual Apps/Desktops Integration. nCore Architecture = sehr performant (Multi-Core-Scaling). Gut für hybride Cloud-Deployments. Seit 2022: Citrix → Cloud Software Group (Tibco + Citrix).",
+      "cpe": [
+        "cpe:2.3:a:citrix:netscaler:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:citrix:application_delivery_controller:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:citrix:netscaler_firmware:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "nginx",
+      "name": "NGINX Plus",
+      "category": "Software Load Balancer / Reverse Proxy",
+      "vendor": "F5 / NGINX Inc.",
+      "type": "Open Source + Commercial",
+      "description": "Hochperformanter Software Load Balancer - Open Source mit Commercial Edition",
+      "features": ["Layer 7 Load Balancing", "Reverse Proxy", "SSL/TLS Termination", "Health Checks", "Dynamic Reconfiguration", "API Gateway", "Caching"],
+      "platforms": ["Linux", "FreeBSD", "Docker", "Kubernetes (Ingress Controller)"],
+      "licenseModel": ["Open Source (BSD)", "NGINX Plus (Commercial)", "Per Instance Subscription"],
+      "pricing": "Kostenlos (Open Source) / Plus ab €2.500/Instance/Jahr",
+      "marketShare": "~25% (wenn Open Source einbezogen)",
+      "status": "Active",
+      "useCases": ["Web Applications", "Microservices", "Kubernetes Ingress", "API Gateway", "Cloud-Native Apps", "DevOps Environments"],
+      "notes": "NGINX ist der Performance-König. Event-driven Architecture = extrem skalierbar (>100k connections). Open Source Version sehr weit verbreitet (>400 Millionen Sites). NGINX Plus = Commercial mit Advanced LB, Health Checks, Dynamic Config, Support. Seit 2019 von F5 übernommen. Perfekt für Cloud-Native und Microservices. Einfacher als F5 BIG-IP, aber weniger Enterprise-Features.",
+      "cpe": [
+        "cpe:2.3:a:nginx:nginx:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:f5:nginx_plus:*:*:*:*:*:*:*:*",
+        "cpe:/a:nginx:nginx"
+      ]
+    },
+    {
+      "id": "haproxy",
+      "name": "HAProxy",
+      "category": "Open Source Load Balancer",
+      "vendor": "HAProxy Technologies",
+      "type": "Open Source + Commercial",
+      "description": "High Availability Proxy - Open Source Load Balancer für High-Performance Szenarien",
+      "features": ["Layer 4/7 Load Balancing", "SSL Termination", "Health Checks", "Sticky Sessions", "ACLs", "Rate Limiting", "Connection Pooling"],
+      "platforms": ["Linux", "FreeBSD", "Docker", "Kubernetes"],
+      "licenseModel": ["Open Source (GPL)", "HAProxy Enterprise", "ALOHA (Appliance)"],
+      "pricing": "Kostenlos (Open Source) / Enterprise ab €5.000/Jahr / ALOHA ab €10.000",
+      "marketShare": "~15% (sehr stark bei High-Traffic Sites)",
+      "status": "Active",
+      "useCases": ["High-Traffic Websites", "API Gateways", "Database Load Balancing", "TCP Load Balancing", "Low-Latency Requirements"],
+      "notes": "HAProxy ist DER Load Balancer wenn Performance kritisch ist. Kann Millionen simultane Connections. Von Twitter, Reddit, Stack Overflow, Airbnb genutzt. Single-threaded aber extrem effizient. Sehr granulare ACLs. Stats-Page ist legendär (Real-time Monitoring). Enterprise-Version bietet Support + ALOHA Appliances. Gut für TCP (nicht nur HTTP) - z.B. MySQL, PostgreSQL LB.",
+      "cpe": [
+        "cpe:2.3:a:haproxy:haproxy:*:*:*:*:*:*:*:*",
+        "cpe:/a:haproxy:haproxy"
+      ]
+    },
+    {
+      "id": "aws-elb",
+      "name": "AWS Elastic Load Balancer",
+      "category": "Cloud Load Balancer",
+      "vendor": "Amazon Web Services",
+      "type": "Cloud Service (Managed)",
+      "description": "AWS Managed Load Balancer - Application Load Balancer (ALB), Network Load Balancer (NLB), Gateway Load Balancer",
+      "features": ["Managed Service", "Auto-Scaling", "SSL Termination", "Path-based Routing", "Host-based Routing", "WebSocket Support", "Lambda Target"],
+      "platforms": ["AWS Cloud"],
+      "licenseModel": ["Pay-as-you-go (per hour + per GB processed)"],
+      "pricing": "ALB: €0,025/h + €0,008/LCU-hour | NLB: €0,027/h + €0,006/NLCU-hour",
+      "marketShare": "~30% (Cloud Load Balancer)",
+      "status": "Active",
+      "useCases": ["AWS-Native Applications", "Auto-Scaling Workloads", "Serverless (Lambda)", "Container (ECS/EKS)", "Microservices"],
+      "notes": "AWS ELB = 3 Typen: ALB (Layer 7, HTTP/HTTPS), NLB (Layer 4, TCP/UDP, ultra-low latency), GWLB (Layer 3, für Security Appliances). Fully Managed = kein Server-Management. Auto-Scaling, Multi-AZ HA. ALB ist meist die richtige Wahl (Path Routing, Host Routing). NLB für extreme Performance (Millionen RPS). GWLB für Inline Security (Firewall, IPS).",
+      "cpe": []
+    },
+    {
+      "id": "azure-lb",
+      "name": "Azure Load Balancer",
+      "category": "Cloud Load Balancer",
+      "vendor": "Microsoft",
+      "type": "Cloud Service (Managed)",
+      "description": "Azure Managed Load Balancer - Basic, Standard, Application Gateway (Layer 7)",
+      "features": ["Managed Service", "Zone-Redundant", "Health Probes", "Outbound Rules", "HA Ports", "Application Gateway (WAF, SSL, Path Routing)"],
+      "platforms": ["Azure Cloud"],
+      "licenseModel": ["Pay-as-you-go", "Standard SKU", "Application Gateway per Gateway-hour + Data"],
+      "pricing": "Standard LB: €0,025/h + €0,005/GB | App Gateway: €0,2/h + €0,008/GB",
+      "marketShare": "~20% (Cloud Load Balancer)",
+      "status": "Active",
+      "useCases": ["Azure VMs", "Virtual Machine Scale Sets", "Azure Kubernetes Service (AKS)", "Hybrid Cloud", "Microsoft-Stack"],
+      "notes": "Azure Load Balancer = Layer 4 (TCP/UDP). Application Gateway = Layer 7 (HTTP/HTTPS) mit WAF. Standard LB ist zone-redundant (Multi-AZ). Application Gateway = vollwertiger ADC mit WAF, SSL Offload, Path Routing, Auto-Scaling. Traffic Manager = Global LB (DNS-based). Gut für Microsoft-lastige Umgebungen.",
+      "cpe": []
+    },
+    {
+      "id": "kemp",
+      "name": "Kemp LoadMaster",
+      "category": "Mid-Market Load Balancer",
+      "vendor": "Progress (ehemals Kemp Technologies)",
+      "type": "Commercial",
+      "description": "Kosteneffektiver Load Balancer für SMB bis Mid-Market - Alternative zu F5",
+      "features": ["Layer 4-7 Load Balancing", "SSL Offloading", "GSLB", "WAF", "Content Switching", "Health Monitoring"],
+      "platforms": ["Hardware Appliance", "Virtual (VMware, Hyper-V)", "Cloud (AWS, Azure)", "Bare Metal"],
+      "licenseModel": ["Per Appliance", "Perpetual", "Subscription"],
+      "pricing": "€3.000 - €50.000 (deutlich günstiger als F5)",
+      "marketShare": "~5% (Niche: Cost-Conscious Enterprises)",
+      "status": "Active",
+      "useCases": ["SMB to Mid-Market", "Budget-Constraints", "F5 Alternative", "Microsoft Environments (Skype, Exchange LB)"],
+      "notes": "Kemp ist der 'F5 für Arme' - ähnliche Features, aber viel günstiger. Gutes Preis-/Leistungsverhältnis. Besonders stark bei Microsoft-Workloads (Exchange, Lync/Skype, RDS). 2020 von Progress Software übernommen. Weniger feature-reich als F5, aber für die meisten Szenarien ausreichend. Perpetual Licensing verfügbar (im Gegensatz zu F5 Trend zu Subscriptions).",
+      "cpe": [
+        "cpe:2.3:a:kemptechnologies:loadmaster:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:kemptechnologies:loadmaster_firmware:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "a10",
+      "name": "A10 Networks Thunder ADC",
+      "category": "Enterprise Application Delivery Controller",
+      "vendor": "A10 Networks",
+      "type": "Commercial",
+      "description": "High-Performance ADC mit DDoS-Protection und Threat Intelligence",
+      "features": ["Layer 4-7 Load Balancing", "SSL Insight (SSL Inspection)", "DDoS Protection", "CGN (Carrier-Grade NAT)", "GSLB", "WAF"],
+      "platforms": ["Hardware Appliance", "Virtual (vThunder)", "Cloud", "Container (cThunder)"],
+      "licenseModel": ["Per Appliance", "Per Throughput", "Subscription"],
+      "pricing": "€10.000 - €200.000+",
+      "marketShare": "~8% (stark bei Service Provider)",
+      "status": "Active",
+      "useCases": ["Service Provider", "Telco", "High-Performance Requirements", "DDoS Protection", "SSL Inspection at Scale"],
+      "notes": "A10 ist spezialisiert auf High-Performance und Security. ACOS (Advanced Core OS) = sehr effizient. SSL Insight = Deep Packet Inspection bei SSL Traffic (für Security). Gut bei Service Providern (CGN für IPv4-Exhaustion). DDoS-Protection eingebaut. Günstiger als F5 bei vergleichbarer Performance. Harmonic Precision Architecture = Multi-Core-Scaling.",
+      "cpe": [
+        "cpe:2.3:a:a10networks:advanced_core_operating_system:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:a10networks:thunder:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "type": "Variabel",
+      "description": "Andere Load Balancer-Lösungen",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "pricing": "Variabel",
+      "marketShare": "~5%",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Nischen-Lösungen", "Legacy"],
+      "notes": "Z.B. Radware Alteon, Barracuda Load Balancer, Array Networks, Avi Networks (VMware NSX ALB), Envoy Proxy, Traefik, etc. Viele spezialisierte Lösungen für Nischen.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Load Balancer Software Katalog mit CPE-Identifikatoren für Application Delivery Controller und Load Balancing"
+  }
+}

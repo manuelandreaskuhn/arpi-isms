@@ -1,0 +1,324 @@
+{
+  "databaseSoftware": [
+    {
+      "id": "oracle",
+      "name": "Oracle Database",
+      "category": "Enterprise Relational Database",
+      "vendor": "Oracle Corporation",
+      "type": "Commercial",
+      "description": "Marktführende Enterprise-Datenbank mit umfassenden Features für Mission-Critical Workloads",
+      "features": ["ACID", "RAC (Clustering)", "Data Guard (DR)", "Advanced Security", "Partitioning", "Compression", "In-Memory", "Multitenant"],
+      "platforms": ["Linux", "Unix", "Windows", "Cloud"],
+      "licenseModel": ["Per CPU", "Named User Plus", "Enterprise Edition", "Standard Edition"],
+      "pricing": "€40.000 - €200.000+ pro CPU (je nach Edition + Features)",
+      "marketShare": "~40% (Enterprise RDBMS)",
+      "status": "Active",
+      "useCases": ["Large Enterprise", "ERP (SAP, Oracle Apps)", "Data Warehousing", "Mission-Critical OLTP", "Financial Services"],
+      "notes": "Oracle ist der Enterprise-Standard, aber sehr teuer. Lizenzierung komplex und aggressiv geprüft (Audits!). RAC für HA, Data Guard für DR. Seit Cloud-Push: Autonomous Database als Managed Service. Vorsicht: Indirekte Nutzung (z.B. über VM) kann lizenzpflichtig sein!",
+      "cpe": [
+        "cpe:2.3:a:oracle:database:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:oracle:database_server:*:*:*:*:enterprise:*:*:*",
+        "cpe:2.3:a:oracle:database_server:*:*:*:*:standard:*:*:*"
+      ]
+    },
+    {
+      "id": "mssql",
+      "name": "Microsoft SQL Server",
+      "category": "Enterprise Relational Database",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Microsoft's Enterprise-Datenbank mit exzellenter Windows-Integration",
+      "features": ["ACID", "Always On AG (HA)", "Columnstore", "In-Memory OLTP", "R/Python Integration", "Azure Integration", "Temporal Tables"],
+      "platforms": ["Windows", "Linux", "Docker", "Azure"],
+      "licenseModel": ["Per Core", "Server+CAL", "Enterprise", "Standard", "Express (kostenlos)"],
+      "pricing": "€0 (Express) / €3.700 (Standard 2 Core) / €14.000+ pro Core (Enterprise)",
+      "marketShare": "~25% (besonders in Microsoft-Umgebungen)",
+      "status": "Active",
+      "useCases": ["Microsoft-Stack (.NET, Windows)", "Mid to Large Enterprise", "Business Intelligence (SSRS, SSAS)", "Data Warehousing"],
+      "notes": "SQL Server ist perfekt für Microsoft-lastige Umgebungen. Always On AG ist ausgezeichnet für HA. Express Edition kostenlos (aber limitiert: 10GB, 1 CPU). Seit 2017 auch auf Linux verfügbar. Azure SQL Database als Cloud-Option. Vorsicht: Lizenzierung komplex bei Virtualisierung.",
+      "cpe": [
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:enterprise:*:*:*",
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:standard:*:*:*",
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:express:*:*:*"
+      ]
+    },
+    {
+      "id": "mysql",
+      "name": "MySQL",
+      "category": "Open Source Relational Database",
+      "vendor": "Oracle (MySQL AB)",
+      "type": "Open Source + Commercial",
+      "description": "Weltweit meistgenutzte Open-Source-Datenbank - der Standard für Web-Anwendungen",
+      "features": ["ACID (InnoDB)", "Replication", "Group Replication", "InnoDB Cluster", "NDB Cluster", "JSON Support", "Full-Text Search"],
+      "platforms": ["Linux", "Windows", "macOS", "BSD"],
+      "licenseModel": ["Open Source (GPL)", "Commercial License", "Enterprise Edition"],
+      "pricing": "Kostenlos (Community) / €5.000 - €30.000/Jahr (Enterprise)",
+      "marketShare": "~45% (Open Source RDBMS)",
+      "status": "Active",
+      "useCases": ["Web Applications (LAMP Stack)", "E-Commerce", "Content Management (WordPress, Drupal)", "SaaS Applications", "Read-Heavy Workloads"],
+      "notes": "MySQL ist der De-facto-Standard für Web-Apps. Community Edition völlig ausreichend für die meisten Fälle. InnoDB ist Standard Storage Engine (ACID-compliant). Group Replication für HA. NDB Cluster für extreme Performance (aber komplex). MySQL 8.0+: JSON-Features, Window Functions. Duale Lizenz: GPL oder Commercial (wenn GPL-Quellcode-Offenlegung nicht gewollt).",
+      "cpe": [
+        "cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:mysql:mysql:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:oracle:mysql:*:*:*:*:community:*:*:*",
+        "cpe:2.3:a:oracle:mysql:*:*:*:*:enterprise:*:*:*"
+      ]
+    },
+    {
+      "id": "mariadb",
+      "name": "MariaDB",
+      "category": "Open Source Relational Database",
+      "vendor": "MariaDB Foundation / MariaDB Corporation",
+      "type": "Open Source + Commercial",
+      "description": "MySQL-Fork mit erweiterten Features und echtem Open-Source-Commitment",
+      "features": ["ACID", "Galera Cluster (Multi-Master)", "ColumnStore", "JSON", "Temporal Tables", "Spider (Sharding)", "MaxScale (Proxy)"],
+      "platforms": ["Linux", "Windows", "macOS", "BSD"],
+      "licenseModel": ["Open Source (GPL)", "Business Source License", "Enterprise Subscription"],
+      "pricing": "Kostenlos (Community) / €3.000 - €20.000/Jahr (Enterprise)",
+      "marketShare": "~15% (wächst, viele migrieren von MySQL)",
+      "status": "Active",
+      "useCases": ["MySQL-Replacement", "Web Applications", "Cloud-Native Apps", "Multi-Master Replication", "GDPR-Compliance (EU-freundlicher)"],
+      "notes": "MariaDB = MySQL-Fork (2009) nach Oracle-Übernahme von MySQL. Vollständig kompatibel zu MySQL (Drop-in Replacement). Galera Cluster ist exzellent (Multi-Master HA). Innovation schneller als MySQL (z.B. JSON früher, ColumnStore für Analytics). Von Wikipedia, Google intern genutzt. MariaDB Corporation ist EU-Firma → GDPR-freundlicher. MaxScale als Proxy/Load Balancer.",
+      "cpe": [
+        "cpe:2.3:a:mariadb:mariadb:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:mariadb:mariadb_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "Open Source Relational Database",
+      "vendor": "PostgreSQL Global Development Group",
+      "type": "Open Source",
+      "description": "Die fortschrittlichste Open-Source-Datenbank - 'The World's Most Advanced Open Source Database'",
+      "features": ["ACID", "MVCC", "Complex Queries", "JSON/JSONB", "Full-Text Search", "GIS (PostGIS)", "Foreign Data Wrappers", "Extensibility"],
+      "platforms": ["Linux", "Windows", "macOS", "BSD", "Unix"],
+      "licenseModel": ["Open Source (PostgreSQL License - sehr permissiv)"],
+      "pricing": "Kostenlos (keine kommerzielle Version)",
+      "marketShare": "~25% (stark wachsend, 'DB of the Year' mehrfach)",
+      "status": "Active",
+      "useCases": ["Complex Applications", "Data Warehousing", "GIS Applications (PostGIS)", "Time-Series (TimescaleDB)", "OLAP + OLTP", "Financial Services"],
+      "notes": "PostgreSQL ist technologisch führend bei Open Source. Sehr standards-konform (SQL). Exzellent für komplexe Queries und Daten-Integrität. JSONB für NoSQL-Workloads. Extensions: PostGIS (GIS), TimescaleDB (Time-Series), Citus (Sharding). Patroni/Stolon für HA. Sehr aktive Community. Keine Vendor-Lock-In Gefahr. Perfekt für Startups und Enterprises die Open Source bevorzugen.",
+      "cpe": [
+        "cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "db2",
+      "name": "IBM DB2",
+      "category": "Enterprise Relational Database",
+      "vendor": "IBM",
+      "type": "Commercial",
+      "description": "IBM's Enterprise-Datenbank mit starkem Mainframe-Heritage",
+      "features": ["ACID", "HADR (HA)", "BLU Acceleration (In-Memory)", "pureScale (Clustering)", "Advanced Compression", "Federation"],
+      "platforms": ["Linux", "Unix", "Windows", "z/OS (Mainframe)", "Cloud"],
+      "licenseModel": ["Per PVU", "Per Core", "Authorized User"],
+      "pricing": "€15.000 - €100.000+ pro Core/PVU",
+      "marketShare": "~5% (rückläufig, stark bei Mainframe)",
+      "status": "Active",
+      "useCases": ["Mainframe Applications", "Large Enterprise (IBM-Umgebungen)", "Banking", "High Availability Requirements"],
+      "notes": "DB2 ist sehr solide, aber Marktanteil schrumpft. Stärke: Mainframe-Integration (z/OS). pureScale für Clustering (ähnlich Oracle RAC). BLU Acceleration für Analytics. IBM pusht Cloud Pak for Data. Komplex und teuer. Nur sinnvoll in bestehenden IBM-Umgebungen oder bei Mainframe-Anforderungen.",
+      "cpe": [
+        "cpe:2.3:a:ibm:db2:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:ibm:db2_universal_database:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "category": "Embedded Database",
+      "vendor": "SQLite Consortium",
+      "type": "Open Source (Public Domain)",
+      "description": "Die meistgenutzte Datenbank der Welt - embedded, serverless, zero-configuration",
+      "features": ["ACID", "Serverless", "Zero Configuration", "Single File", "Cross-Platform", "Lightweight"],
+      "platforms": ["Embedded (alle Plattformen)"],
+      "licenseModel": ["Public Domain (keine Lizenz)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~70% (embedded databases)",
+      "status": "Active",
+      "useCases": ["Mobile Apps (iOS, Android)", "Desktop Applications", "Embedded Systems", "IoT", "Testing", "Local Storage"],
+      "notes": "SQLite ist KEINE Client-Server-DB - es ist eine Bibliothek! Datenbank = eine Datei. Perfekt für lokale Daten, mobile Apps, embedded systems. Extrem klein (~600KB), extrem zuverlässig (>1 Trillion deployments). Sehr gut getestet (100% branch coverage). NICHT für Multi-User-Server (kein Netzwerk-Protokoll, File-Locking). Public Domain = komplett frei nutzbar.",
+      "cpe": [
+        "cpe:2.3:a:sqlite:sqlite:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "category": "NoSQL Document Database",
+      "vendor": "MongoDB Inc.",
+      "type": "Open Source + Commercial",
+      "description": "Führende NoSQL Document-Store - JSON-basiert, Schema-flexibel",
+      "features": ["Document Store", "JSON/BSON", "Replica Sets", "Sharding", "Aggregation Framework", "Atlas (Cloud)", "Change Streams"],
+      "platforms": ["Linux", "Windows", "macOS", "Cloud"],
+      "licenseModel": ["Open Source (SSPL)", "Enterprise", "Atlas (Cloud SaaS)"],
+      "pricing": "Kostenlos (Community) / €10.000 - €50.000+/Jahr (Enterprise) / Atlas ab €57/Monat",
+      "marketShare": "~60% (Document Databases)",
+      "status": "Active",
+      "useCases": ["Content Management", "Catalogs", "User Profiles", "Real-time Analytics", "IoT", "Mobile Backends", "Microservices"],
+      "notes": "MongoDB ist der NoSQL-Leader. Schema-flexibel = schnelle Entwicklung. Replica Sets für HA (automatisches Failover). Sharding für Horizontal Scaling. Atlas = Managed Cloud-Service (empfohlen!). Aggregation Framework sehr mächtig. SSPL-Lizenz (2018) = nicht mehr Apache - bei Cloud-Service-Anbietern eingeschränkt. Gut für agile Entwicklung, aber Transaktionen erst seit 4.0 (limitiert).",
+      "cpe": [
+        "cpe:2.3:a:mongodb:mongodb:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:mongodb:mongodb_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "redis",
+      "name": "Redis",
+      "category": "In-Memory Key-Value Store",
+      "vendor": "Redis Ltd.",
+      "type": "Open Source + Commercial",
+      "description": "Extrem schnelle In-Memory-Datenbank - Key-Value Store mit erweiterten Datenstrukturen",
+      "features": ["In-Memory", "Key-Value Store", "Pub/Sub", "Lua Scripting", "Sentinel (HA)", "Cluster (Sharding)", "Streams", "Modules"],
+      "platforms": ["Linux", "macOS", "BSD", "Windows (unofficial)"],
+      "licenseModel": ["Open Source (BSD)", "Redis Enterprise"],
+      "pricing": "Kostenlos (Open Source) / €5.000 - €50.000+/Jahr (Enterprise) / Cloud ab €10/Monat",
+      "marketShare": "~50% (In-Memory Databases)",
+      "status": "Active",
+      "useCases": ["Caching", "Session Store", "Real-time Analytics", "Message Queue", "Pub/Sub", "Leaderboards", "Rate Limiting"],
+      "notes": "Redis ist der Standard für Caching und In-Memory-Workloads. Extrem schnell (<1ms Latency). Nicht nur Key-Value: Lists, Sets, Sorted Sets, Hashes, Bitmaps, HyperLogLogs, Streams. Sentinel für HA. Cluster für Sharding (Horizontal Scaling). Persistence optional (RDB Snapshots, AOF Log). Modules erweitern Funktionalität (RedisJSON, RedisGraph, RedisSearch). Perfekt als Cache vor RDBMS.",
+      "cpe": [
+        "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:redislabs:redis:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "cassandra",
+      "name": "Apache Cassandra",
+      "category": "NoSQL Wide-Column Store",
+      "vendor": "Apache Software Foundation",
+      "type": "Open Source",
+      "description": "Highly scalable, distributed NoSQL - keine Single Points of Failure, linear skalierbar",
+      "features": ["Wide-Column Store", "Peer-to-Peer", "Linear Scalability", "Multi-Datacenter Replication", "Tunable Consistency", "CQL (SQL-like)"],
+      "platforms": ["Linux", "Windows", "Docker"],
+      "licenseModel": ["Open Source (Apache 2.0)"],
+      "pricing": "Kostenlos (Support durch DataStax verfügbar)",
+      "marketShare": "~40% (Wide-Column Stores)",
+      "status": "Active",
+      "useCases": ["Big Data", "Time-Series Data", "IoT", "Sensor Data", "High Write Throughput", "Multi-Datacenter", "Netflix, Apple, Spotify nutzen es"],
+      "notes": "Cassandra ist für extreme Skalierung designed (Petabytes). Peer-to-Peer = kein Master, jeder Node gleichberechtigt. Linear Scaling = 2x Nodes = 2x Performance. Tunable Consistency (CAP Theorem - wählbar: AP oder CP). Multi-DC-Replication eingebaut. CQL = SQL-ähnlich (aber nicht SQL!). Java-basiert = JVM-Tuning wichtig. Komplex zu betreiben, aber sehr robust. DataStax bietet Enterprise Support und Astra (Cloud).",
+      "cpe": [
+        "cpe:2.3:a:apache:cassandra:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "couchdb",
+      "name": "Apache CouchDB",
+      "category": "NoSQL Document Database",
+      "vendor": "Apache Software Foundation",
+      "type": "Open Source",
+      "description": "Document Database mit HTTP REST API und Multi-Master Replication",
+      "features": ["Document Store", "HTTP REST API", "Multi-Master Replication", "Offline-First", "MVCC", "Views (MapReduce)"],
+      "platforms": ["Linux", "Windows", "macOS"],
+      "licenseModel": ["Open Source (Apache 2.0)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~5% (Document Databases)",
+      "status": "Active",
+      "useCases": ["Offline-First Applications", "Mobile Sync", "Multi-Master Scenarios", "Content Management"],
+      "notes": "CouchDB ist spezialisiert auf Offline-First und Multi-Master-Replication. HTTP REST API = einfach zu nutzen (kein spezielles Protokoll). PouchDB = JavaScript-Port für Browser (Sync mit CouchDB). Conflict Resolution bei Multi-Master. Gut für Mobile-Apps mit Sync-Anforderungen. Kleiner Marktanteil, aber für spezifische Use Cases perfekt.",
+      "cpe": [
+        "cpe:2.3:a:apache:couchdb:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "category": "Search Engine / NoSQL",
+      "vendor": "Elastic N.V.",
+      "type": "Open Source + Commercial",
+      "description": "Distributed Search und Analytics Engine - basiert auf Apache Lucene",
+      "features": ["Full-Text Search", "Distributed", "RESTful API", "JSON Documents", "Real-time Indexing", "Aggregations", "Kibana (Visualization)"],
+      "platforms": ["Linux", "Windows", "macOS", "Docker", "Kubernetes"],
+      "licenseModel": ["Open Source (SSPL/Elastic License)", "Elastic Cloud"],
+      "pricing": "Kostenlos (Open Source) / Cloud ab €16/Monat",
+      "marketShare": "~70% (Search Engines)",
+      "status": "Active",
+      "useCases": ["Full-Text Search", "Log Analytics (ELK Stack)", "Application Search", "Security Analytics (SIEM)", "Business Analytics"],
+      "notes": "Elasticsearch ist der Standard für Search und Log-Analytics. Teil des ELK Stack (Elasticsearch, Logstash, Kibana). Sehr skalierbar (horizontal). JSON-basiert. Nahezu Echtzeit-Suche. Aggregationen = Analytics. Security mit X-Pack (RBAC, Encryption). Lizenzwechsel 2021 (SSPL statt Apache). OpenSearch = AWS-Fork (Apache-lizenziert). Gut für Volltextsuche und Log-Analytics, aber NICHT als primäre Datenbank (kein ACID).",
+      "cpe": [
+        "cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:elasticsearch:elasticsearch:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "neo4j",
+      "name": "Neo4j",
+      "category": "Graph Database",
+      "vendor": "Neo4j Inc.",
+      "type": "Open Source + Commercial",
+      "description": "Führende Graph-Datenbank - optimal für hochvernetzte Daten und Beziehungen",
+      "features": ["Graph Database", "Cypher Query Language", "ACID", "Indexes", "Clustering", "Graph Algorithms", "Visualization"],
+      "platforms": ["Linux", "Windows", "macOS", "Docker"],
+      "licenseModel": ["Open Source (GPL)", "Enterprise Edition", "Aura (Cloud)"],
+      "pricing": "Kostenlos (Community) / €15.000 - €100.000+/Jahr (Enterprise)",
+      "marketShare": "~75% (Graph Databases)",
+      "status": "Active",
+      "useCases": ["Social Networks", "Fraud Detection", "Knowledge Graphs", "Recommendation Engines", "Network/IT Management", "Supply Chain"],
+      "notes": "Neo4j ist DER Standard für Graph-Datenbanken. Graph = Knoten (Nodes) + Beziehungen (Relationships) statt Tabellen. Cypher = SQL-ähnliche Abfragesprache für Graphs. Perfekt wenn Beziehungen wichtiger sind als Daten selbst (z.B. Social Network, Fraud Detection). Traversal = sehr schnell (Beziehungen sind First-Class Citizens). ACID-compliant. Enterprise: Clustering, Causal Clustering. Aura = Cloud-Service. Aber: Teuer bei großen Datenmengen.",
+      "cpe": [
+        "cpe:2.3:a:neo4j:neo4j:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "saphana",
+      "name": "SAP HANA",
+      "category": "In-Memory Database",
+      "vendor": "SAP SE",
+      "type": "Commercial",
+      "description": "SAP's In-Memory-Datenbank für Real-time Analytics und ERP",
+      "features": ["In-Memory", "Columnar Store", "OLTP + OLAP", "Advanced Analytics", "Spatial", "Graph", "Text Search"],
+      "platforms": ["Linux (SUSE)"],
+      "licenseModel": ["Per Core", "Subscription", "Bundled with SAP Software"],
+      "pricing": "€100.000 - €1.000.000+ (extrem teuer)",
+      "marketShare": "~30% (In-Memory RDBMS)",
+      "status": "Active",
+      "useCases": ["SAP S/4HANA", "Real-time Analytics", "Hybrid OLTP/OLAP", "Large Enterprises mit SAP"],
+      "notes": "SAP HANA ist extrem teuer, aber extrem schnell (In-Memory). Columnar Store = optimiert für Analytics. Kann OLTP + OLAP gleichzeitig (kein ETL nötig). SAP S/4HANA läuft ausschließlich auf HANA (Vendor Lock-In!). Erfordert massive RAM-Mengen (oft mehrere TB). Nur sinnvoll wenn SAP im Einsatz. HANA Cloud als Managed Service verfügbar. Lizenzierung komplex und sehr teuer.",
+      "cpe": [
+        "cpe:2.3:a:sap:hana:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "memcached",
+      "name": "Memcached",
+      "category": "In-Memory Key-Value Cache",
+      "vendor": "Memcached Community",
+      "type": "Open Source",
+      "description": "Einfacher, sehr schneller In-Memory Key-Value Store - spezialisiert auf Caching",
+      "features": ["In-Memory", "Key-Value Store", "Simple", "Distributed", "LRU Eviction"],
+      "platforms": ["Linux", "Unix", "Windows"],
+      "licenseModel": ["Open Source (BSD)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~30% (In-Memory Caches - neben Redis)",
+      "status": "Active",
+      "useCases": ["Database Query Caching", "Session Storage", "API Caching", "Simple Caching Layer"],
+      "notes": "Memcached ist älter und einfacher als Redis. Nur Key-Value (keine erweiterten Datenstrukturen). Sehr schnell und ressourcenschonend. Multithreaded (Redis single-threaded). Gut für simple Caching-Szenarien. Redis ist flexibler, aber Memcached ist für pures Caching manchmal performanter (weniger Overhead). Oft durch Redis ersetzt, aber nach wie vor sehr verbreitet (Facebook, Wikipedia nutzen es).",
+      "cpe": [
+        "cpe:2.3:a:memcached:memcached:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Sonstiges",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "type": "Variabel",
+      "description": "Andere Datenbank-Lösungen",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "pricing": "Variabel",
+      "marketShare": "~5%",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Nischen-Lösungen", "Legacy"],
+      "notes": "Z.B. Firebird, Informix, Sybase ASE, InfluxDB (Time-Series), TimescaleDB, CockroachDB (NewSQL), YugabyteDB, etc. Viele spezialisierte DBs für Nischen-Anforderungen.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Database Software Katalog mit CPE-Identifikatoren für Relational, NoSQL, In-Memory und Specialized Databases"
+  }
+}

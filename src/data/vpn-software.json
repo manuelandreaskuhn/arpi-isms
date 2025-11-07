@@ -1,0 +1,312 @@
+{
+  "vpnSoftware": [
+    {
+      "id": "cisco-anyconnect",
+      "name": "Cisco AnyConnect Secure Mobility Client",
+      "category": "Enterprise VPN Client",
+      "vendor": "Cisco Systems",
+      "type": "Commercial",
+      "description": "Marktführende Enterprise VPN-Lösung mit SSL/IPsec und umfassenden Security-Features",
+      "features": ["SSL VPN", "IPsec IKEv2", "Always-On VPN", "Posture Assessment", "Web Security", "Network Access Manager", "ISE Integration"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android", "ChromeOS"],
+      "licenseModel": ["Per User", "Per Device", "Subscription", "Perpetual"],
+      "pricing": "€50-€150 pro User/Jahr (je nach Lizenz-Bundle)",
+      "marketShare": "~35% (Marktführer Enterprise VPN)",
+      "status": "Active",
+      "useCases": ["Enterprise Remote Access", "Secure Mobility", "BYOD", "Zero Trust Access"],
+      "notes": "De-facto Standard in großen Unternehmen. Sehr mature, stabil, gute ISE-Integration. Teuer, aber umfassend. AnyConnect Plus/Apex für erweiterte Features (ZTNA, Threat Defense). Requires Cisco ASA/Firepower/ISE.",
+      "cpe": [
+        "cpe:2.3:a:cisco:anyconnect_secure_mobility_client:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:cisco:adaptive_security_appliance_software:*:*:*:*:*:*:*:*",
+        "cpe:/a:cisco:anyconnect"
+      ]
+    },
+    {
+      "id": "palo-alto-globalprotect",
+      "name": "Palo Alto GlobalProtect",
+      "category": "Enterprise VPN Client",
+      "vendor": "Palo Alto Networks",
+      "type": "Commercial",
+      "description": "Next-Gen VPN mit tiefer Integration in Palo Alto Firewall und Cloud-Security",
+      "features": ["SSL VPN", "IPsec", "Always-On", "HIP (Host Information Profile)", "Cloud Integration", "ZTNA", "Prisma Access"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android"],
+      "licenseModel": ["Per User", "Subscription", "Cloud (Prisma Access)"],
+      "pricing": "€100-€200 pro User/Jahr (on-premise) / Cloud ab €15/User/Monat",
+      "marketShare": "~20% (wachsend)",
+      "status": "Active",
+      "useCases": ["Enterprise Remote Access", "Cloud Security", "SASE", "Zero Trust"],
+      "notes": "Technologisch führend, beste Integration mit Palo Alto NGFW. HIP Check sehr granular. Prisma Access = Cloud-delivered SASE. Teuer, aber sehr gut. Requires Palo Alto Firewall or Prisma Access.",
+      "cpe": [
+        "cpe:2.3:a:paloaltonetworks:globalprotect:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:paloaltonetworks:pan-os:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "fortinet-forticlient",
+      "name": "Fortinet FortiClient VPN",
+      "category": "Enterprise VPN Client",
+      "vendor": "Fortinet",
+      "type": "Commercial",
+      "description": "VPN-Client mit integrierter Endpoint Security - bestes Preis-/Leistungsverhältnis",
+      "features": ["SSL VPN", "IPsec", "ZTNA", "Endpoint Security", "Web Filtering", "Vulnerability Scan", "Compliance Check"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android", "ChromeOS"],
+      "licenseModel": ["Free (VPN only)", "EMS (Endpoint Management)", "Per User Subscription"],
+      "pricing": "Kostenlos (VPN-only) / EMS ab €30/Endpoint/Jahr",
+      "marketShare": "~18% (stark wachsend)",
+      "status": "Active",
+      "useCases": ["SMB to Enterprise", "Cost-Conscious Deployments", "Integrated Endpoint Security"],
+      "notes": "Bestes Preis-/Leistungsverhältnis. VPN-Funktion kostenlos! EMS (Endpoint Management Suite) für zentrale Verwaltung. Kombiniert VPN + Antivirus + Firewall. Requires FortiGate Firewall. Sehr große Verbreitung durch günstigen Preis.",
+      "cpe": [
+        "cpe:2.3:a:fortinet:forticlient:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:fortinet:fortios:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "checkpoint",
+      "name": "Check Point VPN (Endpoint Security VPN)",
+      "category": "Enterprise VPN Client",
+      "vendor": "Check Point Software Technologies",
+      "type": "Commercial",
+      "description": "Enterprise VPN mit Check Point Security Gateway und Endpoint Security Integration",
+      "features": ["IPsec", "SSL VPN", "Mobile Access", "Compliance Check", "Full Disk Encryption", "Threat Prevention"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android"],
+      "licenseModel": ["Per User", "Subscription"],
+      "pricing": "€80-€180 pro User/Jahr",
+      "marketShare": "~10%",
+      "status": "Active",
+      "useCases": ["Large Enterprise", "High Security Environments", "Check Point Customers"],
+      "notes": "Sehr mature (seit Jahrzehnten). Gute Endpoint Security Integration. Mobile Access = SSL VPN. SecuRemote = IPsec (alt). Harmony Endpoint = moderne Suite. Requires Check Point Gateway. Komplexe Verwaltung.",
+      "cpe": [
+        "cpe:2.3:a:checkpoint:endpoint_security:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:checkpoint:mobile_access:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "sonicwall",
+      "name": "SonicWall NetExtender / Mobile Connect",
+      "category": "SMB VPN Client",
+      "vendor": "SonicWall (SonicOS)",
+      "type": "Commercial",
+      "description": "VPN-Client für SonicWall Firewalls - einfach und SMB-fokussiert",
+      "features": ["SSL VPN (NetExtender)", "IPsec (Mobile Connect)", "Web Proxy", "Split Tunneling"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android", "ChromeOS"],
+      "licenseModel": ["Included with SonicWall Firewall License"],
+      "pricing": "In Firewall-Lizenz enthalten",
+      "marketShare": "~8% (stark im SMB-Segment)",
+      "status": "Active",
+      "useCases": ["Small to Medium Business", "SonicWall Firewall Customers"],
+      "notes": "NetExtender = SSL VPN (Browser-basiert oder Client). Mobile Connect = IPsec für Mobile. Einfach zu konfigurieren. Gut für SMB. Weniger Enterprise-Features als Cisco/Palo Alto. Requires SonicWall Firewall.",
+      "cpe": [
+        "cpe:2.3:a:sonicwall:netextender:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:sonicwall:mobile_connect:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "juniper-pulse",
+      "name": "Juniper Pulse Secure (Ivanti Secure Access)",
+      "category": "Enterprise VPN Client",
+      "vendor": "Ivanti (ehemals Pulse Secure, davor Juniper)",
+      "type": "Commercial",
+      "description": "Enterprise SSL VPN mit granularer Zugriffskontrolle",
+      "features": ["SSL VPN", "IPsec", "Granular Access Control", "Device Posture", "ZTNA"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android"],
+      "licenseModel": ["Per User", "Subscription"],
+      "pricing": "€70-€150 pro User/Jahr",
+      "marketShare": "~5% (rückläufig)",
+      "status": "Active",
+      "useCases": ["Enterprise Remote Access", "Granular Access Requirements"],
+      "notes": "Früher Juniper, 2014 zu Pulse Secure, 2020 zu Ivanti. Technisch gut (sehr granulare Access Control), aber Marktanteil sinkend. Viele bekannte Schwachstellen in Vergangenheit (CVE-2019-11510). Gut für komplexe Access-Policies.",
+      "cpe": [
+        "cpe:2.3:a:pulsesecure:pulse_connect_secure:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:ivanti:connect_secure:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:juniper:pulse_secure:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "aws-vpn",
+      "name": "AWS Client VPN",
+      "category": "Cloud VPN",
+      "vendor": "Amazon Web Services",
+      "type": "Cloud Service",
+      "description": "Managed OpenVPN-basierter Cloud VPN Service für AWS",
+      "features": ["OpenVPN", "Managed Service", "MFA", "Active Directory Integration", "Client Certificate Auth", "Split Tunnel"],
+      "platforms": ["Windows", "macOS", "Linux (OpenVPN Client)", "iOS", "Android"],
+      "licenseModel": ["Pay-as-you-go (per Connection-hour + Data Transfer)"],
+      "pricing": "€0,10/Connection-hour + €0,09/GB Traffic",
+      "marketShare": "~5% (Cloud-VPN)",
+      "status": "Active",
+      "useCases": ["AWS-Native Apps", "Cloud Workloads", "Hybrid Cloud Access"],
+      "notes": "AWS-managed OpenVPN. Gut für AWS-lastige Umgebungen. Einfach zu deployen. Nutzt Standard OpenVPN Client. Pay-per-use = flexibel, kann aber teuer werden. Keine Hardware nötig. Integration mit AWS Directory Service, Cognito.",
+      "cpe": []
+    },
+    {
+      "id": "azure-vpn",
+      "name": "Azure VPN Gateway (Point-to-Site)",
+      "category": "Cloud VPN",
+      "vendor": "Microsoft",
+      "type": "Cloud Service",
+      "description": "Cloud VPN für Azure Virtual Networks - IKEv2 und OpenVPN",
+      "features": ["IKEv2", "OpenVPN", "SSTP", "Azure AD Auth", "MFA", "Conditional Access"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android"],
+      "licenseModel": ["Pay-as-you-go", "VPN Gateway SKU"],
+      "pricing": "€0,04/hour Gateway + €0,035/GB Traffic (Basic SKU)",
+      "marketShare": "~6% (Cloud-VPN)",
+      "status": "Active",
+      "useCases": ["Azure Workloads", "Microsoft 365 Access", "Hybrid Azure/On-Premise"],
+      "notes": "Azure-native VPN. IKEv2 = beste Performance. OpenVPN = Cross-Platform. SSTP = Windows-only (SSL-basiert). Gute Azure AD Integration (SSO, MFA, Conditional Access). Always-On VPN möglich. Gut für Microsoft-Umgebungen.",
+      "cpe": []
+    },
+    {
+      "id": "gcp-vpn",
+      "name": "Google Cloud VPN (Client VPN)",
+      "category": "Cloud VPN",
+      "vendor": "Google",
+      "type": "Cloud Service",
+      "description": "Google Cloud VPN für sichere Anbindung an GCP",
+      "features": ["IPsec", "HA VPN", "Cloud Router Integration", "Dynamic Routing"],
+      "platforms": ["Multi-Platform (Standard IPsec Clients)"],
+      "licenseModel": ["Pay-as-you-go"],
+      "pricing": "€0,05/hour Tunnel + €0,10/GB egress",
+      "marketShare": "~3% (Cloud-VPN)",
+      "status": "Active",
+      "useCases": ["GCP Workloads", "Hybrid Cloud", "Multi-Cloud"],
+      "notes": "GCP VPN ist primär Site-to-Site fokussiert. Client VPN nicht so mature wie AWS/Azure. Meist Standard IPsec Clients nutzen. HA VPN = 99,99% SLA. Gut für GCP-native Workloads.",
+      "cpe": []
+    },
+    {
+      "id": "openvpn",
+      "name": "OpenVPN",
+      "category": "Open Source VPN",
+      "vendor": "OpenVPN Inc. / Community",
+      "type": "Open Source + Commercial",
+      "description": "Der Open-Source-Standard für SSL VPN - sehr flexibel und weit verbreitet",
+      "features": ["SSL/TLS VPN", "Multi-Platform", "High Flexibility", "Strong Encryption", "UDP/TCP", "Compression"],
+      "platforms": ["Windows", "macOS", "Linux", "iOS", "Android", "FreeBSD", "Router (DD-WRT, OpenWrt)"],
+      "licenseModel": ["Open Source (GPL)", "OpenVPN Access Server (Commercial)", "OpenVPN Cloud"],
+      "pricing": "Kostenlos (Community) / Access Server ab €10/User/Jahr / Cloud ab €15/User/Monat",
+      "marketShare": "~15% (höchste bei Open Source)",
+      "status": "Active",
+      "useCases": ["Self-Hosted VPN", "Privacy VPN", "Custom Deployments", "SMB", "Home Lab"],
+      "notes": "Der Klassiker (seit 2001). Sehr flexibel durch OpenSSL-basierte Config. Community Edition kostenlos. Access Server = kommerzielle Version mit Web-UI. OpenVPN Cloud = SaaS. Gut dokumentiert, große Community. Config komplex, aber sehr mächtig.",
+      "cpe": [
+        "cpe:2.3:a:openvpn:openvpn:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:openvpn:access_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "wireguard",
+      "name": "WireGuard",
+      "category": "Open Source VPN",
+      "vendor": "WireGuard Community",
+      "type": "Open Source",
+      "description": "Modernes, extrem schnelles und einfaches VPN-Protokoll - die Zukunft des VPN",
+      "features": ["Modern Crypto (Curve25519, ChaCha20)", "Very Fast", "Simple Config", "Low Overhead", "Roaming Support", "Cross-Platform"],
+      "platforms": ["Linux (Kernel)", "Windows", "macOS", "iOS", "Android", "FreeBSD", "Router"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~8% (rapide wachsend)",
+      "status": "Active",
+      "useCases": ["High-Performance VPN", "Mobile VPN", "Cloud VPN", "Modern Deployments", "Low-Latency Requirements"],
+      "notes": "Die Revolution im VPN-Bereich! Nur ~4.000 Zeilen Code (vs. OpenVPN >100k). Seit 2020 im Linux Kernel. Extrem schnell (schneller als IPsec/OpenVPN). Sehr einfache Config (wie SSH keys). Roaming-Support (Netzwechsel ohne Verbindungsabbruch). Wird rapide adoptiert. Keine complex Crypto-Auswahlmöglichkeiten = weniger Fehler.",
+      "cpe": [
+        "cpe:2.3:a:wireguard:wireguard:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "strongswan",
+      "name": "strongSwan",
+      "category": "Open Source VPN",
+      "vendor": "strongSwan Community",
+      "type": "Open Source",
+      "description": "Open-Source IPsec-Implementation - Standards-konform und sehr stabil",
+      "features": ["IPsec IKEv1/IKEv2", "X.509 Certificates", "Pre-Shared Keys", "EAP Authentication", "Plugins", "High Availability"],
+      "platforms": ["Linux", "FreeBSD", "macOS", "Android"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~5%",
+      "status": "Active",
+      "useCases": ["Site-to-Site VPN", "Linux-based VPN", "Standards-Compliant IPsec", "Mobile Devices (Android)"],
+      "notes": "strongSwan ist die führende Open-Source IPsec-Implementation. Sehr standards-konform (IKEv2/IKEv1). Gut für Site-to-Site. Android-Client verfügbar (strongSwan VPN Client). Komplexer als WireGuard, aber mehr Enterprise-Features. Gut dokumentiert.",
+      "cpe": [
+        "cpe:2.3:a:strongswan:strongswan:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "softether",
+      "name": "SoftEther VPN",
+      "category": "Open Source VPN",
+      "vendor": "SoftEther Project (Japan)",
+      "type": "Open Source",
+      "description": "Multi-Protokoll Open-Source VPN - sehr schnell und flexibel",
+      "features": ["SSL VPN", "L2TP", "IPsec", "OpenVPN-Compatible", "Very Fast", "VPN over ICMP/DNS", "NAT Traversal"],
+      "platforms": ["Windows", "Linux", "macOS", "FreeBSD", "Solaris"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~2%",
+      "status": "Active",
+      "useCases": ["High-Performance VPN", "Bypassing Firewalls", "Multi-Protocol Requirements", "Academic Use"],
+      "notes": "Japanisches Open-Source-Projekt (University of Tsukuba). Sehr schnell (Throughput-fokussiert). Multi-Protokoll: kann OpenVPN/L2TP/IPsec/SSTP emulieren. VPN over ICMP/DNS = umgeht restriktive Firewalls. Weniger bekannt als OpenVPN, aber technisch sehr gut. GUI-Management.",
+      "cpe": [
+        "cpe:2.3:a:softether:vpn:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "windows-rras",
+      "name": "Windows RRAS (Routing and Remote Access Service)",
+      "category": "Windows Built-in VPN",
+      "vendor": "Microsoft",
+      "type": "Built-in",
+      "description": "In Windows Server eingebauter VPN-Server - kostenlos, aber limitiert",
+      "features": ["PPTP", "L2TP/IPsec", "SSTP", "IKEv2", "RADIUS Integration"],
+      "platforms": ["Windows Server", "Windows 10/11 (limited)"],
+      "licenseModel": ["Included with Windows Server"],
+      "pricing": "Kostenlos (Windows Server Lizenz erforderlich)",
+      "marketShare": "~5% (hauptsächlich in kleinen Umgebungen)",
+      "status": "Active",
+      "useCases": ["Small Office VPN", "Windows-Only Environments", "Budget-Constraints", "Simple Remote Access"],
+      "notes": "RRAS ist kostenlos, aber weniger Features als Commercial VPN. PPTP = unsicher (nicht mehr nutzen!). L2TP/IPsec = OK. SSTP = SSL-basiert, gut durch Firewalls. IKEv2 = modern, empfohlen. Kein modernes Management-UI. Gut für simple Szenarien. Für Enterprise: besser Cisco/Palo Alto.",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "always-on-vpn",
+      "name": "Always On VPN",
+      "category": "Windows Built-in VPN",
+      "vendor": "Microsoft",
+      "type": "Built-in",
+      "description": "Nachfolger von DirectAccess - automatisches VPN für Windows 10/11",
+      "features": ["IKEv2", "Auto-Connect", "Device Tunnel", "User Tunnel", "Trusted Network Detection", "Azure AD Integration"],
+      "platforms": ["Windows 10/11 Enterprise"],
+      "licenseModel": ["Included with Windows 10/11 Enterprise"],
+      "pricing": "Kostenlos (Windows Enterprise Lizenz erforderlich)",
+      "marketShare": "~3%",
+      "status": "Active",
+      "useCases": ["Windows Enterprise", "Always-Connected Devices", "DirectAccess Replacement"],
+      "notes": "Always On VPN ersetzt DirectAccess (deprecated). IKEv2-basiert. Device Tunnel = VPN vor User-Login. User Tunnel = User-spezifisch. Trusted Network Detection = Auto-Disconnect im Büro. Integriert mit Intune/Azure AD. Gut für Microsoft-lastige Umgebungen. Requires Windows Server RRAS or 3rd-party VPN Gateway.",
+      "cpe": []
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "type": "Variabel",
+      "description": "Andere VPN-Lösungen (z.B. NordLayer, Perimeter 81, Twingate, Tailscale, ZeroTier, etc.)",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "pricing": "Variabel",
+      "marketShare": "~5% (zahlreiche Nischen-Produkte)",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Cloud-Native VPN", "Zero Trust Network Access"],
+      "notes": "Z.B. NordLayer (Business VPN), Perimeter 81 (Cloud VPN), Twingate (ZTNA), Tailscale (WireGuard-basiert, Mesh VPN), ZeroTier (SD-WAN), Pritunl (OpenVPN Management), etc. Viele moderne Cloud-VPN/ZTNA Startups.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "VPN Software Katalog mit CPE-Identifikatoren für Remote Access VPN, Site-to-Site VPN und Zero Trust Network Access"
+  }
+}

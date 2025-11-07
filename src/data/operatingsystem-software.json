@@ -1,0 +1,607 @@
+{
+  "operatingSystemSoftware": [
+    {
+      "id": "windowsserver2003",
+      "name": "Windows Server 2003",
+      "category": "Windows Server (Legacy)",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Legacy Windows Server - End of Life seit 2015",
+      "features": [],
+      "platforms": ["x86", "x64"],
+      "licenseModel": ["Per Server", "Per CAL"],
+      "pricing": "End of Life",
+      "marketShare": "<1% (Legacy)",
+      "status": "End of Life (2015)",
+      "useCases": ["Legacy Applications only"],
+      "notes": "KRITISCH: Keine Security-Updates seit 2015! Massive Sicherheitsrisiken (EternalBlue, etc.). Migration DRINGEND erforderlich. Nur in isolierten Netzen tolerierbar.",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2003:*:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2003"
+      ]
+    },
+    {
+      "id": "windowsserver2003r2",
+      "name": "Windows Server 2003 R2",
+      "category": "Windows Server (Legacy)",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Legacy Windows Server - End of Life seit 2015",
+      "features": [],
+      "platforms": ["x86", "x64"],
+      "licenseModel": ["Per Server", "Per CAL"],
+      "pricing": "End of Life",
+      "marketShare": "<1% (Legacy)",
+      "status": "End of Life (2015)",
+      "useCases": ["Legacy Applications only"],
+      "notes": "KRITISCH: Keine Security-Updates seit 2015! Siehe Windows Server 2003.",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2003:*:r2:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "windowsserver2008",
+      "name": "Windows Server 2008",
+      "category": "Windows Server (Legacy)",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Legacy Windows Server - End of Life seit 2020",
+      "features": ["Hyper-V", "PowerShell", "Server Core"],
+      "platforms": ["x86", "x64"],
+      "licenseModel": ["Per Server", "Per CAL"],
+      "pricing": "End of Life",
+      "marketShare": "~3% (Legacy, sinkend)",
+      "status": "End of Life (2020)",
+      "useCases": ["Legacy Applications"],
+      "notes": "End of Life seit Januar 2020. Keine regulären Updates mehr. Extended Security Updates (ESU) bis 2023 möglich gewesen (kostenpflichtig). Migration auf 2022/2025 dringend!",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2008:*:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2008"
+      ]
+    },
+    {
+      "id": "windowsserver2008r2",
+      "name": "Windows Server 2008 R2",
+      "category": "Windows Server (Legacy)",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Legacy Windows Server - End of Life seit 2020",
+      "features": ["Hyper-V 2.0", "PowerShell 2.0", "Active Directory"],
+      "platforms": ["x64"],
+      "licenseModel": ["Per Server", "Per CAL"],
+      "pricing": "End of Life",
+      "marketShare": "~5% (Legacy, aber noch verbreitet)",
+      "status": "End of Life (2020)",
+      "useCases": ["Legacy Applications"],
+      "notes": "End of Life seit Januar 2020. Noch weit verbreitet (alte Anwendungen). Extended Security Updates bis 2023. MIGRATION PLANEN!",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2008:r2:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2008:r2"
+      ]
+    },
+    {
+      "id": "windowsserver2012",
+      "name": "Windows Server 2012",
+      "category": "Windows Server (Legacy)",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Windows Server - Extended Support bis Oktober 2023 (jetzt EOL)",
+      "features": ["Hyper-V 3.0", "Storage Spaces", "PowerShell 3.0", "ReFS"],
+      "platforms": ["x64"],
+      "licenseModel": ["Per Core", "Per CAL"],
+      "pricing": "End of Life",
+      "marketShare": "~8% (Legacy)",
+      "status": "End of Life (Oktober 2023)",
+      "useCases": ["Legacy - Migration erforderlich"],
+      "notes": "Extended Support endete Oktober 2023. ESU bis 2026 verfügbar (kostenpflichtig, teuer). Neuere Versionen bevorzugen (2022/2025).",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2012:*:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2012"
+      ]
+    },
+    {
+      "id": "windowsserver2012r2",
+      "name": "Windows Server 2012 R2",
+      "category": "Windows Server (Legacy)",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Windows Server - Extended Support bis Oktober 2023 (jetzt EOL)",
+      "features": ["Hyper-V 3.0", "Storage Tiering", "Work Folders", "PowerShell 4.0"],
+      "platforms": ["x64"],
+      "licenseModel": ["Per Core", "Per CAL"],
+      "pricing": "End of Life",
+      "marketShare": "~12% (noch verbreitet)",
+      "status": "End of Life (Oktober 2023)",
+      "useCases": ["Legacy - Migration empfohlen"],
+      "notes": "Extended Support endete Oktober 2023. ESU bis 2026 verfügbar. Noch sehr verbreitet, aber EOL - Migration planen!",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2012:r2:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2012:r2"
+      ]
+    },
+    {
+      "id": "windowsserver2016",
+      "name": "Windows Server 2016",
+      "category": "Windows Server",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Windows Server mit Nano Server und Container-Support",
+      "features": ["Nano Server", "Windows Containers", "PowerShell 5.1", "Storage Replica", "Shielded VMs"],
+      "platforms": ["x64"],
+      "licenseModel": ["Per Core", "Datacenter/Standard"],
+      "pricing": "€800 (Standard 16-Core) / €5.000 (Datacenter 16-Core)",
+      "marketShare": "~20%",
+      "status": "Active (Mainstream Support bis 2022, Extended bis 2027)",
+      "useCases": ["Enterprise Workloads", "Hyper-V", "Active Directory", "File Server"],
+      "notes": "Mainstream Support beendet (Jan 2022), aber Extended Support bis Januar 2027. Für neue Deployments: 2022/2025 bevorzugen.",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2016:*:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2016"
+      ]
+    },
+    {
+      "id": "windowsserver2019",
+      "name": "Windows Server 2019",
+      "category": "Windows Server",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Aktuelle Windows Server Version mit Hybrid Cloud Features",
+      "features": ["Storage Migration Service", "Windows Admin Center", "System Insights", "Kubernetes", "Azure Integration"],
+      "platforms": ["x64"],
+      "licenseModel": ["Per Core", "Datacenter/Standard"],
+      "pricing": "€900 (Standard 16-Core) / €6.000 (Datacenter 16-Core)",
+      "marketShare": "~30%",
+      "status": "Active (Mainstream Support bis 2024, Extended bis 2029)",
+      "useCases": ["Enterprise Standard", "Hyper-V", "Active Directory", "Hybrid Cloud"],
+      "notes": "Solide, weit verbreitet. Mainstream Support bis Januar 2024, Extended bis 2029. Gute Wahl für stabile Umgebungen. LTSC (Long-Term Servicing Channel).",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2019:*:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2019"
+      ]
+    },
+    {
+      "id": "windowsserver2022",
+      "name": "Windows Server 2022",
+      "category": "Windows Server",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Neueste Windows Server Version mit Advanced Security und Hybrid Capabilities",
+      "features": ["Secured-core Server", "SMB over QUIC", "ARM64 Support", "Hotpatch", "Azure Automanage", "Enhanced Kubernetes"],
+      "platforms": ["x64", "ARM64"],
+      "licenseModel": ["Per Core", "Datacenter/Standard", "Azure Edition"],
+      "pricing": "€1.000 (Standard 16-Core) / €6.500 (Datacenter 16-Core)",
+      "marketShare": "~15% (wachsend schnell)",
+      "status": "Active (Mainstream Support bis 2026, Extended bis 2031)",
+      "useCases": ["New Deployments", "Azure Hybrid", "Modern Workloads", "Kubernetes"],
+      "notes": "Aktuellste Version (Release Oktober 2021). Sehr gute Security (Secured-core). Hotpatch = Updates ohne Reboot (Datacenter Edition). Azure Edition für Cloud optimiert. Für Neuinstallationen empfohlen!",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2022:*:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:windows_server_2022"
+      ]
+    },
+    {
+      "id": "windowsserver2025",
+      "name": "Windows Server 2025",
+      "category": "Windows Server",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Neueste Windows Server Version (Preview/Released 2024)",
+      "features": ["AI Integration", "Enhanced Security", "Advanced Hybrid Cloud", "Improved Performance"],
+      "platforms": ["x64", "ARM64"],
+      "licenseModel": ["Per Core", "Datacenter/Standard", "Azure Edition"],
+      "pricing": "TBA (ähnlich 2022)",
+      "marketShare": "<1% (neu)",
+      "status": "Active (Release 2024)",
+      "useCases": ["Newest Deployments", "AI Workloads", "Cutting-Edge Features"],
+      "notes": "Neueste Version (2024). Noch wenig verbreitet. Für Early Adopters und neue Projekte. Mainstream Support bis ~2029, Extended bis ~2034.",
+      "cpe": [
+        "cpe:2.3:o:microsoft:windows_server_2025:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "centos7",
+      "name": "CentOS 7",
+      "category": "Linux (Enterprise)",
+      "vendor": "CentOS Project",
+      "type": "Open Source",
+      "description": "Enterprise Linux - End of Life Juni 2024",
+      "features": ["RHEL-compatible", "Systemd", "XFS", "Docker"],
+      "platforms": ["x86", "x64", "ARM"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~8% (Legacy, aber noch verbreitet)",
+      "status": "End of Life (Juni 2024)",
+      "useCases": ["Legacy - Migration zu Rocky/AlmaLinux empfohlen"],
+      "notes": "EOL Juni 2024! CentOS wurde von Red Hat de-facto eingestellt (Shift zu CentOS Stream). Migration zu Rocky Linux, AlmaLinux oder RHEL empfohlen.",
+      "cpe": [
+        "cpe:2.3:o:centos:centos:7:*:*:*:*:*:*:*",
+        "cpe:/o:centos:centos:7"
+      ]
+    },
+    {
+      "id": "centos8",
+      "name": "CentOS 8",
+      "category": "Linux (Enterprise)",
+      "vendor": "CentOS Project",
+      "type": "Open Source",
+      "description": "Enterprise Linux - End of Life Dezember 2021 (frühzeitig beendet!)",
+      "features": ["RHEL 8 compatible", "Podman", "Stratis", "Modularity"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "<2% (EOL)",
+      "status": "End of Life (Dezember 2021 - 8 Jahre früher als geplant!)",
+      "useCases": ["Migration erforderlich"],
+      "notes": "ACHTUNG: EOL bereits Dez 2021 (geplant war 2029)! Red Hat beendete CentOS 8 vorzeitig. Migration zu Rocky Linux 8, AlmaLinux 8 oder RHEL 8 DRINGEND!",
+      "cpe": [
+        "cpe:2.3:o:centos:centos:8:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "centosstream8",
+      "name": "CentOS Stream 8",
+      "category": "Linux (Rolling Release)",
+      "vendor": "Red Hat / CentOS",
+      "type": "Open Source",
+      "description": "Rolling-Release Upstream zu RHEL 8",
+      "features": ["Rolling Release", "RHEL Preview", "Continuous Updates"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~3%",
+      "status": "Active (Support bis Mai 2024)",
+      "useCases": ["Development", "Testing", "RHEL Preview"],
+      "notes": "Stream = \"Upstream\" zu RHEL (bekommt Features BEVOR RHEL). Nicht empfohlen für Production (Rolling Release = weniger stabil). Support endet Mai 2024.",
+      "cpe": [
+        "cpe:2.3:o:centos:centos_stream:8:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "centosstream9",
+      "name": "CentOS Stream 9",
+      "category": "Linux (Rolling Release)",
+      "vendor": "Red Hat / CentOS",
+      "type": "Open Source",
+      "description": "Rolling-Release Upstream zu RHEL 9",
+      "features": ["Rolling Release", "RHEL 9 Preview", "Continuous Updates"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~2%",
+      "status": "Active (Support bis ~2027)",
+      "useCases": ["Development", "Testing", "RHEL 9 Preview"],
+      "notes": "Upstream zu RHEL 9. Nicht für Production empfohlen (Rolling Release). Für Production: Rocky Linux 9 oder AlmaLinux 9.",
+      "cpe": [
+        "cpe:2.3:o:centos:centos_stream:9:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "debian8",
+      "name": "Debian 8 (Jessie)",
+      "category": "Linux (Community)",
+      "vendor": "Debian Project",
+      "type": "Open Source",
+      "description": "Debian 8 - End of Life 2020",
+      "features": [],
+      "platforms": ["x86", "x64", "ARM"],
+      "licenseModel": ["Open Source (DFSG)"],
+      "pricing": "Kostenlos",
+      "marketShare": "<1% (Legacy)",
+      "status": "End of Life (2020)",
+      "useCases": ["Legacy only"],
+      "notes": "EOL seit 2020. Migration auf Debian 11/12 erforderlich.",
+      "cpe": [
+        "cpe:2.3:o:debian:debian_linux:8.0:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "debian9",
+      "name": "Debian 9 (Stretch)",
+      "category": "Linux (Community)",
+      "vendor": "Debian Project",
+      "type": "Open Source",
+      "description": "Debian 9 - End of Life 2022",
+      "features": ["Systemd", "MariaDB", "PHP 7"],
+      "platforms": ["x86", "x64", "ARM"],
+      "licenseModel": ["Open Source (DFSG)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~2% (Legacy)",
+      "status": "End of Life (2022)",
+      "useCases": ["Legacy - Migration empfohlen"],
+      "notes": "EOL seit 2022. LTS Support bis 2027 (eingeschränkt). Migration auf Debian 11/12 empfohlen.",
+      "cpe": [
+        "cpe:2.3:o:debian:debian_linux:9.0:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "debian10",
+      "name": "Debian 10 (Buster)",
+      "category": "Linux (Community)",
+      "vendor": "Debian Project",
+      "type": "Open Source",
+      "description": "Debian 10 - Support bis 2024",
+      "features": ["AppArmor", "NFTables", "Linux 4.19 LTS"],
+      "platforms": ["x86", "x64", "ARM"],
+      "licenseModel": ["Open Source (DFSG)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~8%",
+      "status": "Active (LTS bis 2024)",
+      "useCases": ["Stable Production", "Webservers"],
+      "notes": "Regulärer Support endete 2022, LTS bis 2024. Für neue Installationen: Debian 11 oder 12.",
+      "cpe": [
+        "cpe:2.3:o:debian:debian_linux:10.0:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "debian11",
+      "name": "Debian 11 (Bullseye)",
+      "category": "Linux (Community)",
+      "vendor": "Debian Project",
+      "type": "Open Source",
+      "description": "Aktuelle stabile Debian-Version",
+      "features": ["Linux 5.10 LTS", "systemd 247", "nftables default", "PHP 7.4/8.0"],
+      "platforms": ["x64", "ARM", "ARM64"],
+      "licenseModel": ["Open Source (DFSG)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~18%",
+      "status": "Active (Support bis ~2026)",
+      "useCases": ["Production Webservers", "General Purpose", "Docker Host"],
+      "notes": "Aktuelle Oldstable (seit Debian 12 Release). Sehr stabil, weit verbreitet. Support bis ~2026. Gute Wahl für Production.",
+      "cpe": [
+        "cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "debian12",
+      "name": "Debian 12 (Bookworm)",
+      "category": "Linux (Community)",
+      "vendor": "Debian Project",
+      "type": "Open Source",
+      "description": "Neueste stabile Debian-Version (Release Juni 2023)",
+      "features": ["Linux 6.1 LTS", "systemd 252", "PHP 8.2", "Non-free Firmware included"],
+      "platforms": ["x64", "ARM", "ARM64", "RISC-V"],
+      "licenseModel": ["Open Source (DFSG)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~12% (wachsend)",
+      "status": "Active (Support bis ~2028)",
+      "useCases": ["New Deployments", "Modern Hardware", "Latest Software"],
+      "notes": "Neueste Stable (Juni 2023). Sehr modern, aber gut getestet. Für Neuinstallationen empfohlen. Non-free Firmware jetzt einfacher installierbar.",
+      "cpe": [
+        "cpe:2.3:o:debian:debian_linux:12.0:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "debian13",
+      "name": "Debian 13 (Trixie)",
+      "category": "Linux (Community)",
+      "vendor": "Debian Project",
+      "type": "Open Source",
+      "description": "Nächste Debian-Version (aktuell Testing)",
+      "features": ["Latest Kernel", "Newest Packages"],
+      "platforms": ["x64", "ARM", "ARM64"],
+      "licenseModel": ["Open Source (DFSG)"],
+      "pricing": "Kostenlos",
+      "marketShare": "<1% (Testing)",
+      "status": "Testing (Release ~2025)",
+      "useCases": ["Development", "Early Testing"],
+      "notes": "Aktuell in Testing-Phase. Nicht für Production! Release voraussichtlich 2025.",
+      "cpe": []
+    },
+    {
+      "id": "redhatenterpriselinux7",
+      "name": "Red Hat Enterprise Linux 7",
+      "category": "Linux (Enterprise Commercial)",
+      "vendor": "Red Hat (IBM)",
+      "type": "Commercial",
+      "description": "Enterprise Linux - Maintenance Support bis 2024",
+      "features": ["systemd", "XFS", "Docker", "OpenSCAP"],
+      "platforms": ["x64", "ARM", "Power"],
+      "licenseModel": ["Subscription (per System)"],
+      "pricing": "€300-€1.500/Jahr pro System",
+      "marketShare": "~10% (Legacy)",
+      "status": "Active (Maintenance bis 2024, ELS bis 2028)",
+      "useCases": ["Legacy Enterprise", "Long-term Stability"],
+      "notes": "Maintenance Support bis Juni 2024, Extended Lifecycle Support (ELS) bis 2028. Für neue Deployments: RHEL 8 oder 9.",
+      "cpe": [
+        "cpe:2.3:o:redhat:enterprise_linux:7:*:*:*:*:*:*:*",
+        "cpe:/o:redhat:enterprise_linux:7"
+      ]
+    },
+    {
+      "id": "redhatenterpriselinux8",
+      "name": "Red Hat Enterprise Linux 8",
+      "category": "Linux (Enterprise Commercial)",
+      "vendor": "Red Hat (IBM)",
+      "type": "Commercial",
+      "description": "Aktuelle Enterprise Linux mit Container-Fokus",
+      "features": ["Podman", "Buildah", "Stratis", "VDO", "Enhanced Kernel", "Application Streams"],
+      "platforms": ["x64", "ARM", "Power", "s390x"],
+      "licenseModel": ["Subscription (per System)"],
+      "pricing": "€350-€1.800/Jahr pro System",
+      "marketShare": "~22%",
+      "status": "Active (Full Support bis 2024, Maintenance bis 2029)",
+      "useCases": ["Enterprise Production", "Mission-Critical", "Containers"],
+      "notes": "Sehr stabil und weit verbreitet. Full Support bis Mai 2024, Maintenance bis 2029, ELS bis 2032. Podman statt Docker = daemonless, sicherer. Application Streams = flexible Software-Versionen.",
+      "cpe": [
+        "cpe:2.3:o:redhat:enterprise_linux:8:*:*:*:*:*:*:*",
+        "cpe:/o:redhat:enterprise_linux:8"
+      ]
+    },
+    {
+      "id": "redhatenterpriselinux9",
+      "name": "Red Hat Enterprise Linux 9",
+      "category": "Linux (Enterprise Commercial)",
+      "vendor": "Red Hat (IBM)",
+      "type": "Commercial",
+      "description": "Neueste Enterprise Linux Version mit Cloud-Native Features",
+      "features": ["Linux 5.14+", "systemd 250", "Enhanced Security", "Web Console", "Image Builder", "Podman 4"],
+      "platforms": ["x64", "ARM", "Power", "s390x"],
+      "licenseModel": ["Subscription (per System)"],
+      "pricing": "€400-€2.000/Jahr pro System",
+      "marketShare": "~12% (wachsend schnell)",
+      "status": "Active (Full Support bis 2027, Maintenance bis 2032)",
+      "useCases": ["New Enterprise Deployments", "Cloud-Native", "Hybrid Cloud"],
+      "notes": "Neueste RHEL (Mai 2022). Sehr modern, Production-ready. Full Support bis 2027, Maintenance bis 2032, ELS bis 2035. Für Neuinstallationen empfohlen. FIPS 140-3 zertifiziert.",
+      "cpe": [
+        "cpe:2.3:o:redhat:enterprise_linux:9:*:*:*:*:*:*:*",
+        "cpe:/o:redhat:enterprise_linux:9"
+      ]
+    },
+    {
+      "id": "redhatenterpriselinux10",
+      "name": "Red Hat Enterprise Linux 10",
+      "category": "Linux (Enterprise Commercial)",
+      "vendor": "Red Hat (IBM)",
+      "type": "Commercial",
+      "description": "Nächste RHEL-Generation (Beta/Preview)",
+      "features": ["Latest Kernel", "AI/ML Integration", "Enhanced Automation"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Subscription"],
+      "pricing": "TBA",
+      "marketShare": "<1% (Preview)",
+      "status": "Preview/Beta (Release ~2025)",
+      "useCases": ["Early Testing", "Development"],
+      "notes": "Aktuell in Beta/Preview. Release voraussichtlich 2025. Nicht für Production.",
+      "cpe": []
+    },
+    {
+      "id": "suselinuxenterpriseserver15",
+      "name": "SUSE Linux Enterprise Server 15",
+      "category": "Linux (Enterprise Commercial)",
+      "vendor": "SUSE",
+      "type": "Commercial",
+      "description": "Enterprise Linux mit SAP-Fokus",
+      "features": ["SAP Certified", "Btrfs", "Snapper", "YaST", "Salt", "Transactional Updates"],
+      "platforms": ["x64", "ARM", "Power", "s390x"],
+      "licenseModel": ["Subscription (per System)"],
+      "pricing": "€300-€1.500/Jahr pro System",
+      "marketShare": "~8% (stark bei SAP-Umgebungen)",
+      "status": "Active (Support bis 2028)",
+      "useCases": ["SAP HANA", "SAP Applications", "Enterprise Workloads", "Mainframe"],
+      "notes": "Marktführer bei SAP-Zertifizierung. Sehr gut für SAP HANA und S/4HANA. YaST = komfortables Admin-Tool. Transactional Updates = sichere Rollbacks. Support bis 2028 (LTSS bis 2031).",
+      "cpe": [
+        "cpe:2.3:o:suse:linux_enterprise_server:15:*:*:*:*:*:*:*",
+        "cpe:/o:suse:linux_enterprise_server:15"
+      ]
+    },
+    {
+      "id": "ubuntuserver1404lts",
+      "name": "Ubuntu Server 14.04 LTS (Trusty Tahr)",
+      "category": "Linux (Community LTS)",
+      "vendor": "Canonical",
+      "type": "Open Source + Commercial",
+      "description": "Ubuntu LTS - End of Life 2024",
+      "features": [],
+      "platforms": ["x86", "x64", "ARM"],
+      "licenseModel": ["Open Source", "Ubuntu Pro (Commercial)"],
+      "pricing": "Kostenlos / Ubuntu Pro ab €25/Jahr",
+      "marketShare": "<1% (Legacy)",
+      "status": "End of Life (ESM bis April 2024)",
+      "useCases": ["Legacy - Migration erforderlich"],
+      "notes": "Standard Support endete 2019, ESM (Extended Security Maintenance) bis April 2024. Migration DRINGEND!",
+      "cpe": [
+        "cpe:2.3:o:canonical:ubuntu_linux:14.04:*:*:*:lts:*:*:*"
+      ]
+    },
+    {
+      "id": "ubuntuserver1604lts",
+      "name": "Ubuntu Server 16.04 LTS (Xenial Xerus)",
+      "category": "Linux (Community LTS)",
+      "vendor": "Canonical",
+      "type": "Open Source + Commercial",
+      "description": "Ubuntu LTS - End of Life 2026 (ESM)",
+      "features": ["systemd", "ZFS", "LXD", "Snaps"],
+      "platforms": ["x86", "x64", "ARM"],
+      "licenseModel": ["Open Source", "Ubuntu Pro"],
+      "pricing": "Kostenlos / Ubuntu Pro ab €25/Jahr",
+      "marketShare": "~3% (Legacy)",
+      "status": "Active (ESM bis 2026)",
+      "useCases": ["Legacy - Migration empfohlen"],
+      "notes": "Standard Support endete 2021, ESM bis 2026. Für neue Deployments: 22.04 oder 24.04.",
+      "cpe": [
+        "cpe:2.3:o:canonical:ubuntu_linux:16.04:*:*:*:lts:*:*:*"
+      ]
+    },
+    {
+      "id": "ubuntuserver1804lts",
+      "name": "Ubuntu Server 18.04 LTS (Bionic Beaver)",
+      "category": "Linux (Community LTS)",
+      "vendor": "Canonical",
+      "type": "Open Source + Commercial",
+      "description": "Ubuntu LTS - Support bis 2028 (ESM)",
+      "features": ["systemd 237", "Netplan", "LXD 3.0", "Kernel 4.15"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Open Source", "Ubuntu Pro"],
+      "pricing": "Kostenlos / Ubuntu Pro ab €25/Jahr",
+      "marketShare": "~12%",
+      "status": "Active (Standard Support bis 2023, ESM bis 2028)",
+      "useCases": ["Stable Production", "Docker Host", "Cloud Instances"],
+      "notes": "Standard Support endete April 2023, ESM bis 2028. Noch weit verbreitet. Für neue Projekte: 22.04 oder 24.04.",
+      "cpe": [
+        "cpe:2.3:o:canonical:ubuntu_linux:18.04:*:*:*:lts:*:*:*"
+      ]
+    },
+    {
+      "id": "ubuntuserver2004lts",
+      "name": "Ubuntu Server 20.04 LTS (Focal Fossa)",
+      "category": "Linux (Community LTS)",
+      "vendor": "Canonical",
+      "type": "Open Source + Commercial",
+      "description": "Sehr beliebte Ubuntu LTS mit modernen Features",
+      "features": ["systemd 245", "Kernel 5.4 LTS", "nftables", "WireGuard", "ZFS on root"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Open Source", "Ubuntu Pro"],
+      "pricing": "Kostenlos / Ubuntu Pro ab €25/Jahr",
+      "marketShare": "~25% (sehr verbreitet)",
+      "status": "Active (Support bis 2025, ESM bis 2030)",
+      "useCases": ["Production Standard", "Docker/Kubernetes", "Cloud", "General Purpose"],
+      "notes": "Sehr populär und stabil. Standard Support bis April 2025, ESM bis 2030. Ausgezeichnete Wahl für Production. WireGuard im Kernel = moderne VPN-Option.",
+      "cpe": [
+        "cpe:2.3:o:canonical:ubuntu_linux:20.04:*:*:*:lts:*:*:*"
+      ]
+    },
+    {
+      "id": "ubuntuserver2204lts",
+      "name": "Ubuntu Server 22.04 LTS (Jammy Jellyfish)",
+      "category": "Linux (Community LTS)",
+      "vendor": "Canonical",
+      "type": "Open Source + Commercial",
+      "description": "Aktuelle Ubuntu LTS mit neuesten Features",
+      "features": ["systemd 249", "Kernel 5.15 LTS", "nftables default", "OpenSSL 3.0", "PHP 8.1", "Python 3.10"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Open Source", "Ubuntu Pro"],
+      "pricing": "Kostenlos / Ubuntu Pro ab €25/Jahr",
+      "marketShare": "~18% (schnell wachsend)",
+      "status": "Active (Support bis 2027, ESM bis 2032)",
+      "useCases": ["New Deployments", "Kubernetes", "Cloud-Native", "Modern Hardware"],
+      "notes": "Neuere LTS (April 2022), sehr modern. Support bis 2027, ESM bis 2032. Für Neuinstallationen empfohlen. Gute Balance zwischen Modern und Stabil.",
+      "cpe": [
+        "cpe:2.3:o:canonical:ubuntu_linux:22.04:*:*:*:lts:*:*:*"
+      ]
+    },
+    {
+      "id": "ubuntuserver2404lts",
+      "name": "Ubuntu Server 24.04 LTS (Noble Numbat)",
+      "category": "Linux (Community LTS)",
+      "vendor": "Canonical",
+      "type": "Open Source + Commercial",
+      "description": "Neueste Ubuntu LTS (Release April 2024)",
+      "features": ["systemd 255", "Kernel 6.8", "nftables", "Netplan 1.0", "Python 3.12", "gcc 13"],
+      "platforms": ["x64", "ARM"],
+      "licenseModel": ["Open Source", "Ubuntu Pro"],
+      "pricing": "Kostenlos / Ubuntu Pro ab €25/Jahr",
+      "marketShare": "~5% (neu, wachsend)",
+      "status": "Active (Support bis 2029, ESM bis 2034)",
+      "useCases": ["Latest Deployments", "Modern Hardware", "Cutting-Edge Software"],
+      "notes": "Neueste LTS (April 2024). Sehr modern, aber bereits Production-ready (LTS). Support bis 2029, ESM bis 2034. Für neue Projekte mit neuester Software. Kernel 6.8 = beste Hardware-Unterstützung.",
+      "cpe": [
+        "cpe:2.3:o:canonical:ubuntu_linux:24.04:*:*:*:lts:*:*:*"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Operating System Software Katalog mit CPE-Identifikatoren für Windows Server, Linux und Hypervisors"
+  }
+}
