@@ -36,50 +36,71 @@
                 <li><strong>LAN (Local Area Network):</strong>
                     <ul>
                         <li>Lokales Netzwerk in einem Gebäude/Standort</li>
-                        <li>Typisch: Büro-Netzwerk</li>
+                        <li>Typisch: Büro-Netzwerk, flache Struktur</li>
                         <li>Hohe Geschwindigkeit (1-100 Gbit/s)</li>
+                        <li>Geringe Latenz (&lt;1ms)</li>
                     </ul>
                 </li>
                 <li><strong>VLAN (Virtual LAN):</strong>
                     <ul>
                         <li>Logisch getrenntes Netzwerk auf gleicher Hardware</li>
-                        <li>Segmentierung ohne zusätzliche Switches</li>
+                        <li>Segmentierung ohne zusätzliche physische Switches</li>
                         <li>Flexibel und kosteneffizient</li>
+                        <li>Broadcast-Domain-Isolation</li>
                         <li><em>Standard im modernen Netzwerk!</em></li>
                     </ul>
                 </li>
                 <li><strong>WAN (Wide Area Network):</strong>
                     <ul>
-                        <li>Verbindung zwischen Standorten</li>
-                        <li>Über Internet oder dedizierte Leitungen</li>
-                        <li>Langsamer als LAN</li>
+                        <li>Verbindung zwischen geografisch getrennten Standorten</li>
+                        <li>Über Internet, MPLS oder dedizierte Leitungen</li>
+                        <li>Langsamer als LAN (typisch 10-1000 Mbit/s)</li>
+                        <li>Höhere Latenz (10-100ms+)</li>
                     </ul>
                 </li>
                 <li><strong>DMZ (Demilitarized Zone):</strong>
                     <ul>
                         <li>Pufferzone zwischen Internet und internem Netz</li>
-                        <li>Für öffentliche Server (Web, Mail)</li>
-                        <li>Wenn kompromittiert: Internes Netz geschützt</li>
+                        <li>Für öffentlich erreichbare Server (Web, Mail, DNS)</li>
+                        <li>Wenn kompromittiert: Internes Netz bleibt geschützt</li>
+                        <li>Firewall-Regeln: Extern→DMZ (restriktiv), DMZ→Intern (sehr restriktiv)</li>
                     </ul>
                 </li>
                 <li><strong>Management Network:</strong>
                     <ul>
-                        <li>Für Administration von Servern/Switches</li>
+                        <li>Für Administration von Servern, Switches, Storage</li>
+                        <li>Out-of-Band-Management (separates physisches Netz)</li>
                         <li>Getrennt vom Produktiv-Traffic</li>
-                        <li>Nur für Admins erreichbar</li>
+                        <li>Nur für Admins/Monitoring erreichbar</li>
+                        <li>Typisch: IPMI, iLO, iDRAC, SSH, SNMP</li>
                     </ul>
                 </li>
                 <li><strong>Storage Network (SAN):</strong>
                     <ul>
-                        <li>Dediziert für Storage-Traffic</li>
-                        <li>Hohe Bandbreite (10G+)</li>
-                        <li>Von Produktiv-Netz getrennt</li>
+                        <li>Dediziert für Storage-Traffic (iSCSI, NFS, SMB)</li>
+                        <li>Hohe Bandbreite erforderlich (10G/25G/100G)</li>
+                        <li>Niedrige Latenz kritisch</li>
+                        <li>Von Produktiv-Netz getrennt (Performance + Security)</li>
+                        <li>Jumbo Frames (MTU 9000) oft aktiviert</li>
                     </ul>
                 </li>
-                <li><strong>WiFi / WLAN:</strong> Drahtloses Netzwerk</li>
-                <li><strong>VPN Network:</strong> Verschlüsseltes Overlay-Netzwerk</li>
+                <li><strong>WiFi / WLAN:</strong> 
+                    <ul>
+                        <li>Drahtloses Netzwerk (802.11ac/ax)</li>
+                        <li>Oft mehrere SSIDs → mehrere VLANs</li>
+                        <li>Security: WPA3-Enterprise mit 802.1X</li>
+                    </ul>
+                </li>
+                <li><strong>VPN Network:</strong> 
+                    <ul>
+                        <li>Verschlüsseltes Overlay-Netzwerk</li>
+                        <li>Für Remote-Zugriff oder Site-to-Site</li>
+                        <li>Eigener IP-Bereich (z.B. 10.8.0.0/24)</li>
+                    </ul>
+                </li>
             </ul>
         </div>
+        <em>Verschiedene Netzwerk-Typen haben unterschiedliche Security- und Performance-Anforderungen!</em>
     </div>
 
     <div data-tooltip-id="network-vlan-id">
@@ -112,39 +133,49 @@
         <p>Die IP-Adresse und Größe des Netzwerks in CIDR-Notation.</p>
         <div>
             <h3>Was ist CIDR?</h3>
-            Classless Inter-Domain Routing - kompakte Schreibweise für Netzwerke.
+            Classless Inter-Domain Routing - kompakte Schreibweise für Netzwerke. Ersetzt alte Klassen-basierte Adressierung (Class A/B/C).
         </div>
         <div>
             <h3>Format:</h3>
-            IP-Adresse/Präfixlänge
-        </div>
-        <div>
-            <h3>Beispiele:</h3>
-            <ul>
-                <li><strong>192.168.100.0/24:</strong> 256 IPs (192.168.100.0 - 192.168.100.255)</li>
-                <li><strong>10.0.0.0/16:</strong> 65.536 IPs (10.0.0.0 - 10.0.255.255)</li>
-                <li><strong>172.16.0.0/12:</strong> 1.048.576 IPs (172.16.0.0 - 172.31.255.255)</li>
-            </ul>
+            Netzwerk-IP/Präfixlänge (z.B. 192.168.100.0/24)
         </div>
         <div>
             <h3>Häufige Präfixlängen:</h3>
             <ul>
-                <li>/24 = 256 IPs - Typisch für Abteilungs-Netze</li>
-                <li>/23 = 512 IPs</li>
-                <li>/22 = 1.024 IPs</li>
-                <li>/16 = 65.536 IPs - Große Unternehmen</li>
-                <li>/8 = 16 Millionen IPs - Sehr große Netze</li>
+                <li><strong>/30:</strong> 4 IPs (2 nutzbar) - Point-to-Point Links</li>
+                <li><strong>/29:</strong> 8 IPs (6 nutzbar) - Sehr kleine Netze</li>
+                <li><strong>/28:</strong> 16 IPs (14 nutzbar) - Kleine Servergruppe</li>
+                <li><strong>/27:</strong> 32 IPs (30 nutzbar)</li>
+                <li><strong>/26:</strong> 64 IPs (62 nutzbar)</li>
+                <li><strong>/25:</strong> 128 IPs (126 nutzbar)</li>
+                <li><strong>/24:</strong> 256 IPs (254 nutzbar) - <em>Typisch für Abteilungs-Netze</em></li>
+                <li><strong>/23:</strong> 512 IPs (510 nutzbar)</li>
+                <li><strong>/22:</strong> 1.024 IPs (1.022 nutzbar)</li>
+                <li><strong>/21:</strong> 2.048 IPs</li>
+                <li><strong>/20:</strong> 4.096 IPs</li>
+                <li><strong>/16:</strong> 65.536 IPs - Große Unternehmen</li>
+                <li><strong>/8:</strong> 16 Millionen IPs - Sehr große Provider</li>
             </ul>
+        </div>
+        <div>
+            <h3>Wichtig:</h3>
+            Erste IP = Netzwerk-Adresse (nicht nutzbar)<br>
+            Letzte IP = Broadcast-Adresse (nicht nutzbar)<br>
+            → Bei /24: 256 IPs, aber nur 254 nutzbar!
         </div>
         <div>
             <h3>Private IP-Bereiche (RFC 1918):</h3>
             <ul>
-                <li>10.0.0.0/8 (10.0.0.0 - 10.255.255.255)</li>
-                <li>172.16.0.0/12 (172.16.0.0 - 172.31.255.255)</li>
-                <li>192.168.0.0/16 (192.168.0.0 - 192.168.255.255)</li>
+                <li>10.0.0.0/8 (10.0.0.0 - 10.255.255.255) - 16 Mio. IPs</li>
+                <li>172.16.0.0/12 (172.16.0.0 - 172.31.255.255) - 1 Mio. IPs</li>
+                <li>192.168.0.0/16 (192.168.0.0 - 192.168.255.255) - 65k IPs</li>
             </ul>
         </div>
-        <em>Größe des Netzwerks gut planen - Wachstum einkalkulieren!</em>
+        <div>
+            <h3>Subnetting-Faustregel:</h3>
+            Immer Wachstum einplanen - lieber zu groß als zu klein!
+        </div>
+        <em>CIDR-Rechner nutzen für komplexes Subnetting: ipcalc, sipcalc, subnet-calculator.com</em>
     </div>
 
     <div data-tooltip-id="network-gateway">
@@ -177,72 +208,156 @@
             Server vergibt automatisch IPs an neue Geräte - wie "Zimmervergabe" im Hotel.
         </div>
         <div>
+            <h3>DHCP vergibt nicht nur IP, sondern auch:</h3>
+            <ul>
+                <li>Subnetzmaske</li>
+                <li>Default Gateway</li>
+                <li>DNS-Server</li>
+                <li>NTP-Server (optional)</li>
+                <li>TFTP-Server (für PXE-Boot, optional)</li>
+                <li>Domain-Name (optional)</li>
+            </ul>
+        </div>
+        <div>
             <h3>DHCP vs. Statische IPs:</h3>
             <ul>
                 <li>
                     <strong>DHCP (Dynamisch):</strong>
                     <ul>
                         <li>IP wird automatisch vergeben</li>
-                        <li>Einfach für Clients (PCs, Laptops)</li>
-                        <li>IP kann sich ändern</li>
+                        <li>Einfach für Clients (PCs, Laptops, Phones)</li>
+                        <li>IP kann sich ändern (nach Lease-Ablauf)</li>
+                        <li>Zentrale Verwaltung</li>
                         <li><em>Standard für Endgeräte</em></li>
                     </ul>
                 </li>
                 <li>
                     <strong>Statisch:</strong>
                     <ul>
-                        <li>IP manuell konfiguriert</li>
+                        <li>IP manuell am Gerät konfiguriert</li>
                         <li>IP ändert sich nie</li>
-                        <li>Für Server, Drucker, Netzwerkgeräte</li>
+                        <li>Für Server, Drucker, Netzwerkgeräte, Gateways</li>
+                        <li>Aufwändiger zu verwalten</li>
                         <li><em>Wichtig für Infrastruktur!</em></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>DHCP-Reservierung (Best of both):</strong>
+                    <ul>
+                        <li>Gerät nutzt DHCP, bekommt aber immer gleiche IP</li>
+                        <li>Basiert auf MAC-Adresse</li>
+                        <li>Zentral verwaltbar + stabile IP</li>
+                        <li><em>Ideal für Drucker, IoT-Geräte</em></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div>
-            <h3>DHCP-Reservierung:</h3>
-            MAC-Adresse → immer gleiche IP (Mix aus beiden Welten)
+            <h3>DHCP-Sicherheit:</h3>
+            DHCP Snooping aktivieren gegen Rogue DHCP-Server!
         </div>
-        <em>Server = statisch, Clients = DHCP</em>
+        <em>Faustregel: Server = statisch, Clients = DHCP, Drucker/IoT = DHCP-Reservierung</em>
     </div>
 
     <div data-tooltip-id="network-dhcp-pool">
         <h2>DHCP-Pool (IP-Range)</h2>
         <p>Der Bereich von IPs, die DHCP vergeben darf.</p>
         <div>
-            <h3>Beispiel-Planung für 192.168.100.0/24:</h3>
+            <h3>IP-Adress-Planung - Best Practice:</h3>
+            Netzwerk in Bereiche aufteilen für bessere Organisation
+        </div>
+        <div>
+            <h3>Beispiel-Planung für 192.168.100.0/24 (256 IPs):</h3>
             <ul>
-                <li>192.168.100.1 - Gateway</li>
-                <li>192.168.100.2-50 - Statische IPs (Server)</li>
-                <li>192.168.100.51-200 - DHCP-Pool (Clients)</li>
-                <li>192.168.100.201-254 - Reserve</li>
+                <li><strong>.1-.1:</strong> Gateway/Router (192.168.100.1)</li>
+                <li><strong>.2-.9:</strong> Netzwerk-Infrastruktur (Switches, APs)</li>
+                <li><strong>.10-.49:</strong> Server (statisch zugewiesen)</li>
+                <li><strong>.50-.99:</strong> Drucker, IoT (DHCP-Reservierungen)</li>
+                <li><strong>.100-.200:</strong> DHCP-Pool für Clients (dynamisch)</li>
+                <li><strong>.201-.249:</strong> Reserve für Wachstum</li>
+                <li><strong>.250-.254:</strong> Management/Test/temporäre Geräte</li>
             </ul>
         </div>
         <div>
-            <h3>Best Practice:</h3>
-            DHCP-Pool NICHT das ganze Netz - Platz für statische IPs lassen!
+            <h3>Alternative kompakte Planung:</h3>
+            <ul>
+                <li>.1 = Gateway</li>
+                <li>.2-50 = Statische IPs (Infrastruktur + Server)</li>
+                <li>.51-200 = DHCP-Pool (Clients)</li>
+                <li>.201-254 = Reserve</li>
+            </ul>
         </div>
+        <div>
+            <h3>Wichtig:</h3>
+            <ul>
+                <li>DHCP-Pool darf NICHT das ganze Netz umfassen</li>
+                <li>Genug statische IPs für Infrastruktur reservieren</li>
+                <li>Reserve für zukünftiges Wachstum einplanen</li>
+                <li>Dokumentieren welcher Bereich für was genutzt wird</li>
+            </ul>
+        </div>
+        <em>Gut geplante IP-Ranges erleichtern Troubleshooting enorm!</em>
     </div>
 
     <div data-tooltip-id="network-dhcp-lease">
         <h2>DHCP-Lease-Zeit</h2>
-        <p>Wie lange eine IP-Adresse "gemietet" wird.</p>
+        <p>Wie lange eine IP-Adresse "gemietet" wird bevor Erneuerung nötig ist.</p>
         <div>
             <h3>Typische Lease-Zeiten:</h3>
             <ul>
-                <li><strong>24 Stunden (86400s):</strong> Standard für Büro-Netze</li>
-                <li><strong>8 Stunden:</strong> Für Umgebungen mit häufigen Wechseln</li>
-                <li><strong>7 Tage:</strong> Für stabile Umgebungen</li>
-                <li><strong>Unbegrenzt:</strong> Quasi statisch (selten verwendet)</li>
+                <li><strong>8 Stunden (28800s):</strong> 
+                    <ul>
+                        <li>Für Umgebungen mit häufigen Geräte-Wechseln</li>
+                        <li>Gast-Netzwerke, Schulen, Messen</li>
+                    </ul>
+                </li>
+                <li><strong>24 Stunden (86400s):</strong> 
+                    <ul>
+                        <li><em>Standard für die meisten Büro-Netze</em></li>
+                        <li>Guter Kompromiss aus Flexibilität und Stabilität</li>
+                    </ul>
+                </li>
+                <li><strong>3-7 Tage:</strong> 
+                    <ul>
+                        <li>Für stabile Umgebungen (Home Office VPN-Clients)</li>
+                        <li>Weniger DHCP-Traffic</li>
+                    </ul>
+                </li>
+                <li><strong>Unbegrenzt (infinite):</strong> 
+                    <ul>
+                        <li>Quasi statisch, aber zentral verwaltet</li>
+                        <li>Selten verwendet (unflexibel)</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
+            <h3>Lease-Erneuerung:</h3>
+            Client versucht bei 50% der Lease-Zeit zu erneuern (T1)<br>
+            Falls fehlgeschlagen: erneut bei 87.5% (T2)<br>
+            → Praktisch sehen Clients ihre IP lange konstant
+        </div>
+        <div>
             <h3>Kurze Lease-Zeit:</h3>
-            Mehr Overhead, aber flexibler
+            <ul>
+                <li>✓ Mehr Flexibilität</li>
+                <li>✓ IPs werden schneller frei</li>
+                <li>✗ Mehr DHCP-Server-Last</li>
+                <li>✗ Mehr Netzwerk-Traffic</li>
+            </ul>
         </div>
         <div>
             <h3>Lange Lease-Zeit:</h3>
-            Weniger Last auf DHCP-Server, IPs länger gebunden
+            <ul>
+                <li>✓ Weniger Last auf DHCP-Server</li>
+                <li>✓ Stabilere IP-Zuordnung</li>
+                <li>✗ IPs länger gebunden (auch wenn Gerät weg)</li>
+                <li>✗ Pool-Erschöpfung möglich</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Empfehlung:</h3>
+            Standard = 24h, außer spezielle Anforderungen
         </div>
     </div>
 
@@ -344,35 +459,64 @@
         <p>Authentifizierung bevor Netzwerkzugang gewährt wird.</p>
         <div>
             <h3>Was ist 802.1X?</h3>
-            Standard für Port-basierte Netzwerk-Zugriffskontrolle - wie "Ausweiskontrolle" am Netzwerk-Port.
+            Standard für Port-basierte Netzwerk-Zugriffskontrolle (Network Access Control) - wie "Ausweiskontrolle" am Netzwerk-Port.
+        </div>
+        <div>
+            <h3>Komponenten:</h3>
+            <ul>
+                <li><strong>Supplicant:</strong> Client (PC, Laptop) - will ins Netz</li>
+                <li><strong>Authenticator:</strong> Switch/AP - kontrolliert Port</li>
+                <li><strong>Authentication Server:</strong> RADIUS-Server - entscheidet über Zugang</li>
+            </ul>
         </div>
         <div>
             <h3>Wie funktioniert's:</h3>
             <ol>
                 <li>Gerät verbindet sich mit Switch-Port</li>
-                <li>Port ist blockiert (kein Netzwerk)</li>
-                <li>Gerät authentifiziert sich (Zertifikat, Username/Passwort)</li>
-                <li>RADIUS-Server prüft Berechtigung</li>
-                <li>Port wird freigeschaltet → richtiges VLAN zugewiesen</li>
+                <li>Port ist blockiert (nur EAP-Traffic erlaubt)</li>
+                <li>Gerät authentifiziert sich:
+                    <ul>
+                        <li><strong>EAP-TLS:</strong> Mit Zertifikat (sicherste Methode)</li>
+                        <li><strong>PEAP:</strong> Username/Passwort in verschlüsseltem Tunnel</li>
+                        <li><strong>EAP-TTLS:</strong> Ähnlich PEAP, flexibler</li>
+                    </ul>
+                </li>
+                <li>RADIUS-Server prüft Berechtigung (Active Directory, LDAP)</li>
+                <li>Bei Erfolg: Port wird freigeschaltet</li>
+                <li>Switch weist Gerät dynamisch richtiges VLAN zu</li>
             </ol>
         </div>
         <div>
             <h3>Vorteile:</h3>
             <ul>
-                <li>Nur autorisierte Geräte im Netz</li>
-                <li>Dynamische VLAN-Zuweisung</li>
-                <li>Schutz vor Rogue Devices</li>
+                <li>Nur autorisierte Geräte/User im Netz</li>
+                <li>Dynamische VLAN-Zuweisung (Role-based Access)</li>
+                <li>Schutz vor Rogue Devices (unauthorisierte Geräte)</li>
+                <li>Zentrale Verwaltung über RADIUS</li>
+                <li>Audit-Trail (wer wann wo im Netz)</li>
             </ul>
         </div>
         <div>
             <h3>Herausforderungen:</h3>
             <ul>
-                <li>Komplex zu konfigurieren</li>
-                <li>Nicht alle Geräte unterstützen 802.1X (IoT!)</li>
-                <li>Braucht RADIUS-Server</li>
+                <li>Komplex zu konfigurieren (Switch + RADIUS + Zertifikate)</li>
+                <li>Nicht alle Geräte unterstützen 802.1X:
+                    <ul>
+                        <li>IoT-Geräte (oft keine 802.1X-Unterstützung)</li>
+                        <li>Legacy-Geräte</li>
+                        <li>Drucker (teilweise)</li>
+                        <li>→ Lösung: MAC-Authentication-Bypass (MAB)</li>
+                    </ul>
+                </li>
+                <li>Braucht RADIUS-Infrastruktur</li>
+                <li>Zertifikats-Management (bei EAP-TLS)</li>
             </ul>
         </div>
-        <em>802.1X ist Best Practice für Enterprise-Security!</em>
+        <div>
+            <h3>MAB (MAC Authentication Bypass):</h3>
+            Fallback für Geräte ohne 802.1X - Switch authentifiziert mit MAC-Adresse beim RADIUS
+        </div>
+        <em>802.1X + EAP-TLS ist Gold-Standard für Enterprise-Security!</em>
     </div>
 
     <div data-tooltip-id="network-mac-filtering">
@@ -404,86 +548,218 @@
         <h2>DHCP Snooping</h2>
         <p>Schutz vor Rogue DHCP-Servern.</p>
         <div>
-            <h3>Das Problem:</h3>
-            Angreifer installiert eigenen DHCP-Server → verteilt falsche IPs/Gateway → Man-in-the-Middle!
+            <h3>Das Problem ohne DHCP Snooping:</h3>
+            Angreifer bringt eigenen DHCP-Server ins Netz →<br>
+            Verteilt falsche IP-Konfiguration (z.B. Angreifer als Gateway) →<br>
+            Man-in-the-Middle: Aller Client-Traffic läuft über Angreifer!
         </div>
         <div>
             <h3>Was ist DHCP Snooping?</h3>
-            Switch lernt, welche Ports "vertrauenswürdig" sind (zu echtem DHCP-Server führen).
+            Switch-Feature das lernt, welche Ports "vertrauenswürdig" sind (zu echtem DHCP-Server führen).
         </div>
         <div>
             <h3>Wie's funktioniert:</h3>
             <ul>
-                <li>Trusted Ports: DHCP-Server-Antworten erlaubt</li>
-                <li>Untrusted Ports: DHCP-Server-Antworten blockiert</li>
-                <li>Switch baut Binding-Tabelle (IP ↔ MAC ↔ Port)</li>
+                <li><strong>Trusted Ports:</strong> 
+                    <ul>
+                        <li>DHCP-Server-Antworten (OFFER, ACK) erlaubt</li>
+                        <li>Typisch: Uplink-Ports zum Core/DHCP-Server</li>
+                    </ul>
+                </li>
+                <li><strong>Untrusted Ports:</strong> 
+                    <ul>
+                        <li>DHCP-Server-Antworten blockiert</li>
+                        <li>DHCP-Client-Anfragen (DISCOVER, REQUEST) erlaubt</li>
+                        <li>Typisch: Alle Access-Ports zu Clients</li>
+                    </ul>
+                </li>
+                <li><strong>Binding-Tabelle:</strong>
+                    <ul>
+                        <li>Switch protokolliert: IP ↔ MAC ↔ Port ↔ VLAN ↔ Lease-Time</li>
+                        <li>Wird für DAI und IP Source Guard verwendet</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Basis für:</h3>
-            Dynamic ARP Inspection, IP Source Guard
+            <h3>Zusätzliche Schutz-Features:</h3>
+            <ul>
+                <li><strong>Rate Limiting:</strong> Max. DHCP-Pakete/Sekunde pro Port (gegen DoS)</li>
+                <li><strong>Option 82:</strong> Switch fügt Informationen zu DHCP-Paketen hinzu (Port-ID, VLAN)</li>
+            </ul>
         </div>
-        <em>DHCP Snooping ist Grundlage für Layer-2-Security!</em>
+        <div>
+            <h3>Basis für andere Security-Features:</h3>
+            DHCP Snooping muss aktiviert sein für:
+            <ul>
+                <li>Dynamic ARP Inspection (DAI)</li>
+                <li>IP Source Guard</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Konfiguration (Cisco-Beispiel):</h3>
+            <code>
+                ip dhcp snooping<br>
+                ip dhcp snooping vlan 100<br>
+                interface GigabitEthernet0/1 → trusted<br>
+                interface range GigabitEthernet0/2-24 → untrusted
+            </code>
+        </div>
+        <em>DHCP Snooping ist Layer-2-Security-Grundlage - immer aktivieren!</em>
     </div>
 
     <div data-tooltip-id="network-arp-inspection">
         <h2>Dynamic ARP Inspection (DAI)</h2>
-        <p>Schutz vor ARP-Spoofing-Angriffen.</p>
+        <p>Schutz vor ARP-Spoofing/Poisoning-Angriffen.</p>
         <div>
-            <h3>Was ist ARP-Spoofing?</h3>
-            Angreifer sendet falsche ARP-Antworten → Traffic umgeleitet → Man-in-the-Middle!
+            <h3>Was ist ARP (Address Resolution Protocol)?</h3>
+            Übersetzt IP-Adresse → MAC-Adresse<br>
+            Beispiel: PC will zu 192.168.1.1 → sendet ARP-Request "Wer hat 192.168.1.1?" → Gateway antwortet mit seiner MAC
+        </div>
+        <div>
+            <h3>ARP-Spoofing/Poisoning Angriff:</h3>
+            <ol>
+                <li>Angreifer sendet falsche ARP-Antworten</li>
+                <li>"192.168.1.1 (Gateway) hat MAC-Adresse von Angreifer!"</li>
+                <li>Clients aktualisieren ARP-Cache mit falscher Info</li>
+                <li>Clients senden Traffic für Gateway an Angreifer</li>
+                <li>Angreifer kann mitlesen/manipulieren (Man-in-the-Middle)</li>
+                <li>Angreifer leitet Traffic an echtes Gateway weiter (bleibt unbemerkt)</li>
+            </ol>
         </div>
         <div>
             <h3>Was ist DAI?</h3>
-            Switch prüft ARP-Pakete gegen DHCP-Snooping-Tabelle.
+            Switch prüft ARP-Pakete gegen DHCP-Snooping-Binding-Tabelle.
         </div>
         <div>
-            <h3>Beispiel-Angriff (ohne DAI):</h3>
+            <h3>Wie's funktioniert:</h3>
             <ul>
-                <li>Angreifer: "Ich bin das Gateway (192.168.1.1)!"</li>
-                <li>Clients senden Traffic an Angreifer statt Gateway</li>
-                <li>Angreifer kann mitlesen</li>
+                <li>Switch vergleicht ARP-Paket mit Binding-Tabelle:
+                    <ul>
+                        <li>Sender-IP ↔ Sender-MAC ↔ Port</li>
+                    </ul>
+                </li>
+                <li>Stimmt nicht überein → ARP-Paket wird gedroppt</li>
+                <li>Log-Eintrag erstellt</li>
             </ul>
         </div>
         <div>
-            <h3>Mit DAI:</h3>
-            Switch blockiert falsche ARP-Pakete
+            <h3>Beispiel-Szenario:</h3>
+            <ul>
+                <li><strong>Legitim:</strong> 192.168.1.100 (MAC: aa:bb:cc, Port 10) sendet ARP → DAI: OK ✓</li>
+                <li><strong>Angriff:</strong> Port 15 sendet ARP für 192.168.1.1 → Nicht in Binding-Table → DAI: BLOCK ✗</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Trusted vs. Untrusted Ports:</h3>
+            <ul>
+                <li><strong>Trusted:</strong> Keine DAI-Prüfung (Uplinks, zu Routern)</li>
+                <li><strong>Untrusted:</strong> Volle DAI-Prüfung (Client-Ports)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>ARP ACLs:</h3>
+            Für statische IPs (nicht in DHCP-Binding-Table) müssen ARP ACLs definiert werden
         </div>
         <div>
             <h3>Voraussetzung:</h3>
-            DHCP Snooping muss aktiviert sein
+            <ul>
+                <li>DHCP Snooping muss aktiviert und Binding-Table gefüllt sein</li>
+                <li>Oder: ARP ACLs für statische IP-Geräte</li>
+            </ul>
         </div>
+        <div>
+            <h3>Rate Limiting:</h3>
+            Schützt Switch-CPU vor ARP-Storm (max. ARP-Pakete/Sekunde)
+        </div>
+        <em>DAI verhindert effektiv ARP-Man-in-the-Middle-Angriffe!</em>
     </div>
 
     <div data-tooltip-id="network-spanning-tree">
         <h2>STP/RSTP/MSTP (Spanning Tree Protocol)</h2>
-        <p>Verhindert Switch-Loops im Netzwerk.</p>
+        <p>Verhindert Switch-Loops und ermöglicht redundante Pfade.</p>
         <div>
             <h3>Das Problem ohne STP:</h3>
-            Redundante Switch-Verbindungen → Broadcast-Storm → Netzwerk down!
+            <ul>
+                <li>Redundante Switch-Verbindungen → Layer-2-Loop</li>
+                <li>Broadcast-Pakete laufen im Kreis (werden vervielfacht)</li>
+                <li>Broadcast-Storm → alle Switches/Clients überlastet</li>
+                <li>Netzwerk komplett down in Sekunden!</li>
+            </ul>
         </div>
         <div>
             <h3>Was ist STP:</h3>
-            Protokoll das automatisch Redundanz-Pfade blockiert, aber bei Ausfall aktiviert.
+            Protokoll das automatisch redundante Pfade erkennt und blockiert, aber bei Ausfall aktiviert → Loop-frei + redundant!
         </div>
         <div>
             <h3>Versionen:</h3>
             <ul>
-                <li><strong>STP (802.1d):</strong> Original, langsam (30-50 Sekunden Konvergenz)</li>
-                <li><strong>RSTP (802.1w):</strong> Rapid STP, schnell (1-6 Sekunden) - <em>Standard heute</em></li>
-                <li><strong>MSTP (802.1s):</strong> Multiple STP, pro VLAN - für große Netze</li>
+                <li><strong>STP (802.1d) - Classic Spanning Tree:</strong>
+                    <ul>
+                        <li>Original-Standard von 1990</li>
+                        <li>Konvergenz: 30-50 Sekunden (sehr langsam!)</li>
+                        <li>Max. 7 Hops</li>
+                        <li>Nur ein Spanning Tree für alle VLANs</li>
+                        <li><em>Veraltet - nicht mehr nutzen!</em></li>
+                    </ul>
+                </li>
+                <li><strong>RSTP (802.1w) - Rapid Spanning Tree:</strong>
+                    <ul>
+                        <li>Verbesserung von STP (seit 2001)</li>
+                        <li>Konvergenz: 1-6 Sekunden (sehr schnell!)</li>
+                        <li>Abwärtskompatibel zu STP</li>
+                        <li>Neue Port-Rollen (Alternate, Backup)</li>
+                        <li><em>Standard für die meisten Netze heute</em></li>
+                    </ul>
+                </li>
+                <li><strong>MSTP (802.1s) - Multiple Spanning Tree:</strong>
+                    <ul>
+                        <li>Mehrere Spanning Trees (Instanzen)</li>
+                        <li>Pro VLAN-Gruppe ein separater Tree</li>
+                        <li>Bessere Load-Balancing-Möglichkeiten</li>
+                        <li>Komplex zu konfigurieren</li>
+                        <li><em>Für große, VLAN-intensive Netze</em></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Wie's funktioniert:</h3>
+            <h3>Wie STP funktioniert (vereinfacht):</h3>
             <ol>
-                <li>Switches wählen Root Bridge (Chef)</li>
-                <li>Berechnen besten Pfad zur Root Bridge</li>
-                <li>Blockieren redundante Pfade</li>
-                <li>Bei Ausfall: Automatisches Failover auf Backup-Pfad</li>
+                <li><strong>Root Bridge wählen:</strong> Switch mit niedrigster Priority (oder MAC) wird "Chef"</li>
+                <li><strong>Root Ports bestimmen:</strong> Jeder Switch wählt besten Port zur Root Bridge</li>
+                <li><strong>Designated Ports:</strong> Pro Segment ein Port zum Forwarden</li>
+                <li><strong>Blocking Ports:</strong> Alle anderen Ports blockieren (Loop-Prevention)</li>
+                <li><strong>Bei Ausfall:</strong> Blockierter Port wird aktiviert (Failover)</li>
             </ol>
         </div>
-        <em>RSTP ist Pflicht bei redundanten Switch-Verbindungen!</em>
+        <div>
+            <h3>Port-States (RSTP):</h3>
+            <ul>
+                <li><strong>Discarding:</strong> Port blockiert (keine Frames)</li>
+                <li><strong>Learning:</strong> Lernt MAC-Adressen (kein Forwarding)</li>
+                <li><strong>Forwarding:</strong> Normal aktiv (Traffic fließt)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>STP-Optimierungen:</h3>
+            <ul>
+                <li><strong>PortFast:</strong> Port sofort in Forwarding (für Clients, NIE zwischen Switches!)</li>
+                <li><strong>BPDU Guard:</strong> Port disable bei STP-Frame-Empfang (Schutz vor Rogue Switches)</li>
+                <li><strong>Root Guard:</strong> Verhindert dass Port Root Bridge wird</li>
+                <li><strong>Loop Guard:</strong> Verhindert Loops durch einseitige Link-Failures</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>RSTP oder MSTP nutzen (nicht STP)</li>
+                <li>Root Bridge manuell setzen (nicht zufällig)</li>
+                <li>Backup Root Bridge definieren</li>
+                <li>PortFast + BPDU Guard auf allen Access-Ports</li>
+            </ul>
+        </div>
+        <em>RSTP ist absolute Pflicht bei redundanten Switch-Topologien!</em>
     </div>
 
     <div data-tooltip-id="network-lacp">
@@ -520,104 +796,243 @@
         <p>Redundante Default-Gateways für Hochverfügbarkeit.</p>
         <div>
             <h3>Das Problem:</h3>
-            Wenn Gateway ausfällt → kein Internet/anderes Netz erreichbar!
+            Client hat Default Gateway 192.168.1.1 (Router A)<br>
+            Router A fällt aus → Client kann nicht mehr ins Internet/andere Netze<br>
+            Auch wenn Router B vorhanden ist - Client kennt ihn nicht!
         </div>
         <div>
-            <h3>Die Lösung:</h3>
-            Mehrere Router = ein virtuelles Gateway
+            <h3>Die Lösung: First Hop Redundancy Protocols (FHRP)</h3>
+            Mehrere Router teilen sich eine virtuelle IP-Adresse
         </div>
         <div>
-            <h3>Protokolle:</h3>
+            <h3>Protokolle im Detail:</h3>
             <ul>
                 <li>
                     <strong>VRRP (Virtual Router Redundancy Protocol):</strong>
                     <ul>
-                        <li>Standard (RFC 5798)</li>
-                        <li>Hersteller-unabhängig</li>
-                        <li>Active-Standby</li>
+                        <li>Open Standard (RFC 5798)</li>
+                        <li>Hersteller-unabhängig (Cisco, Juniper, HP, etc.)</li>
+                        <li>Active-Standby (nur ein Router aktiv)</li>
+                        <li>Master-Router: Priority 255-1 (höher = besser)</li>
+                        <li>Preemption: Standard aktiviert</li>
+                        <li>Multicast: 224.0.0.18</li>
+                        <li><em>Empfohlen für Multi-Vendor-Umgebungen</em></li>
                     </ul>
                 </li>
                 <li>
                     <strong>HSRP (Hot Standby Router Protocol):</strong>
                     <ul>
-                        <li>Cisco-proprietär</li>
+                        <li>Cisco-proprietär (aber am weitesten verbreitet)</li>
                         <li>Active-Standby</li>
-                        <li>Weit verbreitet</li>
+                        <li>Active-Router: Priority 255-0 (höher = besser, Default: 100)</li>
+                        <li>Preemption: Optional (muss aktiviert werden)</li>
+                        <li>Multicast: 224.0.0.2 (v1), 224.0.0.102 (v2)</li>
+                        <li>Hello-Timer: 3 Sekunden, Hold: 10 Sekunden</li>
+                        <li><em>Standard in Cisco-Umgebungen</em></li>
                     </ul>
                 </li>
                 <li>
                     <strong>GLBP (Gateway Load Balancing Protocol):</strong>
                     <ul>
                         <li>Cisco-proprietär</li>
-                        <li>Active-Active (Load Balancing)</li>
-                        <li>Bessere Ressourcen-Nutzung</li>
+                        <li>Active-Active (alle Router aktiv!)</li>
+                        <li>Load Balancing über mehrere Router</li>
+                        <li>AVG (Active Virtual Gateway) + bis zu 4 AVFs (Active Virtual Forwarders)</li>
+                        <li>Verschiedene LB-Methoden: Round-Robin, Weighted, Host-dependent</li>
+                        <li>Bessere Ressourcen-Nutzung als HSRP/VRRP</li>
+                        <li><em>Ideal für Umgebungen mit hohem Traffic</em></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div>
-            <h3>Wie's funktioniert:</h3>
+            <h3>Wie's funktioniert (HSRP-Beispiel):</h3>
             <ul>
-                <li>Zwei Router: Router A (Primary), Router B (Standby)</li>
-                <li>Virtuelle IP: 192.168.1.1 (das ist das Gateway)</li>
-                <li>Router A antwortet auf 192.168.1.1</li>
-                <li>Router A fällt aus → Router B übernimmt 192.168.1.1</li>
-                <li>Clients merken nichts (verwenden weiter 192.168.1.1)</li>
+                <li><strong>Setup:</strong>
+                    <ul>
+                        <li>Router A: Physical IP 192.168.1.2, Priority 110</li>
+                        <li>Router B: Physical IP 192.168.1.3, Priority 100</li>
+                        <li>Virtual IP: 192.168.1.1 (das Default Gateway)</li>
+                    </ul>
+                </li>
+                <li><strong>Normal-Betrieb:</strong>
+                    <ul>
+                        <li>Router A = Active (weil höhere Priority)</li>
+                        <li>Router A antwortet auf ARP für 192.168.1.1</li>
+                        <li>Router A routet allen Traffic</li>
+                        <li>Router B = Standby (Heartbeat-Überwachung)</li>
+                    </ul>
+                </li>
+                <li><strong>Failover:</strong>
+                    <ul>
+                        <li>Router A fällt aus (keine Heartbeats mehr)</li>
+                        <li>Nach 10 Sekunden (Hold-Timer): Router B übernimmt</li>
+                        <li>Router B sendet gratuitous ARP: "Ich bin jetzt 192.168.1.1"</li>
+                        <li>Clients merken nichts (benutzen weiter 192.168.1.1)</li>
+                        <li>Downtime: ~10 Sekunden (anpassbar)</li>
+                    </ul>
+                </li>
+                <li><strong>Failback (mit Preemption):</strong>
+                    <ul>
+                        <li>Router A kommt zurück</li>
+                        <li>Router A übernimmt wieder (höhere Priority)</li>
+                    </ul>
+                </li>
             </ul>
         </div>
-        <em>Gateway-Redundanz ist Pflicht für kritische Netze!</em>
+        <div>
+            <h3>Tracking:</h3>
+            Priority automatisch reduzieren wenn bestimmte Schnittstelle/Route ausfällt<br>
+            → Automatisches Failover auch bei Teil-Ausfällen
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>Preemption aktivieren (automatisches Failback)</li>
+                <li>Authentication aktivieren (MD5)</li>
+                <li>Tracking für kritische Links konfigurieren</li>
+                <li>Timer anpassen (schnelleres Failover bei Bedarf)</li>
+            </ul>
+        </div>
+        <em>Gateway-Redundanz ist absolute Pflicht für produktive Netze!</em>
     </div>
 
     <div data-tooltip-id="network-qos">
         <h2>QoS (Quality of Service)</h2>
-        <p>Priorisierung wichtiger Netzwerk-Traffic.</p>
+        <p>Priorisierung und Verwaltung von Netzwerk-Traffic.</p>
         <div>
             <h3>Warum QoS nötig:</h3>
-            Nicht aller Traffic ist gleich wichtig!
+            Nicht aller Traffic ist gleich wichtig und zeitkritisch!
         </div>
         <div>
             <h3>Das Problem ohne QoS:</h3>
-            VoIP-Anruf stockt, weil jemand große Datei lädt
+            <ul>
+                <li>VoIP-Anruf stockt/Gesprächsabbruch, weil großer File-Download läuft</li>
+                <li>Video-Konferenz pixeliert bei Backup-Traffic</li>
+                <li>Geschäftskritische Anwendung langsam durch unkritischen Traffic</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Traffic-Charakteristiken:</h3>
+            <ul>
+                <li><strong>VoIP:</strong> 
+                    <ul>
+                        <li>Latenz-sensitiv (&lt;150ms)</li>
+                        <li>Jitter-sensitiv (&lt;30ms)</li>
+                        <li>Bandbreite: gering (64-128 Kbit/s pro Call)</li>
+                        <li>→ <em>Höchste Priorität!</em></li>
+                    </ul>
+                </li>
+                <li><strong>Video:</strong> 
+                    <ul>
+                        <li>Latenz-sensitiv</li>
+                        <li>Burst-Traffic</li>
+                        <li>Bandbreite: hoch (1-10 Mbit/s)</li>
+                    </ul>
+                </li>
+                <li><strong>Geschäftsanwendungen:</strong> 
+                    <ul>
+                        <li>Transaktional (ERP, Datenbank)</li>
+                        <li>Moderate Priorität</li>
+                    </ul>
+                </li>
+                <li><strong>Best Effort (Standard):</strong> 
+                    <ul>
+                        <li>Web, E-Mail</li>
+                        <li>Keine Garantien</li>
+                    </ul>
+                </li>
+                <li><strong>Scavenger (niedrig):</strong> 
+                    <ul>
+                        <li>Backup, File-Sync, Updates</li>
+                        <li>Darf andere nicht stören</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <div>
             <h3>QoS-Mechanismen:</h3>
             <ul>
                 <li>
-                    <strong>DiffServ (DSCP):</strong>
+                    <strong>Classification & Marking:</strong>
                     <ul>
-                        <li>Layer 3 (IP-Header)</li>
-                        <li>6 Bit = 64 Klassen</li>
-                        <li>Standard im Internet</li>
+                        <li>Traffic erkennen und markieren</li>
+                        <li>Layer 2: CoS (802.1p) - 3 Bit = 8 Prioritäten (0-7)</li>
+                        <li>Layer 3: DSCP (DiffServ) - 6 Bit = 64 Klassen</li>
                     </ul>
                 </li>
                 <li>
-                    <strong>CoS (Class of Service, 802.1p):</strong>
+                    <strong>Queuing:</strong>
                     <ul>
-                        <li>Layer 2 (Ethernet-Frame)</li>
-                        <li>3 Bit = 8 Prioritäten (0-7)</li>
-                        <li>Nur innerhalb LAN</li>
+                        <li>Traffic in verschiedene Warteschlangen sortieren</li>
+                        <li>Priority Queuing (PQ): Höchste Queue zuerst (Starvation-Gefahr!)</li>
+                        <li>Weighted Fair Queuing (WFQ): Fair aber priorisiert</li>
+                        <li>Class-Based WFQ (CBWFQ): Bandbreiten-Garantien pro Klasse</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Policing:</strong>
+                    <ul>
+                        <li>Traffic über Limit: Droppen oder Remarken</li>
+                        <li>Hart (sofortiges Droppen)</li>
+                        <li>Einfach zu implementieren</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Shaping:</strong>
+                    <ul>
+                        <li>Traffic über Limit: Puffern und verzögern</li>
+                        <li>Weich (Traffic wird geglättet)</li>
+                        <li>Braucht Buffer</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Congestion Avoidance:</strong>
+                    <ul>
+                        <li>WRED (Weighted Random Early Detection)</li>
+                        <li>Droppen vor totaler Congestion</li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div>
-            <h3>Typische Priorisierung:</h3>
+            <h3>DSCP-Werte (wichtigste):</h3>
             <ul>
-                <li><strong>Höchste Priorität:</strong> VoIP, Video-Konferenzen (EF - Expedited Forwarding)</li>
-                <li><strong>Hoch:</strong> Geschäftskritische Anwendungen</li>
-                <li><strong>Mittel:</strong> Standard-Traffic (HTTP, E-Mail)</li>
-                <li><strong>Niedrig:</strong> Backup, Datei-Sync, Updates (Best Effort)</li>
+                <li><strong>EF (Expedited Forwarding, 46):</strong> VoIP, echtzeitkritisch</li>
+                <li><strong>AF41 (34):</strong> Video, hohe Priorität</li>
+                <li><strong>AF31 (26):</strong> Geschäftskritische Anwendungen</li>
+                <li><strong>AF21 (18):</strong> Standard-Anwendungen</li>
+                <li><strong>CS6 (48):</strong> Netzwerk-Management (Routing-Protokolle)</li>
+                <li><strong>Best Effort (0):</strong> Standard (kein QoS)</li>
+                <li><strong>CS1 (8):</strong> Scavenger/Bulk (niedrigste Priorität)</li>
             </ul>
         </div>
         <div>
-            <h3>Traffic Shaping vs Policing:</h3>
+            <h3>CoS zu DSCP Mapping (typisch):</h3>
             <ul>
-                <li><strong>Shaping:</strong> Traffic glätten (Puffer) - freundlich</li>
-                <li><strong>Policing:</strong> Überschuss droppen - hart</li>
+                <li>CoS 7 → CS7 (56) - Network Control</li>
+                <li>CoS 6 → CS6 (48) - Internetwork Control</li>
+                <li>CoS 5 → EF (46) - VoIP</li>
+                <li>CoS 4 → AF41 (34) - Video</li>
+                <li>CoS 3 → AF31 (26) - Business-Critical</li>
+                <li>CoS 0-2 → Best Effort</li>
             </ul>
         </div>
-        <em>QoS ist essentiell für VoIP und Video-Conferencing!</em>
-    </div>
+        <div>
+            <h3>QoS-Modelle:</h3>
+            <ul>
+                <li><strong>Best Effort:</strong> Kein QoS (Standard Internet)</li>
+                <li><strong>IntServ:</strong> Pro-Flow Reservation (RSVP) - komplex, selten</li>
+                <li><strong>DiffServ:</strong> Klassen-basiert - <em>Standard heute!</em></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Trust-Boundary:</h3>
+            Wo werden QoS-Markierungen vertrauenswürdig akzeptiert?<br>
+            Typisch: An Access-Ports neu klassifizieren (Clients können lügen!)
+        </div>
+        <em>QoS ist essentiell für VoIP, Video und Unified Communications!</em>
+    </div
 
     <div data-tooltip-id="network-netflow">
         <h2>NetFlow / sFlow / IPFIX</h2>

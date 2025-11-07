@@ -1,6 +1,7 @@
 <?php
 namespace ARPI\Entities\Documents;
 
+use ARPI\ODM\Mapping\Annotations as ODM;
 use MongoDB\BSON\ObjectId;
 
 /**
@@ -88,6 +89,6 @@ class Customer {
      * @return void 
      */
     public function __construct() {
-        
+        $this->uuid = \uniqid('customer_', true);
     }
 }

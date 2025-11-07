@@ -31,77 +31,183 @@
         <h2>SIEM-Software</h2>
         <p>Welche SIEM-Plattform wird verwendet?</p>
         <div>
-            <h3>SIEM-Kategorien:</h3>
+            <h3>SIEM-Kategorien im Detail:</h3>
             <ul>
                 <li><strong>Enterprise SIEM (Commercial):</strong>
                     <ul>
                         <li><strong>Splunk Enterprise Security:</strong>
                             <ul>
-                                <li>Marktführer, sehr mächtig</li>
-                                <li>Beste Visualisierungen und Dashboards</li>
-                                <li>Teuer (Lizenz nach GB/Tag)</li>
-                                <li>Große Community, viele Apps</li>
-                                <li><em>Gold-Standard, aber teuer!</em></li>
+                                <li>Marktführer mit ~30% Marktanteil</li>
+                                <li>Beste Visualisierungen, Dashboards, Search-Language (SPL)</li>
+                                <li>Über 1.000 Apps und Add-ons (Splunkbase)</li>
+                                <li>Sehr flexibel, kann fast alles parsen</li>
+                                <li>ABER: Sehr teuer (€100k-1M+ pro Jahr je nach GB/Tag)</li>
+                                <li>Lizenz nach indexiertem Volume (GB/Tag)</li>
+                                <li>Steep Learning Curve - aber mächtig wenn beherrscht</li>
+                                <li><em>Gold-Standard in Security - "If you can afford it"</em></li>
                             </ul>
                         </li>
                         <li><strong>IBM QRadar:</strong>
                             <ul>
-                                <li>Enterprise-fokussiert</li>
-                                <li>Starke Korrelations-Engine</li>
-                                <li>Lizenz nach Events/Sec (EPS)</li>
-                                <li>Gut für große Umgebungen</li>
+                                <li>Traditionell sehr stark in Enterprise</li>
+                                <li>Exzellente Correlation-Engine</li>
+                                <li>Lizenz nach Flows + Events per Second (FPS + EPS)</li>
+                                <li>Gut für Compliance-Reports</li>
+                                <li>Komplexe UI, steile Lernkurve</li>
+                                <li>Integration mit IBM Security Portfolio (X-Force, Resilient)</li>
+                                <li><em>Solid Enterprise-Wahl, besonders für IBM-Shops</em></li>
                             </ul>
                         </li>
                         <li><strong>Micro Focus ArcSight:</strong>
                             <ul>
-                                <li>Sehr etabliert, seit Jahrzehnten</li>
-                                <li>Komplex, braucht Expertise</li>
-                                <li>Gut für Compliance</li>
+                                <li>Einer der ältesten SIEMs (seit 2000)</li>
+                                <li>Sehr mature, aber auch veraltet wirkend</li>
+                                <li>Java-basiert, ressourcenhungrig</li>
+                                <li>Gut für regulierte Industrien (Finance, Government)</li>
+                                <li>Marktanteil sinkt (Splunk übernimmt)</li>
+                                <li><em>Legacy-Option - nur wenn bereits vorhanden</em></li>
                             </ul>
                         </li>
-                        <li><strong>Microsoft Sentinel:</strong>
+                        <li><strong>Microsoft Sentinel (früher Azure Sentinel):</strong>
                             <ul>
-                                <li>Cloud-native (Azure)</li>
-                                <li>Gut integriert mit Microsoft-Produkten</li>
-                                <li>Pay-as-you-go Modell</li>
-                                <li>Modern, aber Microsoft-lastig</li>
+                                <li>Cloud-native SIEM (nur Azure Cloud)</li>
+                                <li>Tiefe Integration mit Microsoft 365, Azure, Windows</li>
+                                <li>KQL (Kusto Query Language) - ähnlich SQL</li>
+                                <li>Pay-as-you-go (per GB ingested)</li>
+                                <li>Schnell einzurichten wenn Azure-Shop</li>
+                                <li>ABER: Schwach bei Non-Microsoft-Sources</li>
+                                <li><em>Perfekt für Microsoft-lastige Umgebungen</em></li>
                             </ul>
                         </li>
-                        <li><strong>LogRhythm, Securonix:</strong> Weitere Enterprise-Lösungen</li>
+                        <li><strong>LogRhythm:</strong>
+                            <ul>
+                                <li>All-in-One SIEM (inkl. SOAR, NTA, UEBA)</li>
+                                <li>Gute Performance</li>
+                                <li>Einfacher als Splunk</li>
+                                <li>Mittelständisch fokussiert</li>
+                            </ul>
+                        </li>
+                        <li><strong>Securonix:</strong>
+                            <ul>
+                                <li>Fokus auf UEBA (User Behavior Analytics)</li>
+                                <li>Cloud-native oder Hybrid</li>
+                                <li>Machine Learning im Kern</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li><strong>Open Source SIEM:</strong>
                     <ul>
                         <li><strong>Elastic Security (SIEM):</strong>
                             <ul>
-                                <li>Basiert auf Elastic Stack (ELK)</li>
-                                <li>Open Source + Commercial Options</li>
-                                <li>Sehr flexibel, gute Performance</li>
-                                <li>Große Community</li>
-                                <li><em>Beste Open-Source-Option!</em></li>
+                                <li>Basiert auf Elastic Stack (Elasticsearch + Kibana + Beats)</li>
+                                <li>Open Source Core + Commercial Features (Platinum/Enterprise)</li>
+                                <li>Sehr performant (Elasticsearch ist extrem schnell)</li>
+                                <li>Flexibel - kann für Logs, Metrics, APM genutzt werden</li>
+                                <li>Große Community, viele Integrations (Beats, Logstash)</li>
+                                <li>Prebuilt Detection Rules (Elastic Security Rules)</li>
+                                <li>MITRE ATT&CK Mapping integriert</li>
+                                <li>Commercial: UEBA, Machine Learning, Case Management</li>
+                                <li><em>Beste Open-Source-Option - Enterprise-Level kostenlos möglich!</em></li>
                             </ul>
                         </li>
                         <li><strong>Wazuh:</strong>
                             <ul>
-                                <li>Open Source Host-based IDS + SIEM</li>
-                                <li>Kostenlos, gut dokumentiert</li>
-                                <li>Gut für kleinere Umgebungen</li>
+                                <li>Fork von OSSEC, stark erweitert</li>
+                                <li>Open Source Host-based IDS + SIEM + XDR</li>
+                                <li>Komplett kostenlos (keine Commercial-Version)</li>
+                                <li>Gut dokumentiert, aktive Community</li>
+                                <li>Agenten für Windows, Linux, macOS</li>
+                                <li>Integrations: VirusTotal, MISP, TheHive</li>
+                                <li>Gut für kleinere bis mittlere Umgebungen</li>
+                                <li><em>Perfekt für Einstieg ohne Budget!</em></li>
                             </ul>
                         </li>
-                        <li><strong>OSSEC, AlienVault OSSIM:</strong> Weitere Open-Source-Optionen</li>
+                        <li><strong>OSSEC:</strong>
+                            <ul>
+                                <li>Original Open Source HIDS</li>
+                                <li>Sehr leichtgewichtig</li>
+                                <li>Weniger Features als Wazuh</li>
+                                <li>Noch verwendet, aber Wazuh überholt</li>
+                            </ul>
+                        </li>
+                        <li><strong>AlienVault OSSIM:</strong>
+                            <ul>
+                                <li>Open Source Version von AlienVault USM</li>
+                                <li>All-in-One (SIEM, IDS, Asset Discovery, Vuln Scanning)</li>
+                                <li>Gut für Startups</li>
+                                <li>Limited Support</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-                <li><strong>Cloud SIEM:</strong>
+                <li><strong>Cloud SIEM / SaaS:</strong>
                     <ul>
-                        <li><strong>Sumo Logic, Datadog Security:</strong> SaaS SIEM</li>
-                        <li><strong>Rapid7 InsightIDR:</strong> Cloud-basiert</li>
-                        <li>Kein eigener Server nötig</li>
-                        <li>Schnell einsatzbereit</li>
+                        <li><strong>Sumo Logic:</strong>
+                            <ul>
+                                <li>Cloud-native Log Analytics + SIEM</li>
+                                <li>Pay-as-you-go</li>
+                                <li>Gut für Cloud-Workloads (AWS, Azure, GCP)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Datadog Security:</strong>
+                            <ul>
+                                <li>Teil der Datadog Observability Platform</li>
+                                <li>Fokus auf Cloud + APM + Security</li>
+                                <li>Modern, aber teuer</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rapid7 InsightIDR:</strong>
+                            <ul>
+                                <li>Cloud SIEM + Incident Detection & Response</li>
+                                <li>Einfach zu deployen</li>
+                                <li>Gut für SMB</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <em>Wahl hängt ab von: Budget, Größe, Expertise, Cloud vs On-Premise</em>
+        <div>
+            <h3>Entscheidungskriterien:</h3>
+            <ul>
+                <li><strong>Budget:</strong>
+                    <ul>
+                        <li>Kein Budget: Wazuh, Elastic (Open Source)</li>
+                        <li>Mittel (€50-100k): Elastic Security (Commercial), LogRhythm</li>
+                        <li>Groß (€100k+): Splunk, QRadar</li>
+                    </ul>
+                </li>
+                <li><strong>Größe:</strong>
+                    <ul>
+                        <li>&lt;100 Devices: Wazuh, Elastic</li>
+                        <li>100-1000: Elastic, LogRhythm, Sentinel</li>
+                        <li>1000+: Splunk, QRadar</li>
+                    </ul>
+                </li>
+                <li><strong>Expertise:</strong>
+                    <ul>
+                        <li>Wenig: Sentinel (wenn MS-Shop), Managed SIEM (MSSP)</li>
+                        <li>Mittel: Elastic, LogRhythm</li>
+                        <li>Hoch: Splunk (maximize value)</li>
+                    </ul>
+                </li>
+                <li><strong>Cloud vs On-Premise:</strong>
+                    <ul>
+                        <li>Cloud-First: Sentinel, Sumo Logic</li>
+                        <li>On-Prem: Splunk, QRadar, Elastic</li>
+                        <li>Hybrid: Alle möglich</li>
+                    </ul>
+                </li>
+                <li><strong>Compliance:</strong>
+                    <ul>
+                        <li>KRITIS, Healthcare: On-Prem bevorzugt (Splunk, Elastic)</li>
+                        <li>PCI-DSS: Alle, aber Reports wichtig (QRadar gut)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <em>Trend: Elastic gewinnt Marktanteile von Splunk (günstiger, open source)</em>
     </div>
 
     <div data-tooltip-id="siem-license">
@@ -183,31 +289,81 @@
         <p>Wie viele Log-Events verarbeitet das SIEM pro Sekunde?</p>
         <div>
             <h3>Was ist EPS?</h3>
-            Die "Geschwindigkeit" Ihres SIEMs - wie viele Events können pro Sekunde verarbeitet werden?
+            Die "Durchsatzrate" Ihres SIEMs - wie viele Events können pro Sekunde aufgenommen, verarbeitet und indexiert werden.
         </div>
         <div>
-            <h3>Typische EPS-Werte:</h3>
+            <h3>EPS-Kategorisierung:</h3>
             <ul>
-                <li><strong>< 1.000 EPS:</strong> Kleine Umgebung (< 50 Geräte)</li>
-                <li><strong>1.000-5.000 EPS:</strong> Mittelgroß (50-200 Geräte)</li>
-                <li><strong>5.000-20.000 EPS:</strong> Groß (200-1000 Geräte)</li>
-                <li><strong>> 20.000 EPS:</strong> Sehr groß (Enterprise, 1000+ Geräte)</li>
+                <li><strong>&lt; 500 EPS:</strong> Small (Startup, &lt;50 Mitarbeiter, &lt;25 Server)</li>
+                <li><strong>500-2.000 EPS:</strong> Small-to-Medium (50-150 MA, 25-100 Server)</li>
+                <li><strong>2.000-10.000 EPS:</strong> Medium (150-500 MA, 100-500 Server)</li>
+                <li><strong>10.000-50.000 EPS:</strong> Large (500-2000 MA, 500-2000 Server)</li>
+                <li><strong>&gt;50.000 EPS:</strong> Enterprise (2000+ MA, 2000+ Server, Global)</li>
             </ul>
         </div>
         <div>
-            <h3>Was beeinflusst EPS:</h3>
+            <h3>Was generiert wie viel EPS:</h3>
             <ul>
-                <li>Anzahl Log-Quellen</li>
-                <li>Wie "geschwätzig" die Systeme sind (Windows = viel, Linux = weniger)</li>
-                <li>Log-Level (Debug = sehr viel, Error only = wenig)</li>
-                <li>Spitzenzeiten (Montag morgen mehr als Sonntag nachts)</li>
+                <li><strong>Windows Server (Domain Controller):</strong> 50-200 EPS (sehr geschwätzig!)</li>
+                <li><strong>Windows Client:</strong> 10-50 EPS</li>
+                <li><strong>Linux Server:</strong> 5-20 EPS (weniger Logs als Windows)</li>
+                <li><strong>Firewall:</strong> 100-1000 EPS (je nach Traffic)</li>
+                <li><strong>Web Application:</strong> 50-500 EPS (je nach Load)</li>
+                <li><strong>Database:</strong> 10-100 EPS</li>
+                <li><strong>Network Device (Switch/Router):</strong> 5-50 EPS</li>
+                <li><strong>Office 365:</strong> 20-200 EPS (per 100 User)</li>
             </ul>
         </div>
         <div>
-            <h3>Wichtig:</h3>
-            EPS-Lizenz groß genug dimensionieren - sonst werden Logs gedrosselt = blind für Angriffe!
+            <h3>Berechnung der benötigten EPS:</h3>
+            <strong>Beispiel-Rechnung:</strong>
+            <ul>
+                <li>10 Domain Controller × 100 EPS = 1.000 EPS</li>
+                <li>50 Windows Server × 20 EPS = 1.000 EPS</li>
+                <li>200 Windows Clients × 10 EPS = 2.000 EPS</li>
+                <li>20 Linux Server × 10 EPS = 200 EPS</li>
+                <li>2 Firewalls × 500 EPS = 1.000 EPS</li>
+                <li>10 Applications × 50 EPS = 500 EPS</li>
+                <li><strong>Summe: 5.700 EPS</strong></li>
+            </ul>
+            <strong>Aber:</strong> Spitzen können 3-5x höher sein! → Lizenz für ~20.000 EPS sinnvoll
         </div>
-        <em>Faustformel: 10-50 EPS pro aktivem Gerät</em>
+        <div>
+            <h3>Peak vs. Average:</h3>
+            <ul>
+                <li><strong>Average:</strong> Durchschnittliche Last über 24h</li>
+                <li><strong>Peak:</strong> Spitzenlast (Montag 8 Uhr, nach Wochenende, Updates)</li>
+                <li>Peak kann 5-10x höher sein als Average!</li>
+                <li>SIEM muss Peak-Last bewältigen können</li>
+            </ul>
+        </div>
+        <div>
+            <h3>EPS-Lizenz zu klein → Probleme:</h3>
+            <ul>
+                <li>Logs werden gedrosselt (Queueing)</li>
+                <li>Events gehen verloren (Dropped Events)</li>
+                <li>Blind für Angriffe in Peak-Zeiten</li>
+                <li>Compliance-Violation (nicht alle Logs erfasst)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>EPS vs. GB/Tag:</h3>
+            <ul>
+                <li>1.000 EPS ≈ 50-100 GB/Tag (abhängig von Event-Größe)</li>
+                <li>10.000 EPS ≈ 500-1000 GB/Tag</li>
+                <li>Windows Events: ~500 Bytes/Event</li>
+                <li>Firewall Logs: ~200 Bytes/Event</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practice:</h3>
+            <ul>
+                <li>Lizenz für 2-3x Average EPS (Peak-Reserve)</li>
+                <li>Monitoring der tatsächlichen EPS</li>
+                <li>Log-Filtering für unwichtige Events (Noise-Reduction)</li>
+            </ul>
+        </div>
+        <em>Faustformel: 20-50 EPS pro aktiv loggendem Device (Windows höher, Linux niedriger)</em>
     </div>
 
     <div data-tooltip-id="siem-logsources">
@@ -240,60 +396,257 @@
         <p>Konfigurierte Erkennungsregeln für Sicherheitsvorfälle.</p>
         <div>
             <h3>Was sind Use Cases?</h3>
-            Regeln die sagen: "Wenn X passiert, dann Alert auslösen" - wie Rauchmelder für IT-Angriffe.
+            Spezifische Erkennungsregeln die Log-Events korrelieren um Angriffe zu erkennen - wie "Rezepte" für Angriffs-Erkennung.
         </div>
         <div>
-            <h3>Beispiel Use Cases:</h3>
+            <h3>Use Case Kategorien mit Beispielen:</h3>
             <ul>
-                <li><strong>Brute-Force-Angriff:</strong> 10 fehlgeschlagene Logins in 5 Min</li>
-                <li><strong>Lateral Movement:</strong> Admin-Login von ungewöhnlichem System</li>
-                <li><strong>Data Exfiltration:</strong> Ungewöhnlich viel ausgehender Traffic</li>
-                <li><strong>Malware-Kommunikation:</strong> Verbindung zu bekannter C&C-Server</li>
-                <li><strong>Privilege Escalation:</strong> User wird unerwartet Admin</li>
-                <li><strong>Account Compromise:</strong> Login aus zwei Ländern gleichzeitig</li>
+                <li><strong>Authentication Attacks:</strong>
+                    <ul>
+                        <li>Brute-Force: 10 fehlgeschlagene Logins in 5 Min vom selben User</li>
+                        <li>Password Spray: 1 Login-Versuch für 50+ Accounts in kurzer Zeit</li>
+                        <li>Impossible Travel: User loggt sich aus USA und Deutschland in &lt;1h ein</li>
+                        <li>After-Hours Login: Admin-Login um 3 Uhr nachts</li>
+                    </ul>
+                </li>
+                <li><strong>Lateral Movement:</strong>
+                    <ul>
+                        <li>Admin-Login von ungewöhnlichem System</li>
+                        <li>PsExec-Nutzung zur Remote-Execution</li>
+                        <li>SMB-Connections zu vielen Systemen (Worm-Verhalten)</li>
+                    </ul>
+                </li>
+                <li><strong>Privilege Escalation:</strong>
+                    <ul>
+                        <li>User wird unerwartet zur Admin-Gruppe hinzugefügt</li>
+                        <li>Neue lokale Admin-Accounts erstellt</li>
+                        <li>Service-Account mit Admin-Rechten</li>
+                    </ul>
+                </li>
+                <li><strong>Data Exfiltration:</strong>
+                    <ul>
+                        <li>Ungewöhnlich große Uploads zu Cloud-Storage</li>
+                        <li>Hoher ausgehender Traffic zu unbekannten IPs</li>
+                        <li>Große Datei-Downloads von Fileserver</li>
+                    </ul>
+                </li>
+                <li><strong>Malware / C2 Communication:</strong>
+                    <ul>
+                        <li>Verbindung zu bekannter Command & Control IP</li>
+                        <li>Beaconing (regelmäßige Verbindungen in festem Intervall)</li>
+                        <li>DNS-Tunneling (ungewöhnlich lange DNS-Queries)</li>
+                    </ul>
+                </li>
+                <li><strong>Insider Threats:</strong>
+                    <ul>
+                        <li>Zugriff auf ungewöhnliche Dateien/Datenbanken</li>
+                        <li>Massenhafter Datei-Zugriff vor Kündigung</li>
+                        <li>USB-Device-Nutzung (wenn verboten)</li>
+                    </ul>
+                </li>
+                <li><strong>Policy Violations:</strong>
+                    <ul>
+                        <li>Shadow IT (unautorisierte Cloud-Services)</li>
+                        <li>Firewall-Rule-Änderungen</li>
+                        <li>Admin-Aktionen ohne Change-Ticket</li>
+                    </ul>
+                </li>
+                <li><strong>Vulnerability Exploitation:</strong>
+                    <ul>
+                        <li>Erfolgreiche Exploit-Versuche (IDS-Signatur + Success)</li>
+                        <li>SQL-Injection-Versuche</li>
+                        <li>RCE (Remote Code Execution) Indicators</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Typische Anzahl:</h3>
+            <h3>Use Case Reife-Level:</h3>
             <ul>
-                <li>50-100 Use Cases: Basis-Setup</li>
-                <li>100-500: Gut konfiguriertes SIEM</li>
-                <li>500+: Mature SOC mit vielen Custom Rules</li>
+                <li><strong>Level 1 (Basis, 20-50 Use Cases):</strong>
+                    <ul>
+                        <li>Out-of-the-Box Rules</li>
+                        <li>Basic Attacks (Brute-Force, Malware-Kommunikation)</li>
+                        <li>Viele False Positives</li>
+                    </ul>
+                </li>
+                <li><strong>Level 2 (Mature, 50-150 Use Cases):</strong>
+                    <ul>
+                        <li>Getunete Rules (weniger False Positives)</li>
+                        <li>Correlation über mehrere Log-Quellen</li>
+                        <li>Custom Rules für eigene Umgebung</li>
+                        <li><em>Ziel für die meisten Organisationen</em></li>
+                    </ul>
+                </li>
+                <li><strong>Level 3 (Advanced, 150-500 Use Cases):</strong>
+                    <ul>
+                        <li>Threat Hunting Use Cases</li>
+                        <li>Machine Learning / UEBA</li>
+                        <li>Proaktive Detection (Indicators of Attack)</li>
+                        <li>MITRE ATT&CK Coverage &gt;80%</li>
+                    </ul>
+                </li>
+                <li><strong>Level 4 (Elite, 500+ Use Cases):</strong>
+                    <ul>
+                        <li>Custom Detection für spezifische Threats</li>
+                        <li>Threat Intelligence Integration</li>
+                        <li>Behavioral Analytics</li>
+                        <li>Red Team Emulation Detection</li>
+                    </ul>
+                </li>
             </ul>
         </div>
-        <em>Mehr Use Cases ≠ besser - Qualität vor Quantität (False Positives vermeiden)!</em>
+        <div>
+            <h3>Use Case Development Prozess:</h3>
+            <ol>
+                <li><strong>Identify:</strong> Welche Angriffe wollen wir erkennen?</li>
+                <li><strong>Design:</strong> Welche Logs benötigen wir? Korrelations-Logik?</li>
+                <li><strong>Implement:</strong> Rule in SIEM schreiben</li>
+                <li><strong>Test:</strong> Erzeugt Rule Alerts? False Positives?</li>
+                <li><strong>Tune:</strong> Schwellwerte anpassen, Whitelists</li>
+                <li><strong>Deploy:</strong> Produktiv schalten</li>
+                <li><strong>Monitor:</strong> Alert-Volume beobachten</li>
+                <li><strong>Maintain:</strong> Regelmäßig reviewen und aktualisieren</li>
+            </ol>
+        </div>
+        <div>
+            <h3>Häufiger Fehler:</h3>
+            Zu viele Use Cases zu schnell aktivieren → Alert Fatigue → SOC überlastet → Wichtige Alerts werden übersehen
+        </div>
+        <div>
+            <h3>Empfehlung:</h3>
+            <ul>
+                <li>Start mit 20-30 High-Value Use Cases</li>
+                <li>Erst tunen bis False Positive Rate &lt;10%</li>
+                <li>Dann schrittweise erweitern (5-10 neue Use Cases/Monat)</li>
+            </ul>
+        </div>
+        <em>Qualität vor Quantität - 50 gut getunete Rules &gt; 500 laut schreiende!</em>
     </div>
 
     <div data-tooltip-id="siem-ueba">
         <h2>Machine Learning / UEBA</h2>
-        <p>Automatische Erkennung anomalen Verhaltens durch KI.</p>
+        <p>User and Entity Behavior Analytics - KI-gestützte Anomalie-Erkennung.</p>
         <div>
             <h3>Was ist UEBA?</h3>
-            User and Entity Behavior Analytics - lernt "normales" Verhalten und erkennt Abweichungen.
+            System das "normales" Verhalten von Usern und Entities (Systeme, IPs) lernt und Abweichungen erkennt - ohne vordefinierte Regeln.
         </div>
         <div>
-            <h3>Was UEBA kann:</h3>
+            <h3>Wie UEBA funktioniert:</h3>
+            <ol>
+                <li><strong>Baselining (2-4 Wochen):</strong>
+                    <ul>
+                        <li>Lernt normales Verhalten jedes Users</li>
+                        <li>"User X loggt sich Mo-Fr 8-17 Uhr ein"</li>
+                        <li>"User X greift auf Server A, B, C zu"</li>
+                        <li>"User X lädt 50 MB/Tag herunter"</li>
+                    </ul>
+                </li>
+                <li><strong>Scoring:</strong>
+                    <ul>
+                        <li>Jede Aktion bekommt Risk-Score (0-100)</li>
+                        <li>Je mehr Abweichung, desto höher Score</li>
+                    </ul>
+                </li>
+                <li><strong>Anomaly Detection:</strong>
+                    <ul>
+                        <li>Score &gt; Schwellwert → Alert</li>
+                        <li>Kombiniert mehrere Indikatoren</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <div>
+            <h3>UEBA Use Cases (Beispiele):</h3>
             <ul>
-                <li>Erkennt Anomalien ohne vordefinierte Regeln</li>
-                <li>Lernt Baseline: "User X loggt sich normalerweise 8-17 Uhr ein"</li>
-                <li>Alert bei Abweichung: "User X Login um 3 Uhr nachts!"</li>
-                <li>Erkennt Zero-Day-Angriffe (keine Signatur bekannt)</li>
-                <li>Reduziert False Positives durch Kontext</li>
+                <li><strong>Compromised Account:</strong>
+                    <ul>
+                        <li>User X loggt sich um 3 Uhr nachts ein (normal: 9-17 Uhr)</li>
+                        <li>+ greift auf Fileserver zu (macht er sonst nie)</li>
+                        <li>+ lädt 10 GB herunter (normal: 50 MB/Tag)</li>
+                        <li>→ High Risk Score → Alert</li>
+                    </ul>
+                </li>
+                <li><strong>Insider Threat:</strong>
+                    <ul>
+                        <li>HR-Mitarbeiter greift plötzlich auf Engineering-Datenbank zu</li>
+                        <li>Sales-Person lädt gesamte Kundenliste (macht er normalerweise nie)</li>
+                    </ul>
+                </li>
+                <li><strong>Lateral Movement:</strong>
+                    <ul>
+                        <li>Service-Account loggt sich auf 50 Systemen ein (normal: 5 Systeme)</li>
+                        <li>Muster: Angreifer verwendet kompromittierte Credentials</li>
+                    </ul>
+                </li>
+                <li><strong>Data Exfiltration:</strong>
+                    <ul>
+                        <li>System kontaktiert plötzlich 100 neue externe IPs</li>
+                        <li>Ungewöhnlich viel Upload zu Cloud-Storage</li>
+                    </ul>
+                </li>
+                <li><strong>Malware Behavior:</strong>
+                    <ul>
+                        <li>Workstation öffnet plötzlich 1000+ Netzwerk-Connections</li>
+                        <li>Regelmäßiges "Beaconing" (alle 60 Sekunden Verbindung → C2)</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Beispiel-Szenarien:</h3>
+            <h3>UEBA vs. Traditional Rules:</h3>
             <ul>
-                <li>Kompromittierter Account: Nutzer lädt plötzlich 100 GB Daten</li>
-                <li>Insider-Threat: Mitarbeiter greift auf ungewöhnliche Datenbanken zu</li>
-                <li>Malware: System kommuniziert mit neuen, ungewöhnlichen IPs</li>
+                <li><strong>Traditional Rules:</strong>
+                    <ul>
+                        <li>Fest definiert: "Wenn X dann Alert"</li>
+                        <li>Erkennt bekannte Angriffe</li>
+                        <li>Braucht viel Tuning</li>
+                        <li>False Positives häufig</li>
+                    </ul>
+                </li>
+                <li><strong>UEBA:</strong>
+                    <ul>
+                        <li>Dynamisch: Lernt individuelles Normal-Verhalten</li>
+                        <li>Erkennt Zero-Day und unbekannte Angriffe</li>
+                        <li>Weniger Tuning nötig</li>
+                        <li>Aber: Braucht Trainingszeit</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Herausforderung:</h3>
-            Braucht Zeit zum Lernen (2-4 Wochen) und kann False Positives erzeugen
+            <h3>Machine Learning Methoden in UEBA:</h3>
+            <ul>
+                <li><strong>Unsupervised Learning:</strong> Clustering, Outlier-Detection</li>
+                <li><strong>Supervised Learning:</strong> Classification (ist das Malware?)</li>
+                <li><strong>Statistical Models:</strong> Bayes, Z-Score</li>
+                <li><strong>Time-Series Analysis:</strong> Trend-Erkennung</li>
+            </ul>
         </div>
-        <em>UEBA ist "next level" - sehr mächtig, aber komplex!</em>
+        <div>
+            <h3>Herausforderungen:</h3>
+            <ul>
+                <li><strong>Training-Phase:</strong> 2-4 Wochen bis aussagekräftig</li>
+                <li><strong>False Positives:</strong> Legitimate aber ungewöhnliches Verhalten</li>
+                <li><strong>Concept Drift:</strong> Normal-Verhalten ändert sich (Home Office → plötzlich VPN normal)</li>
+                <li><strong>Rechenleistung:</strong> ML-Modelle brauchen CPU/RAM</li>
+                <li><strong>Erklärbarkeit:</strong> "Warum Alert?" oft schwer zu verstehen (Black Box)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>UEBA als Ergänzung zu Rules, nicht Ersatz</li>
+                <li>Start mit wenigen Entities (VIPs, Service-Accounts)</li>
+                <li>Kombination: UEBA findet Anomalie → Analyst untersucht mit traditionellen Tools</li>
+                <li>Regelmäßig Re-Training (Baseline anpassen)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>UEBA-fähige SIEMs:</h3>
+            Splunk UBA, Microsoft Sentinel (Fusion), IBM QRadar UBA, Exabeam, Securonix
+        </div>
+        <em>UEBA ist "next level" - sehr mächtig für Advanced Threats, aber komplex und braucht Expertise!</em>
     </div>
 
     <div data-tooltip-id="siem-threatintel">
@@ -330,108 +683,303 @@
 
     <div data-tooltip-id="siem-mitre">
         <h2>MITRE ATT&CK Framework</h2>
-        <p>Standard-Framework für Angriffs-Taktiken und -Techniken.</p>
+        <p>Standard-Framework zur Kategorisierung von Angriffstechniken.</p>
         <div>
             <h3>Was ist MITRE ATT&CK?</h3>
-            Eine "Enzyklopädie" aller bekannten Angriffstechniken - wie ein "Playbook" von Hackern.
+            Eine weltweit anerkannte "Enzyklopädie" aller bekannten Cyber-Angriffstechniken - das "Playbook" aus dem Hacker lesen.
         </div>
         <div>
-            <h3>Struktur:</h3>
+            <h3>Geschichte:</h3>
+            Erstellt von MITRE Corporation (Non-Profit, US-Government-Auftragnehmer) seit 2013. Wird kontinuierlich aktualisiert basierend auf realen Angriffen.
+        </div>
+        <div>
+            <h3>Struktur im Detail:</h3>
             <ul>
-                <li><strong>Tactics (Taktiken):</strong> Das "Warum" - z.B. "Initial Access", "Persistence", "Exfiltration"</li>
-                <li><strong>Techniques (Techniken):</strong> Das "Wie" - z.B. "Spear Phishing", "PowerShell", "Data Encryption"</li>
-                <li>14 Taktiken, 200+ Techniken, 600+ Sub-Techniken</li>
+                <li><strong>Tactics (Taktiken) - Das "Warum":</strong>
+                    <ul>
+                        <li>14 Taktiken: Die strategischen Ziele eines Angreifers</li>
+                        <li>Initial Access, Execution, Persistence, Privilege Escalation, Defense Evasion, Credential Access, Discovery, Lateral Movement, Collection, Command & Control, Exfiltration, Impact</li>
+                    </ul>
+                </li>
+                <li><strong>Techniques (Techniken) - Das "Wie":</strong>
+                    <ul>
+                        <li>~200 Techniken: Konkrete Methoden</li>
+                        <li>Z.B. T1078: Valid Accounts, T1059: Command-Line Interface</li>
+                    </ul>
+                </li>
+                <li><strong>Sub-Techniques:</strong>
+                    <ul>
+                        <li>~600+ Sub-Techniken: Noch spezifischer</li>
+                        <li>Z.B. T1078.001: Default Accounts, T1078.002: Domain Accounts</li>
+                    </ul>
+                </li>
+                <li><strong>Procedures:</strong>
+                    <ul>
+                        <li>Wie spezifische Threat-Actors die Technik nutzen</li>
+                        <li>Real-World-Beispiele</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Warum im SIEM wichtig:</h3>
-            <ul>
-                <li>Use Cases nach MITRE kategorisieren</li>
-                <li>Sehen wo Lücken sind (Coverage-Matrix)</li>
-                <li>Kommunikation mit SOC vereinfachen</li>
-                <li>"Wir haben einen T1078 (Valid Accounts) Alert" statt "Login-Problem"</li>
-            </ul>
-        </div>
-        <div>
-            <h3>MITRE ATT&CK Navigator:</h3>
-            Tool zur Visualisierung der Abdeckung
-        </div>
-        <em>MITRE ist DIE gemeinsame Sprache im Cyber Security!</em>
-    </div>
-
-    <div data-tooltip-id="siem-soar">
-        <h2>SOAR Integration</h2>
-        <p>Security Orchestration, Automation and Response.</p>
-        <div>
-            <h3>Was ist SOAR?</h3>
-            Automatisierung von Incident-Response-Prozessen - "Roboter für SOC-Analysts".
-        </div>
-        <div>
-            <h3>Was SOAR macht:</h3>
-            <ul>
-                <li><strong>Orchestration:</strong> Koordiniert Tools (SIEM, EDR, Firewall)</li>
-                <li><strong>Automation:</strong> Automatische Reaktion auf Alerts</li>
-                <li><strong>Response:</strong> Guided Playbooks für Analysten</li>
-            </ul>
-        </div>
-        <div>
-            <h3>Beispiel-Workflow (automatisch):</h3>
+            <h3>Die 14 Tactics (Attack Lifecycle):</h3>
             <ol>
-                <li>SIEM erkennt Malware auf PC</li>
-                <li>SOAR isoliert PC vom Netzwerk (via EDR)</li>
-                <li>SOAR blockiert Malware-IP auf Firewall</li>
-                <li>SOAR erstellt Ticket in ServiceNow</li>
-                <li>SOAR startet Forensik-Sammlung</li>
-                <li>SOAR sendet Slack-Nachricht an SOC</li>
+                <li><strong>Initial Access:</strong> Wie kommt Angreifer rein? (Phishing, Exploit)</li>
+                <li><strong>Execution:</strong> Code ausführen (PowerShell, Scripts)</li>
+                <li><strong>Persistence:</strong> Nach Reboot noch da (Autostart, Service)</li>
+                <li><strong>Privilege Escalation:</strong> Admin-Rechte erlangen</li>
+                <li><strong>Defense Evasion:</strong> Nicht entdeckt werden (AV umgehen)</li>
+                <li><strong>Credential Access:</strong> Passwörter stehlen (Mimikatz)</li>
+                <li><strong>Discovery:</strong> Netzwerk erkunden (Port-Scan)</li>
+                <li><strong>Lateral Movement:</strong> Zu anderen Systemen springen</li>
+                <li><strong>Collection:</strong> Daten sammeln (Screenshots, Keylogger)</li>
+                <li><strong>Command & Control (C2):</strong> Mit Angreifer-Server kommunizieren</li>
+                <li><strong>Exfiltration:</strong> Daten rausschmuggeln</li>
+                <li><strong>Impact:</strong> Schaden anrichten (Ransomware, Löschen)</li>
             </ol>
         </div>
         <div>
-            <h3>SOAR-Plattformen:</h3>
+            <h3>MITRE im SIEM - Praktische Nutzung:</h3>
             <ul>
-                <li>Splunk SOAR (Phantom)</li>
-                <li>Palo Alto Cortex XSOAR (Demisto)</li>
-                <li>IBM Resilient</li>
-                <li>Swimlane</li>
+                <li><strong>Use Case Mapping:</strong>
+                    <ul>
+                        <li>Jeder Detection Rule MITRE Technique zuordnen</li>
+                        <li>"Brute-Force Detection" → T1110: Brute Force</li>
+                        <li>"PsExec Lateral Movement" → T1021.002: SMB/Windows Admin Shares</li>
+                    </ul>
+                </li>
+                <li><strong>Coverage-Matrix:</strong>
+                    <ul>
+                        <li>Visualisierung: Welche Techniques werden erkannt?</li>
+                        <li>Gap-Analysis: Wo sind Lücken?</li>
+                        <li>Tool: MITRE ATT&CK Navigator (https://mitre-attack.github.io/attack-navigator/)</li>
+                    </ul>
+                </li>
+                <li><strong>Incident Investigation:</strong>
+                    <ul>
+                        <li>Alert kommt rein → zu welcher Tactic/Technique gehört das?</li>
+                        <li>Nächste Schritte vorhersagen: "Nach T1078 kommt meist T1069 (Discovery)"</li>
+                    </ul>
+                </li>
+                <li><strong>Threat Intel Integration:</strong>
+                    <ul>
+                        <li>APT-Gruppe nutzt Techniques X, Y, Z</li>
+                        <li>Detection Rules für genau diese Techniques priorisieren</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Vorteil:</h3>
-            Reaktionszeit von Stunden auf Sekunden reduzieren!
+            <h3>MITRE ATT&CK Matrices:</h3>
+            <ul>
+                <li><strong>Enterprise:</strong> Windows, Linux, macOS, Cloud (AWS, Azure, GCP)</li>
+                <li><strong>Mobile:</strong> Android, iOS</li>
+                <li><strong>ICS:</strong> Industrial Control Systems (SCADA, etc.)</li>
+            </ul>
         </div>
-        <em>SOAR = Force Multiplier für kleine SOC-Teams</em>
+        <div>
+            <h3>Andere Detection Frameworks:</h3>
+            <ul>
+                <li><strong>Cyber Kill Chain (Lockheed Martin):</strong>
+                    <ul>
+                        <li>Älter als MITRE (2011)</li>
+                        <li>7 Phasen: Recon → Weaponization → Delivery → Exploitation → Installation → C2 → Actions</li>
+                        <li>Einfacher, aber weniger detailliert</li>
+                    </ul>
+                </li>
+                <li><strong>NIST Cybersecurity Framework:</strong>
+                    <ul>
+                        <li>5 Funktionen: Identify → Protect → Detect → Respond → Recover</li>
+                        <li>Mehr Compliance-fokussiert, weniger technisch</li>
+                    </ul>
+                </li>
+                <li><strong>Sigma Rules:</strong>
+                    <ul>
+                        <li>Open Signature Format für SIEM Rules</li>
+                        <li>SIEM-agnostisch (convertierbar zu Splunk, Elastic, QRadar)</li>
+                        <li>Community-driven (GitHub)</li>
+                        <li>Oft mit MITRE-Tags versehen</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>MITRE in Action - Beispiel:</h3>
+            <strong>APT29 (Cozy Bear / Russian SVR):</strong>
+            <ul>
+                <li>Initial Access: T1566.002 (Spearphishing Link)</li>
+                <li>Execution: T1059.001 (PowerShell)</li>
+                <li>Persistence: T1053.005 (Scheduled Task)</li>
+                <li>Defense Evasion: T1070.004 (File Deletion)</li>
+                <li>Credential Access: T1003 (Credential Dumping)</li>
+                <li>Discovery: T1082 (System Information Discovery)</li>
+                <li>Lateral Movement: T1021.001 (Remote Desktop Protocol)</li>
+                <li>Collection: T1005 (Data from Local System)</li>
+                <li>Exfiltration: T1041 (Exfiltration Over C2 Channel)</li>
+            </ul>
+            → SOC kann Use Cases für genau diese Techniques aktivieren!
+        </div>
+        <em>MITRE ATT&CK ist DIE gemeinsame Sprache im Cyber Security - jedes SOC sollte es nutzen!</em>
     </div>
 
     <div data-tooltip-id="siem-retention">
         <h2>Log-Retention (Aufbewahrung)</h2>
-        <p>Wie lange werden Logs gespeichert?</p>
+        <p>Wie lange werden Logs gespeichert und in welchen Tiers?</p>
         <div>
-            <h3>Compliance-Anforderungen:</h3>
+            <h3>Compliance-Anforderungen im Detail:</h3>
             <ul>
-                <li><strong>DSGVO:</strong> Minimal nötig, meist 6-12 Monate</li>
-                <li><strong>KRITIS:</strong> Minimum 6 Monate</li>
-                <li><strong>PCI DSS:</strong> Minimum 90 Tage online, 1 Jahr Archiv</li>
-                <li><strong>SOX:</strong> 7 Jahre für finanzrelevante Logs</li>
-                <li><strong>HIPAA:</strong> 6 Jahre für Healthcare</li>
+                <li><strong>DSGVO (EU):</strong>
+                    <ul>
+                        <li>Speicherdauer-Minimierung: "Nicht länger als nötig"</li>
+                        <li>Typisch 6-12 Monate für Security-Logs</li>
+                        <li>Personenbezogene Daten nach Zweckerfüllung löschen</li>
+                        <li>Aber: Sicherheits-Incidents rechtfertigen längere Speicherung</li>
+                    </ul>
+                </li>
+                <li><strong>KRITIS (DE - BSI-Gesetz):</strong>
+                    <ul>
+                        <li>Minimum 6 Monate für Angriffs-Erkennung</li>
+                        <li>Empfohlen: 12 Monate</li>
+                        <li>Incident-relevante Logs: 7 Jahre</li>
+                    </ul>
+                </li>
+                <li><strong>PCI DSS (Payment Card Industry):</strong>
+                    <ul>
+                        <li>Requirement 10.7: Minimum 90 Tage online verfügbar</li>
+                        <li>Minimum 1 Jahr Archiv (schnell abrufbar)</li>
+                        <li>Audit-Logs müssen manipulationssicher sein</li>
+                    </ul>
+                </li>
+                <li><strong>SOX (Sarbanes-Oxley Act):</strong>
+                    <ul>
+                        <li>7 Jahre für finanzrelevante Logs</li>
+                        <li>E-Mails, Transaktionen, Audit-Trails</li>
+                    </ul>
+                </li>
+                <li><strong>HIPAA (US Healthcare):</strong>
+                    <ul>
+                        <li>6 Jahre für Healthcare-relevante Logs</li>
+                    </ul>
+                </li>
+                <li><strong>NIS2-Richtlinie (EU, ab 2024):</strong>
+                    <ul>
+                        <li>Kritische Infrastruktur: Logs für Forensik aufbewahren</li>
+                        <li>Empfohlen: 12-24 Monate</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Typische Retention-Strategie:</h3>
+            <h3>Storage-Tier-Strategie (Best Practice):</h3>
             <ul>
-                <li><strong>Hot Storage (Online):</strong> 90 Tage - schneller Zugriff</li>
-                <li><strong>Warm Storage:</strong> 1 Jahr - langsamerer Zugriff</li>
-                <li><strong>Cold Storage (Archiv):</strong> 7 Jahre - Tape/Cloud</li>
+                <li><strong>Hot Storage (Online / Fast):</strong>
+                    <ul>
+                        <li>30-90 Tage</li>
+                        <li>SSD / High-Performance Storage</li>
+                        <li>Sofortige Search möglich (&lt;1 Sekunde)</li>
+                        <li>Für aktives Threat Hunting und Incident Response</li>
+                        <li>Teuer: ~€1-5 per GB/Monat</li>
+                    </ul>
+                </li>
+                <li><strong>Warm Storage (Nearline / Medium Speed):</strong>
+                    <ul>
+                        <li>90 Tage - 1 Jahr</li>
+                        <li>HDD / Standard Storage</li>
+                        <li>Search in Minuten möglich</li>
+                        <li>Für Compliance-Reports und historische Analyse</li>
+                        <li>Medium: ~€0.10-0.50 per GB/Monat</li>
+                    </ul>
+                </li>
+                <li><strong>Cold Storage (Archiv / Slow):</strong>
+                    <ul>
+                        <li>1-7 Jahre</li>
+                        <li>Tape, Object Storage (S3 Glacier), Archiv-Systeme</li>
+                        <li>Search in Stunden/Tagen (Restore nötig)</li>
+                        <li>Nur für Compliance und lange Aufbewahrung</li>
+                        <li>Günstig: ~€0.01-0.05 per GB/Monat</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Storage-Bedarf:</h3>
-            Bei 100 GB/Tag:
+            <h3>Beispiel-Retention-Policy:</h3>
             <ul>
-                <li>90 Tage = 9 TB</li>
-                <li>1 Jahr = 36,5 TB</li>
-                <li>7 Jahre = 255 TB (komprimiert ~50 TB)</li>
+                <li><strong>Security-kritische Logs (Firewall, AD, IDS):</strong>
+                    <ul>
+                        <li>90 Tage Hot</li>
+                        <li>1 Jahr Warm</li>
+                        <li>7 Jahre Cold</li>
+                    </ul>
+                </li>
+                <li><strong>Standard-Server-Logs:</strong>
+                    <ul>
+                        <li>30 Tage Hot</li>
+                        <li>6 Monate Warm</li>
+                        <li>1 Jahr Cold (dann löschen)</li>
+                    </ul>
+                </li>
+                <li><strong>Application Debug-Logs:</strong>
+                    <ul>
+                        <li>7 Tage Hot (dann löschen - zu viel Noise)</li>
+                    </ul>
+                </li>
+                <li><strong>Compliance-relevante Logs (Financial, Healthcare):</strong>
+                    <ul>
+                        <li>90 Tage Hot</li>
+                        <li>7 Jahre Cold (Compliance-Pflicht)</li>
+                    </ul>
+                </li>
             </ul>
         </div>
-        <em>Längere Retention = mehr Forensik-Möglichkeiten, aber mehr Storage-Kosten!</em>
+        <div>
+            <h3>Storage-Berechnung (Beispiel):</h3>
+            <strong>Szenario: 500 GB Logs/Tag</strong>
+            <ul>
+                <li>Hot (90 Tage): 500 GB × 90 = 45 TB × €2/GB = €90k/Monat</li>
+                <li>Warm (1 Jahr): 500 GB × 365 = 182 TB × €0.30/GB = €54k/Monat</li>
+                <li>Cold (7 Jahre, komprimiert 10:1): 500 GB × 365 × 7 ÷ 10 = 127 TB × €0.02/GB = €2.5k/Monat</li>
+                <li><strong>Gesamt: ~€146k/Monat Storage-Kosten!</strong></li>
+            </ul>
+            → Daher: Log-Filtering wichtig (nur relevante Logs aufheben)
+        </div>
+        <div>
+            <h3>Log-Lifecycle-Management:</h3>
+            <ol>
+                <li>Logs werden ingested → Hot Storage</li>
+                <li>Nach 90 Tagen: Automatisch zu Warm Storage verschieben</li>
+                <li>Nach 1 Jahr: Komprimieren + zu Cold Storage</li>
+                <li>Nach 7 Jahren: Automatisch löschen (außer Incident-relevant)</li>
+            </ol>
+        </div>
+        <div>
+            <h3>Rechtliche Aspekte:</h3>
+            <ul>
+                <li><strong>Legal Hold:</strong> Bei laufendem Rechtsverfahren dürfen Logs NICHT gelöscht werden</li>
+                <li><strong>Deletion Policy:</strong> Nach Ablauf Retention automatisch löschen (DSGVO-Konform)</li>
+                <li><strong>Audit-Trail:</strong> Wer hat wann welche Logs gelöscht? (Manipulationsschutz)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Cloud vs. On-Premise Storage:</h3>
+            <ul>
+                <li><strong>Cloud (AWS S3, Azure Blob):</strong>
+                    <ul>
+                        <li>Unlimitiert skalierbar</li>
+                        <li>Tier-System integriert (S3 Standard → Glacier)</li>
+                        <li>Pay-as-you-go</li>
+                        <li>Aber: Egress-Kosten beim Abrufen!</li>
+                    </ul>
+                </li>
+                <li><strong>On-Premise:</strong>
+                    <ul>
+                        <li>Hardware-Investition nötig</li>
+                        <li>Volle Kontrolle</li>
+                        <li>Gut für sensible Daten (KRITIS)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <em>Retention-Strategie: Security-Bedarf + Compliance + Kosten in Balance bringen!</em>
     </div>
 
     <div data-tooltip-id="siem-alerting">

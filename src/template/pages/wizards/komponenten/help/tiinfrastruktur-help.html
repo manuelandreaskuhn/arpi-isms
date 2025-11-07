@@ -4,158 +4,406 @@
         <p>Ein eindeutiger Name für Ihre Telematikinfrastruktur-Anbindung.</p>
         <div>
             <h3>Was ist die Telematikinfrastruktur (TI):</h3>
-            Das geschützte Netzwerk des deutschen Gesundheitswesens – wie ein "Intranet für Ärzte, Krankenhäuser und Apotheken".
+            Das geschützte, hochsichere Netzwerk des deutschen Gesundheitswesens – wie ein "spezielles Intranet nur für medizinische Einrichtungen".
         </div>
         <div>
-            <h3>Warum TI essentiell ist:</h3>
+            <h3>Warum TI essentiell und verpflichtend ist:</h3>
             <ul>
-                <li><strong>Gesetzliche Pflicht:</strong> Krankenhäuser und Arztpraxen MÜSSEN angeschlossen sein</li>
-                <li><strong>E-Rezept:</strong> Elektronische Rezepte nur über TI</li>
-                <li><strong>ePA:</strong> Elektronische Patientenakte</li>
-                <li><strong>KIM:</strong> Sichere Kommunikation zwischen Ärzten</li>
-                <li><strong>VSDM:</strong> Versichertenstammdaten online prüfen</li>
+                <li><strong>Gesetzliche Pflicht:</strong>
+                    <ul>
+                        <li>Seit 2019: Alle Vertragsärzte müssen angeschlossen sein</li>
+                        <li>Seit 2021: Alle Krankenhäuser (§ 371 SGB V)</li>
+                        <li>Bei Nicht-Anschluss: Honorarkürzungen bis zu 2,5%</li>
+                    </ul>
+                </li>
+                <li><strong>E-Rezept:</strong>
+                    <ul>
+                        <li>Seit 01.01.2024 Pflicht für alle Ärzte</li>
+                        <li>Papierrezept wird abgeschafft</li>
+                        <li>Nur über TI möglich</li>
+                    </ul>
+                </li>
+                <li><strong>ePA (elektronische Patientenakte):</strong>
+                    <ul>
+                        <li>Ab 2025 Opt-Out (automatisch für alle Versicherten)</li>
+                        <li>Ärzte müssen befüllen können</li>
+                        <li>Zugriff nur über TI</li>
+                    </ul>
+                </li>
+                <li><strong>KIM (Kommunikation im Medizinwesen):</strong>
+                    <ul>
+                        <li>Sichere E-Mail zwischen Ärzten</li>
+                        <li>Ersetzt Fax und unsichere E-Mail</li>
+                        <li>DSGVO-konform</li>
+                    </ul>
+                </li>
+                <li><strong>VSDM (Versichertenstammdaten-Management):</strong>
+                    <ul>
+                        <li>Online-Abgleich der Versichertendaten</li>
+                        <li>Seit Jahren Pflicht</li>
+                        <li>Vermeidet Abrechnungsfehler</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
             <h3>Namens-Beispiele:</h3>
             <ul>
                 <li>"TI-Anbindung-Hauptstandort" – TI am Hauptstandort</li>
-                <li>"TI-Praxis-01" – TI in Praxis 1</li>
+                <li>"TI-Praxis-Dr-Mueller" – TI in Einzelpraxis</li>
+                <li>"TI-Klinikum-Sued" – TI im Klinikum Süd</li>
                 <li>"TI-MVZ-Kardiologie" – TI im MVZ Kardiologie</li>
             </ul>
         </div>
-        <em>TI ist für alle Leistungserbringer im deutschen Gesundheitswesen Pflicht!</em>
+        <div>
+            <h3>Kosten (Richtwerte):</h3>
+            <ul>
+                <li>Konnektor: €2.000–€5.000 (Einmalig)</li>
+                <li>Betrieb: €500–€2.000/Jahr (je nach Dienstleister)</li>
+                <li>Aber: Förderung möglich (bis €5.000 für Praxen)</li>
+            </ul>
+        </div>
+        <em>TI ist für ALLE Leistungserbringer im deutschen Gesundheitswesen zwingend erforderlich!</em>
     </div>
 
     <div data-tooltip-id="ti-konnektor-vendor">
         <h2>Konnektor-Hersteller</h2>
         <p>Welcher Hersteller liefert den TI-Konnektor?</p>
         <div>
-            <h3>Was ist ein Konnektor:</h3>
-            Die "Firewall" und "VPN-Gateway" zur Telematikinfrastruktur – das zentrale Verbindungsgerät!
+            <h3>Was ist ein Konnektor (technisch):</h3>
+            <ul>
+                <li>Hardware-Security-Modul (HSM) + VPN-Gateway + Firewall in einem Gerät</li>
+                <li>Verschlüsselt alle Verbindungen zur TI (Ende-zu-Ende)</li>
+                <li>Authentifiziert Institution (via SMC-B)</li>
+                <li>Prüft Signaturen und Zertifikate</li>
+                <li>Isoliert TI vom Praxis-/Klinik-Netz</li>
+            </ul>
         </div>
         <div>
-            <h3>Zugelassene Hersteller:</h3>
+            <h3>Zugelassene Hersteller im Detail:</h3>
             <ul>
                 <li>
-                    <strong>Secunet:</strong>
+                    <strong>Secunet (Marktführer ~60%):</strong>
                     <ul>
-                        <li>Marktführer in Deutschland</li>
-                        <li>SINA-Technologie (Secure Inter-Network Architecture)</li>
-                        <li>Sehr sicher, bewährt</li>
-                        <li>Teurer als Konkurrenz</li>
-                        <li><em>Meist im Krankenhaus-Umfeld</em></li>
+                        <li>Secunet SINA (Secure Inter-Network Architecture)</li>
+                        <li>Made in Germany, höchste Sicherheitsstufe</li>
+                        <li>Seit Jahrzehnten in Bundesbehörden im Einsatz</li>
+                        <li>Sehr robust, bewährt, aber auch teuer</li>
+                        <li>Preis: €3.500–€5.000</li>
+                        <li><em>Typisch in Krankenhäusern und großen MVZ</em></li>
                     </ul>
                 </li>
                 <li>
-                    <strong>T-Systems:</strong>
+                    <strong>T-Systems (~25%):</strong>
                     <ul>
+                        <li>eHealth-Konnektor (früher: Telekom Healthcare Solutions)</li>
                         <li>Deutsche Telekom Tochter</li>
-                        <li>eHealth-Konnektor</li>
-                        <li>Gut integriert mit Telekom-Infrastruktur</li>
-                        <li>Mittelpreisig</li>
+                        <li>Gut integriert mit Telekom-Infrastruktur (SIA)</li>
+                        <li>Mittelpreisig: €2.500–€4.000</li>
+                        <li>Guter Kompromiss Preis/Leistung</li>
                     </ul>
                 </li>
                 <li>
-                    <strong>RISE:</strong>
+                    <strong>RISE (~10%):</strong>
                     <ul>
                         <li>RISE eHealth Konnektor</li>
-                        <li>Kleinere Hersteller</li>
-                        <li>Günstiger</li>
-                        <li>Oft in Arztpraxen</li>
+                        <li>Kleinerer, spezialisierter Hersteller</li>
+                        <li>Günstiger: €2.000–€3.000</li>
+                        <li>Oft in Arztpraxen und kleinen MVZ</li>
+                        <li>Weniger Features als Secunet, aber ausreichend</li>
                     </ul>
                 </li>
                 <li>
-                    <strong>CompuGroup Medical (CGM):</strong>
+                    <strong>CompuGroup Medical / CGM (~5%):</strong>
                     <ul>
                         <li>CGM LAUER-FISCHER Konnektor</li>
-                        <li>Gut integriert mit CGM-Praxissoftware</li>
-                        <li>Für Praxen und kleinere Einrichtungen</li>
+                        <li>Gut integriert mit CGM-Praxissoftware (M1, Albis, etc.)</li>
+                        <li>Für Praxen optimiert</li>
+                        <li>Mittelpreisig</li>
+                        <li>Bundle-Angebote mit Software möglich</li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div>
-            <h3>Wichtig:</h3>
-            Nur Gematik-zugelassene Konnektoren dürfen betrieben werden!
+            <h3>Entscheidungskriterien:</h3>
+            <ul>
+                <li><strong>Größe:</strong>
+                    <ul>
+                        <li>Arztpraxis: RISE, CGM ausreichend</li>
+                        <li>MVZ: T-Systems, CGM</li>
+                        <li>Krankenhaus: Secunet, T-Systems</li>
+                    </ul>
+                </li>
+                <li><strong>Budget:</strong>
+                    <ul>
+                        <li>Knapp: RISE</li>
+                        <li>Mittel: T-Systems, CGM</li>
+                        <li>Hoch / KRITIS: Secunet</li>
+                    </ul>
+                </li>
+                <li><strong>Praxissoftware:</strong>
+                    <ul>
+                        <li>CGM-Software → CGM Konnektor (beste Integration)</li>
+                        <li>Andere: Alle Konnektoren kompatibel (Standard-Schnittstellen)</li>
+                    </ul>
+                </li>
+                <li><strong>Support:</strong>
+                    <ul>
+                        <li>Alle Hersteller bieten Support</li>
+                        <li>Secunet: Beste (aber teuerste)</li>
+                        <li>T-Systems: Gut (Telekom-Netz)</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-        <em>Konnektor ist das Herzstück der TI-Anbindung – ohne ihn keine TI!</em>
+        <div>
+            <h3>Wichtig - Gematik-Zulassung:</h3>
+            Nur Gematik-zugelassene Konnektoren dürfen betrieben werden! Zulassungsliste: https://fachportal.gematik.de
+        </div>
+        <div>
+            <h3>Hardware-Specs (typisch):</h3>
+            <ul>
+                <li>CPU: Intel/ARM (low-power)</li>
+                <li>RAM: 2–4 GB</li>
+                <li>Storage: 16–64 GB SSD</li>
+                <li>Interfaces: 2x Ethernet (LAN + TI), USB für Kartenleser</li>
+                <li>Form-Factor: Meist DIN-Rail montierbar</li>
+            </ul>
+        </div>
+        <em>Konnektor ist das zentrale Sicherheitsmodul – ohne ihn keine TI-Verbindung!</em>
     </div>
 
     <div data-tooltip-id="ti-konnektor-firmware">
         <h2>Firmware-Version</h2>
         <p>Die installierte Software-Version auf dem Konnektor.</p>
         <div>
-            <h3>Warum Firmware-Updates kritisch sind:</h3>
+            <h3>Warum Firmware-Updates absolut kritisch sind:</h3>
             <ul>
-                <li><strong>Sicherheit:</strong> Patches für Sicherheitslücken</li>
-                <li><strong>Neue Fachdienste:</strong> Z.B. E-Rezept braucht aktuelle Firmware</li>
-                <li><strong>Compliance:</strong> Alte Versionen verlieren Zulassung</li>
-                <li><strong>Bug-Fixes:</strong> Stabilität und Performance</li>
+                <li><strong>Sicherheit:</strong>
+                    <ul>
+                        <li>TI ist Hochsicherheitsnetz → Zero-Day-Exploits müssen sofort gepatcht werden</li>
+                        <li>Konnektoren sind exponiert (Internet-Facing via VPN)</li>
+                        <li>Alte Firmware = Einfallstor für Ransomware</li>
+                    </ul>
+                </li>
+                <li><strong>Neue Fachdienste:</strong>
+                    <ul>
+                        <li>E-Rezept braucht Firmware ≥ 5.0.0</li>
+                        <li>ePA 2.0 (ab 2025) braucht Firmware ≥ 5.2.0</li>
+                        <li>Alte Firmware = Fachdienste nicht nutzbar</li>
+                    </ul>
+                </li>
+                <li><strong>Compliance / Zulassung:</strong>
+                    <ul>
+                        <li>Gematik kann alte Versionen für ungültig erklären</li>
+                        <li>Nach Stichtag: Konnektor wird gesperrt!</li>
+                        <li>Betrieb ohne gültige Firmware = Ordnungswidrigkeit</li>
+                    </ul>
+                </li>
+                <li><strong>Bug-Fixes & Stabilität:</strong>
+                    <ul>
+                        <li>Verbindungsabbrüche zu KIM</li>
+                        <li>Langsame E-Rezept-Verarbeitung</li>
+                        <li>Speicherlecks (Memory Leaks)</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Update-Prozess:</h3>
+            <h3>Update-Prozess (typisch):</h3>
+            <ol>
+                <li><strong>Notification:</strong> Hersteller informiert über neue Version (E-Mail, Dashboard)</li>
+                <li><strong>Download:</strong> Firmware wird bereitgestellt (oft automatisch)</li>
+                <li><strong>Planung:</strong> Update-Fenster festlegen (nachts, Wochenende)</li>
+                <li><strong>Backup:</strong> Konnektor-Konfiguration sichern</li>
+                <li><strong>Installation:</strong> 
+                    <ul>
+                        <li>Automatisch: Konnektor lädt selbst herunter und installiert</li>
+                        <li>Manuell: Admin startet Update über Web-Interface</li>
+                    </ul>
+                </li>
+                <li><strong>Reboot:</strong> Konnektor startet neu (5–30 Minuten Downtime)</li>
+                <li><strong>Test:</strong> Alle Fachdienste prüfen (VSDM, KIM, E-Rezept)</li>
+                <li><strong>Rollback:</strong> Bei Problemen: Zurück zur alten Version (falls möglich)</li>
+            </ol>
+        </div>
+        <div>
+            <h3>Update-Strategien:</h3>
             <ul>
-                <li>Oft automatisch über Nacht</li>
-                <li>Manche Hersteller: Manuelles Update nötig</li>
-                <li>Downtime von 5–30 Minuten</li>
-                <li>Koordination mit Fachdiensten wichtig</li>
+                <li><strong>Automatisch (empfohlen):</strong>
+                    <ul>
+                        <li>Konnektor updated sich selbst (z.B. Sonntag 2 Uhr)</li>
+                        <li>Kein Admin-Eingriff nötig</li>
+                        <li>Aber: Kein Control über Zeitpunkt</li>
+                    </ul>
+                </li>
+                <li><strong>Manuell geplant:</strong>
+                    <ul>
+                        <li>Admin startet Update bewusst</li>
+                        <li>Nach Wartungsfenster-Abstimmung</li>
+                        <li>Mehr Kontrolle, aber Admin-Aufwand</li>
+                    </ul>
+                </li>
+                <li><strong>Staged Rollout (Krankenhäuser):</strong>
+                    <ul>
+                        <li>Erst Test-Konnektor updaten</li>
+                        <li>Testen, ob alles funktioniert</li>
+                        <li>Dann Produktiv-Konnektoren</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Beispiel-Versionen:</h3>
-            "5.2.1", "PTV4+ Update 5", "2024-Q2"
+            <h3>Beispiel-Versionen & Namensschema:</h3>
+            <ul>
+                <li><strong>Secunet:</strong> "5.2.1", "PTV4+ Update 5"</li>
+                <li><strong>T-Systems:</strong> "2024-Q2", "V5.0.3"</li>
+                <li><strong>RISE:</strong> "2024.06", "5.1.0"</li>
+            </ul>
         </div>
-        <em>Firmware MUSS aktuell gehalten werden – alte Versionen = Sicherheitsrisiko!</em>
+        <div>
+            <h3>Downtime bei Update:</h3>
+            <ul>
+                <li>Typisch: 10–30 Minuten</li>
+                <li>In dieser Zeit: Keine TI-Dienste verfügbar (kein E-Rezept, kein VSDM!)</li>
+                <li>→ Update nachts oder am Wochenende</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>Automatische Updates aktivieren (außer Produktiv-Krankenhäuser)</li>
+                <li>Monitoring einrichten (E-Mail bei erfolgreichem/fehlgeschlagenem Update)</li>
+                <li>Nach Update: Alle Fachdienste manuell testen</li>
+                <li>Konnektor-Zugang dokumentieren (falls manuelles Rollback nötig)</li>
+            </ul>
+        </div>
+        <em>Firmware MUSS aktuell gehalten werden – alte Version = Security-Risiko + Compliance-Verstoß!</em>
     </div>
 
     <div data-tooltip-id="ti-gateway">
         <h2>TI-Gateway / VPN-Zugangsdienst</h2>
         <p>Wie ist der Konnektor mit der Telematikinfrastruktur verbunden?</p>
         <div>
-            <h3>Verbindungstypen erklärt:</h3>
+            <h3>TI-Netzwerk-Architektur (vereinfacht):</h3>
+            <ul>
+                <li>Praxis/Klinik-LAN → Konnektor → VPN/Leitung → TI-Gateway → TI-Core-Network → Fachdienste</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Verbindungstypen im Detail:</h3>
             <ul>
                 <li>
                     <strong>Sichere Internetanbindung (SIA):</strong>
                     <ul>
-                        <li>VPN über normales Internet</li>
-                        <li>Verschlüsselter Tunnel</li>
-                        <li>Günstiger, flexibler</li>
-                        <li>Abhängig von Internet-Qualität</li>
-                        <li><em>Standard für Arztpraxen</em></li>
+                        <li>VPN-Tunnel über normales Internet (DSL, Kabel, Glasfaser)</li>
+                        <li>IPsec oder SSL-VPN</li>
+                        <li>Verschlüsselt (AES-256)</li>
+                        <li>Abhängig von Internet-Qualität (Latenz, Paketverlust)</li>
+                        <li>Günstiger: €20–€50/Monat (nur Internet-Kosten)</li>
+                        <li><strong>Vorteile:</strong>
+                            <ul>
+                                <li>Flexibel (jeder Internet-Provider möglich)</li>
+                                <li>Schnell eingerichtet</li>
+                                <li>Kostengünstig</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nachteile:</strong>
+                            <ul>
+                                <li>Best-Effort (keine Bandbreiten-Garantie)</li>
+                                <li>Bei Internet-Ausfall: Keine TI</li>
+                                <li>Latenz variabel</li>
+                            </ul>
+                        </li>
+                        <li><em>Standard für 90% der Arztpraxen</em></li>
                     </ul>
                 </li>
                 <li>
                     <strong>VPN-Zugangsdienst (VPN-ZugD):</strong>
                     <ul>
-                        <li>Managed VPN vom Provider</li>
-                        <li>Höhere Verfügbarkeit</li>
-                        <li>Garantierte Bandbreite</li>
-                        <li>Teurer als SIA</li>
-                        <li><em>Oft bei Krankenhäusern</em></li>
+                        <li>Managed VPN vom TI-Access-Provider</li>
+                        <li>Dedizierte VPN-Infrastruktur (nicht Best-Effort-Internet)</li>
+                        <li>SLA: Verfügbarkeit 99,5% garantiert</li>
+                        <li>Bandbreite zugesichert</li>
+                        <li>Priorisierter Traffic</li>
+                        <li>Teurer: €100–€300/Monat</li>
+                        <li><strong>Vorteile:</strong>
+                            <ul>
+                                <li>Höhere Verfügbarkeit</li>
+                                <li>Garantierte Performance</li>
+                                <li>Support vom Provider</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nachteile:</strong>
+                            <ul>
+                                <li>Teurer</li>
+                                <li>Längere Einrichtungszeit (2–4 Wochen)</li>
+                                <li>Provider-Lock-In</li>
+                            </ul>
+                        </li>
+                        <li><em>Typisch bei Krankenhäusern, großen MVZ</em></li>
                     </ul>
                 </li>
                 <li>
                     <strong>Dedizierte Leitung:</strong>
                     <ul>
-                        <li>Eigene Standleitung zur TI</li>
-                        <li>Höchste Verfügbarkeit</li>
-                        <li>Sehr teuer</li>
-                        <li>Nur bei sehr großen Einrichtungen</li>
+                        <li>Eigene Standleitung zur TI (Glasfaser, Dark Fiber)</li>
+                        <li>Höchste Verfügbarkeit (99,9%+)</li>
+                        <li>Niedrigste Latenz (&lt;5ms)</li>
+                        <li>Sehr teuer: €500–€2.000/Monat</li>
+                        <li>Nur bei sehr großen Kliniken / Unikliniken</li>
+                        <li><em>Selten - nur bei KRITIS-Anforderungen</em></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div>
-            <h3>Bandbreite-Empfehlung:</h3>
+            <h3>Bandbreite-Anforderungen (Realwerte):</h3>
             <ul>
-                <li>Arztpraxis: 16–50 Mbit/s</li>
-                <li>MVZ: 50–100 Mbit/s</li>
-                <li>Krankenhaus: 100 Mbit/s – 1 Gbit/s</li>
+                <li><strong>Minimum (1 Arzt):</strong> 6 Mbit/s</li>
+                <li><strong>Arztpraxis (2–5 Ärzte):</strong> 16–50 Mbit/s</li>
+                <li><strong>MVZ (5–20 Ärzte):</strong> 50–100 Mbit/s</li>
+                <li><strong>Kleines Krankenhaus (bis 100 Betten):</strong> 100–250 Mbit/s</li>
+                <li><strong>Großes Krankenhaus (500+ Betten):</strong> 500 Mbit/s – 1 Gbit/s</li>
             </ul>
         </div>
-        <em>SIA reicht meist aus – VPN-ZugD nur bei hohen Verfügbarkeits-Anforderungen!</em>
+        <div>
+            <h3>Was verursacht Traffic:</h3>
+            <ul>
+                <li>VSDM: ~10 KB pro Patient (negligible)</li>
+                <li>E-Rezept: ~50 KB pro Rezept</li>
+                <li>KIM: ~500 KB – 5 MB pro Nachricht (mit Anhängen)</li>
+                <li>ePA: ~1–10 MB pro Zugriff (Dokumente laden)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Redundanz-Szenarien:</h3>
+            <ul>
+                <li><strong>Praxis:</strong> Keine Redundanz (SIA ausreichend)</li>
+                <li><strong>MVZ:</strong> Optional: Zweiter Internet-Anschluss (Failover)</li>
+                <li><strong>Krankenhaus:</strong>
+                    <ul>
+                        <li>Primary: VPN-ZugD</li>
+                        <li>Backup: SIA über zweiten Provider</li>
+                        <li>Automatisches Failover über Routing</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Provider (VPN-ZugD):</h3>
+            Deutsche Telekom, Vodafone, 1&1 Versatel, inexio (regional)
+        </div>
+        <div>
+            <h3>Empfehlung:</h3>
+            <ul>
+                <li>Arztpraxen: SIA über DSL/Kabel/Glasfaser (ausreichend)</li>
+                <li>Krankenhäuser: VPN-ZugD (SLA wichtig für 24/7-Betrieb)</li>
+                <li>Hybrid: SIA Primary + Mobil-Backup (LTE/5G-Router für Notfall)</li>
+            </ul>
+        </div>
+        <em>SIA reicht für 90% der Fälle – VPN-ZugD nur bei hohen Verfügbarkeits-Anforderungen!</em>
     </div>
 
     <div data-tooltip-id="ti-smcb">
@@ -200,71 +448,151 @@
 
     <div data-tooltip-id="ti-fachdienste">
         <h2>TI-Fachdienste</h2>
-        <p>Die "Apps" der Telematikinfrastruktur – konkrete Anwendungen.</p>
+        <p>Die konkreten Anwendungen der Telematikinfrastruktur.</p>
         <div>
-            <h3>Fachdienste erklärt:</h3>
+            <h3>Fachdienste im Detail (Stand 2024/2025):</h3>
             <ul>
                 <li>
                     <strong>KIM (Kommunikation im Medizinwesen):</strong>
                     <ul>
-                        <li>Sichere E-Mail für Ärzte</li>
-                        <li>Ende-zu-Ende verschlüsselt</li>
-                        <li>Arztbriefe, Befunde verschicken</li>
-                        <li><em>Ersetzt Fax!</em></li>
+                        <li><strong>Status:</strong> Produktiv seit 2021, Pflicht ab 2026</li>
+                        <li><strong>Was ist KIM:</strong> Sicheres E-Mail-System für Gesundheitswesen</li>
+                        <li><strong>Funktionen:</strong>
+                            <ul>
+                                <li>Ende-zu-Ende-Verschlüsselung (S/MIME)</li>
+                                <li>Arztbriefe, Befunde, Bilder versenden</li>
+                                <li>Ersetzt Fax und unsichere E-Mail</li>
+                                <li>Integration in Praxissoftware</li>
+                            </ul>
+                        </li>
+                        <li><strong>KIM-Adresse:</strong> Format "praxis-mueller@kim.telematik"</li>
+                        <li><strong>Max. Anhang-Größe:</strong> 25 MB (später: bis 500 MB via KOM-LE)</li>
+                        <li><strong>Kosten:</strong> €50–€200/Jahr (je nach Anbieter)</li>
+                        <li><em>Wird Fax ablösen – alle Praxen sollten KIM haben!</em></li>
                     </ul>
                 </li>
                 <li>
                     <strong>E-Rezept:</strong>
                     <ul>
-                        <li>Elektronisches Rezept</li>
-                        <li>Patient bekommt Code statt Zettel</li>
-                        <li>Apotheke löst online ein</li>
-                        <li><em>Seit 2024 Pflicht!</em></li>
+                        <li><strong>Status:</strong> Pflicht seit 01.01.2024</li>
+                        <li><strong>Wie funktioniert's:</strong>
+                            <ul>
+                                <li>Arzt erstellt Rezept in Praxissoftware</li>
+                                <li>Rezept wird in TI hochgeladen</li>
+                                <li>Patient bekommt 16-stelligen Code (Token)</li>
+                                <li>Apotheke ruft Rezept mit Code ab</li>
+                                <li>Alternativ: Rezept in eGK (Karte) oder E-Rezept-App</li>
+                            </ul>
+                        </li>
+                        <li><strong>Vorteile:</strong>
+                            <ul>
+                                <li>Kein Papier-Rezept verloren</li>
+                                <li>Apotheke kann Verfügbarkeit prüfen</li>
+                                <li>Patient kann online einlösen</li>
+                            </ul>
+                        </li>
+                        <li><strong>Herausforderungen:</strong>
+                            <ul>
+                                <li>Ältere Patienten: Umstellung schwierig</li>
+                                <li>Technische Probleme (Server-Ausfälle)</li>
+                                <li>Notfall-Prozess bei TI-Ausfall nötig</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li>
-                    <strong>ePA (elektronische Patientenakte):</strong>
+                    <strong>ePA (elektronische Patientenakte) 2.0:</strong>
                     <ul>
-                        <li>Digitale Akte für jeden Versicherten</li>
-                        <li>Patient hat volle Kontrolle</li>
-                        <li>Arzt kann (mit Einwilligung) Daten einsehen</li>
-                        <li>Opt-Out seit 2025</li>
+                        <li><strong>Status:</strong> Ab 15.01.2025 Opt-Out (automatisch für alle!)</li>
+                        <li><strong>Was ist ePA 2.0:</strong>
+                            <ul>
+                                <li>Digitale Akte für JEDEN gesetzlich Versicherten</li>
+                                <li>Opt-Out: Patient muss widersprechen (sonst automatisch)</li>
+                                <li>Patient hat volle Kontrolle (Zugriffsrechte)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Inhalte:</strong>
+                            <ul>
+                                <li>Befunde, Arztbriefe, Labor-Ergebnisse</li>
+                                <li>Röntgenbilder, MRT, CT</li>
+                                <li>Impfpass, Mutterpass, Zahnbonus</li>
+                                <li>Medikationsplan</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pflichten für Ärzte (ab 2025):</strong>
+                            <ul>
+                                <li>Befunde MÜSSEN in ePA hochgeladen werden</li>
+                                <li>Patient kann Zugriff erlauben/verweigern</li>
+                                <li>Bei Verweigerung: Dokumentationspflicht</li>
+                            </ul>
+                        </li>
+                        <li><strong>Technik:</strong>
+                            <ul>
+                                <li>Zugriff via TI-Konnektor</li>
+                                <li>Integration in Praxissoftware nötig</li>
+                                <li>Patient-App für Smartphone</li>
+                            </ul>
+                        </li>
+                        <li><em>Größte Veränderung 2025 – alle Praxen betroffen!</em></li>
                     </ul>
                 </li>
                 <li>
                     <strong>NFDM (Notfalldatenmanagement):</strong>
                     <ul>
                         <li>Notfalldaten auf eGK (elektronische Gesundheitskarte)</li>
-                        <li>Medikation, Allergien, Vorerkrankungen</li>
-                        <li>Für Notfälle</li>
+                        <li>Medikation, Allergien, Vorerkrankungen, Implantate</li>
+                        <li>Für Notfälle / Bewusstlosigkeit</li>
+                        <li>Nur mit Patient-Einwilligung</li>
                     </ul>
                 </li>
                 <li>
                     <strong>VSDM (Versichertenstammdaten-Management):</strong>
                     <ul>
-                        <li>Online-Prüfung der Versichertendaten</li>
-                        <li>Adresse, Versichertenstatus aktuell?</li>
-                        <li><em>Seit Jahren Pflicht</em></li>
+                        <li><strong>Status:</strong> Seit 2019 Pflicht (ältester Fachdienst)</li>
+                        <li>Online-Abgleich der Versichertendaten</li>
+                        <li>Prüfung: Name, Adresse, Versichertenstatus aktuell?</li>
+                        <li>Vermeidet Abrechnungsfehler</li>
+                        <li>Ersetzt Quartalszettel-Aufdruck</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>VSDD (Versichertenstammdaten-Dienst):</strong>
+                    <ul>
+                        <li>Nachfolger von VSDM</li>
+                        <li>Erweiterte Funktionen</li>
+                        <li>Rollout läuft</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>TI-SQSig (Qualifizierte elektronische Signatur):</strong>
+                    <ul>
+                        <li>Rechtsgültige Unterschrift (wie handschriftlich)</li>
+                        <li>Für Verträge, Rezepte, Dokumentation</li>
+                        <li>Mit Heilberufsausweis (HBA)</li>
                     </ul>
                 </li>
                 <li>
                     <strong>eML (elektronischer Medikationsplan):</strong>
                     <ul>
-                        <li>Alle Medikamente zentral</li>
-                        <li>Wechselwirkungen erkennen</li>
+                        <li>Alle Medikamente zentral in ePA</li>
+                        <li>Wechselwirkungen automatisch prüfen</li>
+                        <li>Mehrere Ärzte sehen gleichen Plan</li>
+                        <li>Vermeidet Doppel-Verschreibungen</li>
                     </ul>
                 </li>
                 <li>
                     <strong>eAU (elektronische Arbeitsunfähigkeitsbescheinigung):</strong>
                     <ul>
+                        <li><strong>Status:</strong> Seit 01.01.2023 Pflicht</li>
                         <li>Digitale Krankmeldung</li>
-                        <li>Direkt an Krankenkasse</li>
-                        <li>Kein gelber Zettel mehr</li>
+                        <li>Arzt sendet direkt an Krankenkasse</li>
+                        <li>Arbeitgeber ruft online ab (mit Einwilligung Arbeitnehmer)</li>
+                        <li>Kein gelber Zettel mehr (Ausnahme: Arbeitnehmer besteht darauf)</li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <em>Nicht alle Fachdienste sind sofort verfügbar – Roll-Out läuft gestaffelt!</em>
+        <em>Nicht alle Fachdienste sind sofort verfügbar – Rollout läuft gestaffelt über Jahre!</em>
     </div>
 
     <div data-tooltip-id="ti-security">
@@ -406,21 +734,96 @@
         <h2>Notizen / TI-Besonderheiten</h2>
         <p>Zusätzliche wichtige Informationen zur TI-Infrastruktur.</p>
         <div>
-            <h3>Was dokumentieren:</h3>
+            <h3>Was dokumentieren (Best Practice):</h3>
             <ul>
-                <li>Spezielle Konfigurationen (z.B. besondere Firewall-Regeln)</li>
-                <li>Bekannte Probleme und Workarounds</li>
-                <li>Kontakte (Konnektor-Support, SMC-B Beantragung)</li>
-                <li>Wartungsfenster (z.B. Firmware-Updates nachts)</li>
-                <li>Abhängigkeiten (welche Systeme brauchen TI?)</li>
-                <li>Historische Incidents (Ausfälle, Ursachen)</li>
-                <li>Geplante Änderungen (neue Fachdienste aktivieren)</li>
+                <li><strong>Konfiguration:</strong>
+                    <ul>
+                        <li>Konnektor: Modell, Seriennummer, Firmware-Version</li>
+                        <li>Netzwerk: VLAN, IP-Adresse, Firewall-Regeln</li>
+                        <li>SMC-B: Kartennummer, Gültigkeit, Beantragungsprozess</li>
+                        <li>Kartenleser: Modell, Treiber-Version</li>
+                    </ul>
+                </li>
+                <li><strong>Kontakte & Support:</strong>
+                    <ul>
+                        <li>Konnektor-Support-Hotline (Secunet, T-Systems)</li>
+                        <li>TI-Dienstleister (Name, Vertragslaufzeit, SLA)</li>
+                        <li>SMC-B Beantragung (KV, Krankenkasse, Kontaktperson)</li>
+                        <li>Praxissoftware-Support (für TI-Integration)</li>
+                    </ul>
+                </li>
+                <li><strong>Bekannte Probleme & Workarounds:</strong>
+                    <ul>
+                        <li>Typisch: KIM-Verbindung bricht ab → Neustart Konnektor</li>
+                        <li>E-Rezept langsam → Netzwerk-Latenz prüfen</li>
+                        <li>VSDM-Timeout → Kartenleser-Treiber aktualisieren</li>
+                    </ul>
+                </li>
+                <li><strong>Wartungsfenster:</strong>
+                    <ul>
+                        <li>Firmware-Updates: Wann? (z.B. Sonntag 02:00–04:00)</li>
+                        <li>Downtime-Kommunikation (wer muss informiert werden?)</li>
+                    </ul>
+                </li>
+                <li><strong>Abhängigkeiten:</strong>
+                    <ul>
+                        <li>Welche Systeme brauchen TI? (Praxissoftware, KIS)</li>
+                        <li>Single Point of Failure? (kein Backup-Konnektor?)</li>
+                    </ul>
+                </li>
+                <li><strong>Historische Incidents:</strong>
+                    <ul>
+                        <li>Wann war TI down? Wie lange? Ursache?</li>
+                        <li>Lessons Learned</li>
+                    </ul>
+                </li>
+                <li><strong>Geplante Änderungen:</strong>
+                    <ul>
+                        <li>Neue Fachdienste aktivieren (ePA 2.0, KIM)</li>
+                        <li>Konnektor-Wechsel (Upgrade, anderer Hersteller)</li>
+                        <li>Netzwerk-Umbau (neues VLAN)</li>
+                    </ul>
+                </li>
+                <li><strong>Compliance & Audits:</strong>
+                    <ul>
+                        <li>Letzte Sicherheitsprüfung: Datum, Ergebnis</li>
+                        <li>Gematik-Zulassung: Gültig bis wann?</li>
+                        <li>SMC-B-Verlängerung: Deadline (6 Monate vorher!)</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Beispiel:</h3>
-            "Secunet SINA Konnektor V5.2.1, angeschlossen über VPN-ZugD (Telekom). SMC-B Krankenhaus gültig bis 31.08.2026 (ICCSN 80276...). Aktivierte Fachdienste: VSDM, KIM, E-Rezept. ePA-Aktivierung geplant Q2/2025. Bekanntes Problem: Nach Firmware-Update gelegentlich KIM-Verbindung gestört → Neustart Konnektor hilft. Wartungsfenster: Sonntag 02:00–04:00 Uhr. TI-Verantwortlich: IT-Abteilung (Müller), Support: Secunet Hotline +49...2000 (24/7), TI-Dienstleister: HealthIT GmbH (Vertrag bis 31.12.2025). Netzwerk: VLAN 100 (10.200.0.0/24), Konnektor-IP 10.200.0.10. Firewall-Regel FW-TI-001: Nur Port 443 zu Gematik, Port 443+995+993 zu KIM. SMC-B-Verlängerung beantragen bis 28.02.2026!"
+            <h3>Beispiel (Umfassende Dokumentation):</h3>
+            <pre>
+TI-Anbindung Hauptstandort – Klinikum Musterstadt
+
+=== HARDWARE ===
+Konnektor: Secunet SINA eHealth-Konnektor V5.2.1
+Serial: KON-2024-001234
+Firmware: 5.2.1 (letztes Update: 15.10.2024)
+Kartenleser: Cherry ST-2000 (USB), Treiber 3.5.2
+SMC-B: Typ Krankenhaus, ICCSN 80276883110000123456
+Gültig bis: 31.08.2026
+
+=== NETZWERK ===
+Verbindung: VPN-ZugD (Telekom Healthcare Connect)
+Bandbreite: 250 Mbit/s (garantiert)
+VLAN: 100 (TI-Segment, isoliert)
+Konnektor-IP: 10.200.0.10 / 255.255.255.0
+Gateway: 10.200.0.1
+Firewall-Regeln:
+  - FW-TI-001: Konnektor → Internet Port 443 (HTTPS zu Gematik)
+  - FW-TI-002: Konnektor → KIM Port 443, 995, 993 (HTTPS, POP3S, IMAPS)
+  - FW-TI-003: KIS → Konnektor Port 443 (KIS-Integration)
+
+=== FACHDIENSTE ===
+Aktiviert: VSDM, KIM, E-Rezept, eAU
+KIM-Adresse: klinikum-musterstadt@kim.telematik (Anbieter: akquinet KIM)
+E-Rezept: Produktiv seit 01.02.2024
+ePA 2.0: Aktivierung geplant Q1/2025 (nach Praxissoftware-Update)
+            </pre>
         </div>
-        <em>TI-Dokumentation ist Gold wert – bei Störung keine Zeit zum Suchen!</em>
+        <em>Im Notfall entscheidet Dokumentation über schnelle Wiederherstellung.</em>
     </div>
 </div>

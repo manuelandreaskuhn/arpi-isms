@@ -194,6 +194,7 @@ class Database
      * @return void 
      */
     public function __construct() {
+        $this->uuid = \uniqid('database_', true);
         $this->assignedvms = [];
         $this->assignedhardware = [];
         $this->iscluster = false;

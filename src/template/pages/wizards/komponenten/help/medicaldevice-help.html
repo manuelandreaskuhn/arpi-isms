@@ -271,23 +271,25 @@
             <h3>Warum Vernetzung wichtig:</h3>
             <ul>
                 <li><strong>Datenintegration:</strong> Bilder direkt ins PACS, Befunde ins KIS</li>
-                <li><strong>Effizienz:</strong> Keine manuelle Dateneingabe mehr</li>
+                <li><strong>Effizienz:</strong> Keine manuelle Dateneingabe, Workflow-Integration</li>
                 <li><strong>Fehlerreduzierung:</strong> Keine Verwechslungen bei Patientendaten</li>
+                <li><strong>Remote-Support:</strong> Hersteller kann Fernwartung durchführen</li>
             </ul>
         </div>
         <div>
             <h3>ABER: Cyber-Risiko!</h3>
             <ul>
-                <li>Vernetzte Geräte = Angriffsziel für Ransomware</li>
-                <li>Viele Geräte laufen auf altem Windows (XP, 7) ohne Updates</li>
-                <li>Medizingeräte oft 10-20 Jahre im Einsatz - veraltete IT</li>
+                <li>Vernetzte Geräte = Angriffsziel für Ransomware und Schadsoftware</li>
+                <li>Viele Geräte laufen auf altem Windows (XP, 7, 8) ohne aktuelle Updates</li>
+                <li>Medizingeräte oft 10-20 Jahre im Einsatz - veraltete IT-Komponenten</li>
+                <li>Notfall-Patches oft nicht möglich (Zulassung gefährdet)</li>
             </ul>
         </div>
         <div>
             <h3>Trend:</h3>
-            80%+ neuer Geräte sind netzwerkfähig
+            Über 85% neuer Geräte sind netzwerkfähig - Tendenz steigend
         </div>
-        <em>Vernetzung = Nutzen UND Risiko - braucht IT-Sicherheit!</em>
+        <em>Vernetzung = Nutzen UND Risiko - IT-Sicherheit ist unverzichtbar!</em>
     </div>
 
     <div data-tooltip-id="meddevice-network-connection">
@@ -502,140 +504,200 @@
 
     <div data-tooltip-id="meddevice-os">
         <h2>Betriebssystem</h2>
-        <p>Das Betriebssystem auf dem das Gerät läuft.</p>
+        <p>Das Betriebssystem auf dem das Gerät bzw. die Steuerungssoftware läuft.</p>
         <div>
             <h3>Typische Medizingeräte-OS:</h3>
             <ul>
                 <li><strong>Windows:</strong>
                     <ul>
-                        <li>Windows 10 IoT (aktuell) - <em>gut</em></li>
-                        <li>Windows 7 (veraltet, häufig!) - <em>Sicherheitsrisiko</em></li>
-                        <li>Windows XP (uralt, aber noch existiert) - <em>kritisches Risiko!</em></li>
+                        <li>Windows 11 IoT LTSC (neueste) - <em>optimal</em></li>
+                        <li>Windows 10 IoT LTSC (aktuell empfohlen) - <em>gut</em></li>
+                        <li>Windows 7 (veraltet, aber häufig!) - <em>hohes Sicherheitsrisiko</em></li>
+                        <li>Windows XP (uralt, aber existiert noch) - <em>kritisches Risiko!</em></li>
                     </ul>
                 </li>
-                <li><strong>Linux:</strong> Embedded Linux, oft bei modernen Geräten</li>
-                <li><strong>Embedded / RTOS:</strong> Spezialisierte Echtzeit-Systeme</li>
-                <li><strong>Proprietary:</strong> Herstellerspezifisches OS</li>
+                <li><strong>Linux:</strong> Embedded Linux, zunehmend bei modernen Geräten (sicherer, stabiler)</li>
+                <li><strong>Embedded / RTOS:</strong> Spezialisierte Echtzeit-Systeme ohne Standard-OS</li>
+                <li><strong>Proprietary:</strong> Herstellerspezifisches, geschlossenes Betriebssystem</li>
             </ul>
         </div>
         <div>
-            <h3>Problem:</h3>
-            Medizingeräte-Software ist zertifiziert → OS-Updates können Zulassung gefährden → alte OS bleiben
+            <h3>Das Dilemma:</h3>
+            Medizingeräte-Software ist als Gesamtsystem zertifiziert → OS-Updates können die medizinische Zulassung gefährden → veraltete Systeme bleiben im Einsatz
         </div>
-        <em>Windows XP auf Medizingerät = Albtraum für IT-Security!</em>
+        <div>
+            <h3>IoT LTSC:</h3>
+            Long Term Servicing Channel - spezielle Windows-Version für medizinische/industrielle Geräte mit 10 Jahren Support
+        </div>
+        <em>Windows XP/7 auf vernetztem Medizingerät = Albtraum für IT-Security!</em>
     </div>
 
     <div data-tooltip-id="meddevice-update-policy">
         <h2>Update-Politik</h2>
-        <p>Wie werden Software-Updates gehandhabt?</p>
+        <p>Wie werden Software- und Sicherheitsupdates für das Gerät gehandhabt?</p>
         <div>
             <h3>Update-Strategien:</h3>
             <ul>
-                <li><strong>Regelmäßige Updates:</strong>
+                <li><strong>Regelmäßige Updates (automatisch):</strong>
                     <ul>
-                        <li>Security Patches werden installiert</li>
-                        <li>Bei modernen Geräten möglich</li>
-                        <li><em>Ideal, aber selten!</em></li>
+                        <li>Security Patches werden zeitnah installiert</li>
+                        <li>Bei modernen, zertifizierungsfreundlichen Geräten</li>
+                        <li><em>Ideal, aber selten bei Medizingeräten!</em></li>
                     </ul>
                 </li>
-                <li><strong>Kontrollierte Updates (mit Freigabe):</strong>
+                <li><strong>Kontrollierte Updates (mit Hersteller-Freigabe):</strong>
                     <ul>
-                        <li>Updates nur nach Hersteller-Freigabe</li>
-                        <li>Zertifizierung muss erhalten bleiben</li>
-                        <li><em>Typisch bei Klasse IIb/III Geräten</em></li>
+                        <li>Updates nur nach expliziter Hersteller-Validierung</li>
+                        <li>Medizinische Zertifizierung muss erhalten bleiben</li>
+                        <li>Zeitverzögerung: Oft 3-12 Monate nach Patch-Release</li>
+                        <li><em>Standard bei Klasse IIb/III Geräten</em></li>
                     </ul>
                 </li>
-                <li><strong>Eingefroren (keine Updates):</strong>
+                <li><strong>Eingefroren (Locked Down / keine Updates):</strong>
                     <ul>
-                        <li>System komplett "locked down"</li>
-                        <li>Hersteller erlaubt keine Updates</li>
-                        <li>MUSS durch Netzwerk-Segmentierung geschützt werden</li>
+                        <li>System komplett "versiegelt" - keine Änderungen erlaubt</li>
+                        <li>Hersteller verbietet jegliche Updates (Zulassung)</li>
+                        <li>MUSS durch strikte Netzwerk-Segmentierung geschützt werden</li>
+                        <li><em>Häufig bei Legacy-Geräten</em></li>
                     </ul>
                 </li>
-                <li><strong>End-of-Life:</strong>
+                <li><strong>End-of-Life (EOL):</strong>
                     <ul>
                         <li>Gerät so alt, keine Updates mehr verfügbar</li>
-                        <li>Höchstes Sicherheitsrisiko</li>
-                        <li>Austausch planen!</li>
+                        <li>Höchstes Sicherheitsrisiko - keine Patches für neue Schwachstellen</li>
+                        <li>Austausch dringend planen!</li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div>
-            <h3>Dilemma:</h3>
-            Security (Updates) vs. Safety (Zulassung)
+            <h3>Das Safety vs. Security Dilemma:</h3>
+            <ul>
+                <li><strong>Security:</strong> Updates für Cyber-Schutz</li>
+                <li><strong>Safety:</strong> Medizinische Zulassung erhalten</li>
+                <li>Oft Konflikt - Abwägung erforderlich</li>
+            </ul>
         </div>
-        <em>Keine Updates → Netzwerk-Segmentierung ist Pflicht!</em>
+        <div>
+            <h3>Kompensation bei fehlenden Updates:</h3>
+            Netzwerk-Segmentierung, Firewall-Regeln, IDS/IPS, Application Whitelisting
+        </div>
+        <em>Keine Updates möglich → Netzwerk-Segmentierung ist absolute Pflicht!</em>
     </div>
 
     <div data-tooltip-id="meddevice-antivirus">
         <h2>Antivirus / Endpoint Protection</h2>
-        <p>Ist Antivirensoftware auf dem Gerät installiert?</p>
+        <p>Ist Antivirensoftware oder moderne Endpoint Protection auf dem Gerät installiert?</p>
         <div>
-            <h3>Das Problem:</h3>
+            <h3>Das Antivirus-Problem bei Medizingeräten:</h3>
             <ul>
-                <li>Antivirus kann Medizingeräte-Software stören</li>
-                <li>Performance-Impact bei Echtzeit-Scan</li>
-                <li>Hersteller oft gegen AV (Zulassung gefährdet)</li>
+                <li><strong>Performance:</strong> Echtzeit-Scan kann zeitkritische Prozesse verzögern</li>
+                <li><strong>Inkompatibilität:</strong> AV kann Medizingeräte-Software stören</li>
+                <li><strong>Zulassung:</strong> Hersteller lehnen AV oft ab (nicht validiert)</li>
+                <li><strong>Echtzeit-Anforderungen:</strong> Scan-Pause bei kritischen Vorgängen nicht möglich</li>
             </ul>
         </div>
         <div>
             <h3>Optionen:</h3>
             <ul>
-                <li><strong>Installiert & Aktuell:</strong> Ideal, wenn Hersteller unterstützt</li>
-                <li><strong>Nicht unterstützt (Hersteller):</strong> Hersteller verbietet AV</li>
+                <li><strong>Installiert & Aktuell:</strong>
+                    <ul>
+                        <li>Modern Endpoint Detection & Response (EDR)</li>
+                        <li>Vom Hersteller validiert und unterstützt</li>
+                        <li><em>Ideal, wenn möglich!</em></li>
+                    </ul>
+                </li>
+                <li><strong>Installiert, aber eingeschränkt:</strong>
+                    <ul>
+                        <li>AV mit Ausnahmen für Medizin-Software</li>
+                        <li>Nur Scheduled Scans (nicht Echtzeit)</li>
+                    </ul>
+                </li>
+                <li><strong>Nicht unterstützt (Hersteller):</strong>
+                    <ul>
+                        <li>Hersteller verbietet AV-Installation</li>
+                        <li>Zulassung würde erlöschen</li>
+                    </ul>
+                </li>
                 <li><strong>Kompensiert (Netzwerk-Segmentierung):</strong>
                     <ul>
-                        <li>Kein AV auf Gerät</li>
-                        <li>ABER: Gerät in isoliertem VLAN</li>
-                        <li>Firewall schützt von außen</li>
-                        <li><em>Häufigster Kompromiss!</em></li>
+                        <li>Kein AV auf Gerät möglich</li>
+                        <li>ABER: Gerät in isoliertem Medical-VLAN</li>
+                        <li>Firewall + IDS/IPS schützt von außen</li>
+                        <li>Application Whitelisting auf Netzwerk-Ebene</li>
+                        <li><em>Häufigster und akzeptabler Kompromiss!</em></li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <em>Kompensation durch Netzwerk-Segmentierung ist akzeptabel!</em>
+        <div>
+            <h3>ISO 80001-1:</h3>
+            Standard erlaubt Kompensation durch Netzwerk-Security wenn Host-basierte Security nicht möglich
+        </div>
+        <em>Keine Host-AV möglich? → Netzwerk-Segmentierung ist Pflicht als Kompensation!</em>
     </div>
 
     <div data-tooltip-id="meddevice-firewall">
         <h2>Firewall / Netzwerk-Isolation</h2>
-        <p>Wie ist das Gerät netzwerktechnisch geschützt?</p>
+        <p>Wie ist das Gerät netzwerktechnisch geschützt und segmentiert?</p>
         <div>
-            <h3>Schutz-Level:</h3>
+            <h3>Schutz-Level (nach Sicherheit sortiert):</h3>
             <ul>
-                <li><strong>Isoliertes Netzwerk:</strong>
+                <li><strong>Air-Gap / Isoliertes Netzwerk:</strong>
                     <ul>
-                        <li>Komplett eigenes Netzwerk, kein Internet</li>
-                        <li>Nur Verbindung zu PACS/KIS</li>
-                        <li><em>Höchste Sicherheit</em></li>
+                        <li>Komplett eigenes, physisch getrenntes Netzwerk</li>
+                        <li>Kein Internet, keine Verbindung zu anderen Netzen</li>
+                        <li>Nur dedizierte Verbindung zu PACS/KIS (falls nötig)</li>
+                        <li><em>Höchste Sicherheit - für kritischste Geräte</em></li>
                     </ul>
                 </li>
-                <li><strong>Segmentiert (VLAN):</strong>
+                <li><strong>Micro-Segmentierung:</strong>
                     <ul>
-                        <li>Medizingeräte in eigenem VLAN</li>
-                        <li>Firewall-Regeln kontrollieren Zugriff</li>
-                        <li><em>Best Practice</em></li>
+                        <li>Jedes Gerät in eigenem Segment mit individuellen FW-Regeln</li>
+                        <li>Zero-Trust-Prinzip: Alles blocken, nur explizit Erlaubtes zulassen</li>
+                        <li><em>Best Practice, aber komplex zu managen</em></li>
                     </ul>
                 </li>
-                <li><strong>Gefiltert (Firewall-Regeln):</strong>
+                <li><strong>VLAN-Segmentierung:</strong>
                     <ul>
-                        <li>Im gleichen Netz, aber Firewall schützt</li>
-                        <li>Minimaler Schutz</li>
+                        <li>Medizingeräte in dediziertem Medical-VLAN</li>
+                        <li>Firewall-Regeln kontrollieren Inter-VLAN Zugriff</li>
+                        <li>Getrennt von Admin-, User-, Guest-Netzen</li>
+                        <li><em>Praktischer Kompromiss - empfohlen</em></li>
+                    </ul>
+                </li>
+                <li><strong>Host-based Firewall:</strong>
+                    <ul>
+                        <li>Windows Firewall oder ähnlich auf dem Gerät selbst</li>
+                        <li>Minimaler Schutz, nur wenn Netzwerk-FW nicht möglich</li>
                     </ul>
                 </li>
                 <li><strong>Offen / Standard-Netzwerk:</strong>
                     <ul>
-                        <li>Keine Isolation</li>
-                        <li><em>Nicht akzeptabel für Medizingeräte!</em></li>
+                        <li>Keine Isolation, im Standard-LAN</li>
+                        <li><em>Nicht akzeptabel für vernetzte Medizingeräte!</em></li>
+                        <li>DSGVO- und IT-Sicherheits-Verstoß</li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div>
-            <h3>Micro-Segmentation:</h3>
-            Jedes Gerät in eigenem Segment - Ideal aber komplex
+            <h3>Typische Medical-VLAN Firewall-Regeln:</h3>
+            <ul>
+                <li>✓ Erlaubt: DICOM zu PACS (Port 104, 11112)</li>
+                <li>✓ Erlaubt: HL7 zu KIS/RIS (Port 2575)</li>
+                <li>✓ Erlaubt: NTP (Zeit-Sync), DNS</li>
+                <li>✓ Erlaubt: Remote Support (nur mit 2FA, dokumentiert)</li>
+                <li>✗ Blockiert: Internet (HTTP/HTTPS)</li>
+                <li>✗ Blockiert: E-Mail (SMTP)</li>
+                <li>✗ Blockiert: Andere Geräte (außer explizit erlaubt)</li>
+            </ul>
         </div>
-        <em>Netzwerk-Segmentierung ist PFLICHT bei Medizingeräten!</em>
+        <div>
+            <h3>IDS/IPS:</h3>
+            Intrusion Detection/Prevention System zusätzlich zur Firewall für Anomalie-Erkennung
+        </div>
+        <em>Netzwerk-Segmentierung ist NICHT optional - es ist Pflicht bei Medizingeräten!</em>
     </div>
 
     <div data-tooltip-id="meddevice-encryption">
@@ -679,21 +741,59 @@
 
     <div data-tooltip-id="meddevice-security-assessment">
         <h2>Sicherheitsbewertung / Risikoanalyse</h2>
-        <p>Ergebnis der IT-Security Risikoanalyse für dieses Gerät.</p>
+        <p>Ergebnis der IT-Security Risikoanalyse für dieses Gerät gemäß ISO 80001-1.</p>
         <div>
-            <h3>Was dokumentieren:</h3>
+            <h3>Was dokumentieren (strukturiert):</h3>
             <ul>
-                <li>Identifizierte Risiken (z.B. "Windows 7, keine AV möglich")</li>
-                <li>Kompensationsmaßnahmen (z.B. "Isoliertes VLAN, FW-Regeln")</li>
-                <li>Restrisiko (akzeptabel? Verbleibende Gefährdungen?)</li>
-                <li>Empfohlene Maßnahmen (z.B. "Update auf neuere Version planen")</li>
+                <li><strong>Identifizierte Risiken:</strong>
+                    <ul>
+                        <li>IT-Schwachstellen (z.B. "Windows 7, EOL")</li>
+                        <li>Fehlende Security-Maßnahmen (z.B. "Keine AV möglich")</li>
+                        <li>Netzwerk-Exposition</li>
+                        <li>Datenschutz-Risiken (DSGVO)</li>
+                    </ul>
+                </li>
+                <li><strong>Risiko-Level:</strong> Niedrig / Mittel / Hoch / Kritisch</li>
+                <li><strong>Kompensationsmaßnahmen:</strong>
+                    <ul>
+                        <li>Technische Maßnahmen (z.B. "Medical-VLAN-50, FW-Regeln")</li>
+                        <li>Organisatorische Maßnahmen (z.B. "Nur geschultes Personal")</li>
+                        <li>Monitoring (z.B. "IDS überwacht Traffic")</li>
+                    </ul>
+                </li>
+                <li><strong>Restrisiko:</strong>
+                    <ul>
+                        <li>Verbleibendes Risiko nach Kompensation</li>
+                        <li>Bewertung: Akzeptabel / Beobachten / Nicht akzeptabel</li>
+                    </ul>
+                </li>
+                <li><strong>Empfohlene Maßnahmen:</strong>
+                    <ul>
+                        <li>Kurz-/Mittelfristig (z.B. "Zusätzliche FW-Regel")</li>
+                        <li>Langfristig (z.B. "Geräte-Upgrade auf neuere Version in 2026")</li>
+                    </ul>
+                </li>
+                <li><strong>Nächste Review:</strong> Datum für erneute Bewertung</li>
             </ul>
         </div>
         <div>
-            <h3>Beispiel:</h3>
-            "Risiko: Windows 7, keine Security-Updates. Kompensation: Gerät in Medical-VLAN-50, nur Zugriff zu PACS (Port 104), kein Internet. Firewall-Regel FW-MD-001. Restrisiko: Mittel (akzeptabel). Empfehlung: Geräte-Upgrade in 2026 geplant."
+            <h3>Beispiel-Dokumentation:</h3>
+            <em>"<strong>Risiko:</strong> Windows 7 (EOL), keine Security-Updates verfügbar, keine AV-Installation möglich (Herstellervorgabe).<br>
+            <strong>Risiko-Level:</strong> Hoch<br>
+            <strong>Kompensation:</strong> Gerät in Medical-VLAN-50, ausschließlich Zugriff zu PACS-Server (10.50.1.10:104), kein Internet, kein Zugriff auf andere Geräte. Firewall-Regel FW-MD-001. IDS überwacht VLAN. Application Whitelisting aktiv.<br>
+            <strong>Restrisiko:</strong> Mittel (akzeptabel unter Auflagen)<br>
+            <strong>Empfehlung:</strong> Gerät-Upgrade auf Nachfolgemodell mit Windows 10 IoT in Q3/2026 budgetiert. Bis dahin: Quarterly Security Review.<br>
+            <strong>Nächstes Review:</strong> 01.04.2025"</em>
         </div>
-        <em>Risikoanalyse ist Pflicht (ISO 80001-1) - dokumentieren Sie!</em>
+        <div>
+            <h3>ISO 80001-1:</h3>
+            Standard für IT-Netzwerk-Sicherheit von Medizingeräten - Risikoanalyse ist Pflicht!
+        </div>
+        <div>
+            <h3>Verantwortung:</h3>
+            Risikoanalyse gemeinsam: IT-Sicherheit + Medizintechnik + MPB + ggf. Datenschutzbeauftragter
+        </div>
+        <em>Risiko-Dokumentation ist Compliance-Pflicht - bei Audit wird das geprüft!</em>
     </div>
 
     <div data-tooltip-id="meddevice-mp-beauftragter">

@@ -187,19 +187,19 @@
         <div>
             <h3>Typische Größen:</h3>
             <ul>
-                <li><strong>2 Hosts:</strong> Minimum für HA, aber bei Wartung keine Redundanz</li>
-                <li><strong>3 Hosts:</strong> Ideal - HA funktioniert auch bei Wartung</li>
+                <li><strong>2 Hosts:</strong> Minimum für HA, aber bei Wartung keine Redundanz mehr</li>
+                <li><strong>3 Hosts:</strong> Ideal - HA funktioniert auch bei Wartung eines Hosts</li>
                 <li><strong>4-8 Hosts:</strong> Standard für mittelgroße Umgebungen</li>
                 <li><strong>8+ Hosts:</strong> Große Rechenzentren</li>
             </ul>
         </div>
         <div>
             <h3>N+1 Redundanz:</h3>
-            Cluster muss auch funktionieren, wenn ein Host ausfällt
+            Cluster muss auch funktionieren, wenn ein Host ausfällt oder in Wartung ist
         </div>
         <div>
-            <h3>Beispiel:</h3>
-            100 VMs, 4 Hosts → Jeder Host ~25 VMs → Bei Ausfall: 3 Hosts müssen 100 VMs tragen können
+            <h3>Beispiel-Berechnung:</h3>
+            100 VMs, 4 Hosts → Jeder Host ~25 VMs → Bei Ausfall: 3 Hosts müssen 100 VMs tragen können → Jeder Host muss ~33 VMs schaffen
         </div>
         <em>Minimum 3 Hosts empfohlen - sonst kein echtes HA!</em>
     </div>
@@ -336,12 +336,12 @@
         <div>
             <h3>Beispiel-Rechnung:</h3>
             <ul>
-                <li>3 Hosts à 2x Intel Xeon mit je 16 Cores = 3 × 32 = 96 Cores</li>
+                <li>3 Hosts à 2 CPUs mit je 16 Cores = 3 × 2 × 16 = 96 Cores gesamt</li>
             </ul>
         </div>
         <div>
             <h3>Warum wichtig:</h3>
-            Kapazitätsplanung - wie viele VMs passen?
+            Kapazitätsplanung - wie viele VMs können betrieben werden?
         </div>
         <div>
             <h3>vCPU-Berechnung:</h3>
@@ -349,10 +349,10 @@
                 <li>96 physische Cores</li>
                 <li>Mit 4:1 Overcommitment = 384 vCPUs möglich</li>
                 <li>Typische VM hat 2-4 vCPUs</li>
-                <li>→ Ca. 100-200 VMs möglich (abhängig von Last)</li>
+                <li>→ Ca. 96-192 VMs möglich (abhängig von Last)</li>
             </ul>
         </div>
-        <em>Mehr Cores = mehr VMs, aber beachte RAM und Storage!</em>
+        <em>Mehr Cores = mehr VMs, aber beachte auch RAM und Storage als limitierende Faktoren!</em>
     </div>
 
     <div data-tooltip-id="hypervisor-total-ram">
@@ -360,16 +360,17 @@
         <p>Die Summe aller physischen RAM über alle Hosts.</p>
         <div>
             <h3>RAM ist meist der limitierende Faktor!</h3>
-            Nicht CPU.
+            Nicht CPU - die meisten VMs sind RAM-limitiert, nicht CPU-limitiert.
         </div>
         <div>
-            <h3>Beispiel:</h3>
+            <h3>Beispiel-Rechnung:</h3>
             <ul>
                 <li>3 Hosts à 512 GB RAM = 1536 GB total</li>
                 <li>Reserve für HA (20%): -307 GB</li>
-                <li>Verfügbar: ~1200 GB</li>
+                <li>ESXi/Hyper-V Overhead (~5%): -77 GB</li>
+                <li>Verfügbar: ~1150 GB</li>
                 <li>Durchschnittliche VM: 8 GB</li>
-                <li>→ Ca. 150 VMs möglich</li>
+                <li>→ Ca. 143 VMs möglich</li>
             </ul>
         </div>
         <div>
@@ -377,35 +378,43 @@
             <ul>
                 <li>VMware/Hyper-V können mehr RAM vergeben als physisch vorhanden</li>
                 <li>Durch Memory Ballooning, Compression, Swap</li>
-                <li>Aber: Performance leidet!</li>
-                <li><em>Overcommitment bei RAM vermeiden - lieber mehr RAM!</em></li>
+                <li>Aber: Performance leidet erheblich!</li>
+                <li><em>Overcommitment bei RAM vermeiden - lieber mehr physischen RAM einbauen!</em></li>
             </ul>
         </div>
+        <em>RAM-Engpässe führen zu Swapping = drastische Performance-Einbußen!</em>
     </div>
 
     <div data-tooltip-id="hypervisor-total-storage">
         <h2>Gesamt Storage (TB)</h2>
         <p>Gesamter verfügbarer Storage für VMs.</p>
         <div>
-            <h3>Nicht nur VMDK-Größe:</h3>
+            <h3>Was zählt alles zum Storage:</h3>
             <ul>
                 <li>VM-Festplatten (VMDKs/VHDXs)</li>
-                <li>Snapshots (können riesig werden!)</li>
-                <li>Templates und ISOs</li>
-                <li>Logs</li>
+                <li>Snapshots (können schnell mehrere TB belegen!)</li>
+                <li>VM-Templates und ISOs</li>
+                <li>Swap-Dateien</li>
+                <li>Log-Dateien</li>
             </ul>
         </div>
         <div>
             <h3>Thin vs Thick Provisioning:</h3>
             <ul>
-                <li><strong>Thin:</strong> Wächst dynamisch - 500 GB Disk kann 50 GB belegen</li>
-                <li><strong>Thick:</strong> Kompletter Speicher sofort reserviert</li>
+                <li><strong>Thin:</strong> Wächst dynamisch - 500 GB Disk belegt anfangs z.B. nur 50 GB</li>
+                <li><strong>Thick (Lazy Zeroed):</strong> Platz sofort reserviert, aber nicht gelöscht</li>
+                <li><strong>Thick (Eager Zeroed):</strong> Platz reserviert und sofort mit Nullen überschrieben (sicherer)</li>
             </ul>
         </div>
         <div>
             <h3>Planung:</h3>
-            Storage wächst schneller als erwartet - 20-30% Reserve einplanen!
+            <ul>
+                <li>Storage wächst schneller als erwartet</li>
+                <li>20-30% Reserve für Snapshots einplanen</li>
+                <li>Monitoring für Storage-Kapazität einrichten</li>
+            </ul>
         </div>
+        <em>Voller Storage = keine neuen VMs, Snapshots können nicht erstellt werden!</em>
     </div>
 
     <div data-tooltip-id="hypervisor-storage-type">
@@ -480,30 +489,35 @@
         <p>Wie viele vCPUs pro physischem Core?</p>
         <div>
             <h3>Was ist CPU Overcommitment?</h3>
-            Mehr vCPUs vergeben als physische Cores vorhanden - funktioniert, weil VMs selten 100% CPU nutzen.
+            Mehr vCPUs vergeben als physische Cores vorhanden - funktioniert, weil VMs selten gleichzeitig 100% CPU nutzen.
         </div>
         <div>
             <h3>Typische Ratios:</h3>
             <ul>
-                <li><strong>1:1:</strong> Keine Überbuchung - sehr konservativ (Verschwendung)</li>
-                <li><strong>4:1:</strong> Standard - funktioniert für die meisten Workloads</li>
-                <li><strong>8:1:</strong> Aggressiv - nur wenn VMs sehr idle sind</li>
-                <li><strong>10:1+:</strong> Zu viel - Performance-Probleme!</li>
+                <li><strong>1:1:</strong> Keine Überbuchung - sehr konservativ (Ressourcen-Verschwendung)</li>
+                <li><strong>4:1:</strong> Standard - funktioniert für die meisten Workloads gut</li>
+                <li><strong>8:1:</strong> Aggressiv - nur wenn VMs sehr idle sind (z.B. Development)</li>
+                <li><strong>10:1+:</strong> Zu viel - CPU-Warteschlangen und Performance-Probleme!</li>
             </ul>
         </div>
         <div>
-            <h3>Beispiel:</h3>
+            <h3>Beispiel-Rechnung:</h3>
             <ul>
                 <li>96 physische Cores</li>
                 <li>4:1 Ratio</li>
                 <li>= 384 vCPUs können vergeben werden</li>
+                <li>Bei 192 VMs à 2 vCPUs = 384 vCPUs belegt</li>
             </ul>
         </div>
         <div>
-            <h3>Vorsicht:</h3>
-            CPU-intensive VMs (Datenbanken) vertragen weniger Overcommitment!
+            <h3>Workload-abhängig:</h3>
+            <ul>
+                <li>CPU-intensive VMs (Datenbanken, Rendering): 2:1 bis 3:1</li>
+                <li>Standard-Server (Webserver, Fileserver): 4:1 bis 6:1</li>
+                <li>Idle VMs (Development, Test): 8:1 bis 10:1</li>
+            </ul>
         </div>
-        <em>4:1 ist sicher, 8:1 funktioniert oft, mehr ist riskant</em>
+        <em>4:1 ist sicher für gemischte Workloads, 8:1 funktioniert oft, mehr ist riskant</em>
     </div>
 
     <div data-tooltip-id="hypervisor-mgmt-network">
@@ -533,24 +547,34 @@
 
     <div data-tooltip-id="hypervisor-vmotion-network">
         <h2>vMotion / Live Migration Netzwerk</h2>
-        <p>Das Netzwerk für Live-Migration von VMs.</p>
+        <p>Das Netzwerk für Live-Migration von VMs zwischen Hosts.</p>
         <div>
             <h3>Was ist vMotion/Live Migration?</h3>
-            VM ohne Downtime von einem Host zu anderem verschieben - RAM-Inhalt wird übertragen!
+            VM ohne Downtime von einem Host zu anderem verschieben - der komplette RAM-Inhalt wird übertragen!
         </div>
         <div>
             <h3>Warum separates Netzwerk:</h3>
             <ul>
-                <li>Sehr bandbreiten-intensiv (10+ GB RAM-Transfer)</li>
+                <li>Sehr bandbreiten-intensiv (10+ GB RAM-Transfer pro VM)</li>
                 <li>Sollte Produktiv-Netzwerk nicht belasten</li>
-                <li>Dediziertes 10G+ Netzwerk empfohlen</li>
+                <li>Latenz-sensitiv - langsames Netzwerk = lange Migration</li>
+                <li>Dediziertes 10G+ Netzwerk dringend empfohlen</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>Minimum 10G, besser 25G oder 40G</li>
+                <li>Dediziertes VLAN</li>
+                <li>Redundante NICs (NIC Teaming)</li>
+                <li>Jumbo Frames (MTU 9000) aktivieren</li>
             </ul>
         </div>
         <div>
             <h3>Beispiel:</h3>
-            "192.168.20.0/24, VLAN 20, 10G"
+            "192.168.20.0/24, VLAN 20, 10G Ethernet"
         </div>
-        <em>vMotion braucht schnelles Netzwerk - sonst dauert Migration ewig!</em>
+        <em>Langsames vMotion-Netzwerk = Migration dauert Minuten statt Sekunden!</em>
     </div>
 
     <div data-tooltip-id="hypervisor-storage-network">
@@ -690,19 +714,29 @@
         <div>
             <h3>Lizenzmodelle erklärt:</h3>
             <ul>
-                <li><strong>Perpetual:</strong> Einmalkauf, Updates oft extra - VMware früher</li>
-                <li><strong>Subscription:</strong> Jährliche Zahlung - VMware jetzt, Microsoft</li>
-                <li><strong>Per CPU/Socket:</strong> Pro physischem CPU-Sockel - VMware</li>
-                <li><strong>Per Core:</strong> Pro Core - Microsoft Hyper-V (über Windows Server)</li>
-                <li><strong>Per VM:</strong> Pro virtueller Maschine - selten</li>
-                <li><strong>Free/Open Source:</strong> ESXi Free, Proxmox, KVM</li>
+                <li><strong>Perpetual (Unbefristet):</strong> Einmalkauf, Updates oft extra - VMware früher, jetzt deprecated</li>
+                <li><strong>Subscription (Abonnement):</strong> Jährliche Zahlung - VMware seit 2024, Microsoft</li>
+                <li><strong>Per CPU/Socket:</strong> Pro physischem CPU-Sockel - VMware vSphere</li>
+                <li><strong>Per Core:</strong> Pro CPU-Core - Microsoft Hyper-V (über Windows Server Core Lizenzen)</li>
+                <li><strong>Per VM:</strong> Pro virtueller Maschine - selten, einige Cloud-Provider</li>
+                <li><strong>Free/Open Source:</strong> ESXi Free (limitiert), Proxmox (Community), KVM</li>
             </ul>
         </div>
         <div>
             <h3>VMware-Beispiel:</h3>
-            vSphere Standard = 6 Lizenzen für 3 Hosts à 2 CPUs
+            <ul>
+                <li>vSphere Standard = 3 Hosts à 2 CPUs = 6 CPU-Lizenzen nötig</li>
+                <li>Subscription: ~6.000-8.000 EUR/Jahr pro CPU</li>
+            </ul>
         </div>
-        <em>Lizenzkosten können sehr hoch sein - gut planen!</em>
+        <div>
+            <h3>Microsoft-Beispiel:</h3>
+            <ul>
+                <li>Windows Server 2022 Datacenter = pro 16 Cores (min. 2 Lizenzen à 16 Cores pro Server)</li>
+                <li>Datacenter = unbegrenzte VMs</li>
+            </ul>
+        </div>
+        <em>Lizenzkosten können sehr hoch sein (mehrere 10.000 EUR/Jahr) - gut planen und vergleichen!</em>
     </div>
 
     <div data-tooltip-id="hypervisor-support-level">
@@ -727,18 +761,19 @@
         <div>
             <h3>Was dokumentieren:</h3>
             <ul>
-                <li>Spezielle Konfigurationen (z.B. CPU-Pinning)</li>
-                <li>Geplante Upgrades</li>
+                <li>Spezielle Konfigurationen (z.B. CPU-Pinning für bestimmte VMs)</li>
+                <li>Geplante Upgrades und Wartungsfenster</li>
                 <li>Bekannte Probleme und Workarounds</li>
-                <li>Hardware-Besonderheiten</li>
-                <li>Change-Prozesse</li>
-                <li>Ansprechpartner (Vendor, intern)</li>
+                <li>Hardware-Besonderheiten (z.B. GPU-Passthrough aktiv)</li>
+                <li>Change-Prozesse und Genehmigungen</li>
+                <li>Ansprechpartner (Vendor-Support, internes Team)</li>
+                <li>Abhängigkeiten zu anderen Systemen</li>
             </ul>
         </div>
         <div>
             <h3>Beispiel:</h3>
-            "vSphere 8.0 U2, vCenter auf separater VM. DRS auf Fully Automated. HA aktiviert mit Admission Control. Geplantes Upgrade auf 8.0 U3 in Q2/2024. Bekanntes Problem: Host esxi-03 hat gelegentlich NIC-Probleme (Workaround: Driver-Update). Support-Vertrag bis 31.12.2025. Ansprechpartner: VMware TAC +1-xxx, intern: virtualization-team@example.com"
+            "vSphere 8.0 U2, vCenter auf separater VM im Management-Cluster. DRS auf Fully Automated mit Aggressivität Level 3. HA aktiviert mit Admission Control (25% CPU/RAM Reserve). Storage: iSCSI auf NetApp FAS8200. Geplantes Upgrade auf 8.0 U3 in Q2/2024. Bekanntes Problem: Host esxi-03 hat gelegentlich NIC-Timeouts auf vmnic2 (Workaround: Intel i40e Driver v2.22.18 installiert). Support-Vertrag VMware Production Support bis 31.12.2025. Ansprechpartner: VMware TAM John Doe, intern: virtualization-team@example.com, on-call: +49-xxx. Wichtig: Änderungen nur nach CAB-Freigabe!"
         </div>
-        <em>Gute Dokumentation rettet Sie bei Hypervisor-Problemen!</em>
+        <em>Gute Dokumentation rettet Sie bei Hypervisor-Ausfällen und beschleunigt Troubleshooting!</em>
     </div>
 </div>
