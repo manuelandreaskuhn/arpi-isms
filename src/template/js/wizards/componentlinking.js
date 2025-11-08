@@ -181,58 +181,96 @@ function collectFirewallsFromPage() {
 }
 
 /**
- * Collect Communication Servers from database/API
+ * Collect Communication Servers from current page (System Wizard)
  * @returns {Array} Array of CommServer objects
  */
 function collectCommServersFromPage() {
-    // TODO: Fetch from API
-    // Example data:
+    // Check if we're in a system wizard with commserver section
+    const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
+    if (!commserverSection || commserverSection.style.display === 'none') {
+        return componentCache.commserver || [];
+    }
+
+    // If there's a commserver configuration, collect it
+    const nameInput = commserverSection.querySelector('input[name="commservername"]');
+    if (nameInput && nameInput.value.trim()) {
+        const typeSelect = commserverSection.querySelector('[data-name="commservertype"]');
+        return [{
+            id: '1',
+            name: nameInput.value.trim(),
+            type: typeSelect ? typeSelect.dataset.value : ''
+        }];
+    }
+
     return componentCache.commserver || [];
 }
 
 /**
- * Collect Hypervisors from database/API
+ * Collect Hypervisors from current page (System Wizard)
  * @returns {Array} Array of Hypervisor objects
  */
 function collectHypervisorsFromPage() {
-    // TODO: Fetch from API
-    // Example data:
+    // Check if we're in a system wizard with hypervisor section
+    const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
+    if (!hypervisorSection || hypervisorSection.style.display === 'none') {
+        return componentCache.hypervisor || [];
+    }
+
+    // If there's a hypervisor configuration, collect it
+    const nameInput = hypervisorSection.querySelector('input[name="hypervisorname"]');
+    if (nameInput && nameInput.value.trim()) {
+        const typeSelect = hypervisorSection.querySelector('[data-name="hypervisortype"]');
+        return [{
+            id: '1',
+            name: nameInput.value.trim(),
+            type: typeSelect ? typeSelect.dataset.value : ''
+        }];
+    }
+
     return componentCache.hypervisor || [];
 }
 
 /**
- * Collect TI-Infrastructure from database/API
+ * Collect TI-Infrastructure from current page (System Wizard)
  * @returns {Array} Array of TI-Infrastructure objects
  */
 function collectTIInfrastructureFromPage() {
-    // TODO: Fetch from API
-    // Example data:
+    // Check if we're in a system wizard with TI section
+    const tiSection = document.querySelector('.form-section[data-name="gematicti"]');
+    if (!tiSection || tiSection.style.display === 'none') {
+        return componentCache.tiinfrastructure || [];
+    }
+
+    // Check if TI is actually connected
+    const tiConnectedCheck = tiSection.querySelector('.ti-connected-check');
+    if (!tiConnectedCheck || !tiConnectedCheck.checked) {
+        return componentCache.tiinfrastructure || [];
+    }
+
+    // If there's TI infrastructure configured, collect it
+    const tiSelect = tiSection.querySelector('[data-name="tiinfrastrukturid"]');
+    const manualInput = tiSection.querySelector('input[name="tiinfrastructurname"]');
+    
+    if (tiSelect && tiSelect.dataset.value && tiSelect.dataset.value !== 'manual' && tiSelect.dataset.value !== '') {
+        // Extract from select value
+        const selectedOption = tiSelect.querySelector(`.select-option[data-value="${tiSelect.dataset.value}"]`);
+        if (selectedOption) {
+            return [{
+                id: tiSelect.dataset.value,
+                name: selectedOption.textContent.trim(),
+                type: 'TI-Konnektor'
+            }];
+        }
+    } else if (manualInput && manualInput.value.trim()) {
+        // Manual input
+        return [{
+            id: 'manual-1',
+            name: manualInput.value.trim(),
+            type: 'TI-Konnektor'
+        }];
+    }
+
     return componentCache.tiinfrastructure || [];
-}
-
-/**
- * Collect Load Balancers from current page (System Wizard)
- * @returns {Array} Array of Load Balancer objects
- */
-function collectLoadBalancersFromPage() {
-    const lbEntries = document.querySelectorAll('#loadbalancerList .dynamic-entry[data-type="loadbalancer"]');
-    return Array.from(lbEntries).map((e, index) => {
-        const nameInput = e.querySelector('input[name="lbName"]');
-        const name = (nameInput && nameInput.value.trim()) || `LB #${index + 1}`;
-        const typeSelect = e.querySelector('[data-name="lbType"]');
-        const type = typeSelect ? typeSelect.dataset.value : '';
-        return { id: index.toString(), name, type };
-    });
-}
-
-/**
- * Collect Medical Devices from database/API
- * @returns {Array} Array of MedDevice objects
- */
-function collectMedDevicesFromPage() {
-    // TODO: Fetch from API
-    // Example data:
-    return componentCache.meddevice || [];
 }
 
 /**
