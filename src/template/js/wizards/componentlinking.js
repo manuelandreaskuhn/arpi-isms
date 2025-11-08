@@ -14,7 +14,9 @@ const componentCache = {
     vpn: [],
     proxy: [],
     network: [],
-    commserver: []
+    commserver: [],
+    tiinfrastructure: [],
+    loadbalancer: []
 };
 
 /**
@@ -121,6 +123,10 @@ function getComponentsByType(type) {
             return collectCommServersFromPage();
         case 'hypervisor':
             return collectHypervisorsFromPage();
+        case 'tiinfrastructure':
+            return collectTIInfrastructureFromPage();
+        case 'loadbalancer':
+            return collectLoadBalancersFromPage();
         default:
             return componentCache[type] || [];
     }
@@ -192,6 +198,31 @@ function collectHypervisorsFromPage() {
 }
 
 /**
+ * Collect TI-Infrastructure from database/API
+ * @returns {Array} Array of TI-Infrastructure objects
+ */
+function collectTIInfrastructureFromPage() {
+    // TODO: Fetch from API
+    // Example data:
+    return componentCache.tiinfrastructure || [];
+}
+
+/**
+ * Collect Load Balancers from current page (System Wizard)
+ * @returns {Array} Array of Load Balancer objects
+ */
+function collectLoadBalancersFromPage() {
+    const lbEntries = document.querySelectorAll('#loadbalancerList .dynamic-entry[data-type="loadbalancer"]');
+    return Array.from(lbEntries).map((e, index) => {
+        const nameInput = e.querySelector('input[name="lbName"]');
+        const name = (nameInput && nameInput.value.trim()) || `LB #${index + 1}`;
+        const typeSelect = e.querySelector('[data-name="lbType"]');
+        const type = typeSelect ? typeSelect.dataset.value : '';
+        return { id: index.toString(), name, type };
+    });
+}
+
+/**
  * Get human-readable label for component type
  * @param {string} type - Component type
  * @returns {string} Label
@@ -207,7 +238,9 @@ function getComponentTypeLabel(type) {
         'vpn': 'VPN-Gateways',
         'proxy': 'Proxy-Server',
         'network': 'Netzwerke',
-        'commserver': 'Kommunikationsserver'
+        'commserver': 'Kommunikationsserver',
+        'tiinfrastructure': 'TI-Infrastruktur-Komponenten',
+        'loadbalancer': 'Load Balancer'
     };
     return labels[type] || type;
 }
@@ -228,6 +261,8 @@ function formatComponentLabel(component, type) {
         case 'firewall':
         case 'commserver':
         case 'hypervisor':
+        case 'tiinfrastructure':
+        case 'loadbalancer':
             return component.type 
                 ? `${component.name} (${component.type})`
                 : component.name;

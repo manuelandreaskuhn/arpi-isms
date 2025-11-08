@@ -1,4 +1,5 @@
 import { updateListenersForDynamicEntry, updateSectionCounter } from '../wizards.js';
+import { refreshAllComponentSelects } from '../componentlinking.js';
 
 export function addMedInterfaceEntry() {
     const template = document.getElementById('medInterfaceEntryTemplate');
@@ -22,8 +23,8 @@ export function addMedInterfaceEntry() {
     // Setup conditional fields for connection type
     setupInterfaceConditionalFields(entry);
     
-    // Populate component dropdowns
-    refreshInterfaceComponents(entry);
+    // Refresh all component-linked selects
+    refreshAllComponentSelects();
     
     // Update section counter
     const section = document.querySelector('.form-section[data-name="medinterfaces"]');
@@ -79,9 +80,6 @@ function setupCommServerSelection(entry) {
     
     if (!commServerSelect || !manualFields) return;
     
-    // Populate existing comm servers
-    populateExistingCommServers(entry);
-    
     // Listen for comm server selection
     commServerSelect.addEventListener('click', function(e) {
         if (e.target.classList.contains('select-option')) {
@@ -99,37 +97,8 @@ function setupCommServerSelection(entry) {
     });
 }
 
-function populateExistingCommServers(entry) {
-    const selectElement = entry.querySelector('.interface-commserver-list');
-    if (!selectElement) return;
-    
-    // Keep "Bitte wählen" and "Manuell eingeben" options
-    const existingOptions = Array.from(selectElement.querySelectorAll('.select-option[data-value=""], .select-option[data-value="manual"]'));
-    selectElement.innerHTML = '';
-    existingOptions.forEach(opt => selectElement.appendChild(opt));
-    
-    // TODO: Fetch from API/Database - CommunicationServer Entities
-    // For now, check if there are CommunicationServers in componentCache
-    if (window.componentCache && window.componentCache.commserver) {
-        const commServers = window.componentCache.commserver;
-        
-        if (commServers.length > 0) {
-            commServers.forEach(cs => {
-                const option = document.createElement('div');
-                option.className = 'select-option';
-                option.setAttribute('data-value', cs.id);
-                option.setAttribute('data-hostname', cs.hostname || '');
-                option.setAttribute('data-name', cs.name || cs.hostname);
-                option.textContent = cs.name || cs.hostname;
-                selectElement.appendChild(option);
-            });
-        }
-    }
-}
-
 function populateCommServerData(entry, commServerId) {
-    // Get comm server data (from API or global store)
-    // For now, get from data attributes
+    // Get comm server data from component linking
     const option = entry.querySelector(`.select-option[data-value="${commServerId}"]`);
     if (!option) return;
     
@@ -145,108 +114,6 @@ function populateCommServerData(entry, commServerId) {
 }
 
 export function refreshInterfaceComponents(entryOrNull = null) {
-    const entries = entryOrNull 
-        ? [entryOrNull] 
-        : document.querySelectorAll('.dynamic-entry[data-type="medinterface"]');
-    
-    entries.forEach(entry => {
-        const sourceSelect = entry.querySelector('.interface-source-components');
-        const targetSelect = entry.querySelector('.interface-target-components');
-        const commServerSelect = entry.querySelector('.interface-commserver-components');
-        
-        if (sourceSelect) {
-            populateSourceComponents(sourceSelect);
-        }
-        
-        if (targetSelect) {
-            populateTargetComponents(targetSelect);
-        }
-        
-        if (commServerSelect) {
-            populateCommServerComponents(commServerSelect);
-        }
-    });
-}
-
-function populateSourceComponents(selectElement) {
-    // Keep the "no selection" option
-    const noSelection = selectElement.querySelector('[data-value=""]');
-    selectElement.innerHTML = '';
-    if (noSelection) {
-        selectElement.appendChild(noSelection);
-    }
-    
-    // Add VMs
-    const vmEntries = document.querySelectorAll('.dynamic-entry[data-type="vm"]');
-    if (vmEntries.length > 0) {
-        const vmGroup = document.createElement('div');
-        vmGroup.className = 'select-option-group';
-        vmGroup.innerHTML = '<div class="select-option-group-label">Virtuelle Maschinen</div>';
-        
-        vmEntries.forEach((vm, index) => {
-            const vmName = vm.querySelector('[name="vmName"]')?.value || 'Unbenannte VM';
-            const option = document.createElement('div');
-            option.className = 'select-option';
-            option.setAttribute('data-value', `vm-${index}`);
-            option.textContent = `VM: ${vmName}`;
-            vmGroup.appendChild(option);
-        });
-        
-        selectElement.appendChild(vmGroup);
-    }
-    
-    // Add Hardware Servers
-    const hwEntries = document.querySelectorAll('.dynamic-entry[data-type="hardware"]');
-    if (hwEntries.length > 0) {
-        const hwGroup = document.createElement('div');
-        hwGroup.className = 'select-option-group';
-        hwGroup.innerHTML = '<div class="select-option-group-label">Hardware Server</div>';
-        
-        hwEntries.forEach((hw, index) => {
-            const hwName = hw.querySelector('[name="hardwareName"]')?.value || 'Unbenannter Server';
-            const option = document.createElement('div');
-            option.className = 'select-option';
-            option.setAttribute('data-value', `hw-${index}`);
-            option.textContent = `Server: ${hwName}`;
-            hwGroup.appendChild(option);
-        });
-        
-        selectElement.appendChild(hwGroup);
-    }
-}
-
-function populateTargetComponents(selectElement) {
-    // Keep the "no selection" option
-    const noSelection = selectElement.querySelector('[data-value=""]');
-    selectElement.innerHTML = '';
-    if (noSelection) {
-        selectElement.appendChild(noSelection);
-    }
-    
-    // Add Load Balancers
-    const lbEntries = document.querySelectorAll('.dynamic-entry[data-type="loadbalancer"]');
-    if (lbEntries.length > 0) {
-        const lbGroup = document.createElement('div');
-        lbGroup.className = 'select-option-group';
-        lbGroup.innerHTML = '<div class="select-option-group-label">Load Balancer</div>';
-        
-        lbEntries.forEach((lb, index) => {
-            const lbName = lb.querySelector('[name="lbName"]')?.value || 'Unbenannter LB';
-            const option = document.createElement('div');
-            option.className = 'select-option';
-            option.setAttribute('data-value', `lb-${index}`);
-            option.textContent = `LB: ${lbName}`;
-            lbGroup.appendChild(option);
-        });
-        
-        selectElement.appendChild(lbGroup);
-    }
-    
-    // Add VMs and Hardware (same as source)
-    populateSourceComponents(selectElement);
-}
-
-function populateCommServerComponents(selectElement) {
-    // Same as source/target - VMs and Hardware can be comm servers
-    populateSourceComponents(selectElement);
+    // Component Linking übernimmt die Befüllung automatisch
+    refreshAllComponentSelects();
 }

@@ -51,6 +51,7 @@ import {
     refreshContainerHostAssignments
 } from './system/container.js';
 import { initializeHelpTooltips } from './helptooltip.js';
+import { refreshAllComponentSelects } from './componentlinking.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize help tooltips
@@ -180,68 +181,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Medical Interface checkbox handler
-    const medInterfaceCheckbox = document.getElementById('medinterface');
-    
-    if (medInterfaceCheckbox && medInterfaceSection) {
-        medInterfaceCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                medInterfaceSection.style.display = 'block';
-            } else {
-                medInterfaceSection.style.display = 'none';
-                document.getElementById('medInterfaceList').innerHTML = '';
-                updateSectionCounter(medInterfaceSection);
-            }
-        });
-    }
-
-    // Container checkbox handler
-    const containerCheckbox = document.getElementById('container');
-    
-    if (containerCheckbox && containerSection) {
-        containerCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                containerSection.style.display = 'block';
-            } else {
-                containerSection.style.display = 'none';
-                document.getElementById('containerList').innerHTML = '';
-                updateSectionCounter(containerSection);
-            }
-        });
-    }
-
-    // Hypervisor checkbox handler
-    const hypervisorCheckbox = document.getElementById('hypervisor');
-    const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
-    
-    if (hypervisorCheckbox && hypervisorSection) {
-        hypervisorSection.style.display = 'none';
-        
-        hypervisorCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                hypervisorSection.style.display = 'block';
-            } else {
-                hypervisorSection.style.display = 'none';
-            }
-        });
-    }
-
-    // CommunicationServer checkbox handler
-    const commserverCheckbox = document.getElementById('commserver');
-    const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
-    
-    if (commserverCheckbox && commserverSection) {
-        commserverSection.style.display = 'none';
-        
-        commserverCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                commserverSection.style.display = 'block';
-            } else {
-                commserverSection.style.display = 'none';
-            }
-        });
-    }
-
     // Gematik TI checkbox handler
     const gematictiCheckbox = document.getElementById('gematicti');
     const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
@@ -253,6 +192,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.checked) {
                 gematictiSection.style.display = 'block';
                 setupTIConditionalFields(gematictiSection);
+                // Refresh component selects für TI-Komponenten
+                refreshAllComponentSelects();
             } else {
                 gematictiSection.style.display = 'none';
             }
@@ -306,6 +247,72 @@ document.addEventListener('DOMContentLoaded', function() {
                 setupVPNConditionalFields(vpnSection);
             } else {
                 vpnSection.style.display = 'none';
+            }
+        });
+    }
+
+    // Medical Interface checkbox handler
+    const medInterfaceCheckbox = document.getElementById('medinterface');
+    
+    if (medInterfaceCheckbox && medInterfaceSection) {
+        medInterfaceCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                medInterfaceSection.style.display = 'block';
+                // Refresh component selects für Interfaces
+                refreshAllComponentSelects();
+            } else {
+                medInterfaceSection.style.display = 'none';
+                document.getElementById('medInterfaceList').innerHTML = '';
+                updateSectionCounter(medInterfaceSection);
+            }
+        });
+    }
+
+    // Container checkbox handler
+    const containerCheckbox = document.getElementById('container');
+    
+    if (containerCheckbox && containerSection) {
+        containerCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                containerSection.style.display = 'block';
+            } else {
+                containerSection.style.display = 'none';
+                document.getElementById('containerList').innerHTML = '';
+                updateSectionCounter(containerSection);
+            }
+        });
+    }
+
+    // Hypervisor checkbox handler
+    const hypervisorCheckbox = document.getElementById('hypervisor');
+    const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
+    
+    if (hypervisorCheckbox && hypervisorSection) {
+        hypervisorSection.style.display = 'none';
+        
+        hypervisorCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                hypervisorSection.style.display = 'block';
+                refreshAllComponentSelects();
+            } else {
+                hypervisorSection.style.display = 'none';
+            }
+        });
+    }
+
+    // CommunicationServer checkbox handler
+    const commserverCheckbox = document.getElementById('commserver');
+    const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
+    
+    if (commserverCheckbox && commserverSection) {
+        commserverSection.style.display = 'none';
+        
+        commserverCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                commserverSection.style.display = 'block';
+                refreshAllComponentSelects();
+            } else {
+                commserverSection.style.display = 'none';
             }
         });
     }

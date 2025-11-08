@@ -212,7 +212,7 @@
                 Verwendeter Load Balancer
                 <span class="help-icon" data-tooltip="target-lb">?</span>
             </label>
-            <div class="custom-select" data-name="targetloadbalancer" data-index="0" data-category="client">
+            <div class="custom-select" data-name="targetloadbalancer" data-index="0" data-category="client" data-component-type="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Wählen Sie einen Load Balancer</span>
                     <span class="arrow">▼</span>
@@ -220,11 +220,18 @@
                 <div class="select-dropdown">
                     <div class="select-options">
                         <div class="select-option" data-value="">Bitte wählen</div>
-                        <!-- Will be populated dynamically from loadbalancer entries -->
+                        <div class="select-option" data-value="manual">Manuell eingeben</div>
+                        <!-- Wird automatisch aus Load Balancer-Komponenten befüllt -->
                     </div>
                 </div>
             </div>
             <div class="help-text">Wird automatisch aus angelegten Load Balancern befüllt</div>
+        </div>
+        
+        <!-- Manual Input Fallback -->
+        <div class="form-group" id="targetloadbalancer-manual" style="display:none;">
+            <label>Load Balancer (manuell)</label>
+            <input type="text" name="targetloadbalancername" placeholder="z.B. LB-KIS-Prod">
         </div>
     </div>
 
