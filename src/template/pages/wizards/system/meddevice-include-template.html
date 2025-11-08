@@ -1,0 +1,279 @@
+<div class="entry-content">
+    <!-- Grundlegende Informationen -->
+    <div class="subsection-header">Grundlegende Informationen</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Gerätebezeichnung <span class="required">*</span>
+                <span class="help-icon" data-tooltip="meddevice-name">?</span>
+            </label>
+            <input type="text" name="meddevicename" placeholder="z.B. CT-Scanner-01, Labor-Analysegerät-Hämatologie" required>
+        </div>
+        <div class="form-group">
+            <label>
+                Gerätekategorie <span class="required">*</span>
+                <span class="help-icon" data-tooltip="meddevice-category">?</span>
+            </label>
+            <div class="custom-select" data-name="meddevicecategory" data-index="0" data-category="meddevice">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-group-header">Bildgebung</div>
+                        <div class="select-option" data-value="ct">CT (Computertomographie)</div>
+                        <div class="select-option" data-value="mrt">MRT (Magnetresonanztomographie)</div>
+                        <div class="select-option" data-value="xray">Röntgen</div>
+                        <div class="select-option" data-value="ultrasound">Ultraschall</div>
+                        <div class="select-option" data-value="angiography">Angiographie</div>
+                        <div class="select-option" data-value="mammography">Mammographie</div>
+                        <div class="select-group-header">Labor</div>
+                        <div class="select-option" data-value="lab-hematology">Labor - Hämatologie</div>
+                        <div class="select-option" data-value="lab-chemistry">Labor - Klinische Chemie</div>
+                        <div class="select-option" data-value="lab-microbiology">Labor - Mikrobiologie</div>
+                        <div class="select-option" data-value="lab-immunology">Labor - Immunologie</div>
+                        <div class="select-group-header">Monitoring</div>
+                        <div class="select-option" data-value="patient-monitor">Patientenmonitor</div>
+                        <div class="select-option" data-value="vital-signs">Vitalzeichen-Monitor</div>
+                        <div class="select-option" data-value="ecg">EKG-Gerät</div>
+                        <div class="select-group-header">Therapie</div>
+                        <div class="select-option" data-value="ventilator">Beatmungsgerät</div>
+                        <div class="select-option" data-value="infusion-pump">Infusionspumpe</div>
+                        <div class="select-option" data-value="dialysis">Dialysegerät</div>
+                        <div class="select-option" data-value="anesthesia">Anästhesiegerät</div>
+                        <div class="select-group-header">Sonstige</div>
+                        <div class="select-option" data-value="pacs-workstation">PACS-Workstation</div>
+                        <div class="select-option" data-value="endoscopy">Endoskopie</div>
+                        <div class="select-option" data-value="other">Sonstiges</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Hersteller
+                <span class="help-icon" data-tooltip="meddevice-manufacturer">?</span>
+            </label>
+            <input type="text" name="meddevicemanufacturer" placeholder="z.B. Siemens Healthineers, GE Healthcare, Philips">
+        </div>
+        <div class="form-group">
+            <label>
+                Modell
+                <span class="help-icon" data-tooltip="meddevice-model">?</span>
+            </label>
+            <input type="text" name="meddevicemodel" placeholder="z.B. SOMATOM Drive, Discovery CT750">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Seriennummer
+                <span class="help-icon" data-tooltip="meddevice-serial">?</span>
+            </label>
+            <input type="text" name="meddeviceserial" placeholder="z.B. 123456789">
+        </div>
+        <div class="form-group">
+            <label>
+                Standort
+                <span class="help-icon" data-tooltip="meddevice-location">?</span>
+            </label>
+            <input type="text" name="meddevicelocation" placeholder="z.B. Radiologie Raum 201, Labor Gebäude A">
+        </div>
+    </div>
+
+    <!-- Netzwerk & Konnektivität -->
+    <div class="subsection-header">Netzwerk & Konnektivität</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                IP-Adresse
+                <span class="help-icon" data-tooltip="meddevice-ip">?</span>
+            </label>
+            <input type="text" name="meddeviceip" placeholder="z.B. 192.168.10.50">
+        </div>
+        <div class="form-group">
+            <label>
+                Hostname / DICOM-AE-Title
+                <span class="help-icon" data-tooltip="meddevice-hostname">?</span>
+            </label>
+            <input type="text" name="meddevicehostname" placeholder="z.B. CT-SCANNER-01, PACS_WORKSTATION">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            Kommunikationsprotokoll
+            <span class="help-icon" data-tooltip="meddevice-protocol">?</span>
+        </label>
+        <div class="custom-select" data-name="meddeviceprotocol" data-index="0" data-category="meddevice">
+            <div class="select-trigger">
+                <span class="placeholder">Bitte wählen</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="select-dropdown">
+                <div class="select-options">
+                    <div class="select-option" data-value="">Bitte wählen</div>
+                    <div class="select-option" data-value="dicom">DICOM</div>
+                    <div class="select-option" data-value="hl7">HL7</div>
+                    <div class="select-option" data-value="astm">ASTM</div>
+                    <div class="select-option" data-value="lis">LIS-Protokoll</div>
+                    <div class="select-option" data-value="modbus">Modbus</div>
+                    <div class="select-option" data-value="tcp-ip">TCP/IP (Custom)</div>
+                    <div class="select-option" data-value="serial">Seriell (RS-232/RS-485)</div>
+                    <div class="select-option" data-value="usb">USB</div>
+                    <div class="select-option" data-value="proprietary">Proprietär</div>
+                    <div class="select-option" data-value="none">Keine Netzwerkanbindung</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Verbindung zu System-Komponenten -->
+    <div class="subsection-header">Systemanbindung</div>
+    <div class="form-group">
+        <label>
+            Verbunden mit Komponente
+            <span class="help-icon" data-tooltip="meddevice-connected-component">?</span>
+        </label>
+        <div class="custom-select" data-name="meddeviceconnectedcomponent" data-index="0" data-category="meddevice" data-component-type="vm,hardware">
+            <div class="select-trigger">
+                <span class="placeholder">Keine direkte Verbindung</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="select-dropdown">
+                <div class="select-options">
+                    <div class="select-option" data-value="">Keine direkte Verbindung</div>
+                    <div class="select-option" data-value="manual">Manuell eingeben</div>
+                    <!-- Wird automatisch befüllt mit VMs und Hardware -->
+                </div>
+            </div>
+        </div>
+        <div class="help-text">Wählen Sie die VM oder den Server, mit dem dieses Gerät kommuniziert</div>
+    </div>
+
+    <!-- Manual Input Fallback -->
+    <div class="form-group" id="meddeviceconnectedcomponent-manual" style="display:none;">
+        <label>Verbundene Komponente (manuell)</label>
+        <input type="text" name="meddeviceconnectedname" placeholder="z.B. PACS-Server, LIS-Server">
+    </div>
+
+    <!-- Medizinprodukt & Compliance -->
+    <div class="subsection-header">Medizinprodukt & Compliance</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label class="cluster-label">
+                <input type="checkbox" name="meddeviceismedicaldevice">
+                <span>Ist Medizinprodukt gem. MPG</span>
+                <span class="help-icon" data-tooltip="is-medical-device">?</span>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                Medizinprodukte-Klasse
+                <span class="help-icon" data-tooltip="medical-device-class">?</span>
+            </label>
+            <div class="custom-select" data-name="meddeviceclass" data-index="0" data-category="meddevice">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Nicht zutreffend</div>
+                        <div class="select-option" data-value="class-i">Klasse I (geringes Risiko)</div>
+                        <div class="select-option" data-value="class-iia">Klasse IIa (mittleres Risiko)</div>
+                        <div class="select-option" data-value="class-iib">Klasse IIb (erhöhtes Risiko)</div>
+                        <div class="select-option" data-value="class-iii">Klasse III (hohes Risiko)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                CE-Kennzeichnung
+                <span class="help-icon" data-tooltip="ce-marking">?</span>
+            </label>
+            <input type="text" name="meddevicecemarking" placeholder="z.B. CE 0123">
+        </div>
+        <div class="form-group">
+            <label>
+                UDI (Unique Device Identifier)
+                <span class="help-icon" data-tooltip="udi">?</span>
+            </label>
+            <input type="text" name="meddeviceudi" placeholder="z.B. (01)12345678901234(11)230101(21)ABC123">
+        </div>
+    </div>
+
+    <!-- Wartung & Betrieb -->
+    <div class="subsection-header">Wartung & Betrieb</div>
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Wartungsintervall
+                <span class="help-icon" data-tooltip="maintenance-interval">?</span>
+            </label>
+            <div class="custom-select" data-name="meddevicemaintenance" data-index="0" data-category="meddevice">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="monthly">Monatlich</div>
+                        <div class="select-option" data-value="quarterly">Quartalsweise</div>
+                        <div class="select-option" data-value="semiannual">Halbjährlich</div>
+                        <div class="select-option" data-value="annual">Jährlich</div>
+                        <div class="select-option" data-value="biannual">Alle 2 Jahre</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                Nächste Wartung
+                <span class="help-icon" data-tooltip="next-maintenance">?</span>
+            </label>
+            <input type="date" name="meddevicenextmaintenance">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>
+                Software-Version / Firmware
+                <span class="help-icon" data-tooltip="meddevice-software">?</span>
+            </label>
+            <input type="text" name="meddevicesoftware" placeholder="z.B. v12.5.3, Firmware 2.1.0">
+        </div>
+        <div class="form-group">
+            <label>
+                Verantwortlicher Ansprechpartner
+                <span class="help-icon" data-tooltip="meddevice-contact">?</span>
+            </label>
+            <input type="text" name="meddevicecontact" placeholder="z.B. Dr. Müller (Radiologie), Medizintechnik">
+        </div>
+    </div>
+
+    <!-- Notizen -->
+    <div class="subsection-header">Zusätzliche Informationen</div>
+    <div class="form-group">
+        <label>
+            Notizen / Besonderheiten
+            <span class="help-icon" data-tooltip="meddevice-notes">?</span>
+        </label>
+        <textarea name="meddevicenotes" rows="3" placeholder="Besondere Konfigurationen, bekannte Probleme, Nutzungshinweise..."></textarea>
+    </div>
+</div>
+
+<!-- Include help tooltips -->
+{{include:pages/wizards/system/help/meddevice-help.html}}

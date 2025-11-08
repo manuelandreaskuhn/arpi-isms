@@ -50,6 +50,11 @@ import {
     setupContainerConditionalFields,
     refreshContainerHostAssignments
 } from './system/container.js';
+import {
+    addMedDeviceEntry,
+    setupMedDeviceConditionalFields,
+    refreshMedDeviceHostAssignments
+} from './system/meddevice.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { refreshAllComponentSelects } from './componentlinking.js';
 
@@ -67,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clientSection = document.querySelector('.form-section[data-name="clients"]');
     const medInterfaceSection = document.querySelector('.form-section[data-name="medinterfaces"]');
     const containerSection = document.querySelector('.form-section[data-name="containers"]');
+    const medDeviceSection = document.querySelector('.form-section[data-name="meddevices"]');
     
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
@@ -77,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (clientSection) clientSection.style.display = 'none';
     if (medInterfaceSection) medInterfaceSection.style.display = 'none';
     if (containerSection) containerSection.style.display = 'none';
+    if (medDeviceSection) medDeviceSection.style.display = 'none';
     
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
@@ -283,6 +290,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Medical Device checkbox handler
+    const medDeviceCheckbox = document.getElementById('meddevice');
+    
+    if (medDeviceCheckbox && medDeviceSection) {
+        medDeviceCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                medDeviceSection.style.display = 'block';
+            } else {
+                medDeviceSection.style.display = 'none';
+                document.getElementById('medDeviceList').innerHTML = '';
+                updateSectionCounter(medDeviceSection);
+            }
+        });
+    }
+
     // Hypervisor checkbox handler
     const hypervisorCheckbox = document.getElementById('hypervisor');
     const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
@@ -359,4 +381,7 @@ window.refreshInterfaceComponents = refreshInterfaceComponents;
 window.addContainerEntry = addContainerEntry;
 window.setupContainerConditionalFields = setupContainerConditionalFields;
 window.refreshContainerHostAssignments = refreshContainerHostAssignments;
+window.addMedDeviceEntry = addMedDeviceEntry;
+window.setupMedDeviceConditionalFields = setupMedDeviceConditionalFields;
+window.refreshMedDeviceHostAssignments = refreshMedDeviceHostAssignments;
 

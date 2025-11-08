@@ -16,7 +16,8 @@ const componentCache = {
     network: [],
     commserver: [],
     tiinfrastructure: [],
-    loadbalancer: []
+    loadbalancer: [],
+    meddevice: []
 };
 
 /**
@@ -127,6 +128,8 @@ function getComponentsByType(type) {
             return collectTIInfrastructureFromPage();
         case 'loadbalancer':
             return collectLoadBalancersFromPage();
+        case 'meddevice':
+            return collectMedDevicesFromPage();
         default:
             return componentCache[type] || [];
     }
@@ -223,6 +226,16 @@ function collectLoadBalancersFromPage() {
 }
 
 /**
+ * Collect Medical Devices from database/API
+ * @returns {Array} Array of MedDevice objects
+ */
+function collectMedDevicesFromPage() {
+    // TODO: Fetch from API
+    // Example data:
+    return componentCache.meddevice || [];
+}
+
+/**
  * Get human-readable label for component type
  * @param {string} type - Component type
  * @returns {string} Label
@@ -240,7 +253,8 @@ function getComponentTypeLabel(type) {
         'network': 'Netzwerke',
         'commserver': 'Kommunikationsserver',
         'tiinfrastructure': 'TI-Infrastruktur-Komponenten',
-        'loadbalancer': 'Load Balancer'
+        'loadbalancer': 'Load Balancer',
+        'meddevice': 'Medizingeräte'
     };
     return labels[type] || type;
 }
@@ -263,6 +277,7 @@ function formatComponentLabel(component, type) {
         case 'hypervisor':
         case 'tiinfrastructure':
         case 'loadbalancer':
+        case 'meddevice':
             return component.type 
                 ? `${component.name} (${component.type})`
                 : component.name;

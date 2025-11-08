@@ -528,6 +528,28 @@
         </div>
     </div>
 
+    <!-- Medizingeräte -->
+    <div class="form-section collapsed" data-name="meddevices">
+        <div class="section-title">
+            <span>Medizingeräte</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie angebundene Medizingeräte (CT, MRT, Ultraschall, Labor-Analysegeräte, etc.), die mit diesem System kommunizieren.
+            </div>
+            
+            <div id="medDeviceList" class="dynamic-list">
+                <!-- Medical device entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addMedDeviceEntry()">
+                <span>+</span> Medizingerät hinzufügen
+            </button>
+        </div>
+    </div>
+
     <!-- Gematik TI-Infrastruktur -->
     <div class="form-section collapsed" data-name="gematicti">
         <div class="section-title">
@@ -729,5 +751,15 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'container')">×</button>
         </div>
         {{include:pages/wizards/system/container-include-template.html}}
+    </div>
+</template>
+
+<template id="medDeviceEntryTemplate">
+    <div class="dynamic-entry" data-type="meddevice">
+        <div class="entry-header">
+            <span class="entry-title">Medizingerät #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'meddevice')">×</button>
+        </div>
+        {{include:pages/wizards/system/meddevice-include-template.html}}
     </div>
 </template>
