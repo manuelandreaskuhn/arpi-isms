@@ -3,51 +3,60 @@ import { refreshAllComponentSelects } from '../componentlinking.js';
 
 let medDeviceCounter = 0;
 
+/**
+ * Add a new medical device entry
+ */
 export function addMedDeviceEntry() {
     medDeviceCounter++;
     const template = document.getElementById('medDeviceEntryTemplate');
-    const clone = template.content.cloneNode(true);
+    const medDeviceList = document.getElementById('medDeviceList');
     
+    if (!template || !medDeviceList) return;
+    
+    const clone = template.content.cloneNode(true);
     const entry = clone.querySelector('.dynamic-entry');
+    
     entry.dataset.id = medDeviceCounter;
     entry.querySelector('.entry-number').textContent = medDeviceCounter;
     
-    const medDeviceList = document.getElementById('medDeviceList');
     medDeviceList.appendChild(clone);
     
-    setupMedDeviceConditionalFields(entry);
     updateListenersForDynamicEntry(entry);
     
     const section = document.querySelector('.form-section[data-name="meddevices"]');
-    updateSectionCounter(section);
+    if (section) {
+        updateSectionCounter(section);
+    }
     
+    setupMedDeviceConditionalFields(entry);
+    
+    // Refresh component selects to include new medical device
     refreshAllComponentSelects();
 }
 
-export function setupMedDeviceConditionalFields(container) {
-    if (!container) return;
+/**
+ * Setup conditional fields for medical device entry
+ * @param {HTMLElement} entry - The medical device entry element
+ */
+export function setupMedDeviceConditionalFields(entry) {
+    if (!entry) return;
+
+    // Handle component selection - show/hide manual input
+    const componentSelect = entry.querySelector('[data-name="meddeviceconnectedcomponent"]');
+    const manualInput = entry.querySelector('#meddeviceconnectedcomponent-manual');
     
-    // Handle component linking manual input toggle
-    const componentSelect = container.querySelector('[data-name="meddeviceconnectedcomponent"]');
-    if (componentSelect) {
+    if (componentSelect && manualInput) {
         const observer = new MutationObserver(() => {
-            handleMedDeviceComponentToggle(container);
+            const value = componentSelect.dataset.value;
+            manualInput.style.display = (value === 'manual') ? 'block' : 'none';
         });
         observer.observe(componentSelect, { attributes: true, attributeFilter: ['data-value'] });
-        handleMedDeviceComponentToggle(container);
     }
 }
 
-function handleMedDeviceComponentToggle(container) {
-    const componentSelect = container.querySelector('[data-name="meddeviceconnectedcomponent"]');
-    const manualInput = container.querySelector('#meddeviceconnectedcomponent-manual');
-    
-    if (!componentSelect || !manualInput) return;
-    
-    const value = componentSelect.dataset.value;
-    manualInput.style.display = (value === 'manual') ? 'block' : 'none';
-}
-
+/**
+ * Refresh host assignments for medical devices
+ */
 export function refreshMedDeviceHostAssignments() {
     refreshAllComponentSelects();
 }

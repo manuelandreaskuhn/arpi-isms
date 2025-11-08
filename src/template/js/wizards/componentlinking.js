@@ -274,6 +274,38 @@ function collectTIInfrastructureFromPage() {
 }
 
 /**
+ * Collect Load Balancers from current page (System Wizard)
+ * @returns {Array} Array of Load Balancer objects
+ */
+function collectLoadBalancersFromPage() {
+    const lbEntries = document.querySelectorAll('#loadbalancerList .dynamic-entry[data-type="loadbalancer"]');
+    return Array.from(lbEntries).map((e) => {
+        const id = e.dataset.id;
+        const nameInput = e.querySelector('input[name="loadbalancername"]');
+        const name = (nameInput && nameInput.value.trim()) || `Load Balancer #${id}`;
+        const typeSelect = e.querySelector('[data-name="loadbalancertype"]');
+        const type = typeSelect ? typeSelect.dataset.value : '';
+        return { id, name, type };
+    });
+}
+
+/**
+ * Collect Medical Devices from current page (System Wizard)
+ * @returns {Array} Array of Medical Device objects
+ */
+function collectMedDevicesFromPage() {
+    const medDeviceEntries = document.querySelectorAll('#medDeviceList .dynamic-entry[data-type="meddevice"]');
+    return Array.from(medDeviceEntries).map((e) => {
+        const id = e.dataset.id;
+        const nameInput = e.querySelector('input[name="meddevicename"]');
+        const name = (nameInput && nameInput.value.trim()) || `Medizingerät #${id}`;
+        const categorySelect = e.querySelector('[data-name="meddevicecategory"]');
+        const type = categorySelect ? categorySelect.dataset.value : '';
+        return { id, name, type };
+    });
+}
+
+/**
  * Get human-readable label for component type
  * @param {string} type - Component type
  * @returns {string} Label
