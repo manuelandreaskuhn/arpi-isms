@@ -13,7 +13,8 @@ const componentCache = {
     siem: [],
     vpn: [],
     proxy: [],
-    network: []
+    network: [],
+    commserver: []
 };
 
 /**
@@ -116,6 +117,10 @@ function getComponentsByType(type) {
             return collectHardwareFromPage();
         case 'firewall':
             return collectFirewallsFromPage();
+        case 'commserver':
+            return collectCommServersFromPage();
+        case 'hypervisor':
+            return collectHypervisorsFromPage();
         default:
             return componentCache[type] || [];
     }
@@ -167,6 +172,26 @@ function collectFirewallsFromPage() {
 }
 
 /**
+ * Collect Communication Servers from database/API
+ * @returns {Array} Array of CommServer objects
+ */
+function collectCommServersFromPage() {
+    // TODO: Fetch from API
+    // Example data:
+    return componentCache.commserver || [];
+}
+
+/**
+ * Collect Hypervisors from database/API
+ * @returns {Array} Array of Hypervisor objects
+ */
+function collectHypervisorsFromPage() {
+    // TODO: Fetch from API
+    // Example data:
+    return componentCache.hypervisor || [];
+}
+
+/**
  * Get human-readable label for component type
  * @param {string} type - Component type
  * @returns {string} Label
@@ -181,7 +206,8 @@ function getComponentTypeLabel(type) {
         'siem': 'SIEM-Systeme',
         'vpn': 'VPN-Gateways',
         'proxy': 'Proxy-Server',
-        'network': 'Netzwerke'
+        'network': 'Netzwerke',
+        'commserver': 'Kommunikationsserver'
     };
     return labels[type] || type;
 }
@@ -200,6 +226,8 @@ function formatComponentLabel(component, type) {
                 ? `${component.hostname} (${component.ip})`
                 : component.hostname;
         case 'firewall':
+        case 'commserver':
+        case 'hypervisor':
             return component.type 
                 ? `${component.name} (${component.type})`
                 : component.name;

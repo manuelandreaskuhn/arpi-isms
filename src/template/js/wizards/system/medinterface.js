@@ -103,25 +103,28 @@ function populateExistingCommServers(entry) {
     const selectElement = entry.querySelector('.interface-commserver-list');
     if (!selectElement) return;
     
-    // Keep existing options
-    const existingOptions = Array.from(selectElement.querySelectorAll('.select-option'));
+    // Keep "Bitte wählen" and "Manuell eingeben" options
+    const existingOptions = Array.from(selectElement.querySelectorAll('.select-option[data-value=""], .select-option[data-value="manual"]'));
+    selectElement.innerHTML = '';
+    existingOptions.forEach(opt => selectElement.appendChild(opt));
     
-    // TODO: Fetch from API or global store
-    // For now, use placeholder data
-    const commServers = [
-        { id: 'cs1', name: 'Mirth Connect Produktiv', hostname: 'mirth-prod.example.com' },
-        { id: 'cs2', name: 'HL7 Interface Engine Test', hostname: 'hl7-test.example.com' }
-    ];
-    
-    commServers.forEach(cs => {
-        const option = document.createElement('div');
-        option.className = 'select-option';
-        option.setAttribute('data-value', cs.id);
-        option.setAttribute('data-hostname', cs.hostname);
-        option.setAttribute('data-name', cs.name);
-        option.textContent = cs.name;
-        selectElement.appendChild(option);
-    });
+    // TODO: Fetch from API/Database - CommunicationServer Entities
+    // For now, check if there are CommunicationServers in componentCache
+    if (window.componentCache && window.componentCache.commserver) {
+        const commServers = window.componentCache.commserver;
+        
+        if (commServers.length > 0) {
+            commServers.forEach(cs => {
+                const option = document.createElement('div');
+                option.className = 'select-option';
+                option.setAttribute('data-value', cs.id);
+                option.setAttribute('data-hostname', cs.hostname || '');
+                option.setAttribute('data-name', cs.name || cs.hostname);
+                option.textContent = cs.name || cs.hostname;
+                selectElement.appendChild(option);
+            });
+        }
+    }
 }
 
 function populateCommServerData(entry, commServerId) {

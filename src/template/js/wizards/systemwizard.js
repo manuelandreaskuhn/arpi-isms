@@ -210,6 +210,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Hypervisor checkbox handler
+    const hypervisorCheckbox = document.getElementById('hypervisor');
+    const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
+    
+    if (hypervisorCheckbox && hypervisorSection) {
+        hypervisorSection.style.display = 'none';
+        
+        hypervisorCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                hypervisorSection.style.display = 'block';
+            } else {
+                hypervisorSection.style.display = 'none';
+            }
+        });
+    }
+
+    // CommunicationServer checkbox handler
+    const commserverCheckbox = document.getElementById('commserver');
+    const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
+    
+    if (commserverCheckbox && commserverSection) {
+        commserverSection.style.display = 'none';
+        
+        commserverCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                commserverSection.style.display = 'block';
+            } else {
+                commserverSection.style.display = 'none';
+            }
+        });
+    }
+
     // Gematik TI checkbox handler
     const gematictiCheckbox = document.getElementById('gematicti');
     const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
