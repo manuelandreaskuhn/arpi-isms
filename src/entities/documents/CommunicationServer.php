@@ -1,5 +1,5 @@
 <?php
-namespace App\entities\documents;
+namespace ARPI\Entities\Documents;
 
 use ARPI\ODM\Mapping\Annotations as ODM;
 use MongoDB\BSON\ObjectId;
@@ -14,7 +14,7 @@ use MongoDB\BSON\ObjectId;
  * @ODM\Document(collection="comm_servers")
  * @package Entities
  */
-class CommServer
+class CommunicationServer
 {
     /**
      * MongoDB Document ID

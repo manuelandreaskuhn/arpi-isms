@@ -1,5 +1,4 @@
 <?php
-
 namespace ARPI\Entities\Documents;
 
 use ARPI\ODM\Mapping\Annotations as ODM;
@@ -12,7 +11,7 @@ use MongoDB\BSON\ObjectId;
  * 
  * @ODM\Document(collection="tiinfrastrukturen")
  */
-class TiInfrastruktur
+class TIInfrastructure
 {
     /**
      * Eindeutige ID (MongoDB ObjectID)

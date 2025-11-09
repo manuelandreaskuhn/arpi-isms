@@ -1,22 +1,45 @@
-import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
-    
+import { initializeAllComponentSelects } from './componentlinking.js';
+import { collectFormData } from './formcollector.js';
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize component linking
-    initializeAllComponentSelects();
-
-    // Initialize help tooltips
     initializeHelpTooltips();
-
-    // Proxy Failover toggle
-    const proxyFailoverCheck = document.getElementById('proxy-failover-check');
-    const proxyFailoverConfig = document.getElementById('proxy-failover-config');
-    
-    if (proxyFailoverCheck && proxyFailoverConfig) {
-        proxyFailoverCheck.addEventListener('change', function() {
-            proxyFailoverConfig.style.display = this.checked ? 'block' : 'none';
-        });
-    }
-    
-    console.log('Proxy Wizard initialized with component linking');
+    initializeAllComponentSelects();
+    setupProxyWizard();
 });
+
+function setupProxyWizard() {
+    const form = document.getElementById('newProxyForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', handleProxySubmit);
+}
+
+async function handleProxySubmit(event) {
+    event.preventDefault();
+    
+    const formData = collectFormData(event.target);
+    console.log('Proxy Server Data:', formData);
+    
+    try {
+        const response = await fetch('/api/proxies', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            alert('Proxy-Server erfolgreich erstellt!');
+            window.location.href = '/assetmanagement/components';
+        } else {
+            alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
+        }
+    } catch (error) {
+        console.error('API Error:', error);
+        alert('Verbindungsfehler zur API');
+    }
+}

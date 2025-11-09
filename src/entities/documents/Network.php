@@ -1,5 +1,4 @@
 <?php
-
 namespace ARPI\Entities\Documents;
 
 use ARPI\ODM\Mapping\Annotations as ODM;

@@ -19,6 +19,7 @@ class WizardAPI
         'siems' => \ARPI\Sites\Wizards\NewSIEM::class,
         'ti-infrastructures' => \ARPI\Sites\Wizards\NewTIInfrastruktur::class,
         'communication-servers' => \ARPI\Sites\Wizards\NewComServer::class,
+        'medical-devices' => \ARPI\Sites\Wizards\NewMedicalDevice::class,
         'systems' => \ARPI\Sites\Wizards\NewSystem::class,
     ];
     

@@ -57,14 +57,21 @@ import {
 } from './system/meddevice.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { refreshAllComponentSelects } from './componentlinking.js';
+import { collectFormData } from './formcollector.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize help tooltips
     initializeHelpTooltips();
     
+    // Initialize component selects
+    refreshAllComponentSelects();
+    
+    // Setup form submission
+    setupSystemFormSubmit();
+    
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
-    const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');
+    const hardwareSection = document.querySelector('.form-section[data-name="hardwares"]');
     const databaseSection = document.querySelector('.form-section[data-name="databases"]');
     const backupSection = document.querySelector('.form-section[data-name="backups"]');
     const loadbalancerSection = document.querySelector('.form-section[data-name="loadbalancers"]');
@@ -349,6 +356,126 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function setupSystemFormSubmit() {
+    const form = document.getElementById('newSystemForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', handleSystemSubmit);
+}
+
+async function handleSystemSubmit(event) {
+    event.preventDefault();
+    
+    const formData = collectFormData(event.target);
+    
+    // Collect dynamic entries (VMs, Hardware, etc.)
+    formData.virtualmachines = collectVMData();
+    formData.hardwareservers = collectHardwareData();
+    formData.databases = collectDatabaseData();
+    formData.backupsystems = collectBackupData();
+    formData.loadbalancers = collectLoadBalancerData();
+    formData.firewallrules = collectFirewallData();
+    formData.clientaccesses = collectClientData();
+    formData.medicaldevices = collectMedDeviceData();
+    formData.medicalinterfaces = collectMedInterfaceData();
+    formData.containers = collectContainerData();
+    
+    console.log('System Data:', formData);
+    
+    try {
+        const response = await fetch('/api/systems', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            alert('System erfolgreich erstellt!');
+            window.location.href = '/assetmanagement/systems';
+        } else {
+            alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
+        }
+    } catch (error) {
+        console.error('API Error:', error);
+        alert('Verbindungsfehler zur API');
+    }
+}
+
+// Helper functions to collect dynamic entry data
+function collectVMData() {
+    const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
+    return Array.from(vmEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectHardwareData() {
+    const hwEntries = document.querySelectorAll('#hardwareList .dynamic-entry[data-type="hardware"]');
+    return Array.from(hwEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectDatabaseData() {
+    const dbEntries = document.querySelectorAll('#databaseList .dynamic-entry[data-type="database"]');
+    return Array.from(dbEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectBackupData() {
+    const backupEntries = document.querySelectorAll('#backupList .dynamic-entry[data-type="backup"]');
+    return Array.from(backupEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectLoadBalancerData() {
+    const lbEntries = document.querySelectorAll('#loadbalancerList .dynamic-entry[data-type="loadbalancer"]');
+    return Array.from(lbEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectFirewallData() {
+    const fwEntries = document.querySelectorAll('#firewallList .dynamic-entry[data-type="firewall"]');
+    return Array.from(fwEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectClientData() {
+    const clientEntries = document.querySelectorAll('#clientList .dynamic-entry[data-type="client"]');
+    return Array.from(clientEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectMedDeviceData() {
+    const medDeviceEntries = document.querySelectorAll('#medDeviceList .dynamic-entry[data-type="meddevice"]');
+    return Array.from(medDeviceEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectMedInterfaceData() {
+    const medInterfaceEntries = document.querySelectorAll('#medInterfaceList .dynamic-entry[data-type="medinterface"]');
+    return Array.from(medInterfaceEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectContainerData() {
+    const containerEntries = document.querySelectorAll('#containerList .dynamic-entry[data-type="container"]');
+    return Array.from(containerEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
 
 // Make functions globally accessible for onclick handlers
 window.addVMEntry = addVMEntry;
