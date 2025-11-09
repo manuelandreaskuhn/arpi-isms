@@ -1,5 +1,5 @@
 <?php
-namespace ARPI\Helper;
+namespace ARPI\Helper\ODM;
 
 use MongoDB\BSON\ObjectId;
 

@@ -5,7 +5,7 @@ use ARPI\Helper\BaseSite;
 use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
-use ARPI\Helper\EntityHydrator;
+use ARPI\Helper\ODM\EntityHydrator;
 use ARPI\Schemas\NetworkSchema;
 use ARPI\Entities\Documents\Network;
 
