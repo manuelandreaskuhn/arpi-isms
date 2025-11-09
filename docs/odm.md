@@ -2,301 +2,255 @@
 
 ## Überblick
 
-Das ODM (Object Document Mapper) Framework dient zur Abbildung von MongoDB-Dokumenten auf PHP-Objekte. Es vereinfacht die Arbeit mit dokumentenorientierten Datenbanken, indem es die Datenbankoperationen kapselt und ein objektorientiertes API bereitstellt.
+Das ODM (Object Document Mapper) Framework in ARPI-ISMS ist ein vollständiges Mapping-System zur Abbildung von MongoDB-Dokumenten auf PHP-Objekte. Es bietet Annotation-basierte Konfiguration, Change Tracking, Transaktions-Support und automatische Serialisierung.
 
-## Kernkonzepte
+## Architektur-Überblick
 
-### Annotations-basierte Mappings
+```mermaid
+graph TD
+    A[EntityRepository] -->|verwaltet| B[UnitOfWork]
+    A -->|nutzt| C[EntitySerializer]
+    B -->|trackt| D[Entities]
+    C -->|parst| E[EntityMetadata]
+    F[EntityHydrator] -->|hydratisiert| D
+    G[MongoDB Client] -->|Verbindung| A
+    H[Session] -->|Transaktionen| B
+    
+    style A fill:#4CAF50
+    style B fill:#2196F3
+    style C fill:#FF9800
+    style E fill:#9C27B0
+```
 
-Das ODM verwendet PHP 8 Attributes (Annotations) zur Konfiguration der Dokument-Struktur:
+## Kernkomponenten
 
+### 1. EntityRepository
+
+Die zentrale Klasse für alle Datenbankoperationen.
+
+**Hauptfunktionen:**
+- CRUD-Operationen (Create, Read, Update, Delete)
+- Session-Management für Transaktionen
+- Integration mit UnitOfWork
+- Automatische Collection-Auswahl
+
+**Initialisierung:**
+```php
+use ARPI\Helper\ODM\EntityRepository;
+
+$repository = new EntityRepository(
+    'mongodb://localhost:27017',  // MongoDB URI
+    'arpi'                         // Datenbank-Name
+);
+```
+
+### 2. UnitOfWork
+
+Verwaltet Entity-Lebenszyklus und Change Tracking.
+
+**Funktionen:**
+- Automatisches Change Tracking
+- Batch-Operationen (Flush)
+- Transaktions-Support
+- Entity-Status-Verwaltung (NEW, MANAGED, REMOVED)
+
+**Verwendung:**
+```php
+use ARPI\Helper\ODM\UnitOfWork;
+
+$unitOfWork = new UnitOfWork($repository);
+
+// Entity registrieren
+$unitOfWork->persist($vm);
+
+// Änderungen speichern
+$unitOfWork->flush();
+```
+
+### 3. EntitySerializer
+
+Konvertiert zwischen PHP-Objekten und MongoDB-Dokumenten.
+
+**Funktionen:**
+- Serialisierung von Entities zu Arrays
+- Deserialisierung von MongoDB-Dokumenten zu Entities
+- Type-Konvertierung (DateTime, ObjectId, etc.)
+- Nested Properties Support
+
+### 4. EntityMetadata
+
+Parst Annotations und speichert Metadaten.
+
+**Funktionen:**
+- Annotation-Parsing
+- Field-Mapping
+- Index-Definitionen
+- Collection-Namen
+
+### 5. EntityHydrator
+
+Statisches Utility für schnelle Hydratisierung.
+
+**Funktionen:**
+- Schnelles Befüllen von Entities aus Arrays
+- Type-Konvertierung
+- Nested Property Access
+
+## Vollständige Architektur
+
+```mermaid
+classDiagram
+    class EntityRepository {
+        -Client client
+        -Database db
+        -UnitOfWork unitOfWork
+        -EntitySerializer serializer
+        +save(entity)
+        +insert(entity, session?)
+        +update(entity, session?)
+        +delete(entity, session?)
+        +find(class, id)
+    }
+    
+    class UnitOfWork {
+        -EntityRepository repository
+        -Map managedEntities
+        -Set newEntities
+        -Set removedEntities
+        +persist(entity)
+        +remove(entity)
+        +flush()
+        +attach(entity)
+        +detach(entity)
+        +clear()
+    }
+    
+    class EntitySerializer {
+        +serializeEntity(entity, metadata)
+        +deserializeEntity(entity, data, metadata)
+    }
+    
+    class EntityMetadata {
+        +string collection
+        +ReflectionProperty idField
+        +Map fields
+        +fromEntity(entity)
+    }
+    
+    class EntityHydrator {
+        +hydrate(entity, data)
+        +extract(entity)
+    }
+    
+    EntityRepository --> UnitOfWork
+    EntityRepository --> EntitySerializer
+    EntitySerializer --> EntityMetadata
+    UnitOfWork --> EntityRepository
+```
+
+## Annotationen Referenz
+
+### @Document
+
+Markiert eine Klasse als MongoDB-Dokument.
+
+**Parameter:**
+- `collection` (string, required): MongoDB Collection-Name
+
+**Beispiel:**
 ```php
 use ARPI\ODM\Mapping\Annotations as ODM;
 
 /**
- * @ODM\Document(collection="users")
- */
-class User
-{
-    /**
-     * @ODM\Id
-     */
-    public ObjectId $id;
-
-    /**
-     * @ODM\Field(type="string")
-     */
-    public string $username;
-
-    /**
-     * @ODM\Field(type="date")
-     */
-    public DateTime $createdAt;
-}
-```
-
-## Aufbau des ODM
-
-Das Framework besteht aus folgenden Komponenten:
-
-```mermaid
-classDiagram
-    class DocumentManager {
-        +persist(object)
-        +flush()
-        +find(class, id)
-        +remove(object)
-    }
-    class UnitOfWork {
-        +registerNew(object)
-        +registerDirty(object)
-        +registerDeleted(object)
-        +commit()
-    }
-    class Hydrator {
-        +hydrate(array, object)
-        +extract(object)
-    }
-    class Connection {
-        +getCollection(name)
-        +executeQuery()
-    }
-    class Metadata {
-        +getFieldMappings()
-        +getAssociationMappings()
-    }
-    
-    DocumentManager --> UnitOfWork
-    DocumentManager --> Connection
-    DocumentManager --> Hydrator
-    DocumentManager --> Metadata
-    UnitOfWork --> Hydrator
-    Hydrator --> Metadata
-```
-
-### Komponenten-Beschreibung
-
-- **DocumentManager**: Zentrale API für alle Datenbankoperationen
-- **UnitOfWork**: Verwaltet Objekt-Lebenszyklus und Change Tracking
-- **Hydrator**: Konvertiert zwischen MongoDB-Dokumenten und PHP-Objekten
-- **Connection**: Abstrahiert MongoDB-Verbindung
-- **Metadata**: Speichert Mapping-Informationen aus Annotations
-
-## Annotationen Referenz
-
-### Dokument-Level
-
-#### @Document
-
-Markiert eine Klasse als persistierbares Dokument.
-
-**Parameter:**
-- `collection` (string, optional): Collection-Name in MongoDB
-- `repositoryClass` (string, optional): Custom Repository-Klasse
-
-**Beispiel:**
-```php
-/**
- * @ODM\Document(
- *     collection="virtualmachines",
- *     repositoryClass="App\Repository\VMRepository"
- * )
+ * @ODM\Document(collection="virtualmachines")
  */
 class VM { }
 ```
 
-#### @EmbeddedDocument
+### @Id
 
-Markiert eine Klasse als eingebettetes Dokument (kein eigenes Collection).
-
-**Beispiel:**
-```php
-/**
- * @ODM\EmbeddedDocument
- */
-class Address
-{
-    /**
-     * @ODM\Field(type="string")
-     */
-    public string $street;
-}
-```
-
-### Feld-Level
-
-#### @Id
-
-Kennzeichnet das Feld als MongoDB ObjectId.
-
-**Automatisches Verhalten:**
-- Wird automatisch generiert wenn nicht gesetzt
-- Typ muss `MongoDB\BSON\ObjectId` sein
+Markiert das MongoDB ObjectId-Feld.
 
 **Beispiel:**
 ```php
+use MongoDB\BSON\ObjectId;
+
 /**
  * @ODM\Id
  */
 public ObjectId $id;
 ```
 
-#### @Field
+**Wichtig:**
+- Wird automatisch von MongoDB generiert
+- Wird nach `insert()` automatisch gesetzt
+- Typ MUSS `MongoDB\BSON\ObjectId` sein
 
-Definiert ein einfaches Feld im Dokument.
+### @Field
+
+Definiert ein Feld im Dokument.
 
 **Parameter:**
 - `type` (string, required): Datentyp
   - `string`, `int`, `float`, `bool`
-  - `date`, `timestamp`
-  - `array`, `hash`
-- `name` (string, optional): MongoDB-Feldname (wenn anders als Property-Name)
+  - `date` (für DateTime)
+  - `array` (für Arrays)
+- `name` (string, optional): MongoDB-Feldname (wenn abweichend)
 - `nullable` (bool, default: false): Null-Werte erlaubt
 - `default` (mixed, optional): Default-Wert
 
 **Beispiele:**
 ```php
-// Einfaches String-Feld
 /**
  * @ODM\Field(type="string")
  */
 public string $hostname;
 
-// Mit abweichendem DB-Namen
 /**
- * @ODM\Field(type="string", name="ip_address")
+ * @ODM\Field(type="string", name="ip_address", nullable=true)
  */
-public ?string $ipAddress = null;
+public ?string $ipaddress = null;
 
-// Nullable mit Default
 /**
- * @ODM\Field(type="int", nullable=true, default=0)
+ * @ODM\Field(type="int", default=0)
  */
-public ?int $port = 0;
+public int $port = 0;
 
-// Array-Feld
+/**
+ * @ODM\Field(type="date")
+ */
+public \DateTime $createdAt;
+
 /**
  * @ODM\Field(type="array")
  */
 public array $tags = [];
-
-// DateTime-Feld
-/**
- * @ODM\Field(type="date")
- */
-public DateTime $createdAt;
 ```
 
-### Beziehungen
+### @Index
 
-#### @ReferenceOne
-
-1:1 Beziehung zu einem anderen Dokument.
+Definiert Indizes für die Collection.
 
 **Parameter:**
-- `targetDocument` (string, required): Ziel-Klasse
-- `cascade` (array, optional): Cascade-Operationen (`persist`, `remove`, `merge`)
-- `orphanRemoval` (bool, default: false): Entferne verwaiste Dokumente
-
-**Beispiel:**
-```php
-/**
- * @ODM\ReferenceOne(
- *     targetDocument="Address",
- *     cascade={"persist", "remove"},
- *     orphanRemoval=true
- * )
- */
-public ?Address $address = null;
-```
-
-#### @ReferenceMany
-
-1:n Beziehung zu mehreren Dokumenten.
-
-**Parameter:**
-- `targetDocument` (string, required): Ziel-Klasse
-- `cascade` (array, optional): Cascade-Operationen
-- `orphanRemoval` (bool, default: false): Entferne verwaiste Dokumente
-
-**Beispiel:**
-```php
-/**
- * @ODM\ReferenceMany(
- *     targetDocument="Post",
- *     cascade={"persist"}
- * )
- */
-public array $posts = [];
-```
-
-#### @EmbedOne
-
-Eingebettetes Dokument (1:1).
-
-**Parameter:**
-- `targetDocument` (string, required): Eingebettete Klasse
-
-**Beispiel:**
-```php
-/**
- * @ODM\EmbedOne(targetDocument="Address")
- */
-public Address $address;
-```
-
-#### @EmbedMany
-
-Mehrere eingebettete Dokumente (1:n).
-
-**Parameter:**
-- `targetDocument` (string, required): Eingebettete Klasse
-
-**Beispiel:**
-```php
-/**
- * @ODM\EmbedMany(targetDocument="Phone")
- */
-public array $phones = [];
-```
-
-### Indizes
-
-#### @Index
-
-Erstellt einen Index auf das Feld.
-
-**Parameter:**
-- `keys` (array, required): Feld(er) für Index
-- `options` (array, optional): MongoDB-Index-Optionen
-  - `unique` (bool): Eindeutiger Index
-  - `sparse` (bool): Sparse Index
-  - `background` (bool): Im Hintergrund erstellen
+- `unique` (bool, optional): Eindeutiger Index
+- `order` (string, optional): 'asc' oder 'desc'
 
 **Beispiele:**
 ```php
-// Einfacher Index
 /**
- * @ODM\Index(keys={"username"="asc"})
+ * @ODM\Field(type="string")
+ * @ODM\Index(unique=true)
  */
+public string $uuid;
 
-// Unique Index
 /**
- * @ODM\Index(
- *     keys={"email"="asc"},
- *     options={"unique"=true}
- * )
+ * @ODM\Field(type="string")
+ * @ODM\Index
  */
-
-// Compound Index
-/**
- * @ODM\Index(
- *     keys={"lastname"="asc", "firstname"="asc"}
- * )
- */
+public string $hostname;
 ```
 
-## Vollständiges Beispiel: VM-Entity
+## Vollständiges Entity-Beispiel
 
 ```php
 <?php
@@ -309,7 +263,6 @@ use MongoDB\BSON\ObjectId;
  * Eine Virtuelle Maschine in der CMDB.
  * 
  * @ODM\Document(collection="virtualmachines")
- * @ODM\Index(keys={"hostname"="asc"}, options={"unique"=true})
  */
 class VM
 {
@@ -340,11 +293,6 @@ class VM
     public ?string $operatingsystem = null;
 
     /**
-     * @ODM\Field(type="string", nullable=true)
-     */
-    public ?string $serverrole = null;
-
-    /**
      * @ODM\Field(type="int", nullable=true)
      */
     public ?int $vcpu = null;
@@ -355,24 +303,14 @@ class VM
     public ?int $ramingb = null;
 
     /**
-     * @ODM\Field(type="int", nullable=true)
+     * @ODM\Field(type="date")
      */
-    public ?int $storageingb = null;
-
-    /**
-     * @ODM\Field(type="string", nullable=true)
-     */
-    public ?string $hypervisor = null;
+    public \DateTime $createdAt;
 
     /**
      * @ODM\Field(type="date")
      */
-    public DateTime $createdAt;
-
-    /**
-     * @ODM\Field(type="date")
-     */
-    public DateTime $updatedAt;
+    public \DateTime $updatedAt;
 
     public function __construct()
     {
@@ -390,372 +328,572 @@ class VM
 
 ## Verwendung des ODM
 
-### Dokumente Persistieren
+### 1. Einfache CRUD-Operationen (ohne UnitOfWork)
+
+#### Entity erstellen und speichern
 
 ```php
-use ARPI\Helper\ODM\EntityHydrator;
+use ARPI\Helper\ODM\EntityRepository;
+use ARPI\Entities\Documents\VM;
 
-// Neue VM erstellen
+$repository = new EntityRepository('mongodb://localhost:27017', 'arpi');
+
+// Entity erstellen
 $vm = new VM();
 $vm->hostname = 'web-server-01';
 $vm->ipaddress = '192.168.1.100';
 $vm->vcpu = 4;
 $vm->ramingb = 16;
 
-// Daten aus Array hydratisieren
-$data = [
-    'hostname' => 'db-server-01',
-    'ipaddress' => '192.168.1.50',
-    'vcpu' => 8,
-    'ramingb' => 32
-];
-EntityHydrator::hydrate($vm, $data);
-
-// Speichern (in Repository)
-$vmRepository->persist($vm);
-$vmRepository->flush();
+// Speichern
+$result = $repository->save($vm);
+echo "Inserted ID: " . $result->getInsertedId();
 ```
 
-### Dokumente Laden
+#### Entity laden
 
 ```php
-// By ID
-$vm = $vmRepository->find($objectId);
+use MongoDB\BSON\ObjectId;
 
-// By Criteria
-$vms = $vmRepository->findBy(['hypervisor' => 'esxi-cluster-01']);
+// By ObjectId
+$vm = $repository->find(VM::class, new ObjectId('507f1f77bcf86cd799439011'));
 
-// Single Result
-$vm = $vmRepository->findOneBy(['hostname' => 'web-server-01']);
+// By String ID
+$vm = $repository->find(VM::class, '507f1f77bcf86cd799439011');
 
-// All Documents
-$allVms = $vmRepository->findAll();
+if ($vm) {
+    echo $vm->hostname; // 'web-server-01'
+}
 ```
 
-### Dokumente Aktualisieren
+#### Entity aktualisieren
 
 ```php
-$vm = $vmRepository->find($id);
-$vm->ramingb = 32; // RAM erhöhen
+// Laden
+$vm = $repository->find(VM::class, $id);
+
+// Ändern
+$vm->ramingb = 32;
 $vm->updatedAt = new \DateTime();
 
-$vmRepository->flush(); // Änderungen speichern
+// Speichern
+$result = $repository->update($vm);
 ```
 
-### Dokumente Löschen
+#### Entity löschen
 
 ```php
-$vm = $vmRepository->find($id);
-$vmRepository->remove($vm);
-$vmRepository->flush();
+$vm = $repository->find(VM::class, $id);
+$result = $repository->delete($vm);
 ```
 
-## EntityHydrator
+### 2. Mit UnitOfWork (empfohlen)
 
-Der `EntityHydrator` ist ein zentrales Tool zum Befüllen von Entities aus Arrays.
+#### Setup
 
-### Hydratisierung
+```php
+use ARPI\Helper\ODM\EntityRepository;
+use ARPI\Helper\ODM\UnitOfWork;
+
+$repository = new EntityRepository('mongodb://localhost:27017', 'arpi');
+$unitOfWork = new UnitOfWork($repository);
+$repository->setUnitOfWork($unitOfWork);
+```
+
+#### Neue Entities erstellen
+
+```php
+// Mehrere Entities erstellen
+$vm1 = new VM();
+$vm1->hostname = 'web-server-01';
+$vm1->ipaddress = '192.168.1.100';
+
+$vm2 = new VM();
+$vm2->hostname = 'db-server-01';
+$vm2->ipaddress = '192.168.1.101';
+
+// Zur UnitOfWork hinzufügen
+$unitOfWork->persist($vm1);
+$unitOfWork->persist($vm2);
+
+// Alle auf einmal speichern
+$unitOfWork->flush();
+```
+
+#### Entities aktualisieren
+
+```php
+// Entity laden (wird automatisch tracked)
+$vm = $repository->find(VM::class, $id);
+
+// Änderungen vornehmen
+$vm->ramingb = 32;
+$vm->vcpu = 8;
+$vm->updatedAt = new \DateTime();
+
+// UnitOfWork erkennt Änderungen automatisch
+$unitOfWork->flush();
+```
+
+#### Entities löschen
+
+```php
+$vm = $repository->find(VM::class, $id);
+
+// Zum Löschen markieren
+$unitOfWork->remove($vm);
+
+// Löschen ausführen
+$unitOfWork->flush();
+```
+
+#### UnitOfWork zurücksetzen
+
+```php
+// Alle Änderungen verwerfen
+$unitOfWork->clear();
+```
+
+### 3. Transaktionen
+
+```php
+use ARPI\Helper\ODM\EntityRepository;
+use ARPI\Helper\ODM\UnitOfWork;
+
+$repository = new EntityRepository('mongodb://localhost:27017', 'arpi');
+$unitOfWork = new UnitOfWork($repository);
+
+try {
+    // Transaction starten
+    $session = $repository->getClient()->startSession();
+    $session->startTransaction();
+    
+    // Mehrere Operationen
+    $vm1 = new VM();
+    $vm1->hostname = 'web-server-01';
+    $unitOfWork->persist($vm1);
+    
+    $vm2 = new VM();
+    $vm2->hostname = 'db-server-01';
+    $unitOfWork->persist($vm2);
+    
+    // Flush mit Session
+    $unitOfWork->flush($session);
+    
+    // Commit
+    $session->commitTransaction();
+    
+} catch (\Exception $e) {
+    // Rollback bei Fehler
+    $session->abortTransaction();
+    throw $e;
+}
+```
+
+### 4. Mit EntityHydrator
 
 ```php
 use ARPI\Helper\ODM\EntityHydrator;
 
-$vm = new VM();
+// Aus Array hydratisieren
 $data = [
     'hostname' => 'app-server-01',
     'ipaddress' => '10.0.1.50',
     'vcpu' => 4,
     'ramingb' => 16,
-    'operatingsystem' => 'Ubuntu 22.04 LTS',
-    'serverrole' => 'Application Server',
-    'hypervisor' => 'esxi-prod-01'
+    'operatingsystem' => 'Ubuntu 22.04 LTS'
 ];
 
+$vm = new VM();
 EntityHydrator::hydrate($vm, $data);
+
+// Speichern
+$repository->save($vm);
+
+// Zu Array extrahieren
+$data = EntityHydrator::extract($vm);
+```
+
+## MongoDB-Queries
+
+Da `EntityRepository` direkt mit MongoDB arbeitet, kannst du auch direkt auf Collections zugreifen:
+
+### Collection-Zugriff
+
+```php
+$collection = $repository->getClient()
+    ->selectDatabase('arpi')
+    ->selectCollection('virtualmachines');
+
+// Direkte MongoDB-Queries
+$cursor = $collection->find(['hypervisor' => 'esxi-prod-01']);
+
+foreach ($cursor as $document) {
+    $vm = new VM();
+    $repository->getSerializer()->deserializeEntity(
+        $vm,
+        $document,
+        \ARPI\Helper\ODM\EntityMetadata::fromEntity($vm)
+    );
+    echo $vm->hostname . "\n";
+}
+```
+
+### Query-Beispiele
+
+```php
+// Find mit Filter
+$cursor = $collection->find([
+    'ramingb' => ['$gte' => 32],
+    'operatingsystem' => ['$regex' => '^Ubuntu']
+]);
+
+// Find mit Optionen
+$cursor = $collection->find(
+    ['hypervisor' => 'esxi-prod-01'],
+    [
+        'sort' => ['hostname' => 1],
+        'limit' => 10,
+        'skip' => 0
+    ]
+);
+
+// Aggregation
+$pipeline = [
+    ['$group' => [
+        '_id' => '$hypervisor',
+        'totalVMs' => ['$sum' => 1],
+        'totalRAM' => ['$sum' => '$ramingb']
+    ]],
+    ['$sort' => ['totalVMs' => -1]]
+];
+
+$cursor = $collection->aggregate($pipeline);
+```
+
+## EntitySerializer im Detail
+
+### Serialisierung (Entity → MongoDB)
+
+```php
+use ARPI\Helper\ODM\EntitySerializer;
+use ARPI\Helper\ODM\EntityMetadata;
+
+$serializer = new EntitySerializer();
+$metadata = EntityMetadata::fromEntity($vm);
+
+// Entity zu Array serialisieren
+$data = $serializer->serializeEntity($vm, $metadata);
+
+// Result: [
+//     '_id' => ObjectId(...),
+//     'uuid' => 'vm_...',
+//     'hostname' => 'web-server-01',
+//     'ipaddress' => '192.168.1.100',
+//     'vcpu' => 4,
+//     'ramingb' => 16,
+//     'createdAt' => UTCDateTime(...),
+//     'updatedAt' => UTCDateTime(...)
+// ]
+```
+
+### Deserialisierung (MongoDB → Entity)
+
+```php
+$vm = new VM();
+$metadata = EntityMetadata::fromEntity($vm);
+
+// MongoDB-Dokument zu Entity deserialisieren
+$serializer->deserializeEntity($vm, $document, $metadata);
+
+// $vm ist jetzt befüllt mit Daten aus $document
 ```
 
 **Features:**
-- ✅ Automatische Type-Conversion
-- ✅ Nested Properties (`user.address.city`)
-- ✅ DateTime-Parsing
+- ✅ Automatische Type-Konvertierung
+- ✅ DateTime ↔ MongoDB\BSON\UTCDateTime
+- ✅ ObjectId-Handling
+- ✅ Nested Properties
 - ✅ Null-Handling
-- ✅ Validierung gegen Entity-Properties
 
-### Extraktion
+## UnitOfWork im Detail
+
+### Entity-Status
 
 ```php
-$data = EntityHydrator::extract($vm);
-// Returns: ['hostname' => 'app-server-01', 'ipaddress' => '10.0.1.50', ...]
+use ARPI\Helper\ODM\EntityState;
+
+// Mögliche Stati:
+EntityState::NEW       // Neu, noch nicht in DB
+EntityState::MANAGED   // Von DB geladen, wird getrackt
+EntityState::REMOVED   // Zum Löschen markiert
+EntityState::DETACHED  // Nicht mehr getrackt
 ```
 
-## Schema Validation
-
-ARPI-ISMS verwendet JSON-Schema-Validierung vor der Persistierung.
-
-### Schema-Definition
+### Change Tracking
 
 ```php
-namespace ARPI\Schemas;
+$unitOfWork = new UnitOfWork($repository);
 
-class VMSchema
-{
-    public static function getSchema(): array
-    {
-        return [
-            'type' => 'object',
-            'required' => ['hostname'],
-            'properties' => [
-                'hostname' => [
-                    'type' => 'string',
-                    'minLength' => 1,
-                    'maxLength' => 255
-                ],
-                'ipaddress' => [
-                    'type' => 'string',
-                    'format' => 'ipv4'
-                ],
-                'vcpu' => [
-                    'type' => 'integer',
-                    'minimum' => 1,
-                    'maximum' => 128
-                ],
-                'ramingb' => [
-                    'type' => 'integer',
-                    'minimum' => 1
-                ]
-            ]
-        ];
-    }
-}
+// Entity laden (wird MANAGED)
+$vm = $repository->find(VM::class, $id);
+
+// Änderungen vornehmen
+$vm->ramingb = 64;
+
+// UnitOfWork vergleicht aktuellen State mit Original-Snapshot
+$unitOfWork->flush(); // Erkennt Änderung automatisch
 ```
 
-### Validierung
+### Batch-Operationen
 
 ```php
+// Mehrere Entities in einem Durchgang
+$unitOfWork->persist($vm1);
+$unitOfWork->persist($vm2);
+$unitOfWork->persist($vm3);
+
+$vm4 = $repository->find(VM::class, $id4);
+$vm4->ramingb = 128; // Wird automatisch getrackt
+
+$unitOfWork->remove($vm5);
+
+// Alle Operationen auf einmal ausführen
+$unitOfWork->flush();
+```
+
+### Entities verwalten
+
+```php
+// Entity zum Tracking hinzufügen
+$unitOfWork->attach($vm);
+
+// Entity vom Tracking entfernen
+$unitOfWork->detach($vm);
+
+// Alle Entities vom Tracking entfernen
+$unitOfWork->clear();
+
+// Status prüfen
+$state = $unitOfWork->getEntityState($vm);
+```
+
+## Wizard-Integration
+
+Typische Verwendung in ARPI-ISMS Wizards:
+
+```php
+<?php
+namespace ARPI\Sites\Wizards;
+
+use ARPI\Helper\BaseSite;
 use ARPI\Helper\SchemaValidator;
+use ARPI\Helper\ODM\EntityHydrator;
+use ARPI\Helper\ODM\EntityRepository;
+use ARPI\Helper\ODM\UnitOfWork;
 use ARPI\Schemas\VMSchema;
+use ARPI\Entities\Documents\VM;
 
-$validator = new SchemaValidator();
-$data = [
-    'hostname' => 'web-server-01',
-    'ipaddress' => '192.168.1.100',
-    'vcpu' => 4
-];
-
-if (!$validator->validate($data, VMSchema::getSchema())) {
-    $errors = $validator->getErrors();
-    // Handle errors
-}
-```
-
-## Repositories
-
-Custom Repositories erweitern die Standard-Funktionalität.
-
-### Standard Repository
-
-```php
-namespace ARPI\Repositories;
-
-use ARPI\ODM\DocumentRepository;
-
-class VMRepository extends DocumentRepository
+class NewVM extends BaseSite
 {
-    public function findByHypervisor(string $hypervisor): array
+    private EntityRepository $repository;
+    private UnitOfWork $unitOfWork;
+    
+    public function prepare(): void
     {
-        return $this->findBy(['hypervisor' => $hypervisor]);
+        $this->repository = new EntityRepository(
+            'mongodb://localhost:27017',
+            'arpi'
+        );
+        $this->unitOfWork = new UnitOfWork($this->repository);
+        $this->repository->setUnitOfWork($this->unitOfWork);
     }
-
-    public function findHighMemoryVMs(int $minRamGb): array
+    
+    public function main(): string
     {
-        return $this->findBy([
-            'ramingb' => ['$gte' => $minRamGb]
-        ]);
+        return $this->renderTemplate('pages/wizards/new-vm.html');
     }
-
-    public function countByOperatingSystem(): array
+    
+    public function create(array $data): array
     {
-        $pipeline = [
-            [
-                '$group' => [
-                    '_id' => '$operatingsystem',
-                    'count' => ['$sum' => 1]
-                ]
-            ]
-        ];
-        
-        return $this->aggregate($pipeline);
-    }
-}
-```
-
-### Repository Registrierung
-
-```php
-// In Document-Annotation
-/**
- * @ODM\Document(
- *     collection="virtualmachines",
- *     repositoryClass="ARPI\Repositories\VMRepository"
- * )
- */
-class VM { }
-```
-
-## MongoDB-Query-API
-
-### Einfache Queries
-
-```php
-// Equality
-$vms = $vmRepo->findBy(['hostname' => 'web-server-01']);
-
-// Multiple Conditions (AND)
-$vms = $vmRepo->findBy([
-    'hypervisor' => 'esxi-prod-01',
-    'operatingsystem' => 'Ubuntu 22.04 LTS'
-]);
-```
-
-### Vergleichsoperatoren
-
-```php
-// Greater Than / Less Than
-$vms = $vmRepo->findBy([
-    'ramingb' => ['$gte' => 32],  // >= 32GB RAM
-    'vcpu' => ['$lte' => 8]        // <= 8 vCPUs
-]);
-
-// In / Not In
-$vms = $vmRepo->findBy([
-    'operatingsystem' => ['$in' => ['Ubuntu 22.04', 'Debian 12']]
-]);
-
-// Exists
-$vms = $vmRepo->findBy([
-    'ipaddress' => ['$exists' => true, '$ne' => null]
-]);
-```
-
-### Logische Operatoren
-
-```php
-// OR
-$vms = $vmRepo->findBy([
-    '$or' => [
-        ['hostname' => ['$regex' => '^web-']],
-        ['serverrole' => 'Web Server']
-    ]
-]);
-
-// AND (implicit)
-$vms = $vmRepo->findBy([
-    'hypervisor' => 'esxi-prod-01',
-    'ramingb' => ['$gte' => 16]
-]);
-```
-
-### Sortierung
-
-```php
-$vms = $vmRepo->findBy(
-    ['hypervisor' => 'esxi-prod-01'],
-    ['hostname' => 'asc']  // Sortierung
-);
-```
-
-### Limit & Skip
-
-```php
-$vms = $vmRepo->findBy(
-    [],
-    ['createdAt' => 'desc'],
-    10,    // Limit
-    0      // Skip
-);
-```
-
-## Aggregation Pipeline
-
-Für komplexe Queries und Analytics.
-
-```php
-class VMRepository extends DocumentRepository
-{
-    public function getResourceStatsByHypervisor(): array
-    {
-        return $this->aggregate([
-            [
-                '$group' => [
-                    '_id' => '$hypervisor',
-                    'totalVMs' => ['$sum' => 1],
-                    'totalVCPU' => ['$sum' => '$vcpu'],
-                    'totalRAM' => ['$sum' => '$ramingb'],
-                    'avgVCPU' => ['$avg' => '$vcpu'],
-                    'avgRAM' => ['$avg' => '$ramingb']
-                ]
-            ],
-            [
-                '$sort' => ['totalVMs' => -1]
-            ]
-        ]);
-    }
-}
-```
-
-## Lifecycle Events
-
-Das ODM unterstützt Lifecycle-Callbacks.
-
-### Event-Annotation
-
-```php
-use ARPI\ODM\Mapping\Annotations as ODM;
-
-class VM
-{
-    /**
-     * @ODM\PrePersist
-     */
-    public function prePersist(): void
-    {
-        if (!isset($this->createdAt)) {
-            $this->createdAt = new \DateTime();
+        // 1. Validierung
+        $validator = new SchemaValidator();
+        if (!$validator->validate($data, VMSchema::getSchema())) {
+            return [
+                'success' => false,
+                'errors' => $validator->getErrors()
+            ];
         }
-        $this->updatedAt = new \DateTime();
+        
+        try {
+            // 2. Entity erstellen und hydratisieren
+            $vm = new VM();
+            EntityHydrator::hydrate($vm, $data);
+            
+            // 3. Über UnitOfWork persistieren
+            $this->unitOfWork->persist($vm);
+            $this->unitOfWork->flush();
+            
+            // 4. Erfolg zurückgeben
+            return [
+                'success' => true,
+                'id' => (string)$vm->id,
+                'message' => 'VM erfolgreich erstellt'
+            ];
+            
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'errors' => [$e->getMessage()]
+            ];
+        }
     }
-
-    /**
-     * @ODM\PreUpdate
-     */
-    public function preUpdate(): void
+    
+    public function update(string $id, array $data): array
     {
-        $this->updatedAt = new \DateTime();
+        $validator = new SchemaValidator();
+        if (!$validator->validate($data, VMSchema::getSchema())) {
+            return [
+                'success' => false,
+                'errors' => $validator->getErrors()
+            ];
+        }
+        
+        try {
+            // Entity laden (wird automatisch getrackt)
+            $vm = $this->repository->find(VM::class, $id);
+            
+            if (!$vm) {
+                return [
+                    'success' => false,
+                    'errors' => ['VM nicht gefunden']
+                ];
+            }
+            
+            // Daten aktualisieren
+            EntityHydrator::hydrate($vm, $data);
+            $vm->updatedAt = new \DateTime();
+            
+            // UnitOfWork erkennt Änderungen automatisch
+            $this->unitOfWork->flush();
+            
+            return [
+                'success' => true,
+                'id' => (string)$vm->id,
+                'message' => 'VM erfolgreich aktualisiert'
+            ];
+            
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'errors' => [$e->getMessage()]
+            ];
+        }
     }
-
-    /**
-     * @ODM\PostLoad
-     */
-    public function postLoad(): void
+    
+    public function delete(string $id): array
     {
-        // Nach dem Laden aus DB
-        $this->computedProperty = $this->calculateSomething();
+        try {
+            $vm = $this->repository->find(VM::class, $id);
+            
+            if (!$vm) {
+                return [
+                    'success' => false,
+                    'errors' => ['VM nicht gefunden']
+                ];
+            }
+            
+            $this->unitOfWork->remove($vm);
+            $this->unitOfWork->flush();
+            
+            return [
+                'success' => true,
+                'message' => 'VM erfolgreich gelöscht'
+            ];
+            
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'errors' => [$e->getMessage()]
+            ];
+        }
     }
 }
 ```
-
-### Verfügbare Events
-
-- `@PrePersist`: Vor dem ersten Speichern
-- `@PostPersist`: Nach dem ersten Speichern
-- `@PreUpdate`: Vor Updates
-- `@PostUpdate`: Nach Updates
-- `@PreRemove`: Vor dem Löschen
-- `@PostRemove`: Nach dem Löschen
-- `@PostLoad`: Nach dem Laden aus DB
 
 ## Best Practices
 
-### 1. Constructor für Defaults
+### 1. UnitOfWork verwenden
+
+```php
+// ✅ Gut: Mit UnitOfWork
+$unitOfWork->persist($vm);
+$unitOfWork->flush(); // Change Tracking, Batch-Operationen
+
+// ❌ Vermeiden: Direkt ohne UnitOfWork
+$repository->save($vm); // Kein Change Tracking
+```
+
+### 2. Transaktionen für Atomare Operationen
+
+```php
+try {
+    $session = $repository->getClient()->startSession();
+    $session->startTransaction();
+    
+    $unitOfWork->persist($vm1);
+    $unitOfWork->persist($vm2);
+    $unitOfWork->flush($session);
+    
+    $session->commitTransaction();
+} catch (\Exception $e) {
+    $session->abortTransaction();
+}
+```
+
+### 3. Batch-Operationen statt Einzeln
+
+```php
+// ✅ Gut: Batch
+foreach ($vms as $vm) {
+    $unitOfWork->persist($vm);
+}
+$unitOfWork->flush(); // Ein DB-Call
+
+// ❌ Vermeiden: Loop
+foreach ($vms as $vm) {
+    $repository->save($vm); // Viele DB-Calls
+}
+```
+
+### 4. Clear bei langen Prozessen
+
+```php
+foreach ($largeDataset as $chunk) {
+    foreach ($chunk as $data) {
+        $entity = new Entity();
+        EntityHydrator::hydrate($entity, $data);
+        $unitOfWork->persist($entity);
+    }
+    
+    $unitOfWork->flush();
+    $unitOfWork->clear(); // Memory freigeben
+}
+```
+
+### 5. Type Hints immer verwenden
+
+```php
+// ✅ Gut
+public string $hostname;
+public ?string $ipaddress = null;
+public \DateTime $createdAt;
+
+// ❌ Vermeiden
+public $hostname; // Kein Type Hint
+```
+
+### 6. Constructor für Defaults
 
 ```php
 public function __construct()
@@ -763,199 +901,101 @@ public function __construct()
     $this->uuid = uniqid('vm_', true);
     $this->createdAt = new \DateTime();
     $this->updatedAt = new \DateTime();
-    $this->tags = [];  // Initialize arrays
-}
-```
-
-### 2. ToString für UI
-
-```php
-public function __toString(): string
-{
-    return $this->hostname . ($this->ipaddress ? " ({$this->ipaddress})" : '');
-}
-```
-
-### 3. Type Hints verwenden
-
-```php
-// Gut
-public string $hostname;
-public ?string $ipaddress = null;
-public array $tags = [];
-
-// Vermeiden
-public $hostname;  // Kein Type Hint
-```
-
-### 4. Embedded vs Reference
-
-**Embedded (Besitz-Beziehung):**
-```php
-// Address gehört nur zu einem User
-/**
- * @ODM\EmbedOne(targetDocument="Address")
- */
-public Address $address;
-```
-
-**Reference (Geteilt):**
-```php
-// Firewall kann von mehreren Systemen referenziert werden
-/**
- * @ODM\ReferenceOne(targetDocument="Firewall")
- */
-public ?Firewall $firewall = null;
-```
-
-### 5. Indizes für Performance
-
-```php
-// Unique Index für eindeutige Felder
-/**
- * @ODM\Index(
- *     keys={"uuid"="asc"},
- *     options={"unique"=true}
- * )
- */
-
-// Compound Index für häufige Queries
-/**
- * @ODM\Index(keys={"hypervisor"="asc", "operatingsystem"="asc"})
- */
-```
-
-### 6. Validierung IMMER vor Persistierung
-
-```php
-$validator = new SchemaValidator();
-if (!$validator->validate($data, VMSchema::getSchema())) {
-    return ['success' => false, 'errors' => $validator->getErrors()];
-}
-
-$vm = new VM();
-EntityHydrator::hydrate($vm, $data);
-$repository->persist($vm);
-```
-
-### 7. UpdatedAt automatisch setzen
-
-```php
-/**
- * @ODM\PreUpdate
- */
-public function preUpdate(): void
-{
-    $this->updatedAt = new \DateTime();
+    $this->tags = [];
 }
 ```
 
 ## Performance-Tipps
 
-### 1. Eager Loading für Referenzen
+### 1. Batch-Inserts verwenden
 
 ```php
-// Lazy Loading (N+1 Problem)
-foreach ($vms as $vm) {
-    echo $vm->firewall->name;  // Jedes Mal DB-Query!
+// Viele Entities auf einmal
+foreach ($data as $item) {
+    $entity = new Entity();
+    EntityHydrator::hydrate($entity, $item);
+    $unitOfWork->persist($entity);
 }
-
-// Besser: Eager Loading
-$vms = $vmRepo->findWithFirewalls(); // Custom Repository-Methode
+$unitOfWork->flush(); // Ein Batch-Insert
 ```
 
-### 2. Projection für große Dokumente
+### 2. Clear() in langen Prozessen
 
 ```php
-// Nur benötigte Felder laden
-$vms = $vmRepo->findBy(
-    [],
-    null,
-    null,
-    null,
-    ['hostname' => 1, 'ipaddress' => 1]  // Projection
-);
-```
-
-### 3. Indizes auf häufig abgefragte Felder
-
-```php
-/**
- * @ODM\Index(keys={"hypervisor"="asc"})
- * @ODM\Index(keys={"operatingsystem"="asc"})
- * @ODM\Index(keys={"createdAt"="desc"})
- */
-```
-
-### 4. Batch-Updates
-
-```php
-foreach ($vms as $vm) {
-    $vm->updatedAt = new \DateTime();
-    $repository->persist($vm);
-}
-// Nur ein flush() am Ende
-$repository->flush();
-```
-
-## Extern verwendete Bibliotheken
-
-- **mongodb/mongodb**: Offizieller MongoDB PHP-Treiber ([Packagist](https://packagist.org/packages/mongodb/mongodb))
-- **doctrine/annotations**: Für Annotations-Parsing ([Packagist](https://packagist.org/packages/doctrine/annotations))
-- **justinrainbow/json-schema**: JSON Schema Validation ([Packagist](https://packagist.org/packages/justinrainbow/json-schema))
-
-## Weitere Ressourcen
-
-- [MongoDB PHP Library Documentation](https://www.mongodb.com/docs/php-library/)
-- [JSON Schema Specification](https://json-schema.org/)
-- [PHP 8 Attributes](https://www.php.net/manual/en/language.attributes.overview.php)
-
-## Migration von alten Systemen
-
-### Legacy-Daten importieren
-
-```php
-class VMImporter
-{
-    public function importFromLegacy(array $legacyData): VM
-    {
-        $vm = new VM();
-        
-        // Map legacy fields
-        $data = [
-            'hostname' => $legacyData['server_name'],
-            'ipaddress' => $legacyData['ip'],
-            'vcpu' => $legacyData['cpu_count'],
-            'ramingb' => $legacyData['memory_mb'] / 1024,
-            'operatingsystem' => $this->mapOSName($legacyData['os'])
-        ];
-        
-        EntityHydrator::hydrate($vm, $data);
-        return $vm;
+foreach ($largeDataset as $i => $item) {
+    $entity = new Entity();
+    EntityHydrator::hydrate($entity, $item);
+    $unitOfWork->persist($entity);
+    
+    if ($i % 100 === 0) {
+        $unitOfWork->flush();
+        $unitOfWork->clear(); // Memory freigeben
     }
 }
 ```
 
+### 3. Indizes definieren
+
+```php
+/**
+ * @ODM\Field(type="string")
+ * @ODM\Index(unique=true)
+ */
+public string $uuid;
+
+/**
+ * @ODM\Field(type="string")
+ * @ODM\Index
+ */
+public string $hostname;
+```
+
+### 4. Projection für große Dokumente
+
+```php
+$collection = $repository->getClient()
+    ->selectDatabase('arpi')
+    ->selectCollection('virtualmachines');
+
+// Nur benötigte Felder laden
+$cursor = $collection->find(
+    [],
+    ['projection' => ['hostname' => 1, 'ipaddress' => 1]]
+);
+```
+
 ## Troubleshooting
 
-### Problem: "Class not found"
-**Lösung:** Prüfe Namespace und Autoloading
+### Problem: "Cannot update entity without ID field"
+**Ursache:** Entity hat kein `@ODM\Id` Feld  
+**Lösung:** Füge `@ODM\Id` Property hinzu
 
-### Problem: "Field not mapped"
-**Lösung:** Fehlende `@ODM\Field` Annotation
+### Problem: "Cannot update entity with null ID"
+**Ursache:** Entity noch nicht gespeichert (ID ist null)  
+**Lösung:** Erst `persist()` + `flush()`, dann `update()`
 
-### Problem: "Cannot persist object"
-**Lösung:** Fehlende `@ODM\Document` Annotation auf Klasse
+### Problem: "Entity not managed"
+**Ursache:** Entity wurde nicht über `find()` geladen oder `attach()` aufgerufen  
+**Lösung:** `$unitOfWork->attach($entity)` oder über `find()` laden
 
-### Problem: "Duplicate key error"
-**Lösung:** Unique Index verletzt - prüfe bestehende Dokumente
+### Problem: "Session not started"
+**Ursache:** Transaction-Methoden ohne Session aufgerufen  
+**Lösung:** `$session = $client->startSession(); $session->startTransaction();`
 
-### Problem: "Date conversion failed"
-**Lösung:** DateTime-Objekt verwenden, nicht String
+### Problem: "Memory limit exceeded"
+**Ursache:** Zu viele Entities im UnitOfWork  
+**Lösung:** Regelmäßig `$unitOfWork->clear()` aufrufen
 
----
+## Externe Bibliotheken
 
-**Version:** 1.0  
-**Stand:** Januar 2025  
-**Für ARPI-ISMS v2.0**
+- **mongodb/mongodb**: Offizieller MongoDB PHP-Treiber ([Packagist](https://packagist.org/packages/mongodb/mongodb))
+  - Version: ^2.1
+  - Für direkte MongoDB-Operationen, Sessions, Transactions
+
+
+## Weiterführende Ressourcen
+
+- [MongoDB PHP Library Documentation](https://www.mongodb.com/docs/php-library/current/)
+- [MongoDB Transactions](https://www.mongodb.com/docs/manual/core/transactions/)
+- [PHP 8 Attributes](https://www.php.net/manual/en/language.attributes.overview.php)
 
