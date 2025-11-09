@@ -1,11 +1,10 @@
-import { initializeHelpTooltips } from './helptooltip.js';
 import { initializeAllComponentSelects } from './componentlinking.js';
+import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize help tooltips
-    initializeHelpTooltips();
     initializeAllComponentSelects();
+    initializeHelpTooltips();
     setupHypervisorWizard();
 });
 
@@ -15,18 +14,18 @@ function setupHypervisorWizard() {
     
     form.addEventListener('submit', handleHypervisorSubmit);
     
-    // Cluster Mode Toggle
-    setupClusterModeToggle();
+    // Cluster configuration toggle
+    setupClusterToggle();
 }
 
-function setupClusterModeToggle() {
-    const clusterSelect = document.querySelector('[data-name="clustermode"]');
+function setupClusterToggle() {
+    const clusterSelect = document.querySelector('[data-name="cluster"]');
     const clusterFields = document.querySelector('.hypervisor-cluster-config');
     
     if (clusterSelect && clusterFields) {
         const observer = new MutationObserver(() => {
             const value = clusterSelect.dataset.value;
-            clusterFields.style.display = (value === 'cluster') ? 'block' : 'none';
+            clusterFields.style.display = (value === 'yes') ? 'block' : 'none';
         });
         observer.observe(clusterSelect, { attributes: true });
     }

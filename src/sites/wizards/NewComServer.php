@@ -36,10 +36,14 @@ class NewComServer extends BaseSite
             $commServer->createdat = new \DateTime();
             $commServer->updatedat = new \DateTime();
             
+            $this->persist($commServer);
+            $this->flush();
+            
             return [
                 'success' => true,
                 'id' => $commServer->uuid,
-                'message' => 'Kommunikationsserver erfolgreich erstellt'
+                'message' => 'Kommunikationsserver erfolgreich erstellt',
+                'data' => EntityHydrator::extract($commServer)
             ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => ['Internal error: ' . $e->getMessage()]];
@@ -57,11 +61,23 @@ class NewComServer extends BaseSite
         }
         
         try {
-            $commServer = new CommunicationServer();
+            $commServer = $this->find(CommunicationServer::class, $id);
+            
+            if (!$commServer) {
+                return ['success' => false, 'errors' => ['Kommunikationsserver nicht gefunden']];
+            }
+            
             EntityHydrator::hydrate($commServer, $data);
             $commServer->updatedat = new \DateTime();
             
-            return ['success' => true, 'id' => $id, 'message' => 'Kommunikationsserver aktualisiert'];
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $id,
+                'message' => 'Kommunikationsserver aktualisiert',
+                'data' => EntityHydrator::extract($commServer)
+            ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => ['Internal error: ' . $e->getMessage()]];
         }
@@ -70,6 +86,15 @@ class NewComServer extends BaseSite
     public function delete(string $id): array
     {
         try {
+            $commServer = $this->find(CommunicationServer::class, $id);
+            
+            if (!$commServer) {
+                return ['success' => false, 'errors' => ['Kommunikationsserver nicht gefunden']];
+            }
+            
+            $this->remove($commServer);
+            $this->flush();
+            
             return ['success' => true, 'message' => 'Kommunikationsserver gelöscht'];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => ['Internal error: ' . $e->getMessage()]];

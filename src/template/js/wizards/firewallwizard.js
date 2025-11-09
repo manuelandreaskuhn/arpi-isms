@@ -1,11 +1,10 @@
-import { initializeHelpTooltips } from './helptooltip.js';
 import { initializeAllComponentSelects } from './componentlinking.js';
+import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize help tooltips
-    initializeHelpTooltips();
     initializeAllComponentSelects();
+    initializeHelpTooltips();
     setupFirewallWizard();
 });
 
@@ -14,6 +13,23 @@ function setupFirewallWizard() {
     if (!form) return;
     
     form.addEventListener('submit', handleFirewallSubmit);
+    
+    // Conditional fields based on firewall type
+    setupFirewallTypeToggle();
+}
+
+function setupFirewallTypeToggle() {
+    const typeSelect = document.querySelector('[data-name="type"]');
+    const clusterFields = document.querySelector('.firewall-cluster-config');
+    
+    if (typeSelect && clusterFields) {
+        const observer = new MutationObserver(() => {
+            const value = typeSelect.dataset.value;
+            const showCluster = (value === 'cluster' || value === 'ha-pair');
+            clusterFields.style.display = showCluster ? 'block' : 'none';
+        });
+        observer.observe(typeSelect, { attributes: true });
+    }
 }
 
 async function handleFirewallSubmit(event) {

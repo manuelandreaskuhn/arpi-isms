@@ -32,7 +32,15 @@ class NewSIEM extends BaseSite
             $siem->createdat = new \DateTime();
             $siem->updatedat = new \DateTime();
             
-            return ['success' => true, 'id' => $siem->uuid, 'message' => 'SIEM-System erstellt'];
+            $this->persist($siem);
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $siem->uuid,
+                'message' => 'SIEM-System erstellt',
+                'data' => EntityHydrator::extract($siem)
+            ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => [$e->getMessage()]];
         }
@@ -40,11 +48,52 @@ class NewSIEM extends BaseSite
     
     public function update(string $id, array $data): array
     {
-        return ['success' => true, 'id' => $id];
+        $validator = new SchemaValidator();
+        $schema = SIEMSchema::getSchema();
+        unset($schema['required']);
+        
+        if (!$validator->validate($data, $schema)) {
+            return ['success' => false, 'errors' => $validator->getErrors()];
+        }
+        
+        try {
+            $siem = $this->find(SIEMSystem::class, $id);
+            
+            if (!$siem) {
+                return ['success' => false, 'errors' => ['SIEM-System nicht gefunden']];
+            }
+            
+            EntityHydrator::hydrate($siem, $data);
+            $siem->updatedat = new \DateTime();
+            
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $id,
+                'message' => 'SIEM-System aktualisiert',
+                'data' => EntityHydrator::extract($siem)
+            ];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
     
     public function delete(string $id): array
     {
-        return ['success' => true];
+        try {
+            $siem = $this->find(SIEMSystem::class, $id);
+            
+            if (!$siem) {
+                return ['success' => false, 'errors' => ['SIEM-System nicht gefunden']];
+            }
+            
+            $this->remove($siem);
+            $this->flush();
+            
+            return ['success' => true, 'message' => 'SIEM-System gelöscht'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
 }

@@ -9,39 +9,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize help tooltips
     initializeHelpTooltips();
 
-    // Setup conditional fields
-    setupCommServerConditionalFields();
-    
-    // Form submission handler
-    const form = document.getElementById('newCommServerForm');
-    if (form) {
-        form.addEventListener('submit', handleFormSubmit);
-    }
+    // Setup communication server wizard
+    setupComServerWizard();
 });
 
-function setupCommServerConditionalFields() {
-    // HA Configuration toggle
-    const haCheckbox = document.getElementById('commServerHA');
-    const haConfig = document.querySelector('.commserver-ha-config');
+function setupComServerWizard() {
+    const form = document.getElementById('newComServerForm');
+    if (!form) return;
     
-    if (haCheckbox && haConfig) {
-        haCheckbox.addEventListener('change', function() {
-            haConfig.style.display = this.checked ? 'block' : 'none';
-        });
-    }
+    form.addEventListener('submit', handleComServerSubmit);
+    
+    // HA configuration toggle
+    setupHAToggle();
+}
 
-    // SIEM Integration toggle
-    const siemCheckbox = document.getElementById('commServerSIEM');
-    const siemConfig = document.querySelector('.commserver-siem-config');
+function setupHAToggle() {
+    const haSelect = document.querySelector('[data-name="ha"]');
+    const haFields = document.querySelector('.comserver-ha-config');
     
-    if (siemCheckbox && siemConfig) {
-        siemCheckbox.addEventListener('change', function() {
-            siemConfig.style.display = this.checked ? 'block' : 'none';
+    if (haSelect && haFields) {
+        const observer = new MutationObserver(() => {
+            const value = haSelect.dataset.value;
+            const showHA = (value === 'active-active' || value === 'active-passive' || value === 'cluster');
+            haFields.style.display = showHA ? 'block' : 'none';
         });
+        observer.observe(haSelect, { attributes: true });
     }
 }
 
-async function handleFormSubmit(event) {
+async function handleComServerSubmit(event) {
     event.preventDefault();
     
     const formData = collectFormData(event.target);

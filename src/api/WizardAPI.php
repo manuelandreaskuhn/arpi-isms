@@ -21,6 +21,7 @@ class WizardAPI
         'communication-servers' => \ARPI\Sites\Wizards\NewComServer::class,
         'medical-devices' => \ARPI\Sites\Wizards\NewMedicalDevice::class,
         'systems' => \ARPI\Sites\Wizards\NewSystem::class,
+        'vpns' => \ARPI\Sites\Wizards\NewVPN::class
     ];
     
     /**

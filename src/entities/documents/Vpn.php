@@ -562,7 +562,7 @@ class Vpn
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $admincontact;
+    public string $admin;
 
     /**
      * Support-Kontakt
@@ -570,7 +570,7 @@ class Vpn
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $supportcontact;
+    public string $support;
 
     /**
      * Notfall-Kontakt (24/7)

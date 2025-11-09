@@ -32,7 +32,15 @@ class NewMedicalDevice extends BaseSite
             $device->createdat = new \DateTime();
             $device->updatedat = new \DateTime();
             
-            return ['success' => true, 'id' => $device->uuid, 'message' => 'Medizingerät erstellt'];
+            $this->persist($device);
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $device->uuid,
+                'message' => 'Medizingerät erstellt',
+                'data' => EntityHydrator::extract($device)
+            ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => [$e->getMessage()]];
         }
@@ -40,11 +48,52 @@ class NewMedicalDevice extends BaseSite
     
     public function update(string $id, array $data): array
     {
-        return ['success' => true, 'id' => $id];
+        $validator = new SchemaValidator();
+        $schema = MedicalDeviceSchema::getSchema();
+        unset($schema['required']);
+        
+        if (!$validator->validate($data, $schema)) {
+            return ['success' => false, 'errors' => $validator->getErrors()];
+        }
+        
+        try {
+            $device = $this->find(MedicalDevice::class, $id);
+            
+            if (!$device) {
+                return ['success' => false, 'errors' => ['Medizingerät nicht gefunden']];
+            }
+            
+            EntityHydrator::hydrate($device, $data);
+            $device->updatedat = new \DateTime();
+            
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $id,
+                'message' => 'Medizingerät aktualisiert',
+                'data' => EntityHydrator::extract($device)
+            ];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
     
     public function delete(string $id): array
     {
-        return ['success' => true];
+        try {
+            $device = $this->find(MedicalDevice::class, $id);
+            
+            if (!$device) {
+                return ['success' => false, 'errors' => ['Medizingerät nicht gefunden']];
+            }
+            
+            $this->remove($device);
+            $this->flush();
+            
+            return ['success' => true, 'message' => 'Medizingerät gelöscht'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
 }

@@ -32,7 +32,15 @@ class NewTIInfrastruktur extends BaseSite
             $ti->createdat = new \DateTime();
             $ti->updatedat = new \DateTime();
             
-            return ['success' => true, 'id' => $ti->uuid, 'message' => 'TI-Infrastruktur erstellt'];
+            $this->persist($ti);
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $ti->uuid,
+                'message' => 'TI-Infrastruktur erstellt',
+                'data' => EntityHydrator::extract($ti)
+            ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => [$e->getMessage()]];
         }
@@ -40,11 +48,52 @@ class NewTIInfrastruktur extends BaseSite
     
     public function update(string $id, array $data): array
     {
-        return ['success' => true, 'id' => $id];
+        $validator = new SchemaValidator();
+        $schema = TIInfrastructureSchema::getSchema();
+        unset($schema['required']);
+        
+        if (!$validator->validate($data, $schema)) {
+            return ['success' => false, 'errors' => $validator->getErrors()];
+        }
+        
+        try {
+            $ti = $this->find(TIInfrastructure::class, $id);
+            
+            if (!$ti) {
+                return ['success' => false, 'errors' => ['TI-Infrastruktur nicht gefunden']];
+            }
+            
+            EntityHydrator::hydrate($ti, $data);
+            $ti->updatedat = new \DateTime();
+            
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $id,
+                'message' => 'TI-Infrastruktur aktualisiert',
+                'data' => EntityHydrator::extract($ti)
+            ];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
     
     public function delete(string $id): array
     {
-        return ['success' => true];
+        try {
+            $ti = $this->find(TIInfrastructure::class, $id);
+            
+            if (!$ti) {
+                return ['success' => false, 'errors' => ['TI-Infrastruktur nicht gefunden']];
+            }
+            
+            $this->remove($ti);
+            $this->flush();
+            
+            return ['success' => true, 'message' => 'TI-Infrastruktur gelöscht'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
 }

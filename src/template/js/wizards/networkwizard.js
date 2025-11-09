@@ -1,7 +1,9 @@
+import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
 document.addEventListener('DOMContentLoaded', function() {
+    initializeAllComponentSelects();
     initializeHelpTooltips();
     setupNetworkWizard();
 });

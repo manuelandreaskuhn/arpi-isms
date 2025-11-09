@@ -32,7 +32,15 @@ class NewHypervisor extends BaseSite
             $hypervisor->createdat = new \DateTime();
             $hypervisor->updatedat = new \DateTime();
             
-            return ['success' => true, 'id' => $hypervisor->uuid, 'message' => 'Hypervisor erstellt'];
+            $this->persist($hypervisor);
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $hypervisor->uuid,
+                'message' => 'Hypervisor erstellt',
+                'data' => EntityHydrator::extract($hypervisor)
+            ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => [$e->getMessage()]];
         }
@@ -40,12 +48,52 @@ class NewHypervisor extends BaseSite
     
     public function update(string $id, array $data): array
     {
-        // ...existing pattern...
-        return ['success' => true, 'id' => $id];
+        $validator = new SchemaValidator();
+        $schema = HypervisorSchema::getSchema();
+        unset($schema['required']);
+        
+        if (!$validator->validate($data, $schema)) {
+            return ['success' => false, 'errors' => $validator->getErrors()];
+        }
+        
+        try {
+            $hypervisor = $this->find(Hypervisor::class, $id);
+            
+            if (!$hypervisor) {
+                return ['success' => false, 'errors' => ['Hypervisor nicht gefunden']];
+            }
+            
+            EntityHydrator::hydrate($hypervisor, $data);
+            $hypervisor->updatedat = new \DateTime();
+            
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $id,
+                'message' => 'Hypervisor aktualisiert',
+                'data' => EntityHydrator::extract($hypervisor)
+            ];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
     
     public function delete(string $id): array
     {
-        return ['success' => true];
+        try {
+            $hypervisor = $this->find(Hypervisor::class, $id);
+            
+            if (!$hypervisor) {
+                return ['success' => false, 'errors' => ['Hypervisor nicht gefunden']];
+            }
+            
+            $this->remove($hypervisor);
+            $this->flush();
+            
+            return ['success' => true, 'message' => 'Hypervisor gelöscht'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
 }

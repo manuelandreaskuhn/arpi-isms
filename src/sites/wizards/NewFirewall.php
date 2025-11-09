@@ -36,12 +36,14 @@ class NewFirewall extends BaseSite
             $firewall->createdat = new \DateTime();
             $firewall->updatedat = new \DateTime();
             
-            // TODO: DocumentManager persist & flush
+            $this->persist($firewall);
+            $this->flush();
             
             return [
                 'success' => true,
                 'id' => $firewall->uuid,
-                'message' => 'Firewall erfolgreich erstellt'
+                'message' => 'Firewall erfolgreich erstellt',
+                'data' => EntityHydrator::extract($firewall)
             ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => ['Internal error: ' . $e->getMessage()]];
@@ -59,12 +61,23 @@ class NewFirewall extends BaseSite
         }
         
         try {
-            // TODO: Load from DB
-            $firewall = new Firewall();
+            $firewall = $this->find(Firewall::class, $id);
+            
+            if (!$firewall) {
+                return ['success' => false, 'errors' => ['Firewall nicht gefunden']];
+            }
+            
             EntityHydrator::hydrate($firewall, $data);
             $firewall->updatedat = new \DateTime();
             
-            return ['success' => true, 'id' => $id, 'message' => 'Firewall erfolgreich aktualisiert'];
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $id,
+                'message' => 'Firewall erfolgreich aktualisiert',
+                'data' => EntityHydrator::extract($firewall)
+            ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => ['Internal error: ' . $e->getMessage()]];
         }
@@ -73,7 +86,15 @@ class NewFirewall extends BaseSite
     public function delete(string $id): array
     {
         try {
-            // TODO: DocumentManager remove & flush
+            $firewall = $this->find(Firewall::class, $id);
+            
+            if (!$firewall) {
+                return ['success' => false, 'errors' => ['Firewall nicht gefunden']];
+            }
+            
+            $this->remove($firewall);
+            $this->flush();
+            
             return ['success' => true, 'message' => 'Firewall erfolgreich gelöscht'];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => ['Internal error: ' . $e->getMessage()]];

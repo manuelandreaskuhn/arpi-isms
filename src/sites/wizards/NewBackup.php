@@ -53,10 +53,9 @@ class NewBackup extends BaseSite
             $backupSystem->createdat = new \DateTime();
             $backupSystem->updatedat = new \DateTime();
             
-            // 5. In Datenbank speichern (TODO: DocumentManager implementieren)
-            // $documentManager = $this->getDocumentManager();
-            // $documentManager->persist($backupSystem);
-            // $documentManager->flush();
+            // 5. In Datenbank speichern
+            $this->persist($backupSystem);
+            $this->flush();
             
             // 6. Erfolgs-Response
             return [
@@ -99,18 +98,15 @@ class NewBackup extends BaseSite
         }
         
         try {
-            // 2. Backup-System aus DB laden (TODO: DocumentManager)
-            // $documentManager = $this->getDocumentManager();
-            // $backupSystem = $documentManager->getRepository(BackupSystem::class)->findOneBy(['uuid' => $id]);
+            // 2. Backup-System aus DB laden
+            $backupSystem = $this->find(BackupSystem::class, $id);
             
-            // Für jetzt: Mock
-            $backupSystem = new BackupSystem();
-            // if (!$backupSystem) {
-            //     return [
-            //         'success' => false,
-            //         'errors' => ['Backup-System nicht gefunden']
-            //     ];
-            // }
+            if (!$backupSystem) {
+                return [
+                    'success' => false,
+                    'errors' => ['Backup-System nicht gefunden']
+                ];
+            }
             
             // 3. Daten hydratieren
             EntityHydrator::hydrate($backupSystem, $data);
@@ -119,7 +115,7 @@ class NewBackup extends BaseSite
             $backupSystem->updatedat = new \DateTime();
             
             // 5. Speichern
-            // $documentManager->flush();
+            $this->flush();
             
             return [
                 'success' => true,
@@ -145,19 +141,18 @@ class NewBackup extends BaseSite
     public function delete(string $id): array
     {
         try {
-            // TODO: DocumentManager Integration
-            // $documentManager = $this->getDocumentManager();
-            // $backupSystem = $documentManager->getRepository(BackupSystem::class)->findOneBy(['uuid' => $id]);
-            // 
-            // if (!$backupSystem) {
-            //     return [
-            //         'success' => false,
-            //         'errors' => ['Backup-System nicht gefunden']
-            //     ];
-            // }
-            // 
-            // $documentManager->remove($backupSystem);
-            // $documentManager->flush();
+            // Backup-System aus DB laden
+            $backupSystem = $this->find(BackupSystem::class, $id);
+            
+            if (!$backupSystem) {
+                return [
+                    'success' => false,
+                    'errors' => ['Backup-System nicht gefunden']
+                ];
+            }
+            
+            $this->remove($backupSystem);
+            $this->flush();
             
             return [
                 'success' => true,

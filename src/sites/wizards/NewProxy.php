@@ -32,7 +32,15 @@ class NewProxy extends BaseSite
             $proxy->createdat = new \DateTime();
             $proxy->updatedat = new \DateTime();
             
-            return ['success' => true, 'id' => $proxy->uuid, 'message' => 'Proxy-Server erstellt'];
+            $this->persist($proxy);
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $proxy->uuid,
+                'message' => 'Proxy-Server erstellt',
+                'data' => EntityHydrator::extract($proxy)
+            ];
         } catch (\Exception $e) {
             return ['success' => false, 'errors' => [$e->getMessage()]];
         }
@@ -40,11 +48,52 @@ class NewProxy extends BaseSite
     
     public function update(string $id, array $data): array
     {
-        return ['success' => true, 'id' => $id];
+        $validator = new SchemaValidator();
+        $schema = ProxySchema::getSchema();
+        unset($schema['required']);
+        
+        if (!$validator->validate($data, $schema)) {
+            return ['success' => false, 'errors' => $validator->getErrors()];
+        }
+        
+        try {
+            $proxy = $this->find(ProxyServer::class, $id);
+            
+            if (!$proxy) {
+                return ['success' => false, 'errors' => ['Proxy-Server nicht gefunden']];
+            }
+            
+            EntityHydrator::hydrate($proxy, $data);
+            $proxy->updatedat = new \DateTime();
+            
+            $this->flush();
+            
+            return [
+                'success' => true,
+                'id' => $id,
+                'message' => 'Proxy-Server aktualisiert',
+                'data' => EntityHydrator::extract($proxy)
+            ];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
     
     public function delete(string $id): array
     {
-        return ['success' => true];
+        try {
+            $proxy = $this->find(ProxyServer::class, $id);
+            
+            if (!$proxy) {
+                return ['success' => false, 'errors' => ['Proxy-Server nicht gefunden']];
+            }
+            
+            $this->remove($proxy);
+            $this->flush();
+            
+            return ['success' => true, 'message' => 'Proxy-Server gelöscht'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'errors' => [$e->getMessage()]];
+        }
     }
 }

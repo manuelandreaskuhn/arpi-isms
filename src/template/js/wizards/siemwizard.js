@@ -1,10 +1,10 @@
-import { initializeHelpTooltips } from './helptooltip.js';
 import { initializeAllComponentSelects } from './componentlinking.js';
+import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    initializeHelpTooltips();
     initializeAllComponentSelects();
+    initializeHelpTooltips();
     setupSIEMWizard();
 });
 
@@ -14,22 +14,21 @@ function setupSIEMWizard() {
     
     form.addEventListener('submit', handleSIEMSubmit);
     
-    // Server Selection Handler
-    setupServerSelection();
+    // Distributed architecture toggle
+    setupDistributedToggle();
 }
 
-function setupServerSelection() {
-    const serverSelect = document.querySelector('[data-name="serverid"]');
-    const manualInput = document.getElementById('siem-server-manual');
+function setupDistributedToggle() {
+    const archSelect = document.querySelector('[data-name="architecture"]');
+    const distributedFields = document.querySelector('.siem-distributed-config');
     
-    if (serverSelect) {
+    if (archSelect && distributedFields) {
         const observer = new MutationObserver(() => {
-            const value = serverSelect.dataset.value;
-            if (manualInput) {
-                manualInput.style.display = (value === 'manual') ? 'block' : 'none';
-            }
+            const value = archSelect.dataset.value;
+            const showDistributed = (value === 'distributed' || value === 'hybrid');
+            distributedFields.style.display = showDistributed ? 'block' : 'none';
         });
-        observer.observe(serverSelect, { attributes: true });
+        observer.observe(archSelect, { attributes: true });
     }
 }
 

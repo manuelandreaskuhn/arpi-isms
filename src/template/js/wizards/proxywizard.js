@@ -1,10 +1,10 @@
-import { initializeHelpTooltips } from './helptooltip.js';
 import { initializeAllComponentSelects } from './componentlinking.js';
+import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    initializeHelpTooltips();
     initializeAllComponentSelects();
+    initializeHelpTooltips();
     setupProxyWizard();
 });
 
@@ -13,6 +13,23 @@ function setupProxyWizard() {
     if (!form) return;
     
     form.addEventListener('submit', handleProxySubmit);
+    
+    // HA configuration toggle
+    setupHAToggle();
+}
+
+function setupHAToggle() {
+    const haSelect = document.querySelector('[data-name="ha"]');
+    const haFields = document.querySelector('.proxy-ha-config');
+    
+    if (haSelect && haFields) {
+        const observer = new MutationObserver(() => {
+            const value = haSelect.dataset.value;
+            const showHA = (value !== 'none' && value !== '');
+            haFields.style.display = showHA ? 'block' : 'none';
+        });
+        observer.observe(haSelect, { attributes: true });
+    }
 }
 
 async function handleProxySubmit(event) {
