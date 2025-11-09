@@ -96,6 +96,37 @@ Statisches Utility für schnelle Hydratisierung.
 - Type-Konvertierung
 - Nested Property Access
 
+### 6. BaseSite Integration
+
+Alle Wizard-Klassen, die von `BaseSite` erben, haben automatisch Zugriff auf EntityRepository und UnitOfWork.
+
+**Verfügbare Methoden:**
+- `persist(object $entity)`: Entity zur UnitOfWork hinzufügen
+- `remove(object $entity)`: Entity zum Löschen markieren
+- `flush()`: Alle Änderungen speichern
+- `find(string $class, $id)`: Entity laden
+- `isEntityDirty(object $entity)`: Prüfen ob Entity geändert wurde
+- `clearUnitOfWork()`: UnitOfWork leeren
+- `transaction(callable $callback)`: In Transaktion ausführen
+
+**Beispiel:**
+```php
+class MyWizard extends BaseSite
+{
+    public function create(array $data): array
+    {
+        $vm = new VM();
+        EntityHydrator::hydrate($vm, $data);
+        
+        // Direkt über BaseSite-Methoden
+        $this->persist($vm);
+        $this->flush();
+        
+        return ['success' => true, 'id' => (string)$vm->id];
+    }
+}
+```
+
 ## Vollständige Architektur
 
 ```mermaid
@@ -680,7 +711,7 @@ $state = $unitOfWork->getEntityState($vm);
 
 ## Wizard-Integration
 
-Typische Verwendung in ARPI-ISMS Wizards:
+Typische Verwendung in ARPI-ISMS Wizards (vereinfacht durch BaseSite):
 
 ```php
 <?php
@@ -689,25 +720,13 @@ namespace ARPI\Sites\Wizards;
 use ARPI\Helper\BaseSite;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Helper\ODM\EntityRepository;
-use ARPI\Helper\ODM\UnitOfWork;
 use ARPI\Schemas\VMSchema;
 use ARPI\Entities\Documents\VM;
 
 class NewVM extends BaseSite
 {
-    private EntityRepository $repository;
-    private UnitOfWork $unitOfWork;
-    
-    public function prepare(): void
-    {
-        $this->repository = new EntityRepository(
-            'mongodb://localhost:27017',
-            'arpi'
-        );
-        $this->unitOfWork = new UnitOfWork($this->repository);
-        $this->repository->setUnitOfWork($this->unitOfWork);
-    }
+    // EntityRepository und UnitOfWork sind automatisch verfügbar!
+    // Keine manuelle Initialisierung mehr nötig
     
     public function main(): string
     {
@@ -730,9 +749,9 @@ class NewVM extends BaseSite
             $vm = new VM();
             EntityHydrator::hydrate($vm, $data);
             
-            // 3. Über UnitOfWork persistieren
-            $this->unitOfWork->persist($vm);
-            $this->unitOfWork->flush();
+            // 3. Über BaseSite-Methoden persistieren
+            $this->persist($vm);
+            $this->flush();
             
             // 4. Erfolg zurückgeben
             return [
@@ -760,8 +779,8 @@ class NewVM extends BaseSite
         }
         
         try {
-            // Entity laden (wird automatisch getrackt)
-            $vm = $this->repository->find(VM::class, $id);
+            // Entity laden (über BaseSite)
+            $vm = $this->find(VM::class, $id);
             
             if (!$vm) {
                 return [
@@ -775,7 +794,7 @@ class NewVM extends BaseSite
             $vm->updatedAt = new \DateTime();
             
             // UnitOfWork erkennt Änderungen automatisch
-            $this->unitOfWork->flush();
+            $this->flush();
             
             return [
                 'success' => true,
@@ -794,7 +813,7 @@ class NewVM extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $vm = $this->repository->find(VM::class, $id);
+            $vm = $this->find(VM::class, $id);
             
             if (!$vm) {
                 return [
@@ -803,12 +822,46 @@ class NewVM extends BaseSite
                 ];
             }
             
-            $this->unitOfWork->remove($vm);
-            $this->unitOfWork->flush();
+            $this->remove($vm);
+            $this->flush();
             
             return [
                 'success' => true,
                 'message' => 'VM erfolgreich gelöscht'
+            ];
+            
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'errors' => [$e->getMessage()]
+            ];
+        }
+    }
+    
+    /**
+     * Beispiel: Mit Transaktion
+     */
+    public function bulkCreate(array $vmDataList): array
+    {
+        try {
+            $ids = $this->transaction(function($session) use ($vmDataList) {
+                $insertedIds = [];
+                
+                foreach ($vmDataList as $data) {
+                    $vm = new VM();
+                    EntityHydrator::hydrate($vm, $data);
+                    $this->persist($vm);
+                    $insertedIds[] = $vm->uuid;
+                }
+                
+                $this->flush();
+                return $insertedIds;
+            });
+            
+            return [
+                'success' => true,
+                'ids' => $ids,
+                'message' => count($ids) . ' VMs erfolgreich erstellt'
             ];
             
         } catch (\Exception $e) {
@@ -823,15 +876,31 @@ class NewVM extends BaseSite
 
 ## Best Practices
 
-### 1. UnitOfWork verwenden
+### 1. BaseSite-Methoden nutzen (empfohlen)
 
 ```php
-// ✅ Gut: Mit UnitOfWork
-$unitOfWork->persist($vm);
-$unitOfWork->flush(); // Change Tracking, Batch-Operationen
+// ✅ Gut: BaseSite-Methoden verwenden
+class MyWizard extends BaseSite
+{
+    public function save(array $data): void
+    {
+        $entity = new Entity();
+        EntityHydrator::hydrate($entity, $data);
+        $this->persist($entity);
+        $this->flush();
+    }
+}
 
-// ❌ Vermeiden: Direkt ohne UnitOfWork
-$repository->save($vm); // Kein Change Tracking
+// ❌ Vermeiden: Manuelle Initialisierung
+class MyWizard extends BaseSite
+{
+    public function save(array $data): void
+    {
+        $repo = new EntityRepository('mongodb://...', 'db');
+        $uow = new UnitOfWork($repo);
+        // ... unnötig kompliziert
+    }
+}
 ```
 
 ### 2. Transaktionen für Atomare Operationen
