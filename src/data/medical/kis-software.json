@@ -1,0 +1,333 @@
+{
+  "id": "hospital-information-systems",
+  "name": "Krankenhausinformationssystem (KIS)",
+  "description": "Zentrale Systeme für Patientenverwaltung, elektronische Patientenakten und klinische Prozesse",
+  "software": [
+    {
+      "id": "sap-health",
+      "name": "SAP Health",
+      "vendor": "SAP",
+      "website": "https://www.sap.com/germany/products/industries/healthcare.html",
+      "description": "Umfassendes KIS für Krankenhäuser mit Integration in SAP-Ökosystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett oder Enterprise",
+      "features": [
+        "Patientenverwaltung",
+        "Elektronische Patientenakte",
+        "Aufnahme/Verlegung/Entlassung (ADT)",
+        "Medikationsmanagement",
+        "OP-Planung",
+        "Leistungsdokumentation",
+        "Abrechnung",
+        "Finanzverwaltung",
+        "SAP-Integration"
+      ],
+      "platforms": ["Windows", "Linux", "Cloud"],
+      "cpe": ["cpe:2.3:a:sap:health:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung", "Controlling"],
+      "departments": ["Alle Abteilungen", "Verwaltung", "Medizincontrolling"]
+    },
+    {
+      "id": "dedalus-orbis",
+      "name": "Orbis",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/de/loesungen/krankenhaus/orbis/",
+      "description": "Führendes KIS in deutschen Krankenhäusern",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Patientenverwaltung",
+        "Elektronische Patientenakte",
+        "Klinische Dokumentation",
+        "Pflegedokumentation",
+        "Medikationsmanagement",
+        "OP-Management",
+        "Labor-Integration",
+        "Befunddokumentation",
+        "Abrechnungsvorbereitung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:dedalus:orbis:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung", "Medizincontrolling"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "cgm-medico",
+      "name": "Medico",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/deu_de/produkte/krankenhaus/medico.html",
+      "description": "KIS für Krankenhäuser verschiedener Größen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Patientenmanagement",
+        "Elektronische Patientenakte",
+        "ADT-System",
+        "Klinische Dokumentation",
+        "Medikationsverwaltung",
+        "Terminplanung",
+        "Abrechnung",
+        "DRG-Management"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:medico:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "cerner-ishmed",
+      "name": "i.s.h.med",
+      "vendor": "Cerner (Oracle Health)",
+      "website": "https://www.cerner.com/de/de/loesungen/ishmed",
+      "description": "Modulares KIS mit breiter Funktionsabdeckung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Patientenverwaltung",
+        "Elektronische Krankenakte",
+        "Klinische Workflows",
+        "Medikationsmanagement",
+        "CPOE (Computerized Physician Order Entry)",
+        "Befunddokumentation",
+        "OP-Management",
+        "Abrechnung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:cerner:i.s.h.med:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "nexus-kis",
+      "name": "NEXUS / KIS",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/krankenhaus",
+      "description": "KIS mit Fokus auf Workflow-Optimierung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenakte",
+        "ADT-System",
+        "Klinische Dokumentation",
+        "Pflegedokumentation",
+        "Medikationsmanagement",
+        "OP-Planung",
+        "Workflow-Management",
+        "Mobile Lösungen"
+      ],
+      "platforms": ["Windows", "Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "epic-systems",
+      "name": "Epic",
+      "vendor": "Epic Systems",
+      "website": "https://www.epic.com/",
+      "description": "Internationales KIS mit umfassender Funktionalität",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "Elektronische Patientenakte",
+        "Integrierte Workflows",
+        "CPOE",
+        "Klinische Entscheidungsunterstützung",
+        "Patientenportal (MyChart)",
+        "Revenue Cycle Management",
+        "Population Health",
+        "Interoperabilität"
+      ],
+      "platforms": ["Windows", "Web", "iOS", "Android"],
+      "cpe": ["cpe:2.3:a:epic:electronic_health_record:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung", "Patienten"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "openemr",
+      "name": "OpenEMR",
+      "vendor": "OpenEMR Community",
+      "website": "https://www.open-emr.org/",
+      "description": "Open-Source elektronisches Gesundheitsakten-System",
+      "license": "GPL",
+      "licenseModel": "Open Source / Kostenlos",
+      "features": [
+        "Elektronische Patientenakte",
+        "Praxisverwaltung",
+        "Terminplanung",
+        "E-Rezept",
+        "Abrechnung",
+        "Dokumentenmanagement",
+        "Mehrsprachigkeit"
+      ],
+      "platforms": ["Windows", "Linux", "Mac", "Cloud"],
+      "cpe": ["cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung"],
+      "departments": ["Alle Abteilungen", "Ambulanzen"]
+    },
+    {
+      "id": "meierhofer-mcc",
+      "name": "Meierhofer Clinical Campus (MCC)",
+      "vendor": "Meierhofer AG",
+      "website": "https://www.meierhofer.com/",
+      "description": "KIS-Plattform mit Fokus auf Prozessoptimierung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Elektronische Patientenakte",
+        "Klinische Dokumentation",
+        "Prozessmanagement",
+        "Medikationsmanagement",
+        "OP-Management",
+        "Integrationsplattform"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "intersystems-trakcare",
+      "name": "TrakCare",
+      "vendor": "InterSystems",
+      "website": "https://www.intersystems.com/trakcare/",
+      "description": "Integriertes KIS mit globaler Reichweite",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "Unified Healthcare Record",
+        "Klinische Workflows",
+        "Patientenmanagement",
+        "Labor-Integration",
+        "Radiologie-Integration",
+        "Abrechnung",
+        "Analytics"
+      ],
+      "platforms": ["Windows", "Linux", "Web"],
+      "cpe": ["cpe:2.3:a:intersystems:trakcare:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung", "Labor"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "agfa-orbis",
+      "name": "ORBIS RIS (Agfa)",
+      "vendor": "Agfa HealthCare",
+      "website": "https://global.agfahealthcare.com/",
+      "description": "KIS mit starkem Fokus auf Bildgebung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Patientenmanagement",
+        "RIS/PACS Integration",
+        "Workflow-Management",
+        "Enterprise Imaging",
+        "Klinische Dokumentation"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Radiologie", "Pflege"],
+      "departments": ["Alle Abteilungen", "Radiologie"]
+    },
+    {
+      "id": "averbis-health-discovery",
+      "name": "Averbis Health Discovery",
+      "vendor": "Averbis",
+      "website": "https://www.averbis.com/",
+      "description": "KI-gestützte Textanalyse für klinische Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "NLP für medizinische Texte",
+        "Automatische Kodierung",
+        "Klinische Datenextraktion",
+        "Strukturierung von Freitexten",
+        "ICD/OPS-Kodierung"
+      ],
+      "platforms": ["Cloud", "On-Premise"],
+      "cpe": [],
+      "userRoles": ["Medizincontrolling", "Ärzte", "Medizinische Dokumentare"],
+      "departments": ["Medizincontrolling", "Alle Abteilungen"]
+    },
+    {
+      "id": "dmk-e-health",
+      "name": "DMK E-Health",
+      "vendor": "DMK E-BUSINESS",
+      "website": "https://www.dmk-ehealth.de/",
+      "description": "KIS für kleinere und mittlere Krankenhäuser",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Patientenverwaltung",
+        "Elektronische Akte",
+        "Pflegedokumentation",
+        "Leistungserfassung",
+        "Abrechnung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "pixelmed-dicom",
+      "name": "PixelMed DICOM Toolkit",
+      "vendor": "PixelMed Publishing",
+      "website": "https://www.pixelmed.com/",
+      "description": "DICOM-Toolkit für KIS-Integration",
+      "license": "Open Source / Proprietär",
+      "licenseModel": "Open Source oder kommerzielle Lizenz",
+      "features": [
+        "DICOM-Unterstützung",
+        "Bildverarbeitung",
+        "HL7-Integration",
+        "PACS-Anbindung"
+      ],
+      "platforms": ["Java-basiert", "Plattformunabhängig"],
+      "cpe": [],
+      "userRoles": ["IT-Abteilung", "Entwickler"],
+      "departments": ["IT", "Radiologie"]
+    },
+    {
+      "id": "gnuhealth",
+      "name": "GNU Health",
+      "vendor": "GNU Solidario",
+      "website": "https://www.gnuhealth.org/",
+      "description": "Freies Krankenhaus- und Gesundheitsinformationssystem",
+      "license": "GPL",
+      "licenseModel": "Open Source / Kostenlos",
+      "features": [
+        "Patientenverwaltung",
+        "Elektronische Krankenakte",
+        "Labor-Management",
+        "Apothekenmanagement",
+        "Genetik-Modul",
+        "WHO-konforme Standards"
+      ],
+      "platforms": ["Linux", "Windows", "Mac"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Labor", "Apotheke"],
+      "departments": ["Alle Abteilungen"]
+    },
+    {
+      "id": "hospitalrun",
+      "name": "HospitalRun",
+      "vendor": "HospitalRun Community",
+      "website": "https://hospitalrun.io/",
+      "description": "Open-Source KIS für ressourcenarme Umgebungen",
+      "license": "GPL",
+      "licenseModel": "Open Source / Kostenlos",
+      "features": [
+        "Patientenverwaltung",
+        "Elektronische Akte",
+        "Inventarverwaltung",
+        "Terminplanung",
+        "Offline-Funktionalität",
+        "Bildgebung"
+      ],
+      "platforms": ["Windows", "Linux", "Mac", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Verwaltung"],
+      "departments": ["Alle Abteilungen"]
+    }
+  ]
+}

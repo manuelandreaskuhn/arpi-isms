@@ -1,0 +1,321 @@
+{
+  "id": "obstetrics-perinatal-systems",
+  "name": "Geburtshilfe / Perinatalmedizin-System",
+  "description": "Systeme für Geburtsdokumentation, CTG-Aufzeichnung und perinatales Management",
+  "software": [
+    {
+      "id": "ge-viewpoint",
+      "name": "ViewPoint",
+      "vendor": "GE Healthcare",
+      "website": "https://www.gehealthcare.com/",
+      "description": "Perinatales Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "CTG-Aufzeichnung",
+        "Geburtsdokumentation",
+        "Fetales Monitoring",
+        "Wehenschreiber-Integration",
+        "Partogramm",
+        "Risikobeurteilung",
+        "Zentrale Überwachung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:ge:viewpoint:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Hebammen", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal", "Pränataldiagnostik"]
+    },
+    {
+      "id": "cerner-perinat",
+      "name": "Perinat",
+      "vendor": "Cerner (Oracle Health)",
+      "website": "https://www.oracle.com/health/",
+      "description": "Geburtshilfe-Dokumentationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Geburtsdokumentation",
+        "Schwangerschaftsverlauf",
+        "CTG-Integration",
+        "Partogramm",
+        "Wochenbettdokumentation",
+        "Neugeborenen-Screening"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Hebammen", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal", "Wochenbettstation"]
+    },
+    {
+      "id": "nexus-obstetrix",
+      "name": "ObstetriX",
+      "vendor": "Nexus AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Geburtshilfe-Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Schwangerenvorsorge",
+        "Geburtsdokumentation",
+        "CTG-Verwaltung",
+        "Partogramm",
+        "Risikoklassifikation",
+        "Stilldokumentation",
+        "Mutterpass-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Hebammen", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal", "Schwangerenambulanz"]
+    },
+    {
+      "id": "pia-fetal-database",
+      "name": "PIA Fetal Database",
+      "vendor": "PIA",
+      "website": "https://www.pia-software.de/",
+      "description": "Fetalmedizin und Pränataldiagnostik",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Ultraschall-Dokumentation",
+        "Biometrie",
+        "Doppler-Befundung",
+        "Ersttrimester-Screening",
+        "Risikoberechnung",
+        "DEGUM-konforme Dokumentation",
+        "Bildarchivierung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pränataldiagnostiker"],
+      "departments": ["Pränataldiagnostik", "Geburtshilfe", "Ultraschall"]
+    },
+    {
+      "id": "philips-intellispace-perinatal",
+      "name": "Philips IntelliSpace Perinatal",
+      "vendor": "Philips",
+      "website": "https://www.philips.de/healthcare/",
+      "description": "Perinatales Monitoring und Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Zentrales Monitoring",
+        "CTG-Aufzeichnung",
+        "Fetales Monitoring",
+        "Alarm-Management",
+        "Trenddarstellung",
+        "Geburtsdokumentation",
+        "Mobile Überwachung"
+      ],
+      "platforms": ["Windows", "Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Hebammen", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal"]
+    },
+    {
+      "id": "k2-medical-k2",
+      "name": "K2 Perinatalsystem",
+      "vendor": "K2 Medical Systems",
+      "website": "https://www.k2ms.com/",
+      "description": "Perinatales Monitoring-System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "CTG-Monitoring",
+        "Zentralüberwachung",
+        "Fetale Überwachung",
+        "Geräteintegration",
+        "Alarm-System",
+        "Archivierung"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Hebammen", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal"]
+    },
+    {
+      "id": "huntleigh-fetal-care",
+      "name": "Huntleigh Fetal Care",
+      "vendor": "Huntleigh Healthcare",
+      "website": "https://www.huntleigh-diagnostics.com/",
+      "description": "CTG und fetales Monitoring",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "CTG-Aufzeichnung",
+        "Doppler-Überwachung",
+        "Zentrale Anzeige",
+        "Datenarchivierung",
+        "Mobiles Monitoring"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Hebammen", "Ärzte", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal", "Schwangerenambulanz"]
+    },
+    {
+      "id": "edan-cadence",
+      "name": "Cadence",
+      "vendor": "Edan Instruments",
+      "website": "https://www.edan.com/",
+      "description": "Perinatales Informations- und Monitoring-System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "CTG-Monitoring",
+        "Zentralstation",
+        "Geburtsdokumentation",
+        "Partogramm",
+        "Archivierung",
+        "Netzwerkfähig"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Hebammen", "Ärzte", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal"]
+    },
+    {
+      "id": "sonicaid-fetalcare",
+      "name": "FetalCare",
+      "vendor": "Huntleigh (Arjo)",
+      "website": "https://www.arjo.com/",
+      "description": "Perinatales Monitoring und Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro System",
+      "features": [
+        "CTG-Überwachung",
+        "Zentrale Überwachung",
+        "Telemetrie",
+        "Archivierung",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Hebammen", "Ärzte"],
+      "departments": ["Geburtshilfe", "Kreißsaal"]
+    },
+    {
+      "id": "dedalus-obstetrics",
+      "name": "Orbis Geburtshilfe",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Geburtshilfe-Modul für Orbis KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Geburtsdokumentation",
+        "Schwangerschaftsverlauf",
+        "Partogramm",
+        "CTG-Integration",
+        "Wochenbettdokumentation",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Hebammen", "Pflege"],
+      "departments": ["Geburtshilfe", "Kreißsaal", "Wochenbettstation"]
+    },
+    {
+      "id": "cgm-geburtshilfe",
+      "name": "CGM Geburtshilfe",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Geburtshilfe-Dokumentationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Geburtsdokumentation",
+        "Mutterpass",
+        "Partogramm",
+        "Schwangerenvorsorge",
+        "Wochenbett"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:geburtshilfe:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Hebammen"],
+      "departments": ["Geburtshilfe", "Kreißsaal", "Schwangerenambulanz"]
+    },
+    {
+      "id": "astraia-software",
+      "name": "Astraia",
+      "vendor": "Astraia Software GmbH",
+      "website": "https://www.astraia.com/",
+      "description": "Ultraschall-Dokumentation für Pränataldiagnostik",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Ultraschall-Befundung",
+        "Biometrie",
+        "Screening-Programme",
+        "Risikoberechnung",
+        "DEGUM-Standards",
+        "Bildarchivierung",
+        "Statistische Auswertung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pränataldiagnostiker"],
+      "departments": ["Pränataldiagnostik", "Geburtshilfe", "Ultraschall"]
+    },
+    {
+      "id": "viewpoint-6",
+      "name": "ViewPoint 6",
+      "vendor": "ViewPoint Bildverarbeitung",
+      "website": "https://www.viewpoint-klassik.de/",
+      "description": "Ultraschall-Bildverarbeitung und Archivierung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Ultraschall-Archivierung",
+        "Bildbearbeitung",
+        "Videoschnitt",
+        "DICOM-Export",
+        "Patientenverwaltung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte"],
+      "departments": ["Pränataldiagnostik", "Geburtshilfe", "Ultraschall"]
+    },
+    {
+      "id": "neoventa-stan",
+      "name": "STAN (ST Analysis)",
+      "vendor": "Neoventa Medical (GE Healthcare)",
+      "website": "https://www.gehealthcare.com/",
+      "description": "Fetale EKG-Analyse während der Geburt",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "ST-Strecken-Analyse",
+        "Fetale EKG-Überwachung",
+        "CTG-Integration",
+        "Hypoxie-Erkennung",
+        "Entscheidungsunterstützung"
+      ],
+      "platforms": ["Embedded"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Hebammen"],
+      "departments": ["Geburtshilfe", "Kreißsaal"]
+    },
+    {
+      "id": "monica-wireless",
+      "name": "Monica AN24",
+      "vendor": "Monica Healthcare",
+      "website": "https://www.monicahealthcare.com/",
+      "description": "Kabelloses fetales und maternales Monitoring",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Kabelloses CTG",
+        "Maternales EKG",
+        "Fetale Herzfrequenz",
+        "Wehenaktivität",
+        "Mobilität während der Geburt"
+      ],
+      "platforms": ["Embedded", "Web"],
+      "cpe": [],
+      "userRoles": ["Hebammen", "Ärzte"],
+      "departments": ["Geburtshilfe", "Kreißsaal"]
+    }
+  ]
+}

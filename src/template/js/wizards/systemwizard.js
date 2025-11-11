@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
-    const hardwareSection = document.querySelector('.form-section[data-name="hardwares"]');
+    const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');
     const databaseSection = document.querySelector('.form-section[data-name="databases"]');
     const backupSection = document.querySelector('.form-section[data-name="backups"]');
     const loadbalancerSection = document.querySelector('.form-section[data-name="loadbalancers"]');

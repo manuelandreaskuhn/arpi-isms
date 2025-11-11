@@ -1,0 +1,387 @@
+{
+  "id": "medical-controlling-quality-management",
+  "name": "Medizincontrolling / Qualitätsmanagement",
+  "description": "Systeme für klinisches Controlling, DRG-Management, Kodierung und Qualitätssicherung",
+  "software": [
+    {
+      "id": "3m-grouper",
+      "name": "3M Grouper",
+      "vendor": "3M Health Information Systems",
+      "website": "https://www.3m.com/",
+      "description": "DRG-Grouper und Kodierungssoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "DRG-Groupierung",
+        "ICD-10-Kodierung",
+        "OPS-Kodierung",
+        "PEPP-Groupierung",
+        "Kodierunterstützung",
+        "Plausibilitätsprüfung",
+        "Erlössimulation",
+        "Updatedienst"
+      ],
+      "platforms": ["Windows"],
+      "cpe": ["cpe:2.3:a:3m:grouper:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte", "Ärzte"],
+      "departments": ["Medizincontrolling", "Alle Abteilungen"]
+    },
+    {
+      "id": "dedalus-casemix",
+      "name": "CASEMIX",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Medizincontrolling und Erlösmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "DRG-Controlling",
+        "Erlösmanagement",
+        "Kodierunterstützung",
+        "MD-Prüfung",
+        "Fallanalyse",
+        "Benchmarking",
+        "KIS-Integration",
+        "Reporting und Analytics"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Ärzte", "Geschäftsführung"],
+      "departments": ["Medizincontrolling", "Verwaltung"]
+    },
+    {
+      "id": "id-diacos",
+      "name": "ID DIACOS",
+      "vendor": "ID Information und Dokumentation im Gesundheitswesen",
+      "website": "https://www.id-berlin.de/",
+      "description": "Kodier- und Abrechnungssoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "ICD/OPS-Kodierung",
+        "DRG-Groupierung",
+        "Kodierrichtlinien",
+        "Plausibilitätsprüfung",
+        "Dokumentationsassistent",
+        "Erlösoptimierung",
+        "MDK-Vorbereitung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte", "Ärzte"],
+      "departments": ["Medizincontrolling"]
+    },
+    {
+      "id": "drg-cockpit",
+      "name": "DRG-Cockpit",
+      "vendor": "verschiedene Anbieter",
+      "website": "",
+      "description": "DRG-Controlling und Analyse",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "DRG-Analyse",
+        "Erlöscontrolling",
+        "Kennzahlen-Dashboard",
+        "Fallkostenrechnung",
+        "Budgetplanung",
+        "Trendanalysen"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Geschäftsführung", "Abteilungsleitung"],
+      "departments": ["Medizincontrolling", "Verwaltung"]
+    },
+    {
+      "id": "medikit-controlling",
+      "name": "medikit controlling",
+      "vendor": "medikit",
+      "website": "https://www.medikit.de/",
+      "description": "Medizincontrolling-Software",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Fallcontrolling",
+        "DRG-Management",
+        "Kodierworkflow",
+        "Erlösanalyse",
+        "MDK-Management",
+        "Reporting"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte"],
+      "departments": ["Medizincontrolling"]
+    },
+    {
+      "id": "qm-doc",
+      "name": "QM-Doc",
+      "vendor": "verschiedene Anbieter",
+      "website": "",
+      "description": "Qualitätsmanagement-Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "QM-Dokumentation",
+        "Prozessmanagement",
+        "Risikomanagement",
+        "Auditmanagement",
+        "CIRS (Critical Incident Reporting System)",
+        "Maßnahmenverfolgung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Qualitätsmanagement", "Ärzte", "Pflegedienstleitung"],
+      "departments": ["Qualitätsmanagement", "Alle Abteilungen"]
+    },
+    {
+      "id": "nexus-controlling",
+      "name": "NEXUS / CONTROLLING",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Medizincontrolling-Modul",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Fallcontrolling",
+        "DRG-Optimierung",
+        "Kodierunterstützung",
+        "Erlösmanagement",
+        "MDK-Vorbereitung",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte"],
+      "departments": ["Medizincontrolling"]
+    },
+    {
+      "id": "cgm-controlling",
+      "name": "CGM Medizincontrolling",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Controlling-Modul für Medico",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "DRG-Management",
+        "Kodierung",
+        "Erlösoptimierung",
+        "Fallanalyse",
+        "Statistik"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:medizincontrolling:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte"],
+      "departments": ["Medizincontrolling"]
+    },
+    {
+      "id": "mcc-grouper",
+      "name": "MCC Grouper",
+      "vendor": "medicalcontrolling.com",
+      "website": "https://www.medicalcontrolling.com/",
+      "description": "DRG-Grouper und Kodierungssoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "DRG-Groupierung",
+        "ICD/OPS-Kodierung",
+        "Kodierrichtlinien",
+        "Erlössimulation",
+        "Plausibilitätsprüfung",
+        "Aktuelle Kataloge"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte"],
+      "departments": ["Medizincontrolling"]
+    },
+    {
+      "id": "dimdi-icd-browser",
+      "name": "DIMDI ICD/OPS Browser",
+      "vendor": "BfArM (ehemals DIMDI)",
+      "website": "https://www.bfarm.de/",
+      "description": "Offizielles Klassifikations-Nachschlagewerk",
+      "license": "Kostenlos",
+      "licenseModel": "Kostenlos",
+      "features": [
+        "ICD-10-GM Suche",
+        "OPS Suche",
+        "Systematik und Alphabetik",
+        "Historische Versionen",
+        "Online-Zugriff"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Kodierfachkräfte", "Medizincontroller"],
+      "departments": ["Alle Abteilungen", "Medizincontrolling"]
+    },
+    {
+      "id": "inek-drg-browser",
+      "name": "InEK DRG-Browser",
+      "vendor": "Institut für das Entgeltsystem im Krankenhaus (InEK)",
+      "website": "https://www.g-drg.de/",
+      "description": "Offizieller DRG-Katalog und Grouper",
+      "license": "Kostenlos",
+      "licenseModel": "Kostenlos",
+      "features": [
+        "DRG-Suche",
+        "Fallpauschalen-Katalog",
+        "Zusatzentgelte",
+        "Groupierungslogik",
+        "Download-Center"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte"],
+      "departments": ["Medizincontrolling"]
+    },
+    {
+      "id": "mdk-software",
+      "name": "MDK-Prüfsoftware",
+      "vendor": "Diverse Anbieter",
+      "website": "",
+      "description": "Software für MDK-Prüfungen und -Vorbereitung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "MDK-Fallmanagement",
+        "Prüfanfragen-Verwaltung",
+        "Dokumentenvorbereitung",
+        "Stellungnahmen",
+        "Statistik und Auswertung",
+        "Fristenverwaltung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Ärzte", "Verwaltung"],
+      "departments": ["Medizincontrolling", "Verwaltung"]
+    },
+    {
+      "id": "opticare",
+      "name": "OptiCare",
+      "vendor": "Meierhofer AG",
+      "website": "https://www.meierhofer.com/",
+      "description": "Medizincontrolling und Qualitätsmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Fallcontrolling",
+        "Kodierung",
+        "Qualitätsindikatoren",
+        "Benchmarking",
+        "Prozessanalyse",
+        "BI und Reporting"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Qualitätsmanagement", "Geschäftsführung"],
+      "departments": ["Medizincontrolling", "Qualitätsmanagement"]
+    },
+    {
+      "id": "qms-qualitätsmanagement",
+      "name": "QMS Qualitätsmanagementsystem",
+      "vendor": "Diverse Anbieter",
+      "website": "",
+      "description": "Umfassendes Qualitätsmanagementsystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Prozessdokumentation",
+        "Risikomanagement",
+        "CIRS",
+        "Auditmanagement",
+        "Beschwerde-Management",
+        "Maßnahmenplanung",
+        "Zertifizierungsunterstützung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Qualitätsmanagement", "Ärzte", "Pflegedienstleitung", "Geschäftsführung"],
+      "departments": ["Qualitätsmanagement", "Alle Abteilungen"]
+    },
+    {
+      "id": "iqtig-qs-software",
+      "name": "IQTIG QS-Verfahren Software",
+      "vendor": "IQTIG / Softwareanbieter",
+      "website": "https://www.iqtig.org/",
+      "description": "Software für gesetzliche Qualitätssicherung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "QS-Dokumentation",
+        "Datenerfassung nach IQTIG-Vorgaben",
+        "Exportfunktionen",
+        "Plausibilitätsprüfung",
+        "QS-Filter",
+        "Bundesauswertung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Qualitätsmanagement", "Medizincontroller", "Ärzte"],
+      "departments": ["Qualitätsmanagement", "Medizincontrolling"]
+    },
+    {
+      "id": "qlikview-healthcare",
+      "name": "QlikView Healthcare Analytics",
+      "vendor": "Qlik",
+      "website": "https://www.qlik.com/",
+      "description": "Business Intelligence für Healthcare",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer oder Enterprise",
+      "features": [
+        "Healthcare Dashboards",
+        "Datenvisualisierung",
+        "Ad-hoc Analysen",
+        "KPI-Monitoring",
+        "Benchmarking",
+        "Predictive Analytics"
+      ],
+      "platforms": ["Windows", "Web", "Cloud"],
+      "cpe": ["cpe:2.3:a:qlik:qlikview:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Geschäftsführung", "Medizincontroller", "Abteilungsleitung"],
+      "departments": ["Controlling", "Geschäftsführung", "IT"]
+    },
+    {
+      "id": "cirs-medical",
+      "name": "CIRS-Medical",
+      "vendor": "Diverse Anbieter",
+      "website": "",
+      "description": "Critical Incident Reporting System für Krankenhäuser",
+      "license": "Proprietär / Open Source",
+      "licenseModel": "Lizenz pro Krankenhaus oder kostenlos",
+      "features": [
+        "Fehlermeldesystem",
+        "Anonyme Meldungen",
+        "Kategorisierung",
+        "Analyse und Auswertung",
+        "Maßnahmenverfolgung",
+        "Lernkultur-Förderung"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Alle Mitarbeiter", "Qualitätsmanagement", "Risikomanagement"],
+      "departments": ["Qualitätsmanagement", "Alle Abteilungen"]
+    },
+    {
+      "id": "averbis-kodierung",
+      "name": "Averbis Kodierunterstützung",
+      "vendor": "Averbis",
+      "website": "https://www.averbis.com/",
+      "description": "KI-gestützte Kodierunterstützung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "NLP-basierte Kodiervorschläge",
+        "Automatische ICD/OPS-Erkennung",
+        "Textanalyse Arztbriefe",
+        "Kodierqualität-Verbesserung",
+        "MDK-Prävention"
+      ],
+      "platforms": ["Cloud", "On-Premise"],
+      "cpe": [],
+      "userRoles": ["Medizincontroller", "Kodierfachkräfte", "Ärzte"],
+      "departments": ["Medizincontrolling"]
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+{
+  "id": "laboratory-information-systems",
+  "name": "Laborinformationssystem (LIS)",
+  "description": "Systeme für Verwaltung und Auswertung von Laboruntersuchungen",
+  "software": [
+    {
+      "id": "dedalus-swisslab",
+      "name": "SWISSLAB",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/de/loesungen/labor/swisslab/",
+      "description": "Umfassendes LIS für klinische Labore",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Auftragsverwaltung",
+        "Geräteanbindung",
+        "Befundfreigabe",
+        "Qualitätskontrolle",
+        "Statistik und Reporting",
+        "Archivierung",
+        "HL7-Schnittstellen",
+        "Barcode-Unterstützung",
+        "Workflow-Management"
+      ],
+      "platforms": ["Windows", "Linux"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "Medizinisch-technische Laborassistenten (MTLA)", "Ärzte"],
+      "departments": ["Labor", "Mikrobiologie", "Pathologie", "Alle Stationen"]
+    },
+    {
+      "id": "cgm-lauris",
+      "name": "Lauris",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/deu_de/produkte/labor/lauris.html",
+      "description": "LIS für Labor-Workflow und Qualitätsmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Probenmanagement",
+        "Analysensteuerung",
+        "Geräteanbindung",
+        "Befunderstellung",
+        "QM-Integration",
+        "Akkreditierungsunterstützung",
+        "KIS-Integration",
+        "Archivierung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:lauris:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Laborärzte", "MTLA", "Ärzte"],
+      "departments": ["Labor", "Alle Stationen"]
+    },
+    {
+      "id": "nexus-mlab",
+      "name": "MLAB",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/labor",
+      "description": "Laborinformationssystem mit breiter Geräteanbindung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Auftragsmanagement",
+        "Multi-Vendor Geräteanbindung",
+        "Befundvalidierung",
+        "Qualitätssicherung",
+        "Statistik",
+        "KIS-Schnittstellen",
+        "Mobilzugriff"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA", "Ärzte"],
+      "departments": ["Labor", "Point-of-Care", "Alle Stationen"]
+    },
+    {
+      "id": "sysmex-flexlab",
+      "name": "Flexlab",
+      "vendor": "Sysmex",
+      "website": "https://www.sysmex.de/produkte/labor-informations-systeme/",
+      "description": "LIS mit Integration von Sysmex-Analysegeräten",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Gerätesteuerung Sysmex",
+        "Probenmanagement",
+        "Befundung",
+        "Qualitätskontrolle",
+        "Middleware-Funktionen",
+        "Archivierung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor", "Hämatologie"]
+    },
+    {
+      "id": "baeurer-lis",
+      "name": "Bäurer LIS",
+      "vendor": "Bäurer GmbH",
+      "website": "https://www.baeurer.de/",
+      "description": "LIS für kleinere bis mittlere Labore",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Auftragsverwaltung",
+        "Geräteanbindung",
+        "Befundfreigabe",
+        "Abrechnung",
+        "Statistik"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor"]
+    },
+    {
+      "id": "openelis-global",
+      "name": "OpenELIS Global",
+      "vendor": "OpenELIS Community",
+      "website": "https://openelis-global.org/",
+      "description": "Open-Source Laborinformationssystem",
+      "license": "MPL 2.0",
+      "licenseModel": "Open Source / Kostenlos",
+      "features": [
+        "Probenmanagement",
+        "Testergebnisse",
+        "Befundung",
+        "Qualitätskontrolle",
+        "Reporting",
+        "Multi-Site Support",
+        "WHO-Standards"
+      ],
+      "platforms": ["Windows", "Linux", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor"]
+    },
+    {
+      "id": "cgm-labdaq",
+      "name": "CGM LABDAQ",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/deu_de/produkte/labor/labdaq.html",
+      "description": "Flexibles LIS für verschiedene Laborgrößen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Auftragsverwaltung",
+        "Probentracking",
+        "Geräteanbindung",
+        "Befunderstellung",
+        "Abrechnung",
+        "Qualitätsmanagement"
+      ],
+      "platforms": ["Windows"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:labdaq:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor"]
+    },
+    {
+      "id": "clinisys-lis",
+      "name": "Clinisys",
+      "vendor": "CliniSys",
+      "website": "https://www.clinisys.com/",
+      "description": "Internationale LIS-Lösung mit deutscher Präsenz",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "Enterprise LIS",
+        "Geräteanbindung",
+        "Workflow-Automation",
+        "Qualitätsmanagement",
+        "Analytics",
+        "Interoperabilität"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA", "Labormanagement"],
+      "departments": ["Labor", "Mikrobiologie", "Pathologie"]
+    },
+    {
+      "id": "roche-cobas-infinity",
+      "name": "cobas infinity",
+      "vendor": "Roche Diagnostics",
+      "website": "https://www.roche.de/",
+      "description": "Labor-IT-Lösung mit Geräteintegration",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Middleware",
+        "Gerätesteuerung Roche",
+        "Probenmanagement",
+        "Workflow-Optimierung",
+        "Qualitätskontrolle",
+        "Datenmanagement",
+        "LIS-Anbindung"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor", "Point-of-Care"]
+    },
+    {
+      "id": "abbott-alinity",
+      "name": "AlinIQ",
+      "vendor": "Abbott Diagnostics",
+      "website": "https://www.abbott.com/",
+      "description": "Labor-Informationssystem und Middleware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Middleware",
+        "Geräteanbindung Abbott",
+        "Workflow-Management",
+        "Qualitätskontrolle",
+        "Datenintegration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor"]
+    },
+    {
+      "id": "siemens-atellica-data-manager",
+      "name": "Atellica Data Manager",
+      "vendor": "Siemens Healthineers",
+      "website": "https://www.siemens-healthineers.com/",
+      "description": "Datenmanagement für Laborautomation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro System",
+      "features": [
+        "Automatisierungs-Management",
+        "Gerätesteuerung",
+        "Proben-Tracking",
+        "Workflow-Optimierung",
+        "Qualitätskontrolle",
+        "LIS-Integration"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor"]
+    },
+    {
+      "id": "werfen-hemostasis-manager",
+      "name": "Hemostasis Manager",
+      "vendor": "Werfen",
+      "website": "https://www.werfen.com/",
+      "description": "Middleware für Gerinnungslabor",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Gerinnungsdiagnostik",
+        "Geräteanbindung",
+        "Probenmanagement",
+        "Qualitätskontrolle",
+        "LIS-Schnittstelle"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor", "Gerinnungslabor"]
+    },
+    {
+      "id": "beckman-coulter-remisol",
+      "name": "RemisOL Advance",
+      "vendor": "Beckman Coulter",
+      "website": "https://www.beckmancoulter.com/",
+      "description": "Labor-Middleware und Datenmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Middleware",
+        "Geräteanbindung Beckman Coulter",
+        "Workflow-Management",
+        "Qualitätskontrolle",
+        "Automatisierung",
+        "LIS-Integration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA"],
+      "departments": ["Labor"]
+    },
+    {
+      "id": "biorad-unity",
+      "name": "Unity Real Time",
+      "vendor": "Bio-Rad Laboratories",
+      "website": "https://www.bio-rad.com/",
+      "description": "Qualitätskontroll- und Datenmanagement-Software",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Qualitätskontrolle",
+        "Echtzeit-Überwachung",
+        "Trendanalyse",
+        "Multi-Site Management",
+        "Peer-Vergleich",
+        "Reporting"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA", "Qualitätsmanagement"],
+      "departments": ["Labor", "Qualitätsmanagement"]
+    },
+    {
+      "id": "labvantage",
+      "name": "LabVantage LIMS",
+      "vendor": "LabVantage Solutions",
+      "website": "https://www.labvantage.com/",
+      "description": "Enterprise Laboratory Information Management System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer oder Enterprise",
+      "features": [
+        "LIMS",
+        "Probenmanagement",
+        "Workflow-Automation",
+        "Qualitätsmanagement",
+        "ELN (Electronic Lab Notebook)",
+        "SDMS (Scientific Data Management)",
+        "21 CFR Part 11"
+      ],
+      "platforms": ["Web", "Cloud", "On-Premise"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA", "Forscher"],
+      "departments": ["Labor", "Forschung", "Pathologie"]
+    },
+    {
+      "id": "starlims",
+      "name": "STARLIMS",
+      "vendor": "Abbott Informatics",
+      "website": "https://www.starlims.com/",
+      "description": "Enterprise LIMS-Lösung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "LIMS",
+        "Probenmanagement",
+        "Geräteintegration",
+        "Mobile Lösungen",
+        "Workflow-Engine",
+        "Compliance-Management",
+        "Analytics"
+      ],
+      "platforms": ["Web", "Cloud", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA", "Qualitätsmanagement"],
+      "departments": ["Labor", "Forschung"]
+    },
+    {
+      "id": "psyche-systems",
+      "name": "Psyche Systems",
+      "vendor": "Psyche Systems Corporation",
+      "website": "https://www.psychesystems.com/",
+      "description": "Anatomische Pathologie-LIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Pathologie-Workflow",
+        "Gewebetracking",
+        "Befunderstellung",
+        "Digitale Pathologie-Integration",
+        "Immunhistochemie",
+        "Molekularpathologie"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Pathologen", "Medizinisch-technische Assistenten"],
+      "departments": ["Pathologie"]
+    },
+    {
+      "id": "sunquest-lis",
+      "name": "Sunquest LIS",
+      "vendor": "Sunquest Information Systems",
+      "website": "https://www.sunquestinfo.com/",
+      "description": "Enterprise Laborinformationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "Enterprise LIS",
+        "Multisite-Unterstützung",
+        "Geräteanbindung",
+        "Workflow-Automation",
+        "Business Intelligence",
+        "Outreach-Management"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Laborärzte", "MTLA", "Labormanagement"],
+      "departments": ["Labor", "Mikrobiologie"]
+    }
+  ]
+}

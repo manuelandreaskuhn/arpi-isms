@@ -1,0 +1,347 @@
+{
+  "id": "microbiology-information-systems",
+  "name": "Mikrobiologie-Informationssystem",
+  "description": "Systeme für mikrobiologische Diagnostik, Befundung und Resistenzüberwachung",
+  "software": [
+    {
+      "id": "swisslab-mikrobiologie",
+      "name": "SWISSLAB Mikrobiologie",
+      "vendor": "Nexus AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Mikrobiologie-Modul für Laborinformationssysteme",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Probenmanagement",
+        "Kulturanlage-Dokumentation",
+        "Antibiogramm-Erstellung",
+        "Resistenzstatistik",
+        "Befundfreigabe",
+        "Hygiene-Surveillance",
+        "EUCAST/CLSI-Richtlinien",
+        "Automatische Geräteanbindung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Mikrobiologen", "Medizinisch-technische Laborassistenten (MTLA)", "Ärzte", "Hygienefachkräfte"],
+      "departments": ["Mikrobiologie", "Labor", "Hygiene", "Alle Stationen"]
+    },
+    {
+      "id": "mykrobs-mips",
+      "name": "MYKROBS",
+      "vendor": "MIPS",
+      "website": "https://www.mips.de/",
+      "description": "Mikrobiologie-Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Vollständiges Mikrobiologie-LIS",
+        "Probentracking",
+        "Erregerdatenbank",
+        "Resistenzanalyse",
+        "Befundung",
+        "Qualitätskontrolle",
+        "Statistik und Reporting",
+        "LIS-Integration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Mikrobiologen", "MTLA", "Ärzte"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "aid-gmbh",
+      "name": "AID",
+      "vendor": "AID",
+      "website": "https://www.aidgmbh.de/",
+      "description": "Antibiotic Information Database und Mikrobiologie",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Antibiotika-Informationen",
+        "Resistenzdaten",
+        "Therapieempfehlungen",
+        "Mikrobiologie-Befundung",
+        "Antibiotic Stewardship",
+        "Lokale Resistenzstatistik"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Mikrobiologen", "Infektiologen", "Ärzte", "Apotheker"],
+      "departments": ["Mikrobiologie", "Infektiologie", "Apotheke", "Alle Stationen"]
+    },
+    {
+      "id": "hybase-hyserv-mikro",
+      "name": "HYBASE",
+      "vendor": "HyServ",
+      "website": "https://www.hyserv.de/",
+      "description": "Krankenhaushygiene und Mikrobiologie-Software",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Mikrobiologie-Management",
+        "Hygiene-Surveillance",
+        "Erregerstatistik",
+        "Resistenzüberwachung",
+        "MRE-Management",
+        "Ausbruchsmanagement",
+        "Labor-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Mikrobiologen", "Hygienefachkräfte", "Ärzte"],
+      "departments": ["Mikrobiologie", "Hygiene", "Labor"]
+    },
+    {
+      "id": "becton-dickinson-phoenix",
+      "name": "BD Phoenix",
+      "vendor": "Becton Dickinson",
+      "website": "https://www.bd.com/",
+      "description": "Automatisiertes mikrobiologisches Identifikations- und Empfindlichkeitssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Automatische Identifikation",
+        "Empfindlichkeitsprüfung",
+        "MHK-Bestimmung",
+        "Schnelle Befunderstellung",
+        "Expertensystem",
+        "LIS-Anbindung",
+        "EUCAST/CLSI-konform"
+      ],
+      "platforms": ["Embedded", "Windows"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "biomerieux-vitek",
+      "name": "VITEK",
+      "vendor": "bioMérieux",
+      "website": "https://www.biomerieux.com/",
+      "description": "Automatisiertes System für Identifikation und AST",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Bakterielle Identifikation",
+        "Antibiogramm",
+        "Hefepilz-Identifikation",
+        "MHK-Bestimmung",
+        "Expertensystem-Regeln",
+        "LIS-Integration",
+        "Schnelle Ergebnisse"
+      ],
+      "platforms": ["Embedded", "Windows"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "maldi-biotyper",
+      "name": "MALDI Biotyper",
+      "vendor": "Bruker Daltonics",
+      "website": "https://www.bruker.com/",
+      "description": "MALDI-TOF Massenspektrometrie für Erregeridentifikation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Schnelle Identifikation",
+        "Bakterien und Pilze",
+        "Umfangreiche Datenbank",
+        "Mykoplasmen-Identifikation",
+        "Research Use Only Modus",
+        "LIS-Anbindung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "sirscan",
+      "name": "SIRscan",
+      "vendor": "i2a",
+      "website": "https://www.i2a.fr/",
+      "description": "Automatische Ablesung von Antibiogramm-Hemmhöfen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Automatische Hemmhof-Messung",
+        "Digitale Bildarchivierung",
+        "Expertenregeln",
+        "EUCAST/CLSI konform",
+        "Qualitätskontrolle",
+        "LIS-Integration"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "biomerieux-etest",
+      "name": "Etest",
+      "vendor": "bioMérieux",
+      "website": "https://www.biomerieux.com/",
+      "description": "MHK-Bestimmung mittels Gradientenstreifen",
+      "license": "Proprietär",
+      "licenseModel": "Verbrauchsmaterial",
+      "features": [
+        "MHK-Bestimmung",
+        "Gradientenstreifen-Methode",
+        "Breites Antibiotika-Spektrum",
+        "Einfache Handhabung",
+        "Dokumentation"
+      ],
+      "platforms": ["Keine Software (Verbrauchsmaterial)"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "loinc-snomed",
+      "name": "LOINC/SNOMED CT für Mikrobiologie",
+      "vendor": "Regenstrief Institute / SNOMED International",
+      "website": "https://loinc.org/",
+      "description": "Standardisierte Terminologie für Mikrobiologie",
+      "license": "Kostenlos",
+      "licenseModel": "Kostenlos",
+      "features": [
+        "Standardisierte Codes",
+        "Erreger-Terminologie",
+        "Befundcodierung",
+        "Internationale Standards",
+        "Interoperabilität"
+      ],
+      "platforms": ["Plattformunabhängig"],
+      "cpe": [],
+      "userRoles": ["IT-Abteilung", "Mikrobiologen", "Entwickler"],
+      "departments": ["Mikrobiologie", "Labor", "IT"]
+    },
+    {
+      "id": "eucast-ast",
+      "name": "EUCAST Guidelines",
+      "vendor": "European Committee on Antimicrobial Susceptibility Testing",
+      "website": "https://www.eucast.org/",
+      "description": "Richtlinien für Empfindlichkeitsprüfung",
+      "license": "Kostenlos",
+      "licenseModel": "Kostenlos",
+      "features": [
+        "Breakpoint-Tabellen",
+        "Expertensystem-Regeln",
+        "Methodenrichtlinien",
+        "Qualitätskontrolle",
+        "Updates und Änderungen"
+      ],
+      "platforms": ["Web", "PDF"],
+      "cpe": [],
+      "userRoles": ["Mikrobiologen", "MTLA"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "rki-ars",
+      "name": "ARS (Antibiotika-Resistenz-Surveillance)",
+      "vendor": "Robert Koch-Institut",
+      "website": "https://ars.rki.de/",
+      "description": "Nationales Referenzsystem für Resistenzdaten",
+      "license": "Kostenlos",
+      "licenseModel": "Kostenlos (Teilnahme)",
+      "features": [
+        "Resistenzdaten-Sammlung",
+        "Benchmarking",
+        "Trend-Analysen",
+        "Öffentliche Statistiken",
+        "Datenexport aus LIS"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Mikrobiologen", "Hygienefachkräfte", "Infektiologen"],
+      "departments": ["Mikrobiologie", "Hygiene"]
+    },
+    {
+      "id": "genexpert",
+      "name": "GeneXpert",
+      "vendor": "Cepheid",
+      "website": "https://www.cepheid.com/",
+      "description": "Molekulare Diagnostik-Plattform",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "PCR-basierte Diagnostik",
+        "MRSA-Screening",
+        "C. difficile Nachweis",
+        "TB-Diagnostik",
+        "Schnelle Ergebnisse",
+        "Point-of-Care fähig",
+        "LIS-Anbindung"
+      ],
+      "platforms": ["Embedded", "Windows"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen", "Pflege"],
+      "departments": ["Mikrobiologie", "Labor", "Notaufnahme", "Intensivstation"]
+    },
+    {
+      "id": "bd-max",
+      "name": "BD MAX",
+      "vendor": "Becton Dickinson",
+      "website": "https://www.bd.com/",
+      "description": "Molekulares Diagnostiksystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Automatisierte PCR",
+        "Multiples Testing",
+        "Erreger-Panels",
+        "C. difficile",
+        "MRSA",
+        "LIS-Integration"
+      ],
+      "platforms": ["Embedded"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "copan-wasp",
+      "name": "WASPLab",
+      "vendor": "Copan Diagnostics",
+      "website": "https://www.copanusa.com/",
+      "description": "Automatisierte Plattenbebrütung und digitale Bildgebung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro System",
+      "features": [
+        "Automatisches Plating",
+        "Digitale Bilderfassung",
+        "KI-gestützte Kolonie-Erkennung",
+        "Remote-Befundung",
+        "Workflow-Optimierung",
+        "LIS-Integration"
+      ],
+      "platforms": ["Embedded", "Windows"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor"]
+    },
+    {
+      "id": "accelerate-pheno",
+      "name": "Accelerate Pheno",
+      "vendor": "Accelerate Diagnostics",
+      "website": "https://www.acceleratediagnostics.com/",
+      "description": "Schnelle Identifikation und AST aus Blutkulturen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Direkt aus Blutkultur",
+        "Identifikation in 1,5h",
+        "AST in 7h",
+        "Sepsis-Diagnostik",
+        "Morphokinetische Analyse",
+        "LIS-Integration"
+      ],
+      "platforms": ["Embedded"],
+      "cpe": [],
+      "userRoles": ["MTLA", "Mikrobiologen"],
+      "departments": ["Mikrobiologie", "Labor", "Intensivstation"]
+    }
+  ]
+}

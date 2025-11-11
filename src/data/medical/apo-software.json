@@ -1,0 +1,298 @@
+{
+  "id": "hospital-pharmacy-software",
+  "name": "Krankenhaus-Apotheken-Software",
+  "description": "Systeme für Medikamentenmanagement, Arzneimittellogistik und Apothekenverwaltung",
+  "software": [
+    {
+      "id": "ixserv-pharmatechnik",
+      "name": "IXSERV",
+      "vendor": "PHARMATECHNIK",
+      "website": "https://www.pharmatechnik.de/",
+      "description": "Apothekensoftware für Krankenhausapotheken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Warenwirtschaft",
+        "Bestellwesen",
+        "Rezeptverwaltung",
+        "Lagerverwaltung",
+        "Patientenindividuelle Verblisterung"
+      ],
+      "platforms": ["Windows", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten"],
+      "departments": ["Apotheke", "Zentralapotheke"]
+    },
+    {
+      "id": "adka-dokupik",
+      "name": "ADKA DokuPIK",
+      "vendor": "ADKA",
+      "website": "https://www.adka.de/",
+      "description": "Dokumentationssystem für pharmazeutische Interventionen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Interventionsdokumentation",
+        "Statistikauswertung",
+        "Qualitätsmanagement",
+        "AMTS-Dokumentation"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Klinische Pharmazeuten"],
+      "departments": ["Apotheke", "Alle Stationen"]
+    },
+    {
+      "id": "cgm-apotheke",
+      "name": "CGM APOTHEKE",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Apothekenverwaltungssystem für Kliniken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Medikationsverwaltung",
+        "Bestellmanagement",
+        "Lagerhaltung",
+        "Rezepturherstellung",
+        "Interaktionsprüfung"
+      ],
+      "platforms": ["Windows", "Cloud"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:cgm_apotheke:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten"],
+      "departments": ["Apotheke"]
+    },
+    {
+      "id": "medatixx-apotheke",
+      "name": "medatixx Apotheke",
+      "vendor": "medatixx",
+      "website": "https://www.medatixx.de/",
+      "description": "Warenwirtschaft für Krankenhausapotheken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Warenwirtschaft",
+        "Chargenverwaltung",
+        "Bestandsführung",
+        "Lieferantenverwaltung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten"],
+      "departments": ["Apotheke"]
+    },
+    {
+      "id": "amts-suite-dedalus",
+      "name": "AMTS-Suite",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Arzneimitteltherapiesicherheit und Medikationsmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Medikationscheck",
+        "Interaktionsprüfung",
+        "Allergiecheck",
+        "Dosisberechnung",
+        "Pharmazeutische Betreuung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Ärzte", "Pflege"],
+      "departments": ["Apotheke", "Alle Stationen", "Intensivstation"]
+    },
+    {
+      "id": "ixos-pharma",
+      "name": "IXOS Pharma",
+      "vendor": "IFMS GmbH",
+      "website": "https://www.ifms-services.de/",
+      "description": "Apothekensoftware für Krankenhausapotheken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Warenwirtschaft",
+        "Rezepturherstellung",
+        "Stationsbelieferung",
+        "Unit-Dose-Verblisterung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten"],
+      "departments": ["Apotheke"]
+    },
+    {
+      "id": "adok-dedalus",
+      "name": "ADOK",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/de/",
+      "description": "Arzneimitteldokumentation und -management",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Arzneimitteldokumentation",
+        "Medikationsplan",
+        "Verordnungsmanagement",
+        "Therapieüberwachung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker", "Pflege"],
+      "departments": ["Alle Stationen", "Apotheke"]
+    },
+    {
+      "id": "medifox-dan",
+      "name": "MediFox Dan",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/deu_de/produkte/apotheke/",
+      "description": "Software für Krankenhausapotheken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Apothekenverwaltung",
+        "Medikationsmanagement",
+        "Dokumentation"
+      ],
+      "platforms": ["Windows", "Cloud"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:medifox_dan:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Apotheker"],
+      "departments": ["Apotheke"]
+    },
+    {
+      "id": "pharmpro-csc",
+      "name": "PharmPro",
+      "vendor": "CSC Healthcare",
+      "website": "https://www.csc.com/",
+      "description": "Umfassendes Apothekenmanagementsystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Bestellmanagement",
+        "Lagerverwaltung",
+        "Rezepturherstellung",
+        "Chargenrückverfolgung",
+        "Kostenanalyse"
+      ],
+      "platforms": ["Windows", "Unix"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten"],
+      "departments": ["Apotheke"]
+    },
+    {
+      "id": "id-diacos-pharma",
+      "name": "ID DIACOS Pharma",
+      "vendor": "ID Information und Dokumentation",
+      "website": "https://www.id-berlin.de/",
+      "description": "Apotheken- und Arzneimittellogistiksoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Arzneimittellogistik",
+        "Stationsversorgung",
+        "Bestellwesen",
+        "Kommissionierung",
+        "Automaten-Anbindung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten", "Logistik"],
+      "departments": ["Apotheke", "Lager"]
+    },
+    {
+      "id": "apotheken-edv-awinta",
+      "name": "AWINTA",
+      "vendor": "AWINTA GmbH",
+      "website": "https://www.awinta.de/",
+      "description": "Apotheken-Software mit Krankenhausmodul",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Warenwirtschaft",
+        "Stationsversorgung",
+        "Rezepturherstellung",
+        "Bestellwesen",
+        "Lagerverwaltung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten"],
+      "departments": ["Apotheke"]
+    },
+    {
+      "id": "apotheken-edv-ixos",
+      "name": "IXOS",
+      "vendor": "IXOS Software AG",
+      "website": "https://www.ixos-software.de/",
+      "description": "Apothekensoftware mit Klinikerweiterung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Warenwirtschaft",
+        "Stationsbelieferung",
+        "Unit-Dose",
+        "Retaxationsmanagement"
+      ],
+      "platforms": ["Windows", "Linux"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pharmazeutisch-technische Assistenten"],
+      "departments": ["Apotheke"]
+    },
+    {
+      "id": "easycare-pharma",
+      "name": "easyCARE Pharma",
+      "vendor": "easySoft GmbH",
+      "website": "https://www.easysoft.de/",
+      "description": "Medikationsmanagement für stationäre Einrichtungen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Medikationsplan",
+        "Bestellmanagement",
+        "Interaktionsprüfung",
+        "Verblistung",
+        "Dokumentation"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Ärzte", "Apotheker"],
+      "departments": ["Alle Stationen", "Apotheke"]
+    },
+    {
+      "id": "medimo-system",
+      "name": "MediMo",
+      "vendor": "NOVENTI HealthCare",
+      "website": "https://www.noventi.de/",
+      "description": "Medikationsmanagement und Dispenser-Steuerung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Dispenser-Anbindung",
+        "Medikationsbestellung",
+        "Bestandsverwaltung",
+        "Automatische Nachbestellung"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Apotheker"],
+      "departments": ["Alle Stationen", "Apotheke"]
+    },
+    {
+      "id": "phoenix-lds",
+      "name": "PHOENIX LDS",
+      "vendor": "PHOENIX Pharma",
+      "website": "https://www.phoenix-pharma.de/",
+      "description": "Logistik- und Dispensiersystem für Krankenhäuser",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Automatensteuerung",
+        "Stationsversorgung",
+        "Bestandsmanagement",
+        "Verbrauchsanalyse"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Pflege", "Logistik"],
+      "departments": ["Apotheke", "Alle Stationen"]
+    }
+  ]
+}
