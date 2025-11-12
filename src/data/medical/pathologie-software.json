@@ -358,52 +358,6 @@
       "departments": ["Pathologie"]
     },
     {
-      "id": "gewebebank-software",
-      "name": "Gewebebank / Biobank Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für Gewebebank-Management",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Probenverwaltung",
-        "Lagerungsmanagement",
-        "Einwilligungsverwaltung",
-        "Qualitätskontrolle",
-        "Barcode-System",
-        "Tracking",
-        "Datenschutz-konform",
-        "Forschungsdatenbank"
-      ],
-      "platforms": ["Windows", "Web"],
-      "cpe": [],
-      "userRoles": ["Pathologen", "Biobank-Mitarbeiter", "Forscher"],
-      "departments": ["Pathologie", "Biobank", "Forschung"]
-    },
-    {
-      "id": "molekularpathologie-software",
-      "name": "Molekularpathologie-Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für molekularpathologische Diagnostik",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Modul",
-      "features": [
-        "NGS-Datenanalyse",
-        "Mutationsanalyse",
-        "Biomarker-Reporting",
-        "Varianteninterpretation",
-        "Therapieempfehlungen",
-        "FISH-Auswertung",
-        "PCR-Dokumentation",
-        "Datenbank-Integration"
-      ],
-      "platforms": ["Windows", "Linux", "Cloud"],
-      "cpe": [],
-      "userRoles": ["Molekularpathologen", "Pathologen", "Bioinformatiker"],
-      "departments": ["Molekularpathologie", "Pathologie"]
-    },
-    {
       "id": "snomed-pathologie",
       "name": "SNOMED CT für Pathologie",
       "vendor": "SNOMED International",
@@ -422,28 +376,6 @@
       "cpe": [],
       "userRoles": ["Pathologen", "IT-Abteilung"],
       "departments": ["Pathologie", "IT"]
-    },
-    {
-      "id": "telepathologie",
-      "name": "Telepathologie-Systeme",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Systeme für Telepathologie und Fernkonsultation",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Fernbefundung",
-        "Live-Mikroskopie",
-        "Intraoperative Konsultation",
-        "Digitale Bildübertragung",
-        "Videokonferenz",
-        "Second Opinion",
-        "Verschlüsselte Übertragung"
-      ],
-      "platforms": ["Web", "Windows"],
-      "cpe": [],
-      "userRoles": ["Pathologen"],
-      "departments": ["Pathologie", "OP"]
     }
   ]
 }

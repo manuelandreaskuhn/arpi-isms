@@ -205,28 +205,6 @@
       "departments": ["Strahlentherapie", "Medizinphysik"]
     },
     {
-      "id": "tumorboard-software",
-      "name": "Tumorboard / MTB Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für Tumorkonferenzen und molekulare Tumorboards",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Fallvorstellung",
-        "Konferenz-Management",
-        "Therapieempfehlungen",
-        "Dokumentation",
-        "Molekulare Diagnostik-Integration",
-        "Guideline-Unterstützung",
-        "Videokonferenz-Integration"
-      ],
-      "platforms": ["Web", "Windows"],
-      "cpe": [],
-      "userRoles": ["Onkologen", "Chirurgen", "Strahlentherapeuten", "Pathologen", "Radiologen"],
-      "departments": ["Onkologie", "Alle tumorbehandelnde Abteilungen", "Pathologie", "Radiologie"]
-    },
-    {
       "id": "carat",
       "name": "cTUM / cBTUM (carat)",
       "vendor": "Carat Solutions",
@@ -392,26 +370,6 @@
       "cpe": [],
       "userRoles": ["Onkologen", "Humangenetiker", "Molekularpathologen"],
       "departments": ["Onkologie", "Humangenetik", "Pathologie"]
-    },
-    {
-      "id": "survival-analysis-software",
-      "name": "Survival Analysis Software",
-      "vendor": "Diverse Anbieter / R/Python",
-      "website": "",
-      "description": "Statistische Software für Überlebensanalysen",
-      "license": "Open Source / Proprietär",
-      "licenseModel": "Kostenlos oder Lizenz",
-      "features": [
-        "Kaplan-Meier Kurven",
-        "Cox-Regression",
-        "Überlebensstatistik",
-        "Risiko-Modellierung",
-        "Forschungsanalysen"
-      ],
-      "platforms": ["Windows", "Linux", "Mac"],
-      "cpe": [],
-      "userRoles": ["Forscher", "Biostatistiker", "Onkologen"],
-      "departments": ["Forschung", "Onkologie", "Krebsregister"]
     }
   ]
 }

@@ -251,46 +251,6 @@
       "departments": ["Alle medizinischen Abteilungen"]
     },
     {
-      "id": "sepsis-cdss",
-      "name": "Sepsis CDSS (diverse Systeme)",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Klinische Entscheidungsunterstützung für Sepsis-Erkennung",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Krankenhaus",
-      "features": [
-        "Sepsis-Früherkennung",
-        "Algorithmus-basierte Warnungen",
-        "qSOFA / SOFA Score",
-        "Therapieempfehlungen",
-        "Vitalparameter-Integration"
-      ],
-      "platforms": ["Web", "KIS-Integration"],
-      "cpe": [],
-      "userRoles": ["Ärzte", "Pflege"],
-      "departments": ["Intensivstation", "Notaufnahme", "Alle medizinischen Abteilungen"]
-    },
-    {
-      "id": "dosing-cdss",
-      "name": "DosisGK / DosisCheckpoint",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Dosierungsberechnung und -anpassung",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Modul",
-      "features": [
-        "Dosisanpassung bei Niereninsuffizienz",
-        "Gewichtsadaptierte Dosierung",
-        "Pädiatrische Dosierung",
-        "Therapeutisches Drug Monitoring",
-        "Labordaten-Integration"
-      ],
-      "platforms": ["Web", "KIS-Integration"],
-      "cpe": [],
-      "userRoles": ["Ärzte", "Apotheker"],
-      "departments": ["Alle medizinischen Abteilungen", "Nephrologie", "Pädiatrie", "Apotheke"]
-    },
-    {
       "id": "mediq",
       "name": "MediQ",
       "vendor": "Mediq Deutschland",

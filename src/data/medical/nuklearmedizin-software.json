@@ -249,28 +249,6 @@
       "departments": ["Nuklearmedizin", "Onkologie", "Radiologie"]
     },
     {
-      "id": "dosimetrie-software",
-      "name": "Dosimetriesoftware (diverse Anbieter)",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für nuklearmedizinische Dosimetrie",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Dosisberechnung",
-        "Therapieplanung",
-        "MIRD-Schema",
-        "Organmodelle",
-        "Aktivitätsberechnung",
-        "Dokumentation",
-        "Regelwerks-Konformität"
-      ],
-      "platforms": ["Windows"],
-      "cpe": [],
-      "userRoles": ["Medizinphysiker", "Nuklearmediziner"],
-      "departments": ["Nuklearmedizin", "Medizinphysik"]
-    },
-    {
       "id": "simplicit90y",
       "name": "Simplicit90Y",
       "vendor": "Mirada Medical / Boston Scientific",
@@ -308,71 +286,6 @@
         "Multi-Cycle Management"
       ],
       "platforms": ["Windows", "Linux"],
-      "cpe": [],
-      "userRoles": ["Nuklearmediziner", "Medizinphysiker"],
-      "departments": ["Nuklearmedizin"]
-    },
-    {
-      "id": "cardiac-analysis-software",
-      "name": "Kardiale Analyse-Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Spezialsoftware für Myokard-SPECT/PET",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Modul",
-      "features": [
-        "Myokardperfusion",
-        "Quantifizierung",
-        "Polar Maps",
-        "Wandbewegungsanalyse",
-        "EF-Berechnung",
-        "Gated SPECT/PET",
-        "Normaldatenbanken"
-      ],
-      "platforms": ["Windows", "Als Modul in Workstations"],
-      "cpe": [],
-      "userRoles": ["Nuklearmediziner", "Kardiologen"],
-      "departments": ["Nuklearmedizin", "Kardiologie"]
-    },
-    {
-      "id": "neuroimaging-software",
-      "name": "Neuroimaging-Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für zerebrale Nuklearmedizin",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Modul",
-      "features": [
-        "Hirnperfusions-SPECT",
-        "PET-Amyloid/Tau Analyse",
-        "Statistisches Mapping",
-        "Normaldatenbanken",
-        "Quantifizierung",
-        "Demenz-Diagnostik",
-        "Dopamin-Transporter-Imaging"
-      ],
-      "platforms": ["Windows", "Als Modul in Workstations"],
-      "cpe": [],
-      "userRoles": ["Nuklearmediziner", "Neurologen"],
-      "departments": ["Nuklearmedizin", "Neurologie"]
-    },
-    {
-      "id": "radiosynoviorthese-software",
-      "name": "RSO-Dokumentationssoftware",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für Radiosynoviorthese-Dokumentation",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Therapiedokumentation",
-        "Aktivitätsberechnung",
-        "Gelenk-Datenbank",
-        "Strahlenschutz-Protokolle",
-        "Nachsorge-Tracking",
-        "Statistik"
-      ],
-      "platforms": ["Windows"],
       "cpe": [],
       "userRoles": ["Nuklearmediziner", "Medizinphysiker"],
       "departments": ["Nuklearmedizin"]

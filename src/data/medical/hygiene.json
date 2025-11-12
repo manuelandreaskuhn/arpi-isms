@@ -128,26 +128,6 @@
       "departments": ["Hygiene", "OP", "Intensivstation"]
     },
     {
-      "id": "mre-netz-software",
-      "name": "MRE-Netz Software",
-      "vendor": "Diverse regionale Anbieter",
-      "website": "",
-      "description": "Software für regionale MRE-Netzwerke",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Einrichtung",
-      "features": [
-        "MRE-Patientenregister",
-        "Screening-Dokumentation",
-        "Überleitung Management",
-        "Netzwerk-Kommunikation",
-        "Isolationsmanagement"
-      ],
-      "platforms": ["Web"],
-      "cpe": [],
-      "userRoles": ["Hygienefachkräfte", "Ärzte", "Pflege"],
-      "departments": ["Hygiene", "Alle Stationen", "Aufnahme"]
-    },
-    {
       "id": "nexus-hygiene",
       "name": "NEXUS / HYBASE",
       "vendor": "NEXUS AG",
@@ -231,27 +211,6 @@
       "departments": ["Hygiene", "Alle Stationen", "Apotheke"]
     },
     {
-      "id": "smartdisinfection",
-      "name": "SmartDisinfection",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Händehygiene-Compliance-System",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Spender",
-      "features": [
-        "Händedesinfektion-Monitoring",
-        "Compliance-Messung",
-        "Echtzeit-Feedback",
-        "Statistik-Dashboard",
-        "WHO 5 Moments",
-        "Schulungsmodul"
-      ],
-      "platforms": ["Cloud", "Mobile", "Embedded"],
-      "cpe": [],
-      "userRoles": ["Hygienefachkräfte", "Alle Mitarbeiter"],
-      "departments": ["Hygiene", "Alle Stationen"]
-    },
-    {
       "id": "nohymo",
       "name": "NoHyMo",
       "vendor": "NosoEx (medikit)",
@@ -328,26 +287,6 @@
       "platforms": ["Cloud", "Embedded"],
       "cpe": [],
       "userRoles": ["Hygienefachkräfte", "Alle Mitarbeiter"],
-      "departments": ["Hygiene", "Alle Stationen"]
-    },
-    {
-      "id": "clean-hands-monitoring",
-      "name": "Clean Hands Monitoring",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Händehygiene-Beobachtungssystem",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Direkte Beobachtung",
-        "Compliance-Erfassung",
-        "WHO-Methodik",
-        "Schulungsmodul",
-        "Statistik und Feedback"
-      ],
-      "platforms": ["Web", "Mobile"],
-      "cpe": [],
-      "userRoles": ["Hygienefachkräfte", "Hygienebeauftragte"],
       "departments": ["Hygiene", "Alle Stationen"]
     }
   ]

@@ -179,27 +179,6 @@
       "departments": ["Notaufnahme"]
     },
     {
-      "id": "notaufnahme-cockpit",
-      "name": "Notaufnahme-Cockpit",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Dashboard für Notaufnahme-Steuerung",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Echtzeit-Dashboard",
-        "Patientenübersicht",
-        "Ressourcen-Anzeige",
-        "Wartezeiten",
-        "Belegungsstatus",
-        "Priorisierung"
-      ],
-      "platforms": ["Web", "Display-Systeme"],
-      "cpe": [],
-      "userRoles": ["Notaufnahme-Ärzte", "Notaufnahme-Pflege", "Notaufnahme-Leitung"],
-      "departments": ["Notaufnahme"]
-    },
-    {
       "id": "mts-group-manchester-triage",
       "name": "Manchester Triage System (MTS)",
       "vendor": "MTS Group / diverse Softwareanbieter",
@@ -241,134 +220,29 @@
       "departments": ["Notaufnahme"]
     },
     {
-      "id": "schockraum-management",
-      "name": "Schockraum-Management-System",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Spezialsystem für Schockraum-Dokumentation",
+      "id": "ecare-notaufnahme",
+      "name": "eCare Notaufnahme",
+      "vendor": "eCare",
+      "website": "https://www.ecare.de/",
+      "description": "Notaufnahme-Management-System mit integrierter Triage und Prozesssteuerung",
       "license": "Proprietär",
-      "licenseModel": "Lizenz pro Schockraum",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
       "features": [
-        "Strukturierte Schockraum-Protokolle",
-        "Zeiterfassung",
-        "ATLS-konform",
-        "Team-Dokumentation",
-        "Materialerfassung",
-        "Video-Dokumentation",
-        "Debriefing-Unterstützung"
+        "Patientenaufnahme",
+        "Manchester-Triage-System",
+        "Workflow-Management",
+        "Behandlungsdokumentation",
+        "Schockraum-Management",
+        "Ressourcenplanung",
+        "KIS-Integration",
+        "Wartezeiten-Monitoring",
+        "Statistik und Reporting",
+        "Mobile Dokumentation"
       ],
-      "platforms": ["Windows", "Web", "Tablet"],
+      "platforms": ["Windows", "Web", "Mobile"],
       "cpe": [],
-      "userRoles": ["Notaufnahme-Ärzte", "Unfallchirurgen", "Anästhesisten", "Notaufnahme-Pflege"],
-      "departments": ["Schockraum", "Notaufnahme"]
-    },
-    {
-      "id": "rettungsdienstdokumentation",
-      "name": "Rettungsdienst-Dokumentation",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Elektronische Einsatzdokumentation für Rettungsdienste",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Fahrzeug oder Standort",
-      "features": [
-        "DIVI-Protokoll",
-        "MIND-Protokoll",
-        "Vitalparameter-Erfassung",
-        "Medikamenten-Dokumentation",
-        "GPS-Tracking",
-        "Offline-Fähigkeit",
-        "Schnittstelle zu Notaufnahmen"
-      ],
-      "platforms": ["Tablet", "Mobile", "Windows"],
-      "cpe": [],
-      "userRoles": ["Rettungsdienst", "Notärzte", "Rettungssanitäter"],
-      "departments": ["Rettungsdienst", "Notaufnahme"]
-    },
-    {
-      "id": "chest-pain-unit-software",
-      "name": "Chest Pain Unit Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Spezielle Software für Chest Pain Units",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Modul",
-      "features": [
-        "CPU-Protokoll",
-        "EKG-Integration",
-        "Labor-Anbindung (Troponin)",
-        "Risiko-Scores (HEART, GRACE)",
-        "Verlaufsbeobachtung",
-        "Zertifizierungs-Dokumentation"
-      ],
-      "platforms": ["Windows", "Web"],
-      "cpe": [],
-      "userRoles": ["Kardiologen", "Notaufnahme-Ärzte", "Notaufnahme-Pflege"],
-      "departments": ["Chest Pain Unit", "Notaufnahme", "Kardiologie"]
-    },
-    {
-      "id": "stroke-unit-software",
-      "name": "Stroke Unit Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für Schlaganfall-Einheiten",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Modul",
-      "features": [
-        "NIHSS-Score",
-        "Door-to-Needle Time Tracking",
-        "Bildgebung-Integration",
-        "Lyse-Protokoll",
-        "Thrombektomie-Dokumentation",
-        "Stroke-Register",
-        "Qualitätsindikatoren"
-      ],
-      "platforms": ["Windows", "Web"],
-      "cpe": [],
-      "userRoles": ["Neurologen", "Neuroradiologen", "Notaufnahme-Ärzte", "Stroke Nurses"],
-      "departments": ["Stroke Unit", "Notaufnahme", "Neurologie", "Neuroradiologie"]
-    },
-    {
-      "id": "paediatric-ed-software",
-      "name": "Pädiatrische Notaufnahme Software",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Spezialsoftware für Kinder-Notaufnahmen",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Standort",
-      "features": [
-        "Gewichts-adaptierte Dosierung",
-        "Pädiatrische Triage",
-        "Wachstumskurven",
-        "Entwicklungsstatus",
-        "Kindeswohlgefährdung-Dokumentation",
-        "Eltern-Information"
-      ],
-      "platforms": ["Windows", "Web"],
-      "cpe": [],
-      "userRoles": ["Kinderärzte", "Notaufnahme-Ärzte", "Kinderkrankenpflege"],
-      "departments": ["Kinder-Notaufnahme", "Pädiatrie"]
-    },
-    {
-      "id": "manv-management",
-      "name": "MANV-Management-System",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "System für Massenanfall von Verletzten/Erkrankten",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Krankenhaus",
-      "features": [
-        "Großschadens-Dokumentation",
-        "Sichtungs-Kategorien",
-        "Patienten-Tracking",
-        "Ressourcen-Management",
-        "Krisenstabs-Unterstützung",
-        "Dekontaminations-Dokumentation",
-        "Alarmpläne"
-      ],
-      "platforms": ["Web", "Mobile", "Tablet"],
-      "cpe": [],
-      "userRoles": ["Notaufnahme-Leitung", "Ärztliche Leitung", "Pflegedienstleitung", "Krisenstab"],
-      "departments": ["Notaufnahme", "Alle Abteilungen", "Krisenstab"]
+      "userRoles": ["Notaufnahme-Ärzte", "Notaufnahme-Pflege", "Triage-Personal", "Verwaltung"],
+      "departments": ["Notaufnahme", "Zentrale Notaufnahme (ZNA)"]
     }
   ]
 }

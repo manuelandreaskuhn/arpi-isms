@@ -281,26 +281,6 @@
       "cpe": [],
       "userRoles": ["Radiologen"],
       "departments": ["Radiologie"]
-    },
-    {
-      "id": "pathosoft-befundung",
-      "name": "PathoSoft",
-      "vendor": "Diverse Anbieter",
-      "website": "https://www.pathosoft.de/",
-      "description": "Pathologie-Befundungssystem",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Arbeitsplatz",
-      "features": [
-        "Makroskopische Befundung",
-        "Histologie-Befundung",
-        "Immunhistochemie",
-        "Digitale Pathologie-Integration",
-        "TNM-Klassifikation"
-      ],
-      "platforms": ["Windows"],
-      "cpe": [],
-      "userRoles": ["Pathologen", "Medizinisch-technische Assistenten"],
-      "departments": ["Pathologie"]
     }
   ]
 }

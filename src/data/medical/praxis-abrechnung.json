@@ -1,0 +1,261 @@
+{
+  "id": "praxis-billing-software",
+  "name": "Abrechnungssoftware",
+  "description": "Systeme für kassenärztliche und privatärztliche Abrechnung",
+  "software": [
+    {
+      "id": "cgm-z1-pro",
+      "name": "CGM Z1.PRO",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Professionelle Abrechnungslösung für GKV und PKV mit automatischer Plausibilitätsprüfung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "GKV-Abrechnung",
+        "PKV-Abrechnung",
+        "Plausibilitätsprüfung",
+        "Honorarübersichten",
+        "KV-Schnittstelle",
+        "Budgetüberwachung",
+        "Statistiken"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "dampsoft-delta",
+      "name": "Dampsoft DELTA",
+      "vendor": "Dampsoft",
+      "website": "https://www.dampsoft.de/",
+      "description": "Abrechnungssoftware mit umfangreichen Kontroll- und Analysefunktionen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "GKV/PKV-Abrechnung",
+        "Plausibilitätsprüfung",
+        "Wirtschaftlichkeitsprüfung",
+        "Honoraranalyse",
+        "KV-Anbindung",
+        "Reporting"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "triatec",
+      "name": "TriaTec",
+      "vendor": "TriaTec Software GmbH",
+      "website": "https://www.triatec.de/",
+      "description": "Abrechnungssoftware mit Fokus auf Transparenz und Wirtschaftlichkeit",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Quartalsabrechnung",
+        "Plausibilitätsprüfung",
+        "Budgetmanagement",
+        "Honorarprognose",
+        "KV-Integration",
+        "Detaillierte Auswertungen"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "medistar-abrechnung",
+      "name": "Medistar Abrechnung",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Integrierte Abrechnungslösung für Medistar-Praxissoftware",
+      "license": "Proprietär",
+      "licenseModel": "Modul-Lizenz",
+      "features": [
+        "GKV/PKV-Abrechnung",
+        "Medistar-Integration",
+        "Plausibilitätsprüfung",
+        "KV-Schnittstelle",
+        "Honorarübersicht",
+        "Automatisierung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "goae-abrechnung-plus",
+      "name": "GOÄ-Abrechnung Plus",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Spezialisierte Software für die privatärztliche Abrechnung nach GOÄ mit Kommentarfunktion",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "GOÄ-Abrechnung",
+        "Steigerungsfaktoren",
+        "Kommentarfunktion",
+        "Rechnungserstellung",
+        "Analogziffern",
+        "GOÄ-Katalog integriert",
+        "Begründungstexte"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "pkv-abrechner",
+      "name": "PKV-Abrechner",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Privatärztliche Abrechnungssoftware mit Unterstützung aller GOÄ-Ziffern",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "GOÄ/GOZ-Abrechnung",
+        "Rechnungslegung",
+        "Faktorenberechnung",
+        "Versandmanagement",
+        "Zahlungsverfolgung",
+        "Mahnwesen"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "goae-manager",
+      "name": "GOÄ-Manager",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Management-Tool für privatärztliche Abrechnung mit Optimierungsvorschlägen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "GOÄ-Verwaltung",
+        "Abrechnungsoptimierung",
+        "Analogbewertung",
+        "Rechnungsprüfung",
+        "Kommentare",
+        "Vorlagen"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "privatrechnung",
+      "name": "PrivatRechnung",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Einfache Lösung für privatärztliche Rechnungsstellung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Rechnungserstellung",
+        "GOÄ-konform",
+        "Vorlagen",
+        "Versand per E-Mail",
+        "Zahlungsverfolgung",
+        "Archivierung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "kv-connect",
+      "name": "KV-Connect",
+      "vendor": "Kassenärztliche Vereinigung",
+      "website": "https://www.kbv.de/",
+      "description": "Direktanbindung an Kassenärztliche Vereinigungen für elektronische Abrechnung und Stammdatenabgleich",
+      "license": "Standardisiert",
+      "licenseModel": "Kostenlos für KV-Mitglieder",
+      "features": [
+        "KV-Direktanbindung",
+        "Elektronische Abrechnung",
+        "Stammdatenabgleich",
+        "Online-Übermittlung",
+        "Honorarbescheide",
+        "Statusabfragen"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "kv-safenet",
+      "name": "KV-SafeNet",
+      "vendor": "Kassenärztliche Bundesvereinigung",
+      "website": "https://www.kbv.de/",
+      "description": "Sichere Datenübertragung zur Kassenärztlichen Vereinigung",
+      "license": "Standardisiert",
+      "licenseModel": "Kostenlos für KV-Mitglieder",
+      "features": [
+        "Verschlüsselte Übertragung",
+        "KV-Anbindung",
+        "Abrechnungsdaten",
+        "Sicherer Kanal",
+        "Authentifizierung",
+        "Protokollierung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "kvdt-transfer",
+      "name": "KVDT-Transfer",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Transfer-Software für KVDT-Daten an die Kassenärztliche Vereinigung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "KVDT-Format",
+        "Datenübertragung",
+        "Plausibilitätsprüfung",
+        "Verschlüsselung",
+        "Statusrückmeldung",
+        "Fehlerbehandlung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "eabrechnung-kv",
+      "name": "eAbrechnungKV",
+      "vendor": "Kassenärztliche Vereinigung",
+      "website": "",
+      "description": "Elektronisches Abrechnungssystem der Kassenärztlichen Vereinigungen",
+      "license": "Standardisiert",
+      "licenseModel": "Kostenlos für KV-Mitglieder",
+      "features": [
+        "Online-Abrechnung",
+        "KV-Portal",
+        "Quartalsabrechnung",
+        "Honorarbescheide",
+        "Statistiken",
+        "Nachrichtenversand"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung", "Abrechnung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    }
+  ]
+}

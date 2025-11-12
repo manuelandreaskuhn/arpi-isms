@@ -1,0 +1,241 @@
+{
+  "id": "praxis-telematik-infrastructure",
+  "name": "Telematikinfrastruktur (TI)",
+  "description": "Komponenten und Dienste für die sichere digitale Kommunikation im Gesundheitswesen",
+  "software": [
+    {
+      "id": "kim-kommunikation",
+      "name": "KIM (Kommunikation im Medizinwesen)",
+      "vendor": "gematik",
+      "website": "https://www.gematik.de/",
+      "description": "Sicherer E-Mail-Dienst für den verschlüsselten Austausch von medizinischen Dokumenten über die TI",
+      "license": "Standardisiert",
+      "licenseModel": "Dienst über TI-Provider",
+      "features": [
+        "Ende-zu-Ende-Verschlüsselung",
+        "Medizinischer Dokumentenaustausch",
+        "Authentifizierung über HBA/SMC-B",
+        "Arztbriefversand",
+        "Befundübermittlung"
+      ],
+      "platforms": ["TI-Konnektor"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "kv-connect-mail",
+      "name": "KV-Connect Mail",
+      "vendor": "Kassenärztliche Vereinigung",
+      "website": "https://www.kbv.de/",
+      "description": "Sicherer E-Mail-Dienst der Kassenärztlichen Vereinigungen",
+      "license": "Proprietär",
+      "licenseModel": "Dienst für KV-Mitglieder",
+      "features": [
+        "Sichere E-Mail-Kommunikation",
+        "KV-Anbindung",
+        "Verschlüsselte Übertragung",
+        "Dokumentenaustausch"
+      ],
+      "platforms": ["Web", "Client"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "ti-messenger",
+      "name": "TI-Messenger",
+      "vendor": "gematik",
+      "website": "https://www.gematik.de/",
+      "description": "Instant-Messaging-Dienst für sichere Echtzeitkommunikation im Gesundheitswesen",
+      "license": "Standardisiert",
+      "licenseModel": "Dienst über TI-Provider",
+      "features": [
+        "Echtzeitkommunikation",
+        "Ende-zu-Ende-Verschlüsselung",
+        "Gruppenchats",
+        "Dateiübertragung",
+        "TI-Authentifizierung"
+      ],
+      "platforms": ["Windows", "macOS", "iOS", "Android", "Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Pflegekraft"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "securemail-med",
+      "name": "SecureMail Med",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Verschlüsselte E-Mail-Lösungen für medizinische Kommunikation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Nutzer",
+      "features": [
+        "E-Mail-Verschlüsselung",
+        "Sichere Kommunikation",
+        "Compliance-konform",
+        "Dokumentenversand"
+      ],
+      "platforms": ["Web", "Client"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "ehba",
+      "name": "eHBA (elektronischer Heilberufsausweis)",
+      "vendor": "Bundesärztekammer",
+      "website": "https://www.bundesaerztekammer.de/",
+      "description": "Elektronischer Ausweis für Ärzte zur Authentifizierung und qualifizierten elektronischen Signatur",
+      "license": "Hoheitlich",
+      "licenseModel": "Persönliche Smartcard",
+      "features": [
+        "Qualifizierte elektronische Signatur",
+        "Authentifizierung",
+        "Zugriffsberechtigung TI",
+        "eRezept-Signierung",
+        "eAU-Signierung"
+      ],
+      "platforms": ["Smartcard"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Zahnarzt", "Psychotherapeut"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "smc-b",
+      "name": "SMC-B (Security Module Card Typ B)",
+      "vendor": "gematik",
+      "website": "https://www.gematik.de/",
+      "description": "Praxisausweis für die Authentifizierung der Praxis in der Telematikinfrastruktur",
+      "license": "Standardisiert",
+      "licenseModel": "Praxis-Smartcard",
+      "features": [
+        "Praxis-Authentifizierung",
+        "Verschlüsselung",
+        "TI-Zugang",
+        "eRezept ohne eHBA",
+        "Institutionelle Signatur"
+      ],
+      "platforms": ["Smartcard"],
+      "cpe": [],
+      "userRoles": ["Praxis", "MVZ"],
+      "departments": ["Arztpraxis", "MVZ", "Apotheke"]
+    },
+    {
+      "id": "praxisausweis",
+      "name": "Praxisausweis",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Institutionelle Authentifizierung für Praxen und Einrichtungen",
+      "license": "Standardisiert",
+      "licenseModel": "Praxis-Smartcard",
+      "features": [
+        "Institutionelle Authentifizierung",
+        "TI-Zugang",
+        "Verschlüsselung"
+      ],
+      "platforms": ["Smartcard"],
+      "cpe": [],
+      "userRoles": ["Praxis", "Einrichtung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "zod-zertifikat",
+      "name": "ZOD-Zertifikat",
+      "vendor": "Zertifizierungsdiensteanbieter",
+      "website": "",
+      "description": "Zertifikat für organisationsbezogene digitale Signaturen",
+      "license": "Zertifikat",
+      "licenseModel": "Lizenz pro Organisation",
+      "features": [
+        "Digitale Signatur",
+        "Organisationszertifikat",
+        "Authentifizierung"
+      ],
+      "platforms": ["Zertifikat"],
+      "cpe": [],
+      "userRoles": ["Organisation"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "konnektor-generic",
+      "name": "Konnektor",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Zentrale Komponente für die Anbindung der Praxis an die Telematikinfrastruktur",
+      "license": "Standardisiert",
+      "licenseModel": "Hardware-Lizenz",
+      "features": [
+        "TI-Anbindung",
+        "Kartenleser-Integration",
+        "Verschlüsselung",
+        "VPN-Verbindung",
+        "Online-Statusprüfung"
+      ],
+      "platforms": ["Hardware"],
+      "cpe": [],
+      "userRoles": ["Systemadministrator"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus", "Apotheke"]
+    },
+    {
+      "id": "secunet-konnektor",
+      "name": "Secunet Konnektor",
+      "vendor": "Secunet Security Networks AG",
+      "website": "https://www.secunet.com/",
+      "description": "TI-Konnektor von Secunet für sichere Anbindung an die Telematikinfrastruktur",
+      "license": "Proprietär",
+      "licenseModel": "Hardware-Lizenz",
+      "features": [
+        "TI-Anbindung",
+        "Hochsicherheits-Architektur",
+        "Kartenleser-Integration",
+        "VPN-Tunnel",
+        "Firmware-Updates"
+      ],
+      "platforms": ["Hardware"],
+      "cpe": [],
+      "userRoles": ["Systemadministrator"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "cgm-konnektor",
+      "name": "CGM Konnektor",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "TI-Konnektor mit Integration in CGM-Praxissoftware",
+      "license": "Proprietär",
+      "licenseModel": "Hardware-Lizenz",
+      "features": [
+        "TI-Anbindung",
+        "CGM-Software-Integration",
+        "Kartenleser-Integration",
+        "Remote-Wartung",
+        "Plug-and-Play"
+      ],
+      "platforms": ["Hardware"],
+      "cpe": [],
+      "userRoles": ["Systemadministrator"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "tsystems-konnektor",
+      "name": "T-Systems Konnektor",
+      "vendor": "T-Systems International GmbH",
+      "website": "https://www.t-systems.com/",
+      "description": "TI-Konnektor von T-Systems für Gesundheitseinrichtungen",
+      "license": "Proprietär",
+      "licenseModel": "Hardware-Lizenz",
+      "features": [
+        "TI-Anbindung",
+        "Enterprise-Support",
+        "Kartenleser-Integration",
+        "Hochverfügbarkeit",
+        "Zentrales Management"
+      ],
+      "platforms": ["Hardware"],
+      "cpe": [],
+      "userRoles": ["Systemadministrator"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus", "Apotheke"]
+    }
+  ]
+}

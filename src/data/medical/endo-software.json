@@ -222,8 +222,8 @@
     {
       "id": "endowriter",
       "name": "EndoWRITER",
-      "vendor": "Diverse Anbieter",
-      "website": "",
+      "vendor": "Esymed",
+      "website": "https://endowriter.com",
       "description": "Endoskopie-Befundungssoftware",
       "license": "Proprietär",
       "licenseModel": "Lizenz pro Benutzer",
@@ -262,8 +262,8 @@
     {
       "id": "endoclean",
       "name": "EndoClean",
-      "vendor": "Diverse Anbieter",
-      "website": "",
+      "vendor": "MESO",
+      "website": "https://meso.biz/products/endoclean/",
       "description": "Aufbereitungsdokumentation für Endoskope",
       "license": "Proprietär",
       "licenseModel": "Lizenz pro AEMP",

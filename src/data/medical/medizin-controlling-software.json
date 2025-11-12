@@ -237,27 +237,6 @@
       "departments": ["Medizincontrolling"]
     },
     {
-      "id": "mdk-software",
-      "name": "MDK-Prüfsoftware",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Software für MDK-Prüfungen und -Vorbereitung",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Krankenhaus",
-      "features": [
-        "MDK-Fallmanagement",
-        "Prüfanfragen-Verwaltung",
-        "Dokumentenvorbereitung",
-        "Stellungnahmen",
-        "Statistik und Auswertung",
-        "Fristenverwaltung"
-      ],
-      "platforms": ["Windows", "Web"],
-      "cpe": [],
-      "userRoles": ["Medizincontroller", "Ärzte", "Verwaltung"],
-      "departments": ["Medizincontrolling", "Verwaltung"]
-    },
-    {
       "id": "opticare",
       "name": "OptiCare",
       "vendor": "Meierhofer AG",
@@ -277,28 +256,6 @@
       "cpe": [],
       "userRoles": ["Medizincontroller", "Qualitätsmanagement", "Geschäftsführung"],
       "departments": ["Medizincontrolling", "Qualitätsmanagement"]
-    },
-    {
-      "id": "qms-qualitätsmanagement",
-      "name": "QMS Qualitätsmanagementsystem",
-      "vendor": "Diverse Anbieter",
-      "website": "",
-      "description": "Umfassendes Qualitätsmanagementsystem",
-      "license": "Proprietär",
-      "licenseModel": "Lizenz pro Krankenhaus",
-      "features": [
-        "Prozessdokumentation",
-        "Risikomanagement",
-        "CIRS",
-        "Auditmanagement",
-        "Beschwerde-Management",
-        "Maßnahmenplanung",
-        "Zertifizierungsunterstützung"
-      ],
-      "platforms": ["Windows", "Web"],
-      "cpe": [],
-      "userRoles": ["Qualitätsmanagement", "Ärzte", "Pflegedienstleitung", "Geschäftsführung"],
-      "departments": ["Qualitätsmanagement", "Alle Abteilungen"]
     },
     {
       "id": "iqtig-qs-software",
@@ -345,8 +302,8 @@
     {
       "id": "cirs-medical",
       "name": "CIRS-Medical",
-      "vendor": "Diverse Anbieter",
-      "website": "",
+      "vendor": "ProtecData",
+      "website": "https://www.cirsmedical.de",
       "description": "Critical Incident Reporting System für Krankenhäuser",
       "license": "Proprietär / Open Source",
       "licenseModel": "Lizenz pro Krankenhaus oder kostenlos",
