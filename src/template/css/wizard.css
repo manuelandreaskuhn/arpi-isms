@@ -409,7 +409,6 @@ textarea {
     font-size: 0.85em;
     background: white;
     cursor: pointer;
-    transition: all 0.3s;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -550,36 +549,6 @@ textarea {
     display: none;
 }
 
-/* Multi-Select Badge */
-.selected-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 8px;
-    min-height: 24px;
-}
-
-.badge {
-    background: var(--primary-color);
-    color: white;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.71em;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.badge-remove {
-    cursor: pointer;
-    font-weight: bold;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-}
-
-.badge-remove:hover {
-    opacity: 1;
-}
 
 .help-text {
     font-size: 0.71em;
@@ -747,17 +716,17 @@ div.buttonlist {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin-top: 4px;
+    margin-top: 0px;
 }
 
 .selected-badges .badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    background: #2196f3;
+    background: var(--primary-color);
     color: white;
-    padding: 2px 6px;
-    border-radius: 12px;
+    padding: 4px 6px;
+    border-radius: 5px;
     font-size: 0.85em;
     white-space: nowrap;
 }
@@ -779,7 +748,7 @@ div.buttonlist {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 16px;
+    width: 10px;
     height: 16px;
     font-size: 0.9em;
     transition: background 0.2s;
@@ -798,6 +767,11 @@ div.buttonlist {
     display: none;
 }
 
+.custom-select[data-multiple="true"] .select-trigger:has(.selected-badges .badge) {
+    padding: 0px;
+    padding-left: 11px;
+    min-height: 42px;
+}
 
 /* Tooltip Styling */
 .help-tooltip {
