@@ -1,3 +1,235 @@
+/* Page Header and Form Management Container */
+.page-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 0.93em;
+
+    border-radius: 8px;
+    border: 1px solid #d7d7d7;
+    background-color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 5px;
+}
+
+/* Page Header Styling */
+.page-header {
+    flex: 1;
+}
+
+.page-header h1 {
+    font-size: 0.93em;
+    color: #1a202c;
+    margin: 0 0 2px 0;
+}
+
+.page-header p {
+    font-size: 0.81em;
+    color: #718096;
+    margin: 0;
+}
+
+/* Form Management Styling */
+.formmanagement {
+    min-width: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancel {
+    background: #ffffff;
+    color: #4a5568;
+    border: 2px solid #e2e8f0;
+}
+
+.btn-cancel:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+}
+
+.btn-save {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-save:hover {
+    background: #5a73d8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.form-status {
+    font-size: 0.85em;
+    color: #718096;
+    padding: 8px 16px;
+    background: #f7fafc;
+    border-radius: 6px;
+    border-left: 3px solid #ed8936;
+    flex: auto;
+}
+
+.form-status.saved {
+    color: #38a169;
+    border-left-color: #38a169;
+    background: #f0fff4;
+}
+
+.form-status.error {
+    color: #e53e3e;
+    border-left-color: #e53e3e;
+    background: #fff5f5;
+}
+
+/* Error Management Section */
+.error-management {
+    background: #fff5f5;
+    border: 2px solid #fc8181;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0 20px 20px 20px;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.error-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #e53e3e;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.error-title {
+    font-size: 1em;
+    font-weight: 600;
+    color: #742a2a;
+}
+
+.error-content {
+    padding-left: 40px;
+}
+
+.error-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.error-list li {
+    color: #742a2a;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.error-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #e53e3e;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .page-header-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .formmanagement {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    aside {
+        padding: 16px;
+    }
+    
+    .breadcrumb {
+        font-size: 0.75em;
+    }
+    
+    .page-header h1 {
+        font-size: 1.4em;
+    }
+    
+    .page-header p {
+        font-size: 0.85em;
+    }
+    
+    .formmanagement {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .btn-cancel,
+    .btn-save {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .form-status {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .error-management {
+        margin: 0 16px 16px 16px;
+    }
+    
+    .error-content {
+        padding-left: 0;
+    }
+}
+
+/* Form Section Styles */
 .form-section {
     margin-bottom: 20px;
 }
@@ -576,7 +808,7 @@ div.buttonlist {
     border-radius: 8px;
     font-size: 0.80em;
     line-height: 1.2;
-    max-width: 600px;
+    max-width: 750px;
     width: max-content;
     z-index: 10000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -585,10 +817,22 @@ div.buttonlist {
     transition: opacity 0.2s;
 }
 
+.help-tooltip > p:first-of-type {
+    margin-bottom: 13px;
+    margin-top: 0px;
+    color: whitesmoke;
+    background-color: var(--primary-color);
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 2px;
+    font-size: 0.88em;
+    padding-bottom: 3px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 .help-tooltip > p {
-    margin-bottom: 10px;
-    margin-top: 5px;
-    color: var(--primary-color);
+    margin: 8px 0;
 }
 
 .help-tooltip.show {
@@ -602,21 +846,30 @@ div.buttonlist {
 
 .help-tooltip > h2 {
     font-size: 1.1em;
-    margin-bottom: 2px;
+    margin-bottom: 0px;
+    margin-top: 3px;
     border-bottom: 1px dashed var(--primary-color);
-    color: var(--primary-color);
+    color: whitesmoke;
+    background-color: var(--primary-color);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .help-tooltip > div > h3 {
     font-size: 0.95em;
     margin-top: 10px;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
     border-bottom: 1px dashed white;
 }
 
 .help-tooltip ul {
-    margin: 8px 0;
+    margin: 0px;
     padding-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 12px;
 }
 
 .help-tooltip li {
@@ -628,7 +881,7 @@ div.buttonlist {
     margin-top: 10px;
     padding-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #81d4fa;
+    color: #777777;
     font-style: normal;
     font-size: 0.95em;
 }

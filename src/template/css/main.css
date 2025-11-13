@@ -198,11 +198,19 @@ body > main {
 }
 
 body > main > aside {
+    margin-bottom: 40px;
+}
+
+body > main > aside.breadcrumb {
+    margin-bottom: 30px;
+}
+
+body > main > aside > div.breadcrumb,
+body > main > aside.breadcrumb {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
-    margin-bottom: 30px;
     font-size: 0.93em;
     background-color: #ffffff;
     padding-top: 5px;
@@ -211,7 +219,8 @@ body > main > aside {
     border-radius: 8px;
 }
 
-body > main > aside > p {
+body > main > aside > div.breadcrumb > p,
+body > main > aside.breadcrumb > p {
     padding-left: 20px;
     padding-right: 20px;
     margin: 0;
@@ -220,17 +229,20 @@ body > main > aside > p {
     color: #4a5568;
 }
 
-body > main > aside > p:first-of-type {
+body > main > aside > div.breadcrumb > p:first-of-type,
+body > main > aside.breadcrumb > p:first-of-type {
     margin-left: 0;
 }
 
-body > main > aside > p:last-of-type {
+body > main > aside > div.breadcrumb > p:last-of-type,
+body > main > aside.breadcrumb > p:last-of-type {
     margin-right: 0;
     font-weight: 600;
     color: #2d3748;
 }
 
-body > main > aside > i {
+body > main > aside > div.breadcrumb > i,
+body > main > aside.breadcrumb > i {
     pointer-events: none;
     align-self: center;
     font-style: normal;

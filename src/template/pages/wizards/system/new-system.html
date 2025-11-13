@@ -1,11 +1,35 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Systeme</p>
-    <i>›</i>
-    <p>Neues System anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Systeme</p>
+        <i>›</i>
+        <p>Neues System anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neues System anlegen</h1>
+            <p>Informationen zum neuen System</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newSystemForm" class="btn-save">Speichern</button>
+        </div>
+    </div>
 </aside>
 
+<div class="error-management" id="formErrorManagement" style="display:none;">
+    <div class="error-header">
+        <span class="error-icon">!</span>
+        <span class="error-title">Fehler im Formular</span>
+    </div>
+    <div class="error-content">
+        <ul class="error-list">
+            <!-- Dynamische Fehlerliste -->
+        </ul>
+    </div>
+</div>
 
 <form id="newSystemForm">
 

@@ -1,10 +1,33 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Komponenten</p>
-    <i>›</i>
-    <p>Neues Backup-System anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Komponenten</p>
+        <i>›</i>
+        <p>Neues Backup-System anlegen</p>
+    </div>
+    <div class="page-header">
+        <h1>Neues Backup-System anlegen</h1>
+        <p>Erfassen Sie die Details Ihres Backup-Systems, um eine zentrale Übersicht Ihrer Backup-Infrastruktur zu erhalten.</p>
+    </div>
+    <div class="formmanagement">
+        <button type="button" class="btn-cancel">Abbrechen</button>
+        <button type="submit" form="newBackupSystemForm" class="btn-save">Speichern</button>
+        <span class="form-status">Nicht gespeichert</span>
+    </div>
 </aside>
+
+<div class="error-management" id="formErrorManagement" style="display:none;">
+    <div class="error-header">
+        <span class="error-icon">!</span>
+        <span class="error-title">Fehler im Formular</span>
+    </div>
+    <div class="error-content">
+        <ul class="error-list">
+            <!-- Dynamische Fehlerliste -->
+        </ul>
+    </div>
+</div>
 
 <form id="newBackupSystemForm">
 
