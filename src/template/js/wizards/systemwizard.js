@@ -393,12 +393,23 @@ async function handleSystemSubmit(event) {
         });
         
         const result = await response.json();
-        
         if (result.success) {
+            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
+            if (lastchangespan) {
+                lastchangespan.textContent = 'Gespeichert am ' + new Date().toLocaleString();
+                lastchangespan.dataset.lastchange = new Date().toISOString();
+                lastchangespan.dataset.status = 'saved';
+            }
+
             alert('System erfolgreich erstellt!');
             window.location.href = '/assetmanagement/systems';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
+
+            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
+            if (lastchangespan) {
+                lastchangespan.dataset.status = 'error';
+            }
         }
     } catch (error) {
         console.error('API Error:', error);

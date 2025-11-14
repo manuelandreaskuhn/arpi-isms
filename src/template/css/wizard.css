@@ -79,26 +79,42 @@
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
+.btn-save:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
 .form-status {
     font-size: 0.85em;
     color: #718096;
     padding: 8px 16px;
     background: #f7fafc;
     border-radius: 6px;
-    border-left: 3px solid #ed8936;
+    border-left: 3px solid #a0aec0;
     flex: auto;
 }
 
-.form-status.saved {
+.form-status.saved,
+.form-status[data-status="saved"] {
     color: #38a169;
     border-left-color: #38a169;
     background: #f0fff4;
 }
 
-.form-status.error {
+.form-status.error,
+.form-status[data-status="error"] {
     color: #e53e3e;
     border-left-color: #e53e3e;
     background: #fff5f5;
+}
+
+.form-status.changed,
+.form-status[data-status="changed"] {
+    color: #ed8936;
+    border-left-color: #ed8936;
+    background: #fffaf0;
 }
 
 /* Error Management Section */
