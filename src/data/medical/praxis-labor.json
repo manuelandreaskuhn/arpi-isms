@@ -1,0 +1,258 @@
+{
+  "id": "praxis-laboratory-systems",
+  "name": "Laboranbindung & Befundverwaltung",
+  "description": "Systeme für Laboranbindung, Befundübermittlung und Befundverwaltung",
+  "software": [
+    {
+      "id": "lauris",
+      "name": "LAURIS",
+      "vendor": "LAURIS GmbH & Co. KG",
+      "website": "https://www.lauris.de/",
+      "description": "Labordatenkommunikationssystem für den automatischen Austausch von Laboranforderungen und Befunden",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Laboranforderung",
+        "Befundempfang",
+        "LDT-Schnittstelle",
+        "Automatische Übertragung",
+        "Mehrere Labore",
+        "Archivierung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Labor"],
+      "departments": ["Arztpraxis", "MVZ", "Labor"]
+    },
+    {
+      "id": "cgm-labor",
+      "name": "CGM LABOR",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Laboranbindung für CGM-Praxissoftware mit integriertem Workflow",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Laboranforderung",
+        "Befundempfang",
+        "CGM-Integration",
+        "Mehrere Labore",
+        "Automatische Befundzuordnung",
+        "Verlaufsdarstellung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "labcom",
+      "name": "LabCom",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Kommunikationssoftware für Labordatenaustausch zwischen Praxis und Labor",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Bidirektionale Kommunikation",
+        "LDT/HL7-Unterstützung",
+        "Automatisierung",
+        "Mehrere Labore",
+        "Befundarchiv"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Labor"],
+      "departments": ["Arztpraxis", "MVZ", "Labor"]
+    },
+    {
+      "id": "medistar-labor",
+      "name": "MediStar Labor",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Labormodul für MediStar-Praxissoftware",
+      "license": "Proprietär",
+      "licenseModel": "Modul-Lizenz",
+      "features": [
+        "Laboranforderung",
+        "Befundempfang",
+        "MediStar-Integration",
+        "LDT-Schnittstelle",
+        "Befundarchiv",
+        "Grafische Verlaufsdarstellung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "befunddokumentation-pro",
+      "name": "Befunddokumentation Pro",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Strukturierte Erfassung und Verwaltung von Befunden mit Verlaufsdokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Strukturierte Befunderfassung",
+        "Verlaufsdokumentation",
+        "Vergleichsansichten",
+        "Befundvorlagen",
+        "Export-Funktionen",
+        "Bildintegration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "befundarchiv",
+      "name": "BefundArchiv",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Archivierungssystem für Laborbefunde und medizinische Dokumente",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Digitale Archivierung",
+        "Schnelle Suche",
+        "Revisionssicher",
+        "Langzeitarchivierung",
+        "Export-Funktionen",
+        "Zugriffsrechte"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "diagnosedoku",
+      "name": "DiagnoseDoku",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Dokumentationssystem für Diagnosen und Befunde mit ICD-Kodierung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "ICD-10-Kodierung",
+        "Diagnoseverwaltung",
+        "Befunddokumentation",
+        "Verlaufshistorie",
+        "Statistikfunktionen",
+        "Abrechnungsanbindung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "befundmanager",
+      "name": "Befundmanager",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Management-System für alle eingehenden Befunde mit Workflow-Unterstützung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Befundeingang",
+        "Workflow-Management",
+        "Zuordnung zu Patienten",
+        "Status-Tracking",
+        "Erinnerungen",
+        "Archivierung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "ldt-connector",
+      "name": "LDT-Connector",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Standardisierte Schnittstelle für Labordatenübertragung im LDT-Format mit allen gängigen Laborgeräten",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Schnittstelle",
+      "features": [
+        "LDT-Format Unterstützung",
+        "Bidirektionale Kommunikation",
+        "Geräteanbindung",
+        "Automatische Übertragung",
+        "Fehlerbehandlung",
+        "Protokollierung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Systemadministrator", "Labor"],
+      "departments": ["Arztpraxis", "MVZ", "Labor"]
+    },
+    {
+      "id": "hl7-bridge",
+      "name": "HL7-Bridge",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Kommunikationsbrücke für HL7-Datenaustausch zwischen Systemen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Schnittstelle",
+      "features": [
+        "HL7-Protokoll",
+        "Nachrichtentransformation",
+        "Routing",
+        "Fehlerbehandlung",
+        "Monitoring",
+        "Mehrere Systeme"
+      ],
+      "platforms": ["Windows", "Linux"],
+      "cpe": [],
+      "userRoles": ["Systemadministrator", "IT"],
+      "departments": ["Krankenhaus", "MVZ", "Labor"]
+    },
+    {
+      "id": "laborlink",
+      "name": "LaborLink",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Verbindungssoftware für nahtlose Integration von Laborgeräten in die Praxissoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Geräteanbindung",
+        "Automatische Datenübertragung",
+        "Mehrere Schnittstellen",
+        "Qualitätskontrolle",
+        "Geräteverwaltung",
+        "Fehlerprotokoll"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Labor", "MFA"],
+      "departments": ["Arztpraxis", "MVZ", "Labor"]
+    },
+    {
+      "id": "dataconnect",
+      "name": "DataConnect",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Universelle Datenverbindungssoftware für medizinische Geräte und Systeme",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Verbindung",
+      "features": [
+        "Multiple Protokolle",
+        "Geräteunabhängig",
+        "Datentransformation",
+        "Automatisierung",
+        "Überwachung",
+        "Protokollierung"
+      ],
+      "platforms": ["Windows", "Linux"],
+      "cpe": [],
+      "userRoles": ["Systemadministrator", "IT"],
+      "departments": ["Arztpraxis", "MVZ", "Labor", "Krankenhaus"]
+    }
+  ]
+}

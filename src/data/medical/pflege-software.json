@@ -1,0 +1,273 @@
+{
+  "id": "nursing-documentation-systems",
+  "name": "Pflegedokumentations-Software",
+  "description": "Systeme für elektronische Pflegedokumentation, Pflegeplanung und Leistungserfassung",
+  "software": [
+    {
+      "id": "medatixx-meona",
+      "name": "MEONA",
+      "vendor": "medatixx",
+      "website": "https://www.medatixx.de/",
+      "description": "Elektronische Pflegedokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Pflegedokumentation",
+        "Pflegeplanung",
+        "Strukturierte Informationssammlung (SIS)",
+        "Leistungserfassung",
+        "Dekubitusmanagement",
+        "Sturzprophylaxe",
+        "Wunddokumentation",
+        "PPR-Erfassung",
+        "Abrechnung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Pflegedienstleitung", "Ärzte"],
+      "departments": ["Alle Stationen", "Pflegedienst"]
+    },
+    {
+      "id": "nexus-nursit",
+      "name": "NursIT",
+      "vendor": "Nexus AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Pflegedokumentation und Leistungserfassung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Elektronische Pflegedokumentation",
+        "Pflegeplanung",
+        "Leistungserfassung",
+        "Mobilität (Tablet)",
+        "Vitalparameter",
+        "Medikamentengabe",
+        "Wundmanagement",
+        "KIS-Integration",
+        "PPR-2.0"
+      ],
+      "platforms": ["Windows", "Web", "Tablet"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Pflegedienstleitung"],
+      "departments": ["Alle Stationen"]
+    },
+    {
+      "id": "connext-vivendi-pd",
+      "name": "Vivendi PD",
+      "vendor": "Connext Vivendi",
+      "website": "https://www.connext.de/",
+      "description": "Pflegedokumentation für stationäre Pflege",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Pflegedokumentation",
+        "Strukturierte Informationssammlung",
+        "Pflegeprozessplanung",
+        "Leistungsdokumentation",
+        "Wundmanagement",
+        "Expertenstandards",
+        "PPR-Erfassung",
+        "Mobile Dokumentation"
+      ],
+      "platforms": ["Windows", "Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Pflegedienstleitung"],
+      "departments": ["Alle Stationen", "Pflegeheime"]
+    },
+    {
+      "id": "medifox-dan",
+      "name": "DAN",
+      "vendor": "medifox dan",
+      "website": "https://www.medifox-dan.de/",
+      "description": "Pflegesoftware und Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Pflegedokumentation",
+        "Pflegeplanung",
+        "Tourenplanung",
+        "Leistungserfassung",
+        "Abrechnung",
+        "Qualitätsmanagement",
+        "Mobile App",
+        "Schnittstellen"
+      ],
+      "platforms": ["Windows", "Cloud", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Pflegedienstleitung", "Verwaltung"],
+      "departments": ["Alle Stationen", "Ambulante Pflege"]
+    },
+    {
+      "id": "recom-care4quality",
+      "name": "Care4Quality",
+      "vendor": "RECOM",
+      "website": "https://www.recom.eu/",
+      "description": "Pflegequalitäts- und Dokumentationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Pflegedokumentation",
+        "Qualitätsmanagement",
+        "Expertenstandards",
+        "Pflegeprozess",
+        "Risikomanagement",
+        "Audit-Vorbereitung",
+        "Statistik"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Qualitätsmanagement", "Pflegedienstleitung"],
+      "departments": ["Alle Stationen", "Qualitätsmanagement"]
+    },
+    {
+      "id": "dedalus-orbis-pflege",
+      "name": "Orbis Pflege",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Pflegedokumentations-Modul für Orbis KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Pflegedokumentation",
+        "Pflegeplanung",
+        "Leistungserfassung",
+        "Vitalzeichen",
+        "Medikamentengabe",
+        "KIS-Integration (Orbis)",
+        "PPR",
+        "Mobile Dokumentation"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Pflegedienstleitung"],
+      "departments": ["Alle Stationen"]
+    },
+    {
+      "id": "cgm-pflege",
+      "name": "CGM Pflege",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Pflegedokumentations-Modul",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Pflegedokumentation",
+        "Pflegeprozess",
+        "Leistungserfassung",
+        "SIS",
+        "Wunddokumentation",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:pflege:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Pflege", "Pflegedienstleitung"],
+      "departments": ["Alle Stationen"]
+    },
+    {
+      "id": "diaplan",
+      "name": "DIAPLAN",
+      "vendor": "Thieme Compliance",
+      "website": "https://www.thieme-compliance.de/",
+      "description": "Dienstplan- und Zeiterfassung für Pflege",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Dienstplanung",
+        "Zeiterfassung",
+        "Urlaubsverwaltung",
+        "Personaleinsatzplanung",
+        "Arbeitszeitgesetz-Prüfung",
+        "Mobile App",
+        "Schnittstellen"
+      ],
+      "platforms": ["Windows", "Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Pflegedienstleitung", "Stationsleitung", "Pflege"],
+      "departments": ["Alle Stationen", "Personalabteilung"]
+    },
+    {
+      "id": "thera-pi",
+      "name": "Thera-Pi",
+      "vendor": "Thera-Soft",
+      "website": "https://www.thera-pi.de/",
+      "description": "Therapiedokumentation und -verwaltung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Therapiedokumentation",
+        "Terminplanung",
+        "Patientenverwaltung",
+        "Abrechnung",
+        "Heilmittelkatalog",
+        "Verordnungsmanagement"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Therapeuten", "Physiotherapeuten", "Ergotherapeuten", "Logopäden"],
+      "departments": ["Physiotherapie", "Ergotherapie", "Logopädie"]
+    },
+    {
+      "id": "sanvartis-pflegemanager",
+      "name": "Sanvartis Pflegemanager",
+      "vendor": "Sanvartis",
+      "website": "https://www.sanvartis.de/",
+      "description": "Pflegedokumentation und Abrechnungssoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Pflegedokumentation",
+        "Tourenplanung",
+        "Mobile Dokumentation",
+        "Abrechnung",
+        "Leistungserfassung",
+        "Personalplanung"
+      ],
+      "platforms": ["Windows", "Cloud", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Pflegedienstleitung", "Verwaltung"],
+      "departments": ["Ambulante Pflege"]
+    },
+    {
+      "id": "docuform",
+      "name": "DocuForm",
+      "vendor": "Docuform",
+      "website": "https://www.docuform.de/",
+      "description": "Formularverwaltung für Pflegedokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Formularmanagement",
+        "Pflegedokumentation",
+        "Digitale Formulare",
+        "Vorlagenverwaltung",
+        "Archivierung",
+        "Audit-Trail"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Qualitätsmanagement"],
+      "departments": ["Alle Stationen"]
+    },
+    {
+      "id": "carewallet",
+      "name": "CareWallet",
+      "vendor": "CareWallet",
+      "website": "https://www.carewallet.de/",
+      "description": "Mobile Pflegedokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Mobile Pflegedokumentation",
+        "Spracherkennung",
+        "Offline-Modus",
+        "Foto-Dokumentation",
+        "Wunddokumentation",
+        "Synchronisation"
+      ],
+      "platforms": ["iOS", "Android", "Web"],
+      "cpe": [],
+      "userRoles": ["Pflege"],
+      "departments": ["Alle Stationen", "Ambulante Pflege"]
+    }
+  ]
+}

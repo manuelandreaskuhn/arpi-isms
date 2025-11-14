@@ -1,0 +1,255 @@
+{
+  "id": "praxis-documentation-systems",
+  "name": "Elektronische Patientenakte & Dokumentation",
+  "description": "Systeme für elektronische Patientenakten, medizinische Dokumentation und Qualitätsmanagement",
+  "software": [
+    {
+      "id": "epa-generic",
+      "name": "ePA (elektronische Patientenakte)",
+      "vendor": "gematik",
+      "website": "https://www.gematik.de/",
+      "description": "Gesetzlich vorgeschriebene elektronische Patientenakte mit sicherer Datenspeicherung in der Telematikinfrastruktur",
+      "license": "Standardisiert",
+      "licenseModel": "Kostenlos für Versicherte",
+      "features": [
+        "Zentrale Datenspeicherung",
+        "Patientensouveränität",
+        "TI-Integration",
+        "Arztbriefe",
+        "Befunde",
+        "Medikationsplan",
+        "Notfalldaten"
+      ],
+      "platforms": ["TI-Konnektor", "Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Arzt", "Patient", "Apotheker"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus", "Apotheke"]
+    },
+    {
+      "id": "vivy",
+      "name": "VIVY",
+      "vendor": "VIVY GmbH",
+      "website": "https://www.vivy.com/",
+      "description": "Digitale Gesundheitsakte mit umfangreichen Funktionen für Patienten",
+      "license": "Proprietär",
+      "licenseModel": "Kostenlos",
+      "features": [
+        "Dokumentenverwaltung",
+        "Medikationsplan",
+        "Arztsuche",
+        "Terminbuchung",
+        "Gesundheitsdaten-Tracking",
+        "Rezeptverwaltung"
+      ],
+      "platforms": ["iOS", "Android", "Web"],
+      "cpe": [],
+      "userRoles": ["Patient", "Arzt"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "tk-safe",
+      "name": "TK-Safe",
+      "vendor": "Techniker Krankenkasse",
+      "website": "https://www.tk.de/",
+      "description": "Elektronische Gesundheitsakte der Techniker Krankenkasse",
+      "license": "Proprietär",
+      "licenseModel": "Kostenlos für TK-Versicherte",
+      "features": [
+        "Dokumentenspeicherung",
+        "Medikationsplan",
+        "Impfpass",
+        "Arztbriefe",
+        "Befunde",
+        "Gesundheits-Apps-Integration"
+      ],
+      "platforms": ["iOS", "Android", "Web"],
+      "cpe": [],
+      "userRoles": ["Patient", "Arzt"],
+      "departments": ["Arztpraxis", "Krankenhaus"]
+    },
+    {
+      "id": "aok-meine-gesundheit",
+      "name": "AOK Meine Gesundheit",
+      "vendor": "AOK",
+      "website": "https://www.aok.de/",
+      "description": "Gesundheitsakte der AOK für Versicherte",
+      "license": "Proprietär",
+      "licenseModel": "Kostenlos für AOK-Versicherte",
+      "features": [
+        "Gesundheitsdaten",
+        "Dokumentenverwaltung",
+        "Bonusprogramm",
+        "Arztsuche",
+        "Medikationsplan"
+      ],
+      "platforms": ["iOS", "Android", "Web"],
+      "cpe": [],
+      "userRoles": ["Patient"],
+      "departments": ["Arztpraxis", "Krankenhaus"]
+    },
+    {
+      "id": "praxisdok",
+      "name": "PraxisDok",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Umfassende Dokumentationslösung für Anamnese, Befunde und Therapieverläufe mit Spracherkennung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Anamnese-Dokumentation",
+        "Befunddokumentation",
+        "Therapieverlauf",
+        "Spracherkennung",
+        "Strukturierte Vorlagen",
+        "Arztbrief-Erstellung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "dokumed",
+      "name": "DokuMed",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Medizinische Dokumentationssoftware für strukturierte Befunderfassung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Befunddokumentation",
+        "Strukturierte Eingabe",
+        "Verlaufsdokumentation",
+        "Bildintegration",
+        "Reporting"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "anamneseassist",
+      "name": "AnamneseAssist",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Assistenzsystem für digitale Anamneseerhebung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Digitale Anamnesebögen",
+        "Tablet-Integration",
+        "Automatische Übertragung",
+        "Vorlagen-Management",
+        "Mehrsprachigkeit"
+      ],
+      "platforms": ["Windows", "Web", "Tablet"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "meddoku",
+      "name": "MedDoku",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Dokumentationssystem für medizinische Befunde und Verlaufskontrollen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Befunddokumentation",
+        "Verlaufskontrolle",
+        "Bildarchivierung",
+        "Reporting",
+        "Export-Funktionen"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "qm-dokumentation",
+      "name": "QM-Dokumentation",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Qualitätsmanagement-Software für gesetzlich vorgeschriebene Dokumentation und Zertifizierung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "QM-Handbuch",
+        "Prozessdokumentation",
+        "Zertifizierungsvorbereitung",
+        "Audit-Management",
+        "Maßnahmenplanung",
+        "Risikomanagement"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["QM-Beauftragter", "Praxisleitung", "Arzt"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "qep",
+      "name": "QEP",
+      "vendor": "KBV Kassenärztliche Bundesvereinigung",
+      "website": "https://www.kbv.de/",
+      "description": "Qualität und Entwicklung in Praxen - QM-System der KBV",
+      "license": "Proprietär",
+      "licenseModel": "Kostenlos für KBV-Mitglieder",
+      "features": [
+        "QM-Handbuch",
+        "KBV-konform",
+        "Zertifizierungsfähig",
+        "Prozessmanagement",
+        "Checklisten",
+        "Fortbildungsnachweise"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["QM-Beauftragter", "Praxisleitung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "epa-qm",
+      "name": "EPA-QM",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Qualitätsmanagement-System speziell für medizinische Einrichtungen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "QM-Dokumentation",
+        "ISO-Zertifizierung",
+        "Prozessoptimierung",
+        "Audit-Tools",
+        "Schulungsmanagement"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["QM-Beauftragter", "Praxisleitung"],
+      "departments": ["Arztpraxis", "MVZ", "Krankenhaus"]
+    },
+    {
+      "id": "praxisqm",
+      "name": "PraxisQM",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Praxisorientiertes Qualitätsmanagementsystem für Arztpraxen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "QM-Handbuch",
+        "Vorlagen",
+        "Zertifizierungsvorbereitung",
+        "Prozessdokumentation",
+        "Mitarbeiter-Schulung",
+        "Maßnahmenverfolgung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["QM-Beauftragter", "Praxisleitung", "MFA"],
+      "departments": ["Arztpraxis", "MVZ"]
+    }
+  ]
+}

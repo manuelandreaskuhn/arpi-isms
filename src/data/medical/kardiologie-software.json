@@ -1,0 +1,369 @@
+{
+  "id": "cardiology-information-systems",
+  "name": "Kardiologie-Informationssystem (KardIS)",
+  "description": "Systeme für kardiologische Befundung, Herzkatheterdokumentation und kardiale Bildgebung",
+  "software": [
+    {
+      "id": "nexus-cardio",
+      "name": "Nexus / Cardio",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Kardiologie-Informationssystem mit Befundung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Herzkatheterdokumentation",
+        "EKG-Management",
+        "Echokardiographie-Befundung",
+        "Schrittmacher-Kontrolle",
+        "Stress-Tests",
+        "Strukturierte Befundvorlagen",
+        "Bildintegration",
+        "KIS-Anbindung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte", "Kardiologische Assistenz"],
+      "departments": ["Kardiologie", "Herzkatheterlabor", "Ambulanz"]
+    },
+    {
+      "id": "siemens-syngo-dynamics",
+      "name": "syngo Dynamics",
+      "vendor": "Siemens Healthineers",
+      "website": "https://www.siemens-healthineers.com/",
+      "description": "Kardiovaskuläre Informationssystem-Plattform",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Herzkatheterdokumentation",
+        "Hämodynamik-Analyse",
+        "DICOM-Integration",
+        "3D-Rekonstruktion",
+        "Interventionsplanung",
+        "Reporting",
+        "Geräteanbindung"
+      ],
+      "platforms": ["Windows", "Linux"],
+      "cpe": ["cpe:2.3:a:siemens:syngo_dynamics:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Kardiologen", "Ärzte"],
+      "departments": ["Kardiologie", "Herzkatheterlabor", "Radiologie"]
+    },
+    {
+      "id": "philips-intellispace-cardiovascular",
+      "name": "Philips IntelliSpace Cardiovascular",
+      "vendor": "Philips",
+      "website": "https://www.philips.de/healthcare/",
+      "description": "Kardiovaskuläres Informations- und Bildgebungssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Multimodale Bildintegration",
+        "Herzkatheterdokumentation",
+        "Echokardiographie",
+        "CT/MRT Herzbildgebung",
+        "Strukturierte Befundung",
+        "Advanced Visualization",
+        "Workflow-Management"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte", "Radiologie"],
+      "departments": ["Kardiologie", "Herzkatheterlabor", "Radiologie"]
+    },
+    {
+      "id": "customed-diagnostik",
+      "name": "custo diagnostik",
+      "vendor": "custo med",
+      "website": "https://www.customed.de/",
+      "description": "EKG-Management und kardiologische Diagnostik",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "EKG-Aufzeichnung",
+        "Langzeit-EKG",
+        "Belastungs-EKG",
+        "Ruhe-EKG",
+        "EKG-Archivierung",
+        "Automatische Interpretation",
+        "Befundung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte", "Medizinische Fachangestellte"],
+      "departments": ["Kardiologie", "Innere Medizin", "Ambulanz"]
+    },
+    {
+      "id": "medavis-cadis",
+      "name": "CADIS",
+      "vendor": "medavis",
+      "website": "https://www.medavis.de/",
+      "description": "Cardiac Data and Information System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Herzkatheterdokumentation",
+        "Interventionsdokumentation",
+        "Hämodynamik",
+        "Befunderstellung",
+        "DICOM-Viewer",
+        "Komplikationsmanagement",
+        "Statistik"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte"],
+      "departments": ["Kardiologie", "Herzkatheterlabor"]
+    },
+    {
+      "id": "ge-centricity-cardio",
+      "name": "Centricity Cardio",
+      "vendor": "GE Healthcare",
+      "website": "https://www.gehealthcare.com/",
+      "description": "Kardiovaskuläres Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Enterprise",
+      "features": [
+        "EKG-Management",
+        "Echo-Befundung",
+        "Stress-Testing",
+        "Holter-Monitoring",
+        "Hämodynamik",
+        "Strukturierte Befunde",
+        "Enterprise-Archivierung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:ge:centricity_cardio:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Kardiologen", "Ärzte"],
+      "departments": ["Kardiologie", "Herzkatheterlabor"]
+    },
+    {
+      "id": "schiller-cardiovit",
+      "name": "CARDIOVIT",
+      "vendor": "Schiller",
+      "website": "https://www.schiller.ch/",
+      "description": "EKG-System mit Datenmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Ruhe-EKG",
+        "Belastungs-EKG",
+        "Langzeit-EKG",
+        "EKG-Interpretation",
+        "Netzwerkfähig",
+        "PDF-Export",
+        "HL7-Schnittstelle"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte", "Medizinische Fachangestellte"],
+      "departments": ["Kardiologie", "Innere Medizin", "Ambulanz", "Notaufnahme"]
+    },
+    {
+      "id": "welch-allyn-cardioperfect",
+      "name": "CardioPerfect",
+      "vendor": "Welch Allyn (Hillrom)",
+      "website": "https://www.hillrom.com/",
+      "description": "Kardiologie-Workstation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "EKG-Management",
+        "Spirometrie",
+        "Langzeit-Blutdruck",
+        "Integrierte Befundung",
+        "Datenarchivierung",
+        "EMR-Integration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte"],
+      "departments": ["Kardiologie", "Innere Medizin"]
+    },
+    {
+      "id": "nihon-kohden-ecaps",
+      "name": "ECaps",
+      "vendor": "Nihon Kohden",
+      "website": "https://www.nihonkohden.com/",
+      "description": "EKG-Datenmanagement-System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "EKG-Datenmanagement",
+        "Netzwerk-EKG",
+        "Automatische Analyse",
+        "Befundung",
+        "Archivierung",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte"],
+      "departments": ["Kardiologie", "Intensivstation"]
+    },
+    {
+      "id": "tomtec-arena",
+      "name": "TomTec Arena",
+      "vendor": "TomTec Imaging Systems",
+      "website": "https://www.tomtec.de/",
+      "description": "Kardiale Bildanalyse-Software",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "2D/3D Echo-Analyse",
+        "Strain-Analyse",
+        "Volumetrie",
+        "Automatische Quantifizierung",
+        "Multi-Vendor DICOM",
+        "Strukturelle Herzerkrankungen"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Sonographen"],
+      "departments": ["Kardiologie", "Echokardiographie"]
+    },
+    {
+      "id": "esaote-mylab",
+      "name": "MyLab",
+      "vendor": "Esaote",
+      "website": "https://www.esaote.com/",
+      "description": "Ultraschall- und Kardiologie-Workstation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Echokardiographie",
+        "Stress-Echo",
+        "3D/4D Bildgebung",
+        "Strain Imaging",
+        "Befunderstellung",
+        "DICOM-Export"
+      ],
+      "platforms": ["Embedded", "Windows"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Sonographen"],
+      "departments": ["Kardiologie", "Echokardiographie"]
+    },
+    {
+      "id": "biotronik-home-monitoring",
+      "name": "BIOTRONIK Home Monitoring",
+      "vendor": "BIOTRONIK",
+      "website": "https://www.biotronik.com/",
+      "description": "Fernüberwachung für Herzschrittmacher und ICDs",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Patient",
+      "features": [
+        "Telemonitoring",
+        "Schrittmacher-Fernabfrage",
+        "ICD-Monitoring",
+        "Event-Notification",
+        "Trend-Analyse",
+        "Automatische Datenübertragung"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Rhythmologie"],
+      "departments": ["Kardiologie", "Rhythmologie", "Schrittmacherambulanz"]
+    },
+    {
+      "id": "medtronic-carelink",
+      "name": "CareLink",
+      "vendor": "Medtronic",
+      "website": "https://www.medtronic.com/",
+      "description": "Fernüberwachung für kardiale Implantate",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Patient",
+      "features": [
+        "Device-Monitoring",
+        "Schrittmacher-Abfrage",
+        "ICD/CRT-Überwachung",
+        "Automatische Übertragung",
+        "Alert-System",
+        "Patientenportal"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Rhythmologie"],
+      "departments": ["Kardiologie", "Rhythmologie", "Schrittmacherambulanz"]
+    },
+    {
+      "id": "abbott-merlin",
+      "name": "Merlin.net",
+      "vendor": "Abbott (St. Jude Medical)",
+      "website": "https://www.cardiovascular.abbott/",
+      "description": "Fernüberwachungssystem für kardiale Devices",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Patient",
+      "features": [
+        "Remote Monitoring",
+        "Device-Programmierung",
+        "Automatische Datenübermittlung",
+        "Patient-Management",
+        "Klinische Reports"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Rhythmologie"],
+      "departments": ["Kardiologie", "Rhythmologie"]
+    },
+    {
+      "id": "boston-scientific-latitude",
+      "name": "LATITUDE",
+      "vendor": "Boston Scientific",
+      "website": "https://www.bostonscientific.com/",
+      "description": "Patientenmanagement-System für CRM-Devices",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Patient",
+      "features": [
+        "Fernüberwachung",
+        "Device-Abfrage",
+        "Alert-Management",
+        "Trend-Analyse",
+        "EMR-Integration"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Rhythmologie"],
+      "departments": ["Kardiologie", "Rhythmologie"]
+    },
+    {
+      "id": "dedalus-cardio",
+      "name": "Orbis Kardiologie",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Kardiologie-Modul für Orbis KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Kardiologische Befundung",
+        "Herzkatheterdokumentation",
+        "EKG-Integration",
+        "Echokardiographie",
+        "KIS-Integration",
+        "Strukturierte Vorlagen"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Kardiologen", "Ärzte"],
+      "departments": ["Kardiologie", "Herzkatheterlabor"]
+    },
+    {
+      "id": "cgm-kardiologie",
+      "name": "CGM Kardiologie",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Kardiologie-Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Kardiologische Dokumentation",
+        "EKG-Management",
+        "Befunderstellung",
+        "Herzkatheterdokumentation",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:kardiologie:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Kardiologen", "Ärzte"],
+      "departments": ["Kardiologie"]
+    }
+  ]
+}

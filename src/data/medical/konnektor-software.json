@@ -1,0 +1,89 @@
+{
+  "konnektorSoftware": [
+    {
+      "id": "secunet",
+      "name": "Secunet Konnektor",
+      "category": "TI-Konnektor",
+      "vendor": "Secunet Security Networks AG",
+      "type": "Commercial",
+      "description": "Marktführender TI-Konnektor für die Anbindung an die Telematikinfrastruktur",
+      "features": ["SINA Hardware", "VPN-Zugangsdienst", "SMC-B Support", "KIM", "ePA", "E-Rezept", "VSDM", "High Security"],
+      "platforms": ["Hardware Appliance", "Virtual Appliance"],
+      "licenseModel": ["Per Device", "Subscription", "Maintenance Contract"],
+      "pricing": "€2.500 - €8.000 (Hardware + Setup) + €500-€1.500/Jahr (Wartung)",
+      "marketShare": "~45% (Marktführer in Deutschland)",
+      "status": "Active",
+      "useCases": ["Krankenhäuser", "MVZ", "Arztpraxen", "Apotheken", "Pflegeeinrichtungen"],
+      "notes": "Secunet ist der etablierteste Anbieter mit SINA-Technologie (Secure Inter-Network Architecture). Sehr hohe Sicherheit, aber auch höchster Preis. Gut dokumentiert, stabiler Betrieb. Firmware-Updates regelmäßig.",
+      "cpe": [
+        "cpe:2.3:h:secunet:konnektor:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:secunet:sina:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "tsystems",
+      "name": "T-Systems Konnektor",
+      "category": "TI-Konnektor",
+      "vendor": "T-Systems International GmbH (Deutsche Telekom)",
+      "type": "Commercial",
+      "description": "TI-Konnektor vom Telekommunikationsanbieter mit Fokus auf Konnektivität",
+      "features": ["VPN-Zugangsdienst", "SMC-B Support", "KIM", "ePA", "E-Rezept", "VSDM", "Managed Service Option"],
+      "platforms": ["Hardware Appliance", "Virtual Appliance"],
+      "licenseModel": ["Per Device", "Managed Service", "Bundled with Internet Access"],
+      "pricing": "€2.000 - €6.000 (Hardware) + €400-€1.200/Jahr (Wartung) / Managed ab €100/Monat",
+      "marketShare": "~30% (stark bei Telekom-Kunden)",
+      "status": "Active",
+      "useCases": ["Arztpraxen", "Kleine MVZ", "Apotheken", "Pflegeeinrichtungen mit Telekom-Anbindung"],
+      "notes": "T-Systems profitiert von Telekom-Infrastruktur. Managed-Service-Option attraktiv für kleine Praxen ohne IT-Abteilung. Oft Bundle mit Internet-Anschluss. Support über Telekom-Hotline. Firmware-Updates durch T-Systems managed.",
+      "cpe": [
+        "cpe:2.3:h:t-systems:ti_konnektor:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:deutsche_telekom:konnektor:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "rise",
+      "name": "RISE Konnektor",
+      "category": "TI-Konnektor",
+      "vendor": "RISE (Research Industrial Systems Engineering GmbH)",
+      "type": "Commercial",
+      "description": "Konnektor mit Fokus auf einfache Bedienung und Praxis-tauglichkeit",
+      "features": ["VPN-Zugangsdienst", "SMC-B Support", "KIM", "ePA", "E-Rezept", "VSDM", "Web-based Management"],
+      "platforms": ["Hardware Appliance", "Virtual Appliance"],
+      "licenseModel": ["Per Device", "Subscription"],
+      "pricing": "€1.800 - €5.000 (Hardware) + €350-€1.000/Jahr (Wartung)",
+      "marketShare": "~15% (wächst bei Praxen)",
+      "status": "Active",
+      "useCases": ["Arztpraxen (Einzel-/Gemeinschaftspraxen)", "Kleine MVZ", "Zahnärzte", "Therapeuten"],
+      "notes": "RISE fokussiert auf Benutzerfreundlichkeit und niedrigere Kosten. Besonders bei niedergelassenen Ärzten beliebt. Web-Interface einfacher als Konkurrenz. Günstigste Option bei vergleichbarer Funktionalität. Support gut, aber kleineres Team als Secunet/T-Systems.",
+      "cpe": [
+        "cpe:2.3:h:rise:konnektor:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:rise:ti_konnektor:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "compugroup",
+      "name": "CompuGroup Medical (CGM) Konnektor",
+      "category": "TI-Konnektor",
+      "vendor": "CompuGroup Medical SE & Co. KGaA",
+      "type": "Commercial",
+      "description": "Konnektor integriert mit CGM Praxisverwaltungssystemen",
+      "features": ["VPN-Zugangsdienst", "SMC-B Support", "KIM", "ePA", "E-Rezept", "VSDM", "CGM Software Integration"],
+      "platforms": ["Hardware Appliance", "Virtual Appliance"],
+      "licenseModel": ["Per Device", "Bundled with CGM Software", "Subscription"],
+      "pricing": "€2.000 - €5.500 (Hardware) + €400-€1.100/Jahr (Wartung) / Bundle-Discount bei CGM-Software",
+      "marketShare": "~10% (stark bei CGM-Kunden)",
+      "status": "Active",
+      "useCases": ["CGM-Software-Nutzer (M1, Albis, Turbomed, etc.)", "Arztpraxen", "MVZ mit CGM-Infrastruktur"],
+      "notes": "CGM ist größter deutscher Softwareanbieter für Arztpraxen. Konnektor ist gut in CGM-Ökosystem integriert. Bundle-Angebote mit Praxissoftware attraktiv. Support durch CGM-Partner-Netzwerk. Technisch solide, aber weniger flexibel außerhalb CGM-Welt.",
+      "cpe": [
+        "cpe:2.3:h:compugroup:konnektor:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:cgm:ti_konnektor:*:*:*:*:*:*:*:*"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "TI-Konnektor Software Katalog für Telematikinfrastruktur im Gesundheitswesen mit CPE-Identifikatoren"
+  }
+}

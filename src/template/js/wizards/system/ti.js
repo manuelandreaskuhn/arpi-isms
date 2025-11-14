@@ -1,31 +1,42 @@
-export function setupTIConditionalFields(entryElement) {
-    const tiConnectedCheck = entryElement.querySelector('.ti-connected-check');
-    const tiConnectionConfig = entryElement.querySelector('.ti-connection-config');
+import { refreshAllComponentSelects } from '../componentlinking.js';
+
+/**
+ * Setup conditional fields for TI Infrastructure
+ * @param {HTMLElement} tiSection - The TI section element
+ */
+export function setupTIConditionalFields(tiSection) {
+    if (!tiSection) return;
+
+    // TI Connected checkbox
+    const tiConnectedCheck = tiSection.querySelector('.ti-connected-check');
+    const tiConnectionConfig = tiSection.querySelector('.ti-connection-config');
     
     if (tiConnectedCheck && tiConnectionConfig) {
         tiConnectedCheck.addEventListener('change', function() {
             tiConnectionConfig.style.display = this.checked ? 'block' : 'none';
+            if (this.checked) {
+                refreshAllComponentSelects();
+            }
         });
-        tiConnectionConfig.style.display = tiConnectedCheck.checked ? 'block' : 'none';
     }
 
-    const tiKimActiveCheck = entryElement.querySelector('.ti-kim-active-check');
-    const tiKimConfig = entryElement.querySelector('.ti-kim-config');
+    // KIM Active checkbox
+    const kimActiveCheck = tiSection.querySelector('.ti-kim-active-check');
+    const kimConfig = tiSection.querySelector('.ti-kim-config');
     
-    if (tiKimActiveCheck && tiKimConfig) {
-        tiKimActiveCheck.addEventListener('change', function() {
-            tiKimConfig.style.display = this.checked ? 'block' : 'none';
+    if (kimActiveCheck && kimConfig) {
+        kimActiveCheck.addEventListener('change', function() {
+            kimConfig.style.display = this.checked ? 'block' : 'none';
         });
-        tiKimConfig.style.display = tiKimActiveCheck.checked ? 'block' : 'none';
     }
 
-    const tiErezeptActiveCheck = entryElement.querySelector('.ti-erezept-active-check');
-    const tiErezeptConfig = entryElement.querySelector('.ti-erezept-config');
+    // E-Rezept Active checkbox
+    const erezeptActiveCheck = tiSection.querySelector('.ti-erezept-active-check');
+    const erezeptConfig = tiSection.querySelector('.ti-erezept-config');
     
-    if (tiErezeptActiveCheck && tiErezeptConfig) {
-        tiErezeptActiveCheck.addEventListener('change', function() {
-            tiErezeptConfig.style.display = this.checked ? 'block' : 'none';
+    if (erezeptActiveCheck && erezeptConfig) {
+        erezeptActiveCheck.addEventListener('change', function() {
+            erezeptConfig.style.display = this.checked ? 'block' : 'none';
         });
-        tiErezeptConfig.style.display = tiErezeptActiveCheck.checked ? 'block' : 'none';
     }
 }

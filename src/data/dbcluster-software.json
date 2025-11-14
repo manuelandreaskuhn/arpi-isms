@@ -1,0 +1,493 @@
+{
+  "dbClusterSoftware": [
+    {
+      "id": "oracle-rac",
+      "name": "Oracle RAC (Real Application Cluster)",
+      "category": "Oracle Clustering",
+      "vendor": "Oracle Corporation",
+      "type": "Commercial",
+      "description": "Enterprise Shared-Everything Cluster für Oracle Database - Mehrere Instanzen greifen parallel auf gleiche Datenbank zu",
+      "features": ["Active-Active", "Shared Storage", "Cache Fusion", "Automatic Failover", "Load Balancing", "Rolling Upgrades"],
+      "platforms": ["Linux", "Unix", "Windows"],
+      "licenseModel": ["Per CPU", "Named User Plus", "RAC One Node"],
+      "pricing": "€40.000 - €200.000+ pro CPU (zusätzlich zu DB-Lizenz)",
+      "marketShare": "~80% (bei Oracle-Kunden mit HA-Anforderungen)",
+      "status": "Active",
+      "useCases": ["Mission-Critical OLTP", "24/7 Verfügbarkeit", "High Performance", "Large Enterprise"],
+      "notes": "RAC ist der Gold-Standard für Oracle HA, aber sehr teuer und komplex. Erfordert Shared Storage (SAN, ASM). Cache Fusion synchronisiert RAM zwischen Knoten. Performance-Skalierung meist nur bis 4-8 Knoten sinnvoll.",
+      "cpe": [
+        "cpe:2.3:a:oracle:real_application_clusters:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:oracle:database:*:*:*:*:rac:*:*:*"
+      ]
+    },
+    {
+      "id": "oracle-dataguard",
+      "name": "Oracle Data Guard",
+      "category": "Oracle Disaster Recovery",
+      "vendor": "Oracle Corporation",
+      "type": "Commercial",
+      "description": "Disaster Recovery und High Availability durch physische oder logische Standby-Datenbanken",
+      "features": ["Physical Standby", "Logical Standby", "Active Data Guard (read-only replica)", "Automatic Failover", "Far Sync", "Snapshot Standby"],
+      "platforms": ["Linux", "Unix", "Windows"],
+      "licenseModel": ["Included in Enterprise Edition", "Active Data Guard extra"],
+      "pricing": "Included (EE) / Active Data Guard +€17.500 pro CPU",
+      "marketShare": "~70% (bei Oracle-Kunden für DR)",
+      "status": "Active",
+      "useCases": ["Disaster Recovery", "Read-Only Reporting", "Geographic Distribution", "Zero Data Loss"],
+      "notes": "Data Guard ist kostengünstiger als RAC (in EE inkludiert). Physical Standby = Block-Level-Replikation. Active Data Guard (kostenpflichtig) erlaubt lesende Zugriffe auf Standby. Maximum Protection Mode garantiert Zero Data Loss.",
+      "cpe": [
+        "cpe:2.3:a:oracle:data_guard:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "oracle-goldengate",
+      "name": "Oracle GoldenGate",
+      "category": "Oracle Replication",
+      "vendor": "Oracle Corporation",
+      "type": "Commercial",
+      "description": "Echtzeit-Datenreplikation für heterogene Umgebungen und Bi-Directional Replication",
+      "features": ["Real-time Replication", "Bi-Directional", "Heterogeneous (Oracle, SQL Server, MySQL, etc.)", "Conflict Detection", "Data Transformation"],
+      "platforms": ["Linux", "Unix", "Windows"],
+      "licenseModel": ["Per CPU", "Subscription"],
+      "pricing": "€17.500+ pro CPU",
+      "marketShare": "~15% (Nische: Complex Replication)",
+      "status": "Active",
+      "useCases": ["Multi-Master Replication", "Database Migration", "Data Distribution", "Reporting Offload"],
+      "notes": "GoldenGate ist spezialisiert auf komplexe Replikations-Szenarien. Kann zwischen verschiedenen DB-Systemen replizieren. Bi-Directional = Active-Active möglich (mit Konflikt-Behandlung). Teuer, aber sehr flexibel.",
+      "cpe": [
+        "cpe:2.3:a:oracle:goldengate:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mssql-alwayson",
+      "name": "SQL Server Always On Availability Groups",
+      "category": "SQL Server HA/DR",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Enterprise HA/DR-Lösung für SQL Server - Kombination aus Failover Clustering und Replikation",
+      "features": ["Multiple Replicas", "Automatic Failover", "Readable Secondary", "Asynchronous/Synchronous", "Backup Offload", "Distributed Availability Groups"],
+      "platforms": ["Windows Server", "Linux"],
+      "licenseModel": ["Included in Enterprise Edition", "Per Core"],
+      "pricing": "Included in Enterprise Edition (€14.000 pro Core)",
+      "marketShare": "~90% (bei SQL Server Enterprise-Kunden für HA)",
+      "status": "Active",
+      "useCases": ["High Availability", "Disaster Recovery", "Read-Scale Out", "Hybrid Cloud"],
+      "notes": "Always On AG ist der moderne Standard für SQL Server HA (seit 2012). Besser als altes Database Mirroring. Readable Secondary = kostenlose Read-Replicas. Erfordert Windows Failover Clustering (WSFC) oder Pacemaker (Linux). Synchron = Zero Data Loss möglich.",
+      "cpe": [
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:enterprise:*:*:*",
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mssql-fci",
+      "name": "SQL Server Failover Cluster Instance (FCI)",
+      "category": "SQL Server Clustering",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Shared-Storage Cluster für SQL Server - traditionelles Active-Passive Clustering",
+      "features": ["Active-Passive", "Shared Storage", "Automatic Failover", "Single Instance Name", "WSFC Integration"],
+      "platforms": ["Windows Server"],
+      "licenseModel": ["Included in Standard/Enterprise", "Per Core"],
+      "pricing": "Included in SQL Server Lizenz",
+      "marketShare": "~40% (rückläufig zu Gunsten von Always On AG)",
+      "status": "Active",
+      "useCases": ["Legacy HA", "Single Database Instance HA", "Shared Storage Environments"],
+      "notes": "FCI ist die ältere HA-Lösung (seit SQL Server 2000). Active-Passive = nur ein Knoten aktiv. Erfordert Shared Storage (SAN). Weniger flexibel als Always On AG. Gut für einfache HA-Szenarien ohne DR-Anforderungen.",
+      "cpe": [
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mssql-logshipping",
+      "name": "SQL Server Log Shipping",
+      "category": "SQL Server DR",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Einfache Disaster Recovery durch automatisches Backup/Restore von Transaction Logs",
+      "features": ["Transaction Log Backup/Restore", "Multiple Secondaries", "Monitoring", "Manual Failover"],
+      "platforms": ["Windows Server", "Linux"],
+      "licenseModel": ["Included in Standard/Enterprise"],
+      "pricing": "Kostenlos (in SQL Server Lizenz enthalten)",
+      "marketShare": "~20% (Legacy DR-Lösung)",
+      "status": "Active (aber Legacy - Always On AG bevorzugt)",
+      "useCases": ["Simple DR", "Budget-Constraints", "Legacy Systems", "Warm Standby"],
+      "notes": "Log Shipping ist die älteste und einfachste DR-Lösung. Funktioniert durch geplante Backups. Failover ist manuell. RPO = Backup-Intervall (meist 15-60 Min). RTO = hoch (manuell). Gut für Budget-DR, aber Always On AG ist besser.",
+      "cpe": [
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mssql-mirroring",
+      "name": "SQL Server Database Mirroring",
+      "category": "SQL Server HA",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Legacy HA-Lösung für SQL Server (abgekündigt, ersetzt durch Always On AG)",
+      "features": ["Synchronous/Asynchronous", "Automatic Failover (with Witness)", "Single Database"],
+      "platforms": ["Windows Server"],
+      "licenseModel": ["Deprecated"],
+      "pricing": "N/A (deprecated)",
+      "marketShare": "<5% (Legacy)",
+      "status": "Deprecated (seit SQL Server 2012)",
+      "useCases": ["Legacy Systems only"],
+      "notes": "Database Mirroring ist seit 2012 deprecated - Microsoft empfiehlt Migration zu Always On AG. Nur noch in Legacy-Umgebungen. Neue Deployments sollten Always On AG nutzen.",
+      "cpe": [
+        "cpe:2.3:a:microsoft:sql_server:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mysql-replication",
+      "name": "MySQL Replication (Master-Slave)",
+      "category": "MySQL HA/DR",
+      "vendor": "MySQL (Oracle) / MariaDB Foundation",
+      "type": "Open Source + Commercial",
+      "description": "Standard asynchrone Replikation für MySQL - Master schreibt, Slaves replizieren",
+      "features": ["Asynchronous Replication", "Multiple Slaves", "Binary Log", "GTID (Global Transaction ID)", "Semi-Synchronous"],
+      "platforms": ["Linux", "Windows", "macOS"],
+      "licenseModel": ["Open Source (GPL)", "Commercial Support"],
+      "pricing": "Kostenlos (Open Source) / Support ab €2.000/Jahr",
+      "marketShare": "~80% (bei MySQL-Nutzern für Replikation)",
+      "status": "Active",
+      "useCases": ["Read Scale-Out", "Disaster Recovery", "Reporting", "Backup Offload"],
+      "notes": "Standard MySQL Replication ist einfach und zuverlässig. Asynchron = Daten-Verlust möglich bei Master-Ausfall. Semi-Synchronous reduziert Risiko (wartet auf min. 1 Slave). GTID macht Failover einfacher. Gut für Read-Heavy Workloads.",
+      "cpe": [
+        "cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:mariadb:mariadb:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mysql-group",
+      "name": "MySQL Group Replication",
+      "category": "MySQL Clustering",
+      "vendor": "MySQL (Oracle)",
+      "type": "Open Source + Commercial",
+      "description": "Multi-Master Cluster mit automatischem Failover und Konflikt-Behandlung",
+      "features": ["Multi-Master", "Automatic Failover", "Conflict Detection", "Distributed Recovery", "Single-Primary or Multi-Primary Mode"],
+      "platforms": ["Linux", "Windows"],
+      "licenseModel": ["Open Source (GPL)", "Commercial Support"],
+      "pricing": "Kostenlos (Open Source) / Support ab €5.000/Jahr",
+      "marketShare": "~15% (wächst bei MySQL 8.0+)",
+      "status": "Active",
+      "useCases": ["High Availability", "Multi-Master", "Elastic Scaling", "Cloud Native"],
+      "notes": "Group Replication ist die moderne MySQL-Cluster-Lösung (seit 5.7). Basis für MySQL InnoDB Cluster. Ähnlich zu Galera, aber von Oracle offiziell supported. Single-Primary = 1 Writer. Multi-Primary = alle können schreiben (mit Konflikt-Behandlung).",
+      "cpe": [
+        "cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mysql-ndb",
+      "name": "MySQL NDB Cluster",
+      "category": "MySQL Clustering",
+      "vendor": "MySQL (Oracle)",
+      "type": "Commercial",
+      "description": "Shared-Nothing In-Memory Cluster mit Auto-Sharding - extremer High-Performance Cluster",
+      "features": ["In-Memory", "Shared-Nothing", "Auto-Sharding", "99.999% Availability", "Real-time", "Geographic Replication"],
+      "platforms": ["Linux"],
+      "licenseModel": ["Commercial", "Subscription"],
+      "pricing": "€10.000 - €100.000+/Jahr (je nach Nodes)",
+      "marketShare": "~2% (Nische: Telco, Gaming)",
+      "status": "Active",
+      "useCases": ["Telco", "Real-time", "High Throughput", "Low Latency", "Gaming"],
+      "notes": "NDB Cluster ist ein komplett anderes Produkt als Standard-MySQL. In-Memory = extrem schnell. Shared-Nothing = keine Single Points. Auto-Sharding = horizontale Skalierung. ABER: Teuer, komplex, limitierte SQL-Features. Nur für spezielle High-Performance-Szenarien.",
+      "cpe": [
+        "cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mariadb-galera",
+      "name": "MariaDB Galera Cluster",
+      "category": "MariaDB Clustering",
+      "vendor": "MariaDB Foundation / Codership",
+      "type": "Open Source",
+      "description": "Multi-Master Synchronous Cluster - alle Nodes sind gleichzeitig schreib- und lesbar",
+      "features": ["Multi-Master", "Synchronous Replication", "Automatic Node Provisioning", "Parallel Replication", "No Single Point of Failure"],
+      "platforms": ["Linux"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos (Open Source) / Support ab €3.000/Jahr",
+      "marketShare": "~60% (bei MariaDB-Nutzern für Clustering)",
+      "status": "Active",
+      "useCases": ["High Availability", "Multi-Master", "Read-Write Scale-Out", "Kubernetes"],
+      "notes": "Galera ist die Standard-Cluster-Lösung für MariaDB. Synchrone Replikation = Zero Data Loss. Alle Nodes sind Master = kann überall schreiben. Konflikt-Behandlung durch Certification-based Replication. Minimum 3 Nodes (Quorum). Performance-Sweet-Spot: 3-5 Nodes.",
+      "cpe": [
+        "cpe:2.3:a:mariadb:mariadb:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:codership:galera:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mariadb-maxscale",
+      "name": "MariaDB MaxScale",
+      "category": "Database Proxy / Load Balancer",
+      "vendor": "MariaDB Corporation",
+      "type": "Open Source + Commercial",
+      "description": "Intelligenter Database Proxy mit Query Routing, Load Balancing und Failover",
+      "features": ["Query Routing", "Load Balancing", "Automatic Failover", "Read-Write Split", "Connection Pooling", "Query Filtering"],
+      "platforms": ["Linux"],
+      "licenseModel": ["Open Source (BSL)", "Commercial"],
+      "pricing": "Kostenlos (Community) / Enterprise ab €5.000/Jahr",
+      "marketShare": "~30% (bei MariaDB-Nutzern)",
+      "status": "Active",
+      "useCases": ["Load Balancing", "Read-Write Split", "Failover Management", "Connection Pooling"],
+      "notes": "MaxScale ist kein Cluster, sondern Proxy/Load Balancer. Oft kombiniert mit Galera Cluster. Intelligentes Routing (Reads zu Slaves, Writes zu Master). Automatic Failover-Detection. Connection Pooling reduziert DB-Last. BSL = Business Source License (nach 4 Jahren GPL).",
+      "cpe": [
+        "cpe:2.3:a:mariadb:maxscale:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "pg-streaming",
+      "name": "PostgreSQL Streaming Replication",
+      "category": "PostgreSQL HA/DR",
+      "vendor": "PostgreSQL Global Development Group",
+      "type": "Open Source",
+      "description": "Native asynchrone/synchrone Replikation in PostgreSQL - eingebaut seit Version 9.0",
+      "features": ["Streaming Replication", "Asynchronous/Synchronous", "Multiple Standbys", "Hot Standby (read-only)", "Cascading Replication"],
+      "platforms": ["Linux", "Windows", "macOS", "BSD"],
+      "licenseModel": ["Open Source (PostgreSQL License)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~90% (bei PostgreSQL-Nutzern für Replikation)",
+      "status": "Active",
+      "useCases": ["High Availability", "Disaster Recovery", "Read Scale-Out", "Backup"],
+      "notes": "Streaming Replication ist der Standard für PostgreSQL HA. Eingebaut, keine Extensions nötig. Synchrone Replication = Zero Data Loss möglich. Hot Standby = Standby kann lesende Queries. Einfach, zuverlässig, kostenlos. Failover manuell (oder mit Patroni/Repmgr automatisieren).",
+      "cpe": [
+        "cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "pg-patroni",
+      "name": "Patroni",
+      "category": "PostgreSQL HA Orchestration",
+      "vendor": "Zalando (Open Source)",
+      "type": "Open Source",
+      "description": "HA-Orchestration für PostgreSQL mit automatischem Failover und DCS-Integration",
+      "features": ["Automatic Failover", "DCS Integration (etcd, Consul, ZooKeeper)", "REST API", "Kubernetes Native", "Custom Callbacks"],
+      "platforms": ["Linux", "Kubernetes"],
+      "licenseModel": ["Open Source (MIT)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~50% (bei PostgreSQL-HA-Deployments mit Auto-Failover)",
+      "status": "Active",
+      "useCases": ["PostgreSQL HA with Auto-Failover", "Kubernetes", "Cloud Native", "Etcd/Consul Users"],
+      "notes": "Patroni ist der moderne Standard für PostgreSQL HA mit Auto-Failover. Nutzt Distributed Configuration Store (etcd, Consul) für Cluster-State. Kubernetes-native (Operator verfügbar). REST API für Management. Von Zalando entwickelt, sehr aktive Community. Kombiniert mit HAProxy/pgBouncer für Connection Pooling.",
+      "cpe": []
+    },
+    {
+      "id": "pg-stolon",
+      "name": "Stolon",
+      "category": "PostgreSQL HA Orchestration",
+      "vendor": "Sorint.lab (Open Source)",
+      "type": "Open Source",
+      "description": "Cloud-Native PostgreSQL HA Manager mit Kubernetes-Support",
+      "features": ["Automatic Failover", "Consul/etcd", "Kubernetes Support", "Point-in-Time Recovery", "Synchronous Replication"],
+      "platforms": ["Linux", "Kubernetes"],
+      "licenseModel": ["Open Source (Apache 2.0)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~15% (Alternative zu Patroni)",
+      "status": "Active",
+      "useCases": ["PostgreSQL HA on Kubernetes", "Cloud Native", "Consul/etcd environments"],
+      "notes": "Stolon ist Alternative zu Patroni, etwas einfacher. Auch cloud-native und Kubernetes-ready. Weniger Features als Patroni, aber leichtgewichtiger. Gute Wahl für kleinere Deployments oder wenn Einfachheit wichtiger als Features.",
+      "cpe": []
+    },
+    {
+      "id": "pg-pgpool",
+      "name": "pgpool-II",
+      "category": "PostgreSQL Proxy / Load Balancer",
+      "vendor": "PgPool Global Development Group",
+      "type": "Open Source",
+      "description": "Connection Pooling und Load Balancing Middleware für PostgreSQL",
+      "features": ["Connection Pooling", "Load Balancing", "Replication", "Automatic Failover", "Query Caching", "Watchdog"],
+      "platforms": ["Linux", "Unix", "BSD"],
+      "licenseModel": ["Open Source (BSD)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~40% (bei PostgreSQL Connection Pooling)",
+      "status": "Active",
+      "useCases": ["Connection Pooling", "Load Balancing", "High Availability", "Read-Write Split"],
+      "notes": "pgpool-II ist vielseitiges Tool: Connection Pooling + Load Balancing + Replication + Failover. Oft kombiniert mit Streaming Replication. Watchdog für pgpool-Redundanz. Query Caching für Performance. In-Memory Query Cache kann Datenbank-Last reduzieren. Komplexe Konfiguration.",
+      "cpe": [
+        "cpe:2.3:a:pgpool:pgpool-ii:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "pg-repmgr",
+      "name": "Repmgr",
+      "category": "PostgreSQL HA Management",
+      "vendor": "2ndQuadrant (EDB)",
+      "type": "Open Source",
+      "description": "Replication Manager für PostgreSQL - vereinfacht Setup und Management von Standby-Servern",
+      "features": ["Replication Management", "Automatic Failover", "Switchover", "Monitoring", "Event Notifications"],
+      "platforms": ["Linux", "Unix"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos (Support durch EDB verfügbar)",
+      "marketShare": "~25% (bei PostgreSQL HA)",
+      "status": "Active",
+      "useCases": ["PostgreSQL HA Management", "Traditional Deployments", "Simple HA setups"],
+      "notes": "Repmgr ist älter als Patroni/Stolon, weniger cloud-native. Gut für traditionelle VM/Bare-Metal-Deployments. Einfacher als Patroni (kein DCS nötig), aber weniger Features. Switchover = geplanter Wechsel. Failover = ungeplant. Von 2ndQuadrant (jetzt EDB) entwickelt.",
+      "cpe": []
+    },
+    {
+      "id": "mongo-replicaset",
+      "name": "MongoDB Replica Set",
+      "category": "MongoDB HA",
+      "vendor": "MongoDB Inc.",
+      "type": "Open Source + Commercial",
+      "description": "Standard High-Availability für MongoDB - automatisches Failover mit Replica Set",
+      "features": ["Automatic Failover", "Multiple Replicas", "Read Preference", "Write Concern", "Oplog", "Arbiter Nodes"],
+      "platforms": ["Linux", "Windows", "macOS"],
+      "licenseModel": ["Open Source (SSPL)", "Commercial"],
+      "pricing": "Kostenlos (Community) / Enterprise ab €10.000/Jahr",
+      "marketShare": "~95% (bei MongoDB-HA)",
+      "status": "Active",
+      "useCases": ["High Availability", "Data Redundancy", "Read Scale-Out", "Geographic Distribution"],
+      "notes": "Replica Set ist der Standard für MongoDB HA. Minimum 3 Nodes (oder 2 + Arbiter). Automatisches Failover durch Voting. Primary = Writes, Secondaries = Reads (optional). Oplog = replication log. Write Concern definiert Durability. Read Preference steuert Read-Routing.",
+      "cpe": [
+        "cpe:2.3:a:mongodb:mongodb:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "mongo-sharded",
+      "name": "MongoDB Sharded Cluster",
+      "category": "MongoDB Horizontal Scaling",
+      "vendor": "MongoDB Inc.",
+      "type": "Open Source + Commercial",
+      "description": "Horizontal Scaling durch Auto-Sharding - verteilt Daten über mehrere Shards",
+      "features": ["Auto-Sharding", "Horizontal Scaling", "Query Routing (mongos)", "Chunk Migration", "Zone Sharding"],
+      "platforms": ["Linux", "Windows", "macOS"],
+      "licenseModel": ["Open Source (SSPL)", "Commercial"],
+      "pricing": "Kostenlos (Community) / Enterprise ab €20.000+/Jahr",
+      "marketShare": "~30% (bei großen MongoDB-Deployments)",
+      "status": "Active",
+      "useCases": ["Big Data", "Multi-TB Databases", "High Throughput", "Geographic Distribution"],
+      "notes": "Sharded Cluster ist für sehr große Datenmenken (>1TB). Kombiniert Sharding + Replica Sets (jeder Shard ist ein Replica Set). mongos = Query Router. Config Servers speichern Metadaten. Shard Key ist kritisch (falsche Wahl = Performance-Probleme). Komplex zu managen.",
+      "cpe": [
+        "cpe:2.3:a:mongodb:mongodb:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "redis-sentinel",
+      "name": "Redis Sentinel",
+      "category": "Redis HA",
+      "vendor": "Redis Ltd. / Community",
+      "type": "Open Source",
+      "description": "High Availability System für Redis - automatisches Failover und Monitoring",
+      "features": ["Automatic Failover", "Monitoring", "Notification", "Configuration Provider", "Multiple Sentinels (Quorum)"],
+      "platforms": ["Linux", "Windows", "macOS"],
+      "licenseModel": ["Open Source (BSD)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~70% (bei Redis-HA)",
+      "status": "Active",
+      "useCases": ["Redis High Availability", "Automatic Failover", "Simple HA setups"],
+      "notes": "Sentinel ist die Standard-HA-Lösung für Redis. Minimum 3 Sentinel-Instanzen (Quorum). Master-Slave Replication mit automatischem Failover. Sentinel überwacht Master, bei Ausfall wird Slave zum Master promoted. Einfach, zuverlässig, kostenlos. Gut für kleinere Deployments.",
+      "cpe": [
+        "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "redis-cluster",
+      "name": "Redis Cluster",
+      "category": "Redis Horizontal Scaling",
+      "vendor": "Redis Ltd. / Community",
+      "type": "Open Source",
+      "description": "Auto-Sharding für Redis - horizontale Skalierung durch Datenverteilung",
+      "features": ["Auto-Sharding", "Horizontal Scaling", "Automatic Failover", "Hash Slots (16384)", "Multi-Master"],
+      "platforms": ["Linux", "Windows", "macOS"],
+      "licenseModel": ["Open Source (BSD)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~30% (bei großen Redis-Deployments)",
+      "status": "Active",
+      "useCases": ["Big Data Caching", "High Throughput", "Horizontal Scaling", "Multi-TB Datasets"],
+      "notes": "Redis Cluster ist für sehr große Datasets (>RAM eines einzelnen Servers). Sharding durch Hash Slots (16384). Minimum 6 Nodes (3 Master + 3 Slaves). Jeder Master hat Hash-Slot-Range. Automatic Failover eingebaut. Kein Sentinel nötig. Komplexer als Sentinel, aber skaliert horizontal.",
+      "cpe": [
+        "cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "cassandra-cluster",
+      "name": "Apache Cassandra Cluster",
+      "category": "NoSQL Wide-Column Clustering",
+      "vendor": "Apache Software Foundation",
+      "type": "Open Source",
+      "description": "Distributed Wide-Column Store - keine Single Points of Failure, linear skalierbar",
+      "features": ["Peer-to-Peer", "Linear Scalability", "Multi-Datacenter Replication", "Tunable Consistency", "No Single Point of Failure"],
+      "platforms": ["Linux", "Windows"],
+      "licenseModel": ["Open Source (Apache 2.0)"],
+      "pricing": "Kostenlos (Support durch DataStax verfügbar)",
+      "marketShare": "~60% (bei Wide-Column Stores)",
+      "status": "Active",
+      "useCases": ["Big Data", "Time-Series", "IoT", "Multi-Datacenter", "High Write Throughput"],
+      "notes": "Cassandra ist für extreme Skalierung designed (Petabytes). Peer-to-Peer = kein Master (jeder Node gleichberechtigt). Linear Scaling = 2x Nodes = 2x Throughput. Tunable Consistency (CAP-Theorem). Multi-DC-aware. Gossip Protocol für Cluster-Communication. Java-basiert (JVM-Tuning wichtig).",
+      "cpe": [
+        "cpe:2.3:a:apache:cassandra:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "active-passive",
+      "name": "Active-Passive (Generic)",
+      "category": "Generic Clustering Pattern",
+      "vendor": "Verschiedene",
+      "type": "Pattern",
+      "description": "Generisches HA-Muster - ein aktiver Node, ein oder mehrere passive Standby-Nodes",
+      "features": ["Failover", "Standby Nodes", "Manual or Automatic Failover"],
+      "platforms": ["Variabel"],
+      "licenseModel": ["Variabel"],
+      "pricing": "Variabel",
+      "marketShare": "N/A",
+      "status": "Pattern",
+      "useCases": ["Simple HA", "Cost-Effective HA", "Legacy Systems"],
+      "notes": "Active-Passive ist das einfachste HA-Pattern. Ein Node aktiv (Primary), andere passiv (Standby). Bei Ausfall wird Standby aktiviert. Ressourcen-Verschwendung (Standby tut nichts). Einfach zu verstehen und implementieren. RTO = Zeit für Failover (meist Minuten).",
+      "cpe": []
+    },
+    {
+      "id": "active-active",
+      "name": "Active-Active (Generic)",
+      "category": "Generic Clustering Pattern",
+      "vendor": "Verschiedene",
+      "type": "Pattern",
+      "description": "Generisches Load-Balancing-Muster - alle Nodes gleichzeitig aktiv",
+      "features": ["Load Balancing", "All Nodes Active", "Shared Load"],
+      "platforms": ["Variabel"],
+      "licenseModel": ["Variabel"],
+      "pricing": "Variabel",
+      "marketShare": "N/A",
+      "status": "Pattern",
+      "useCases": ["High Performance", "Resource Efficiency", "Read-Heavy Workloads"],
+      "notes": "Active-Active = alle Nodes arbeiten gleichzeitig. Load Balancing verteilt Last. Bessere Ressourcen-Nutzung als Active-Passive. Komplexer (Konflikt-Behandlung nötig bei Writes). Gut für Read-Heavy Workloads. Multi-Master Replikation erforderlich bei Write-Heavy.",
+      "cpe": []
+    },
+    {
+      "id": "loadbalanced",
+      "name": "Load Balanced (Generic)",
+      "category": "Generic Load Balancing",
+      "vendor": "Verschiedene",
+      "type": "Pattern",
+      "description": "Load Balancer verteilt Traffic auf mehrere Nodes",
+      "features": ["Traffic Distribution", "Health Checks", "Session Persistence"],
+      "platforms": ["Variabel"],
+      "licenseModel": ["Variabel"],
+      "pricing": "Variabel",
+      "marketShare": "N/A",
+      "status": "Pattern",
+      "useCases": ["High Traffic", "Horizontal Scaling", "Web Applications"],
+      "notes": "Load Balancing verteilt eingehende Requests auf mehrere Nodes. Round-Robin, Least Connections, IP Hash, etc. Health Checks erkennen ausgefallene Nodes. Session Persistence (Sticky Sessions) bei Stateful Apps. Kann mit Active-Active kombiniert werden.",
+      "cpe": []
+    },
+    {
+      "id": "masterreplica",
+      "name": "Master-Replica (Generic)",
+      "category": "Generic Replication Pattern",
+      "vendor": "Verschiedene",
+      "type": "Pattern",
+      "description": "Ein Master (Writes), mehrere Replicas (Reads) - klassisches Replication-Pattern",
+      "features": ["Master-Slave Replication", "Read Scale-Out", "Asynchronous/Synchronous"],
+      "platforms": ["Variabel"],
+      "licenseModel": ["Variabel"],
+      "pricing": "Variabel",
+      "marketShare": "N/A",
+      "status": "Pattern",
+      "useCases": ["Read-Heavy Workloads", "Reporting", "Geo-Distribution"],
+      "notes": "Master-Replica = klassisches Replication-Pattern. Master nimmt Writes, Replicas replizieren und bedienen Reads. Read Scale-Out durch mehr Replicas. Asynchron = Replica Lag möglich. Synchron = langsamer, aber konsistent. Failover = Replica wird zum Master promoted.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Datenbank Cluster Software Katalog mit CPE-Identifikatoren für High Availability und Disaster Recovery Lösungen"
+  }
+}

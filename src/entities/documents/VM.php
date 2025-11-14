@@ -99,7 +99,7 @@ class VM
      * @return void 
      */
     public function __construct() {
-        // Default Werte hier setzen, falls benötigt
+        $this->uuid = \uniqid('vm_', true);
     }
 
 }

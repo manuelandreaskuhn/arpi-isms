@@ -1,0 +1,183 @@
+{
+  "id": "rehabilitation-software-systems",
+  "name": "Rehabilitations-Software",
+  "description": "Systeme für Therapiedokumentation, Rehabilitationsplanung und Outcome-Messung",
+  "software": [
+    {
+      "id": "medatixx-rehavital",
+      "name": "RehaVital",
+      "vendor": "medatixx",
+      "website": "https://www.medatixx.de/",
+      "description": "Software für Rehabilitationskliniken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Reha-Patientenverwaltung",
+        "Therapieplanung",
+        "Therapiedokumentation",
+        "Leistungserfassung",
+        "Terminmanagement",
+        "Entlassungsmanagement",
+        "Sozialdienstintegration",
+        "Abrechnung",
+        "Reha-Statistik"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Therapeuten", "Physiotherapeuten", "Ergotherapeuten", "Pflege", "Sozialdienst"],
+      "departments": ["Rehabilitation", "Physiotherapie", "Ergotherapie", "Sozialdienst"]
+    },
+    {
+      "id": "nexus-rehacare",
+      "name": "RehaCare",
+      "vendor": "Nexus AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Rehabilitations-Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Reha-Aufnahme",
+        "Therapieplanung",
+        "Multiprofessionelle Dokumentation",
+        "Terminkoordination",
+        "Outcome-Messung",
+        "Assessments",
+        "Entlassmanagement",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Therapeuten", "Pflege", "Sozialdienst"],
+      "departments": ["Rehabilitation", "Physiotherapie", "Ergotherapie"]
+    },
+    {
+      "id": "therapy-manager",
+      "name": "TherapyManager",
+      "vendor": "verschiedene Anbieter",
+      "website": "",
+      "description": "Therapieplanung und -dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Therapieplanung",
+        "Behandlungsdokumentation",
+        "Terminverwaltung",
+        "Leistungsnachweis",
+        "Übungspläne",
+        "Verlaufsdokumentation"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Therapeuten", "Physiotherapeuten", "Ergotherapeuten"],
+      "departments": ["Physiotherapie", "Ergotherapie", "Logopädie"]
+    },
+    {
+      "id": "physiotools",
+      "name": "PhysioTools",
+      "vendor": "PhysioTools",
+      "website": "https://www.physiotools.com/",
+      "description": "Übungsdatenbank und Therapieplanung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer oder Standort",
+      "features": [
+        "Übungsdatenbank (9000+ Übungen)",
+        "Individualisierte Übungsprogramme",
+        "Patienten-App",
+        "Videoanleitungen",
+        "Druckbare Übungsblätter",
+        "Mehrsprachigkeit",
+        "Patientenportal",
+        "Outcome-Tracking"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Physiotherapeuten", "Ergotherapeuten", "Sportmediziner"],
+      "departments": ["Physiotherapie", "Rehabilitation", "Sportmedizin"]
+    },
+    {
+      "id": "dedalus-reha",
+      "name": "Orbis Reha",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Reha-Modul für Orbis KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Reha-Dokumentation",
+        "Therapieplanung",
+        "Multiprofessionelle Teams",
+        "Assessments",
+        "Zielvereinbarungen",
+        "KIS-Integration (Orbis)",
+        "Entlassmanagement"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Therapeuten", "Pflege"],
+      "departments": ["Rehabilitation"]
+    },
+    {
+      "id": "cgm-reha",
+      "name": "CGM Reha",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Rehabilitations-Modul",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Reha-Verwaltung",
+        "Therapiedokumentation",
+        "Terminplanung",
+        "Leistungserfassung",
+        "Abrechnung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:reha:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Therapeuten"],
+      "departments": ["Rehabilitation"]
+    },
+    {
+      "id": "theorg",
+      "name": "TheOrg",
+      "vendor": "Thera-Soft",
+      "website": "https://www.theorg.de/",
+      "description": "Therapieorganisations-Software",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Terminverwaltung",
+        "Therapiedokumentation",
+        "Patientenverwaltung",
+        "Abrechnung",
+        "Heilmittelkatalog",
+        "Rezeptverwaltung",
+        "Statistik"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Physiotherapeuten", "Ergotherapeuten", "Logopäden"],
+      "departments": ["Physiotherapie", "Ergotherapie", "Logopädie"]
+    },
+    {
+      "id": "optica",
+      "name": "Optica",
+      "vendor": "ND-Software",
+      "website": "https://www.nd-software.de/",
+      "description": "Praxis-Software für Therapeuten",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Terminplanung",
+        "Behandlungsdokumentation",
+        "Abrechnung",
+        "Rezeptverwaltung",
+        "Statistik"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Physiotherapeuten", "Ergotherapeuten"],
+      "departments": ["Physiotherapie", "Ergotherapie"]
+    }
+  ]
+}

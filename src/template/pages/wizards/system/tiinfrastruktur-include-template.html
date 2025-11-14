@@ -15,7 +15,8 @@
                 TI-Infrastruktur Komponente <span class="required">*</span>
                 <span class="help-icon" data-tooltip="ti-component">?</span>
             </label>
-            <div class="custom-select" data-name="tiinfrastrukturid" data-index="0" data-category="ti">
+            <!-- UPDATED: Added data-component-type for component linking -->
+            <div class="custom-select" data-name="tiinfrastrukturid" data-index="0" data-category="ti" data-component-type="tiinfrastructure">
                 <div class="select-trigger">
                     <span class="placeholder">Bitte wählen</span>
                     <span class="arrow">▼</span>
@@ -23,12 +24,18 @@
                 <div class="select-dropdown">
                     <div class="select-options">
                         <div class="select-option" data-value="">Bitte wählen</div>
-                        <div class="select-option" data-value="ti-1">TI-Anbindung-Hauptstandort (Secunet)</div>
-                        <div class="select-option" data-value="ti-2">TI-Praxis-01 (T-Systems)</div>
+                        <div class="select-option" data-value="manual">Manuell eingeben</div>
+                        <!-- Wird aus TI-Infrastruktur Entities befüllt -->
                     </div>
                 </div>
             </div>
             <div class="help-text">Wird aus angelegten TI-Infrastruktur-Komponenten befüllt</div>
+        </div>
+
+        <!-- Manual Input Fallback -->
+        <div class="form-group" id="tiinfrastruktur-manual" style="display:none;">
+            <label>TI-Infrastruktur Komponente (manuell)</label>
+            <input type="text" name="tiinfrastructurname" placeholder="z.B. TI-Anbindung-Hauptstandort">
         </div>
 
         <div class="subsection-header">Verwendete TI-Dienste in diesem System</div>

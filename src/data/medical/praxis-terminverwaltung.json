@@ -1,0 +1,261 @@
+{
+  "id": "praxis-appointment-management",
+  "name": "Terminverwaltung & Online-Buchung",
+  "description": "Systeme für Terminplanung, Online-Buchung und Patientenmanagement",
+  "software": [
+    {
+      "id": "doctolib",
+      "name": "Doctolib",
+      "vendor": "Doctolib GmbH",
+      "website": "https://www.doctolib.de/",
+      "description": "Marktführende Online-Terminbuchungsplattform mit Patientenportal und Videosprechstunde",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr pro Arzt",
+      "features": [
+        "Online-Terminbuchung",
+        "Patientenportal",
+        "Videosprechstunde",
+        "Terminkalender",
+        "SMS/E-Mail-Erinnerungen",
+        "Wartelistenverwaltung",
+        "Praxissoftware-Integration"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "jameda",
+      "name": "Jameda",
+      "vendor": "Jameda GmbH",
+      "website": "https://www.jameda.de/",
+      "description": "Arztbewertungsportal mit integrierter Online-Terminvergabe",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Online-Terminbuchung",
+        "Arztprofil",
+        "Bewertungen",
+        "Patientenkommunikation",
+        "Terminkalender",
+        "Erinnerungsfunktion"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "samedi",
+      "name": "Samedi",
+      "vendor": "Samedi GmbH",
+      "website": "https://www.samedi.de/",
+      "description": "Online-Terminbuchung mit intelligentem Kalender und Patientenkommunikation",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Online-Terminbuchung",
+        "Intelligenter Kalender",
+        "Automatische Erinnerungen",
+        "Warteliste",
+        "Praxissoftware-Anbindung",
+        "Analytics"
+      ],
+      "platforms": ["Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "praxistermin",
+      "name": "PraxisTermin",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Terminverwaltungssoftware für Arztpraxen mit Online-Buchungsfunktion",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Terminkalender",
+        "Online-Buchung",
+        "Ressourcenplanung",
+        "Erinnerungen",
+        "Warteliste",
+        "Statistiken"
+      ],
+      "platforms": ["Web", "Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "calendly-medical",
+      "name": "Calendly Medical",
+      "vendor": "Calendly",
+      "website": "https://calendly.com/",
+      "description": "Flexibles Terminbuchungssystem mit automatischen Erinnerungen und Wartelistenverwaltung",
+      "license": "Proprietär",
+      "licenseModel": "Freemium / Monatliche Gebühr",
+      "features": [
+        "Online-Terminbuchung",
+        "Automatische Erinnerungen",
+        "Wartelistenverwaltung",
+        "Kalenderintegration",
+        "Zeitzonenmanagement",
+        "Anpassbare Buchungsseiten"
+      ],
+      "platforms": ["Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "terminland",
+      "name": "Terminland",
+      "vendor": "Terminland GmbH",
+      "website": "https://www.terminland.de/",
+      "description": "Online-Terminbuchung mit individuellen Buchungsregeln",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Online-Terminbuchung",
+        "Buchungsregeln",
+        "E-Mail/SMS-Benachrichtigung",
+        "Mehrere Standorte",
+        "Ressourcenverwaltung",
+        "Statistiken"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "bookingkit",
+      "name": "BookingKit",
+      "vendor": "BookingKit GmbH",
+      "website": "https://www.bookingkit.de/",
+      "description": "Buchungssystem mit Fokus auf Flexibilität und Integration",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Online-Buchung",
+        "Kalenderintegration",
+        "Zahlungsabwicklung",
+        "Gutscheine",
+        "Multi-Standort",
+        "API-Schnittstellen"
+      ],
+      "platforms": ["Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "terminapp",
+      "name": "TerminApp",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Mobile Terminverwaltung mit Push-Benachrichtigungen",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Mobile Terminverwaltung",
+        "Push-Benachrichtigungen",
+        "Online-Buchung",
+        "Kalender-Sync",
+        "Patientenverwaltung",
+        "Erinnerungen"
+      ],
+      "platforms": ["iOS", "Android", "Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "cgm-life-eservices",
+      "name": "CGM LIFE eSERVICES",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Integrierte Online-Terminvergabe mit direkter Anbindung an die Praxissoftware",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Online-Terminbuchung",
+        "CGM-Integration",
+        "Patientenportal",
+        "Videosprechstunde",
+        "Rezeptanfrage",
+        "Dokumentenaustausch",
+        "Automatische Synchronisation"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "m1-terminvereinbarung",
+      "name": "M1 Terminvereinbarung",
+      "vendor": "M1 Med Beauty",
+      "website": "",
+      "description": "Terminverwaltung spezialisiert auf medizinische und ästhetische Praxen",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Online-Terminbuchung",
+        "Behandlungsplanung",
+        "Ressourcenmanagement",
+        "Erinnerungen",
+        "Warteliste",
+        "Kundenverwaltung"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "Ästhetische Praxis"]
+    },
+    {
+      "id": "praxisapp",
+      "name": "PraxisApp",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Mobile App für Praxisverwaltung und Terminbuchung",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Mobile Terminverwaltung",
+        "Online-Buchung",
+        "Patientenkommunikation",
+        "Praxissoftware-Integration",
+        "Erinnerungen",
+        "Rezeptanfrage"
+      ],
+      "platforms": ["iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "medidate",
+      "name": "MediDate",
+      "vendor": "Verschiedene Anbieter",
+      "website": "",
+      "description": "Terminplanungssystem für medizinische Einrichtungen",
+      "license": "Proprietär",
+      "licenseModel": "Monatliche Gebühr",
+      "features": [
+        "Terminkalender",
+        "Online-Buchung",
+        "Mehrere Ärzte",
+        "Ressourcenplanung",
+        "Erinnerungen",
+        "Auslastungsstatistiken"
+      ],
+      "platforms": ["Web", "Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Patient"],
+      "departments": ["Arztpraxis", "MVZ"]
+    }
+  ]
+}

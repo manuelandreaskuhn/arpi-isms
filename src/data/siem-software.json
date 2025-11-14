@@ -1,0 +1,278 @@
+{
+  "siemSoftware": [
+    {
+      "id": "splunk",
+      "name": "Splunk Enterprise Security",
+      "category": "Enterprise SIEM",
+      "vendor": "Splunk Inc. (Cisco)",
+      "type": "Commercial",
+      "description": "Marktführendes SIEM mit leistungsstarker Search-Engine und umfassenden Security-Analytics",
+      "features": ["Real-time Monitoring", "Advanced Analytics", "UEBA", "Threat Intelligence", "Incident Response", "SOAR Integration", "Machine Learning"],
+      "platforms": ["Windows", "Linux", "Cloud"],
+      "licenseModel": ["Per GB/Day", "Subscription", "Splunk Cloud"],
+      "pricing": "€15.000 - €500.000+/Jahr (je nach Datenvolumen)",
+      "marketShare": "~25% (Marktführer Enterprise SIEM)",
+      "status": "Active",
+      "useCases": ["Enterprise Security Operations", "Compliance Reporting", "Threat Hunting", "Large Scale Deployments"],
+      "notes": "Splunk ist der Goldstandard bei Enterprise-SIEM. Sehr mächtig, aber teuer (Lizenzierung per GB). Seit 2024 von Cisco übernommen. Exzellente Search-Engine (SPL). Große App-Bibliothek. Splunk Cloud als SaaS verfügbar.",
+      "cpe": [
+        "cpe:2.3:a:splunk:splunk:*:*:*:*:enterprise:*:*:*",
+        "cpe:2.3:a:splunk:enterprise_security:*:*:*:*:*:*:*:*",
+        "cpe:/a:splunk:splunk"
+      ]
+    },
+    {
+      "id": "qradar",
+      "name": "IBM QRadar SIEM",
+      "category": "Enterprise SIEM",
+      "vendor": "IBM",
+      "type": "Commercial",
+      "description": "Enterprise SIEM mit starkem Fokus auf Correlation und Compliance",
+      "features": ["Flow Analysis", "Log Management", "Offense Management", "Correlation Rules", "Threat Intelligence", "UEBA", "X-Force Integration"],
+      "platforms": ["Appliance", "Virtual", "Cloud"],
+      "licenseModel": ["Per EPS (Events per Second)", "Per Managed Device", "Subscription"],
+      "pricing": "€20.000 - €300.000+/Jahr",
+      "marketShare": "~18% (stark in Enterprise & Government)",
+      "status": "Active",
+      "useCases": ["Enterprise SOC", "Compliance (PCI DSS, HIPAA)", "Large Enterprises", "Government"],
+      "notes": "QRadar ist sehr etabliert (seit 2001). Stark bei Flow-Analysis (NetFlow). Gute Out-of-the-Box Correlation Rules. Integriert mit IBM X-Force Threat Intelligence. Management-UI komplex. Teuer, aber sehr leistungsfähig.",
+      "cpe": [
+        "cpe:2.3:a:ibm:qradar_security_information_and_event_manager:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:ibm:qradar_siem:*:*:*:*:*:*:*:*",
+        "cpe:/a:ibm:qradar"
+      ]
+    },
+    {
+      "id": "arcsight",
+      "name": "Micro Focus ArcSight (OpenText)",
+      "category": "Enterprise SIEM",
+      "vendor": "OpenText (ehemals Micro Focus, davor HP)",
+      "type": "Commercial",
+      "description": "Legacy Enterprise SIEM mit umfassenden Correlation-Capabilities",
+      "features": ["Real-time Correlation", "ESM (Enterprise Security Manager)", "Logger", "Connectors", "Active Lists", "Compliance"],
+      "platforms": ["Appliance", "Virtual", "Linux"],
+      "licenseModel": ["Per EPS", "Perpetual", "Subscription"],
+      "pricing": "€25.000 - €400.000+",
+      "marketShare": "~8% (rückläufig - Legacy)",
+      "status": "Active",
+      "useCases": ["Large Enterprises (Legacy)", "Compliance-Heavy Industries", "Government"],
+      "notes": "ArcSight war früher Top-3 SIEM, ist aber veraltet. 2010 von HP gekauft, 2016 an Micro Focus, 2023 an OpenText. Viele Kunden migrieren weg (zu Splunk, Sentinel, Elastic). Komplex zu bedienen. Nur sinnvoll wenn bereits vorhanden.",
+      "cpe": [
+        "cpe:2.3:a:hp:arcsight:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:microfocus:arcsight_esm:*:*:*:*:*:*:*:*",
+        "cpe:/a:hp:arcsight"
+      ]
+    },
+    {
+      "id": "sentinel",
+      "name": "Microsoft Sentinel",
+      "category": "Cloud-Native SIEM",
+      "vendor": "Microsoft",
+      "type": "Cloud Service (SaaS)",
+      "description": "Cloud-native SIEM und SOAR auf Azure - rapide wachsend",
+      "features": ["Cloud-Native", "AI/ML Analytics", "SOAR (Playbooks)", "Threat Intelligence", "Azure Integration", "Microsoft 365 Integration", "KQL Queries"],
+      "platforms": ["Azure Cloud"],
+      "licenseModel": ["Pay-as-you-go (per GB)", "Commitment Tiers"],
+      "pricing": "€2-€5 pro GB (je nach Commitment)",
+      "marketShare": "~15% (wächst sehr schnell)",
+      "status": "Active",
+      "useCases": ["Azure-Native Environments", "Microsoft 365 Security", "Cloud-First Organizations", "SMB to Enterprise"],
+      "notes": "Microsoft Sentinel ist der Aufsteiger. Cloud-only (keine On-Premise). Sehr gute Integration mit Azure, M365, Defender. KQL (Kusto Query Language) ist mächtig aber Lernkurve. SOAR eingebaut (Logic Apps). Preismodell: Pay-as-you-go kann teuer werden bei viel Traffic. Gut für Microsoft-lastige Umgebungen.",
+      "cpe": [
+        "cpe:2.3:a:microsoft:azure_sentinel:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:sentinel:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "logrhythm",
+      "name": "LogRhythm SIEM",
+      "category": "Enterprise SIEM",
+      "vendor": "LogRhythm",
+      "type": "Commercial",
+      "description": "SIEM mit integriertem SOAR und UEBA",
+      "features": ["SIEM", "UEBA", "SOAR (SmartResponse)", "NDR (Network Detection)", "Log Management", "Threat Intelligence", "Case Management"],
+      "platforms": ["Appliance", "Virtual", "Cloud"],
+      "licenseModel": ["Per Log Source", "Subscription"],
+      "pricing": "€15.000 - €200.000+/Jahr",
+      "marketShare": "~5%",
+      "status": "Active",
+      "useCases": ["Mid-Market to Enterprise", "Integrated SIEM+SOAR", "Rapid Deployment"],
+      "notes": "LogRhythm ist gut für Organisationen die SIEM+SOAR aus einer Hand wollen. Einfacher zu deployen als Splunk/QRadar. SmartResponse (SOAR) ist eingebaut. Guter Support. Aber: Kleinerer Marktanteil = weniger Community-Ressourcen.",
+      "cpe": [
+        "cpe:2.3:a:logrhythm:siem:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:logrhythm:platform:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "securonix",
+      "name": "Securonix SIEM",
+      "category": "Cloud SIEM with UEBA",
+      "vendor": "Securonix",
+      "type": "Commercial (Cloud + On-Premise)",
+      "description": "SIEM mit sehr starkem UEBA und Behavior Analytics",
+      "features": ["Advanced UEBA", "Threat Detection", "Data Lake", "Machine Learning", "SOAR", "Cloud-Native"],
+      "platforms": ["Cloud", "On-Premise"],
+      "licenseModel": ["Per User", "Subscription"],
+      "pricing": "€20.000 - €250.000+/Jahr",
+      "marketShare": "~3%",
+      "status": "Active",
+      "useCases": ["Advanced Threat Detection", "Insider Threat", "Cloud Security", "UEBA Focus"],
+      "notes": "Securonix ist spezialisiert auf UEBA (User Entity Behavior Analytics). Sehr gut bei Insider-Threat-Detection. Machine-Learning-fokussiert. Weniger bekannt als Splunk/QRadar, aber technologisch stark.",
+      "cpe": []
+    },
+    {
+      "id": "elastic-siem",
+      "name": "Elastic Security (SIEM)",
+      "category": "Open Source SIEM",
+      "vendor": "Elastic N.V.",
+      "type": "Open Source + Commercial",
+      "description": "SIEM basierend auf Elastic Stack (Elasticsearch, Kibana) - Open Source mit Enterprise-Option",
+      "features": ["Elasticsearch", "Kibana", "Detection Rules", "Machine Learning", "Endpoint Security", "SIEM + XDR", "Open Source"],
+      "platforms": ["Linux", "Windows", "Cloud", "Docker", "Kubernetes"],
+      "licenseModel": ["Open Source (SSPL)", "Elastic Cloud", "Subscription"],
+      "pricing": "Kostenlos (Open Source) / Cloud ab €95/Monat",
+      "marketShare": "~10% (wächst schnell)",
+      "status": "Active",
+      "useCases": ["Cost-Conscious SIEM", "DevSecOps", "Log Analytics + Security", "Scalable Deployments"],
+      "notes": "Elastic Security ist Open-Source-Alternative zu kommerziellen SIEMs. Sehr skalierbar (Elasticsearch). Gut für Organisationen die bereits ELK Stack nutzen. Prebuilt Rules aus Elastic Security Labs. Kombiniert SIEM + Endpoint Security (XDR). Cloud-Option oder Self-Hosted. Lizenzwechsel 2021 (SSPL statt Apache).",
+      "cpe": [
+        "cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:elastic:kibana:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:elastic:security:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "wazuh",
+      "name": "Wazuh",
+      "category": "Open Source SIEM / XDR",
+      "vendor": "Wazuh Inc.",
+      "type": "Open Source",
+      "description": "Open-Source Security Platform - SIEM, XDR, HIDS in einem",
+      "features": ["HIDS", "Log Analysis", "Vulnerability Detection", "File Integrity Monitoring", "Configuration Assessment", "Cloud Security", "Integration mit Elastic"],
+      "platforms": ["Linux", "Windows", "macOS", "Docker"],
+      "licenseModel": ["Open Source (GPL)", "Commercial Support"],
+      "pricing": "Kostenlos (Community) / Support ab €5.000/Jahr",
+      "marketShare": "~5% (wächst stark)",
+      "status": "Active",
+      "useCases": ["SMB Security Monitoring", "Compliance (PCI DSS, HIPAA)", "Cloud Security", "Budget-Conscious Organizations"],
+      "notes": "Wazuh ist OSSEC-Fork (2015) mit modernem UI. Sehr umfassend: SIEM + HIDS + Vulnerability Scanner + FIM + Cloud Security. Nutzt Elasticsearch für Storage. Predet Rules für Compliance (PCI DSS, HIPAA, GDPR). Sehr aktive Community. Kostenlos, aber braucht Elastic-Know-how.",
+      "cpe": [
+        "cpe:2.3:a:wazuh:wazuh:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "ossec",
+      "name": "OSSEC",
+      "category": "Open Source HIDS / SIEM",
+      "vendor": "OSSEC Foundation",
+      "type": "Open Source",
+      "description": "Open-Source Host-based Intrusion Detection System mit SIEM-Capabilities",
+      "features": ["HIDS", "Log Analysis", "File Integrity Monitoring", "Rootkit Detection", "Active Response", "Alerting"],
+      "platforms": ["Linux", "Windows", "Unix", "macOS"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~2% (Legacy - viele migrieren zu Wazuh)",
+      "status": "Active",
+      "useCases": ["Host-based Monitoring", "File Integrity", "Legacy Deployments"],
+      "notes": "OSSEC ist der Klassiker (seit 2004). Sehr robust, aber UI ist minimalistisch. Wazuh ist der moderne Fork - bei Neuinstallationen Wazuh bevorzugen. OSSEC noch weit verbreitet in Legacy-Umgebungen.",
+      "cpe": [
+        "cpe:2.3:a:ossec:ossec:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "alienvault",
+      "name": "AlienVault OSSIM",
+      "category": "Open Source SIEM",
+      "vendor": "AT&T Cybersecurity (AlienVault)",
+      "type": "Open Source + Commercial",
+      "description": "Open-Source SIEM mit integrierter Threat Intelligence",
+      "features": ["SIEM", "Asset Discovery", "Vulnerability Assessment", "IDS (Suricata)", "Threat Intelligence (OTX)", "Correlation"],
+      "platforms": ["Linux (Virtual Appliance)"],
+      "licenseModel": ["Open Source", "USM (Unified Security Management) Commercial"],
+      "pricing": "Kostenlos (OSSIM) / USM ab €2.500/Monat",
+      "marketShare": "~2%",
+      "status": "Active",
+      "useCases": ["SMB SIEM", "Integrated Security Stack", "Threat Intelligence Integration"],
+      "notes": "OSSIM = Open-Source, USM = Commercial. Kombiniert SIEM + IDS + Vulnerability Scanner + Asset Discovery. AlienVault OTX (Open Threat Exchange) ist großes Plus. 2018 von AT&T gekauft. Gut für SMB, aber weniger Enterprise-Features als Splunk/QRadar.",
+      "cpe": [
+        "cpe:2.3:a:alienvault:ossim:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:at&t:unified_security_management:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "sumo-logic",
+      "name": "Sumo Logic",
+      "category": "Cloud-Native SIEM",
+      "vendor": "Sumo Logic",
+      "type": "Cloud Service (SaaS)",
+      "description": "Cloud-native Log-Management und SIEM-Plattform",
+      "features": ["Cloud-Native", "Real-time Analytics", "Machine Learning", "Threat Detection", "Compliance", "DevSecOps"],
+      "platforms": ["Cloud (SaaS)"],
+      "licenseModel": ["Per GB/Day", "Subscription"],
+      "pricing": "Ab €90/Monat (je nach Datenvolumen)",
+      "marketShare": "~3%",
+      "status": "Active",
+      "useCases": ["Cloud-Native Applications", "DevSecOps", "Multi-Cloud Security", "SaaS Applications"],
+      "notes": "Sumo Logic ist 100% Cloud (kein On-Premise). Gut für Cloud-native Apps und DevOps-Teams. Integriert mit AWS, Azure, GCP. Echtzeit-Analytics. Aber: Daten verlassen Organisation (Compliance prüfen!).",
+      "cpe": []
+    },
+    {
+      "id": "datadog",
+      "name": "Datadog Security Monitoring",
+      "category": "Cloud SIEM",
+      "vendor": "Datadog",
+      "type": "Cloud Service (SaaS)",
+      "description": "Cloud Monitoring Platform mit Security-Monitoring und SIEM",
+      "features": ["Cloud SIEM", "Threat Detection", "Compliance Monitoring", "Log Management", "APM Integration"],
+      "platforms": ["Cloud (SaaS)"],
+      "licenseModel": ["Per Host", "Per GB", "Subscription"],
+      "pricing": "Ab €15/Host/Monat + Datenvolumen",
+      "marketShare": "~2% (wächst, hauptsächlich als Add-on zu Datadog APM)",
+      "status": "Active",
+      "useCases": ["DevSecOps", "Cloud Infrastructure Security", "Existing Datadog Customers"],
+      "notes": "Datadog ist primär APM/Monitoring-Plattform, Security ist Add-on. Gut wenn bereits Datadog im Einsatz. Nicht so umfassend wie dedizierte SIEMs, aber für Cloud-native Apps ausreichend.",
+      "cpe": []
+    },
+    {
+      "id": "rapid7",
+      "name": "Rapid7 InsightIDR",
+      "category": "Cloud SIEM + XDR",
+      "vendor": "Rapid7",
+      "type": "Cloud Service",
+      "description": "Cloud-native SIEM mit integriertem XDR",
+      "features": ["Cloud SIEM", "XDR", "UEBA", "Threat Intelligence", "Incident Response", "Automation"],
+      "platforms": ["Cloud (SaaS)"],
+      "licenseModel": ["Per User", "Subscription"],
+      "pricing": "Ab €2.000/Jahr (25 Users)",
+      "marketShare": "~3%",
+      "status": "Active",
+      "useCases": ["SMB to Mid-Market", "Cloud Security", "Quick Deployment", "Managed Detection & Response"],
+      "notes": "InsightIDR ist Cloud-SIEM von Rapid7 (bekannt für Metasploit, Nexpose). Einfach zu deployen. Gut für Organisationen die schnell starten wollen. Kombiniert SIEM + Endpoint Detection (XDR). MDR (Managed Detection & Response) als Service verfügbar.",
+      "cpe": [
+        "cpe:2.3:a:rapid7:insightidr:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "type": "Variabel",
+      "description": "Andere SIEM-Lösungen (z.B. McAfee ESM, RSA NetWitness, Exabeam, Chronicle, etc.)",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "pricing": "Variabel",
+      "marketShare": "~5%",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Nischen-Lösungen", "Legacy"],
+      "notes": "Z.B. McAfee Enterprise Security Manager (veraltet), RSA NetWitness (Enterprise, komplex), Exabeam (UEBA-fokussiert), Google Chronicle (Cloud, teuer), Graylog (Open Source Log Management), etc.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "SIEM Software Katalog mit CPE-Identifikatoren für Security Information and Event Management"
+  }
+}

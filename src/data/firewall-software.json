@@ -1,0 +1,274 @@
+{
+  "firewallSoftware": [
+    {
+      "id": "palo-alto",
+      "name": "Palo Alto Networks",
+      "category": "Enterprise Next-Gen Firewall",
+      "vendor": "Palo Alto Networks",
+      "type": "Commercial",
+      "description": "Marktführende Next-Generation Firewall mit App-ID, User-ID und Content-ID Technologie",
+      "features": ["App-ID", "User-ID", "Content-ID", "Threat Prevention", "WildFire", "GlobalProtect VPN", "Panorama Management"],
+      "platforms": ["Hardware Appliance", "VM-Series (Virtual)", "CN-Series (Container)", "Cloud (Prisma Access)"],
+      "licenseModel": ["Per Throughput", "Subscription", "VM Credits"],
+      "pricing": "€10.000 - €500.000+ (je nach Modell und Throughput)",
+      "marketShare": "~20% (Marktführer bei NGFW)",
+      "status": "Active",
+      "useCases": ["Enterprise Perimeter", "Datacenter Segmentation", "Cloud Security", "Zero Trust Architecture"],
+      "notes": "Gartner Magic Quadrant Leader seit 10+ Jahren. Beste Threat Prevention, aber teuer. Sehr gutes Management (Panorama).",
+      "cpe": [
+        "cpe:2.3:o:paloaltonetworks:pan-os:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:paloaltonetworks:pa-*:*:*:*:*:*:*:*:*",
+        "cpe:/o:paloaltonetworks:pan-os"
+      ]
+    },
+    {
+      "id": "fortinet",
+      "name": "Fortinet FortiGate",
+      "category": "Enterprise Next-Gen Firewall",
+      "vendor": "Fortinet",
+      "type": "Commercial",
+      "description": "Umfassende Security-Plattform mit sehr gutem Preis-/Leistungsverhältnis",
+      "features": ["NGFW", "IPS", "SSL Inspection", "SD-WAN", "FortiGuard Threat Intelligence", "FortiAnalyzer", "FortiManager"],
+      "platforms": ["Hardware Appliance", "FortiGate-VM", "FortiGate-CNF (Container)", "FortiGate Cloud"],
+      "licenseModel": ["Per Device", "UTM Bundle", "Enterprise Bundle", "Subscription"],
+      "pricing": "€1.500 - €200.000+ (sehr breites Portfolio)",
+      "marketShare": "~18% (größte installierte Basis weltweit)",
+      "status": "Active",
+      "useCases": ["SMB bis Enterprise", "Branch Offices", "SD-WAN", "Datacenter", "OT Security"],
+      "notes": "Bestes Preis-/Leistungsverhältnis. Sehr hoher Durchsatz. Umfangreiches Portfolio (40+ FortiGate-Modelle). Gute Performance, aber komplex.",
+      "cpe": [
+        "cpe:2.3:o:fortinet:fortios:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:fortinet:fortigate-*:*:*:*:*:*:*:*:*",
+        "cpe:/o:fortinet:fortios"
+      ]
+    },
+    {
+      "id": "checkpoint",
+      "name": "Check Point",
+      "category": "Enterprise Next-Gen Firewall",
+      "vendor": "Check Point Software Technologies",
+      "type": "Commercial",
+      "description": "Traditioneller Enterprise-Firewall-Leader mit umfassendem Security-Portfolio",
+      "features": ["NGFW", "Threat Prevention", "SandBlast (Sandboxing)", "SmartConsole", "IPS", "Application Control"],
+      "platforms": ["Hardware Appliance", "CloudGuard (Virtual/Cloud)", "Quantum Security Gateways"],
+      "licenseModel": ["Per Appliance", "NGTX/NGTP Bundles", "Subscription"],
+      "pricing": "€8.000 - €300.000+",
+      "marketShare": "~15% (etabliert, aber Marktanteil sinkend)",
+      "status": "Active",
+      "useCases": ["Large Enterprise", "Government", "Finance", "Healthcare (HIPAA)"],
+      "notes": "Sehr mature, seit 1993 am Markt. Exzellente Mgmt (SmartConsole). Aber: teuer, komplex, Performance-Limitierungen bei SSL Inspection.",
+      "cpe": [
+        "cpe:2.3:o:checkpoint:gaia_os:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:checkpoint:vpn-1:*:*:*:*:*:*:*:*",
+        "cpe:/o:checkpoint:gaia"
+      ]
+    },
+    {
+      "id": "cisco-asa",
+      "name": "Cisco ASA",
+      "category": "Traditional Stateful Firewall",
+      "vendor": "Cisco",
+      "type": "Commercial",
+      "description": "Legacy Stateful Inspection Firewall (wird durch Firepower ersetzt)",
+      "features": ["Stateful Inspection", "VPN (IPsec, SSL)", "NAT", "Clustering", "AnyConnect"],
+      "platforms": ["Hardware Appliance", "ASAv (Virtual)"],
+      "licenseModel": ["Perpetual", "Smart Licensing"],
+      "pricing": "€5.000 - €150.000",
+      "marketShare": "~8% (sinkend - Legacy)",
+      "status": "Active (End-of-Sale für neuere Features)",
+      "useCases": ["Legacy Cisco-Umgebungen", "VPN Concentrator", "Basic Firewall"],
+      "notes": "Klassiker seit 2005. Sehr zuverlässig, aber technisch überholt. Cisco migriert zu Firepower. Kein NGFW (keine App-Control). Nur noch für Legacy sinnvoll.",
+      "cpe": [
+        "cpe:2.3:o:cisco:adaptive_security_appliance_software:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:cisco:asa_*:*:*:*:*:*:*:*:*",
+        "cpe:/o:cisco:adaptive_security_appliance_software"
+      ]
+    },
+    {
+      "id": "cisco-firepower",
+      "name": "Cisco Firepower",
+      "category": "Enterprise Next-Gen Firewall",
+      "vendor": "Cisco",
+      "type": "Commercial",
+      "description": "Cisco's NGFW (basiert auf Sourcefire-Acquisition 2013)",
+      "features": ["NGFW", "NGIPS", "AMP (Advanced Malware Protection)", "URL Filtering", "Snort IPS", "SecureX Integration"],
+      "platforms": ["Firepower Appliances", "Firepower Virtual", "FTD on ASA"],
+      "licenseModel": ["Smart Licensing", "Subscription"],
+      "pricing": "€8.000 - €200.000+",
+      "marketShare": "~12%",
+      "status": "Active",
+      "useCases": ["Cisco-Umgebungen", "Enterprise Perimeter", "Datacenter"],
+      "notes": "Cisco's Antwort auf Palo Alto. Technisch gut (Snort IPS ist exzellent), ABER: Management ist Katastrophe (FMC - Firepower Management Center). Performance-Probleme bei SSL Inspection. Viele Kunden frustriert.",
+      "cpe": [
+        "cpe:2.3:o:cisco:firepower_threat_defense:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:cisco:firepower_management_center:*:*:*:*:*:*:*:*",
+        "cpe:/o:cisco:firepower_threat_defense"
+      ]
+    },
+    {
+      "id": "sophos",
+      "name": "Sophos XG / XGS Firewall",
+      "category": "SMB / Mid-Market Firewall",
+      "vendor": "Sophos",
+      "type": "Commercial",
+      "description": "Unified Threat Management für SMB mit gutem Preis-/Leistungsverhältnis",
+      "features": ["NGFW", "Synchronized Security", "Sandstorm (Sandboxing)", "SD-WAN", "Web Filtering", "Central Management"],
+      "platforms": ["Hardware Appliance", "Sophos Firewall Virtual", "Cloud (Sophos Central)"],
+      "licenseModel": ["FullGuard Plus", "Xstream Protection", "Subscription"],
+      "pricing": "€800 - €50.000 (SMB-fokussiert)",
+      "marketShare": "~5% (stark im SMB-Segment)",
+      "status": "Active",
+      "useCases": ["Small-to-Medium Business", "Branch Offices", "Education", "Retail"],
+      "notes": "Sehr gutes Angebot für SMB. 'Synchronized Security' ist unique (Firewall + Endpoint kommunizieren). Einfach zu bedienen. XGS-Serie (seit 2021) deutlich performanter als alte XG.",
+      "cpe": [
+        "cpe:2.3:o:sophos:xg_firewall:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:sophos:xgs_firewall:*:*:*:*:*:*:*:*",
+        "cpe:/o:sophos:xg_firewall"
+      ]
+    },
+    {
+      "id": "watchguard",
+      "name": "WatchGuard Firebox",
+      "category": "SMB Firewall",
+      "vendor": "WatchGuard Technologies",
+      "type": "Commercial",
+      "description": "SMB-fokussierte Firewall mit einfachem Management",
+      "features": ["NGFW", "IPS", "APT Blocker", "Gateway AntiVirus", "WebBlocker", "Threat Detection & Response"],
+      "platforms": ["Hardware Appliance", "Firebox Cloud", "Firebox Virtual"],
+      "licenseModel": ["Total Security Suite", "Basic Security Suite", "Subscription"],
+      "pricing": "€600 - €30.000",
+      "marketShare": "~3% (Nische SMB)",
+      "status": "Active",
+      "useCases": ["Small Business", "Retail", "Restaurants", "Branch Offices"],
+      "notes": "Sehr einfach zu bedienen (perfekt für Nicht-Security-Experten). Günstiger als Enterprise-Lösungen. MSP-friendly (WatchGuard Cloud). Aber: Performance-Limitierungen, weniger Features als Enterprise.",
+      "cpe": [
+        "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:watchguard:firebox-*:*:*:*:*:*:*:*:*",
+        "cpe:/o:watchguard:fireware"
+      ]
+    },
+    {
+      "id": "juniper",
+      "name": "Juniper SRX",
+      "category": "Service Provider / Enterprise Firewall",
+      "vendor": "Juniper Networks",
+      "type": "Commercial",
+      "description": "High-Performance Firewall für Service Provider und große Enterprises",
+      "features": ["Stateful Firewall", "IPS", "AppSecure", "UTM", "SD-WAN", "Junos Space Management"],
+      "platforms": ["SRX Series Appliances", "vSRX (Virtual)", "cSRX (Container)"],
+      "licenseModel": ["Perpetual", "Subscription"],
+      "pricing": "€5.000 - €500.000+ (High-End)",
+      "marketShare": "~7% (Nische: Service Provider, Telco)",
+      "status": "Active",
+      "useCases": ["Service Provider", "Telco", "Large Enterprise Datacenter", "Branch SD-WAN"],
+      "notes": "Sehr hohe Performance (>1 Tbps möglich). JunOS ist exzellent (UNIX-basiert). Aber: teuer, komplex, kleinere Community als Cisco/Palo Alto. Gut für High-Speed-Umgebungen.",
+      "cpe": [
+        "cpe:2.3:o:juniper:junos:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:juniper:srx*:*:*:*:*:*:*:*:*",
+        "cpe:/o:juniper:junos"
+      ]
+    },
+    {
+      "id": "pfsense",
+      "name": "pfSense",
+      "category": "Open Source Firewall",
+      "vendor": "Netgate / pfSense Community",
+      "type": "Open Source + Commercial",
+      "description": "FreeBSD-basierte Open-Source Firewall mit großer Community",
+      "features": ["Stateful Firewall", "NAT", "VPN (IPsec, OpenVPN, WireGuard)", "Traffic Shaping", "Captive Portal", "Packages (Snort, Suricata)"],
+      "platforms": ["x86 Hardware", "Netgate Appliances", "VM"],
+      "licenseModel": ["Open Source (Apache 2.0)", "pfSense Plus (Commercial Support)"],
+      "pricing": "Kostenlos (Community) / €500-€10.000 (Netgate Appliances mit Support)",
+      "marketShare": "~4% (stark in SMB/Home Lab)",
+      "status": "Active",
+      "useCases": ["Home Lab", "Small Business", "Budget-Constraints", "Learning/Testing"],
+      "notes": "Meistgenutzte Open-Source-Firewall weltweit. Sehr mature (seit 2004). Große Community, viele Plugins. Web-GUI einfach. ABER: Kein NGFW (kein App-Control), nur Stateful. Support nur mit pfSense Plus/Netgate.",
+      "cpe": [
+        "cpe:2.3:a:pfsense:pfsense:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:netgate:pfsense:*:*:*:*:*:*:*:*",
+        "cpe:/a:pfsense:pfsense"
+      ]
+    },
+    {
+      "id": "opnsense",
+      "name": "OPNsense",
+      "category": "Open Source Firewall",
+      "vendor": "Deciso B.V. / OPNsense Community",
+      "type": "Open Source",
+      "description": "pfSense-Fork mit modernerem UI und aktiverer Entwicklung",
+      "features": ["Stateful Firewall", "IPS (Suricata)", "VPN (WireGuard nativ)", "Traffic Shaping", "Web Proxy", "Modern UI"],
+      "platforms": ["x86 Hardware", "Deciso Appliances", "VM"],
+      "licenseModel": ["Open Source (BSD)", "Business Edition"],
+      "pricing": "Kostenlos (Community) / €800-€15.000 (Deciso Appliances mit Support)",
+      "marketShare": "~2% (wächst schnell)",
+      "status": "Active",
+      "useCases": ["Modern Alternative zu pfSense", "SMB", "Techies/Enthusiasts", "ISPs"],
+      "notes": "2015 als pfSense-Fork gestartet wegen Community-Unzufriedenheit. Moderneres UI (Bootstrap-basiert), aktivere Entwicklung, wöchentliche Updates. API-first-Ansatz. Wächst stark. Technisch gleichwertig zu pfSense, aber 'freier' (keine Netgate-Kontrolle).",
+      "cpe": [
+        "cpe:2.3:a:opnsense:opnsense:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:deciso:opnsense:*:*:*:*:*:*:*:*",
+        "cpe:/a:opnsense:opnsense"
+      ]
+    },
+    {
+      "id": "azure-firewall",
+      "name": "Azure Firewall",
+      "category": "Cloud-Native Firewall",
+      "vendor": "Microsoft",
+      "type": "Cloud Service",
+      "description": "Managed Cloud Firewall für Azure (FWaaS - Firewall as a Service)",
+      "features": ["Stateful Firewall", "FQDN Filtering", "Threat Intelligence", "DNAT/SNAT", "Integration mit Azure Services", "Azure Firewall Premium (IDS/IPS, TLS Inspection)"],
+      "platforms": ["Azure Cloud"],
+      "licenseModel": ["Pay-as-you-go (per Deployment + Data Processed)", "Reserved Capacity"],
+      "pricing": "€1,25/h Deployment + €0,016/GB (Standard) / €0,875/h + €0,08/GB (Premium)",
+      "marketShare": "~3% (wachsend bei Azure-Kunden)",
+      "status": "Active",
+      "useCases": ["Azure Virtual Networks", "Hub-Spoke Architecture", "Cloud-Native Apps", "Azure-to-OnPrem"],
+      "notes": "Gut für Azure-lastige Umgebungen. Fully managed (kein Patching). Integriert mit Azure Monitor, Sentinel. ABER: Teuer bei viel Traffic, weniger Features als NGFW-Leader, nur in Azure (kein Multi-Cloud).",
+      "cpe": [
+        "cpe:2.3:a:microsoft:azure_firewall:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "aws-firewall",
+      "name": "AWS Network Firewall",
+      "category": "Cloud-Native Firewall",
+      "vendor": "Amazon Web Services",
+      "type": "Cloud Service",
+      "description": "Managed Network Firewall Service für AWS VPCs",
+      "features": ["Stateful Firewall", "IPS (Suricata-basiert)", "Domain Filtering", "TLS Inspection", "VPC Integration"],
+      "platforms": ["AWS Cloud"],
+      "licenseModel": ["Pay-as-you-go (per Endpoint + Data Processed)"],
+      "pricing": "$0,395/h Endpoint + $0,065/GB",
+      "marketShare": "~2% (neu, seit 2020)",
+      "status": "Active",
+      "useCases": ["AWS VPCs", "Multi-Account Security", "Egress Filtering", "East-West Traffic"],
+      "notes": "Seit 2020. Basiert auf Open-Source Suricata. Gut für AWS-Umgebungen. Aber: noch wenig mature, teuer bei hohem Traffic, weniger Features als NGFW-Leader. Alternative: Palo Alto VM-Series in AWS.",
+      "cpe": [
+        "cpe:2.3:a:amazon:aws_network_firewall:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "type": "Variabel",
+      "description": "Andere Firewall-Lösungen (z.B. Barracuda, SonicWall, Huawei, Hillstone, etc.)",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "pricing": "Variabel",
+      "marketShare": "~5% (zahlreiche Nischen-Anbieter)",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Regional", "Legacy"],
+      "notes": "Z.B. SonicWall (SMB), Barracuda (Cloud/WAF), Huawei (APAC), Hillstone (China), Stormshield (Europa), etc. Meist für spezifische Märkte oder Use Cases.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Firewall Software Katalog mit CPE-Identifikatoren für Vulnerability Management und Next-Generation Firewalls"
+  }
+}

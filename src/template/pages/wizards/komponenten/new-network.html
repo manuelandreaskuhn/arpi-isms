@@ -1,9 +1,22 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Komponenten</p>
-    <i>›</i>
-    <p>Neues Netzwerk anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Komponenten</p>
+        <i>›</i>
+        <p>Neues Netzwerk anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neues Netzwerk anlegen</h1>
+            <p>Erfassen Sie die Details Ihres Netzwerks, um eine zentrale Übersicht Ihrer Netzwerk-Infrastruktur zu erhalten.</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newNetworkForm" class="btn-save" disabled>Speichern</button>
+        </div>
+    </div>
 </aside>
 
 <form id="newNetworkForm">
@@ -23,7 +36,7 @@
                         Netzwerk-Name <span class="required">*</span>
                         <span class="help-icon" data-tooltip="network-name">?</span>
                     </label>
-                    <input type="text" id="networkname" required placeholder="z.B. Prod-Network, VLAN-100-KIS">
+                    <input type="text" id="networkname" name="networkname" required placeholder="z.B. Prod-Network, VLAN-100-KIS">
                 </div>
                 <div class="form-group">
                     <label>
@@ -58,12 +71,12 @@
                         VLAN-ID
                         <span class="help-icon" data-tooltip="network-vlan-id">?</span>
                     </label>
-                    <input type="number" id="vlanid" placeholder="z.B. 100, 200">
+                    <input type="number" id="vlanid" name="vlanid" placeholder="z.B. 100, 200">
                     <div class="help-text">Falls zutreffend (bei VLAN-basierter Segmentierung)</div>
                 </div>
                 <div class="form-group">
                     <label>Standort</label>
-                    <input type="text" id="networklocation" placeholder="z.B. RZ1, Hauptgebäude, Cloud">
+                    <input type="text" id="networklocation" name="networklocation" placeholder="z.B. RZ1, Hauptgebäude, Cloud">
                 </div>
             </div>
         </div>
@@ -83,11 +96,11 @@
                         Netzwerk-Adresse (CIDR) <span class="required">*</span>
                         <span class="help-icon" data-tooltip="network-cidr">?</span>
                     </label>
-                    <input type="text" id="networkcidr" required placeholder="z.B. 192.168.100.0/24, 10.0.0.0/16">
+                    <input type="text" id="networkcidr" name="networkcidr" required placeholder="z.B. 192.168.100.0/24, 10.0.0.0/16">
                 </div>
                 <div class="form-group">
                     <label>Subnetz-Maske</label>
-                    <input type="text" id="subnetmask" placeholder="z.B. 255.255.255.0">
+                    <input type="text" id="subnetmask" name="subnetmask" placeholder="z.B. 255.255.255.0">
                 </div>
             </div>
 
@@ -97,22 +110,22 @@
                         Gateway / Router
                         <span class="help-icon" data-tooltip="network-gateway">?</span>
                     </label>
-                    <input type="text" id="gateway" placeholder="z.B. 192.168.100.1">
+                    <input type="text" id="gateway" name="gateway" placeholder="z.B. 192.168.100.1">
                 </div>
                 <div class="form-group">
                     <label>IP-Adressbereich (nutzbar)</label>
-                    <input type="text" id="iprange" placeholder="z.B. 192.168.100.10 - 192.168.100.254">
+                    <input type="text" id="iprange" name="iprange" placeholder="z.B. 192.168.100.10 - 192.168.100.254">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>DNS-Server (Primär)</label>
-                    <input type="text" id="dnsprimary" placeholder="z.B. 8.8.8.8, 192.168.1.10">
+                    <input type="text" id="dnsprimary" name="dnsprimary" placeholder="z.B. 8.8.8.8, 192.168.1.10">
                 </div>
                 <div class="form-group">
                     <label>DNS-Server (Sekundär)</label>
-                    <input type="text" id="dnssecondary" placeholder="z.B. 8.8.4.4, 192.168.1.11">
+                    <input type="text" id="dnssecondary" name="dnssecondary" placeholder="z.B. 8.8.4.4, 192.168.1.11">
                 </div>
             </div>
 
@@ -139,7 +152,7 @@
                 </div>
                 <div class="form-group">
                     <label>DHCP-Server</label>
-                    <input type="text" id="dhcpserver" placeholder="z.B. 192.168.100.1, dhcp-srv-01">
+                    <input type="text" id="dhcpserver" name="dhcpserver" placeholder="z.B. 192.168.100.1, dhcp-srv-01">
                 </div>
             </div>
 
@@ -149,11 +162,11 @@
                         DHCP-Pool (Start)
                         <span class="help-icon" data-tooltip="network-dhcp-pool">?</span>
                     </label>
-                    <input type="text" id="dhcpstart" placeholder="z.B. 192.168.100.100">
+                    <input type="text" id="dhcpstart" name="dhcpstart" placeholder="z.B. 192.168.100.100">
                 </div>
                 <div class="form-group">
                     <label>DHCP-Pool (Ende)</label>
-                    <input type="text" id="dhcpend" placeholder="z.B. 192.168.100.200">
+                    <input type="text" id="dhcpend" name="dhcpend" placeholder="z.B. 192.168.100.200">
                 </div>
             </div>
 
@@ -163,11 +176,11 @@
                         DHCP-Lease-Zeit
                         <span class="help-icon" data-tooltip="network-dhcp-lease">?</span>
                     </label>
-                    <input type="text" id="dhcplease" placeholder="z.B. 24h, 7d, 86400s">
+                    <input type="text" id="dhcplease" name="dhcplease" placeholder="z.B. 24h, 7d, 86400s">
                 </div>
                 <div class="form-group">
                     <label>DHCP-Reservierungen</label>
-                    <input type="text" id="dhcpreservations" placeholder="z.B. 10 reservierte IPs">
+                    <input type="text" id="dhcpreservations" name="dhcpreservations" placeholder="z.B. 10 reservierte IPs">
                     <div class="help-text">Anzahl oder Details zu DHCP-Reservierungen</div>
                 </div>
             </div>
@@ -268,7 +281,7 @@
 
             <div class="form-group">
                 <label>Verbundene Netzwerke / Routing</label>
-                <textarea id="connectednetworks" rows="2" placeholder="z.B. VLAN-200 (via FW), External Network (via Router), Storage-Network"></textarea>
+                <textarea id="connectednetworks" name="connectednetworks" rows="2" placeholder="z.B. VLAN-200 (via FW), External Network (via Router), Storage-Network"></textarea>
                 <div class="help-text">Welche anderen Netzwerke sind erreichbar?</div>
             </div>
         </div>
@@ -303,25 +316,25 @@
                 </div>
                 <div class="form-group" id="coreswitch-manual" style="display:none;">
                     <label>Core Switch (manuell)</label>
-                    <input type="text" id="coreswitch" placeholder="z.B. Core-SW-01, Core-SW-02 (HA)">
+                    <input type="text" id="coreswitch" name="coreswitch" placeholder="z.B. Core-SW-01, Core-SW-02 (HA)">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Distribution Switches</label>
-                    <input type="text" id="distributionswitch" placeholder="z.B. Dist-SW-01, Dist-SW-02">
+                    <input type="text" id="distributionswitch" name="distributionswitch" placeholder="z.B. Dist-SW-01, Dist-SW-02">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Access Switches</label>
-                    <input type="text" id="accessswitch" placeholder="z.B. Access-SW-Floor1, Access-SW-Floor2">
+                    <input type="text" id="accessswitch" name="accessswitch" placeholder="z.B. Access-SW-Floor1, Access-SW-Floor2">
                 </div>
                 <div class="form-group">
                     <label>Switch Management-IP</label>
-                    <input type="text" id="switchmgmtip" placeholder="z.B. 192.168.100.250, 10.0.0.10">
+                    <input type="text" id="switchmgmtip" name="switchmgmtip" placeholder="z.B. 192.168.100.250, 10.0.0.10">
                 </div>
             </div>
 
@@ -346,7 +359,7 @@
                 </div>
                 <div class="form-group" id="router-manual" style="display:none;">
                     <label>Router (manuell)</label>
-                    <input type="text" id="router" placeholder="z.B. Router-01, Core-L3-Switch">
+                    <input type="text" id="router" name="router" placeholder="z.B. Router-01, Core-L3-Switch">
                 </div>
             </div>
 
@@ -371,7 +384,7 @@
                 </div>
                 <div class="form-group" id="firewall-manual" style="display:none;">
                     <label>Firewall (manuell)</label>
-                    <input type="text" id="firewall" placeholder="z.B. FW-01, Perimeter-Firewall">
+                    <input type="text" id="firewall" name="firewall" placeholder="z.B. FW-01, Perimeter-Firewall">
                 </div>
             </div>
         </div>
@@ -409,7 +422,7 @@
                 </div>
                 <div class="form-group">
                     <label>RADIUS-Server</label>
-                    <input type="text" id="radiusserver" placeholder="z.B. radius.example.com, 192.168.1.50">
+                    <input type="text" id="radiusserver" name="radiusserver" placeholder="z.B. radius.example.com, 192.168.1.50">
                 </div>
             </div>
 
@@ -591,7 +604,7 @@
                 </div>
                 <div class="form-group">
                     <label>Network Monitoring Tool</label>
-                    <input type="text" id="monitoringtool" placeholder="z.B. PRTG, Nagios, Zabbix, SolarWinds">
+                    <input type="text" id="monitoringtool" name="monitoringtool" placeholder="z.B. PRTG, Nagios, Zabbix, SolarWinds">
                 </div>
             </div>
         </div>
@@ -666,18 +679,18 @@
                 </div>
                 <div class="form-group">
                     <label>VPN-Gateway</label>
-                    <input type="text" id="vpngateway" placeholder="z.B. vpn.example.com, 203.0.113.10">
+                    <input type="text" id="vpngateway" name="vpngateway" placeholder="z.B. vpn.example.com, 203.0.113.10">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>VPN-Pool (IP-Range)</label>
-                    <input type="text" id="vpnpool" placeholder="z.B. 10.8.0.0/24, 172.16.0.0/16">
+                    <input type="text" id="vpnpool" name="vpnpool" placeholder="z.B. 10.8.0.0/24, 172.16.0.0/16">
                 </div>
                 <div class="form-group">
                     <label>Max. VPN-Verbindungen</label>
-                    <input type="number" id="vpnmaxconnections" placeholder="z.B. 50, 100, 500">
+                    <input type="number" id="vpnmaxconnections" name="vpnmaxconnections" placeholder="z.B. 50, 100, 500">
                 </div>
             </div>
         </div>
@@ -778,7 +791,7 @@
 
             <div class="form-group">
                 <label>Uplink-Redundanz</label>
-                <input type="text" id="uplinkredundancy" placeholder="z.B. Dual Uplinks, Multi-Homing, 2x 10Gbit">
+                <input type="text" id="uplinkredundancy" name="uplinkredundancy" placeholder="z.B. Dual Uplinks, Multi-Homing, 2x 10Gbit">
             </div>
         </div>
     </div>
@@ -794,7 +807,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Bandbreite</label>
-                    <input type="text" id="bandwidth" placeholder="z.B. 1 Gbit/s, 10 Gbit/s, 100 Mbit/s">
+                    <input type="text" id="bandwidth" name="bandwidth" placeholder="z.B. 1 Gbit/s, 10 Gbit/s, 100 Mbit/s">
                 </div>
                 <div class="form-group">
                     <label>
@@ -858,7 +871,7 @@
 
             <div class="form-group">
                 <label>Priorisierte Dienste / Traffic-Klassen</label>
-                <textarea id="prioritizedservices" rows="2" placeholder="z.B. VoIP (EF), Video (AF4), Management (CS6), Best Effort"></textarea>
+                <textarea id="prioritizedservices" name="prioritizedservices" rows="2" placeholder="z.B. VoIP (EF), Video (AF4), Management (CS6), Best Effort"></textarea>
                 <div class="help-text">Welche Dienste/Protokolle werden priorisiert?</div>
             </div>
         </div>
@@ -895,14 +908,14 @@
                         IP-Adress-Management (IPAM)
                         <span class="help-icon" data-tooltip="network-ipam">?</span>
                     </label>
-                    <input type="text" id="ipam" placeholder="z.B. phpIPAM, NetBox, Excel">
+                    <input type="text" id="ipam" name="ipam" placeholder="z.B. phpIPAM, NetBox, Excel">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Letzte Netzwerk-Audit</label>
-                    <input type="text" id="lastaudit" placeholder="z.B. Q2 2024, 15.06.2024">
+                    <input type="text" id="lastaudit" name="lastaudit" placeholder="z.B. Q2 2024, 15.06.2024">
                 </div>
                 <div class="form-group">
                     <label>
@@ -911,19 +924,19 @@
                     </label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-pci" value="pci-dss">
+                            <input type="checkbox" id="comp-pci" name="compliance[]" value="pci-dss">
                             <label for="comp-pci">PCI DSS</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-hipaa" value="hipaa">
+                            <input type="checkbox" id="comp-hipaa" name="compliance[]" value="hipaa">
                             <label for="comp-hipaa">HIPAA</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-dsgvo" value="dsgvo">
+                            <input type="checkbox" id="comp-dsgvo" name="compliance[]" value="dsgvo">
                             <label for="comp-dsgvo">DSGVO</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-kritis" value="kritis">
+                            <input type="checkbox" id="comp-kritis" name="compliance[]" value="kritis">
                             <label for="comp-kritis">KRITIS</label>
                         </div>
                     </div>
@@ -943,11 +956,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Netzwerk-Administrator</label>
-                    <input type="text" id="networkadmin" placeholder="z.B. Network-Team, Max Mustermann">
+                    <input type="text" id="networkadmin" name="networkadmin" placeholder="z.B. Network-Team, Max Mustermann">
                 </div>
                 <div class="form-group">
                     <label>Support-Kontakt</label>
-                    <input type="text" id="networksupport" placeholder="z.B. network-support@example.com, Tel: +49...">
+                    <input type="text" id="networksupport" name="networksupport" placeholder="z.B. network-support@example.com, Tel: +49...">
                 </div>
             </div>
         </div>
@@ -966,7 +979,7 @@
                     Notizen / Netzwerk-Besonderheiten
                     <span class="help-icon" data-tooltip="network-notes">?</span>
                 </label>
-                <textarea id="networknotes" rows="4" placeholder="Zusätzliche Informationen zum Netzwerk, spezielle Konfigurationen, bekannte Probleme, geplante Änderungen..."></textarea>
+                <textarea id="networknotes" name="networknotes" rows="4" placeholder="Zusätzliche Informationen zum Netzwerk, spezielle Konfigurationen, bekannte Probleme, geplante Änderungen..."></textarea>
             </div>
         </div>
     </div>

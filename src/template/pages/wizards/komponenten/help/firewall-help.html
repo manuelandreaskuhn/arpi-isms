@@ -759,4 +759,402 @@
         </div>
         <em>Gute Firewall-Dokumentation ist Gold wert bei Notfällen!</em>
     </div>
+
+    <div data-tooltip-id="firewall-management-url">
+        <h2>Management-URL</h2>
+        <p>Die vollständige URL zur Web-Management-Konsole der Firewall.</p>
+        <div>
+            <h3>Format:</h3>
+            https://hostname-or-ip:port
+        </div>
+        <div>
+            <h3>Typische URLs:</h3>
+            <ul>
+                <li><strong>Palo Alto:</strong> https://fw-dmz-01.example.com (Port 443)</li>
+                <li><strong>Fortinet:</strong> https://192.168.10.1:443</li>
+                <li><strong>Check Point:</strong> https://fw.example.com:4434</li>
+                <li><strong>pfSense:</strong> https://192.168.1.1:443</li>
+                <li><strong>Sophos:</strong> https://fw.example.com:4444</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Sicherheit:</h3>
+            <ul>
+                <li>Immer HTTPS verwenden (nie HTTP!)</li>
+                <li>Nur über Management-VLAN erreichbar</li>
+                <li>Multi-Faktor-Authentifizierung aktivieren</li>
+                <li>Niemals direkt aus dem Internet erreichbar</li>
+                <li>VPN oder Jump-Host für Remote-Zugriff</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practice:</h3>
+            Verwenden Sie DNS-Namen statt IP-Adressen (einfacher bei IP-Änderungen)
+        </div>
+        <em>Management-URL ist der zentrale Zugriffspunkt für alle Firewall-Konfigurationen!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-rules">
+        <h2>Firewall-Regeln</h2>
+        <p>Die Sicherheitsrichtlinien, die den Traffic kontrollieren.</p>
+        <div>
+            <h3>Was sind Firewall-Regeln?</h3>
+            Anweisungen, die festlegen, welcher Traffic erlaubt oder blockiert wird.
+        </div>
+        <div>
+            <h3>Regel-Aufbau:</h3>
+            <ul>
+                <li><strong>Source:</strong> Woher kommt der Traffic? (IP, Netz, Zone)</li>
+                <li><strong>Destination:</strong> Wohin geht er? (IP, Netz, Zone)</li>
+                <li><strong>Service:</strong> Welcher Port/Protokoll? (HTTP, HTTPS, SSH, etc.)</li>
+                <li><strong>Action:</strong> Allow oder Deny?</li>
+                <li><strong>Logging:</strong> Wird die Verbindung geloggt?</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Regel-Reihenfolge:</h3>
+            <ul>
+                <li>Regeln werden von oben nach unten abgearbeitet</li>
+                <li>Erste passende Regel gewinnt</li>
+                <li>Letzte Regel: "Implicit Deny" (alles andere blockieren)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li><strong>Least Privilege:</strong> Nur das Nötigste erlauben</li>
+                <li><strong>Spezifisch:</strong> Keine "Any-Any-Allow" Regeln</li>
+                <li><strong>Dokumentiert:</strong> Jede Regel mit Kommentar (Warum? Für wen?)</li>
+                <li><strong>Regelmäßig aufräumen:</strong> Alte/ungenutzte Regeln löschen</li>
+                <li><strong>Change-Control:</strong> Änderungen nur über Ticket-System</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Typische Standard-Regeln:</h3>
+            <ul>
+                <li>Internal → Internet: HTTP/HTTPS erlauben</li>
+                <li>Internet → DMZ: Nur spezifische Ports (80, 443)</li>
+                <li>DMZ → Internal: BLOCKIERT (oder sehr restriktiv)</li>
+                <li>Management-VLAN → Firewall: SSH/HTTPS erlauben</li>
+                <li>Alle anderen: DENY (Implicit Deny)</li>
+            </ul>
+        </div>
+        <em>Firewall-Regeln sind das Herz der Firewall - falsche Regel = Sicherheitslücke!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-nat">
+        <h2>NAT (Network Address Translation)</h2>
+        <p>Übersetzung von IP-Adressen für Internet-Zugriff.</p>
+        <div>
+            <h3>Was ist NAT?</h3>
+            Private IPs (10.x, 192.168.x) können nicht direkt ins Internet - NAT übersetzt zu Public IP.
+        </div>
+        <div>
+            <h3>NAT-Typen:</h3>
+            <ul>
+                <li><strong>Source NAT (SNAT) / PAT:</strong>
+                    <ul>
+                        <li>Viele private IPs → eine Public IP</li>
+                        <li>Für ausgehenden Traffic (Clients → Internet)</li>
+                        <li>Port-basierte Unterscheidung</li>
+                        <li><em>Standard für Internet-Zugriff</em></li>
+                    </ul>
+                </li>
+                <li><strong>Destination NAT (DNAT):</strong>
+                    <ul>
+                        <li>Public IP → Private IP</li>
+                        <li>Für eingehenden Traffic (Internet → Server)</li>
+                        <li>Port-Forwarding</li>
+                        <li>Beispiel: Public 203.0.113.1:443 → DMZ 172.16.0.10:443</li>
+                    </ul>
+                </li>
+                <li><strong>1:1 NAT:</strong>
+                    <ul>
+                        <li>Jede Private IP bekommt eigene Public IP</li>
+                        <li>Für Server mit vielen Services</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Häufige NAT-Szenarien:</h3>
+            <ul>
+                <li>Interne Clients ins Internet (SNAT)</li>
+                <li>Webserver in DMZ von außen erreichbar (DNAT)</li>
+                <li>VPN-Clients Zugriff auf interne Ressourcen (SNAT)</li>
+            </ul>
+        </div>
+        <em>NAT ist essentiell - aber macht Troubleshooting komplexer!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-vpn">
+        <h2>VPN-Konfiguration</h2>
+        <p>Verschlüsselte Tunnel für sichere Remote-Verbindungen.</p>
+        <div>
+            <h3>VPN-Typen:</h3>
+            <ul>
+                <li><strong>Site-to-Site VPN:</strong>
+                    <ul>
+                        <li>Verbindet zwei Standorte (z.B. Hauptsitz ↔ Zweigstelle)</li>
+                        <li>IPsec-basiert</li>
+                        <li>Permanent aktiv</li>
+                        <li>Transparent für Benutzer</li>
+                    </ul>
+                </li>
+                <li><strong>Remote Access VPN (Client-VPN):</strong>
+                    <ul>
+                        <li>Einzelne Benutzer von außen</li>
+                        <li>SSL-VPN oder IPsec</li>
+                        <li>On-Demand (bei Bedarf)</li>
+                        <li>Für Home-Office, Dienstreisen</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>VPN-Protokolle:</h3>
+            <ul>
+                <li><strong>IPsec:</strong> Standard für Site-to-Site, sehr sicher</li>
+                <li><strong>SSL-VPN:</strong> Browser-basiert, einfach für Enduser</li>
+                <li><strong>WireGuard:</strong> Modern, sehr schnell, einfach</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Sicherheit:</h3>
+            <ul>
+                <li>Starke Verschlüsselung (AES-256)</li>
+                <li>Multi-Faktor-Authentifizierung für Remote-VPN</li>
+                <li>Split-Tunneling vermeiden (aller Traffic durch VPN)</li>
+                <li>Regelmäßige Credential-Rotation</li>
+            </ul>
+        </div>
+        <em>VPN ist kritisch im Healthcare - sichere Fernzugriffe für Ärzte!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-performance">
+        <h2>Performance & Kapazität</h2>
+        <p>Kann die Firewall den Traffic bewältigen?</p>
+        <div>
+            <h3>Performance-Metriken:</h3>
+            <ul>
+                <li><strong>Throughput:</strong>
+                    <ul>
+                        <li>Firewall-Durchsatz (Gbps)</li>
+                        <li>Muss größer sein als Ihre Bandbreite</li>
+                        <li>Mit IPS/Malware-Scan: 50-80% weniger!</li>
+                        <li>Beispiel: 1 Gbps Internet → 2-4 Gbps FW nötig</li>
+                    </ul>
+                </li>
+                <li><strong>Concurrent Sessions:</strong>
+                    <ul>
+                        <li>Gleichzeitige Verbindungen</li>
+                        <li>Jeder Client = viele Sessions (100+)</li>
+                        <li>Zu wenig = neue Verbindungen werden abgelehnt</li>
+                    </ul>
+                </li>
+                <li><strong>New Sessions/Second:</strong>
+                    <ul>
+                        <li>Wie schnell können neue Verbindungen aufgebaut werden?</li>
+                        <li>Wichtig bei vielen kurzen Verbindungen (Web-Browsing)</li>
+                    </ul>
+                </li>
+                <li><strong>Latency:</strong>
+                    <ul>
+                        <li>Verzögerung durch Firewall (< 10ms ideal)</li>
+                        <li>IPS/DPI erhöht Latency</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Performance-Killer:</h3>
+            <ul>
+                <li>SSL Inspection (CPU-intensiv)</li>
+                <li>Anti-Malware Scanning</li>
+                <li>IPS mit vielen Signaturen</li>
+                <li>Excessive Logging (All Traffic)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Monitoring:</h3>
+            Regelmäßig CPU, RAM, Session-Count überwachen - Überlastung vor Kapazitätsgrenze erkennen
+        </div>
+        <em>Unterdimensionierte Firewall = Performance-Probleme für alle!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-updates">
+        <h2>Updates & Patches</h2>
+        <p>Wie werden Firewall-Updates durchgeführt?</p>
+        <div>
+            <h3>Was muss aktualisiert werden:</h3>
+            <ul>
+                <li><strong>Firmware/OS:</strong> Basis-Software der Firewall</li>
+                <li><strong>Threat Signatures:</strong> IPS/Anti-Malware Signaturen (täglich!)</li>
+                <li><strong>URL-Filter DB:</strong> Kategorien-Datenbank</li>
+                <li><strong>Application Signatures:</strong> App-Erkennungs-DB</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Update-Frequenzen:</h3>
+            <ul>
+                <li><strong>Signaturen:</strong> Automatisch täglich (kritisch!)</li>
+                <li><strong>Minor Firmware:</strong> Quartalsweise</li>
+                <li><strong>Major Firmware:</strong> Jährlich (nach gründlichem Test)</li>
+                <li><strong>Security Patches:</strong> Sofort (nach kurzer Test-Phase)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Update-Prozess:</h3>
+            <ol>
+                <li>Config-Backup erstellen</li>
+                <li>Erst auf Standby-FW testen (HA)</li>
+                <li>Bei Erfolg: Auf Primary FW</li>
+                <li>Monitoring beobachten</li>
+                <li>Rollback-Plan bereithalten</li>
+            </ol>
+        </div>
+        <div>
+            <h3>Wartungsfenster:</h3>
+            Firmware-Updates erfordern meist Neustart - Wartungsfenster planen
+        </div>
+        <em>Veraltete Firewall = bekannte Sicherheitslücken = leichtes Ziel!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-backup">
+        <h2>Konfiguration-Backup</h2>
+        <p>Regelmäßige Sicherung der Firewall-Konfiguration.</p>
+        <div>
+            <h3>Warum Backup kritisch:</h3>
+            <ul>
+                <li>Hardware-Ausfall → Schneller Rebuild</li>
+                <li>Fehlkonfiguration → Rollback möglich</li>
+                <li>Compliance → Nachweis von Änderungen</li>
+                <li>Disaster Recovery</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Was sichern:</h3>
+            <ul>
+                <li>Komplette Konfiguration (Rules, NAT, VPN, etc.)</li>
+                <li>Zertifikate und Keys</li>
+                <li>Custom-Scripts</li>
+                <li>Dokumentation (Regel-Kommentare)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Backup-Strategien:</h3>
+            <ul>
+                <li><strong>Automatisch:</strong> Täglich via Script oder Backup-Software</li>
+                <li><strong>Manuell:</strong> Vor/Nach jeder Änderung</li>
+                <li><strong>Versionierung:</strong> Mehrere Backups aufbewahren (30 Tage)</li>
+                <li><strong>Offsite:</strong> Backup auch außerhalb Rechenzentrum</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Test:</h3>
+            Regelmäßig testen, ob Restore funktioniert (mindestens jährlich)
+        </div>
+        <em>Ohne Config-Backup: Bei Ausfall stundenlange Neu-Konfiguration!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-compliance">
+        <h2>Compliance & Audit</h2>
+        <p>Firewall-Anforderungen für Compliance.</p>
+        <div>
+            <h3>Relevante Standards:</h3>
+            <ul>
+                <li><strong>DSGVO:</strong>
+                    <ul>
+                        <li>Schutz personenbezogener Daten</li>
+                        <li>Logging und Monitoring erforderlich</li>
+                        <li>Dokumentation von Security-Maßnahmen</li>
+                    </ul>
+                </li>
+                <li><strong>KRITIS (Kritische Infrastrukturen):</strong>
+                    <ul>
+                        <li>Erhöhte Anforderungen für Krankenhäuser</li>
+                        <li>Stand der Technik erforderlich</li>
+                        <li>Regelmäßige Penetrationstests</li>
+                        <li>Incident-Response-Pläne</li>
+                    </ul>
+                </li>
+                <li><strong>ISO 27001:</strong>
+                    <ul>
+                        <li>Firewall als technische Maßnahme</li>
+                        <li>Dokumentation der Konfiguration</li>
+                        <li>Change-Management</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Audit-Anforderungen:</h3>
+            <ul>
+                <li>Dokumentation aller Firewall-Regeln (Zweck, Verantwortlicher)</li>
+                <li>Change-Log (Wer hat wann was geändert?)</li>
+                <li>Regelmäßige Rule-Reviews (mind. jährlich)</li>
+                <li>Log-Retention gemäß Vorgaben (meist 1 Jahr)</li>
+                <li>Regelmäßige Vulnerability-Scans</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>4-Augen-Prinzip für kritische Regel-Änderungen</li>
+                <li>Separation of Duties (Konfiguration ≠ Approval)</li>
+                <li>Dokumentierte Firewall-Policy</li>
+            </ul>
+        </div>
+        <em>Compliance ist nicht optional - Verstöße können teuer werden!</em>
+    </div>
+
+    <div data-tooltip-id="firewall-troubleshooting">
+        <h2>Troubleshooting</h2>
+        <p>Häufige Firewall-Probleme und Lösungen.</p>
+        <div>
+            <h3>Typische Probleme:</h3>
+            <ul>
+                <li><strong>Verbindung wird blockiert:</strong>
+                    <ul>
+                        <li>Check: Gibt es passende Allow-Regel?</li>
+                        <li>Check: Regel-Reihenfolge (frühere Deny-Regel?)</li>
+                        <li>Check: NAT korrekt konfiguriert?</li>
+                        <li>Tool: Packet Capture auf Firewall</li>
+                    </ul>
+                </li>
+                <li><strong>Performance-Probleme:</strong>
+                    <ul>
+                        <li>Check: CPU/RAM-Auslastung</li>
+                        <li>Check: Session-Count nahe am Limit?</li>
+                        <li>Check: Ist IPS/Malware-Scan zu aggressiv?</li>
+                        <li>Check: Logging zu verbose (All Traffic)?</li>
+                    </ul>
+                </li>
+                <li><strong>HA-Failover funktioniert nicht:</strong>
+                    <ul>
+                        <li>Check: HA-Heartbeat-Verbindung OK?</li>
+                        <li>Check: Beide FWs gleiche Software-Version?</li>
+                        <li>Check: Config-Sync aktiviert?</li>
+                    </ul>
+                </li>
+                <li><strong>VPN-Tunnel fällt ab:</strong>
+                    <ul>
+                        <li>Check: Phase 1 & 2 Parameter identisch?</li>
+                        <li>Check: NAT-Traversal aktiviert?</li>
+                        <li>Check: Idle-Timeout zu kurz?</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Troubleshooting-Tools:</h3>
+            <ul>
+                <li>Packet Capture (tcpdump auf Firewall)</li>
+                <li>Policy Lookup (Test-Regel vor Aktivierung)</li>
+                <li>Session Browser (aktive Verbindungen sehen)</li>
+                <li>Logs (immer zuerst in Logs schauen!)</li>
+            </ul>
+        </div>
+        <em>Bei Firewall-Problemen: Logs sind Ihr bester Freund!</em>
+    </div>
 </div>

@@ -1,0 +1,457 @@
+{
+  "vendorGateways": [
+    {
+      "id": "siemens-syngo",
+      "name": "Siemens syngo Gateway",
+      "category": "Vendor-Specific Gateway",
+      "vendor": "Siemens Healthineers",
+      "description": "Proprietäres Gateway für Siemens Medizingeräte (CT, MRT, Angiographie)",
+      "features": ["DICOM C-STORE", "Modality Worklist", "MPPS", "Storage Commitment", "proprietary protocols"],
+      "platforms": ["Windows", "Linux", "Appliance"],
+      "licenseModel": ["Bundled with Device", "Per Device"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:siemens:syngo_gateway:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "ge-pacs-gateway",
+      "name": "GE PACS Gateway",
+      "vendor": "GE Healthcare",
+      "category": "Vendor-Specific Gateway",
+      "description": "GE's Gateway für Modalitäten-Integration (Discovery, Revolution, etc.)",
+      "features": ["DICOM Gateway", "Modality Worklist", "GE proprietary protocols"],
+      "platforms": ["Windows", "Appliance"],
+      "licenseModel": ["Bundled with Device"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:ge:pacs_gateway:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "philips-intellibridge",
+      "name": "Philips IntelliBridge",
+      "vendor": "Philips Healthcare",
+      "category": "Vendor-Specific Gateway",
+      "description": "Philips Enterprise Connectivity Gateway für alle Philips-Modalitäten",
+      "features": ["DICOM", "HL7", "Multi-Vendor Support", "Protocol Conversion"],
+      "platforms": ["Windows", "Virtual Appliance"],
+      "licenseModel": ["Per Device", "Enterprise License"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:philips:intellibridge:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "canon-vital-link",
+      "name": "Canon Vital Link",
+      "vendor": "Canon Medical Systems",
+      "category": "Vendor-Specific Gateway",
+      "description": "Canon's Connectivity Gateway (ehemals Toshiba)",
+      "features": ["DICOM", "HL7", "Canon proprietary protocols"],
+      "platforms": ["Windows"],
+      "licenseModel": ["Bundled with Device"],
+      "status": "Active",
+      "cpe": []
+    },
+    {
+      "id": "agfa-impax-gateway",
+      "name": "Agfa IMPAX Gateway",
+      "vendor": "Agfa Healthcare",
+      "category": "Vendor-Specific Gateway",
+      "description": "Agfa's Integration Gateway für IMPAX PACS",
+      "features": ["DICOM Router", "HL7 Interface", "Modality Worklist"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Per Device", "Subscription"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:agfa:impax_gateway:*:*:*:*:*:*:*:*"]
+    }
+  ],
+  "dicomGateways": [
+    {
+      "id": "laurelbridge",
+      "name": "Laurel Bridge DICOM Gateway",
+      "category": "Universal DICOM Gateway",
+      "vendor": "Laurel Bridge Software",
+      "description": "Universal DICOM Connectivity Toolkit - herstellerunabhängig",
+      "features": ["DICOM Routing", "Protocol Conversion", "Modality Worklist", "Image Processing"],
+      "platforms": ["Windows", "Linux", "Docker"],
+      "licenseModel": ["Per Modality", "Enterprise License"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:laurelbridge:dicom_gateway:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "pacsgear",
+      "name": "PACSGear DICOM Router",
+      "category": "Universal DICOM Gateway",
+      "vendor": "PACSGear",
+      "description": "DICOM Routing und Protocol Conversion",
+      "features": ["DICOM C-STORE", "Query/Retrieve", "Modality Worklist", "Routing Rules"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Per Modality"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:pacsgear:router:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "imaging-biometrics",
+      "name": "Imaging Biometrics DICOM Gateway",
+      "category": "Universal DICOM Gateway",
+      "vendor": "Imaging Biometrics",
+      "description": "DICOM Gateway mit erweiterten Bildverarbeitungs-Features",
+      "features": ["DICOM Routing", "Image Anonymization", "DICOM Repair"],
+      "platforms": ["Windows"],
+      "licenseModel": ["Subscription"],
+      "status": "Active",
+      "cpe": []
+    },
+    {
+      "id": "dcm4chee",
+      "name": "dcm4chee DICOM Archive",
+      "category": "Open Source DICOM",
+      "vendor": "dcm4che (Open Source)",
+      "description": "Open-Source DICOM Archive und Gateway (Java-basiert)",
+      "features": ["DICOM Archive", "Query/Retrieve", "WADO", "XDS-I", "HL7 ADT"],
+      "platforms": ["Windows", "Linux", "Docker"],
+      "licenseModel": ["Open Source (MPL/GPL)"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:dcm4che:dcm4chee:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "orthanc",
+      "name": "Orthanc DICOM Server",
+      "category": "Open Source DICOM",
+      "vendor": "Open Source",
+      "description": "Leichtgewichtiger Open-Source DICOM Server (C++ basiert)",
+      "features": ["DICOM Store", "Query/Retrieve", "WADO", "REST API", "Plugins"],
+      "platforms": ["Windows", "Linux", "macOS", "Docker"],
+      "licenseModel": ["Open Source (GPL)"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:orthanc-server:orthanc:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "conquest",
+      "name": "Conquest DICOM Server",
+      "category": "Open Source DICOM",
+      "vendor": "Open Source",
+      "description": "Einfacher Open-Source DICOM Server (Legacy, aber robust)",
+      "features": ["DICOM Store", "Query/Retrieve", "Basic Routing"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Open Source"],
+      "status": "Active",
+      "cpe": []
+    }
+  ],
+  "hl7Interfaces": [
+    {
+      "id": "mirth-connect",
+      "name": "Mirth Connect / NextGen Connect",
+      "category": "Open Source Integration Engine",
+      "vendor": "NextGen Healthcare",
+      "description": "Marktführende Open-Source Healthcare Integration Engine",
+      "features": ["HL7 v2.x", "FHIR", "DICOM", "X12", "Channel-based", "JavaScript Transformations"],
+      "platforms": ["Windows", "Linux", "Docker"],
+      "licenseModel": ["Open Source (MPL 1.1)", "Enterprise Edition"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:nextgen:connect:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:nextgen:mirth_connect:*:*:*:*:*:*:*:*",
+        "cpe:/a:mirthcorp:mirth_connect"
+      ]
+    },
+    {
+      "id": "lyniate-rhapsody",
+      "name": "Lyniate Rhapsody Integration Engine",
+      "category": "Enterprise Integration Engine",
+      "vendor": "Lyniate (Orion Health)",
+      "description": "Enterprise-Grade Interface Engine mit High Availability",
+      "features": ["HL7 v2/v3", "FHIR", "DICOM", "X12", "HA Clustering", "Web IDE"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Per CPU", "Per Message Volume"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:orionhealth:rhapsody:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:lyniate:rhapsody:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "intersystems-healthshare",
+      "name": "InterSystems HealthShare",
+      "category": "Enterprise Integration Platform",
+      "vendor": "InterSystems",
+      "description": "Umfassende Healthcare-Plattform mit Integration Engine",
+      "features": ["HL7", "FHIR", "DICOM", "CDA", "IRIS Database", "BPM"],
+      "platforms": ["Windows", "Linux", "Unix"],
+      "licenseModel": ["Commercial", "Bundle"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:intersystems:healthshare:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:intersystems:ensemble:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "corepoint",
+      "name": "Corepoint Integration Engine",
+      "category": "Cloud Integration Engine",
+      "vendor": "Corepoint Health",
+      "description": "Cloud-native Integration Platform mit SaaS-Option",
+      "features": ["HL7 v2.x", "FHIR", "REST", "Cloud-based", "SaaS"],
+      "platforms": ["Windows", "Linux", "Cloud"],
+      "licenseModel": ["SaaS", "On-Premise"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:corepoint:integration_engine:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:hqm:corepoint:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "infor-cloverleaf",
+      "name": "Infor Cloverleaf",
+      "category": "Legacy Integration Engine",
+      "vendor": "Infor",
+      "description": "Legacy Interface Engine (seit 1991, Tcl-basiert)",
+      "features": ["HL7 v2.x", "X12", "DICOM", "Tcl scripting"],
+      "platforms": ["Windows", "Linux", "Unix", "AIX"],
+      "licenseModel": ["Perpetual", "Subscription"],
+      "status": "Active",
+      "cpe": [
+        "cpe:2.3:a:infor:cloverleaf:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:infor:cloverleaf_integration_suite:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "interfaceware-iguana",
+      "name": "Interfaceware Iguana",
+      "category": "Commercial Integration Engine",
+      "vendor": "Interfaceware",
+      "description": "Benutzerfreundliche Interface Engine mit Lua-Scripting",
+      "features": ["HL7 v2.x", "FHIR", "Lua scripting", "Live Data Mapping"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Per Server"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:interfaceware:iguana:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "qvera-qie",
+      "name": "Qvera Interface Engine (QIE)",
+      "category": "Commercial Integration Engine",
+      "vendor": "Qvera",
+      "description": "Kosteneffiziente Interface Engine für SMB",
+      "features": ["HL7 v2.x", "FHIR", "Flat-Fee Licensing"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Flat-Fee"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:qvera:interface_engine:*:*:*:*:*:*:*:*"]
+    }
+  ],
+  "integrationEngines": [
+    {
+      "id": "intersystems-iris-health",
+      "name": "InterSystems IRIS for Health",
+      "category": "Enterprise Healthcare Platform",
+      "vendor": "InterSystems",
+      "description": "Moderne Healthcare-Plattform (Nachfolger von Ensemble)",
+      "features": ["HL7", "FHIR Server", "DICOM", "Interoperability", "IRIS Database"],
+      "platforms": ["Windows", "Linux", "Docker", "Cloud"],
+      "licenseModel": ["Commercial", "Cloud Subscription"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:intersystems:iris_for_health:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "microsoft-biztalk-healthcare",
+      "name": "Microsoft BizTalk Server Healthcare Accelerator",
+      "category": "Enterprise Integration",
+      "vendor": "Microsoft",
+      "description": "BizTalk mit Healthcare Accelerator für HL7/X12",
+      "features": ["HL7 v2.x", "X12", "BizTalk Orchestration", "Windows Integration"],
+      "platforms": ["Windows Server"],
+      "licenseModel": ["BizTalk Server License"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:microsoft:biztalk_server:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "tibco-healthcare",
+      "name": "TIBCO Healthcare Integration",
+      "category": "Enterprise Integration",
+      "vendor": "TIBCO Software",
+      "description": "TIBCO ESB mit Healthcare-Capabilities",
+      "features": ["HL7", "FHIR", "ESB", "Messaging"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Enterprise License"],
+      "status": "Active",
+      "cpe": []
+    },
+    {
+      "id": "redox",
+      "name": "Redox Engine",
+      "category": "Cloud Integration Platform",
+      "vendor": "Redox",
+      "description": "Cloud-native Healthcare Integration Platform (SaaS)",
+      "features": ["FHIR", "HL7", "API Gateway", "Cloud-based", "Pre-built Connections"],
+      "platforms": ["Cloud (SaaS)"],
+      "licenseModel": ["SaaS Subscription"],
+      "status": "Active",
+      "cpe": []
+    }
+  ],
+  "protocolConverters": [
+    {
+      "id": "moxa-nport",
+      "name": "Moxa NPort Serial Device Server",
+      "category": "Serial-to-IP Converter",
+      "vendor": "Moxa",
+      "description": "Industrielle Serial Device Server (RS-232/422/485 → Ethernet)",
+      "features": ["Serial to IP", "TCP/UDP", "Modbus Gateway", "Industrial Grade"],
+      "platforms": ["Hardware Appliance"],
+      "licenseModel": ["Hardware Purchase"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:h:moxa:nport_*:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "digi-portserver",
+      "name": "Digi PortServer",
+      "category": "Serial-to-IP Converter",
+      "vendor": "Digi International",
+      "description": "Enterprise Serial Device Server",
+      "features": ["Serial to IP", "Multi-Port", "RealPort Driver"],
+      "platforms": ["Hardware Appliance"],
+      "licenseModel": ["Hardware Purchase"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:h:digi:portserver:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "perle-iolan",
+      "name": "Perle IOLAN Device Server",
+      "category": "Serial-to-IP Converter",
+      "vendor": "Perle Systems",
+      "description": "Serial-to-Ethernet Device Server",
+      "features": ["Serial to IP", "SNMP Monitoring", "SSL/TLS"],
+      "platforms": ["Hardware Appliance"],
+      "licenseModel": ["Hardware Purchase"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:h:perle:iolan:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "lantronix-xport",
+      "name": "Lantronix XPort",
+      "category": "Embedded Serial-to-IP",
+      "vendor": "Lantronix",
+      "description": "Embedded Device Server (klein, für Integration in Geräte)",
+      "features": ["Serial to IP", "Embedded Module", "Compact"],
+      "platforms": ["Embedded Module"],
+      "licenseModel": ["Hardware Purchase"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:h:lantronix:xport:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "startech-serial-ip",
+      "name": "StarTech Serial to IP Converter",
+      "category": "Serial-to-IP Converter",
+      "vendor": "StarTech",
+      "description": "Budget-freundliche Serial Device Server",
+      "features": ["Serial to IP", "Basic Features"],
+      "platforms": ["Hardware Appliance"],
+      "licenseModel": ["Hardware Purchase"],
+      "status": "Active",
+      "cpe": []
+    }
+  ],
+  "messageBrokers": [
+    {
+      "id": "apache-kafka",
+      "name": "Apache Kafka",
+      "category": "Distributed Streaming Platform",
+      "vendor": "Apache Software Foundation",
+      "description": "High-Throughput Distributed Messaging (zunehmend in Healthcare für FHIR-Events)",
+      "features": ["Publish/Subscribe", "High Throughput", "Distributed", "Stream Processing"],
+      "platforms": ["Linux", "Windows", "Docker", "Kubernetes"],
+      "licenseModel": ["Open Source (Apache 2.0)"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:apache:kafka:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "rabbitmq",
+      "name": "RabbitMQ",
+      "category": "Message Broker",
+      "vendor": "Pivotal / VMware",
+      "description": "AMQP Message Broker (für asynchrone Healthcare-Integration)",
+      "features": ["AMQP", "Publish/Subscribe", "Message Queue", "Federation"],
+      "platforms": ["Linux", "Windows", "Docker"],
+      "licenseModel": ["Open Source (MPL)"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:pivotal_software:rabbitmq:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "ibm-mq",
+      "name": "IBM MQ (formerly WebSphere MQ)",
+      "category": "Enterprise Message Broker",
+      "vendor": "IBM",
+      "description": "Enterprise Message Queue (teuer, aber sehr robust)",
+      "features": ["MQ", "Guaranteed Delivery", "Enterprise Grade", "High Availability"],
+      "platforms": ["Windows", "Linux", "Unix", "z/OS"],
+      "licenseModel": ["Commercial"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:ibm:mq:*:*:*:*:*:*:*:*"]
+    },
+    {
+      "id": "azure-service-bus",
+      "name": "Azure Service Bus",
+      "category": "Cloud Message Broker",
+      "vendor": "Microsoft",
+      "description": "Azure Cloud Messaging (für Cloud-Healthcare-Architekturen)",
+      "features": ["Cloud-based", "Topics/Queues", "AMQP", "Azure Integration"],
+      "platforms": ["Azure Cloud"],
+      "licenseModel": ["Pay-as-you-go"],
+      "status": "Active",
+      "cpe": []
+    },
+    {
+      "id": "aws-sqs",
+      "name": "AWS SQS (Simple Queue Service)",
+      "category": "Cloud Message Broker",
+      "vendor": "Amazon",
+      "description": "AWS Managed Message Queue",
+      "features": ["Cloud-based", "Fully Managed", "Scalable", "AWS Integration"],
+      "platforms": ["AWS Cloud"],
+      "licenseModel": ["Pay-as-you-go"],
+      "status": "Active",
+      "cpe": []
+    },
+    {
+      "id": "redis",
+      "name": "Redis (as Message Broker)",
+      "category": "In-Memory Message Broker",
+      "vendor": "Redis Labs",
+      "description": "In-Memory Datenbank mit Pub/Sub (für Low-Latency-Healthcare-Messaging)",
+      "features": ["Pub/Sub", "Low Latency", "In-Memory", "Lightweight"],
+      "platforms": ["Linux", "Windows", "Docker"],
+      "licenseModel": ["Open Source (BSD)", "Enterprise"],
+      "status": "Active",
+      "cpe": ["cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*"]
+    }
+  ],
+  "other": [
+    {
+      "id": "custom",
+      "name": "Eigenentwicklung",
+      "category": "Custom",
+      "vendor": "Intern",
+      "description": "Selbst entwickelte Gateway-Lösung",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "status": "Active",
+      "cpe": []
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "description": "Andere spezialisierte Gateway-Lösungen",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "status": "Active",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "2.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Medizingeräte-Gateway Software nach Kategorien gruppiert mit konkreten Produkten und CPE-Identifikatoren"
+  }
+}

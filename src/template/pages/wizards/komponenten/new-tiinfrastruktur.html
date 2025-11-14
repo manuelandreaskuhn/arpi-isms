@@ -1,9 +1,22 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Komponenten</p>
-    <i>›</i>
-    <p>Neue TI-Infrastruktur anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Komponenten</p>
+        <i>›</i>
+        <p>Neue TI-Infrastruktur anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neue TI-Infrastruktur anlegen</h1>
+            <p>Erfassen Sie die Details Ihrer TI-Infrastruktur, um eine zentrale Übersicht Ihrer Telematikinfrastruktur zu erhalten.</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newTIInfrastrukturForm" class="btn-save" disabled>Speichern</button>
+        </div>
+    </div>
 </aside>
 
 <form id="newTIInfrastrukturForm">
@@ -23,17 +36,17 @@
                         TI-Infrastruktur Name <span class="required">*</span>
                         <span class="help-icon" data-tooltip="ti-name">?</span>
                     </label>
-                    <input type="text" id="tiname" required placeholder="z.B. TI-Anbindung-Hauptstandort, TI-Praxis-01">
+                    <input type="text" id="name" name="name" required placeholder="z.B. TI-Anbindung-Hauptstandort, TI-Praxis-01">
                 </div>
                 <div class="form-group">
                     <label>Standort</label>
-                    <input type="text" id="tilocation" placeholder="z.B. Hauptgebäude, Praxis, MVZ">
+                    <input type="text" id="location" name="location" placeholder="z.B. Hauptgebäude, Praxis, MVZ">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Beschreibung</label>
-                <textarea id="tidescription" rows="2" placeholder="Kurze Beschreibung der TI-Anbindung und ihres Zwecks..."></textarea>
+                <textarea id="description" name="description" rows="2" placeholder="Kurze Beschreibung der TI-Anbindung und ihres Zwecks..."></textarea>
             </div>
         </div>
     </div>
@@ -70,7 +83,7 @@
                 </div>
                 <div class="form-group">
                     <label>Konnektor-Modell</label>
-                    <input type="text" id="konnektormodel" placeholder="z.B. Secunet SINA, eHealth-Konnektor">
+                    <input type="text" id="konnektormodel" name="konnektormodel" placeholder="z.B. Secunet SINA, eHealth-Konnektor">
                 </div>
             </div>
 
@@ -80,22 +93,22 @@
                         Firmware-Version
                         <span class="help-icon" data-tooltip="ti-konnektor-firmware">?</span>
                     </label>
-                    <input type="text" id="konnektorfirmware" placeholder="z.B. 5.2.1, 2024-Q2">
+                    <input type="text" id="konnektorfirmware" name="konnektorfirmware" placeholder="z.B. 5.2.1, 2024-Q2">
                 </div>
                 <div class="form-group">
                     <label>Serial Number</label>
-                    <input type="text" id="konnektorserial" placeholder="z.B. KON-2024-001234">
+                    <input type="text" id="konnektorserial" name="konnektorserial" placeholder="z.B. KON-2024-001234">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Hostname / IP-Adresse</label>
-                    <input type="text" id="konnektorip" placeholder="z.B. konnektor-01.local, 192.168.100.10">
+                    <input type="text" id="konnektorip" name="konnektorip" placeholder="z.B. konnektor-01.local, 192.168.100.10">
                 </div>
                 <div class="form-group">
                     <label>Management-URL</label>
-                    <input type="text" id="konnektorurl" placeholder="z.B. https://konnektor-01.local:8443">
+                    <input type="text" id="konnektorurl" name="konnektorurl" placeholder="z.B. https://konnektor-01.local:8443">
                 </div>
             </div>
         </div>
@@ -132,18 +145,18 @@
                 </div>
                 <div class="form-group">
                     <label>Provider</label>
-                    <input type="text" id="tiprovider" placeholder="z.B. Telekom, 1&1, Vodafone">
+                    <input type="text" id="tiprovider" name="tiprovider" placeholder="z.B. Telekom, 1&1, Vodafone">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Bandwidth</label>
-                    <input type="text" id="tibandwidth" placeholder="z.B. 100 Mbit/s, 1 Gbit/s">
+                    <input type="text" id="tibandwidth" name="tibandwidth" placeholder="z.B. 100 Mbit/s, 1 Gbit/s">
                 </div>
                 <div class="form-group">
                     <label>Netzwerk-Segment</label>
-                    <input type="text" id="tinetworksegment" placeholder="z.B. VLAN 100, 10.200.0.0/24">
+                    <input type="text" id="tinetworksegment" name="tinetworksegment" placeholder="z.B. VLAN 100, 10.200.0.0/24">
                 </div>
             </div>
         </div>
@@ -181,18 +194,18 @@
                 </div>
                 <div class="form-group">
                     <label>ICCSN (Kartennummer)</label>
-                    <input type="text" id="smcbiccsn" placeholder="z.B. 80276...">
+                    <input type="text" id="smcbiccsn" name="smcbiccsn" placeholder="z.B. 80276...">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Gültig bis</label>
-                    <input type="text" id="smcbvalid" placeholder="z.B. 31.12.2025">
+                    <input type="text" id="smcbvalid" name="smcbvalid" placeholder="z.B. 31.12.2025">
                 </div>
                 <div class="form-group">
                     <label>Kartenleser</label>
-                    <input type="text" id="cardreader" placeholder="z.B. Cherry ST-2000, Reiner SCT">
+                    <input type="text" id="cardreader" name="cardreader" placeholder="z.B. Cherry ST-2000, Reiner SCT">
                 </div>
             </div>
         </div>
@@ -212,39 +225,39 @@
             </label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-kim" name="tifachdienste" value="kim">
+                    <input type="checkbox" id="ti-kim" name="tifachdienste[]" value="kim">
                     <label for="ti-kim">KIM (Kommunikation im Medizinwesen)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-erezept" name="tifachdienste" value="erezept">
+                    <input type="checkbox" id="ti-erezept" name="tifachdienste[]" value="erezept">
                     <label for="ti-erezept">E-Rezept</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-epa" name="tifachdienste" value="epa">
+                    <input type="checkbox" id="ti-epa" name="tifachdienste[]" value="epa">
                     <label for="ti-epa">ePA (elektronische Patientenakte)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-nfdm" name="tifachdienste" value="nfdm">
+                    <input type="checkbox" id="ti-nfdm" name="tifachdienste[]" value="nfdm">
                     <label for="ti-nfdm">NFDM (Notfalldatenmanagement)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-vsdm" name="tifachdienste" value="vsdm">
+                    <input type="checkbox" id="ti-vsdm" name="tifachdienste[]" value="vsdm">
                     <label for="ti-vsdm">VSDM (Versichertenstammdaten)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-vsdd" name="tifachdienste" value="vsdd">
+                    <input type="checkbox" id="ti-vsdd" name="tifachdienste[]" value="vsdd">
                     <label for="ti-vsdd">VSDD (Versichertenstammdaten-Dienst)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-tisqsig" name="tifachdienste" value="tisqsig">
+                    <input type="checkbox" id="ti-tisqsig" name="tifachdienste[]" value="tisqsig">
                     <label for="ti-tisqsig">TI-SQSig (Qualifizierte Signatur)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-eml" name="tifachdienste" value="eml">
+                    <input type="checkbox" id="ti-eml" name="tifachdienste[]" value="eml">
                     <label for="ti-eml">eML (elektronischer Medikationsplan)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="ti-eau" name="tifachdienste" value="eau">
+                    <input type="checkbox" id="ti-eau" name="tifachdienste[]" value="eau">
                     <label for="ti-eau">eAU (elektronische Arbeitsunfähigkeitsbescheinigung)</label>
                 </div>
             </div>
@@ -282,7 +295,7 @@
                 </div>
                 <div class="form-group">
                     <label>Letzte Sicherheitsprüfung</label>
-                    <input type="text" id="tilastsecuritycheck" placeholder="z.B. Q3 2024, 15.09.2024">
+                    <input type="text" id="tilastsecuritycheck" name="tilastsecuritycheck" placeholder="z.B. Q3 2024, 15.09.2024">
                 </div>
             </div>
 
@@ -310,7 +323,7 @@
                 </div>
                 <div class="form-group">
                     <label>Zulassungsnummer / Zertifikat</label>
-                    <input type="text" id="tizulassungsnummer" placeholder="z.B. P14-0123-2024">
+                    <input type="text" id="tizulassungsnummer" name="tizulassungsnummer" placeholder="z.B. P14-0123-2024">
                 </div>
             </div>
         </div>
@@ -330,20 +343,20 @@
                         TI-Verantwortlicher
                         <span class="help-icon" data-tooltip="ti-verantwortlicher">?</span>
                     </label>
-                    <input type="text" id="tiverantwortlicher" placeholder="z.B. Dr. Müller, IT-Abteilung">
+                    <input type="text" id="tiverantwortlicher" name="tiverantwortlicher" placeholder="z.B. Dr. Müller, IT-Abteilung">
                 </div>
                 <div class="form-group">
                     <label>
                         TI-Support / Dienstleister
                         <span class="help-icon" data-tooltip="ti-support">?</span>
                     </label>
-                    <input type="text" id="tisupport" placeholder="z.B. TI-Dienstleister, KV-Support">
+                    <input type="text" id="tisupport" name="tisupport" placeholder="z.B. TI-Dienstleister, KV-Support">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Support-Vertrag / SLA</label>
-                <input type="text" id="tisupportcontract" placeholder="z.B. 8/5 Support, 24/7 Hotline">
+                <input type="text" id="tisupportcontract" name="tisupportcontract" placeholder="z.B. 8/5 Support, 24/7 Hotline">
             </div>
         </div>
     </div>
@@ -361,7 +374,7 @@
                     Notizen / TI-Besonderheiten
                     <span class="help-icon" data-tooltip="ti-notes">?</span>
                 </label>
-                <textarea id="tinotes" rows="4" placeholder="Zusätzliche Informationen zur TI-Infrastruktur, bekannte Probleme, Besonderheiten, Wartungsfenster..."></textarea>
+                <textarea id="tinotes" name="tinotes" rows="4" placeholder="Zusätzliche Informationen zur TI-Infrastruktur, bekannte Probleme, Besonderheiten, Wartungsfenster..."></textarea>
             </div>
         </div>
     </div>

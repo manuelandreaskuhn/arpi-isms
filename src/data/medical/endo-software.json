@@ -1,0 +1,285 @@
+{
+  "id": "endoscopy-documentation-systems",
+  "name": "Endoskopie-Dokumentationssystem",
+  "description": "Systeme für endoskopische Befundung, Bilddokumentation und Qualitätssicherung",
+  "software": [
+    {
+      "id": "nexus-endoscopy",
+      "name": "Nexus / Endoscopy",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Endoskopie-Dokumentationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Befunddokumentation",
+        "Bildverwaltung",
+        "Video-Aufzeichnung",
+        "Strukturierte Vorlagen",
+        "Qualitätssicherung",
+        "KIS-Integration",
+        "DICOM-Unterstützung",
+        "Hygiene-Management"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Endoskopie-Assistenz", "Pflege"],
+      "departments": ["Endoskopie", "Gastroenterologie", "Chirurgie", "Pneumologie"]
+    },
+    {
+      "id": "olympus-endobase",
+      "name": "Endobase",
+      "vendor": "Olympus",
+      "website": "https://www.olympus.de/",
+      "description": "Endoskopie-Informations- und Dokumentationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Patientenverwaltung",
+        "Bild- und Videodokumentation",
+        "Befunderstellung",
+        "Geräteanbindung Olympus",
+        "Terminplanung",
+        "Aufbereitungsdokumentation",
+        "Statistik und Reporting"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Endoskopie-Assistenz"],
+      "departments": ["Endoskopie", "Gastroenterologie"]
+    },
+    {
+      "id": "richard-wolf-endomanager",
+      "name": "EndoManager",
+      "vendor": "Richard Wolf",
+      "website": "https://www.richard-wolf.com/",
+      "description": "Endoskopie-Dokumentation und Bildverwaltung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Bilddokumentation",
+        "Videomanagement",
+        "Befunderstellung",
+        "Gerätesteuerung",
+        "Archivierung",
+        "DICOM-Export"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "OP-Personal"],
+      "departments": ["Endoskopie", "OP", "Urologie", "Gynäkologie"]
+    },
+    {
+      "id": "medavis-gidoc",
+      "name": "GiDoc",
+      "vendor": "medavis",
+      "website": "https://www.medavis.de/",
+      "description": "Gastrointestinale Endoskopie-Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Strukturierte Befundung",
+        "Bildarchivierung",
+        "Polypen-Management",
+        "Qualitätsindikatoren",
+        "Koloskopie-Screening",
+        "KIS/RIS-Anbindung",
+        "Labor-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Gastroenterologen"],
+      "departments": ["Endoskopie", "Gastroenterologie"]
+    },
+    {
+      "id": "pentax-digestview",
+      "name": "DigestView",
+      "vendor": "Pentax Medical",
+      "website": "https://www.pentaxmedical.com/",
+      "description": "Endoskopie-Dokumentationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Bild- und Videoverwaltung",
+        "Befunddokumentation",
+        "Geräteanbindung",
+        "DICOM-Schnittstelle",
+        "Reporting"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Endoskopie-Assistenz"],
+      "departments": ["Endoskopie", "Gastroenterologie"]
+    },
+    {
+      "id": "fujifilm-nextera",
+      "name": "Nextera",
+      "vendor": "Fujifilm",
+      "website": "https://www.fujifilm.com/",
+      "description": "Endoskopie-Bildmanagement und Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Bildmanagement",
+        "Video-Recording",
+        "Befunderstellung",
+        "DICOM-Unterstützung",
+        "Cloud-Integration",
+        "AI-gestützte Analyse",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Endoskopie-Assistenz"],
+      "departments": ["Endoskopie", "Gastroenterologie"]
+    },
+    {
+      "id": "karl-storz-aida",
+      "name": "AIDA",
+      "vendor": "Karl Storz",
+      "website": "https://www.karlstorz.com/",
+      "description": "OP- und Endoskopie-Dokumentationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro OP/Endoskopie-Einheit",
+      "features": [
+        "Video-Dokumentation",
+        "Bildarchivierung",
+        "OP-Aufzeichnung",
+        "Geräteintegration",
+        "DICOM-Export",
+        "Streaming",
+        "Cloud-Backup"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "OP-Personal", "Endoskopie-Assistenz"],
+      "departments": ["Endoskopie", "OP", "HNO", "Urologie", "Gynäkologie"]
+    },
+    {
+      "id": "stryker-sdi",
+      "name": "SDI (Surgical Documentation & Information)",
+      "vendor": "Stryker",
+      "website": "https://www.stryker.com/",
+      "description": "OP- und Endoskopie-Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro OP-Einheit",
+      "features": [
+        "OP-Video-Dokumentation",
+        "Bildmanagement",
+        "Live-Streaming",
+        "DICOM-Integration",
+        "Archivierung"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "OP-Personal"],
+      "departments": ["OP", "Endoskopie", "Arthroskopie"]
+    },
+    {
+      "id": "endosoft-software",
+      "name": "EndoSoft",
+      "vendor": "EndoSoft GmbH",
+      "website": "https://www.endosoft.de/",
+      "description": "Endoskopie-Dokumentations- und Praxissoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Befunddokumentation",
+        "Bildverwaltung",
+        "Terminplanung",
+        "Abrechnung",
+        "Qualitätssicherung",
+        "Geräteaufbereitung",
+        "Labor-Schnittstelle"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Endoskopie-Assistenz", "Verwaltung"],
+      "departments": ["Endoskopie", "Gastroenterologie", "Ambulanz"]
+    },
+    {
+      "id": "provation-md",
+      "name": "Provation MD",
+      "vendor": "Provation Medical (Wolters Kluwer)",
+      "website": "https://www.wolterskluwer.com/",
+      "description": "Endoskopie-Dokumentation und Qualitätsmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Strukturierte Befundvorlagen",
+        "Qualitätsmetriken",
+        "Sedierungsdokumentation",
+        "Bildintegration",
+        "Pathologie-Anbindung",
+        "Registry-Reporting",
+        "Analytics"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Endoskopie-Assistenz", "Anästhesie"],
+      "departments": ["Endoskopie", "Gastroenterologie"]
+    },
+    {
+      "id": "endowriter",
+      "name": "EndoWRITER",
+      "vendor": "Esymed",
+      "website": "https://endowriter.com",
+      "description": "Endoskopie-Befundungssoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Strukturierte Befundung",
+        "Textbausteine",
+        "Bildintegration",
+        "Schnellbefundung",
+        "Druckausgabe"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte"],
+      "departments": ["Endoskopie", "Gastroenterologie"]
+    },
+    {
+      "id": "cgm-endoskopie",
+      "name": "CGM Endoskopie",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Endoskopie-Modul für KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Befunddokumentation",
+        "KIS-Integration",
+        "Bildverwaltung",
+        "Terminplanung",
+        "Qualitätssicherung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:endoskopie:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Endoskopie-Assistenz"],
+      "departments": ["Endoskopie", "Gastroenterologie"]
+    },
+    {
+      "id": "endoclean",
+      "name": "EndoClean",
+      "vendor": "MESO",
+      "website": "https://meso.biz/products/endoclean/",
+      "description": "Aufbereitungsdokumentation für Endoskope",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro AEMP",
+      "features": [
+        "Aufbereitungsprotokoll",
+        "Chargenverfolgung",
+        "Freigabemanagement",
+        "Gerätehistorie",
+        "Wartungsplanung",
+        "Hygiene-Dokumentation",
+        "Audit-Trail"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["AEMP-Mitarbeiter", "Hygiene-Fachkräfte"],
+      "departments": ["AEMP", "Endoskopie", "Hygiene"]
+    }
+  ]
+}

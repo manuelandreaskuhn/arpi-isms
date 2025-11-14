@@ -197,6 +197,7 @@
                     <div class="select-option" data-value="vm-direct">Direkt zu VM(s)</div>
                     <div class="select-option" data-value="hardware-direct">Direkt zu Hardware Server(n)</div>
                     <div class="select-option" data-value="reverse-proxy">Reverse Proxy</div>
+                    <div class="select-option" data-value="proxy">Proxy-Server</div>
                     <div class="select-option" data-value="api-gateway">API Gateway</div>
                     <div class="select-option" data-value="cloud-service">Cloud Service Endpoint</div>
                 </div>
@@ -211,7 +212,8 @@
                 Verwendeter Load Balancer
                 <span class="help-icon" data-tooltip="target-lb">?</span>
             </label>
-            <div class="custom-select" data-name="targetloadbalancer" data-index="0" data-category="client">
+            <!-- UPDATED: Component linking is already correctly implemented -->
+            <div class="custom-select" data-name="targetloadbalancer" data-index="0" data-category="client" data-component-type="loadbalancer">
                 <div class="select-trigger">
                     <span class="placeholder">Wählen Sie einen Load Balancer</span>
                     <span class="arrow">▼</span>
@@ -219,11 +221,18 @@
                 <div class="select-dropdown">
                     <div class="select-options">
                         <div class="select-option" data-value="">Bitte wählen</div>
-                        <!-- Will be populated dynamically from loadbalancer entries -->
+                        <div class="select-option" data-value="manual">Manuell eingeben</div>
+                        <!-- Wird automatisch aus Load Balancer-Komponenten befüllt -->
                     </div>
                 </div>
             </div>
             <div class="help-text">Wird automatisch aus angelegten Load Balancern befüllt</div>
+        </div>
+        
+        <!-- Manual Input Fallback -->
+        <div class="form-group" id="targetloadbalancer-manual" style="display:none;">
+            <label>Load Balancer (manuell)</label>
+            <input type="text" name="targetloadbalancername" placeholder="z.B. LB-KIS-Prod">
         </div>
     </div>
 
@@ -236,7 +245,7 @@
             </label>
             <div class="help-text">Wählen Sie die VMs oder Server aus, zu denen direkt verbunden wird</div>
             <div class="host-assignment-box">
-                <div class="host-assignment" data-hostlist>
+                <div class="host-assignment" data-hostlist data-component-type="vm,hardware">
                     <div class="help-text">Keine Hosts verfügbar. Fügen Sie zuerst VMs oder Hardware Server hinzu.</div>
                 </div>
             </div>

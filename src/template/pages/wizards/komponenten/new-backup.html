@@ -1,10 +1,35 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Komponenten</p>
-    <i>›</i>
-    <p>Neues Backup-System anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Komponenten</p>
+        <i>›</i>
+        <p>Neues Backup-System anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neues Backup-System anlegen</h1>
+            <p>Erfassen Sie die Details Ihres Backup-Systems, um eine zentrale Übersicht Ihrer Backup-Infrastruktur zu erhalten.</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newBackupSystemForm" class="btn-save" disabled>Speichern</button>
+        </div>
+    </div>
 </aside>
+
+<div class="error-management" id="formErrorManagement" style="display:none;">
+    <div class="error-header">
+        <span class="error-icon">!</span>
+        <span class="error-title">Fehler im Formular</span>
+    </div>
+    <div class="error-content">
+        <ul class="error-list">
+            <!-- Dynamische Fehlerliste -->
+        </ul>
+    </div>
+</div>
 
 <form id="newBackupSystemForm">
 
@@ -23,14 +48,14 @@
                         Backup-System Name <span class="required">*</span>
                         <span class="help-icon" data-tooltip="backup-system-name">?</span>
                     </label>
-                    <input type="text" id="backupsystemname" required placeholder="z.B. Veeam-Prod, Backup-Server-01">
+                    <input type="text" id="name" name="name" required placeholder="z.B. Veeam-Prod, Backup-Server-01">
                 </div>
                 <div class="form-group">
                     <label>
                         Backup-Software <span class="required">*</span>
                         <span class="help-icon" data-tooltip="backup-software">?</span>
                     </label>
-                    <div class="custom-select" data-name="backupsoftware">
+                    <div class="custom-select" data-name="software">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -77,14 +102,14 @@
                         Version
                         <span class="help-icon" data-tooltip="backup-version">?</span>
                     </label>
-                    <input type="text" id="backupversion" placeholder="z.B. v12.1, 2024 Update 2">
+                    <input type="text" id="version" name="version" placeholder="z.B. v12.1, 2024 Update 2">
                 </div>
                 <div class="form-group">
                     <label>
                         Lizenzmodell
                         <span class="help-icon" data-tooltip="backup-license-model">?</span>
                     </label>
-                    <div class="custom-select" data-name="backuplicensemodel">
+                    <div class="custom-select" data-name="licensemodel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -121,7 +146,7 @@
                         Backup-Server / Hostname
                         <span class="help-icon" data-tooltip="backup-server-id">?</span>
                     </label>
-                    <div class="custom-select" data-name="backupserverid" data-component-type="vm,hardware">
+                    <div class="custom-select" data-name="serverid" data-component-type="vm,hardware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen (VM/Hardware)</span>
                             <span class="arrow">▼</span>
@@ -141,14 +166,14 @@
                 </div>
                 <div class="form-group" id="backup-server-manual" style="display:none;">
                     <label>Server-Name (manuell)</label>
-                    <input type="text" id="backupservername" placeholder="z.B. backup-srv-01.example.com">
+                    <input type="text" id="serverhostname" name="serverhostname" placeholder="z.B. backup-srv-01.example.com">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>IP-Adresse</label>
-                    <input type="text" id="backupserverip" placeholder="z.B. 192.168.50.10">
+                    <input type="text" id="serverip" name="serverip" placeholder="z.B. 192.168.50.10">
                 </div>
             </div>
 
@@ -158,28 +183,24 @@
                         Betriebssystem
                         <span class="help-icon" data-tooltip="backup-os">?</span>
                     </label>
-                    <input type="text" id="backupos" placeholder="z.B. Windows Server 2022, Linux Ubuntu 22.04">
+                    <input type="text" id="serveroperatingystem" name="serveroperatingystem" placeholder="z.B. Windows Server 2022, Linux Ubuntu 22.04">
                 </div>
                 <div class="form-group">
                     <label>
                         Standort
                         <span class="help-icon" data-tooltip="backup-location">?</span>
                     </label>
-                    <input type="text" id="backuplocation" placeholder="z.B. RZ1, Backup-Raum, Cloud">
+                    <input type="text" id="serverlocation" name="serverlocation" placeholder="z.B. RZ1, Backup-Raum, Cloud">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>CPU / RAM</label>
-                    <input type="text" id="backupresources" placeholder="z.B. 8 vCPU, 32GB RAM">
-                </div>
-                <div class="form-group">
                     <label>
                         Management-URL
                         <span class="help-icon" data-tooltip="backup-mgmt-url">?</span>
                     </label>
-                    <input type="text" id="backupmgmturl" placeholder="z.B. https://backup.example.com:9443">
+                    <input type="text" id="backupmanagementurl" name="backupmanagementurl" placeholder="z.B. https://backup.example.com:9443">
                 </div>
             </div>
         </div>
@@ -246,14 +267,14 @@
                         Kapazität (TB)
                         <span class="help-icon" data-tooltip="primary-storage-capacity">?</span>
                     </label>
-                    <input type="number" id="primarystoragecapacity" step="0.1" placeholder="z.B. 50, 100">
+                    <input type="number" id="primarystoragecapacity" name="primarystoragecapacity" step="0.1" placeholder="z.B. 50, 100">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Storage-Pfad / Repository</label>
-                    <input type="text" id="primarystoragepath" placeholder="z.B. \\NAS01\Backups, /mnt/backup">
+                    <input type="text" id="primarystoragepath" name="primarystoragepath" placeholder="z.B. \\NAS01\Backups, /mnt/backup">
                 </div>
                 <div class="form-group">
                     <label>
@@ -306,14 +327,14 @@
                     </div>
                     <div class="form-group">
                         <label>Kapazität (TB)</label>
-                        <input type="number" id="secondarystoragecapacity" step="0.1" placeholder="z.B. 50, 100">
+                        <input type="number" id="secondarystoragecapacity" name="secondarystoragecapacity" step="0.1" placeholder="z.B. 50, 100">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Storage-Pfad / Cloud-Bucket</label>
-                        <input type="text" id="secondarystoragepath" placeholder="z.B. s3://backup-bucket, \\offsite-nas\backup">
+                        <input type="text" id="secondarystoragepath" name="secondarystoragepath" placeholder="z.B. s3://backup-bucket, \\offsite-nas\backup">
                     </div>
                     <div class="form-group">
                         <label>Deduplizierung</label>
@@ -378,7 +399,7 @@
 
                 <div class="form-group" id="secondary-immutability-period" style="display:none;">
                     <label>Immutability Periode</label>
-                    <input type="text" id="secondaryimmutabilityperiod" placeholder="z.B. 14 Tage, 30 Tage, 90 Tage">
+                    <input type="text" id="secondaryimmutabilityperiod" name="secondaryimmutabilityperiod" placeholder="z.B. 14 Tage, 30 Tage, 90 Tage">
                     <div class="help-text">Zeitraum, in dem Backups nicht gelöscht/geändert werden können</div>
                 </div>
             </div>
@@ -411,14 +432,14 @@
                     </div>
                     <div class="form-group">
                         <label>Kapazität (TB)</label>
-                        <input type="number" id="tertiarystoragecapacity" step="0.1" placeholder="z.B. 100, 500">
+                        <input type="number" id="tertiarystoragecapacity" name="tertiarystoragecapacity" step="0.1" placeholder="z.B. 100, 500">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Storage-Pfad / Archive-Bucket</label>
-                        <input type="text" id="tertiarystoragepath" placeholder="z.B. glacier://backup-archive, Tape-Library-03">
+                        <input type="text" id="tertiarystoragepath" name="tertiarystoragepath" placeholder="z.B. glacier://backup-archive, Tape-Library-03">
                     </div>
                     <div class="form-group">
                         <label>
@@ -446,7 +467,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Aufbewahrungsdauer</label>
-                        <input type="text" id="tertiaryretention" placeholder="z.B. 7 Jahre, 10 Jahre, unbegrenzt">
+                        <input type="text" id="tertiaryretention" name="tertiaryretention" placeholder="z.B. 7 Jahre, 10 Jahre, unbegrenzt">
                     </div>
                     <div class="form-group">
                         <label>Immutability (Unveränderbarkeit)</label>
@@ -468,7 +489,7 @@
 
                 <div class="form-group" id="tertiary-immutability-period" style="display:none;">
                     <label>Immutability Periode</label>
-                    <input type="text" id="tertiaryimmutabilityperiod" placeholder="z.B. 90 Tage, 1 Jahr, 7 Jahre">
+                    <input type="text" id="tertiaryimmutabilityperiod" name="tertiaryimmutabilityperiod" placeholder="z.B. 90 Tage, 1 Jahr, 7 Jahre">
                     <div class="help-text">Zeitraum, in dem Archiv-Backups nicht gelöscht/geändert werden können</div>
                 </div>
             </div>
@@ -491,20 +512,20 @@
                     </label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="feature-full" value="full">
-                            <label for="feature-full">Full Backup</label>
+                            <input type="checkbox" name="backuptypes" value="full">
+                            <label>Full Backup</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="feature-incremental" value="incremental">
-                            <label for="feature-incremental">Incremental</label>
+                            <input type="checkbox" name="backuptypes" value="incremental">
+                            <label>Incremental</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="feature-differential" value="differential">
-                            <label for="feature-differential">Differential</label>
+                            <input type="checkbox" name="backuptypes" value="differential">
+                            <label>Differential</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="feature-forever-incremental" value="forever-incremental">
-                            <label for="feature-forever-incremental">Forever Incremental</label>
+                            <input type="checkbox" name="backuptypes" value="forever-incremental">
+                            <label>Forever Incremental</label>
                         </div>
                     </div>
                 </div>
@@ -600,26 +621,26 @@
                 <label>Weitere Features</label>
                 <div class="checkbox-group">
                     <div class="checkbox-item">
-                        <input type="checkbox" id="feature-replication" value="replication">
-                        <label for="feature-replication">
+                        <input type="checkbox" name="additionalfeatures" value="replication">
+                        <label>
                             Backup-Replikation
                             <span class="help-icon" data-tooltip="backup-replication">?</span>
                         </label>
                     </div>
                     <div class="checkbox-item">
-                        <input type="checkbox" id="feature-archiving" value="archiving">
-                        <label for="feature-archiving">Langzeit-Archivierung</label>
+                        <input type="checkbox" name="additionalfeatures" value="archiving">
+                        <label>Langzeit-Archivierung</label>
                     </div>
                     <div class="checkbox-item">
-                        <input type="checkbox" id="feature-cdp" value="cdp">
-                        <label for="feature-cdp">
+                        <input type="checkbox" name="additionalfeatures" value="cdp">
+                        <label>
                             CDP (Continuous Data Protection)
                             <span class="help-icon" data-tooltip="backup-cdp">?</span>
                         </label>
                     </div>
                     <div class="checkbox-item">
-                        <input type="checkbox" id="feature-cloud-tier" value="cloud-tier">
-                        <label for="feature-cloud-tier">Cloud-Tiering</label>
+                        <input type="checkbox" name="additionalfeatures" value="cloud-tier">
+                        <label>Cloud-Tiering</label>
                     </div>
                 </div>
             </div>
@@ -640,7 +661,7 @@
                         Monitoring-Integration
                         <span class="help-icon" data-tooltip="monitoring-integration">?</span>
                     </label>
-                    <input type="text" id="monitoringintegration" placeholder="z.B. PRTG, Zabbix, Prometheus, E-Mail">
+                    <input type="text" id="monitoringintegration" name="monitoringintegration" placeholder="z.B. PRTG, Zabbix, Prometheus, E-Mail">
                 </div>
                 <div class="form-group">
                     <label>
@@ -668,14 +689,14 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Alarm-E-Mail Empfänger</label>
-                    <input type="text" id="alertemail" placeholder="z.B. backup-admins@example.com">
+                    <input type="text" id="alertemail" name="alertemail" placeholder="z.B. backup-admins@example.com">
                 </div>
                 <div class="form-group">
                     <label>
                         Log-Aufbewahrung
                         <span class="help-icon" data-tooltip="log-retention">?</span>
                     </label>
-                    <input type="text" id="logretention" placeholder="z.B. 90 Tage, 1 Jahr">
+                    <input type="text" id="logretention" name="logretention" placeholder="z.B. 90 Tage, 1 Jahr">
                 </div>
             </div>
         </div>
@@ -695,7 +716,7 @@
                         Backup-Administrator
                         <span class="help-icon" data-tooltip="backup-admin">?</span>
                     </label>
-                    <input type="text" id="backupadmin" placeholder="z.B. IT-Team, Max Mustermann">
+                    <input type="text" id="backupadmin" name="backupadmin" placeholder="z.B. IT-Team, Max Mustermann">
                 </div>
                 <div class="form-group">
                     <label>
@@ -722,7 +743,7 @@
 
             <div class="form-group">
                 <label>Support-Vertragsende</label>
-                <input type="text" id="supportend" placeholder="z.B. 31.12.2025">
+                <input type="text" id="supportend" name="supportend" placeholder="z.B. 31.12.2025">
             </div>
         </div>
     </div>
@@ -740,7 +761,7 @@
                     Notizen / Besonderheiten
                     <span class="help-icon" data-tooltip="backup-notes">?</span>
                 </label>
-                <textarea id="backupsystemnotes" rows="4" placeholder="Zusätzliche Informationen zum Backup-System, spezielle Konfigurationen, bekannte Einschränkungen..."></textarea>
+                <textarea id="backupsystemnotes" name="backupsystemnotes" rows="4" placeholder="Zusätzliche Informationen zum Backup-System, spezielle Konfigurationen, bekannte Einschränkungen..."></textarea>
             </div>
         </div>
     </div>

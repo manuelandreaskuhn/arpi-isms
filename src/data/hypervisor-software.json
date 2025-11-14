@@ -1,0 +1,290 @@
+{
+  "hypervisorSoftware": [
+    {
+      "id": "vmware-esxi",
+      "name": "VMware ESXi",
+      "category": "Enterprise Type-1 Hypervisor",
+      "vendor": "VMware (Broadcom)",
+      "type": "Commercial",
+      "description": "Bare-Metal Hypervisor - der Marktführer für Enterprise-Virtualisierung",
+      "features": ["vMotion", "HA", "DRS", "vSAN", "Fault Tolerance", "Storage vMotion"],
+      "platforms": ["x86-64"],
+      "licenseModel": ["Per CPU", "vSphere Edition (Standard/Enterprise Plus)", "vSphere+"],
+      "pricing": "€5.000 - €50.000+ pro CPU (je nach Edition)",
+      "marketShare": "~48% (Marktführer bei Enterprise)",
+      "status": "Active",
+      "useCases": ["Enterprise Datacenter", "Mission-Critical Workloads", "Large Scale Virtualization"],
+      "notes": "Nach Broadcom-Übernahme (2023): Deutliche Preiserhöhungen, viele Kunden migrieren zu Proxmox/Hyper-V. ESXi Free abgeschafft. Aber: Technisch nach wie vor führend.",
+      "cpe": [
+        "cpe:2.3:o:vmware:esxi:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:vmware:vsphere:*:*:*:*:*:*:*:*",
+        "cpe:/o:vmware:esxi"
+      ]
+    },
+    {
+      "id": "vmware-vsphere",
+      "name": "VMware vSphere",
+      "category": "Enterprise Virtualization Suite",
+      "vendor": "VMware (Broadcom)",
+      "type": "Commercial",
+      "description": "Komplette Virtualisierungsplattform (ESXi + vCenter + Features)",
+      "features": ["vCenter Management", "vMotion", "HA", "DRS", "vSAN", "NSX Integration", "vRealize Suite"],
+      "platforms": ["x86-64"],
+      "licenseModel": ["vSphere Standard", "vSphere Enterprise Plus", "vSphere+", "VCF (Cloud Foundation)"],
+      "pricing": "€20.000 - €200.000+ (je nach Größe und Edition)",
+      "marketShare": "~48% (mit ESXi kombiniert)",
+      "status": "Active",
+      "useCases": ["Large Enterprise", "Multi-Site Deployments", "Private Cloud", "Hybrid Cloud"],
+      "notes": "vSphere = ESXi + vCenter + erweiterte Features. Broadcom-Übernahme führt zu Portfolio-Vereinfachung und Preisanpassungen (oft 2-3x teurer als früher).",
+      "cpe": [
+        "cpe:2.3:a:vmware:vsphere:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:vmware:vcenter_server:*:*:*:*:*:*:*:*",
+        "cpe:/a:vmware:vcenter_server"
+      ]
+    },
+    {
+      "id": "hyperv",
+      "name": "Microsoft Hyper-V",
+      "category": "Enterprise Type-1 Hypervisor",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Microsoft's Bare-Metal Hypervisor (Teil von Windows Server oder eigenständig)",
+      "features": ["Live Migration", "Failover Clustering", "Replica", "Shielded VMs", "Storage Spaces Direct"],
+      "platforms": ["x86-64"],
+      "licenseModel": ["Included with Windows Server", "Hyper-V Server (kostenlos)", "Datacenter Edition"],
+      "pricing": "Kostenlos (Hyper-V Server) / Included in Windows Server Lizenz",
+      "marketShare": "~30% (stark wachsend seit Broadcom-VMware)",
+      "status": "Active",
+      "useCases": ["Microsoft-lastige Umgebungen", "Azure Hybrid Cloud", "Cost-Conscious Enterprises"],
+      "notes": "Hyper-V Server (eigenständig) ist kostenlos! Aber: Management komplexer als VMware. Seit Broadcom-VMware: Viele Wechsel zu Hyper-V. Sehr gute Azure-Integration.",
+      "cpe": [
+        "cpe:2.3:o:microsoft:hyper-v:*:*:*:*:*:*:*:*",
+        "cpe:2.3:o:microsoft:windows_server_2022:*:*:*:*:*:*:*:*",
+        "cpe:/o:microsoft:hyper-v"
+      ]
+    },
+    {
+      "id": "hyperv-failover",
+      "name": "Hyper-V Failover Cluster",
+      "category": "Enterprise HA Cluster",
+      "vendor": "Microsoft",
+      "type": "Commercial",
+      "description": "Hyper-V in hochverfügbarer Cluster-Konfiguration mit Windows Failover Clustering",
+      "features": ["Failover Clustering", "Live Migration", "Shared Storage", "CSV (Cluster Shared Volumes)", "Storage Replica"],
+      "platforms": ["x86-64"],
+      "licenseModel": ["Windows Server Datacenter Edition"],
+      "pricing": "Windows Server Datacenter Lizenz erforderlich (~€6.000 pro 16 Cores)",
+      "marketShare": "~10% (Subset von Hyper-V)",
+      "status": "Active",
+      "useCases": ["High Availability Requirements", "Mission-Critical VMs", "Datacenter with Shared Storage"],
+      "notes": "Erfordert Windows Server Datacenter (Standard erlaubt nur 2 VMs). Shared Storage nötig (SAN, iSCSI, Storage Spaces Direct). Sehr zuverlässig, aber Setup komplex.",
+      "cpe": [
+        "cpe:2.3:o:microsoft:hyper-v:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:microsoft:windows_server:*:*:*:*:datacenter:*:*:*"
+      ]
+    },
+    {
+      "id": "kvm",
+      "name": "KVM (Kernel-based Virtual Machine)",
+      "category": "Open Source Type-1 Hypervisor",
+      "vendor": "Linux Community / Red Hat",
+      "type": "Open Source",
+      "description": "Linux Kernel Hypervisor - Open Source Standard für Enterprise Linux",
+      "features": ["CPU Pass-through", "SR-IOV", "Live Migration", "NUMA Support", "Nested Virtualization"],
+      "platforms": ["Linux (x86-64, ARM64)"],
+      "licenseModel": ["Open Source (GPL)", "Red Hat Virtualization (Commercial Support)"],
+      "pricing": "Kostenlos (Open Source) / €1.500-€10.000/Jahr (RHEL Virtualization)",
+      "marketShare": "~15% (stark in Cloud-Providern: AWS, Google, OpenStack)",
+      "status": "Active",
+      "useCases": ["Cloud Infrastructure", "Linux Workloads", "Cost-Conscious Deployments", "Custom Solutions"],
+      "notes": "KVM ist Kernel-Modul in Linux (seit 2007). Performance exzellent, aber Management-Tools variieren (libvirt, virsh, virt-manager). Basis für viele Cloud-Provider. Red Hat bietet kommerziellen Support.",
+      "cpe": [
+        "cpe:2.3:a:linux:kvm:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:redhat:enterprise_linux:*:*:*:*:*:*:*:*",
+        "cpe:/a:linux:kvm"
+      ]
+    },
+    {
+      "id": "proxmox",
+      "name": "Proxmox VE (Virtual Environment)",
+      "category": "Open Source Virtualization Platform",
+      "vendor": "Proxmox Server Solutions GmbH",
+      "type": "Open Source + Commercial Support",
+      "description": "Debian-basierte Virtualisierungsplattform mit KVM + LXC - der VMware-Killer",
+      "features": ["KVM VMs", "LXC Container", "Web GUI", "Backup", "HA Cluster", "Ceph Integration", "Software Defined Storage"],
+      "platforms": ["x86-64 (Debian-based)"],
+      "licenseModel": ["Open Source (AGPL)", "Subscription (Support)", "Community (kostenlos)"],
+      "pricing": "Kostenlos (Community) / €90-€400/Jahr pro CPU (Enterprise Subscription)",
+      "marketShare": "~5% (rapide wachsend - 'VMware-Refugee-Effekt')",
+      "status": "Active",
+      "useCases": ["SMB bis Mid-Market", "VMware-Migrationen", "Home Lab", "Hybrid VM + Container"],
+      "notes": "Seit Broadcom-VMware-Übernahme: Explosives Wachstum! Sehr gutes Preis-/Leistungsverhältnis. Web-GUI exzellent. Community sehr aktiv. Kombiniert VMs (KVM) + Container (LXC). Backup eingebaut. Perfekt für VMware-Flüchtlinge.",
+      "cpe": [
+        "cpe:2.3:a:proxmox:virtual_environment:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:proxmox:proxmox_ve:*:*:*:*:*:*:*:*",
+        "cpe:/a:proxmox:virtual_environment"
+      ]
+    },
+    {
+      "id": "xen",
+      "name": "Citrix XenServer / XCP-ng",
+      "category": "Open Source Type-1 Hypervisor",
+      "vendor": "XCP-ng Project / Citrix (Legacy)",
+      "type": "Open Source",
+      "description": "Xen-basierter Hypervisor (XenServer war Citrix, jetzt Open Source XCP-ng)",
+      "features": ["Xen Hypervisor", "XenMotion", "HA", "Storage XenMotion", "GPU Pass-through"],
+      "platforms": ["x86-64"],
+      "licenseModel": ["Open Source (GPL)", "Citrix Hypervisor (früher kostenpflichtig, jetzt kostenlos)"],
+      "pricing": "Kostenlos (Open Source)",
+      "marketShare": "~3% (sinkend)",
+      "status": "Active",
+      "useCases": ["Legacy Citrix Deployments", "XenApp/XenDesktop Integration", "Specific Xen Requirements"],
+      "notes": "XenServer (Citrix) wurde 2023 eingestellt - Community-Fork XCP-ng übernimmt. Technisch gut (Xen ist solide), aber kleiner Marktanteil. Gut für Citrix-VDI-Umgebungen. Citrix Hypervisor ist jetzt kostenlos (früher teuer).",
+      "cpe": [
+        "cpe:2.3:a:citrix:xenserver:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:xcp-ng:xcp-ng:*:*:*:*:*:*:*:*",
+        "cpe:/a:citrix:xenserver"
+      ]
+    },
+    {
+      "id": "openstack",
+      "name": "OpenStack (KVM-based)",
+      "category": "Open Source Cloud Platform",
+      "vendor": "OpenStack Foundation",
+      "type": "Open Source",
+      "description": "Private Cloud Plattform (IaaS) - KVM als Standard-Hypervisor",
+      "features": ["Multi-Tenancy", "Self-Service Portal", "API-Driven", "Software Defined Networking", "Object Storage"],
+      "platforms": ["Linux (x86-64)"],
+      "licenseModel": ["Open Source (Apache 2.0)"],
+      "pricing": "Kostenlos (aber hohe Betriebskosten - Personal, Infrastruktur)",
+      "marketShare": "~2% (Nische: Private Cloud, Service Provider)",
+      "status": "Active",
+      "useCases": ["Private Cloud", "Service Provider", "Large Scale Multi-Tenant", "Research/Academic"],
+      "notes": "Komplex! OpenStack ist wie 'Private AWS' - sehr mächtig, aber operativ sehr aufwändig. Nur für große Organisationen mit dediziertem Cloud-Team sinnvoll. Meist KVM als Hypervisor (Nova-Compute).",
+      "cpe": [
+        "cpe:2.3:a:openstack:openstack:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:openstack:nova:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "azure-hyperv",
+      "name": "Azure Hypervisor (Hyper-V based)",
+      "category": "Cloud Hypervisor",
+      "vendor": "Microsoft",
+      "type": "Cloud Service",
+      "description": "Microsoft Azure's Hypervisor (basiert auf Hyper-V)",
+      "features": ["Azure VMs", "Managed Service", "Global Availability", "Auto-Scaling", "Hybrid Cloud (Azure Arc)"],
+      "platforms": ["Azure Cloud"],
+      "licenseModel": ["Pay-as-you-go", "Reserved Instances", "Spot Instances"],
+      "pricing": "€0,02-€5/Stunde (je nach VM-Größe)",
+      "marketShare": "~20% (Cloud-only)",
+      "status": "Active",
+      "useCases": ["Azure-Native Apps", "Hybrid Cloud", "Windows Workloads in Cloud", "Burst/Scale Scenarios"],
+      "notes": "Azure nutzt modifiziertes Hyper-V als Hypervisor. Fully Managed - kein Hypervisor-Management nötig. Gut für Microsoft-Stack. Azure Arc ermöglicht Hybrid-Management.",
+      "cpe": [
+        "cpe:2.3:a:microsoft:azure:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "aws-nitro",
+      "name": "AWS Nitro Hypervisor",
+      "category": "Cloud Hypervisor",
+      "vendor": "Amazon Web Services",
+      "type": "Cloud Service",
+      "description": "AWS's custom Hypervisor (basiert auf KVM, stark optimiert)",
+      "features": ["EC2 Instances", "Nitro Security", "Bare-Metal Performance", "EBS Integration", "Elastic Network Adapter"],
+      "platforms": ["AWS Cloud"],
+      "licenseModel": ["Pay-as-you-go", "Reserved Instances", "Savings Plans", "Spot Instances"],
+      "pricing": "€0,01-€10/Stunde (je nach Instance-Typ)",
+      "marketShare": "~32% (Marktführer Cloud)",
+      "status": "Active",
+      "useCases": ["Cloud-Native Apps", "Scalable Workloads", "Global Infrastructure", "Microservices"],
+      "notes": "Nitro ist AWS's custom Hypervisor - extrem performant. KVM-basiert, aber stark modifiziert. Offload auf Hardware (Nitro Cards). Bare-Metal-Performance in VMs. Technologisch führend.",
+      "cpe": [
+        "cpe:2.3:a:amazon:aws:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:amazon:ec2:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "gcp-kvm",
+      "name": "Google Cloud Platform (KVM based)",
+      "category": "Cloud Hypervisor",
+      "vendor": "Google",
+      "type": "Cloud Service",
+      "description": "GCP's Hypervisor-Infrastruktur (KVM-basiert)",
+      "features": ["Compute Engine", "Live Migration", "Custom Machine Types", "Preemptible VMs", "Sole-Tenant Nodes"],
+      "platforms": ["Google Cloud"],
+      "licenseModel": ["Pay-as-you-go", "Committed Use Discounts", "Preemptible Instances"],
+      "pricing": "€0,02-€8/Stunde (je nach Machine-Type)",
+      "marketShare": "~10% (Cloud)",
+      "status": "Active",
+      "useCases": ["Cloud-Native Apps", "Data Analytics", "Machine Learning", "Kubernetes (GKE)"],
+      "notes": "GCP nutzt modifiziertes KVM. Sehr performant. Live Migration ohne Downtime ist Standard. Custom Machine Types (flexibel CPU/RAM kombinieren) ist unique. Gut für Data-Science/ML.",
+      "cpe": [
+        "cpe:2.3:a:google:cloud_platform:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "oracle-vm",
+      "name": "Oracle VM",
+      "category": "Enterprise Hypervisor",
+      "vendor": "Oracle",
+      "type": "Commercial",
+      "description": "Xen-basierter Hypervisor speziell für Oracle-Workloads",
+      "features": ["Xen-based", "Oracle DB Optimization", "Live Migration", "HA", "Storage Connect"],
+      "platforms": ["x86-64"],
+      "licenseModel": ["Per CPU", "Part of Oracle Linux Support"],
+      "pricing": "€1.000-€10.000/Jahr (je nach Support-Level)",
+      "marketShare": "<1% (Nische)",
+      "status": "Active",
+      "useCases": ["Oracle Database Deployments", "Oracle-Heavy Environments", "Oracle Linux"],
+      "notes": "Nur sinnvoll bei vielen Oracle-Produkten (DB, Middleware). Oracle-Lizenzierung ist komplex - VM kann Vorteile bringen (Hard Partitioning). Aber: Kleiner Marktanteil, wenig Innovation.",
+      "cpe": [
+        "cpe:2.3:a:oracle:vm:*:*:*:*:*:*:*:*",
+        "cpe:/a:oracle:vm_server"
+      ]
+    },
+    {
+      "id": "nutanix-ahv",
+      "name": "Nutanix AHV (Acropolis Hypervisor)",
+      "category": "Hyperconverged Hypervisor",
+      "vendor": "Nutanix",
+      "type": "Commercial",
+      "description": "KVM-basierter Hypervisor speziell für Nutanix Hyperconverged Infrastructure",
+      "features": ["KVM-based", "Integrated with Nutanix HCI", "Prism Management", "One-Click Upgrades", "DR/Backup integrated"],
+      "platforms": ["Nutanix Appliances (x86-64)"],
+      "licenseModel": ["Included with Nutanix Licensing", "Per Node"],
+      "pricing": "Included (Nutanix-Appliance erforderlich - €30k-€200k+)",
+      "marketShare": "~4% (HCI-Niche)",
+      "status": "Active",
+      "useCases": ["Hyperconverged Infrastructure", "Simplified Datacenter", "VMware Alternative (for Nutanix customers)"],
+      "notes": "AHV ist KVM-basiert, aber stark angepasst für Nutanix HCI. Kostenlos (in Nutanix-Lizenz enthalten) - kein separates vSphere nötig. Sehr einfaches Management (Prism). Alternative zu VMware für Nutanix-Kunden.",
+      "cpe": [
+        "cpe:2.3:a:nutanix:acropolis:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:nutanix:ahv:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "type": "Variabel",
+      "description": "Andere Hypervisor-Lösungen (z.B. Virtuozzo, VirtualBox, QEMU, bhyve, etc.)",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "pricing": "Variabel",
+      "marketShare": "<2%",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Legacy", "Nischen-Lösungen"],
+      "notes": "Z.B. Virtuozzo (Container-basiert), VirtualBox (Desktop-Virtualisierung), QEMU (oft mit KVM), bhyve (FreeBSD), etc. Meist für sehr spezifische Use Cases.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Hypervisor Software Katalog mit CPE-Identifikatoren für Vulnerability Management und Enterprise Virtualization"
+  }
+}

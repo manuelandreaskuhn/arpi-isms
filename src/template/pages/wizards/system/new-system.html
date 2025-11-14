@@ -1,11 +1,35 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Systeme</p>
-    <i>›</i>
-    <p>Neues System anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Systeme</p>
+        <i>›</i>
+        <p>Neues System anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neues System anlegen</h1>
+            <p>Informationen zum neuen System</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newSystemForm" class="btn-save" disabled>Speichern</button>
+        </div>
+    </div>
 </aside>
 
+<div class="error-management" id="formErrorManagement" style="display:none;">
+    <div class="error-header">
+        <span class="error-icon">!</span>
+        <span class="error-title">Fehler im Formular</span>
+    </div>
+    <div class="error-content">
+        <ul class="error-list">
+            <!-- Dynamische Fehlerliste -->
+        </ul>
+    </div>
+</div>
 
 <form id="newSystemForm">
 
@@ -368,7 +392,6 @@
                     <label for="container">Container</label>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -525,6 +548,28 @@
             
             <button type="button" class="btn-add-item" onclick="addClientEntry()">
                 <span>+</span> Client-Zugriff hinzufügen
+            </button>
+        </div>
+    </div>
+
+    <!-- Medizingeräte -->
+    <div class="form-section collapsed" data-name="meddevices">
+        <div class="section-title">
+            <span>Medizingeräte</span>
+            <span class="section-counter">0/0</span>
+            <span class="section-toggle-icon">▼</span>
+        </div>
+        <div class="section-content">
+            <div class="help-text">
+                Dokumentieren Sie angebundene Medizingeräte (CT, MRT, Ultraschall, Labor-Analysegeräte, etc.), die mit diesem System kommunizieren.
+            </div>
+            
+            <div id="medDeviceList" class="dynamic-list">
+                <!-- Medical device entries will be added here -->
+            </div>
+            
+            <button type="button" class="btn-add-item" onclick="addMedDeviceEntry()">
+                <span>+</span> Medizingerät hinzufügen
             </button>
         </div>
     </div>
@@ -730,5 +775,15 @@
             <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'container')">×</button>
         </div>
         {{include:pages/wizards/system/container-include-template.html}}
+    </div>
+</template>
+
+<template id="medDeviceEntryTemplate">
+    <div class="dynamic-entry" data-type="meddevice">
+        <div class="entry-header">
+            <span class="entry-title">Medizingerät #<span class="entry-number"></span></span>
+            <button type="button" class="btn-remove-entry" onclick="removeEntry(this, 'meddevice')">×</button>
+        </div>
+        {{include:pages/wizards/system/meddevice-include-template.html}}
     </div>
 </template>

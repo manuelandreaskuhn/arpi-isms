@@ -1,0 +1,193 @@
+{
+  "commserverSoftware": [
+    {
+      "id": "mirth",
+      "name": "Mirth Connect / NextGen Connect",
+      "category": "Open Source Interface Engine",
+      "vendor": "NextGen Healthcare",
+      "type": "Open Source (Community) + Commercial (Enterprise)",
+      "description": "Führende Open-Source HL7 Interface Engine - der De-facto-Standard für Healthcare-Integration",
+      "protocols": ["hl7v2", "fhir", "dicom", "xds", "rest", "soap", "mllp", "http", "tcp", "file", "ftp", "mq"],
+      "platforms": ["Windows", "Linux", "Unix", "Docker"],
+      "licenseModel": ["Open Source (MPL 1.1)", "Enterprise Edition", "Subscription"],
+      "pricing": "Kostenlos (Community) / Enterprise ab $15.000/Jahr",
+      "marketShare": "~60% (Healthcare Interface Engines)",
+      "status": "Active",
+      "useCases": ["Kleine bis große Krankenhäuser", "Praxen", "MVZ", "Labore", "Standard HL7 v2 Integration"],
+      "notes": "Mirth ist der klare Marktführer im Open-Source-Bereich. Community-Version völlig ausreichend für die meisten Szenarien.",
+      "cpe": [
+        "cpe:2.3:a:nextgen:connect:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:nextgen:mirth_connect:*:*:*:*:*:*:*:*",
+        "cpe:/a:mirthcorp:mirth_connect",
+        "cpe:2.3:a:mirth:mirth_connect:*:*:*:*:community:*:*:*",
+        "cpe:2.3:a:mirth:mirth_connect:*:*:*:*:enterprise:*:*:*"
+      ]
+    },
+    {
+      "id": "rhapsody",
+      "name": "Rhapsody Integration Engine",
+      "category": "Enterprise Interface Engine",
+      "vendor": "Rhapsody (Orion Health)",
+      "type": "Commercial",
+      "description": "Enterprise-Grade Interface Engine mit Fokus auf Hochverfügbarkeit und Performance",
+      "protocols": ["hl7v2", "fhir", "dicom", "xds", "rest", "soap", "mllp", "http", "tcp", "file", "ftp", "mq"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Per CPU", "Per Message Volume", "Subscription"],
+      "pricing": "$30.000 - $150.000+/Jahr (je nach Größe)",
+      "marketShare": "~15% (besonders in Australien/Neuseeland und UK stark)",
+      "status": "Active",
+      "useCases": ["Große Krankenhäuser", "Krankenhausverbunde", "Hochverfügbarkeits-Anforderungen", "Mission-Critical-Systeme"],
+      "notes": "Best-in-Class für Enterprise-Szenarien mit 24/7-Betrieb. Kostspieliger, aber sehr zuverlässig.",
+      "cpe": [
+        "cpe:2.3:a:orionhealth:rhapsody:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:rhapsody:integration_engine:*:*:*:*:*:*:*:*",
+        "cpe:/a:orionhealth:rhapsody"
+      ]
+    },
+    {
+      "id": "ensemble",
+      "name": "InterSystems Ensemble / HealthConnect",
+      "category": "Enterprise Interface Engine",
+      "vendor": "InterSystems",
+      "type": "Commercial",
+      "description": "Integration-Engine als Teil der InterSystems-Healthcare-Plattform (mit IRIS for Health)",
+      "protocols": ["hl7v2", "fhir", "dicom", "xds", "rest", "soap", "mllp", "http", "tcp", "file"],
+      "platforms": ["Windows", "Linux", "Unix"],
+      "licenseModel": ["Commercial", "Bundle mit InterSystems IRIS", "Subscription"],
+      "pricing": "$50.000 - $200.000+/Jahr (oft als Plattform-Bundle)",
+      "marketShare": "~10% (stark in Nordamerika)",
+      "status": "Active",
+      "useCases": ["Organisationen die bereits InterSystems-Produkte nutzen", "Große Krankenhäuser", "FHIR-fokussierte Projekte"],
+      "notes": "Sinnvoll wenn bereits InterSystems IRIS/Caché im Einsatz. Ansonsten oft Overkill.",
+      "cpe": [
+        "cpe:2.3:a:intersystems:ensemble:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:intersystems:healthconnect:*:*:*:*:*:*:*:*",
+        "cpe:/a:intersystems:ensemble",
+        "cpe:2.3:a:intersystems:iris_for_health:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "cloverleaf",
+      "name": "Infor Cloverleaf Integration Suite",
+      "category": "Legacy Interface Engine",
+      "vendor": "Infor",
+      "type": "Commercial",
+      "description": "Legacy Interface Engine - einer der ältesten (seit 1991), sehr etabliert aber veraltet",
+      "protocols": ["hl7v2", "fhir", "xds", "rest", "soap", "mllp", "http", "tcp", "file", "ftp"],
+      "platforms": ["Windows", "Linux", "Unix", "AIX"],
+      "licenseModel": ["Commercial", "Perpetual", "Subscription"],
+      "pricing": "$25.000 - $100.000+/Jahr",
+      "marketShare": "~8% (sinkend - viele migrieren zu Mirth)",
+      "status": "Active",
+      "useCases": ["Legacy-Systeme", "Organisationen mit bestehender Cloverleaf-Installation"],
+      "notes": "Cloverleaf war mal Marktführer, ist aber überholt. Viele Kunden migrieren zu Mirth. Nur sinnvoll wenn bereits vorhanden.",
+      "cpe": [
+        "cpe:2.3:a:infor:cloverleaf:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:infor:cloverleaf_integration_suite:*:*:*:*:*:*:*:*",
+        "cpe:/a:infor:cloverleaf"
+      ]
+    },
+    {
+      "id": "interfaceware",
+      "name": "Interfaceware Iguana",
+      "category": "Commercial Interface Engine",
+      "vendor": "Interfaceware (iNTERFACEWARE)",
+      "type": "Commercial",
+      "description": "Interface Engine mit Fokus auf einfache Bedienung und schnelle Implementierung",
+      "protocols": ["hl7v2", "fhir", "rest", "soap", "mllp", "http", "tcp", "file", "ftp"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Per Server", "Subscription"],
+      "pricing": "$10.000 - $50.000/Jahr",
+      "marketShare": "~3% (Nische)",
+      "status": "Active",
+      "useCases": ["Kleine bis mittlere Krankenhäuser", "Schnelle Prototypen", "Einfache HL7-Integrationen"],
+      "notes": "Gute Alternative zu Mirth wenn kommerzieller Support gewünscht ist, aber Budget begrenzt. Einfacher zu lernen.",
+      "cpe": [
+        "cpe:2.3:a:interfaceware:iguana:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:interfaceware:iguana_integration_engine:*:*:*:*:*:*:*:*",
+        "cpe:/a:interfaceware:iguana"
+      ]
+    },
+    {
+      "id": "corepoint",
+      "name": "Corepoint Integration Engine",
+      "category": "Cloud Interface Engine",
+      "vendor": "Corepoint Health (HQM)",
+      "type": "Commercial",
+      "description": "Cloud-native Integration Platform mit SaaS-Option",
+      "protocols": ["hl7v2", "fhir", "rest", "soap", "mllp", "http", "tcp", "file"],
+      "platforms": ["Windows", "Linux", "Cloud"],
+      "licenseModel": ["SaaS", "On-Premise", "Subscription"],
+      "pricing": "$15.000 - $75.000/Jahr (SaaS günstiger)",
+      "marketShare": "~5%",
+      "status": "Active",
+      "useCases": ["Cloud-affine Organisationen", "Managed-Service gewünscht", "FHIR-Projekte"],
+      "notes": "Interessant für Organisationen die SaaS bevorzugen. DSGVO-Konformität bei SaaS prüfen!",
+      "cpe": [
+        "cpe:2.3:a:corepoint:integration_engine:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:hqm:corepoint:*:*:*:*:*:*:*:*",
+        "cpe:/a:corepoint:integration_engine"
+      ]
+    },
+    {
+      "id": "qvera",
+      "name": "Qvera Interface Engine (QIE)",
+      "category": "Commercial Interface Engine",
+      "vendor": "Qvera",
+      "type": "Commercial",
+      "description": "Kosteneffiziente Interface Engine für kleine bis mittlere Organisationen",
+      "protocols": ["hl7v2", "fhir", "rest", "mllp", "http", "tcp", "file", "ftp"],
+      "platforms": ["Windows", "Linux"],
+      "licenseModel": ["Flat-Fee", "No Volume License", "Subscription"],
+      "pricing": "$8.000 - $30.000/Jahr (günstigste kommerzielle Option)",
+      "marketShare": "~2% (Nische, aber wachsend)",
+      "status": "Active",
+      "useCases": ["Kleine Krankenhäuser mit Budget-Constraints", "Praxen", "Labore"],
+      "notes": "Underdog mit gutem Preis-/Leistungsverhältnis. Gut für kleinere Organisationen die Support wollen aber Mirth zu komplex ist.",
+      "cpe": [
+        "cpe:2.3:a:qvera:interface_engine:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:qvera:qie:*:*:*:*:*:*:*:*",
+        "cpe:/a:qvera:qie"
+      ]
+    },
+    {
+      "id": "custom",
+      "name": "Eigenentwicklung",
+      "category": "Custom",
+      "vendor": "Intern",
+      "type": "Custom",
+      "description": "Selbst entwickelte Integration-Lösung (z.B. Python, Java, Node.js)",
+      "protocols": ["Variabel je nach Implementierung"],
+      "platforms": ["Variabel"],
+      "licenseModel": ["Intern"],
+      "pricing": "Entwicklungs- und Wartungskosten",
+      "marketShare": "~5% (meist legacy oder sehr spezifische Anforderungen)",
+      "status": "Active",
+      "useCases": ["Sehr spezifische Anforderungen", "Legacy-Systeme", "Budget-Constraints", "Prototyping"],
+      "notes": "Nur empfehlenswert wenn kommerzielle Lösungen nicht passen oder intern sehr gute Entwickler-Kapazität vorhanden. Oft technische Schulden.",
+      "cpe": []
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Variabel",
+      "type": "Variabel",
+      "description": "Andere kommerzielle oder proprietäre Integration-Engines",
+      "protocols": ["Variabel"],
+      "platforms": ["Variabel"],
+      "licenseModel": ["Variabel"],
+      "pricing": "Variabel",
+      "marketShare": "~2% (zahlreiche Nischen-Produkte)",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Nischen-Lösungen"],
+      "notes": "Z.B. BridgeHead, Systelab, iWay, etc. Meist für sehr spezifische Use Cases oder regional begrenzt.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Communication Server Software Katalog mit CPE-Identifikatoren für Vulnerability Management und Healthcare Interface Engines"
+  }
+}

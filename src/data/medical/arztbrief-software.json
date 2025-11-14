@@ -1,0 +1,286 @@
+{
+  "id": "medical-documentation-discharge-letter",
+  "name": "Medizinische Dokumentation / Arztbrief-Systeme",
+  "description": "Systeme für Spracherkennung, Befundung und Arztbrief-Erstellung",
+  "software": [
+    {
+      "id": "nuance-dragon-medical",
+      "name": "Nuance Dragon Medical",
+      "vendor": "Nuance (Microsoft)",
+      "website": "https://www.nuance.com/healthcare.html",
+      "description": "Medizinische Spracherkennungssoftware",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Medizinische Spracherkennung",
+        "Fachterminologie-Erkennung",
+        "KIS-Integration",
+        "Makros und Vorlagen",
+        "Mehrsprachigkeit"
+      ],
+      "platforms": ["Windows", "Mac", "Cloud"],
+      "cpe": ["cpe:2.3:a:nuance:dragon_medical:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Medizinische Dokumentare"],
+      "departments": ["Alle medizinischen Abteilungen", "Radiologie", "Pathologie", "Ambulanzen"]
+    },
+    {
+      "id": "olympus-dms",
+      "name": "Olympus Dictation Management System",
+      "vendor": "Olympus",
+      "website": "https://www.olympus.de/",
+      "description": "Diktiermanagement für medizinische Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Digitales Diktieren",
+        "Workflow-Management",
+        "Aufgabenverteilung",
+        "Priorisierung",
+        "Mobile Diktierlösungen"
+      ],
+      "platforms": ["Windows", "iOS", "Android"],
+      "cpe": ["cpe:2.3:a:olympus:dictation_management_system:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Schreibkräfte", "Medizinische Dokumentare"],
+      "departments": ["Alle medizinischen Abteilungen", "Schreibdienst"]
+    },
+    {
+      "id": "philips-speechexec",
+      "name": "SpeechExec Enterprise",
+      "vendor": "Philips",
+      "website": "https://www.philips.de/",
+      "description": "Diktier- und Transkriptionslösung für Kliniken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Diktiermanagement",
+        "Transkription",
+        "Spracherkennung",
+        "Workflow-Automatisierung",
+        "Cloud-Synchronisation"
+      ],
+      "platforms": ["Windows", "Cloud"],
+      "cpe": ["cpe:2.3:a:philips:speechexec_enterprise:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Schreibkräfte"],
+      "departments": ["Alle medizinischen Abteilungen", "Schreibdienst"]
+    },
+    {
+      "id": "medikit-befundung",
+      "name": "medikit Befundung",
+      "vendor": "medikit",
+      "website": "https://www.medikit.de/",
+      "description": "Strukturierte Befundung und Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Strukturierte Befundvorlagen",
+        "Textbausteine",
+        "Befundfreigabe",
+        "Vorbefundvergleich",
+        "DICOM-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Radiologen", "Pathologen"],
+      "departments": ["Radiologie", "Pathologie", "Kardiologie", "Labor"]
+    },
+    {
+      "id": "3m-mmodal-fluency",
+      "name": "M*Modal Fluency",
+      "vendor": "3M Health Information Systems",
+      "website": "https://www.3m.com/",
+      "description": "KI-gestützte Dokumentation und Spracherkennung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "KI-gestützte Spracherkennung",
+        "Klinische Dokumentation",
+        "Ambient Clinical Intelligence",
+        "Kodierungsunterstützung",
+        "Natural Language Understanding"
+      ],
+      "platforms": ["Windows", "Cloud", "Mobile"],
+      "cpe": ["cpe:2.3:a:3m:mmodal_fluency:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Medizinische Dokumentare", "Kodierer"],
+      "departments": ["Alle medizinischen Abteilungen", "Medizincontrolling"]
+    },
+    {
+      "id": "recotec-recomed",
+      "name": "recoMED",
+      "vendor": "RECOTEC",
+      "website": "https://www.recotec.de/",
+      "description": "Spracherkennungslösung für medizinische Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Medizinische Spracherkennung",
+        "Vorlagenmanagement",
+        "KIS-Integration",
+        "Mehrplatzfähig",
+        "Offline-Funktion"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Medizinische Dokumentare"],
+      "departments": ["Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "grundig-digta",
+      "name": "DIGTA",
+      "vendor": "Grundig Business Systems",
+      "website": "https://www.grundig-gbs.com/",
+      "description": "Digitales Diktiersystem mit Workflow-Management",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Digitales Diktieren",
+        "Spracherkennung",
+        "Workflow-Steuerung",
+        "Mobile Apps",
+        "Verschlüsselung"
+      ],
+      "platforms": ["Windows", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Schreibkräfte"],
+      "departments": ["Alle medizinischen Abteilungen", "Schreibdienst"]
+    },
+    {
+      "id": "voice-perfect",
+      "name": "VoicePerfect",
+      "vendor": "Linguatec",
+      "website": "https://www.linguatec.de/",
+      "description": "Spracherkennungssoftware für medizinische Fachsprache",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Medizinische Spracherkennung",
+        "Fachvokabular-Datenbanken",
+        "Dokumentenvorlagen",
+        "Lernfunktion"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte"],
+      "departments": ["Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "dedalus-orbis-befundung",
+      "name": "Orbis Befundung",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Befundungssystem integriert in Orbis KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Bett",
+      "features": [
+        "Integrierte Befundung",
+        "Strukturierte Vorlagen",
+        "Arztbrieferstellung",
+        "Digitale Unterschrift",
+        "Vorbefundvergleich"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Medizinische Dokumentare"],
+      "departments": ["Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "cgm-befunddokumentation",
+      "name": "CGM Befunddokumentation",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Befunddokumentations-Modul für KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Befundvorlagen",
+        "Textbausteine",
+        "Spracherkennungs-Integration",
+        "Befundfreigabe",
+        "Arztbrieferstellung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:befunddokumentation:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte"],
+      "departments": ["Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "nexus-medreport",
+      "name": "NEXUS / MEDREPORT",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Medizinische Dokumentation und Berichtswesen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Arztbrieferstellung",
+        "OP-Berichte",
+        "Befundung",
+        "Vorlagenverwaltung",
+        "Digitale Signatur"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflegedokumentation"],
+      "departments": ["Alle medizinischen Abteilungen", "OP"]
+    },
+    {
+      "id": "meierhofer-medoc",
+      "name": "MeDOC",
+      "vendor": "Meierhofer AG",
+      "website": "https://www.meierhofer.com/",
+      "description": "Dokumentenmanagementsystem für medizinische Dokumente",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Dokumentenarchivierung",
+        "Volltextsuche",
+        "Versionierung",
+        "Workflow-Integration",
+        "Audit-Trail"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Verwaltung", "Medizinische Dokumentare"],
+      "departments": ["Alle Abteilungen", "Medizinarchiv"]
+    },
+    {
+      "id": "agfa-impax-reporting",
+      "name": "IMPAX Reporting",
+      "vendor": "Agfa HealthCare",
+      "website": "https://global.agfahealthcare.com/",
+      "description": "Radiologische Befundungslösung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Strukturierte Befundung",
+        "Spracherkennung",
+        "PACS-Integration",
+        "Peer-Review",
+        "Statistik und Reporting"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Radiologen", "Ärzte"],
+      "departments": ["Radiologie", "Nuklearmedizin"]
+    },
+    {
+      "id": "ai-rad-companion",
+      "name": "AI-Rad Companion",
+      "vendor": "Siemens Healthineers",
+      "website": "https://www.siemens-healthineers.com/",
+      "description": "KI-unterstützte Befundung für Radiologie",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Untersuchung",
+      "features": [
+        "KI-gestützte Bilderkennung",
+        "Automatische Messungen",
+        "Befundvorschläge",
+        "Quantitative Analyse",
+        "PACS-Integration"
+      ],
+      "platforms": ["Cloud", "On-Premise"],
+      "cpe": [],
+      "userRoles": ["Radiologen"],
+      "departments": ["Radiologie"]
+    }
+  ]
+}

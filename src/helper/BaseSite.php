@@ -3,6 +3,8 @@ namespace ARPI\Helper;
 
 use ARPI\Entities\Annotations\Css as CssAttr;
 use ARPI\Entities\Annotations\Js as JsAttr;
+use ARPI\Helper\ODM\EntityRepository;
+use ARPI\Helper\ODM\UnitOfWork;
 
 /**
  * Abstrakte Basis-Klasse für Sites
@@ -19,10 +21,17 @@ abstract class BaseSite implements SiteInterface
     protected array $cssFiles = [];
     protected array $jsFiles = [];
 
+    /**
+     * ODM Components
+     */
+    protected EntityRepository $repository;
+    protected UnitOfWork $unitOfWork;
+
     public function __construct()
     {
         $this->template = new Template();
         $this->initGlobals();
+        $this->initODM();
 
         // Annotationen der Kindklasse einlesen (@css / @js)
         $this->parseClassAssetAnnotations();
@@ -36,6 +45,21 @@ abstract class BaseSite implements SiteInterface
         // i18n initialisieren
         $i18nModule = $this->template->getModule('i18n');
         
+    }
+
+    /**
+     * Initialisiert ODM (EntityRepository und UnitOfWork)
+     */
+    protected function initODM(): void
+    {
+        // MongoDB-Konfiguration aus Umgebungsvariablen oder Defaults
+        $mongoUri = $_ENV['MONGODB_URI'] ?? 'mongodb://localhost:27017';
+        $dbName = $_ENV['MONGODB_DATABASE'] ?? 'arpi';
+        
+        // EntityRepository und UnitOfWork initialisieren
+        $this->repository = new EntityRepository($mongoUri, $dbName);
+        $this->unitOfWork = new UnitOfWork($this->repository);
+        $this->repository->setUnitOfWork($this->unitOfWork);
     }
 
     /**
@@ -181,5 +205,71 @@ abstract class BaseSite implements SiteInterface
     protected function isPost(): bool
     {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
+
+    /**
+     * Hilfsmethode zum Persistieren eines Entity
+     */
+    protected function persist(object $entity): void
+    {
+        $this->unitOfWork->persist($entity);
+    }
+
+    /**
+     * Hilfsmethode zum Entfernen eines Entity
+     */
+    protected function remove(object $entity): void
+    {
+        $this->unitOfWork->remove($entity);
+    }
+
+    /**
+     * Hilfsmethode zum Flushen aller Änderungen
+     */
+    protected function flush(): void
+    {
+        $this->unitOfWork->flush();
+    }
+
+    /**
+     * Hilfsmethode zum Laden eines Entity
+     */
+    protected function find(string $entityClass, $id): ?object
+    {
+        return $this->repository->find($entityClass, $id);
+    }
+
+    /**
+     * Hilfsmethode zum Prüfen ob Entity geändert wurde
+     */
+    protected function isEntityDirty(object $entity): bool
+    {
+        return $this->unitOfWork->isEntityDirty($entity);
+    }
+
+    /**
+     * Hilfsmethode zum Leeren der UnitOfWork
+     */
+    protected function clearUnitOfWork(): void
+    {
+        $this->unitOfWork->clear();
+    }
+
+    /**
+     * Hilfsmethode für Transaktionen
+     */
+    protected function transaction(callable $callback): mixed
+    {
+        $session = $this->repository->getClient()->startSession();
+        
+        try {
+            $session->startTransaction();
+            $result = $callback($session);
+            $session->commitTransaction();
+            return $result;
+        } catch (\Exception $e) {
+            $session->abortTransaction();
+            throw $e;
+        }
     }
 }

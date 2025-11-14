@@ -117,9 +117,13 @@ src/template/js/wizards/
 ├── backupwizard.js              # Backup Wizard Integration
 ├── networkwizard.js             # Network Wizard Integration
 ├── vpnwizard.js                 # VPN Wizard Integration
+├── tiwizard.js                  # TI-Infrastruktur Wizard Integration
+├── meddevicewizard.js           # Medizingeräte Wizard Integration
 └── system/
     ├── vmhardware.js            # Trigger für VM/Hardware Updates
     ├── database.js
+    ├── ti.js                    # TI-Infrastruktur Conditional Fields
+    ├── meddevice.js             # Medizingeräte Funktionen
     └── ...
 ```
 

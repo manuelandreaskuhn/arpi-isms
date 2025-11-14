@@ -6,6 +6,11 @@ RewriteCond %{REQUEST_URI} !^/index\.php$
 RewriteCond %{REQUEST_FILENAME} \.php$
 RewriteRule ^(.*)$ - [F,L]
 
+# API-Requests an index.php mit site=API weiterleiten
+# Beispiel: /api/backup-systems -> index.php?site=API&path=backup-systems
+# Beispiel: /api/backup-systems/123 -> index.php?site=API&path=backup-systems/123
+RewriteRule ^api/(.*)$ index.php?site=API&path=$1 [QSA,L]
+
 # Erlaube direkten Zugriff auf existierende Dateien (CSS, JS, Bilder, etc.)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

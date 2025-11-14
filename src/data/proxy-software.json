@@ -1,0 +1,185 @@
+{
+  "proxySoftware": [
+    {
+      "id": "squid",
+      "name": "Squid Proxy",
+      "category": "Open Source Forward Proxy",
+      "vendor": "Squid Cache Community",
+      "type": "Open Source",
+      "description": "Der Standard Open-Source HTTP Proxy und Web-Cache - seit 1996 der Klassiker",
+      "features": ["HTTP/HTTPS Proxy", "Caching", "Access Control Lists", "Authentication", "SSL Bumping", "ICAP Support"],
+      "platforms": ["Linux", "Unix", "BSD", "Windows"],
+      "licenseModel": ["Open Source (GPL)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~40% (Forward Proxy, besonders in Linux-Umgebungen)",
+      "status": "Active",
+      "useCases": ["Forward Proxy für Internet-Zugriff", "Content Caching", "Access Control", "Bandwidth Management"],
+      "notes": "Squid ist der De-facto-Standard für Forward Proxies. Sehr performant, aber Konfiguration komplex (squid.conf). Gut dokumentiert, große Community.",
+      "cpe": [
+        "cpe:2.3:a:squid-cache:squid:*:*:*:*:*:*:*:*",
+        "cpe:/a:squid-cache:squid"
+      ]
+    },
+    {
+      "id": "nginx",
+      "name": "Nginx",
+      "category": "Reverse Proxy / Load Balancer",
+      "vendor": "F5 / Nginx Inc.",
+      "type": "Open Source + Commercial",
+      "description": "Hochperformanter Webserver und Reverse Proxy - Marktführer bei Reverse Proxies",
+      "features": ["Reverse Proxy", "Load Balancing", "HTTP/2", "SSL Termination", "Caching", "WebSocket Support"],
+      "platforms": ["Linux", "Unix", "BSD", "Windows"],
+      "licenseModel": ["Open Source (BSD)", "Nginx Plus (Commercial)"],
+      "pricing": "Kostenlos (Open Source) / $2.500-$5.000/Jahr (Nginx Plus)",
+      "marketShare": "~35% (Reverse Proxy / Load Balancer)",
+      "status": "Active",
+      "useCases": ["Reverse Proxy für Web-Apps", "Load Balancing", "API Gateway", "SSL Termination", "CDN"],
+      "notes": "Nginx ist extrem performant und ressourcenschonend. Event-driven Architecture - kann >10k gleichzeitige Verbindungen. Einfache Konfiguration. Nginx Plus bietet Advanced Load Balancing, Dynamic Reconfiguration, Support.",
+      "cpe": [
+        "cpe:2.3:a:nginx:nginx:*:*:*:*:*:*:*:*",
+        "cpe:/a:nginx:nginx",
+        "cpe:2.3:a:f5:nginx_plus:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "haproxy",
+      "name": "HAProxy",
+      "category": "Load Balancer / Reverse Proxy",
+      "vendor": "HAProxy Technologies",
+      "type": "Open Source + Commercial",
+      "description": "High Availability Proxy - spezialisiert auf Load Balancing und High Performance",
+      "features": ["Layer 4/7 Load Balancing", "SSL Termination", "Health Checks", "Sticky Sessions", "Rate Limiting", "ACLs"],
+      "platforms": ["Linux", "Unix", "BSD"],
+      "licenseModel": ["Open Source (GPL)", "HAProxy Enterprise"],
+      "pricing": "Kostenlos (Open Source) / Enterprise ab $5.000/Jahr",
+      "marketShare": "~20% (besonders bei High-Traffic-Sites)",
+      "status": "Active",
+      "useCases": ["High-Traffic Load Balancing", "SSL Offloading", "Multi-Site Failover", "TCP Load Balancing"],
+      "notes": "HAProxy ist DER Load Balancer wenn Performance kritisch ist. Kann Millionen von gleichzeitigen Verbindungen. Wird von Twitter, Reddit, Stack Overflow genutzt. Fokus auf Load Balancing (weniger Proxy-Features als Squid).",
+      "cpe": [
+        "cpe:2.3:a:haproxy:haproxy:*:*:*:*:*:*:*:*",
+        "cpe:/a:haproxy:haproxy"
+      ]
+    },
+    {
+      "id": "apache",
+      "name": "Apache HTTP Server (mod_proxy)",
+      "category": "Reverse Proxy",
+      "vendor": "Apache Software Foundation",
+      "type": "Open Source",
+      "description": "Apache Webserver mit mod_proxy für Reverse Proxy Funktionalität",
+      "features": ["Reverse Proxy", "Load Balancing", "SSL/TLS", "mod_proxy_http", "mod_proxy_balancer", "URL Rewriting"],
+      "platforms": ["Linux", "Unix", "BSD", "Windows"],
+      "licenseModel": ["Open Source (Apache License 2.0)"],
+      "pricing": "Kostenlos",
+      "marketShare": "~15% (Reverse Proxy, rückläufig zu Gunsten von Nginx)",
+      "status": "Active",
+      "useCases": ["Reverse Proxy für Legacy-Apps", "Einfache Load Balancing Szenarien", "Bestandsumgebungen"],
+      "notes": "Apache ist der Klassiker, aber weniger performant als Nginx/HAProxy. Process-based (nicht event-driven) = höherer Ressourcenverbrauch. Gut wenn bereits Apache im Einsatz. Für neue Projekte: Nginx bevorzugen.",
+      "cpe": [
+        "cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*",
+        "cpe:/a:apache:http_server"
+      ]
+    },
+    {
+      "id": "bluecoat",
+      "name": "Symantec/Broadcom Blue Coat ProxySG",
+      "category": "Enterprise Secure Web Gateway",
+      "vendor": "Broadcom (ehemals Symantec, davor Blue Coat)",
+      "type": "Commercial",
+      "description": "Enterprise Secure Web Gateway mit umfassenden Security-Features",
+      "features": ["Secure Web Gateway", "SSL Inspection", "Advanced Threat Protection", "DLP", "URL Filtering", "Sandboxing"],
+      "platforms": ["Appliance", "Virtual"],
+      "licenseModel": ["Appliance-based", "Subscription"],
+      "pricing": "€15.000 - €200.000+ (je nach Appliance und Throughput)",
+      "marketShare": "~10% (Enterprise SWG)",
+      "status": "Active",
+      "useCases": ["Enterprise Secure Web Gateway", "Advanced Threat Protection", "SSL Inspection", "DLP"],
+      "notes": "Blue Coat (2016 von Symantec gekauft, 2019 an Broadcom) ist/war Marktführer bei Enterprise Proxies. Sehr teuer, aber umfassende Security-Features. Viele Kunden migrieren zu Cloud-SWG (Zscaler, etc.) wegen On-Premise-Komplexität.",
+      "cpe": [
+        "cpe:2.3:o:bluecoat:proxysg_software:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:bluecoat:proxysg:*:*:*:*:*:*:*:*",
+        "cpe:2.3:a:symantec:proxysg:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "fortigate",
+      "name": "Fortinet FortiGate Web Proxy",
+      "category": "Integrated Firewall Proxy",
+      "vendor": "Fortinet",
+      "type": "Commercial",
+      "description": "Web Proxy integriert in FortiGate Next-Gen Firewalls",
+      "features": ["Explicit/Transparent Proxy", "SSL Inspection", "Web Filtering", "Antivirus", "DLP", "Sandboxing"],
+      "platforms": ["FortiGate Appliance", "FortiGate-VM"],
+      "licenseModel": ["UTM Bundle", "Enterprise Bundle"],
+      "pricing": "In FortiGate Lizenz enthalten (UTM Bundle erforderlich)",
+      "marketShare": "~8% (als Teil von FortiGate)",
+      "status": "Active",
+      "useCases": ["Integrierter Proxy in NGFW", "Web Filtering", "SSL Inspection", "SMB bis Enterprise"],
+      "notes": "FortiGate Web Proxy ist praktisch wenn bereits FortiGate im Einsatz - keine separate Appliance nötig. Performance OK, aber nicht so stark wie dedizierte Proxy-Lösungen. Gut für SMB, bei großen Deployments eher dedizierte Lösung.",
+      "cpe": [
+        "cpe:2.3:o:fortinet:fortios:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:fortinet:fortigate-*:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "cisco-wsa",
+      "name": "Cisco Web Security Appliance (WSA)",
+      "category": "Enterprise Secure Web Gateway",
+      "vendor": "Cisco",
+      "type": "Commercial",
+      "description": "Cisco's dedizierte Web Security Appliance (wird durch Cisco Umbrella ersetzt)",
+      "features": ["Secure Web Gateway", "Advanced Malware Protection", "Data Security", "Acceptable Use Controls", "Reporting"],
+      "platforms": ["Appliance", "Virtual (WSAv)"],
+      "licenseModel": ["Appliance", "Subscription"],
+      "pricing": "€10.000 - €100.000+ (je nach Throughput)",
+      "marketShare": "~5% (rückläufig - Cisco pusht Umbrella SIG)",
+      "status": "Active (End-of-Sale angekündigt - Migration zu Umbrella SIG)",
+      "useCases": ["Enterprise Web Security", "On-Premise SWG", "Cisco-Umgebungen"],
+      "notes": "Cisco WSA ist solide, aber wird zugunsten von Cisco Umbrella (Cloud SIG) auslaufen. Cisco empfiehlt Migration zu Umbrella. Neuinstallationen nicht mehr sinnvoll. Für Bestandskunden: Support läuft noch mehrere Jahre.",
+      "cpe": [
+        "cpe:2.3:o:cisco:web_security_appliance:*:*:*:*:*:*:*:*",
+        "cpe:2.3:h:cisco:web_security_appliance:*:*:*:*:*:*:*:*"
+      ]
+    },
+    {
+      "id": "zscaler",
+      "name": "Zscaler Internet Access (ZIA)",
+      "category": "Cloud Secure Web Gateway",
+      "vendor": "Zscaler",
+      "type": "Cloud Service (SaaS)",
+      "description": "Cloud-native Secure Web Gateway - Marktführer bei Cloud-SWG",
+      "features": ["Cloud Proxy", "SSL Inspection", "Sandboxing", "DLP", "CASB", "Zero Trust Network Access"],
+      "platforms": ["Cloud (SaaS)"],
+      "licenseModel": ["Per User Subscription", "Per Bandwidth"],
+      "pricing": "$5-$20 pro User/Monat (je nach Bundle)",
+      "marketShare": "~25% (Cloud SWG Marktführer)",
+      "status": "Active",
+      "useCases": ["Cloud-first Organisationen", "Remote Workforce", "Zero Trust Architecture", "Office 365 Optimization"],
+      "notes": "Zscaler ist Marktführer bei Cloud-SWG. Kein On-Premise - alles Cloud. Sehr gut für verteilte/mobile Workforce. Direkter Internet-Breakout statt Backhauling. Integriert mit SD-WAN. ABER: Traffic geht durch Zscaler Cloud (Privacy/Compliance prüfen!). Teuer bei vielen Usern.",
+      "cpe": []
+    },
+    {
+      "id": "other",
+      "name": "Sonstige",
+      "category": "Sonstige",
+      "vendor": "Verschiedene",
+      "type": "Variabel",
+      "description": "Andere Proxy-Lösungen (z.B. Privoxy, Tinyproxy, 3proxy, McAfee Web Gateway, etc.)",
+      "features": [],
+      "platforms": [],
+      "licenseModel": [],
+      "pricing": "Variabel",
+      "marketShare": "~7% (zahlreiche Nischen-Produkte)",
+      "status": "Active",
+      "useCases": ["Spezielle Anforderungen", "Nischen-Lösungen", "Legacy"],
+      "notes": "Z.B. Privoxy (Privacy-fokussiert), Tinyproxy (minimal), 3proxy (universal), McAfee Web Gateway, Barracuda Web Security Gateway, Forcepoint Web Security, etc.",
+      "cpe": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Proxy Server Software Katalog mit CPE-Identifikatoren für Forward Proxies, Reverse Proxies und Secure Web Gateways"
+  }
+}

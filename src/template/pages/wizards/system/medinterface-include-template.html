@@ -77,7 +77,7 @@
                     Quell-Komponente (optional)
                     <span class="help-icon" data-tooltip="source-component">?</span>
                 </label>
-                <div class="custom-select" data-name="sourceComponent">
+                <div class="custom-select" data-name="sourceComponent" data-index="0" data-category="interface" data-component-type="vm,hardware">
                     <div class="select-trigger">
                         <span class="placeholder">Keine spezifische Auswahl</span>
                         <span class="arrow">▼</span>
@@ -85,7 +85,8 @@
                     <div class="select-dropdown">
                         <div class="select-options interface-source-components">
                             <div class="select-option" data-value="">Keine spezifische Auswahl</div>
-                            <!-- Will be populated dynamically -->
+                            <div class="select-option" data-value="manual">Manuell eingeben</div>
+                            <!-- Wird automatisch befüllt -->
                         </div>
                     </div>
                 </div>
@@ -161,7 +162,7 @@
                     Kommunikationsserver auswählen
                     <span class="help-icon" data-tooltip="commserver-select">?</span>
                 </label>
-                <div class="custom-select" data-name="commServerSelect">
+                <div class="custom-select" data-name="commServerSelect" data-component-type="commserver">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen oder manuell eingeben</span>
                         <span class="arrow">▼</span>
@@ -170,7 +171,7 @@
                         <div class="select-options interface-commserver-list">
                             <div class="select-option" data-value="">Bitte wählen</div>
                             <div class="select-option" data-value="manual">Manuell eingeben</div>
-                            <!-- Will be populated dynamically from existing comm servers -->
+                            <!-- Wird aus CommunicationServer-Entities befüllt -->
                         </div>
                     </div>
                 </div>
@@ -190,7 +191,7 @@
                     </div>
                     <div class="form-group">
                         <label>Server-Komponente (optional)</label>
-                        <div class="custom-select" data-name="commServerComponent">
+                        <div class="custom-select" data-name="commServerComponent" data-index="0" data-category="interface" data-component-type="vm,hardware">
                             <div class="select-trigger">
                                 <span class="placeholder">Keine spezifische Auswahl</span>
                                 <span class="arrow">▼</span>
@@ -198,7 +199,8 @@
                             <div class="select-dropdown">
                                 <div class="select-options interface-commserver-components">
                                     <div class="select-option" data-value="">Keine spezifische Auswahl</div>
-                                    <!-- Will be populated dynamically -->
+                                    <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                    <!-- Wird automatisch befüllt -->
                                 </div>
                             </div>
                         </div>
@@ -362,7 +364,7 @@
                     Ziel-Komponente (optional)
                     <span class="help-icon" data-tooltip="target-component">?</span>
                 </label>
-                <div class="custom-select" data-name="targetComponent">
+                <div class="custom-select" data-name="targetComponent" data-index="0" data-category="interface" data-component-type="loadbalancer,vm,hardware">
                     <div class="select-trigger">
                         <span class="placeholder">Keine spezifische Auswahl</span>
                         <span class="arrow">▼</span>
@@ -370,7 +372,8 @@
                     <div class="select-dropdown">
                         <div class="select-options interface-target-components">
                             <div class="select-option" data-value="">Keine spezifische Auswahl</div>
-                            <!-- Will be populated dynamically -->
+                            <div class="select-option" data-value="manual">Manuell eingeben</div>
+                            <!-- Wird automatisch befüllt -->
                         </div>
                     </div>
                 </div>

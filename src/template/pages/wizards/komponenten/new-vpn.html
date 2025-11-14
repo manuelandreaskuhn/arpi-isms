@@ -1,9 +1,22 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Komponenten</p>
-    <i>›</i>
-    <p>Neues VPN anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Komponenten</p>
+        <i>›</i>
+        <p>Neues VPN anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neues VPN anlegen</h1>
+            <p>Erfassen Sie die Details zu Ihrem VPN, um eine strukturierte Dokumentation zu gewährleisten und die Verwaltung zu erleichtern.</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newVPNForm" class="btn-save" disabled>Speichern</button>
+        </div>
+    </div>
 </aside>
 
 <form id="newVPNForm">
@@ -23,14 +36,14 @@
                         VPN-Name <span class="required">*</span>
                         <span class="help-icon" data-tooltip="vpn-name">?</span>
                     </label>
-                    <input type="text" id="vpnname" required placeholder="z.B. Corporate-VPN, Site-to-Site-Berlin">
+                    <input type="text" id="name" name="name" required placeholder="z.B. Corporate-VPN, Site-to-Site-Berlin">
                 </div>
                 <div class="form-group">
                     <label>
                         VPN-Typ <span class="required">*</span>
                         <span class="help-icon" data-tooltip="vpn-type">?</span>
                     </label>
-                    <div class="custom-select" data-name="vpntype">
+                    <div class="custom-select" data-name="type">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -52,7 +65,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>VPN-Zweck</label>
-                    <div class="custom-select" data-name="vpnpurpose">
+                    <div class="custom-select" data-name="purpose">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -72,7 +85,7 @@
                 </div>
                 <div class="form-group">
                     <label>Standort</label>
-                    <input type="text" id="vpnlocation" placeholder="z.B. Hauptstandort, RZ1, AWS eu-central-1">
+                    <input type="text" id="location" name="location" placeholder="z.B. Hauptstandort, RZ1, AWS eu-central-1">
                 </div>
             </div>
         </div>
@@ -89,7 +102,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>VPN-Gateway / Concentrator <span class="required">*</span></label>
-                    <div class="custom-select" data-name="vpngatewayid" data-component-type="vm,hardware,firewall">
+                    <div class="custom-select" data-name="gatewayid" data-component-type="vm,hardware,firewall">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen (VM/Hardware/Firewall)</span>
                             <span class="arrow">▼</span>
@@ -110,7 +123,7 @@
                 </div>
                 <div class="form-group" id="vpn-gateway-manual" style="display:none;">
                     <label>VPN-Gateway (manuell)</label>
-                    <input type="text" id="vpngateway" required placeholder="z.B. vpn.example.com, vpn-gw-01">
+                    <input type="text" id="gateway" name="gateway" required placeholder="z.B. vpn.example.com, vpn-gw-01">
                 </div>
             </div>
 
@@ -142,7 +155,7 @@
                         VPN-Software / Lösung
                         <span class="help-icon" data-tooltip="vpn-software">?</span>
                     </label>
-                    <div class="custom-select" data-name="vpnsoftware">
+                    <div class="custom-select" data-name="software">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -176,18 +189,18 @@
                 </div>
                 <div class="form-group">
                     <label>Version</label>
-                    <input type="text" id="vpnversion" placeholder="z.B. 4.10, 2024.1">
+                    <input type="text" id="version" name="version" placeholder="z.B. 4.10, 2024.1">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Öffentliche IP-Adresse</label>
-                    <input type="text" id="vpnpublicip" placeholder="z.B. 203.0.113.10">
+                    <input type="text" id="publicip" name="publicip" placeholder="z.B. 203.0.113.10">
                 </div>
                 <div class="form-group">
                     <label>Management-URL</label>
-                    <input type="text" id="vpnmgmturl" placeholder="z.B. https://vpn-admin.example.com">
+                    <input type="text" id="mgmturl" name="mgmturl" placeholder="z.B. https://vpn-admin.example.com">
                 </div>
             </div>
         </div>
@@ -207,7 +220,7 @@
                         VPN-Protokoll <span class="required">*</span>
                         <span class="help-icon" data-tooltip="vpn-protocol">?</span>
                     </label>
-                    <div class="custom-select" data-name="vpnprotocol">
+                    <div class="custom-select" data-name="protocol">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -230,7 +243,7 @@
                 </div>
                 <div class="form-group">
                     <label>VPN-Port(s)</label>
-                    <input type="text" id="vpnports" placeholder="z.B. UDP/500, UDP/4500, TCP/443">
+                    <input type="text" id="ports" name="ports" placeholder="z.B. UDP/500, UDP/4500, TCP/443">
                 </div>
             </div>
 
@@ -354,7 +367,7 @@
                 </div>
                 <div class="form-group">
                     <label>MFA-Provider</label>
-                    <input type="text" id="mfaprovider" placeholder="z.B. Duo Security, Microsoft Authenticator">
+                    <input type="text" id="mfaprovider" name="mfaprovider" placeholder="z.B. Duo Security, Microsoft Authenticator">
                 </div>
             </div>
 
@@ -381,25 +394,25 @@
                 </div>
                 <div class="form-group">
                     <label>RADIUS-Server</label>
-                    <input type="text" id="radiusserver" placeholder="z.B. radius.example.com, 192.168.1.50">
+                    <input type="text" id="radiusserver" name="radiusserver" placeholder="z.B. radius.example.com, 192.168.1.50">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Zertifizierungsstelle (CA)</label>
-                    <input type="text" id="vpnca" placeholder="z.B. Corporate-CA, Let's Encrypt">
+                    <input type="text" id="ca" name="ca" placeholder="z.B. Corporate-CA, Let's Encrypt">
                 </div>
                 <div class="form-group">
                     <label>Zertifikat-Gültigkeit</label>
-                    <input type="text" id="certvalidity" placeholder="z.B. 1 Jahr, 2 Jahre">
+                    <input type="text" id="certvalidity" name="certvalidity" placeholder="z.B. 1 Jahr, 2 Jahre">
                 </div>
             </div>
 
             <div class="subsection-header">Benutzergruppen & Rollen</div>
             <div class="form-group">
                 <label>Definierte Benutzergruppen</label>
-                <textarea id="usergroups" rows="3" placeholder="z.B. VPN-Admins, VPN-Standard-Users, VPN-Partner, VPN-Developers"></textarea>
+                <textarea id="usergroups" name="usergroups" rows="3" placeholder="z.B. VPN-Admins, VPN-Standard-Users, VPN-Partner, VPN-Developers"></textarea>
                 <div class="help-text">Listen Sie die konfigurierten Benutzergruppen auf (eine pro Zeile oder kommagetrennt)</div>
             </div>
         </div>
@@ -416,11 +429,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>VPN-IP-Pool (CIDR) <span class="required">*</span></label>
-                    <input type="text" id="vpnippool" required placeholder="z.B. 10.8.0.0/24, 172.20.0.0/16">
+                    <input type="text" id="ippool" name="ippool" required placeholder="z.B. 10.8.0.0/24, 172.20.0.0/16">
                 </div>
                 <div class="form-group">
                     <label>IP-Pool Größe</label>
-                    <input type="text" id="ippoolsize" placeholder="z.B. 254 IPs, 1024 IPs">
+                    <input type="text" id="ippoolsize" name="ippoolsize" placeholder="z.B. 254 IPs, 1024 IPs">
                     <div class="help-text">Anzahl verfügbarer IP-Adressen</div>
                 </div>
             </div>
@@ -428,11 +441,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>DNS-Server (Primary)</label>
-                    <input type="text" id="vpndns1" placeholder="z.B. 10.0.0.10, 8.8.8.8">
+                    <input type="text" id="dns1" name="dns1" placeholder="z.B. 10.0.0.10, 8.8.8.8">
                 </div>
                 <div class="form-group">
                     <label>DNS-Server (Secondary)</label>
-                    <input type="text" id="vpndns2" placeholder="z.B. 10.0.0.11, 8.8.4.4">
+                    <input type="text" id="dns2" name="dns2" placeholder="z.B. 10.0.0.11, 8.8.4.4">
                 </div>
             </div>
 
@@ -460,13 +473,13 @@
                 </div>
                 <div class="form-group">
                     <label>Erlaubte Netzwerke / Routen</label>
-                    <input type="text" id="allowednetworks" placeholder="z.B. 10.0.0.0/8, 172.16.0.0/12">
+                    <input type="text" id="allowednetworks" name="allowednetworks" placeholder="z.B. 10.0.0.0/8, 172.16.0.0/12">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>DNS-Suffix / Suchdomänen</label>
-                <input type="text" id="dnssuffix" placeholder="z.B. internal.example.com, corp.example.com">
+                <input type="text" id="dnssuffix" name="dnssuffix" placeholder="z.B. internal.example.com, corp.example.com">
             </div>
         </div>
     </div>
@@ -482,33 +495,33 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Maximale gleichzeitige Verbindungen</label>
-                    <input type="number" id="maxconnections" placeholder="z.B. 50, 100, 500, 1000">
+                    <input type="number" id="maxconnections" name="maxconnections" placeholder="z.B. 50, 100, 500, 1000">
                 </div>
                 <div class="form-group">
                     <label>Lizenzierte Verbindungen</label>
-                    <input type="number" id="licensedconnections" placeholder="z.B. 100, 250, 1000">
+                    <input type="number" id="licensedconnections" name="licensedconnections" placeholder="z.B. 100, 250, 1000">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Durchschnittliche aktive Nutzer</label>
-                    <input type="number" id="avgactiveusers" placeholder="z.B. 30, 80, 200">
+                    <input type="number" id="avgactiveusers" name="avgactiveusers" placeholder="z.B. 30, 80, 200">
                 </div>
                 <div class="form-group">
                     <label>Peak-Nutzung (Spitzenlast)</label>
-                    <input type="number" id="peakusers" placeholder="z.B. 45, 120, 350">
+                    <input type="number" id="peakusers" name="peakusers" placeholder="z.B. 45, 120, 350">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Bandbreite pro Verbindung</label>
-                    <input type="text" id="bandwidthperconnection" placeholder="z.B. 10 Mbit/s, unbegrenzt">
+                    <input type="text" id="bandwidthperconnection" name="bandwidthperconnection" placeholder="z.B. 10 Mbit/s, unbegrenzt">
                 </div>
                 <div class="form-group">
                     <label>Gesamte VPN-Bandbreite</label>
-                    <input type="text" id="totalbandwidth" placeholder="z.B. 1 Gbit/s, 100 Mbit/s">
+                    <input type="text" id="totalbandwidth" name="totalbandwidth" placeholder="z.B. 1 Gbit/s, 100 Mbit/s">
                 </div>
             </div>
         </div>
@@ -526,11 +539,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Session Timeout (Idle)</label>
-                    <input type="text" id="sessiontimeout" placeholder="z.B. 30 Minuten, 2 Stunden">
+                    <input type="text" id="sessiontimeout" name="sessiontimeout" placeholder="z.B. 30 Minuten, 2 Stunden">
                 </div>
                 <div class="form-group">
                     <label>Maximale Session-Dauer</label>
-                    <input type="text" id="maxsessionduration" placeholder="z.B. 8 Stunden, 24 Stunden">
+                    <input type="text" id="maxsessionduration" name="maxsessionduration" placeholder="z.B. 8 Stunden, 24 Stunden">
                 </div>
             </div>
 
@@ -759,43 +772,43 @@
                 </div>
                 <div class="form-group">
                     <label>Log-Retention</label>
-                    <input type="text" id="logretention" placeholder="z.B. 90 Tage, 1 Jahr">
+                    <input type="text" id="logretention" name="logretention" placeholder="z.B. 90 Tage, 1 Jahr">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>SIEM-Integration</label>
-                    <input type="text" id="siemintegration" placeholder="z.B. Splunk, QRadar, Microsoft Sentinel">
+                    <input type="text" id="siemintegration" name="siemintegration" placeholder="z.B. Splunk, QRadar, Microsoft Sentinel">
                 </div>
                 <div class="form-group">
                     <label>Syslog-Server</label>
-                    <input type="text" id="syslogserver" placeholder="z.B. syslog.example.com, 192.168.1.100">
+                    <input type="text" id="syslogserver" name="syslogserver" placeholder="z.B. syslog.example.com, 192.168.1.100">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Monitoring-Tool</label>
-                    <input type="text" id="monitoringtool" placeholder="z.B. PRTG, Nagios, Zabbix">
+                    <input type="text" id="monitoringtool" name="monitoringtool" placeholder="z.B. PRTG, Nagios, Zabbix">
                 </div>
                 <div class="form-group">
                     <label>Geloggte Events</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="log-auth" value="authentication">
+                            <input type="checkbox" id="log-auth" name="loggedevents[]" value="authentication">
                             <label for="log-auth">Authentifizierung</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="log-connect" value="connections">
+                            <input type="checkbox" id="log-connect" name="loggedevents[]" value="connections">
                             <label for="log-connect">Verbindungen</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="log-traffic" value="traffic">
+                            <input type="checkbox" id="log-traffic" name="loggedevents[]" value="traffic">
                             <label for="log-traffic">Traffic</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="log-errors" value="errors">
+                            <input type="checkbox" id="log-errors" name="loggedevents[]" value="errors">
                             <label for="log-errors">Fehler</label>
                         </div>
                     </div>
@@ -818,7 +831,7 @@
                         Hochverfügbarkeit (HA)
                         <span class="help-icon" data-tooltip="vpn-ha">?</span>
                     </label>
-                    <div class="custom-select" data-name="havpn">
+                    <div class="custom-select" data-name="ha">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -857,14 +870,14 @@
                 </div>
                 <div class="form-group" id="secondary-gateway-manual" style="display:none;">
                     <label>Sekundäres Gateway (manuell)</label>
-                    <input type="text" id="secondarygateway" placeholder="z.B. vpn-backup.example.com">
+                    <input type="text" id="secondarygateway" name="secondarygateway" placeholder="z.B. vpn-backup.example.com">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Failover-Zeit</label>
-                    <input type="text" id="failovertime" placeholder="z.B. < 30 Sekunden, < 2 Minuten">
+                    <input type="text" id="failovertime" name="failovertime" placeholder="z.B. < 30 Sekunden, < 2 Minuten">
                 </div>
                 <div class="form-group">
                     <label>Load Balancing</label>
@@ -899,23 +912,23 @@
                     <label>Compliance-Anforderungen</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-dsgvo" value="dsgvo">
+                            <input type="checkbox" id="comp-dsgvo" name="compliance[]" value="dsgvo">
                             <label for="comp-dsgvo">DSGVO</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-hipaa" value="hipaa">
+                            <input type="checkbox" id="comp-hipaa" name="compliance[]" value="hipaa">
                             <label for="comp-hipaa">HIPAA</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-pci" value="pci-dss">
+                            <input type="checkbox" id="comp-pci" name="compliance[]" value="pci-dss">
                             <label for="comp-pci">PCI DSS</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-iso27001" value="iso27001">
+                            <input type="checkbox" id="comp-iso27001" name="compliance[]" value="iso27001">
                             <label for="comp-iso27001">ISO 27001</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="comp-kritis" value="kritis">
+                            <input type="checkbox" id="comp-kritis" name="compliance[]" value="kritis">
                             <label for="comp-kritis">KRITIS</label>
                         </div>
                     </div>
@@ -925,11 +938,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Letzte Sicherheitsprüfung</label>
-                    <input type="text" id="lastsecurityaudit" placeholder="z.B. Q3 2024, 15.09.2024">
+                    <input type="text" id="lastsecurityaudit" name="lastsecurityaudit" placeholder="z.B. Q3 2024, 15.09.2024">
                 </div>
                 <div class="form-group">
                     <label>Nächste geplante Prüfung</label>
-                    <input type="text" id="nextsecurityaudit" placeholder="z.B. Q1 2025, 15.03.2025">
+                    <input type="text" id="nextsecurityaudit" name="nextsecurityaudit" placeholder="z.B. Q1 2025, 15.03.2025">
                 </div>
             </div>
         </div>
@@ -946,17 +959,17 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>VPN-Administrator</label>
-                    <input type="text" id="vpnadmin" placeholder="z.B. Network-Team, VPN-Admins">
+                    <input type="text" id="admin" name="admin" placeholder="z.B. Network-Team, VPN-Admins">
                 </div>
                 <div class="form-group">
                     <label>Support-Kontakt</label>
-                    <input type="text" id="vpnsupport" placeholder="z.B. vpn-support@example.com, Tel: +49...">
+                    <input type="text" id="support" name="support" placeholder="z.B. vpn-support@example.com, Tel: +49...">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Notfall-Kontakt (24/7)</label>
-                <input type="text" id="emergencycontact" placeholder="z.B. +49-XXX-XXXX (On-Call)">
+                <input type="text" id="emergencycontact" name="emergencycontact" placeholder="z.B. +49-XXX-XXXX (On-Call)">
             </div>
         </div>
     </div>
@@ -974,7 +987,7 @@
                     Notizen / VPN-Besonderheiten
                     <span class="help-icon" data-tooltip="vpn-notes">?</span>
                 </label>
-                <textarea id="vpnnotes" rows="4" placeholder="Zusätzliche Informationen zum VPN, spezielle Konfigurationen, bekannte Probleme, geplante Änderungen..."></textarea>
+                <textarea id="notes" name="notes" rows="4" placeholder="Zusätzliche Informationen zum VPN, spezielle Konfigurationen, bekannte Probleme, geplante Änderungen..."></textarea>
             </div>
         </div>
     </div>

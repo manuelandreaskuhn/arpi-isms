@@ -1,6 +1,7 @@
 <?php
 namespace ARPI\Entities\Documents;
 
+use ARPI\ODM\Mapping\Annotations as ODM;
 use MongoDB\BSON\ObjectId;
 use DateTime;
 
@@ -134,6 +135,7 @@ class Ressource {
      * @return void 
      */
     public function __construct() {
+        $this->uuid = \uniqid('ressource_', true);
         $this->id = new ObjectId();
         $this->roles = array();
         $this->organizations = array();

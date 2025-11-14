@@ -13,7 +13,11 @@ const componentCache = {
     siem: [],
     vpn: [],
     proxy: [],
-    network: []
+    network: [],
+    commserver: [],
+    tiinfrastructure: [],
+    loadbalancer: [],
+    meddevice: []
 };
 
 /**
@@ -116,6 +120,16 @@ function getComponentsByType(type) {
             return collectHardwareFromPage();
         case 'firewall':
             return collectFirewallsFromPage();
+        case 'commserver':
+            return collectCommServersFromPage();
+        case 'hypervisor':
+            return collectHypervisorsFromPage();
+        case 'tiinfrastructure':
+            return collectTIInfrastructureFromPage();
+        case 'loadbalancer':
+            return collectLoadBalancersFromPage();
+        case 'meddevice':
+            return collectMedDevicesFromPage();
         default:
             return componentCache[type] || [];
     }
@@ -167,6 +181,131 @@ function collectFirewallsFromPage() {
 }
 
 /**
+ * Collect Communication Servers from current page (System Wizard)
+ * @returns {Array} Array of CommServer objects
+ */
+function collectCommServersFromPage() {
+    // Check if we're in a system wizard with commserver section
+    const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
+    if (!commserverSection || commserverSection.style.display === 'none') {
+        return componentCache.commserver || [];
+    }
+
+    // If there's a commserver configuration, collect it
+    const nameInput = commserverSection.querySelector('input[name="commservername"]');
+    if (nameInput && nameInput.value.trim()) {
+        const typeSelect = commserverSection.querySelector('[data-name="commservertype"]');
+        return [{
+            id: '1',
+            name: nameInput.value.trim(),
+            type: typeSelect ? typeSelect.dataset.value : ''
+        }];
+    }
+
+    return componentCache.commserver || [];
+}
+
+/**
+ * Collect Hypervisors from current page (System Wizard)
+ * @returns {Array} Array of Hypervisor objects
+ */
+function collectHypervisorsFromPage() {
+    // Check if we're in a system wizard with hypervisor section
+    const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
+    if (!hypervisorSection || hypervisorSection.style.display === 'none') {
+        return componentCache.hypervisor || [];
+    }
+
+    // If there's a hypervisor configuration, collect it
+    const nameInput = hypervisorSection.querySelector('input[name="hypervisorname"]');
+    if (nameInput && nameInput.value.trim()) {
+        const typeSelect = hypervisorSection.querySelector('[data-name="hypervisortype"]');
+        return [{
+            id: '1',
+            name: nameInput.value.trim(),
+            type: typeSelect ? typeSelect.dataset.value : ''
+        }];
+    }
+
+    return componentCache.hypervisor || [];
+}
+
+/**
+ * Collect TI-Infrastructure from current page (System Wizard)
+ * @returns {Array} Array of TI-Infrastructure objects
+ */
+function collectTIInfrastructureFromPage() {
+    // Check if we're in a system wizard with TI section
+    const tiSection = document.querySelector('.form-section[data-name="gematicti"]');
+    if (!tiSection || tiSection.style.display === 'none') {
+        return componentCache.tiinfrastructure || [];
+    }
+
+    // Check if TI is actually connected
+    const tiConnectedCheck = tiSection.querySelector('.ti-connected-check');
+    if (!tiConnectedCheck || !tiConnectedCheck.checked) {
+        return componentCache.tiinfrastructure || [];
+    }
+
+    // If there's TI infrastructure configured, collect it
+    const tiSelect = tiSection.querySelector('[data-name="tiinfrastrukturid"]');
+    const manualInput = tiSection.querySelector('input[name="tiinfrastructurname"]');
+    
+    if (tiSelect && tiSelect.dataset.value && tiSelect.dataset.value !== 'manual' && tiSelect.dataset.value !== '') {
+        // Extract from select value
+        const selectedOption = tiSelect.querySelector(`.select-option[data-value="${tiSelect.dataset.value}"]`);
+        if (selectedOption) {
+            return [{
+                id: tiSelect.dataset.value,
+                name: selectedOption.textContent.trim(),
+                type: 'TI-Konnektor'
+            }];
+        }
+    } else if (manualInput && manualInput.value.trim()) {
+        // Manual input
+        return [{
+            id: 'manual-1',
+            name: manualInput.value.trim(),
+            type: 'TI-Konnektor'
+        }];
+    }
+
+    return componentCache.tiinfrastructure || [];
+}
+
+/**
+ * Collect Load Balancers from current page (System Wizard)
+ * @returns {Array} Array of Load Balancer objects
+ */
+function collectLoadBalancersFromPage() {
+    const lbEntries = document.querySelectorAll('#loadbalancerList .dynamic-entry[data-type="loadbalancer"]');
+    return Array.from(lbEntries).map((e) => {
+        const id = e.dataset.id;
+        const nameInput = e.querySelector('input[name="loadbalancername"]');
+        const name = (nameInput && nameInput.value.trim()) || `Load Balancer #${id}`;
+        const typeSelect = e.querySelector('[data-name="loadbalancertype"]');
+        const type = typeSelect ? typeSelect.dataset.value : '';
+        return { id, name, type };
+    });
+}
+
+/**
+ * Collect Medical Devices from current page (System Wizard)
+ * @returns {Array} Array of Medical Device objects
+ */
+function collectMedDevicesFromPage() {
+    const medDeviceEntries = document.querySelectorAll('#medDeviceList .dynamic-entry[data-type="meddevice"]');
+    return Array.from(medDeviceEntries).map((e) => {
+        const id = e.dataset.id;
+        const nameInput = e.querySelector('input[name="meddevicename"]');
+        const name = (nameInput && nameInput.value.trim()) || `Medizingerät #${id}`;
+        const categorySelect = e.querySelector('[data-name="meddevicecategory"]');
+        const type = categorySelect ? categorySelect.dataset.value : '';
+        return { id, name, type };
+    });
+}
+
+/**
  * Get human-readable label for component type
  * @param {string} type - Component type
  * @returns {string} Label
@@ -181,7 +320,11 @@ function getComponentTypeLabel(type) {
         'siem': 'SIEM-Systeme',
         'vpn': 'VPN-Gateways',
         'proxy': 'Proxy-Server',
-        'network': 'Netzwerke'
+        'network': 'Netzwerke',
+        'commserver': 'Kommunikationsserver',
+        'tiinfrastructure': 'TI-Infrastruktur-Komponenten',
+        'loadbalancer': 'Load Balancer',
+        'meddevice': 'Medizingeräte'
     };
     return labels[type] || type;
 }
@@ -200,6 +343,11 @@ function formatComponentLabel(component, type) {
                 ? `${component.hostname} (${component.ip})`
                 : component.hostname;
         case 'firewall':
+        case 'commserver':
+        case 'hypervisor':
+        case 'tiinfrastructure':
+        case 'loadbalancer':
+        case 'meddevice':
             return component.type 
                 ? `${component.name} (${component.type})`
                 : component.name;

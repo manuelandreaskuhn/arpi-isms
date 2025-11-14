@@ -4,117 +4,367 @@
         <p>Ein eindeutiger Name für Ihre VPN-Verbindung.</p>
         <div>
             <h3>Was ist ein VPN?</h3>
-            Virtual Private Network - ein verschlüsselter Tunnel durch unsichere Netzwerke (meist Internet).
+            Virtual Private Network - ein verschlüsselter, sicherer Tunnel durch unsichere Netzwerke (meist das Internet). Wie ein "Unterwasser-Tunnel" unter einem See - niemand sieht was drin transportiert wird.
         </div>
         <div>
-            <h3>Warum VPN wichtig ist:</h3>
+            <h3>Warum VPN essentiell ist:</h3>
             <ul>
-                <li><strong>Sicherer Remote-Zugriff:</strong> Mitarbeiter im Home Office, unterwegs</li>
-                <li><strong>Standort-Verbindung:</strong> Zweigstellen sicher mit Hauptstandort verbinden</li>
-                <li><strong>Verschlüsselung:</strong> Daten geschützt über Internet übertragen</li>
-                <li><strong>Zugriff auf interne Ressourcen:</strong> Als wäre man vor Ort im Büro</li>
+                <li><strong>Sicherer Remote-Zugriff:</strong>
+                    <ul>
+                        <li>Home Office sicher ins Firmennetz</li>
+                        <li>Außendienst von unterwegs</li>
+                        <li>Zugriff wie im Büro</li>
+                    </ul>
+                </li>
+                <li><strong>Standort-Verbindung (Site-to-Site):</strong>
+                    <ul>
+                        <li>Zweigstellen sicher mit Hauptstandort verbinden</li>
+                        <li>Transparent für Benutzer</li>
+                        <li>Günstiger als dedizierte Leitung</li>
+                    </ul>
+                </li>
+                <li><strong>Verschlüsselung:</strong>
+                    <ul>
+                        <li>Daten geschützt über Internet übertragen</li>
+                        <li>Auch über unsichere WLANs (Hotel, Café)</li>
+                        <li>Abhörschutz</li>
+                    </ul>
+                </li>
+                <li><strong>Zugriff auf interne Ressourcen:</strong>
+                    <ul>
+                        <li>Fileserver, Drucker, Intranet</li>
+                        <li>Als wäre man physisch im Büro</li>
+                    </ul>
+                </li>
+                <li><strong>Schutz sensibler Daten:</strong>
+                    <ul>
+                        <li>DSGVO-Compliance bei Remote-Arbeit</li>
+                        <li>Schutz vor Man-in-the-Middle-Angriffen</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Namens-Beispiele:</h3>
+            <h3>Namens-Beispiele (Best Practices):</h3>
             <ul>
-                <li>"Corporate-VPN" - Mitarbeiter-VPN</li>
-                <li>"Site-to-Site-Berlin" - Verbindung zum Standort Berlin</li>
-                <li>"Admin-VPN" - VPN nur für Admins</li>
-                <li>"Partner-VPN-Supplier-X" - VPN für externen Partner</li>
+                <li><strong>"Corporate-VPN"</strong> - Haupt-VPN für alle Mitarbeiter</li>
+                <li><strong>"Site-to-Site-Berlin"</strong> - Permanente Verbindung zum Standort Berlin</li>
+                <li><strong>"Admin-VPN"</strong> - Separates VPN nur für IT-Admins (erhöhte Sicherheit)</li>
+                <li><strong>"Partner-VPN-SupplierX"</strong> - Dediziertes VPN für externen Geschäftspartner</li>
+                <li><strong>"VPN-Developers"</strong> - VPN für Entwickler-Team (eigene ACLs)</li>
+                <li><strong>"AWS-VPN-eu-central-1"</strong> - VPN zur AWS-Region</li>
             </ul>
         </div>
-        <em>VPN ist essentiell für sicheres mobiles Arbeiten!</em>
+        <div>
+            <h3>Kosten (Richtwerte):</h3>
+            <ul>
+                <li>VPN-Gateway (Hardware): €2.000-€20.000 (je nach Kapazität)</li>
+                <li>Lizenzen: €50-€200 pro gleichzeitiger Verbindung/Jahr</li>
+                <li>Cloud VPN: €0,05-€0,15 pro VPN-Connection-Stunde</li>
+                <li>Open Source (OpenVPN): Kostenlos (aber Betrieb selbst)</li>
+            </ul>
+        </div>
+        <em>VPN ist essentiell für sicheres mobiles Arbeiten - ohne VPN = Sicherheitsrisiko!</em>
     </div>
 
     <div data-tooltip-id="vpn-type">
         <h2>VPN-Typ</h2>
-        <p>Die Art der VPN-Verbindung.</p>
+        <p>Die grundlegende Architektur der VPN-Verbindung.</p>
         <div>
-            <h3>VPN-Typen erklärt:</h3>
+            <h3>VPN-Typen im Detail:</h3>
             <ul>
                 <li><strong>Remote Access VPN (Client-to-Site):</strong>
                     <ul>
-                        <li>Einzelne Benutzer verbinden sich</li>
-                        <li>VPN-Client auf Laptop/PC nötig</li>
-                        <li>Für Home Office, Außendienst</li>
-                        <li><em>Häufigster Typ!</em></li>
+                        <li><strong>Was:</strong> Einzelne Benutzer verbinden sich zum Firmennetz</li>
+                        <li><strong>Wie:</strong> VPN-Client-Software auf Laptop/PC installiert</li>
+                        <li><strong>Wann:</strong> User klickt "Verbinden"</li>
+                        <li><strong>Use Cases:</strong>
+                            <ul>
+                                <li>Home Office (häufigstes Szenario)</li>
+                                <li>Außendienst (Vertrieb unterwegs)</li>
+                                <li>Geschäftsreisen</li>
+                                <li>Contractor/Freelancer-Zugang</li>
+                            </ul>
+                        </li>
+                        <li><strong>Typisch:</strong> 10-1000 gleichzeitige Verbindungen</li>
+                        <li><em>90% aller Unternehmens-VPNs sind Remote Access!</em></li>
                     </ul>
                 </li>
-                <li><strong>Site-to-Site VPN:</strong>
+                <li><strong>Site-to-Site VPN (LAN-to-LAN):</strong>
                     <ul>
-                        <li>Verbindet zwei Standorte/Netzwerke</li>
-                        <li>Immer aktiv (permanent)</li>
-                        <li>Transparent für Endbenutzer</li>
-                        <li>Z.B. Hauptsitz ↔ Zweigstelle</li>
+                        <li><strong>Was:</strong> Verbindet zwei ganze Netzwerke/Standorte</li>
+                        <li><strong>Wie:</strong> VPN-Gateway an beiden Enden (Firewall/Router)</li>
+                        <li><strong>Wann:</strong> Permanent verbunden (24/7)</li>
+                        <li><strong>Transparent:</strong> Endbenutzer merken nichts vom VPN</li>
+                        <li><strong>Use Cases:</strong>
+                            <ul>
+                                <li>Hauptsitz ↔ Zweigstelle</li>
+                                <li>Büro ↔ Rechenzentrum</li>
+                                <li>On-Premise ↔ Cloud (Hybrid)</li>
+                                <li>Partner-Anbindung (B2B)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Vorteil:</strong> Günstiger als dedizierte Leitung (MPLS)</li>
+                        <li><strong>Nachteil:</strong> Abhängig von Internet-Qualität</li>
                     </ul>
                 </li>
                 <li><strong>Mobile VPN:</strong>
                     <ul>
-                        <li>Speziell für mobile Geräte</li>
-                        <li>Hält Verbindung bei Netzwechsel</li>
-                        <li>WLAN → Mobilfunk ohne Abbruch</li>
+                        <li><strong>Besonderheit:</strong> Hält VPN-Verbindung bei Netzwechsel</li>
+                        <li><strong>Szenario:</strong> Smartphone wechselt von WLAN zu 4G/5G</li>
+                        <li><strong>Normale VPNs:</strong> Verbindung bricht ab → neu verbinden</li>
+                        <li><strong>Mobile VPN:</strong> Nahtloser Übergang ohne Abbruch</li>
+                        <li><strong>Use Cases:</strong>
+                            <ul>
+                                <li>Mobile Workforce (Techniker, Außendienst)</li>
+                                <li>Tablets/Smartphones</li>
+                                <li>Kritische Anwendungen (dürfen nicht abbrechen)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Technologie:</strong> Meist IPsec IKEv2 mit MOBIKE</li>
                     </ul>
                 </li>
                 <li><strong>SSL VPN / Web VPN:</strong>
                     <ul>
-                        <li>Zugriff über Browser</li>
-                        <li>Kein Client nötig</li>
-                        <li>Gut für Partner/externe Nutzer</li>
+                        <li><strong>Was:</strong> Zugriff über Browser (HTTPS)</li>
+                        <li><strong>Kein Client nötig:</strong> Nur Browser</li>
+                        <li><strong>Port:</strong> 443 (wie normale HTTPS-Seite)</li>
+                        <li><strong>Use Cases:</strong>
+                            <ul>
+                                <li>Partner/Lieferanten (wollen keinen Client installieren)</li>
+                                <li>Kiosk-PCs/öffentliche Computer</li>
+                                <li>Schneller Zugriff ohne Installation</li>
+                                <li>Zugriff auf Web-Apps (Intranet, Webmail)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Einschränkung:</strong> Meist nur Web-Anwendungen</li>
+                        <li><strong>Vorteil:</strong> Funktioniert überall (Firewall-friendly)</li>
                     </ul>
                 </li>
                 <li><strong>Clientless VPN / Portal:</strong>
                     <ul>
-                        <li>Nur Web-Applikationen</li>
-                        <li>Browser-basiert</li>
-                        <li>Eingeschränkter Zugriff</li>
+                        <li><strong>Noch einfacher:</strong> Nur Web-Portal</li>
+                        <li><strong>Zero Footprint:</strong> Nichts wird installiert</li>
+                        <li><strong>Zugriff:</strong> Nur auf Web-basierte Ressourcen</li>
+                        <li><strong>Technologie:</strong> Reverse Proxy im Browser</li>
+                        <li><strong>Use Cases:</strong>
+                            <ul>
+                                <li>Sehr eingeschränkter Zugriff</li>
+                                <li>Partner mit minimalen Rechten</li>
+                                <li>Quick Access zu einzelnen Web-Apps</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <em>Remote Access = für Benutzer, Site-to-Site = für Standorte</em>
+        <div>
+            <h3>Vergleich (Entscheidungshilfe):</h3>
+            <table>
+                <tr><th>Kriterium</th><th>Remote Access</th><th>Site-to-Site</th></tr>
+                <tr><td>Für wen</td><td>Einzelne User</td><td>Ganze Standorte</td></tr>
+                <tr><td>Client nötig</td><td>Ja</td><td>Nein</td></tr>
+                <tr><td>Verbindung</td><td>On-Demand</td><td>Permanent</td></tr>
+                <tr><td>Typische Anzahl</td><td>10-1000</td><td>2-50</td></tr>
+                <tr><td>Komplexität</td><td>Mittel</td><td>Hoch</td></tr>
+            </table>
+        </div>
+        <em>Remote Access = für Benutzer, Site-to-Site = für Standorte, SSL VPN = für Partner ohne Client</em>
     </div>
 
     <div data-tooltip-id="vpn-software">
         <h2>VPN-Software / Lösung</h2>
-        <p>Welche VPN-Technologie wird verwendet?</p>
+        <p>Die konkrete VPN-Technologie und Hersteller-Lösung.</p>
         <div>
-            <h3>VPN-Lösungen erklärt:</h3>
+            <h3>Enterprise VPN (Commercial) - Marktführer:</h3>
             <ul>
-                <li><strong>Enterprise VPN (Commercial):</strong>
+                <li><strong>Cisco AnyConnect:</strong>
                     <ul>
-                        <li><strong>Cisco AnyConnect:</strong> Marktführer, sehr verbreitet</li>
-                        <li><strong>Palo Alto GlobalProtect:</strong> Integriert mit Firewall</li>
-                        <li><strong>Fortinet FortiClient:</strong> Teil von FortiGate</li>
-                        <li><strong>Check Point, SonicWall:</strong> Etablierte Anbieter</li>
-                        <li>Teuer, aber Enterprise-Support</li>
+                        <li>Marktführer (~40% Marktanteil)</li>
+                        <li>Teil von Cisco ASA / Firepower</li>
+                        <li>SSL VPN + IPsec IKEv2</li>
+                        <li>Sehr mature, sehr stabil</li>
+                        <li>Multi-Plattform (Windows, Mac, Linux, iOS, Android)</li>
+                        <li>Features: Posture Check, Always-On, Per-App VPN</li>
+                        <li><strong>Lizenz:</strong> Per gleichzeitiger Connection (~€150-300/Jahr)</li>
+                        <li><strong>Hardware:</strong> Cisco ASA 5500-X, Firepower (€5k-50k)</li>
+                        <li><em>De-facto Standard in Enterprises</em></li>
                     </ul>
                 </li>
-                <li><strong>Cloud VPN:</strong>
+                <li><strong>Palo Alto GlobalProtect:</strong>
                     <ul>
-                        <li><strong>AWS VPN, Azure VPN, Google Cloud VPN:</strong> Für Cloud-Anbindung</li>
-                        <li>Managed Service</li>
-                        <li>Gut für Hybrid Cloud</li>
+                        <li>Teil der Palo Alto Next-Gen Firewall</li>
+                        <li>Sehr gute Integration mit Firewall-Features</li>
+                        <li>SSL VPN + IPsec</li>
+                        <li>Starke User-ID/App-ID Integration</li>
+                        <li>Cloud-Managed möglich (Prisma Access)</li>
+                        <li><strong>Lizenz:</strong> Per User oder Gateway (~€200-400/User/Jahr)</li>
+                        <li><em>Wächst stark - technologisch führend</em></li>
                     </ul>
                 </li>
-                <li><strong>Open Source:</strong>
+                <li><strong>Fortinet FortiClient VPN:</strong>
                     <ul>
-                        <li><strong>OpenVPN:</strong> Sehr verbreitet, flexibel</li>
-                        <li><strong>WireGuard:</strong> Modern, schnell, einfach</li>
-                        <li><strong>StrongSwan:</strong> IPsec-Implementation</li>
-                        <li>Kostenlos, aber selbst betreiben</li>
+                        <li>Teil von FortiGate Firewall</li>
+                        <li>Gutes Preis-/Leistungsverhältnis</li>
+                        <li>SSL VPN + IPsec</li>
+                        <li>Integriert mit FortiGate Security Fabric</li>
+                        <li>Endpoint Security inkludiert (Antivirus, etc.)</li>
+                        <li><strong>Lizenz:</strong> Günstiger als Cisco (~€50-150/User/Jahr)</li>
+                        <li><em>Gut für KMU und Mittelstand</em></li>
                     </ul>
                 </li>
-                <li><strong>Windows / Microsoft:</strong>
+                <li><strong>Check Point VPN:</strong>
                     <ul>
-                        <li><strong>Windows RRAS:</strong> In Windows Server eingebaut</li>
-                        <li><strong>Always On VPN:</strong> Nachfolger von DirectAccess</li>
-                        <li>Gut in Microsoft-Umgebungen</li>
+                        <li>Teil von Check Point Firewall</li>
+                        <li>Sehr etabliert (seit 25+ Jahren)</li>
+                        <li>Mobile Access (SSL) + SecuRemote (IPsec)</li>
+                        <li>Gute Endpoint Security Integration</li>
+                    </ul>
+                </li>
+                <li><strong>SonicWall VPN:</strong>
+                    <ul>
+                        <li>NetExtender (SSL) + Global VPN Client (IPsec)</li>
+                        <li>KMU-fokussiert</li>
+                        <li>Einfach zu bedienen</li>
+                    </ul>
+                </li>
+                <li><strong>Juniper Pulse Secure (jetzt Ivanti):</strong>
+                    <ul>
+                        <li>SSL VPN Spezialist</li>
+                        <li>Sehr flexibel</li>
+                        <li>Granulare Access Control</li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <em>Cisco AnyConnect = Industrie-Standard, OpenVPN = flexible Alternative</em>
+        <div>
+            <h3>Cloud VPN (Managed Services):</h3>
+            <ul>
+                <li><strong>AWS VPN:</strong>
+                    <ul>
+                        <li>Site-to-Site: AWS VPN Gateway</li>
+                        <li>Client VPN: Managed OpenVPN</li>
+                        <li>Hoch skalierbar</li>
+                        <li>Pay-per-use (~€0,05/Connection-hour + Traffic)</li>
+                    </ul>
+                </li>
+                <li><strong>Azure VPN Gateway:</strong>
+                    <ul>
+                        <li>Point-to-Site + Site-to-Site</li>
+                        <li>IKEv2 + OpenVPN</li>
+                        <li>Gut in Microsoft-Umgebungen</li>
+                    </ul>
+                </li>
+                <li><strong>Google Cloud VPN:</strong>
+                    <ul>
+                        <li>High-Availability VPN</li>
+                        <li>IPsec</li>
+                        <li>99,99% SLA</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Open Source (für Techies):</h3>
+            <ul>
+                <li><strong>OpenVPN:</strong>
+                    <ul>
+                        <li>Der Klassiker (seit 2001)</li>
+                        <li>SSL/TLS basiert</li>
+                        <li>Sehr flexibel, sehr gut dokumentiert</li>
+                        <li>Multi-Plattform</li>
+                        <li>Open Source (GPL) + Commercial (OpenVPN Access Server)</li>
+                        <li><strong>Perfekt für:</strong> Selbst hosten, volle Kontrolle</li>
+                        <li><strong>Nachteil:</strong> Komplexe manuelle Konfiguration</li>
+                        <li><em>Standard für Self-Hosted VPN</em></li>
+                    </ul>
+                </li>
+                <li><strong>WireGuard:</strong>
+                    <ul>
+                        <li>Modern, schnell, einfach (seit 2020 im Linux Kernel)</li>
+                        <li>Nur ~4.000 Zeilen Code (vs. OpenVPN ~100k)</li>
+                        <li>Sehr performant (schneller als OpenVPN/IPsec)</li>
+                        <li>State-of-the-art Crypto (ChaCha20, Curve25519)</li>
+                        <li>Einfache Konfiguration (wie SSH Keys)</li>
+                        <li><strong>Nachteil:</strong> Noch jung, weniger Enterprise-Features</li>
+                        <li><em>Die Zukunft des VPN - rapide wachsend</em></li>
+                    </ul>
+                </li>
+                <li><strong>StrongSwan / IPsec:</strong>
+                    <ul>
+                        <li>Open Source IPsec-Implementation</li>
+                        <li>Für Linux</li>
+                        <li>Standards-konform (IKEv2)</li>
+                        <li>Gut für Site-to-Site</li>
+                    </ul>
+                </li>
+                <li><strong>SoftEther VPN:</strong>
+                    <ul>
+                        <li>Multi-Protokoll (SSL, L2TP, IPsec, OpenVPN-kompatibel)</li>
+                        <li>Sehr schnell</li>
+                        <li>Japanische Entwicklung</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Windows / Microsoft:</h3>
+            <ul>
+                <li><strong>Windows RRAS (Routing and Remote Access Service):</strong>
+                    <ul>
+                        <li>In Windows Server eingebaut (kostenlos)</li>
+                        <li>PPTP, L2TP/IPsec, SSTP, IKEv2</li>
+                        <li>Einfach in Windows-Umgebung</li>
+                        <li><strong>Nachteil:</strong> Weniger Features als Commercial</li>
+                    </ul>
+                </li>
+                <li><strong>Always On VPN:</strong>
+                    <ul>
+                        <li>Nachfolger von DirectAccess</li>
+                        <li>IKEv2-basiert</li>
+                        <li>Automatische Verbindung</li>
+                        <li>Gut in Azure AD / Intune-Umgebungen</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Entscheidungskriterien:</h3>
+            <ul>
+                <li><strong>Budget:</strong>
+                    <ul>
+                        <li>Kein: OpenVPN, WireGuard</li>
+                        <li>Klein (€5-20k): Fortinet, SonicWall</li>
+                        <li>Mittel (€20-100k): Cisco, Palo Alto</li>
+                        <li>Groß (€100k+): Enterprise mit HA, Multi-Site</li>
+                    </ul>
+                </li>
+                <li><strong>Anzahl User:</strong>
+                    <ul>
+                        <li>&lt;50: OpenVPN, Fortinet</li>
+                        <li>50-500: Cisco, Palo Alto, Fortinet</li>
+                        <li>500-5000: Cisco, Palo Alto (mit Redundanz)</li>
+                        <li>5000+: Cisco ASA 5585-X, Cloud VPN</li>
+                    </ul>
+                </li>
+                <li><strong>Existing Infrastructure:</strong>
+                    <ul>
+                        <li>Cisco Firewall → Cisco AnyConnect</li>
+                        <li>Palo Alto Firewall → GlobalProtect</li>
+                        <li>FortiGate → FortiClient</li>
+                        <li>Keine Firewall → OpenVPN oder Cloud VPN</li>
+                    </ul>
+                </li>
+                <li><strong>Expertise:</strong>
+                    <ul>
+                        <li>Wenig: Managed VPN (Cloud) oder Appliance (Fortinet)</li>
+                        <li>Mittel: Cisco, Palo Alto (mit Vendor-Support)</li>
+                        <li>Hoch: OpenVPN, WireGuard (volle Kontrolle)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <em>Cisco AnyConnect = Industrie-Standard (teuer), WireGuard = Zukunft (modern), OpenVPN = Flexibel (Open Source)</em>
     </div>
 
     <div data-tooltip-id="vpn-protocol">
@@ -182,47 +432,83 @@
         <h2>Verschlüsselungs-Algorithmus</h2>
         <p>Der Algorithmus zum Verschlüsseln der VPN-Daten.</p>
         <div>
-            <h3>Verschlüsselung erklärt:</h3>
+            <h3>Warum Verschlüsselung kritisch ist:</h3>
+            VPN ohne starke Verschlüsselung = nutzlos! Daten können abgehört werden.
+        </div>
+        <div>
+            <h3>Verschlüsselungs-Algorithmen im Detail:</h3>
             <ul>
-                <li><strong>AES-256-GCM:</strong>
+                <li><strong>AES-256-GCM (Recommended!):</strong>
                     <ul>
-                        <li>Stärkste Verschlüsselung</li>
-                        <li>GCM = Authentifizierung eingebaut</li>
-                        <li>Sehr schnell (Hardware-beschleunigt)</li>
-                        <li><em>Best Practice!</em></li>
+                        <li><strong>AES-256:</strong> Advanced Encryption Standard, 256-bit Schlüssel</li>
+                        <li><strong>GCM:</strong> Galois/Counter Mode (AEAD - Authenticated Encryption with Associated Data)</li>
+                        <li><strong>Sicherheit:</strong> Militär-Grade (NSA Suite B)</li>
+                        <li><strong>Performance:</strong> Hardware-beschleunigt (AES-NI auf modernen CPUs)</li>
+                        <li><strong>Authentifizierung:</strong> Eingebaut (verhindert Manipulation)</li>
+                        <li><strong>Geschwindigkeit:</strong> Multi-Gbit/s möglich</li>
+                        <li><em>Best Practice für alle VPNs!</em></li>
                     </ul>
                 </li>
                 <li><strong>AES-128-GCM:</strong>
                     <ul>
-                        <li>Auch sehr sicher</li>
-                        <li>Etwas schneller als 256</li>
-                        <li>Ausreichend für die meisten Fälle</li>
+                        <li>128-bit Schlüssel (statt 256)</li>
+                        <li>Auch sehr sicher (2^128 Möglichkeiten = praktisch unknackbar)</li>
+                        <li>Etwas schneller als 256 (marginal)</li>
+                        <li>Ausreichend für die meisten Use Cases</li>
+                        <li><em>Wenn Performance kritisch ist</em></li>
                     </ul>
                 </li>
-                <li><strong>AES-CBC:</strong>
+                <li><strong>AES-256-CBC / AES-128-CBC:</strong>
                     <ul>
-                        <li>Älterer Modus</li>
+                        <li><strong>CBC:</strong> Cipher Block Chaining (älterer Modus)</li>
+                        <li>Keine eingebaute Authentifizierung (braucht separates HMAC)</li>
                         <li>Langsamer als GCM</li>
-                        <li>Noch weit verbreitet</li>
+                        <li>Anfällig für Padding Oracle Attacks (wenn falsch implementiert)</li>
+                        <li><em>Legacy - nur verwenden wenn GCM nicht verfügbar</em></li>
                     </ul>
                 </li>
                 <li><strong>ChaCha20-Poly1305:</strong>
                     <ul>
-                        <li>Alternative zu AES</li>
-                        <li>Gut ohne Hardware-AES</li>
+                        <li>Alternative zu AES (von Google/D.J. Bernstein)</li>
+                        <li><strong>Vorteil:</strong> Schnell auch OHNE Hardware-AES (z.B. Smartphones, IoT)</li>
+                        <li>Moderne Kryptografie (2014)</li>
                         <li>Von WireGuard verwendet</li>
+                        <li><strong>Sicherheit:</strong> Gleichwertig zu AES-256</li>
+                        <li><em>Gut für Geräte ohne AES-Hardware-Beschleunigung</em></li>
                     </ul>
                 </li>
-                <li><strong>3DES:</strong>
+                <li><strong>3DES (Triple DES) - VERALTET!</strong>
                     <ul>
-                        <li>VERALTET!</li>
-                        <li>Nicht mehr sicher genug</li>
-                        <li>Nur für Legacy</li>
+                        <li>Ur-alt (1970er DES, 3x ausgeführt)</li>
+                        <li>Nur 112-bit effektive Sicherheit (schwach!)</li>
+                        <li>Sehr langsam</li>
+                        <li>Seit 2019 offiziell deprecated (NIST)</li>
+                        <li><em>NIEMALS für neue VPNs verwenden!</em></li>
+                        <li>Nur für uralte Legacy-Systeme die kein AES können</li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <em>AES-256-GCM = sicher und schnell, 3DES = nicht mehr verwenden!</em>
+        <div>
+            <h3>Performance-Vergleich (typisch auf moderner CPU):</h3>
+            <ul>
+                <li>AES-256-GCM: ~10 Gbit/s</li>
+                <li>AES-128-GCM: ~12 Gbit/s</li>
+                <li>ChaCha20-Poly1305: ~5 Gbit/s (ohne AES-NI)</li>
+                <li>AES-256-CBC: ~3 Gbit/s</li>
+                <li>3DES: ~100 Mbit/s (50x langsamer!)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Empfehlung:</h3>
+            <ul>
+                <li><strong>Standard:</strong> AES-256-GCM</li>
+                <li><strong>Wenn sehr alte Hardware:</strong> AES-128-GCM</li>
+                <li><strong>Mobile/IoT:</strong> ChaCha20-Poly1305</li>
+                <li><strong>Niemals:</strong> 3DES (außer absolut keine andere Wahl)</li>
+            </ul>
+        </div>
+        <em>AES-256-GCM = sicher, schnell, modern - 3DES = veraltet, langsam, unsicher!</em>
     </div>
 
     <div data-tooltip-id="vpn-auth">
@@ -327,101 +613,417 @@
     </div>
     
     <div data-tooltip-id="vpn-compliance-check">
-        <h2>Endpoint Compliance Check (Posture Check)</h2>
-        <p>Prüfung des Geräts vor VPN-Zugang.</p>
+        <h2>Endpoint Compliance Check (Posture Check / NAC)</h2>
+        <p>Prüfung des Sicherheitszustands des Client-Geräts vor VPN-Zugang.</p>
         <div>
-            <h3>Was ist Posture Check?</h3>
-            VPN prüft Sicherheits-Zustand des Clients bevor Zugang gewährt wird.
+            <h3>Was ist Posture Check / Network Access Control?</h3>
+            VPN-Gateway prüft Sicherheitszustand des Clients BEVOR Zugang zum Firmennetz gewährt wird. Wie ein "Gesundheitscheck" an der Tür.
         </div>
         <div>
-            <h3>Was wird geprüft:</h3>
+            <h3>Was wird typischerweise geprüft:</h3>
             <ul>
-                <li><strong>Antivirus:</strong> Ist installiert? Ist aktuell?</li>
-                <li><strong>Firewall:</strong> Ist aktiviert?</li>
-                <li><strong>OS Patches:</strong> Sind alle Updates installiert?</li>
-                <li><strong>Festplatten-Verschlüsselung:</strong> BitLocker/FileVault aktiv?</li>
-                <li><strong>Verbotene Software:</strong> Torrent-Clients, etc. vorhanden?</li>
+                <li><strong>Antivirus / Endpoint Protection:</strong>
+                    <ul>
+                        <li>Ist installiert? (z.B. Microsoft Defender, CrowdStrike)</li>
+                        <li>Ist aktiviert (nicht deaktiviert)?</li>
+                        <li>Ist aktuell (Definitions-Stand &lt; 7 Tage)?</li>
+                        <li>Letzter Scan? (z.B. &lt; 24h)</li>
+                    </ul>
+                </li>
+                <li><strong>Personal Firewall:</strong>
+                    <ul>
+                        <li>Windows Firewall aktiviert?</li>
+                        <li>macOS Firewall aktiviert?</li>
+                    </ul>
+                </li>
+                <li><strong>OS Patch-Level:</strong>
+                    <ul>
+                        <li>Windows: Alle kritischen Updates installiert?</li>
+                        <li>macOS: Aktuelle OS-Version? (z.B. nicht älter als 3 Versionen)</li>
+                        <li>Bekannte kritische CVEs gepatcht?</li>
+                    </ul>
+                </li>
+                <li><strong>Festplatten-Verschlüsselung:</strong>
+                    <ul>
+                        <li>BitLocker (Windows) aktiviert?</li>
+                        <li>FileVault (macOS) aktiviert?</li>
+                        <li>Wichtig bei Laptop-Verlust!</li>
+                    </ul>
+                </li>
+                <li><strong>Verbotene Software:</strong>
+                    <ul>
+                        <li>Torrent-Clients (Copyright-Risiko)</li>
+                        <li>TeamViewer/AnyDesk (unautorisierter Remote-Zugriff)</li>
+                        <li>Hacking-Tools (Wireshark, Metasploit - je nach Policy)</li>
+                    </ul>
+                </li>
+                <li><strong>Compliance-Software:</strong>
+                    <ul>
+                        <li>Ist Mobile Device Management (MDM) Client installiert?</li>
+                        <li>Ist Endpoint Detection & Response (EDR) aktiv?</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Wenn Check fehlschlägt:</h3>
+            <h3>Aktionen bei fehlgeschlagenem Check:</h3>
             <ul>
-                <li>VPN-Zugang verweigert ODER</li>
-                <li>Nur eingeschränkter Zugang (z.B. nur Patch-Server)</li>
+                <li><strong>Zugang komplett verweigert (Strict Mode):</strong>
+                    <ul>
+                        <li>Kein VPN-Zugang</li>
+                        <li>Fehler-Meldung: "Ihr Gerät erfüllt nicht die Sicherheitsanforderungen"</li>
+                        <li><em>Höchste Sicherheit, aber User-Frustration</em></li>
+                    </ul>
+                </li>
+                <li><strong>Eingeschränkter Zugang (Quarantine Network):</strong>
+                    <ul>
+                        <li>VPN-Zugang nur zu Update-Servern</li>
+                        <li>User kann Windows Update/Antivirus-Update laden</li>
+                        <li>Nach erfolgreicher Remediation → voller Zugang</li>
+                        <li><em>Praktischer Kompromiss</em></li>
+                    </ul>
+                </li>
+                <li><strong>Warnung + Zugang (Soft Fail):</strong>
+                    <ul>
+                        <li>Warnung anzeigen, aber Zugang gewähren</li>
+                        <li>IT-Team wird informiert</li>
+                        <li>User muss innerhalb X Tagen nachbessern</li>
+                        <li><em>Für Übergangsphase</em></li>
+                    </ul>
+                </li>
+                <li><strong>Nur Logging (Monitor Mode):</strong>
+                    <ul>
+                        <li>Prüfung läuft, aber keine Aktion</li>
+                        <li>Nur für Testing/Rollout</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div>
-            <h3>Vorteil:</h3>
-            Nur sichere Geräte im Firmennetz
+            <h3>Technologie:</h3>
+            <ul>
+                <li><strong>Agent-basiert:</strong> VPN-Client prüft selbst (z.B. Cisco AnyConnect Posture Module)</li>
+                <li><strong>Agentless:</strong> VPN-Gateway scannt Client (z.B. SNMP, WMI)</li>
+                <li><strong>Hybrid:</strong> Kombination</li>
+            </ul>
         </div>
         <div>
-            <h3>Nachteil:</h3>
-            Mehr Verwaltungsaufwand, User-Frustration wenn abgelehnt
+            <h3>Herausforderungen:</h3>
+            <ul>
+                <li><strong>False Positives:</strong> Legitime Software wird als "verboten" erkannt</li>
+                <li><strong>User-Frustration:</strong> "Ich kann nicht arbeiten, weil ein Update fehlt!"</li>
+                <li><strong>Maintenance-Overhead:</strong> Policies müssen gepflegt werden</li>
+                <li><strong>BYOD-Problem:</strong> Private Geräte schwer zu kontrollieren</li>
+            </ul>
         </div>
-        <em>Compliance Check = wichtige Sicherheits-Schicht, aber braucht gute Kommunikation!</em>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>Start mit Soft Fail (Warnung), dann schrittweise verschärfen</li>
+                <li>Clear Communication an User (warum wird abgelehnt, wie fixen?)</li>
+                <li>Self-Service-Portal: "Dein PC ist nicht compliant, hier klicken für Updates"</li>
+                <li>Ausnahme-Prozess: Manager kann temporär Zugang freischalten</li>
+                <li>Regelmäßig Policy reviewen (nicht zu strikt, nicht zu lasch)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Compliance-Standards:</h3>
+            <ul>
+                <li>PCI DSS: Posture Check empfohlen</li>
+                <li>HIPAA: Verschlüsselung Pflicht</li>
+                <li>DSGVO: Schutz personenbezogener Daten → Posture Check sinnvoll</li>
+            </ul>
+        </div>
+        <em>Posture Check = wichtige Security-Schicht, aber braucht gute Kommunikation und User-Support!</em>
     </div>
 
     <div data-tooltip-id="vpn-kill-switch">
         <h2>Kill Switch / Drop-on-Disconnect</h2>
-        <p>Blockiert Internet wenn VPN abbricht.</p>
+        <p>Blockiert automatisch Internet-Zugang wenn VPN-Verbindung abbricht.</p>
         <div>
-            <h3>Was ist Kill Switch?</h3>
-            Wenn VPN-Verbindung abbricht → Internet wird sofort blockiert (kein "ungeschütztes Surfen").
+            <h3>Was ist ein Kill Switch?</h3>
+            Sicherheits-Feature das Internet sofort blockiert wenn VPN-Verbindung verloren geht - verhindert "ungeschütztes Surfen".
         </div>
         <div>
-            <h3>Das Problem ohne Kill Switch:</h3>
+            <h3>Das Problem OHNE Kill Switch (Szenario):</h3>
             <ol>
-                <li>Mitarbeiter verbunden mit VPN</li>
-                <li>VPN bricht ab (schlechtes WLAN, etc.)</li>
-                <li>Computer verbindet automatisch direkt mit Internet</li>
-                <li>Mitarbeiter merkt es nicht</li>
-                <li>Sensitive Daten gehen unverschlüsselt raus!</li>
+                <li>Mitarbeiter verbindet sich mit VPN von Café-WLAN</li>
+                <li>Arbeitet an sensitiven Dokumenten (Patientendaten, Finanzen)</li>
+                <li>VPN bricht ab (schlechtes WLAN, Verbindungsproblem, Server-Neustart)</li>
+                <li>Computer reconnected automatisch - DIREKT ins Café-WLAN (ohne VPN!)</li>
+                <li>Mitarbeiter merkt es nicht (App läuft weiter)</li>
+                <li><strong>PROBLEM:</strong> Sensitive Daten gehen jetzt unverschlüsselt über unsicheres WLAN!</li>
+                <li>Kann von jedem im Café mitgehört werden (Packet Sniffing)</li>
             </ol>
         </div>
         <div>
-            <h3>Mit Kill Switch:</h3>
-            Internet wird sofort blockiert → Mitarbeiter merkt Problem → verbindet VPN neu
+            <h3>Mit Kill Switch (wie es funktioniert):</h3>
+            <ol>
+                <li>VPN-Client überwacht Verbindung kontinuierlich</li>
+                <li>VPN bricht ab</li>
+                <li><strong>SOFORT:</strong> Kill Switch aktiviert sich</li>
+                <li>Alle Netzwerk-Interfaces werden geblockt (außer loopback)</li>
+                <li>Firewall-Regeln: Blockiere ALLES außer VPN-Server</li>
+                <li>User sieht: "Keine Internet-Verbindung" + Warnung "VPN getrennt"</li>
+                <li>User MUSS VPN neu verbinden um Internet zu nutzen</li>
+                <li>Keine Möglichkeit für ungeschützte Verbindung</li>
+            </ol>
         </div>
         <div>
-            <h3>Nachteil:</h3>
-            Bei VPN-Problemen = kein Internet (Frustration)
-        </div>
-        <em>Kill Switch ist Best Practice für Full-Tunnel-VPNs!</em>
-    </div>
+            <h3>Technische Implementation:</h3>
+            <ul>
+                <li><strong>Windows:</strong> Windows Filtering Platform (WFP) Rules</li>
+                <li><strong>macOS:</strong> Packet Filter (pf) oder Network Extension</li>
+                <li><strong>Linux:</strong> iptables / nftables Rules</li>
+            </ul>
+            Regeln:
+            <pre>
+# Allow only VPN-Server
+ALLOW: dst=vpn.company.com port=443
+ALLOW: dst=vpn.company.com port=500,4500
 
-    <div data-tooltip-id="vpn-always-on">
-        <h2>Always-On VPN</h2>
-        <p>VPN baut sich automatisch auf - ohne User-Interaktion.</p>
+# Allow local traffic
+ALLOW: dst=127.0.0.0/8
+
+# Block everything else
+DENY: ALL
+            </pre>
+        </div>
         <div>
-            <h3>Was ist Always-On?</h3>
-            VPN startet automatisch beim Booten und bleibt immer verbunden.
+            <h3>Modi:</h3>
+            <ul>
+                <li><strong>Always-On Kill Switch:</strong>
+                    <ul>
+                        <li>Blockiert Internet auch wenn VPN NIE verbunden war</li>
+                        <li>Sehr strikt</li>
+                        <li>Nur Internet über VPN möglich</li>
+                    </ul>
+                </li>
+                <li><strong>On-Disconnect Kill Switch:</strong>
+                    <ul>
+                        <li>Blockiert nur wenn VPN war verbunden und jetzt getrennt</li>
+                        <li>Erlaubt direktes Internet wenn VPN nie gestartet</li>
+                        <li><em>Häufigste Variante</em></li>
+                    </ul>
+                </li>
+                <li><strong>Application-Level Kill Switch:</strong>
+                    <ul>
+                        <li>Blockiert nur bestimmte Apps (z.B. Browser, E-Mail)</li>
+                        <li>Andere Apps (z.B. Spotify) dürfen weiter</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <div>
             <h3>Vorteile:</h3>
             <ul>
-                <li>Benutzer kann es nicht "vergessen"</li>
-                <li>Kein manuelles Verbinden nötig</li>
-                <li>Immer geschützt</li>
-                <li>Gut für nicht-technische User</li>
+                <li>✓ Verhindert unbeabsichtigten Daten-Leak</li>
+                <li>✓ Schutz vor MITM-Angriffen</li>
+                <li>✓ Compliance (DSGVO, HIPAA)</li>
+                <li>✓ User kann nicht "versehentlich" ungeschützt surfen</li>
             </ul>
         </div>
         <div>
             <h3>Nachteile:</h3>
             <ul>
-                <li>Keine Privatsphäre (Firma sieht alles)</li>
-                <li>Kann nicht ausgeschaltet werden</li>
-                <li>Bei VPN-Problemen = kein Internet</li>
+                <li>✗ Bei VPN-Problemen = KEIN Internet (Frustration)</li>
+                <li>✗ Debugging schwieriger (kann man VPN-Server erreichen?)</li>
+                <li>✗ False Positives: Kurze Disconnects → Internet weg</li>
+                <li>✗ Technischer User kann umgehen (Admin-Rechte → Firewall-Regeln löschen)</li>
             </ul>
         </div>
         <div>
-            <h3>Use Cases:</h3>
+            <h3>Wann Kill Switch essentiell:</h3>
             <ul>
-                <li>Firmen-Laptops (immer über VPN)</li>
+                <li>Full-Tunnel VPN (gesamter Traffic durch VPN)</li>
+                <li>Sensitive Daten (DSGVO, Healthcare, Finance)</li>
+                <li>Untrusted Networks (öffentliche WLANs, Hotel, Café)</li>
                 <li>Compliance-Anforderungen</li>
-                <li>Zero Trust Architektur</li>
             </ul>
         </div>
-        <em>Always-On = maximale Sicherheit, aber auch maximale Kontrolle</em>
+        <div>
+            <h3>Wann Kill Switch optional:</h3>
+            <ul>
+                <li>Split-Tunnel VPN (nur Firmen-Traffic durch VPN)</li>
+                <li>Trusted Network (z.B. nur von Home Office)</li>
+                <li>Nicht-sensitive Anwendungen</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practice:</h3>
+            <ul>
+                <li>Kill Switch = ON für Full-Tunnel</li>
+                <li>Kill Switch = OFF für Split-Tunnel (sonst bei VPN-Ausfall auch privates Internet weg)</li>
+                <li>Clear User-Kommunikation: "Wenn VPN weg, dann Internet blockiert - das ist Schutz!"</li>
+                <li>Escape-Hatch: Hotline-Nummer wenn User nicht weiterkommt</li>
+            </ul>
+        </div>
+        <em>Kill Switch = Best Practice für Full-Tunnel-VPNs mit sensitiven Daten!</em>
+    </div>
+
+    <div data-tooltip-id="vpn-always-on">
+        <h2>Always-On VPN</h2>
+        <p>VPN baut sich automatisch auf ohne User-Interaktion.</p>
+        <div>
+            <h3>Was ist Always-On VPN?</h3>
+            VPN startet automatisch beim Booten des Computers und bleibt permanent verbunden - User sieht/macht nichts.
+        </div>
+        <div>
+            <h3>Wie Always-On funktioniert:</h3>
+            <ol>
+                <li>Computer startet (oder Wake from Sleep)</li>
+                <li>VPN-Client startet AUTOMATISCH (als System-Service)</li>
+                <li>VPN verbindet BEVOR User einloggt (Pre-Logon)</li>
+                <li>User loggt sich ein → ist bereits im VPN</li>
+                <li>Bei Netzwerk-Wechsel (WLAN ↔ LTE) → Auto-Reconnect</li>
+                <li>User kann VPN nicht manuell trennen (per Policy)</li>
+            </ol>
+        </div>
+        <div>
+            <h3>Vorteile:</h3>
+            <ul>
+                <li><strong>Benutzer kann es nicht vergessen:</strong>
+                    <ul>
+                        <li>Kein "Ich habe VPN-Verbinden vergessen"</li>
+                        <li>Gut für nicht-technische User</li>
+                    </ul>
+                </li>
+                <li><strong>Kein manuelles Verbinden nötig:</strong>
+                    <ul>
+                        <li>One less thing to do</li>
+                        <li>Bessere User Experience</li>
+                    </ul>
+                </li>
+                <li><strong>Immer geschützt:</strong>
+                    <ul>
+                        <li>Auch in unsicheren Netzen (Hotel, Café)</li>
+                        <li>Keine Sekunde ungeschützt</li>
+                    </ul>
+                </li>
+                <li><strong>Zero Trust Architektur:</strong>
+                    <ul>
+                        <li>Gerät ist immer im "Firmennetz"</li>
+                        <li>Continuous Authentication möglich</li>
+                    </ul>
+                </li>
+                <li><strong>Compliance:</strong>
+                    <ul>
+                        <li>Nachweisbar: Gerät war immer geschützt</li>
+                        <li>Audit-Log: Continuous Connection</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Nachteile / Herausforderungen:</h3>
+            <ul>
+                <li><strong>Keine Privatsphäre:</strong>
+                    <ul>
+                        <li>Firma sieht ALLEN Traffic (auch privat)</li>
+                        <li>Auch YouTube, Netflix, Social Media</li>
+                        <li>User-Akzeptanz-Problem bei BYOD</li>
+                    </ul>
+                </li>
+                <li><strong>Kann nicht ausgeschaltet werden:</strong>
+                    <ul>
+                        <li>User kann VPN nicht deaktivieren (per Policy gesperrt)</li>
+                        <li>Frustrierend wenn private Nutzung gewünscht</li>
+                    </ul>
+                </li>
+                <li><strong>Performance:</strong>
+                    <ul>
+                        <li>Gesamter Traffic durch VPN → Latenz</li>
+                        <li>Streaming (Netflix) langsamer</li>
+                        <li>VPN-Gateway braucht viel Bandbreite</li>
+                    </ul>
+                </li>
+                <li><strong>Single Point of Failure:</strong>
+                    <ul>
+                        <li>VPN-Gateway down = User kann nicht arbeiten</li>
+                        <li>Auch kein privates Internet (mit Kill Switch)</li>
+                        <li>→ HA (High Availability) zwingend!</li>
+                    </ul>
+                </li>
+                <li><strong>Geo-Restriction-Probleme:</strong>
+                    <ul>
+                        <li>User in USA, VPN-Gateway in Deutschland</li>
+                        <li>→ US-Netflix denkt User ist in DE → Content blocked</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Use Cases / Wann Always-On sinnvoll:</h3>
+            <ul>
+                <li><strong>Firmen-Laptops (Company-Owned):</strong>
+                    <ul>
+                        <li>Gerät gehört Firma → Firma kontrolliert</li>
+                        <li>User-Akzeptanz höher</li>
+                    </ul>
+                </li>
+                <li><strong>Hochsensitive Daten:</strong>
+                    <ul>
+                        <li>Healthcare (Patientendaten - HIPAA)</li>
+                        <li>Finance (PCI DSS, SOX)</li>
+                        <li>Government / KRITIS</li>
+                    </ul>
+                </li>
+                <li><strong>Zero Trust Security Model:</strong>
+                    <ul>
+                        <li>Gerät muss immer authentifiziert sein</li>
+                        <li>Continuous Security Posture Check</li>
+                    </ul>
+                </li>
+                <li><strong>Compliance-Anforderungen:</strong>
+                    <ul>
+                        <li>Regulierung verlangt permanente Verschlüsselung</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Wann Always-On NICHT geeignet:</h3>
+            <ul>
+                <li><strong>BYOD (Bring Your Own Device):</strong> User-Akzeptanz gering</li>
+                <li><strong>Teilzeit-Remote-Worker:</strong> User arbeitet meist im Büro</li>
+                <li><strong>Nicht-sensitive Daten:</strong> Overhead nicht gerechtfertigt</li>
+                <li><strong>Schlechte VPN-Infrastruktur:</strong> Ohne HA = zu riskant</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Modi (Flexibilität):</h3>
+            <ul>
+                <li><strong>Mandatory Always-On:</strong> User kann NICHT deaktivieren</li>
+                <li><strong>Optional Always-On:</strong> User kann temporär trennen (z.B. für private Nutzung)</li>
+                <li><strong>Trusted Network Detection:</strong> 
+                    <ul>
+                        <li>Im Büro-WLAN → VPN auto-disconnect (nicht nötig)</li>
+                        <li>Außerhalb Büro → VPN auto-connect</li>
+                        <li><em>Guter Kompromiss!</em></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Technologie:</h3>
+            <ul>
+                <li><strong>Windows:</strong> Always On VPN (IKEv2 + Device Tunnel)</li>
+                <li><strong>macOS:</strong> Always-On VPN (MDM-Profile)</li>
+                <li><strong>iOS/Android:</strong> Per-App VPN oder Always-On VPN (MDM)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>✓ Clear User-Communication (warum Always-On, was bedeutet das)</li>
+                <li>✓ Betriebsrat einbeziehen (Überwachung!)</li>
+                <li>✓ HA VPN-Gateway (min. 99,9% Uptime)</li>
+                <li>✓ Trusted Network Detection (Auto-Disconnect im Büro)</li>
+                <li>✓ Split-Tunnel wenn möglich (nicht alles durch VPN)</li>
+                <li>✓ Escape-Hatch: Support kann temporär deaktivieren</li>
+            </ul>
+        </div>
+        <em>Always-On = maximale Sicherheit + Komfort, aber auch maximale Kontrolle → gut kommunizieren!</em>
     </div>
 
     <div data-tooltip-id="vpn-ha">

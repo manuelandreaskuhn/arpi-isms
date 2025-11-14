@@ -1,9 +1,22 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Komponenten</p>
-    <i>›</i>
-    <p>Neuen Proxy-Server anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Komponenten</p>
+        <i>›</i>
+        <p>Neuen Proxy-Server anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neuen Proxy-Server anlegen</h1>
+            <p>Erfassen Sie die Details Ihres Proxy-Servers, um eine zentrale Übersicht Ihrer Netzwerk-Infrastruktur zu erhalten.</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newProxyForm" class="btn-save" disabled>Speichern</button>
+        </div>
+    </div>
 </aside>
 
 <form id="newProxyForm">
@@ -23,11 +36,11 @@
                         Proxy-Server Name <span class="required">*</span>
                         <span class="help-icon" data-tooltip="proxy-name">?</span>
                     </label>
-                    <input type="text" id="proxyname" required placeholder="z.B. Proxy-01, Corporate-Proxy">
+                    <input type="text" id="name" name="name" required placeholder="z.B. Proxy-01, Corporate-Proxy">
                 </div>
                 <div class="form-group">
                     <label>Proxy-Server <span class="required">*</span></label>
-                    <div class="custom-select" data-name="proxyserverid" data-component-type="vm,hardware">
+                    <div class="custom-select" data-name="serverid" data-component-type="vm,hardware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen (VM/Hardware)</span>
                             <span class="arrow">▼</span>
@@ -46,7 +59,7 @@
                 </div>
                 <div class="form-group" id="proxy-server-manual" style="display:none;">
                     <label>Proxy-Server (manuell)</label>
-                    <input type="text" id="proxyserver" required placeholder="z.B. proxy.example.com, 192.168.1.100">
+                    <input type="text" id="hostname" name="hostname" required placeholder="z.B. proxy.example.com, 192.168.1.100">
                 </div>
             </div>
 
@@ -56,11 +69,11 @@
                         Proxy-Port <span class="required">*</span>
                         <span class="help-icon" data-tooltip="proxy-port">?</span>
                     </label>
-                    <input type="number" id="proxyport" required placeholder="z.B. 8080, 3128">
+                    <input type="number" id="proxyport" name="proxyport" required placeholder="z.B. 8080, 3128">
                 </div>
                 <div class="form-group">
                     <label>Standort</label>
-                    <input type="text" id="proxylocation" placeholder="z.B. RZ1, DMZ, Cloud">
+                    <input type="text" id="location" name="location" placeholder="z.B. RZ1, DMZ, Cloud">
                 </div>
             </div>
         </div>
@@ -80,7 +93,7 @@
                         Proxy-Typ <span class="required">*</span>
                         <span class="help-icon" data-tooltip="proxy-type">?</span>
                     </label>
-                    <div class="custom-select" data-name="proxytype">
+                    <div class="custom-select" data-name="type">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -100,7 +113,7 @@
                 </div>
                 <div class="form-group">
                     <label>Proxy-Protokoll</label>
-                    <div class="custom-select" data-name="proxyprotocol">
+                    <div class="custom-select" data-name="protocol">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -123,7 +136,7 @@
                     Proxy-Software
                     <span class="help-icon" data-tooltip="proxy-software">?</span>
                 </label>
-                <div class="custom-select" data-name="proxysoftware">
+                <div class="custom-select" data-name="software">
                     <div class="select-trigger">
                         <span class="placeholder">Bitte wählen</span>
                         <span class="arrow">▼</span>
@@ -182,13 +195,13 @@
                 </div>
                 <div class="form-group">
                     <label>Authentifizierungs-Backend</label>
-                    <input type="text" id="proxyauthbackend" placeholder="z.B. Active Directory, LDAP-Server">
+                    <input type="text" id="proxyauthbackend" name="proxyauthbackend" placeholder="z.B. Active Directory, LDAP-Server">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Dienstkonto / Service Account</label>
-                <input type="text" id="proxyserviceaccount" placeholder="z.B. DOMAIN\proxy-service">
+                <input type="text" id="proxyserviceaccount" name="proxyserviceaccount" placeholder="z.B. DOMAIN\proxy-service">
             </div>
         </div>
     </div>
@@ -206,7 +219,7 @@
                     Standard Ausnahmen / Bypass-Liste
                     <span class="help-icon" data-tooltip="proxy-exceptions">?</span>
                 </label>
-                <textarea id="proxyexceptions" rows="4" placeholder="z.B. localhost, 127.0.0.1, *.local, 10.0.0.0/8, internal.example.com"></textarea>
+                <textarea id="proxyexceptions" name="proxyexceptions" rows="4" placeholder="z.B. localhost, 127.0.0.1, *.local, 10.0.0.0/8, internal.example.com"></textarea>
                 <div class="help-text">Hosts oder Netzwerke, die den Proxy standardmäßig umgehen (kommagetrennt oder zeilenweise)</div>
             </div>
         </div>
@@ -226,7 +239,7 @@
                         PAC-Datei (Proxy Auto-Config)
                         <span class="help-icon" data-tooltip="proxy-pac">?</span>
                     </label>
-                    <input type="text" id="proxypac" placeholder="z.B. http://proxy.example.com/proxy.pac">
+                    <input type="text" id="proxypac" name="proxypac" placeholder="z.B. http://proxy.example.com/proxy.pac">
                     <div class="help-text">URL zur automatischen Proxy-Konfigurationsdatei</div>
                 </div>
                 <div class="form-group">
@@ -273,7 +286,7 @@
                 </div>
                 <div class="form-group">
                     <label>SSL-Zertifikat</label>
-                    <input type="text" id="proxysslcert" placeholder="z.B. Corporate-CA-Cert">
+                    <input type="text" id="proxysslcert" name="proxysslcert" placeholder="z.B. Corporate-CA-Cert">
                     <div class="help-text">Für SSL-Interception erforderlich</div>
                 </div>
             </div>
@@ -300,7 +313,7 @@
                 </div>
                 <div class="form-group">
                     <label>Cache-Größe</label>
-                    <input type="text" id="proxycachesize" placeholder="z.B. 10GB, 50GB">
+                    <input type="text" id="proxycachesize" name="proxycachesize" placeholder="z.B. 10GB, 50GB">
                 </div>
             </div>
         </div>
@@ -345,7 +358,7 @@
                     </div>
                     <div class="form-group" id="proxy-secondary-manual" style="display:none;">
                         <label>Sekundärer Proxy (manuell)</label>
-                        <input type="text" id="proxysecondary" placeholder="z.B. proxy-backup.example.com">
+                        <input type="text" id="proxysecondary" name="proxysecondary" placeholder="z.B. proxy-backup.example.com">
                     </div>
                 </div>
 
@@ -490,13 +503,13 @@
                 </div>
                 <div class="form-group">
                     <label>Log-Aufbewahrung</label>
-                    <input type="text" id="proxylogretention" placeholder="z.B. 90 Tage, 1 Jahr">
+                    <input type="text" id="proxylogretention" name="proxylogretention" placeholder="z.B. 90 Tage, 1 Jahr">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Monitoring-Integration</label>
-                <input type="text" id="proxymonitoring" placeholder="z.B. PRTG, Zabbix, Nagios">
+                <input type="text" id="proxymonitoring" name="proxymonitoring" placeholder="z.B. PRTG, Zabbix, Nagios">
             </div>
         </div>
     </div>
@@ -512,11 +525,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Proxy-Administrator</label>
-                    <input type="text" id="proxyadmin" placeholder="z.B. Netzwerk-Team, IT-Security">
+                    <input type="text" id="proxyadmin" name="proxyadmin" placeholder="z.B. Netzwerk-Team, IT-Security">
                 </div>
                 <div class="form-group">
                     <label>Support-Kontakt</label>
-                    <input type="text" id="proxysupport" placeholder="z.B. network-team@example.com">
+                    <input type="text" id="proxysupport" name="proxysupport" placeholder="z.B. network-team@example.com">
                 </div>
             </div>
         </div>
@@ -535,7 +548,7 @@
                     Notizen / Proxy-Besonderheiten
                     <span class="help-icon" data-tooltip="proxy-notes">?</span>
                 </label>
-                <textarea id="proxynotes" rows="4" placeholder="Zusätzliche Informationen zum Proxy-Server, bekannte Probleme, spezielle Konfigurationen..."></textarea>
+                <textarea id="proxynotes" name="proxynotes" rows="4" placeholder="Zusätzliche Informationen zum Proxy-Server, bekannte Probleme, spezielle Konfigurationen..."></textarea>
             </div>
         </div>
     </div>

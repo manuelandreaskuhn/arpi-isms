@@ -1,0 +1,204 @@
+{
+  "id": "psychiatry-information-systems",
+  "name": "Psychiatrie-Informationssystem (PSYCH-IS)",
+  "description": "Systeme für psychiatrische Dokumentation, Psychometrie und Behandlungsplanung",
+  "software": [
+    {
+      "id": "zpid-psyndex",
+      "name": "PSYNDEX",
+      "vendor": "ZPID",
+      "website": "https://www.psyndex.de/",
+      "description": "Psychiatrische Dokumentation und Tests",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Institution",
+      "features": [
+        "Psychologische Tests",
+        "Testdokumentation",
+        "Psychometrische Verfahren",
+        "Literatur-Datenbank",
+        "Testrezensionen",
+        "Forschungsdatenbank"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Psychiater", "Psychologen", "Psychotherapeuten", "Forscher"],
+      "departments": ["Psychiatrie", "Psychosomatik", "Forschung"]
+    },
+    {
+      "id": "medikit-psychiatrie",
+      "name": "medikit Psychiatrie",
+      "vendor": "medikit",
+      "website": "https://www.medikit.de/",
+      "description": "Psychiatrisches Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Psychiatrische Anamnese",
+        "Befundung",
+        "ICD-Kodierung",
+        "Behandlungsplanung",
+        "Psychopharmaka-Dokumentation",
+        "Krisenintervention",
+        "Risikoassessment",
+        "Therapiedokumentation"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Psychiater", "Psychologen", "Pflegekräfte Psychiatrie"],
+      "departments": ["Psychiatrie", "Psychosomatik"]
+    },
+    {
+      "id": "dedalus-psych-orbis",
+      "name": "PSYCH-Orbis",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Psychiatrie-Modul für Orbis KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Psychiatrische Dokumentation",
+        "Aufnahmegespräch",
+        "Verlaufsdokumentation",
+        "Behandlungsplan",
+        "Psychopharmaka",
+        "KIS-Integration (Orbis)",
+        "Forensische Psychiatrie",
+        "PsychKG-Dokumentation"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Psychiater", "Psychologen", "Pflegekräfte Psychiatrie"],
+      "departments": ["Psychiatrie", "Forensische Psychiatrie"]
+    },
+    {
+      "id": "psych-tree",
+      "name": "PSYCH-TREE",
+      "vendor": "verschiedene Anbieter",
+      "website": "",
+      "description": "Strukturierte psychiatrische Dokumentation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Strukturierte Befundung",
+        "Baumstruktur-Navigation",
+        "ICD-10 Kapitel V",
+        "Symptom-Dokumentation",
+        "Verlaufsbeurteilung",
+        "Standardisierte Erhebung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Psychiater", "Psychologen"],
+      "departments": ["Psychiatrie"]
+    },
+    {
+      "id": "nexus-psychiatrie",
+      "name": "Nexus / Psychiatrie",
+      "vendor": "Nexus AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Psychiatrie-Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Psychiatrische Anamnese",
+        "Befundung",
+        "Behandlungsplanung",
+        "Psychometrie",
+        "Medikationsmanagement",
+        "Krisenmanagement",
+        "Rechtliche Betreuung",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Psychiater", "Psychologen", "Pflegekräfte Psychiatrie", "Sozialdienst"],
+      "departments": ["Psychiatrie", "Psychosomatik"]
+    },
+    {
+      "id": "cgm-psychiatrie",
+      "name": "CGM Psychiatrie",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Psychiatrie-Modul für KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Psychiatrische Dokumentation",
+        "Anamneseerhebung",
+        "Behandlungsplan",
+        "Psychopharmakotherapie",
+        "Verlaufsdokumentation",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:psychiatrie:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Psychiater", "Psychologen", "Pflegekräfte Psychiatrie"],
+      "departments": ["Psychiatrie"]
+    },
+    {
+      "id": "wiener-testsystem",
+      "name": "Wiener Testsystem",
+      "vendor": "Schuhfried",
+      "website": "https://www.schuhfried.com/",
+      "description": "Computergestütztes psychologisches Testsystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Test",
+      "features": [
+        "Über 120 psychologische Tests",
+        "Neuropsychologische Diagnostik",
+        "Verkehrspsychologie",
+        "Sportpsychologie",
+        "HR-Diagnostik",
+        "Automatische Auswertung",
+        "Normierung",
+        "Mehrsprachigkeit"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Psychologen", "Neuropsychologen"],
+      "departments": ["Psychiatrie", "Neurologie", "Psychologischer Dienst"]
+    },
+    {
+      "id": "hogrefe-testsystem",
+      "name": "Hogrefe Testsystem (HTS)",
+      "vendor": "Hogrefe Verlag",
+      "website": "https://www.hogrefe.de/",
+      "description": "Psychologische Tests und Diagnostik",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Test",
+      "features": [
+        "Psychologische Testverfahren",
+        "Online-Testing",
+        "Automatische Auswertung",
+        "Normtabellen",
+        "Gütekriterien",
+        "Berichtsgenerierung"
+      ],
+      "platforms": ["Web", "Windows"],
+      "cpe": [],
+      "userRoles": ["Psychologen", "Psychiater"],
+      "departments": ["Psychiatrie", "Psychosomatik", "Psychologischer Dienst"]
+    },
+    {
+      "id": "amdp-system",
+      "name": "AMDP-System",
+      "vendor": "AMDP",
+      "website": "https://www.amdp.de/",
+      "description": "Arbeitsgemeinschaft für Methodik und Dokumentation in der Psychiatrie",
+      "license": "Standardisiert",
+      "licenseModel": "Kostenlos (Standard)",
+      "features": [
+        "Standardisierte Befunderhebung",
+        "Psychopathologischer Befund",
+        "Somatischer Befund",
+        "AMDP-Module",
+        "International anerkannt",
+        "Forschungskompatibel"
+      ],
+      "platforms": ["Plattformunabhängig (Standard)"],
+      "cpe": [],
+      "userRoles": ["Psychiater", "Psychologen"],
+      "departments": ["Psychiatrie", "Forschung"]
+    }
+  ]
+}

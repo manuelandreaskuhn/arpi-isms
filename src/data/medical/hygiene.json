@@ -1,0 +1,293 @@
+{
+  "id": "hospital-hygiene-software",
+  "name": "Krankenhaushygiene-Software",
+  "description": "Systeme für Hygiene-Management, Infektionsüberwachung und MRE-Surveillance",
+  "software": [
+    {
+      "id": "krinko-software",
+      "name": "KRINKO",
+      "vendor": "verschiedene Anbieter",
+      "website": "https://www.rki.de/",
+      "description": "Software nach KRINKO-Empfehlungen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "KRINKO-konforme Dokumentation",
+        "Richtlinien-Management",
+        "Hygiene-Protokolle",
+        "Schulungsverwaltung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Ärzte", "Pflege"],
+      "departments": ["Hygiene", "Alle Abteilungen"]
+    },
+    {
+      "id": "hybase-hyserv",
+      "name": "HYBASE",
+      "vendor": "HyServ",
+      "website": "https://www.hyserv.de/",
+      "description": "Umfassendes Hygiene-Managementsystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Infektionserfassung",
+        "MRE-Surveillance",
+        "Ausbruchsmanagement",
+        "Screening-Management",
+        "Hygiene-Begehungen",
+        "Antibiotic Stewardship",
+        "Statistik und Reporting"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Ärzte", "Mikrobiologen"],
+      "departments": ["Hygiene", "Labor", "Alle Stationen"]
+    },
+    {
+      "id": "iqmed-software",
+      "name": "IQmed",
+      "vendor": "IQmed",
+      "website": "https://www.iqmed-it.de/",
+      "description": "Hygiene- und Qualitätsmanagement",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Hygiene-Management",
+        "Qualitätssicherung",
+        "Risikomanagement",
+        "Begehungsdokumentation",
+        "Maßnahmenverfolgung",
+        "Audit-Management"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Qualitätsmanagement", "Ärzte"],
+      "departments": ["Hygiene", "Qualitätsmanagement", "Alle Abteilungen"]
+    },
+    {
+      "id": "nosoex-medikit",
+      "name": "NosoEx",
+      "vendor": "medikit",
+      "website": "https://www.medikit.de/",
+      "description": "Nosokomiale Infektionserfassung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Infektionserfassung",
+        "NRZ-Surveillance",
+        "KISS-Module",
+        "Inzidenzdichte-Berechnung",
+        "Resistenzstatistik",
+        "Benchmarking"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Ärzte"],
+      "departments": ["Hygiene", "Intensivstation", "Alle Stationen"]
+    },
+    {
+      "id": "moni-werfen",
+      "name": "MONI",
+      "vendor": "Werfen",
+      "website": "https://www.werfen.com/",
+      "description": "Monitoring nosokomialer Infektionen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Infektionsüberwachung",
+        "Erregerstatistik",
+        "Resistenzmuster",
+        "Labor-Integration",
+        "Automatische Datenerfassung",
+        "Alerting"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Mikrobiologen", "Ärzte"],
+      "departments": ["Hygiene", "Labor", "Alle Stationen"]
+    },
+    {
+      "id": "swissnoso",
+      "name": "SwissNoso",
+      "vendor": "SwissNoso",
+      "website": "https://www.swissnoso.ch/",
+      "description": "Surveillance nosokomialer Infektionen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "SSI-Surveillance",
+        "Device-assoziierte Infektionen",
+        "Händehygiene-Compliance",
+        "Antibiotikaverbrauch",
+        "Nationale Surveillance"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Ärzte"],
+      "departments": ["Hygiene", "OP", "Intensivstation"]
+    },
+    {
+      "id": "nexus-hygiene",
+      "name": "NEXUS / HYBASE",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Hygiene-Management-System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Infektionserfassung",
+        "MRE-Management",
+        "Screening-Organisation",
+        "Begehungen",
+        "KIS-Integration",
+        "Labor-Anbindung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Ärzte"],
+      "departments": ["Hygiene", "Alle Stationen"]
+    },
+    {
+      "id": "dedalus-hygiene",
+      "name": "Orbis Hygiene",
+      "vendor": "Dedalus HealthCare",
+      "website": "https://www.dedalus.com/",
+      "description": "Hygiene-Modul für Orbis KIS",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Infektionserfassung",
+        "MRE-Surveillance",
+        "Isolationsmanagement",
+        "KIS-Integration",
+        "Automatische Alerts",
+        "Statistik"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Ärzte", "Pflege"],
+      "departments": ["Hygiene", "Alle Stationen"]
+    },
+    {
+      "id": "cgm-hygiene",
+      "name": "CGM Hygiene",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Hygiene-Management für Kliniken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Infektionsdokumentation",
+        "MRE-Verwaltung",
+        "Screening-Management",
+        "Hygiene-Begehungen",
+        "Antibiotic Stewardship"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": ["cpe:2.3:a:compugroup_medical:hygiene:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Hygienefachkräfte", "Ärzte"],
+      "departments": ["Hygiene", "Alle Stationen"]
+    },
+    {
+      "id": "ic-prevent",
+      "name": "ic:prevent",
+      "vendor": "ic:prevent GmbH",
+      "website": "https://www.ic-prevent.de/",
+      "description": "Infektionsprävention und Hygiene-Management",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Infektionserfassung",
+        "Surveillance",
+        "Ausbruchsmanagement",
+        "Screening-Organisation",
+        "Antibiotic Stewardship",
+        "Händehygiene-Monitoring"
+      ],
+      "platforms": ["Web", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Ärzte", "Apotheker"],
+      "departments": ["Hygiene", "Alle Stationen", "Apotheke"]
+    },
+    {
+      "id": "nohymo",
+      "name": "NoHyMo",
+      "vendor": "NosoEx (medikit)",
+      "website": "https://www.medikit.de/",
+      "description": "Nosokomiales Hygiene-Monitoring",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Infektionserfassung",
+        "KISS-Surveillance",
+        "Device-Nutzung",
+        "Compliance-Monitoring",
+        "Benchmarking"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte"],
+      "departments": ["Hygiene", "Intensivstation"]
+    },
+    {
+      "id": "whonet",
+      "name": "WHONET",
+      "vendor": "WHO Collaborating Centre",
+      "website": "https://whonet.org/",
+      "description": "Antimikrobielle Resistenzüberwachung",
+      "license": "Kostenlos",
+      "licenseModel": "Kostenlos",
+      "features": [
+        "Resistenzstatistik",
+        "Antibiogramm-Analyse",
+        "Epidemiologische Auswertung",
+        "Datenexport",
+        "Standardisierte Berichte"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Mikrobiologen", "Hygienefachkräfte", "Apotheker"],
+      "departments": ["Labor", "Hygiene", "Apotheke"]
+    },
+    {
+      "id": "aeneis",
+      "name": "AENeIS",
+      "vendor": "Deutsche Gesellschaft für Krankenhaushygiene",
+      "website": "https://www.krankenhaushygiene.de/",
+      "description": "Erfassung nosokomialer Infektionen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Infektionserfassung",
+        "Surveillance",
+        "Statistik",
+        "DGKH-Standards"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte"],
+      "departments": ["Hygiene"]
+    },
+    {
+      "id": "vivatmo-hygiene",
+      "name": "ViVATMO Hygiene",
+      "vendor": "ViVATMO",
+      "website": "https://www.vivatmo.com/",
+      "description": "Händehygiene-Compliance-Monitoring",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Echtzeit-Compliance-Messung",
+        "Automatisches Monitoring",
+        "Dashboard und Reporting",
+        "Individuelles Feedback",
+        "Gamification"
+      ],
+      "platforms": ["Cloud", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Hygienefachkräfte", "Alle Mitarbeiter"],
+      "departments": ["Hygiene", "Alle Stationen"]
+    }
+  ]
+}

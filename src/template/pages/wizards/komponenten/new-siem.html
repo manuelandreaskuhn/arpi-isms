@@ -1,9 +1,22 @@
 <aside>
-    <p>Assetmanagement</p>
-    <i>›</i>
-    <p>Komponenten</p>
-    <i>›</i>
-    <p>Neues SIEM-System anlegen</p>
+    <div class="breadcrumb">
+        <p>Assetmanagement</p>
+        <i>›</i>
+        <p>Komponenten</p>
+        <i>›</i>
+        <p>Neues SIEM-System anlegen</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neues SIEM-System anlegen</h1>
+            <p>Erfassen Sie die Details Ihres SIEM-Systems, um eine zentrale Übersicht Ihrer Sicherheitsinfrastruktur zu erhalten.</p>
+        </div>
+        <div class="formmanagement">
+            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
+            <button type="button" class="btn-cancel">Abbrechen</button>
+            <button type="submit" form="newSIEMForm" class="btn-save" disabled>Speichern</button>
+        </div>
+    </div>
 </aside>
 
 <form id="newSIEMForm">
@@ -23,14 +36,14 @@
                         SIEM-System Name <span class="required">*</span>
                         <span class="help-icon" data-tooltip="siem-name">?</span>
                     </label>
-                    <input type="text" id="siemname" required placeholder="z.B. SIEM-Prod, Security-Monitoring">
+                    <input type="text" id="name" name="name" required placeholder="z.B. SIEM-Prod, Security-Monitoring">
                 </div>
                 <div class="form-group">
                     <label>
                         SIEM-Software <span class="required">*</span>
                         <span class="help-icon" data-tooltip="siem-software">?</span>
                     </label>
-                    <div class="custom-select" data-name="siemsoftware">
+                    <div class="custom-select" data-name="software">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -64,14 +77,14 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Version</label>
-                    <input type="text" id="siemversion" placeholder="z.B. 9.1, 2024.1">
+                    <input type="text" id="version" name="version" placeholder="z.B. 9.1, 2024.1">
                 </div>
                 <div class="form-group">
                     <label>
                         Lizenzmodell
                         <span class="help-icon" data-tooltip="siem-license">?</span>
                     </label>
-                    <div class="custom-select" data-name="siemlicensemodel">
+                    <div class="custom-select" data-name="licensemodel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -108,7 +121,7 @@
                         Deployment-Typ
                         <span class="help-icon" data-tooltip="siem-deployment">?</span>
                     </label>
-                    <div class="custom-select" data-name="siemdeployment">
+                    <div class="custom-select" data-name="deployment">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -125,7 +138,7 @@
                 </div>
                 <div class="form-group">
                     <label>SIEM-Server <span class="required">*</span></label>
-                    <div class="custom-select" data-name="siemserverid" data-component-type="vm,hardware">
+                    <div class="custom-select" data-name="serverid" data-component-type="vm,hardware">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen (VM/Hardware)</span>
                             <span class="arrow">▼</span>
@@ -144,29 +157,29 @@
                 </div>
                 <div class="form-group" id="siem-server-manual" style="display:none;">
                     <label>SIEM-Server (manuell)</label>
-                    <input type="text" id="siemserver" placeholder="z.B. siem-01.example.com">
+                    <input type="text" id="hostname" name="hostname" placeholder="z.B. siem-01.example.com">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Management-URL</label>
-                    <input type="text" id="siemmgmturl" placeholder="z.B. https://siem.example.com">
+                    <input type="text" id="mgmturl" name="mgmturl" placeholder="z.B. https://siem.example.com">
                 </div>
                 <div class="form-group">
                     <label>IP-Adresse</label>
-                    <input type="text" id="siemip" placeholder="z.B. 192.168.50.10">
+                    <input type="text" id="ipaddress" name="ipaddress" placeholder="z.B. 192.168.50.10">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Betriebssystem</label>
-                    <input type="text" id="siemos" placeholder="z.B. Linux RHEL 8, Windows Server 2022">
+                    <input type="text" id="operatingsystem" name="operatingsystem" placeholder="z.B. Linux RHEL 8, Windows Server 2022">
                 </div>
                 <div class="form-group">
                     <label>Standort</label>
-                    <input type="text" id="siemlocation" placeholder="z.B. RZ1, SOC, Cloud">
+                    <input type="text" id="location" name="location" placeholder="z.B. RZ1, SOC, Cloud">
                 </div>
             </div>
         </div>
@@ -183,25 +196,25 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Anzahl Log-Quellen</label>
-                    <input type="number" id="siemlogsources" placeholder="z.B. 50, 200, 1000">
+                    <input type="number" id="logsources" name="logsources" placeholder="z.B. 50, 200, 1000">
                 </div>
                 <div class="form-group">
                     <label>
                         Events per Second (EPS)
                         <span class="help-icon" data-tooltip="siem-eps">?</span>
                     </label>
-                    <input type="number" id="siemeps" placeholder="z.B. 1000, 5000, 10000">
+                    <input type="number" id="eps" name="eps" placeholder="z.B. 1000, 5000, 10000">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Log-Volume pro Tag</label>
-                    <input type="text" id="siemlogvolume" placeholder="z.B. 100 GB/Tag, 1 TB/Tag">
+                    <input type="text" id="logvolume" name="logvolume" placeholder="z.B. 100 GB/Tag, 1 TB/Tag">
                 </div>
                 <div class="form-group">
                     <label>Storage-Kapazität</label>
-                    <input type="text" id="siemstorage" placeholder="z.B. 10 TB, 50 TB">
+                    <input type="text" id="storage" name="storage" placeholder="z.B. 10 TB, 50 TB">
                 </div>
             </div>
 
@@ -212,44 +225,48 @@
             </label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-firewalls" name="logsources" value="firewalls">
+                    <input type="checkbox" id="source-firewalls" name="logsourcetypes[]" value="firewalls">
                     <label for="source-firewalls">Firewalls</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-ids-ips" name="logsources" value="ids-ips">
+                    <input type="checkbox" id="source-ids-ips" name="logsourcetypes[]" value="ids-ips">
                     <label for="source-ids-ips">IDS/IPS</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-servers" name="logsources" value="servers">
+                    <input type="checkbox" id="source-servers" name="logsourcetypes[]" value="servers">
                     <label for="source-servers">Server (Windows/Linux)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-ad" name="logsources" value="ad">
+                    <input type="checkbox" id="source-ad" name="logsourcetypes[]" value="ad">
                     <label for="source-ad">Active Directory</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-databases" name="logsources" value="databases">
+                    <input type="checkbox" id="source-databases" name="logsourcetypes[]" value="databases">
                     <label for="source-databases">Datenbanken</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-applications" name="logsources" value="applications">
+                    <input type="checkbox" id="source-applications" name="logsourcetypes[]" value="applications">
                     <label for="source-applications">Anwendungen</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-network" name="logsources" value="network">
+                    <input type="checkbox" id="source-network" name="logsourcetypes[]" value="network">
                     <label for="source-network">Netzwerkgeräte</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-endpoints" name="logsources" value="endpoints">
+                    <input type="checkbox" id="source-endpoints" name="logsourcetypes[]" value="endpoints">
                     <label for="source-endpoints">Endpoints (EDR)</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-cloud" name="logsources" value="cloud">
+                    <input type="checkbox" id="source-cloud" name="logsourcetypes[]" value="cloud">
                     <label for="source-cloud">Cloud Services</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="source-email" name="logsources" value="email">
+                    <input type="checkbox" id="source-email" name="logsourcetypes[]" value="email">
                     <label for="source-email">E-Mail Security</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="source-commserver" name="logsourcetypes[]" value="commserver">
+                    <label for="source-commserver">Kommunikationsserver / Interface Engines</label>
                 </div>
             </div>
         </div>
@@ -269,12 +286,12 @@
                         Anzahl aktiver Use Cases
                         <span class="help-icon" data-tooltip="siem-usecases">?</span>
                     </label>
-                    <input type="number" id="siemusecases" placeholder="z.B. 50, 100, 200">
+                    <input type="number" id="usecases" name="usecases" placeholder="z.B. 50, 100, 200">
                     <div class="help-text">Anzahl der konfigurierten Detection Rules / Use Cases</div>
                 </div>
                 <div class="form-group">
                     <label>Correlation Rules</label>
-                    <input type="number" id="siemcorrelationrules" placeholder="z.B. 100, 500">
+                    <input type="number" id="correlationrules" name="correlationrules" placeholder="z.B. 100, 500">
                 </div>
             </div>
 
@@ -284,7 +301,7 @@
                         Machine Learning / UEBA
                         <span class="help-icon" data-tooltip="siem-ueba">?</span>
                     </label>
-                    <div class="custom-select" data-name="siemueba">
+                    <div class="custom-select" data-name="ueba">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -303,7 +320,7 @@
                         Threat Intelligence Integration
                         <span class="help-icon" data-tooltip="siem-threatintel">?</span>
                     </label>
-                    <div class="custom-select" data-name="siemthreatintel">
+                    <div class="custom-select" data-name="threatintel">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -321,7 +338,7 @@
 
             <div class="form-group">
                 <label>Threat Intelligence Feeds</label>
-                <input type="text" id="siemthreatfeeds" placeholder="z.B. MISP, AlienVault OTX, Commercial Feeds">
+                <input type="text" id="threatfeeds" name="threatfeeds" placeholder="z.B. MISP, AlienVault OTX, Commercial Feeds">
                 <div class="help-text">Verwendete Threat Intelligence Quellen</div>
             </div>
 
@@ -332,19 +349,19 @@
             </label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="framework-mitre" name="frameworks" value="mitre">
+                    <input type="checkbox" id="framework-mitre" name="frameworks[]" value="mitre">
                     <label for="framework-mitre">MITRE ATT&CK</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="framework-killchain" name="frameworks" value="killchain">
+                    <input type="checkbox" id="framework-killchain" name="frameworks[]" value="killchain">
                     <label for="framework-killchain">Cyber Kill Chain</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="framework-nist" name="frameworks" value="nist">
+                    <input type="checkbox" id="framework-nist" name="frameworks[]" value="nist">
                     <label for="framework-nist">NIST CSF</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="framework-sigma" name="frameworks" value="sigma">
+                    <input type="checkbox" id="framework-sigma" name="frameworks[]" value="sigma">
                     <label for="framework-sigma">Sigma Rules</label>
                 </div>
             </div>
@@ -362,11 +379,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Incident Management</label>
-                    <input type="text" id="siemincidentmgmt" placeholder="z.B. Integriert, ServiceNow, TheHive">
+                    <input type="text" id="incidentmgmt" name="incidentmgmt" placeholder="z.B. Integriert, ServiceNow, TheHive">
                 </div>
                 <div class="form-group">
                     <label>Ticketing-System Integration</label>
-                    <input type="text" id="siemticketing" placeholder="z.B. ServiceNow, Jira, TheHive">
+                    <input type="text" id="ticketing" name="ticketing" placeholder="z.B. ServiceNow, Jira, TheHive">
                 </div>
             </div>
 
@@ -376,7 +393,7 @@
                         SOAR Integration
                         <span class="help-icon" data-tooltip="siem-soar">?</span>
                     </label>
-                    <div class="custom-select" data-name="siemsoar">
+                    <div class="custom-select" data-name="soar">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -393,7 +410,7 @@
                 </div>
                 <div class="form-group">
                     <label>SOAR-Plattform</label>
-                    <input type="text" id="siemsoarplatform" placeholder="z.B. Splunk SOAR, Palo Alto XSOAR">
+                    <input type="text" id="soarplatform" name="soarplatform" placeholder="z.B. Splunk SOAR, Palo Alto XSOAR">
                 </div>
             </div>
         </div>
@@ -413,12 +430,12 @@
                         Log-Retention (Tage)
                         <span class="help-icon" data-tooltip="siem-retention">?</span>
                     </label>
-                    <input type="number" id="siemretention" placeholder="z.B. 90, 365, 2555">
+                    <input type="number" id="retention" name="retention" placeholder="z.B. 90, 365, 2555">
                     <div class="help-text">Aufbewahrungsdauer der Logs in Tagen</div>
                 </div>
                 <div class="form-group">
                     <label>Archivierung</label>
-                    <div class="custom-select" data-name="siemarchiving">
+                    <div class="custom-select" data-name="archiving">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -438,31 +455,31 @@
             <label>Unterstützte Compliance-Standards</label>
             <div class="checkbox-group">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="compliance-pci-dss" name="compliance" value="pci-dss">
+                    <input type="checkbox" id="compliance-pci-dss" name="compliance[]" value="pci-dss">
                     <label for="compliance-pci-dss">PCI DSS</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="compliance-hipaa" name="compliance" value="hipaa">
+                    <input type="checkbox" id="compliance-hipaa" name="compliance[]" value="hipaa">
                     <label for="compliance-hipaa">HIPAA</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="compliance-gdpr" name="compliance" value="gdpr">
+                    <input type="checkbox" id="compliance-gdpr" name="compliance[]" value="gdpr">
                     <label for="compliance-gdpr">DSGVO / GDPR</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="compliance-iso27001" name="compliance" value="iso27001">
+                    <input type="checkbox" id="compliance-iso27001" name="compliance[]" value="iso27001">
                     <label for="compliance-iso27001">ISO 27001</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="compliance-nist" name="compliance" value="nist">
+                    <input type="checkbox" id="compliance-nist" name="compliance[]" value="nist">
                     <label for="compliance-nist">NIST</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="compliance-sox" name="compliance" value="sox">
+                    <input type="checkbox" id="compliance-sox" name="compliance[]" value="sox">
                     <label for="compliance-sox">SOX</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="compliance-kritis" name="compliance" value="kritis">
+                    <input type="checkbox" id="compliance-kritis" name="compliance[]" value="kritis">
                     <label for="compliance-kritis">KRITIS</label>
                 </div>
             </div>
@@ -483,11 +500,11 @@
                         Alert-Empfänger (E-Mail)
                         <span class="help-icon" data-tooltip="siem-alerting">?</span>
                     </label>
-                    <input type="text" id="siemalertmail" placeholder="z.B. soc@example.com, security-team@example.com">
+                    <input type="text" id="alertmail" name="alertmail" placeholder="z.B. soc@example.com, security-team@example.com">
                 </div>
                 <div class="form-group">
                     <label>Alert-Frequenz (durchschnittlich)</label>
-                    <input type="text" id="siemalertfreq" placeholder="z.B. 50/Tag, 200/Tag">
+                    <input type="text" id="alertfreq" name="alertfreq" placeholder="z.B. 50/Tag, 200/Tag">
                 </div>
             </div>
 
@@ -496,30 +513,30 @@
                     <label>Notification-Kanäle</label>
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="notif-email" name="notifications" value="email">
+                            <input type="checkbox" id="notif-email" name="notifications[]" value="email">
                             <label for="notif-email">E-Mail</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="notif-sms" name="notifications" value="sms">
+                            <input type="checkbox" id="notif-sms" name="notifications[]" value="sms">
                             <label for="notif-sms">SMS</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="notif-slack" name="notifications" value="slack">
+                            <input type="checkbox" id="notif-slack" name="notifications[]" value="slack">
                             <label for="notif-slack">Slack</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="notif-teams" name="notifications" value="teams">
+                            <input type="checkbox" id="notif-teams" name="notifications[]" value="teams">
                             <label for="notif-teams">MS Teams</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="notif-webhook" name="notifications" value="webhook">
+                            <input type="checkbox" id="notif-webhook" name="notifications[]" value="webhook">
                             <label for="notif-webhook">Webhook</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Dashboard-URL</label>
-                    <input type="text" id="siemdashboard" placeholder="z.B. https://siem.example.com/dashboard">
+                    <input type="text" id="dashboard" name="dashboard" placeholder="z.B. https://siem.example.com/dashboard">
                 </div>
             </div>
         </div>
@@ -577,11 +594,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>SOC-Verantwortlicher</label>
-                    <input type="text" id="socresponsible" placeholder="z.B. Security-Team, CISO">
+                    <input type="text" id="socresponsible" name="socresponsible" placeholder="z.B. Security-Team, CISO">
                 </div>
                 <div class="form-group">
                     <label>MSSP / Dienstleister</label>
-                    <input type="text" id="mssp" placeholder="z.B. Externer SOC-Provider">
+                    <input type="text" id="mssp" name="mssp" placeholder="z.B. Externer SOC-Provider">
                 </div>
             </div>
         </div>
@@ -598,11 +615,11 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>SIEM-Administrator</label>
-                    <input type="text" id="siemadmin" placeholder="z.B. Security-Team, SOC-Admin">
+                    <input type="text" id="admin" name="admin" placeholder="z.B. Security-Team, SOC-Admin">
                 </div>
                 <div class="form-group">
                     <label>Support-Vertrag</label>
-                    <div class="custom-select" data-name="siemsupport">
+                    <div class="custom-select" data-name="support">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
                             <span class="arrow">▼</span>
@@ -622,7 +639,7 @@
 
             <div class="form-group">
                 <label>Support-Kontakt</label>
-                <input type="text" id="siemsupportcontact" placeholder="z.B. support@siem-vendor.com, Tel: +49...">
+                <input type="text" id="supportcontact" name="supportcontact" placeholder="z.B. support@siem-vendor.com, Tel: +49...">
             </div>
         </div>
     </div>
@@ -640,7 +657,7 @@
                     Notizen / SIEM-Besonderheiten
                     <span class="help-icon" data-tooltip="siem-notes">?</span>
                 </label>
-                <textarea id="siemnotes" rows="4" placeholder="Zusätzliche Informationen zum SIEM-System, spezielle Konfigurationen, bekannte Limitierungen, geplante Erweiterungen..."></textarea>
+                <textarea id="notes" name="notes" rows="4" placeholder="Zusätzliche Informationen zum SIEM-System, spezielle Konfigurationen, bekannte Limitierungen, geplante Erweiterungen..."></textarea>
             </div>
         </div>
     </div>

@@ -714,4 +714,309 @@
         </div>
         <em>Backup-Strategie ohne regelmäßige Restore-Tests ist wertlos!</em>
     </div>
+
+    <div data-tooltip-id="backup-resources">
+        <h2>CPU / RAM</h2>
+        <p>Hardware-Ressourcen des Backup-Servers.</p>
+        <div>
+            <h3>Warum wichtig?</h3>
+            <ul>
+                <li>Deduplizierung braucht viel RAM (Hashes im Speicher)</li>
+                <li>Kompression braucht CPU-Power</li>
+                <li>Mehrere parallele Jobs benötigen Ressourcen</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Empfohlene Ressourcen:</h3>
+            <ul>
+                <li><strong>Kleine Umgebung (< 10 TB):</strong> 4 vCPU, 16 GB RAM</li>
+                <li><strong>Mittlere Umgebung (10-50 TB):</strong> 8 vCPU, 32 GB RAM</li>
+                <li><strong>Große Umgebung (> 50 TB):</strong> 16+ vCPU, 64+ GB RAM</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Bei Deduplizierung:</h3>
+            Verdoppeln Sie die RAM-Größe - Dedup-Datenbank kann mehrere GB groß werden
+        </div>
+        <em>Zu wenig RAM = langsame Backups und Restores!</em>
+    </div>
+
+    <div data-tooltip-id="backup-scheduling">
+        <h2>Backup-Zeitplan</h2>
+        <p>Wann laufen Backups?</p>
+        <div>
+            <h3>Typischer Backup-Plan:</h3>
+            <ul>
+                <li><strong>Täglich:</strong> 22:00 Uhr (nach Geschäftsschluss)</li>
+                <li><strong>Wöchentlich (Full):</strong> Sonntag 02:00 Uhr</li>
+                <li><strong>Monatlich (Archiv):</strong> Letzter Sonntag im Monat</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Backup-Fenster berechnen:</h3>
+            <ul>
+                <li>Datenmenge ÷ Backup-Geschwindigkeit = benötigte Zeit</li>
+                <li>Beispiel: 10 TB ÷ 1 TB/Stunde = 10 Stunden</li>
+                <li>Plus Puffer (20%) für Schwankungen</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Problem: Backup-Fenster zu klein?</h3>
+            <ul>
+                <li>Incremental Backups nutzen (schneller)</li>
+                <li>Deduplizierung aktivieren (weniger Daten)</li>
+                <li>Hardware upgraden (schnellere Disks, Netzwerk)</li>
+                <li>Mehrere Backup-Streams parallel</li>
+            </ul>
+        </div>
+        <em>Backup muss VOR Geschäftsbeginn fertig sein!</em>
+    </div>
+
+    <div data-tooltip-id="backup-retention-policy">
+        <h2>Aufbewahrungsrichtlinie</h2>
+        <p>Wie lange werden verschiedene Backup-Generationen aufbewahrt?</p>
+        <div>
+            <h3>GFS-Schema (Grandfather-Father-Son):</h3>
+            <ul>
+                <li><strong>Son (Sohn):</strong> Tägliche Backups - 7-14 Tage</li>
+                <li><strong>Father (Vater):</strong> Wöchentliche Backups - 4-8 Wochen</li>
+                <li><strong>Grandfather (Großvater):</strong> Monatliche Backups - 12 Monate</li>
+                <li>Optional: Jährliche Backups für Langzeit-Archiv</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Beispiel GFS-Policy:</h3>
+            <ul>
+                <li>14 Tage: Tägliche Incrementals</li>
+                <li>8 Wochen: Wöchentliche Fulls (Sonntag)</li>
+                <li>12 Monate: Monatliche Fulls (letzter Sonntag)</li>
+                <li>7 Jahre: Jährliche Fulls (31.12.)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Warum GFS?</h3>
+            <ul>
+                <li>Balance zwischen Wiederherstellungs-Flexibilität und Storage-Kosten</li>
+                <li>Compliance-konform</li>
+                <li>Standard in Enterprise-Backup</li>
+            </ul>
+        </div>
+        <em>GFS ist bewährter Standard - nicht neu erfinden!</em>
+    </div>
+
+    <div data-tooltip-id="backup-verification">
+        <h2>Backup-Verifizierung</h2>
+        <p>Wie wird sichergestellt, dass Backups wiederherstellbar sind?</p>
+        <div>
+            <h3>Verifizierungs-Methoden:</h3>
+            <ul>
+                <li><strong>Hash-Prüfung:</strong> Checksummen nach Backup prüfen (schnell, minimal)</li>
+                <li><strong>Read-Verify:</strong> Backup-Datei komplett lesen (langsam, gründlich)</li>
+                <li><strong>Restore-Test:</strong> Stichproben-Restore durchführen (sicherste Methode)</li>
+                <li><strong>SureBackup (Veeam):</strong> VM automatisch vom Backup starten und testen</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practice:</h3>
+            <ul>
+                <li>Hash-Prüfung: Nach jedem Backup (automatisch)</li>
+                <li>Restore-Test: Wöchentlich für kritische Systeme</li>
+                <li>Voller DR-Test: Quartalsweise</li>
+            </ul>
+        </div>
+        <div>
+            <h3>WICHTIG:</h3>
+            "Ein Backup ist erst dann gut, wenn der Restore funktioniert!"
+        </div>
+        <em>Backup ohne Restore-Test = falsche Sicherheit!</em>
+    </div>
+
+    <div data-tooltip-id="backup-rpo-rto">
+        <h2>RPO / RTO</h2>
+        <p>Recovery Point Objective und Recovery Time Objective.</p>
+        <div>
+            <h3>RPO (Recovery Point Objective):</h3>
+            <ul>
+                <li>Wie viel Datenverlust ist tolerierbar?</li>
+                <li>Zeit zwischen letztem Backup und Ausfall</li>
+                <li><strong>Beispiel:</strong> Backup um 22:00, Ausfall um 14:00 → 16 Stunden Datenverlust</li>
+            </ul>
+        </div>
+        <div>
+            <h3>RTO (Recovery Time Objective):</h3>
+            <ul>
+                <li>Wie schnell muss System wieder laufen?</li>
+                <li>Zeit vom Ausfall bis zur Wiederherstellung</li>
+                <li><strong>Beispiel:</strong> Kritisches System muss in 4 Stunden wieder laufen</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Typische Werte:</h3>
+            <ul>
+                <li><strong>Tier 1 (Kritisch):</strong> RPO < 1h, RTO < 4h</li>
+                <li><strong>Tier 2 (Wichtig):</strong> RPO < 24h, RTO < 24h</li>
+                <li><strong>Tier 3 (Standard):</strong> RPO < 24h, RTO < 3 Tage</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Backup-Strategie nach RPO/RTO:</h3>
+            <ul>
+                <li>Niedriges RPO → Häufigere Backups (stündlich, CDP)</li>
+                <li>Niedriges RTO → Instant Recovery, schneller Storage</li>
+            </ul>
+        </div>
+        <em>RPO/RTO bestimmen die gesamte Backup-Architektur!</em>
+    </div>
+
+    <div data-tooltip-id="backup-disaster-recovery">
+        <h2>Disaster Recovery Plan</h2>
+        <p>Was passiert bei Totalausfall des Rechenzentrums?</p>
+        <div>
+            <h3>DR-Szenarien:</h3>
+            <ul>
+                <li>Rechenzentrum brennt ab</li>
+                <li>Ransomware verschlüsselt alles (inkl. Backups!)</li>
+                <li>Naturkatastrophe (Hochwasser, Sturm)</li>
+                <li>Langzeit-Stromausfall</li>
+            </ul>
+        </div>
+        <div>
+            <h3>DR-Strategie mit Backups:</h3>
+            <ol>
+                <li><strong>Offsite-Backups:</strong> Mindestens 50 km entfernt</li>
+                <li><strong>Immutable Backups:</strong> Vor Ransomware geschützt</li>
+                <li><strong>Restore-Dokumentation:</strong> Schritt-für-Schritt-Anleitung</li>
+                <li><strong>DR-Site:</strong> Ausweich-Rechenzentrum vorbereitet</li>
+                <li><strong>Regelmäßige DR-Tests:</strong> Minimum 2x pro Jahr</li>
+            </ol>
+        </div>
+        <div>
+            <h3>DR-Test durchführen:</h3>
+            <ul>
+                <li>Backup von Offsite-Location holen</li>
+                <li>Kritische VMs in DR-Site wiederherstellen</li>
+                <li>Funktionstests durchführen</li>
+                <li>Zeit messen (RTO eingehalten?)</li>
+                <li>Lessons Learned dokumentieren</li>
+            </ul>
+        </div>
+        <em>DR-Plan ohne Test = Plan der nicht funktioniert!</em>
+    </div>
+
+    <div data-tooltip-id="backup-ransomware-protection">
+        <h2>Ransomware-Schutz</h2>
+        <p>Wie schützen Backups vor Ransomware?</p>
+        <div>
+            <h3>Ransomware-Angriffsmuster:</h3>
+            <ol>
+                <li>Eindringen ins Netzwerk</li>
+                <li>Privilegien-Eskalation (Admin-Rechte)</li>
+                <li>Verschlüsselung der Produktiv-Daten</li>
+                <li><strong>Löschen/Verschlüsseln der Backups!</strong></li>
+                <li>Lösegeldforderung</li>
+            </ol>
+        </div>
+        <div>
+            <h3>Schutzmaßnahmen:</h3>
+            <ul>
+                <li><strong>Immutable Backups:</strong> Können nicht gelöscht werden (14-90 Tage Lock)</li>
+                <li><strong>Air-Gap:</strong> Backup-Medium offline/getrennt vom Netzwerk</li>
+                <li><strong>Least Privilege:</strong> Backup-Admin ≠ Domain-Admin</li>
+                <li><strong>MFA:</strong> Multi-Faktor-Auth für Backup-Zugriff</li>
+                <li><strong>Separate Credentials:</strong> Eigene Accounts für Backup-System</li>
+                <li><strong>Network Segmentation:</strong> Backup-Netz isoliert</li>
+            </ul>
+        </div>
+        <div>
+            <h3>3-2-1-1-0 Regel (erweitert):</h3>
+            <ul>
+                <li><strong>3</strong> Kopien der Daten</li>
+                <li><strong>2</strong> verschiedene Medientypen</li>
+                <li><strong>1</strong> Kopie Offsite</li>
+                <li><strong>1</strong> Kopie Offline/Immutable (neu!)</li>
+                <li><strong>0</strong> Fehler bei Verifikation</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Im Ransomware-Fall:</h3>
+            <ol>
+                <li>Systeme isolieren (Netzwerk trennen)</li>
+                <li>Forensik: Einfallsvektor finden</li>
+                <li>Saubere Wiederherstellung von Immutable Backups</li>
+                <li>Schwachstellen schließen</li>
+                <li>NICHT Lösegeld zahlen!</li>
+            </ol>
+        </div>
+        <em>Immutable Backups sind die EINZIGE sichere Verteidigung gegen Ransomware!</em>
+    </div>
+
+    <div data-tooltip-id="backup-costs">
+        <h2>Backup-Kosten</h2>
+        <p>Was kostet ein Backup-System?</p>
+        <div>
+            <h3>Kostenkomponenten:</h3>
+            <ul>
+                <li><strong>Software-Lizenzen:</strong>
+                    <ul>
+                        <li>Veeam: €500-1000 pro Socket/Jahr</li>
+                        <li>Commvault: €2000+ pro Jahr</li>
+                        <li>Open Source: Kostenlos, aber Eigenaufwand</li>
+                    </ul>
+                </li>
+                <li><strong>Storage (Primär):</strong>
+                    <ul>
+                        <li>SSD/Flash: €150-300 pro TB</li>
+                        <li>HDD/NAS: €30-80 pro TB</li>
+                        <li>Dedup-Appliance: €100-200 pro nutzbarem TB</li>
+                    </ul>
+                </li>
+                <li><strong>Storage (Cloud):</strong>
+                    <ul>
+                        <li>AWS S3: $23/TB/Monat (Standard)</li>
+                        <li>AWS Glacier: $1/TB/Monat (Archiv)</li>
+                        <li>Plus Retrieval-Kosten!</li>
+                    </ul>
+                </li>
+                <li><strong>Tape:</strong>
+                    <ul>
+                        <li>LTO-8 Drive: €2000-3000</li>
+                        <li>LTO-8 Kassette (12 TB): €50-80</li>
+                        <li>Günstigste Langzeit-Speicherung!</li>
+                    </ul>
+                </li>
+                <li><strong>Personal:</strong>
+                    <ul>
+                        <li>Backup-Admin (Teil- oder Vollzeit)</li>
+                        <li>Schulungen</li>
+                        <li>DR-Tests</li>
+                    </ul>
+                </li>
+                <li><strong>Support:</strong>
+                    <ul>
+                        <li>24/7 Support: 20-30% der Lizenzkosten/Jahr</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Beispiel-Kalkulation (50 TB Daten):</h3>
+            <ul>
+                <li>Veeam Lizenz: €3000/Jahr</li>
+                <li>Primär-Storage (100 TB mit Dedup): €5000</li>
+                <li>Cloud Sekundär (50 TB): $1150/Monat = €13.000/Jahr</li>
+                <li>Support: €1000/Jahr</li>
+                <li><strong>Gesamt: ~€22.000/Jahr + Initialkosten</strong></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Was kostet KEIN Backup?</h3>
+            <ul>
+                <li>Datenverlust: Oft Millionen €</li>
+                <li>Downtime: €5.000-50.000 pro Stunde</li>
+                <li>Reputationsschaden: Unbezahlbar</li>
+                <li>Compliance-Strafen: Bis 4% Jahresumsatz (DSGVO)</li>
+            </ul>
+        </div>
+        <em>Backup-Kosten sind VERSICHERUNGS-Kosten - nicht Optional!</em>
+    </div>
 </div>

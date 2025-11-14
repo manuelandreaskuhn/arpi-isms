@@ -1,0 +1,228 @@
+{
+  "id": "praxis-management-software",
+  "name": "Praxisverwaltungssoftware",
+  "description": "Systeme für Patientenverwaltung, Abrechnung und Praxisorganisation",
+  "software": [
+    {
+      "id": "cgm-albis",
+      "name": "CGM ALBIS",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Branchenweit verbreitete Praxisverwaltungssoftware mit umfangreichen Funktionen für Abrechnung und Patientenverwaltung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Terminplanung",
+        "Abrechnung GKV/PKV",
+        "Dokumentation",
+        "Rezepterstellung",
+        "Labor-Anbindung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "cgm-medistar",
+      "name": "CGM MEDISTAR",
+      "vendor": "CompuGroup Medical",
+      "website": "https://www.cgm.com/",
+      "description": "Flexible Praxissoftware mit hoher Anpassungsfähigkeit",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "eRezept",
+        "TI-Integration",
+        "Videosprechstunde",
+        "Abrechnung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "quincy-praxissoftware",
+      "name": "Quincy",
+      "vendor": "Indamed",
+      "website": "https://www.indamed.de/",
+      "description": "Praxissoftware mit intuitiver Benutzerführung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Terminverwaltung",
+        "Abrechnung",
+        "Befunddokumentation",
+        "Labor-Schnittstelle"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "xconcept",
+      "name": "x.concept",
+      "vendor": "x.concept AG",
+      "website": "https://www.x-concept.de/",
+      "description": "Modulare Praxissoftware für verschiedene Fachrichtungen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenakte",
+        "Abrechnung",
+        "Terminplanung",
+        "eAU",
+        "TI-Anbindung"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "tomedo",
+      "name": "Tomedo",
+      "vendor": "Tomedo GmbH",
+      "website": "https://www.tomedo.de/",
+      "description": "Moderne, plattformübergreifende Praxissoftware mit intuitivem Interface und Cloud-Synchronisation",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Cloud-Synchronisation",
+        "Plattformübergreifend",
+        "Abrechnung",
+        "Labor-Integration",
+        "Mobile App"
+      ],
+      "platforms": ["Windows", "macOS", "Linux", "Cloud"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "duria",
+      "name": "Duria",
+      "vendor": "Duria eG",
+      "website": "https://www.duria.de/",
+      "description": "Genossenschaftliche Praxissoftware mit starkem Fokus auf Datenschutz",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Abrechnung",
+        "Terminverwaltung",
+        "Datenschutz-konform",
+        "eRezept"
+      ],
+      "platforms": ["Windows", "Linux"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "pvs-compact",
+      "name": "PVS compact",
+      "vendor": "Frey ADV",
+      "website": "https://www.frey-adv.de/",
+      "description": "Kompakte Praxisverwaltungssoftware für kleine bis mittlere Praxen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Abrechnung",
+        "Terminverwaltung",
+        "Dokumentation"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "medical-office",
+      "name": "MEDICAL OFFICE",
+      "vendor": "Indamed",
+      "website": "https://www.indamed.de/",
+      "description": "Bewährtes System für alle Fachrichtungen mit modularem Aufbau und Telematikinfrastruktur-Anbindung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Modularer Aufbau",
+        "TI-Anbindung",
+        "Abrechnung",
+        "Alle Fachrichtungen",
+        "Labor-Integration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    },
+    {
+      "id": "xisynet",
+      "name": "x.isynet",
+      "vendor": "x.concept AG",
+      "website": "https://www.x-concept.de/",
+      "description": "Netzwerkfähige Praxissoftware für MVZ und Praxisverbünde",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Netzwerkfähig",
+        "Patientenverwaltung",
+        "Abrechnung",
+        "Standortübergreifend",
+        "TI-Integration"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["MVZ", "Arztpraxis"]
+    },
+    {
+      "id": "docexpert",
+      "name": "DOCexpert",
+      "vendor": "Indamed",
+      "website": "https://www.indamed.de/",
+      "description": "Spezialisierte Praxissoftware mit Expertensystemen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Expertensysteme",
+        "Abrechnung",
+        "Dokumentation"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA"],
+      "departments": ["Arztpraxis"]
+    },
+    {
+      "id": "medatixx",
+      "name": "medatixx",
+      "vendor": "medatixx GmbH & Co. KG",
+      "website": "https://www.medatixx.de/",
+      "description": "Praxissoftware mit umfangreichen Funktionen und Telematik-Lösungen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Abrechnung",
+        "eRezept",
+        "TI-Lösungen",
+        "Videosprechstunde"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Arzt", "MFA", "Verwaltung"],
+      "departments": ["Arztpraxis", "MVZ"]
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "id": "dialysis-documentation-systems",
+  "name": "Dialyse-Dokumentationssystem",
+  "description": "Systeme für Dialyse-Dokumentation, Nephrologische Daten und Patientenmanagement",
+  "software": [
+    {
+      "id": "diapat-medavis",
+      "name": "DiaPat",
+      "vendor": "medavis",
+      "website": "https://www.medavis.de/",
+      "description": "Dialyse-Dokumentationssystem für Nephrologische Zentren",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Dialyseplatz",
+      "features": [
+        "Dialyse-Dokumentation",
+        "Patientenverwaltung",
+        "Behandlungsplanung",
+        "Vitalparameter-Erfassung",
+        "Laboranbindung",
+        "Abrechnungsvorbereitung",
+        "Qualitätssicherung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "nephrosys-fmc",
+      "name": "NephroSys",
+      "vendor": "Fresenius Medical Care",
+      "website": "https://www.freseniusmedicalcare.com/",
+      "description": "Dialyse-Managementsystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Dialyseplatz",
+      "features": [
+        "Dialyse-Management",
+        "Geräteanbindung",
+        "Behandlungsdokumentation",
+        "Verschreibungsmanagement",
+        "Medikationsdokumentation",
+        "Labor-Integration",
+        "Statistik und Reporting"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "quasi-niere",
+      "name": "QuaSi-Niere",
+      "vendor": "QuaSi-Niere",
+      "website": "https://www.quasi-niere.de/",
+      "description": "Qualitätssicherungssystem für Dialyse",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Zentrum",
+      "features": [
+        "Qualitätssicherung nach QS-RL",
+        "Datenerfassung",
+        "Statistische Auswertung",
+        "Benchmarking",
+        "Dokumentation",
+        "Export für Krankenkassen"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Qualitätsmanagement"],
+      "departments": ["Dialyse", "Nephrologie", "Qualitätsmanagement"]
+    },
+    {
+      "id": "diamos-medavis",
+      "name": "DIAMOS",
+      "vendor": "medavis",
+      "website": "https://www.medavis.de/",
+      "description": "Dialyse-Modul für Kliniken",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Modul",
+      "features": [
+        "Dialyse-Dokumentation",
+        "KIS-Integration",
+        "Behandlungsprotokoll",
+        "Verordnungsmanagement",
+        "Schichtplanung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "nexadia",
+      "name": "nexadia",
+      "vendor": "NEXUS AG",
+      "website": "https://www.nexus-ag.de/",
+      "description": "Dialyse-Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Dialyseplatz",
+      "features": [
+        "Dialyse-Dokumentation",
+        "Patientenmanagement",
+        "Geräteanbindung",
+        "Medikationsverwaltung",
+        "Laborschnittstellen",
+        "Abrechnung",
+        "Mobile Dokumentation"
+      ],
+      "platforms": ["Windows", "Web", "Tablet"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "medifox-dialyse",
+      "name": "MediFox Dialyse",
+      "vendor": "MediFox",
+      "website": "https://www.medifox.de/",
+      "description": "Dialyse-Software für ambulante und stationäre Dialyse",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Behandlungsdokumentation",
+        "Patientenverwaltung",
+        "Terminplanung",
+        "Medikationsverwaltung",
+        "Labor-Integration",
+        "Abrechnungsmodul",
+        "Transportorganisation"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte", "Verwaltung"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "b-braun-dialysis-cockpit",
+      "name": "Dialysis Cockpit",
+      "vendor": "B. Braun Avitum",
+      "website": "https://www.bbraun.de/",
+      "description": "Dialyse-Behandlungssoftware mit Gerätesteuerung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Gerätesteuerung",
+        "Behandlungsprotokollierung",
+        "Parameterverwaltung",
+        "Alarmanzeige",
+        "Datenexport",
+        "Patientendatenbank"
+      ],
+      "platforms": ["Windows", "Embedded"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Dialyse-Fachpflegekräfte", "Ärzte"],
+      "departments": ["Dialyse", "Nephrologie", "Intensivstation"]
+    },
+    {
+      "id": "baxter-homechoice",
+      "name": "HomeChoice / HomeChoice Pro",
+      "vendor": "Baxter",
+      "website": "https://www.baxter.de/",
+      "description": "Software für Peritonealdialyse",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "PD-Behandlungssteuerung",
+        "Patientenmonitoring",
+        "Verschreibungsmanagement",
+        "Behandlungsberichte",
+        "Fernüberwachung"
+      ],
+      "platforms": ["Embedded", "Web"],
+      "cpe": [],
+      "userRoles": ["Patienten", "Ärzte", "Pflege"],
+      "departments": ["Dialyse", "Nephrologie", "Heimdialyse"]
+    },
+    {
+      "id": "gambro-therapy",
+      "name": "Therapy Software (Gambro/Baxter)",
+      "vendor": "Baxter (ehemals Gambro)",
+      "website": "https://www.baxter.de/",
+      "description": "Dialyse-Therapie-Software für Dialysegeräte",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Gerät",
+      "features": [
+        "Therapiesteuerung",
+        "Behandlungsdokumentation",
+        "Geräteprotokollierung",
+        "Verschreibungsverwaltung",
+        "Datenauswertung"
+      ],
+      "platforms": ["Embedded"],
+      "cpe": [],
+      "userRoles": ["Pflege", "Dialyse-Fachpflegekräfte", "Ärzte"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "nikkiso-dialysis-manager",
+      "name": "Nikkiso Dialysis Manager",
+      "vendor": "Nikkiso",
+      "website": "https://www.nikkiso.com/",
+      "description": "Dialyse-Datenmanagement-System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Datenmanagement",
+        "Geräteanbindung",
+        "Behandlungsüberwachung",
+        "Datenarchivierung",
+        "Reporting"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "intranet-dialyse",
+      "name": "IntraNet Dialyse",
+      "vendor": "IntraNet Services",
+      "website": "https://www.intranet-services.de/",
+      "description": "Dialyse-Dokumentations- und Managementsystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Dialyseplatz",
+      "features": [
+        "Patientenverwaltung",
+        "Behandlungsdokumentation",
+        "Terminplanung",
+        "Labor-Integration",
+        "Medikationsplan",
+        "Abrechnung",
+        "Statistik"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte", "Verwaltung"],
+      "departments": ["Dialyse", "Nephrologie"]
+    },
+    {
+      "id": "cimeda-dialyse",
+      "name": "Cimeda Dialyse",
+      "vendor": "Cimeda",
+      "website": "https://www.cimeda.de/",
+      "description": "Nephrologische Praxis- und Dialyse-Software",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Arbeitsplatz",
+      "features": [
+        "Dialyse-Dokumentation",
+        "Praxisverwaltung",
+        "Labor-Integration",
+        "Abrechnung",
+        "Terminverwaltung",
+        "Patientenmanagement"
+      ],
+      "platforms": ["Windows"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflege", "Dialyse-Fachpflegekräfte", "Verwaltung"],
+      "departments": ["Dialyse", "Nephrologie", "Ambulanz"]
+    }
+  ]
+}

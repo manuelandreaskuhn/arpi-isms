@@ -50,11 +50,24 @@ import {
     setupContainerConditionalFields,
     refreshContainerHostAssignments
 } from './system/container.js';
+import {
+    addMedDeviceEntry,
+    setupMedDeviceConditionalFields,
+    refreshMedDeviceHostAssignments
+} from './system/meddevice.js';
 import { initializeHelpTooltips } from './helptooltip.js';
+import { refreshAllComponentSelects } from './componentlinking.js';
+import { collectFormData } from './formcollector.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize help tooltips
     initializeHelpTooltips();
+    
+    // Initialize component selects
+    refreshAllComponentSelects();
+    
+    // Setup form submission
+    setupSystemFormSubmit();
     
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
@@ -66,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clientSection = document.querySelector('.form-section[data-name="clients"]');
     const medInterfaceSection = document.querySelector('.form-section[data-name="medinterfaces"]');
     const containerSection = document.querySelector('.form-section[data-name="containers"]');
+    const medDeviceSection = document.querySelector('.form-section[data-name="meddevices"]');
     
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
@@ -76,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (clientSection) clientSection.style.display = 'none';
     if (medInterfaceSection) medInterfaceSection.style.display = 'none';
     if (containerSection) containerSection.style.display = 'none';
+    if (medDeviceSection) medDeviceSection.style.display = 'none';
     
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
@@ -180,36 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Medical Interface checkbox handler
-    const medInterfaceCheckbox = document.getElementById('medinterface');
-    
-    if (medInterfaceCheckbox && medInterfaceSection) {
-        medInterfaceCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                medInterfaceSection.style.display = 'block';
-            } else {
-                medInterfaceSection.style.display = 'none';
-                document.getElementById('medInterfaceList').innerHTML = '';
-                updateSectionCounter(medInterfaceSection);
-            }
-        });
-    }
-
-    // Container checkbox handler
-    const containerCheckbox = document.getElementById('container');
-    
-    if (containerCheckbox && containerSection) {
-        containerCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                containerSection.style.display = 'block';
-            } else {
-                containerSection.style.display = 'none';
-                document.getElementById('containerList').innerHTML = '';
-                updateSectionCounter(containerSection);
-            }
-        });
-    }
-
     // Gematik TI checkbox handler
     const gematictiCheckbox = document.getElementById('gematicti');
     const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
@@ -221,6 +206,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.checked) {
                 gematictiSection.style.display = 'block';
                 setupTIConditionalFields(gematictiSection);
+                // Refresh component selects für TI-Komponenten
+                refreshAllComponentSelects();
             } else {
                 gematictiSection.style.display = 'none';
             }
@@ -278,6 +265,87 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Medical Interface checkbox handler
+    const medInterfaceCheckbox = document.getElementById('medinterface');
+    
+    if (medInterfaceCheckbox && medInterfaceSection) {
+        medInterfaceCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                medInterfaceSection.style.display = 'block';
+                // Refresh component selects für Interfaces
+                refreshAllComponentSelects();
+            } else {
+                medInterfaceSection.style.display = 'none';
+                document.getElementById('medInterfaceList').innerHTML = '';
+                updateSectionCounter(medInterfaceSection);
+            }
+        });
+    }
+
+    // Container checkbox handler
+    const containerCheckbox = document.getElementById('container');
+    
+    if (containerCheckbox && containerSection) {
+        containerCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                containerSection.style.display = 'block';
+            } else {
+                containerSection.style.display = 'none';
+                document.getElementById('containerList').innerHTML = '';
+                updateSectionCounter(containerSection);
+            }
+        });
+    }
+
+    // Medical Device checkbox handler
+    const medDeviceCheckbox = document.getElementById('meddevice');
+    
+    if (medDeviceCheckbox && medDeviceSection) {
+        medDeviceCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                medDeviceSection.style.display = 'block';
+            } else {
+                medDeviceSection.style.display = 'none';
+                document.getElementById('medDeviceList').innerHTML = '';
+                updateSectionCounter(medDeviceSection);
+            }
+        });
+    }
+
+    // Hypervisor checkbox handler
+    const hypervisorCheckbox = document.getElementById('hypervisor');
+    const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
+    
+    if (hypervisorCheckbox && hypervisorSection) {
+        hypervisorSection.style.display = 'none';
+        
+        hypervisorCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                hypervisorSection.style.display = 'block';
+                refreshAllComponentSelects();
+            } else {
+                hypervisorSection.style.display = 'none';
+            }
+        });
+    }
+
+    // CommunicationServer checkbox handler
+    const commserverCheckbox = document.getElementById('commserver');
+    const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
+    
+    if (commserverCheckbox && commserverSection) {
+        commserverSection.style.display = 'none';
+        
+        commserverCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                commserverSection.style.display = 'block';
+                refreshAllComponentSelects();
+            } else {
+                commserverSection.style.display = 'none';
+            }
+        });
+    }
+
     // Cluster-Konfiguration anzeigen/ausblenden
     document.addEventListener('change', function(e) {
         if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
@@ -288,6 +356,137 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function setupSystemFormSubmit() {
+    const form = document.getElementById('newSystemForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', handleSystemSubmit);
+}
+
+async function handleSystemSubmit(event) {
+    event.preventDefault();
+    
+    const formData = collectFormData(event.target);
+    
+    // Collect dynamic entries (VMs, Hardware, etc.)
+    formData.virtualmachines = collectVMData();
+    formData.hardwareservers = collectHardwareData();
+    formData.databases = collectDatabaseData();
+    formData.backupsystems = collectBackupData();
+    formData.loadbalancers = collectLoadBalancerData();
+    formData.firewallrules = collectFirewallData();
+    formData.clientaccesses = collectClientData();
+    formData.medicaldevices = collectMedDeviceData();
+    formData.medicalinterfaces = collectMedInterfaceData();
+    formData.containers = collectContainerData();
+    
+    console.log('System Data:', formData);
+    
+    try {
+        const response = await fetch('/api/systems', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        if (result.success) {
+            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
+            if (lastchangespan) {
+                lastchangespan.textContent = 'Gespeichert am ' + new Date().toLocaleString();
+                lastchangespan.dataset.lastchange = new Date().toISOString();
+                lastchangespan.dataset.status = 'saved';
+            }
+
+            alert('System erfolgreich erstellt!');
+            window.location.href = '/assetmanagement/systems';
+        } else {
+            alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
+
+            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
+            if (lastchangespan) {
+                lastchangespan.dataset.status = 'error';
+            }
+        }
+    } catch (error) {
+        console.error('API Error:', error);
+        alert('Verbindungsfehler zur API');
+    }
+}
+
+// Helper functions to collect dynamic entry data
+function collectVMData() {
+    const vmEntries = document.querySelectorAll('#vmList .dynamic-entry[data-type="vm"]');
+    return Array.from(vmEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectHardwareData() {
+    const hwEntries = document.querySelectorAll('#hardwareList .dynamic-entry[data-type="hardware"]');
+    return Array.from(hwEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectDatabaseData() {
+    const dbEntries = document.querySelectorAll('#databaseList .dynamic-entry[data-type="database"]');
+    return Array.from(dbEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectBackupData() {
+    const backupEntries = document.querySelectorAll('#backupList .dynamic-entry[data-type="backup"]');
+    return Array.from(backupEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectLoadBalancerData() {
+    const lbEntries = document.querySelectorAll('#loadbalancerList .dynamic-entry[data-type="loadbalancer"]');
+    return Array.from(lbEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectFirewallData() {
+    const fwEntries = document.querySelectorAll('#firewallList .dynamic-entry[data-type="firewall"]');
+    return Array.from(fwEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectClientData() {
+    const clientEntries = document.querySelectorAll('#clientList .dynamic-entry[data-type="client"]');
+    return Array.from(clientEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectMedDeviceData() {
+    const medDeviceEntries = document.querySelectorAll('#medDeviceList .dynamic-entry[data-type="meddevice"]');
+    return Array.from(medDeviceEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectMedInterfaceData() {
+    const medInterfaceEntries = document.querySelectorAll('#medInterfaceList .dynamic-entry[data-type="medinterface"]');
+    return Array.from(medInterfaceEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
+
+function collectContainerData() {
+    const containerEntries = document.querySelectorAll('#containerList .dynamic-entry[data-type="container"]');
+    return Array.from(containerEntries).map(entry => {
+        return collectFormData(entry);
+    });
+}
 
 // Make functions globally accessible for onclick handlers
 window.addVMEntry = addVMEntry;
@@ -320,4 +519,7 @@ window.refreshInterfaceComponents = refreshInterfaceComponents;
 window.addContainerEntry = addContainerEntry;
 window.setupContainerConditionalFields = setupContainerConditionalFields;
 window.refreshContainerHostAssignments = refreshContainerHostAssignments;
+window.addMedDeviceEntry = addMedDeviceEntry;
+window.setupMedDeviceConditionalFields = setupMedDeviceConditionalFields;
+window.refreshMedDeviceHostAssignments = refreshMedDeviceHostAssignments;
 

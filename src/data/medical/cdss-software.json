@@ -1,0 +1,273 @@
+{
+  "id": "clinical-decision-support-systems",
+  "name": "Klinische Entscheidungsunterstützungssysteme (CDSS)",
+  "description": "Systeme zur Unterstützung medizinischer Entscheidungen, Arzneimittelinteraktionen und klinische Algorithmen",
+  "software": [
+    {
+      "id": "aidklinik",
+      "name": "AiDKlinik",
+      "vendor": "AiDKlinik",
+      "website": "https://www.aidklinik.de/",
+      "description": "Arzneimittelinformationssystem mit Interaktionsprüfung",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Krankenhaus",
+      "features": [
+        "Arzneimittelinformationen",
+        "Interaktionsprüfung",
+        "Kontraindikationen",
+        "Dosierungsempfehlungen",
+        "Pharmakokinetik",
+        "Arzneimittel-Kompatibilität"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker", "Pflege"],
+      "departments": ["Alle medizinischen Abteilungen", "Apotheke", "Intensivstation"]
+    },
+    {
+      "id": "id-pharma-check",
+      "name": "ID PHARMA CHECK",
+      "vendor": "ID Berlin",
+      "website": "https://www.id-berlin.de/",
+      "description": "Arzneimittel-Interaktionsdatenbank",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Interaktionsprüfung",
+        "Wirkstoffinformationen",
+        "Dosisanpassung",
+        "Kontraindikationen",
+        "Schwangerschaft und Stillzeit",
+        "KIS-Integration"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker"],
+      "departments": ["Alle medizinischen Abteilungen", "Apotheke"]
+    },
+    {
+      "id": "uptodate",
+      "name": "UpToDate",
+      "vendor": "Wolters Kluwer",
+      "website": "https://www.uptodate.com/",
+      "description": "Evidence-based clinical decision support",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort oder Benutzer",
+      "features": [
+        "Evidenzbasierte Leitlinien",
+        "Krankheitsinformationen",
+        "Therapieempfehlungen",
+        "Medikamenteninformationen",
+        "CME-Credits",
+        "Mobile App"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Pflegekräfte", "Apotheker"],
+      "departments": ["Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "micromedex",
+      "name": "Micromedex",
+      "vendor": "IBM Watson Health",
+      "website": "https://www.ibm.com/",
+      "description": "Klinische Entscheidungsunterstützung und Arzneimittelinformationen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Arzneimittelinformationen",
+        "Interaktionsprüfung",
+        "Toxikologie",
+        "IV-Kompatibilität",
+        "Dosierungsrechner",
+        "Evidence-based Content"
+      ],
+      "platforms": ["Web", "Mobile"],
+      "cpe": ["cpe:2.3:a:ibm:micromedex:*:*:*:*:*:*:*:*"],
+      "userRoles": ["Ärzte", "Apotheker", "Pflege"],
+      "departments": ["Alle medizinischen Abteilungen", "Apotheke", "Notaufnahme"]
+    },
+    {
+      "id": "ifap-index",
+      "name": "ifap",
+      "vendor": "ifap",
+      "website": "https://www.ifap.de/",
+      "description": "Arzneimittelinformationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Arzneimitteldatenbank",
+        "Interaktionsprüfung",
+        "Preisvergleich",
+        "Rabattverträge",
+        "Fachinformationen",
+        "Substitutionsprüfung"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker"],
+      "departments": ["Apotheke", "Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "scholz-datenbank",
+      "name": "SCHOLZ Datenbank",
+      "vendor": "Medicom",
+      "website": "https://www.scholz-datenbank.de/",
+      "description": "Arzneimittelinformationen und Interaktionen",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Standort",
+      "features": [
+        "Arzneimittelinformationen",
+        "Interaktionsprüfung",
+        "Fachinformationen",
+        "Dosierungshinweise",
+        "Kontraindikationen"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker"],
+      "departments": ["Apotheke", "Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "gelbe-liste",
+      "name": "Gelbe Liste",
+      "vendor": "Medizinische Medien Informations GmbH",
+      "website": "https://www.gelbe-liste.de/",
+      "description": "Arzneimittelverzeichnis und Informationssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Arzneimittelverzeichnis",
+        "Fachinformationen",
+        "Interaktionsprüfung",
+        "Dosierungsrechner",
+        "Patienteninformationen"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker"],
+      "departments": ["Alle medizinischen Abteilungen", "Apotheke"]
+    },
+    {
+      "id": "amboss",
+      "name": "AMBOSS",
+      "vendor": "AMBOSS GmbH",
+      "website": "https://www.amboss.com/",
+      "description": "Medizinisches Nachschlagewerk und Lernplattform",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer oder Institution",
+      "features": [
+        "Medizinisches Wissen",
+        "Klinische Leitlinien",
+        "Differentialdiagnosen",
+        "Therapieempfehlungen",
+        "Bilddatenbank",
+        "Prüfungsvorbereitung"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Medizinstudierende"],
+      "departments": ["Alle medizinischen Abteilungen", "Lehre"]
+    },
+    {
+      "id": "isabel-healthcare",
+      "name": "Isabel Healthcare",
+      "vendor": "Isabel Healthcare",
+      "website": "https://www.isabelhealthcare.com/",
+      "description": "Differentialdiagnose-System",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Differentialdiagnosen",
+        "Symptom-Checker",
+        "Red-Flag-Warnungen",
+        "KIS-Integration",
+        "Patientensicherheit"
+      ],
+      "platforms": ["Web", "Mobile"],
+      "cpe": [],
+      "userRoles": ["Ärzte"],
+      "departments": ["Notaufnahme", "Ambulanzen", "Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "dxplain",
+      "name": "DXplain",
+      "vendor": "Massachusetts General Hospital",
+      "website": "https://www.mghdxplain.org/",
+      "description": "Diagnose-Entscheidungsunterstützungssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Institution",
+      "features": [
+        "Differentialdiagnosen",
+        "Symptom-basierte Diagnose",
+        "Medizinisches Wissen",
+        "Klinische Algorithmen"
+      ],
+      "platforms": ["Web"],
+      "cpe": [],
+      "userRoles": ["Ärzte"],
+      "departments": ["Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "lexicomp",
+      "name": "Lexicomp",
+      "vendor": "Wolters Kluwer",
+      "website": "https://www.wolterskluwer.com/en/solutions/lexicomp",
+      "description": "Klinische Arzneimittel- und Referenzdatenbank",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer oder Standort",
+      "features": [
+        "Arzneimittelinformationen",
+        "Interaktionsprüfung",
+        "IV-Kompatibilität",
+        "Pädiatrische Dosierung",
+        "Laborwert-Interpretation",
+        "Toxikologie"
+      ],
+      "platforms": ["Web", "iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker", "Pflege"],
+      "departments": ["Alle medizinischen Abteilungen", "Apotheke", "Pädiatrie"]
+    },
+    {
+      "id": "epocrates",
+      "name": "Epocrates",
+      "vendor": "Athenahealth",
+      "website": "https://www.epocrates.com/",
+      "description": "Mobile Arzneimittelreferenz und klinisches Tool",
+      "license": "Proprietär / Freemium",
+      "licenseModel": "Kostenlos / Premium pro Benutzer",
+      "features": [
+        "Arzneimittelinformationen",
+        "Interaktionsprüfung",
+        "Dosierungsrechner",
+        "Klinische Tools",
+        "Laborwert-Referenzen",
+        "Offline-Zugriff"
+      ],
+      "platforms": ["iOS", "Android"],
+      "cpe": [],
+      "userRoles": ["Ärzte", "Apotheker"],
+      "departments": ["Alle medizinischen Abteilungen"]
+    },
+    {
+      "id": "mediq",
+      "name": "MediQ",
+      "vendor": "Mediq Deutschland",
+      "website": "https://www.mediq.de/",
+      "description": "Arzneimittelinformations- und Interaktionssystem",
+      "license": "Proprietär",
+      "licenseModel": "Lizenz pro Benutzer",
+      "features": [
+        "Arzneimittelinformationen",
+        "Interaktionsprüfung",
+        "Pharmazeutische Bedenken",
+        "Medikationsanalyse"
+      ],
+      "platforms": ["Windows", "Web"],
+      "cpe": [],
+      "userRoles": ["Apotheker", "Ärzte"],
+      "departments": ["Apotheke", "Alle medizinischen Abteilungen"]
+    }
+  ]
+}

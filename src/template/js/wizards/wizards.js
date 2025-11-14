@@ -317,6 +317,10 @@ export function updateSectionCounter(section) {
     const requiredFields = section.querySelectorAll('[required]');
     const allInputs = section.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), textarea, .custom-select');
     
+    let previousFilledCount = 0;
+    if (counter.dataset.filledCount) {
+        previousFilledCount = parseInt(counter.dataset.filledCount, 10);
+    }
     let filledCount = 0;
     let totalCount = allInputs.length;
 
@@ -335,6 +339,8 @@ export function updateSectionCounter(section) {
     });
 
     counter.textContent = `${filledCount}/${totalCount}`;
+    counter.dataset.filledCount = filledCount;
+    counter.dataset.totalCount = totalCount;
     
     // Update counter styling
     counter.classList.remove('complete', 'partial');
@@ -342,6 +348,18 @@ export function updateSectionCounter(section) {
         counter.classList.add('complete');
     } else if (filledCount > 0) {
         counter.classList.add('partial');
+    }
+
+    //Update form status
+    let lastchangespan = document.querySelector(".formmanagement > span.form-status");
+    if (lastchangespan && filledCount !== previousFilledCount) {
+        lastchangespan.textContent = 'Ungespeicherte Änderungen';
+        lastchangespan.dataset.status = 'changed';
+
+        let savebutton = document.querySelector(".formmanagement > button.btn-save");
+        if (savebutton) {
+            savebutton.disabled = false;
+        }
     }
 }
 
@@ -360,6 +378,15 @@ document.addEventListener('DOMContentLoaded', function() {
         title.addEventListener('click', function() {
             const section = this.closest('.form-section');
             section.classList.toggle('collapsed');
+        });
+    });
+
+    //Listeners for inputs to update section counters
+    document.querySelectorAll('.form-section').forEach(section => {
+        section.querySelectorAll('input, textarea').forEach(field => {
+            field.addEventListener('input', () => {
+                updateSectionCounter(section);
+            });
         });
     });
     
