@@ -317,7 +317,7 @@ class CommunicationServer
      */
     public function __construct()
     {
-        $this->uuid = uniqid('commserver_', true);
+        $this->uuid = \uniqid('commserver_', true);
         $this->createdat = new \DateTime();
         $this->protocols = [];
         $this->siemlogtypes = [];
