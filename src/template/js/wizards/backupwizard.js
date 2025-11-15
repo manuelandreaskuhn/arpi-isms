@@ -95,11 +95,12 @@ async function handleBackupSubmit(event) {
     
     // An API senden
     try {
-        const response = await fetch('/api/backup-systems', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -126,4 +127,9 @@ async function handleBackupSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/backup-systems';
+    return uri;
 }

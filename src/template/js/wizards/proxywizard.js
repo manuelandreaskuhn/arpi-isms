@@ -39,11 +39,12 @@ async function handleProxySubmit(event) {
     console.log('Proxy Server Data:', formData);
     
     try {
-        const response = await fetch('/api/proxies', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -70,4 +71,9 @@ async function handleProxySubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/proxies';
+    return uri;
 }

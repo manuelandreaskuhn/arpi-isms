@@ -39,11 +39,12 @@ async function handleFirewallSubmit(event) {
     console.log('Firewall Data:', formData);
     
     try {
-        const response = await fetch('/api/firewalls', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -72,6 +73,11 @@ async function handleFirewallSubmit(event) {
     }
 }
 
+function getFetchUri() {
+    let uri = '/api/firewalls';
+    return uri;
+}
+
 // HA Configuration toggle
 const haCheck = document.getElementById('fw-ha-check');
 const haConfig = document.getElementById('fw-ha-config');
@@ -81,3 +87,4 @@ if (haCheck && haConfig) {
         haConfig.style.display = this.checked ? 'block' : 'none';
     });
 }
+

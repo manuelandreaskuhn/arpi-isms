@@ -39,11 +39,12 @@ async function handleSIEMSubmit(event) {
     console.log('SIEM System Data:', formData);
     
     try {
-        const response = await fetch('/api/siems', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -70,4 +71,9 @@ async function handleSIEMSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/siems';
+    return uri;
 }

@@ -61,11 +61,12 @@ async function handleVPNSubmit(event) {
     console.log('VPN Data:', formData);
     
     try {
-        const response = await fetch('/api/vpns', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -92,4 +93,9 @@ async function handleVPNSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/vpns';
+    return uri;
 }

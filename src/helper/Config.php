@@ -11,6 +11,54 @@ class Config
     private array $config = [];
     private bool $loaded = false;
     private array $configSources = [];
+    
+    /**
+     * Whitelist der erlaubten Konfigurationsschlüssel mit Validierungsregeln
+     */
+    private const ALLOWED_CONFIG_KEYS = [
+        'MONGODB_URI' => [
+            'required' => false,
+            'type' => 'mongodb_uri',
+            'pattern' => '/^mongodb:\/\/[a-zA-Z0-9\-\.]+:\d+$/',
+        ],
+        'MONGODB_DATABASE' => [
+            'required' => false,
+            'type' => 'alphanumeric_underscore',
+            'pattern' => '/^[a-zA-Z0-9_\-]{1,64}$/',
+        ],
+        'MONGODB_USERNAME' => [
+            'required' => false,
+            'type' => 'string',
+            'max_length' => 255,
+        ],
+        'MONGODB_PASSWORD' => [
+            'required' => false,
+            'type' => 'string',
+            'max_length' => 255,
+        ],
+        'REDIS_HOST' => [
+            'required' => false,
+            'type' => 'hostname',
+            'pattern' => '/^[a-zA-Z0-9\-\.]{1,253}$/',
+        ],
+        'REDIS_PORT' => [
+            'required' => false,
+            'type' => 'port',
+            'pattern' => '/^\d{1,5}$/',
+            'min' => 1,
+            'max' => 65535,
+        ],
+        'REDIS_PASSWORD' => [
+            'required' => false,
+            'type' => 'string',
+            'max_length' => 255,
+        ],
+        'APP_ENV' => [
+            'required' => false,
+            'type' => 'enum',
+            'allowed_values' => ['development', 'staging', 'production', 'test'],
+        ],
+    ];
 
     private function __construct()
     {
@@ -68,24 +116,104 @@ class Config
     }
 
     /**
-     * Parst .env Datei
+     * Parst .env Datei mit Sicherheitsvalidierung
      */
     private function parseEnvFile(string $path): void
     {
         $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        foreach ($lines as $line) {
-            if (strpos(trim($line), '#') === 0) {
+        
+        foreach ($lines as $lineNumber => $line) {
+            $line = trim($line);
+            
+            // Kommentare ignorieren
+            if ($line === '' || strpos($line, '#') === 0) {
                 continue;
             }
             
-            if (strpos($line, '=') !== false) {
-                list($key, $value) = explode('=', $line, 2);
-                $key = trim($key);
-                $value = trim($value);
-                $value = trim($value, '"\'');
+            // Zeile muss '=' enthalten
+            if (strpos($line, '=') === false) {
+                error_log("Config Warning: Invalid line format at line " . ($lineNumber + 1) . " in {$path}");
+                continue;
+            }
+            
+            list($key, $value) = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+            
+            // Whitelist-Check: Nur erlaubte Schlüssel
+            if (!isset(self::ALLOWED_CONFIG_KEYS[$key])) {
+                error_log("Config Warning: Unauthorized config key '{$key}' rejected from {$path}");
+                continue;
+            }
+            
+            // Anführungszeichen entfernen
+            $value = trim($value, '"\'');
+            
+            // Validierung durchführen
+            if ($this->validateConfigValue($key, $value)) {
                 $this->config[$key] = $value;
+            } else {
+                error_log("Config Warning: Invalid value for '{$key}' rejected from {$path}");
             }
         }
+    }
+
+    /**
+     * Validiert Konfigurationswerte basierend auf definierten Regeln
+     */
+    private function validateConfigValue(string $key, string $value): bool
+    {
+        // Leere Werte sind erlaubt (optional)
+        if ($value === '') {
+            return true;
+        }
+        
+        $rules = self::ALLOWED_CONFIG_KEYS[$key];
+        
+        // Pattern-Validierung
+        if (isset($rules['pattern']) && !preg_match($rules['pattern'], $value)) {
+            return false;
+        }
+        
+        // Typ-spezifische Validierung
+        switch ($rules['type']) {
+            case 'port':
+                $port = (int) $value;
+                if (!is_numeric($value) || $port < ($rules['min'] ?? 1) || $port > ($rules['max'] ?? 65535)) {
+                    return false;
+                }
+                break;
+                
+            case 'enum':
+                if (!in_array($value, $rules['allowed_values'], true)) {
+                    return false;
+                }
+                break;
+                
+            case 'string':
+            case 'alphanumeric_underscore':
+            case 'hostname':
+            case 'mongodb_uri':
+                if (isset($rules['max_length']) && strlen($value) > $rules['max_length']) {
+                    return false;
+                }
+                break;
+        }
+        
+        // Zusätzliche Sicherheitsprüfungen
+        // Keine Null-Bytes
+        if (strpos($value, "\0") !== false) {
+            return false;
+        }
+        
+        // Keine Control-Characters (außer bei Passwörtern)
+        if (!in_array($key, ['MONGODB_PASSWORD', 'REDIS_PASSWORD'])) {
+            if (preg_match('/[\x00-\x1F\x7F]/', $value)) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     /**
@@ -150,14 +278,6 @@ class Config
     {
         if ($detailed) {
             return [
-                'config_keys' => array_map(function ($key) {
-                    return [
-                        'value' => $this->config[$key] ?? null,
-                        'source' => $this->configSources[$key] ?? 'environment_vars',
-                        'masked' => in_array($key, ['MONGODB_PASSWORD', 'REDIS_PASSWORD']),
-                    ];
-                }, array_keys($this->config)),
-                'sources' => $this->configSources,
                 'using_env_file' => isset($this->configSources['env_file']) ? $this->configSources['env_file'] : null,
                 'env_file' => $this->configSources['env_file'] ?? null,
                 'using_docker_secrets' => isset($this->configSources['MONGODB_USERNAME']) && strpos($this->configSources['MONGODB_USERNAME'], '/run/secrets/') === 0,

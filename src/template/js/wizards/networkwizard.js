@@ -38,11 +38,12 @@ async function handleNetworkSubmit(event) {
     console.log('Network Data:', formData);
     
     try {
-        const response = await fetch('/api/networks', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -69,4 +70,9 @@ async function handleNetworkSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/networks';
+    return uri;
 }

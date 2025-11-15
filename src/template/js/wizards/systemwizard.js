@@ -384,7 +384,7 @@ async function handleSystemSubmit(event) {
     console.log('System Data:', formData);
     
     try {
-        const response = await fetch('/api/systems?XDEBUG_TRIGGER=1', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -416,6 +416,11 @@ async function handleSystemSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/systems';
+    return uri;
 }
 
 // Helper functions to collect dynamic entry data

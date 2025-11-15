@@ -53,9 +53,9 @@ abstract class BaseSite implements SiteInterface
      */
     protected function initODM(): void
     {
-        try {
+        try {    
             $config = Config::getInstance();
-            
+
             // Sichere Konfiguration mit Credentials-Handling
             $mongoUri = $config->getMongoDbUri();
             $dbName = $config->getMongoDbDatabase();
@@ -67,14 +67,6 @@ abstract class BaseSite implements SiteInterface
             $this->repository->setUnitOfWork($this->unitOfWork);
             
         } catch (ConnectionException $e) {
-            // Detaillierte Fehlermeldung für Entwickler
-            if ($config->get('APP_ENV') === 'development') {
-                die("<h1>MongoDB Connection Error</h1><pre>" . 
-                    htmlspecialchars($e->getUserFriendlyMessage()) . 
-                    "</pre>");
-            }
-            
-            // Production: Generischer Fehler
             error_log("MongoDB Connection failed: " . $e->getMessage());
             die("Database connection error. Please contact the administrator.");
         }
