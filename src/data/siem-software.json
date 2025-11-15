@@ -134,7 +134,7 @@
       "marketShare": "~10% (wächst schnell)",
       "status": "Active",
       "useCases": ["Cost-Conscious SIEM", "DevSecOps", "Log Analytics + Security", "Scalable Deployments"],
-      "notes": "Elastic Security ist Open-Source-Alternative zu kommerziellen SIEMs. Sehr skalierbar (Elasticsearch). Gut für Organisationen die bereits ELK Stack nutzen. Predet Rules aus Elastic Security Labs. Kombiniert SIEM + Endpoint Security (XDR). Cloud-Option oder Self-Hosted. Lizenzwechsel 2021 (SSPL statt Apache).",
+      "notes": "Elastic Security ist Open-Source-Alternative zu kommerziellen SIEMs. Sehr skalierbar (Elasticsearch). Gut für Organisationen die bereits ELK Stack nutzen. Prebuilt Rules aus Elastic Security Labs. Kombiniert SIEM + Endpoint Security (XDR). Cloud-Option oder Self-Hosted. Lizenzwechsel 2021 (SSPL statt Apache).",
       "cpe": [
         "cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*",
         "cpe:2.3:a:elastic:kibana:*:*:*:*:*:*:*:*",
