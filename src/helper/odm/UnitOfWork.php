@@ -117,39 +117,84 @@ class UnitOfWork
     }
 
     /**
-     * Führt alle Änderungen durch (Transaction-safe).
+     * Schreibt alle ausstehenden Änderungen in die Datenbank.
+     * Verwendet Transaktionen wenn verfügbar (Replica Set).
      */
     public function flush(): void
+    {
+        $dirtyEntities = $this->getDirtyEntities();
+        
+        if (count($this->newEntities) === 0 && count($dirtyEntities) === 0 && count($this->removedEntities) === 0) {
+            return;
+        }
+
+        // Prüfe ob Transaktionen unterstützt werden
+        if ($this->repo->supportsTransactions()) {
+            $this->flushWithTransaction($dirtyEntities);
+        } else {
+            $this->flushWithoutTransaction($dirtyEntities);
+        }
+
+        // Nach erfolgreichem Flush: UnitOfWork aufräumen
+        $this->newEntities = new SplObjectStorage();
+        $this->removedEntities = new SplObjectStorage();
+        $this->originalStates = new WeakMap();
+    }
+
+    /**
+     * Flush mit Transaktion
+     */
+    private function flushWithTransaction(array $dirtyEntities): void
     {
         $session = $this->repo->getClient()->startSession();
         
         try {
             $session->startTransaction();
-            
-            // 1. Neue Entities einfügen
-            foreach ($this->newEntities as $entity) {
-                $this->repo->insert($entity, $session);
-                $this->entityHashes[$entity] = $this->computeEntityHash($entity);
-            }
-            
-            // 2. Geänderte Entities aktualisieren
-            foreach ($this->getDirtyEntities() as $entity) {
-                $this->saveOriginalState($entity);
-                $this->repo->update($entity, $session);
-                $this->entityHashes[$entity] = $this->computeEntityHash($entity);
-            }
-            
-            // 3. Gelöschte Entities entfernen
-            foreach ($this->removedEntities as $entity) {
-                $this->repo->delete($entity, $session);
-            }
-            
+            $this->executeFlush($session, $dirtyEntities);
             $session->commitTransaction();
-            $this->clear();
-            
         } catch (\Exception $e) {
             $session->abortTransaction();
+            throw new UnitOfWorkException("Transaction failed: " . $e->getMessage(), 0, $e);
+        }
+        finally {
+            $session->endSession();
+        }
+    }
+
+    /**
+     * Flush ohne Transaktion (Fallback für Standalone MongoDB)
+     */
+    private function flushWithoutTransaction(array $dirtyEntities): void
+    {
+        try {
+            $this->executeFlush(null, $dirtyEntities);
+        } catch (\Exception $e) {
             throw new UnitOfWorkException("Flush failed: " . $e->getMessage(), 0, $e);
+        }
+    }
+
+    /**
+     * Führt die eigentlichen Datenbank-Operationen aus
+     */
+    private function executeFlush(?\MongoDB\Driver\Session $session, array $dirtyEntities): void
+    {
+        // Inserts
+        foreach ($this->newEntities as $entity) {
+            $this->repo->insert($entity, $session);
+            $this->entityHashes[$entity] = $this->computeEntityHash($entity);
+        }
+
+        // Updates
+        foreach ($dirtyEntities as $entity) {
+            $this->saveOriginalState($entity);
+            $this->repo->update($entity, $session);
+            $this->entityHashes[$entity] = $this->computeEntityHash($entity);
+        }
+
+        // Deletes
+        foreach ($this->removedEntities as $entity) {
+            $this->repo->delete($entity, $session);
+            unset($this->entityHashes[$entity]);
         }
     }
 

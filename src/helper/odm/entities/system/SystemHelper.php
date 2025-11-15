@@ -14,7 +14,7 @@ class SystemHelper
     {
         $hosts = [];
         
-        foreach ($system->virtualMachines as $vm) {
+        foreach ($system->virtualmachines as $vm) {
             $hosts[] = [
                 'type' => 'vm',
                 'id' => spl_object_id($vm),
@@ -23,7 +23,7 @@ class SystemHelper
             ];
         }
         
-        foreach ($system->hardwareServers as $hw) {
+        foreach ($system->hardwareservers as $hw) {
             $hosts[] = [
                 'type' => 'hardware',
                 'id' => spl_object_id($hw),
@@ -44,20 +44,20 @@ class SystemHelper
     public static function hasComponent(System $system, string $type): bool
     {
         return match($type) {
-            'vm' => !empty($system->virtualMachines),
-            'hardware' => !empty($system->hardwareServers),
+            'vm' => !empty($system->virtualmachines),
+            'hardware' => !empty($system->hardwareservers),
             'database' => !empty($system->databases),
-            'backup' => !empty($system->backupSystems),
-            'loadbalancer' => !empty($system->loadBalancers),
-            'firewall' => !empty($system->firewallRules),
-            'client' => !empty($system->clientAccesses),
-            'meddevice' => !empty($system->medicalDevices),
-            'medinterface' => !empty($system->medicalInterfaces),
+            'backup' => !empty($system->backupsystems),
+            'loadbalancer' => !empty($system->loadbalancers),
+            'firewall' => !empty($system->firewallrules),
+            'client' => !empty($system->clientaccesses),
+            'meddevice' => !empty($system->medicaldevices),
+            'medinterface' => !empty($system->medicalinterfaces),
             'container' => !empty($system->containers),
-            'ti' => $system->tiInfrastructure !== null,
-            'proxy' => $system->proxyConfiguration !== null,
-            'siem' => $system->siemIntegration !== null,
-            'vpn' => $system->vpnAccess !== null,
+            'ti' => $system->tiinfrastructure !== null,
+            'proxy' => $system->proxyconfiguration !== null,
+            'siem' => $system->siemintegration !== null,
+            'vpn' => $system->vpnaccess !== null,
             default => false
         };
     }
@@ -71,20 +71,20 @@ class SystemHelper
     public static function getComponentCount(System $system, string $type): int
     {
         return match($type) {
-            'vm' => count($system->virtualMachines),
-            'hardware' => count($system->hardwareServers),
+            'vm' => count($system->virtualmachines),
+            'hardware' => count($system->hardwareservers),
             'database' => count($system->databases),
-            'backup' => count($system->backupSystems),
-            'loadbalancer' => count($system->loadBalancers),
-            'firewall' => count($system->firewallRules),
-            'client' => count($system->clientAccesses),
-            'meddevice' => count($system->medicalDevices),
-            'medinterface' => count($system->medicalInterfaces),
+            'backup' => count($system->backupsystems),
+            'loadbalancer' => count($system->loadbalancers),
+            'firewall' => count($system->firewallrules),
+            'client' => count($system->clientaccesses),
+            'meddevice' => count($system->medicaldevices),
+            'medinterface' => count($system->medicalinterfaces),
             'container' => count($system->containers),
-            'ti' => $system->tiInfrastructure !== null ? 1 : 0,
-            'proxy' => $system->proxyConfiguration !== null ? 1 : 0,
-            'siem' => $system->siemIntegration !== null ? 1 : 0,
-            'vpn' => $system->vpnAccess !== null ? 1 : 0,
+            'ti' => $system->tiinfrastructure !== null ? 1 : 0,
+            'proxy' => $system->proxyconfiguration !== null ? 1 : 0,
+            'siem' => $system->siemintegration !== null ? 1 : 0,
+            'vpn' => $system->vpnaccess !== null ? 1 : 0,
             default => 0
         };
     }
@@ -96,20 +96,20 @@ class SystemHelper
      */
     public static function getTotalComponentCount(System $system): int
     {
-        return count($system->virtualMachines) +
-               count($system->hardwareServers) +
+        return count($system->virtualmachines) +
+               count($system->hardwareservers) +
                count($system->databases) +
-               count($system->backupSystems) +
-               count($system->loadBalancers) +
-               count($system->firewallRules) +
-               count($system->clientAccesses) +
-               count($system->medicalDevices) +
-               count($system->medicalInterfaces) +
+               count($system->backupsystems) +
+               count($system->loadbalancers) +
+               count($system->firewallrules) +
+               count($system->clientaccesses) +
+               count($system->medicaldevices) +
+               count($system->medicalinterfaces) +
                count($system->containers) +
-               ($system->tiInfrastructure !== null ? 1 : 0) +
-               ($system->proxyConfiguration !== null ? 1 : 0) +
-               ($system->siemIntegration !== null ? 1 : 0) +
-               ($system->vpnAccess !== null ? 1 : 0);
+               ($system->tiinfrastructure !== null ? 1 : 0) +
+               ($system->proxyconfiguration !== null ? 1 : 0) +
+               ($system->siemintegration !== null ? 1 : 0) +
+               ($system->vpnaccess !== null ? 1 : 0);
     }
 
     /**
@@ -129,7 +129,7 @@ class SystemHelper
      */
     public static function handlesPatientData(System $system): bool
     {
-        return $system->dataClassification === 'patientdata-gdpr';
+        return $system->dataclassification === 'patientdata-gdpr';
     }
 
     /**
@@ -177,8 +177,8 @@ class SystemHelper
      */
     public static function addComponentType(System $system, string $type): void
     {
-        if (!in_array($type, $system->componentTypes, true)) {
-            $system->componentTypes[] = $type;
+        if (!in_array($type, $system->componenttypes, true)) {
+            $system->componenttypes[] = $type;
         }
     }
 
@@ -190,8 +190,8 @@ class SystemHelper
      */
     public static function removeComponentType(System $system, string $type): void
     {
-        $system->componentTypes = array_values(array_filter(
-            $system->componentTypes,
+        $system->componenttypes = array_values(array_filter(
+            $system->componenttypes,
             fn($item) => $item !== $type
         ));
     }
@@ -204,6 +204,6 @@ class SystemHelper
      */
     public static function hasComponentType(System $system, string $type): bool
     {
-        return in_array($type, $system->componentTypes, true);
+        return in_array($type, $system->componenttypes, true);
     }
 }

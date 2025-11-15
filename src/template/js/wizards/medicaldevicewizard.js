@@ -51,11 +51,12 @@ async function handleMedicalDeviceSubmit(event) {
     console.log('Medical Device Data:', formData);
     
     try {
-        const response = await fetch('/api/medical-devices', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -82,4 +83,9 @@ async function handleMedicalDeviceSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/medical-devices';
+    return uri;
 }

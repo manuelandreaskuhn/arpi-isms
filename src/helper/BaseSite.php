@@ -5,6 +5,7 @@ use ARPI\Entities\Annotations\Css as CssAttr;
 use ARPI\Entities\Annotations\Js as JsAttr;
 use ARPI\Helper\ODM\EntityRepository;
 use ARPI\Helper\ODM\UnitOfWork;
+use ARPI\Helper\ODM\Exception\ConnectionException;
 
 /**
  * Abstrakte Basis-Klasse für Sites
@@ -52,14 +53,23 @@ abstract class BaseSite implements SiteInterface
      */
     protected function initODM(): void
     {
-        // MongoDB-Konfiguration aus Umgebungsvariablen oder Defaults
-        $mongoUri = $_ENV['MONGODB_URI'] ?? 'mongodb://localhost:27017';
-        $dbName = $_ENV['MONGODB_DATABASE'] ?? 'arpi';
-        
-        // EntityRepository und UnitOfWork initialisieren
-        $this->repository = new EntityRepository($mongoUri, $dbName);
-        $this->unitOfWork = new UnitOfWork($this->repository);
-        $this->repository->setUnitOfWork($this->unitOfWork);
+        try {    
+            $config = Config::getInstance();
+
+            // Sichere Konfiguration mit Credentials-Handling
+            $mongoUri = $config->getMongoDbUri();
+            $dbName = $config->getMongoDbDatabase();
+            
+            // EntityRepository und UnitOfWork initialisieren
+            // verifyConnection=true testet die Verbindung sofort
+            $this->repository = new EntityRepository($mongoUri, $dbName, true);
+            $this->unitOfWork = new UnitOfWork($this->repository);
+            $this->repository->setUnitOfWork($this->unitOfWork);
+            
+        } catch (ConnectionException $e) {
+            error_log("MongoDB Connection failed: " . $e->getMessage());
+            die("Database connection error. Please contact the administrator.");
+        }
     }
 
     /**
@@ -253,23 +263,5 @@ abstract class BaseSite implements SiteInterface
     protected function clearUnitOfWork(): void
     {
         $this->unitOfWork->clear();
-    }
-
-    /**
-     * Hilfsmethode für Transaktionen
-     */
-    protected function transaction(callable $callback): mixed
-    {
-        $session = $this->repository->getClient()->startSession();
-        
-        try {
-            $session->startTransaction();
-            $result = $callback($session);
-            $session->commitTransaction();
-            return $result;
-        } catch (\Exception $e) {
-            $session->abortTransaction();
-            throw $e;
-        }
     }
 }

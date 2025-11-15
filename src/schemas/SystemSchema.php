@@ -20,7 +20,7 @@ class SystemSchema
                 'department' => ['type' => 'string'],
                 'criticality' => ['type' => 'string', 'enum' => ['low', 'medium', 'high', 'critical']],
                 'environment' => ['type' => 'string', 'enum' => ['production', 'test', 'development', 'staging']],
-                'hosting' => ['type' => 'string', 'enum' => ['on-premise', 'cloud', 'hybrid', 'colocation']],
+                'hosting' => ['type' => 'string', 'enum' => ['on-premise', 'cloud', 'hybrid', 'datacenter']],
                 'cloudprovider' => ['type' => 'string'],
                 
                 // IT-Sicherheit & Compliance

@@ -44,11 +44,12 @@ async function handleComServerSubmit(event) {
     console.log('Communication Server Data:', formData);
     
     try {
-        const response = await fetch('/api/communication-servers', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -75,4 +76,9 @@ async function handleComServerSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/communication-servers';
+    return uri;
 }

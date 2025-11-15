@@ -29,6 +29,12 @@ class IdMetadata
     public function getValue(object $entity)
     {
         $this->prop->setAccessible(true);
+        
+        // Prüfe ob Property initialisiert ist
+        if (!$this->prop->isInitialized($entity)) {
+            return null;
+        }
+        
         return $this->prop->getValue($entity);
     }
 

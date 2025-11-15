@@ -38,11 +38,12 @@ async function handleHypervisorSubmit(event) {
     console.log('Hypervisor Data:', formData);
     
     try {
-        const response = await fetch('/api/hypervisors', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -69,4 +70,9 @@ async function handleHypervisorSubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/hypervisors';
+    return uri;
 }

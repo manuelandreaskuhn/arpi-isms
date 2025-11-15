@@ -29,8 +29,8 @@ class NewSystem extends BaseSite
         try {
             $system = new System();
             EntityHydrator::hydrate($system, $data);
-            $system->createdAt = new \DateTime();
-            $system->updatedAt = new \DateTime();
+            $system->createdat = new \DateTime();
+            $system->updatedat = new \DateTime();
             
             $this->persist($system);
             $this->flush();

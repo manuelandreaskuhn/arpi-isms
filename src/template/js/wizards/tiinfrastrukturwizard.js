@@ -39,11 +39,12 @@ async function handleTISubmit(event) {
     console.log('TI Infrastructure Data:', formData);
     
     try {
-        const response = await fetch('/api/ti-infrastructures', {
+        const response = await fetch(getFetchUri(), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         
@@ -70,4 +71,9 @@ async function handleTISubmit(event) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
     }
+}
+
+function getFetchUri() {
+    let uri = '/api/ti-infrastructures';
+    return uri;
 }
