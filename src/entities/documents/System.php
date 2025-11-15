@@ -32,7 +32,7 @@ class System
      * @ODM\Field(type="string")
      * @var string
      */
-    public string $systemName;
+    public string $systemname;
 
     /**
      * Erstellungsdatum
@@ -40,7 +40,7 @@ class System
      * @ODM\Field(type="date")
      * @var \DateTime
      */
-    public \DateTime $createdAt;
+    public \DateTime $createdat;
 
     /**
      * Letztes Änderungsdatum
@@ -48,7 +48,7 @@ class System
      * @ODM\Field(type="date")
      * @var \DateTime
      */
-    public \DateTime $updatedAt;
+    public \DateTime $updatedat;
 
     // ==================== SOFTWARE-INFORMATIONEN ====================
     
@@ -82,7 +82,7 @@ class System
      * @ODM\Field(type="string", nullable=true)
      * @var null|string
      */
-    public ?string $licenseType = null;
+    public ?string $licensetype = null;
 
     // ==================== KATEGORISIERUNG ====================
     
@@ -124,7 +124,7 @@ class System
      * @ODM\Field(type="string", nullable=true)
      * @var null|string
      */
-    public ?string $cloudProvider = null;
+    public ?string $cloudprovider = null;
 
     // ==================== IT-SICHERHEIT & COMPLIANCE ====================
     
@@ -134,7 +134,7 @@ class System
      * @ODM\Field(type="string", nullable=true)
      * @var null|string
      */
-    public ?string $dataClassification = null;
+    public ?string $dataclassification = null;
 
     /**
      * Verschlüsselung
@@ -166,7 +166,7 @@ class System
      * @ODM\Field(type="string", nullable=true)
      * @var null|string
      */
-    public ?string $lastAudit = null;
+    public ?string $lastaudit = null;
 
     // ==================== IT-KOMPONENTEN (Flags) ====================
     
@@ -176,7 +176,7 @@ class System
      * @ODM\Field(type="collection")
      * @var array
      */
-    public array $componentTypes = [];
+    public array $componenttypes = [];
 
     // ==================== VIRTUELLE MASCHINEN (Embedded) ====================
     
@@ -186,7 +186,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemVirtualMachine::class)
      * @var array
      */
-    public array $virtualMachines = [];
+    public array $virtualmachines = [];
 
     // ==================== HARDWARE SERVER (Embedded) ====================
     
@@ -196,7 +196,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemHardwareServer::class)
      * @var array
      */
-    public array $hardwareServers = [];
+    public array $hardwareservers = [];
 
     // ==================== DATENBANKEN (Embedded) ====================
     
@@ -216,7 +216,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemBackup::class)
      * @var array
      */
-    public array $backupSystems = [];
+    public array $backupsystems = [];
 
     // ==================== LOAD BALANCER (Embedded) ====================
     
@@ -226,7 +226,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemLoadBalancer::class)
      * @var array
      */
-    public array $loadBalancers = [];
+    public array $loadbalancers = [];
 
     // ==================== FIREWALL-REGELN (Embedded) ====================
     
@@ -236,7 +236,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemFirewallRule::class)
      * @var array
      */
-    public array $firewallRules = [];
+    public array $firewallrules = [];
 
     // ==================== CLIENT-ZUGRIFFE (Embedded) ====================
     
@@ -246,7 +246,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemClientAccess::class)
      * @var array
      */
-    public array $clientAccesses = [];
+    public array $clientaccesses = [];
 
     // ==================== MEDIZINGERÄTE (Embedded) ====================
     
@@ -256,7 +256,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemMedicalDevice::class)
      * @var array
      */
-    public array $medicalDevices = [];
+    public array $medicaldevices = [];
 
     // ==================== TI-INFRASTRUKTUR (Embedded) ====================
     
@@ -266,7 +266,7 @@ class System
      * @ODM\EmbedOne(targetDocument=SystemTIInfrastructure::class)
      * @var null|SystemTIInfrastructure
      */
-    public ?SystemTIInfrastructure $tiInfrastructure = null;
+    public ?SystemTIInfrastructure $tiinfrastructure = null;
 
     // ==================== PROXY (Embedded) ====================
     
@@ -276,7 +276,7 @@ class System
      * @ODM\EmbedOne(targetDocument=SystemProxyConfiguration::class)
      * @var null|SystemProxyConfiguration
      */
-    public ?SystemProxyConfiguration $proxyConfiguration = null;
+    public ?SystemProxyConfiguration $proxyconfiguration = null;
 
     // ==================== SIEM (Embedded) ====================
     
@@ -286,7 +286,7 @@ class System
      * @ODM\EmbedOne(targetDocument=SystemSIEMIntegration::class)
      * @var null|SystemSIEMIntegration
      */
-    public ?SystemSIEMIntegration $siemIntegration = null;
+    public ?SystemSIEMIntegration $siemintegration = null;
 
     // ==================== VPN (Embedded) ====================
     
@@ -296,7 +296,7 @@ class System
      * @ODM\EmbedOne(targetDocument=SystemVPNAccess::class)
      * @var null|SystemVPNAccess
      */
-    public ?SystemVPNAccess $vpnAccess = null;
+    public ?SystemVPNAccess $vpnaccess = null;
 
     // ==================== MEDIZINISCHE SCHNITTSTELLEN (Embedded) ====================
     
@@ -306,7 +306,7 @@ class System
      * @ODM\EmbedMany(targetDocument=SystemMedicalInterface::class)
      * @var array
      */
-    public array $medicalInterfaces = [];
+    public array $medicalinterfaces = [];
 
     // ==================== CONTAINER (Embedded) ====================
     
@@ -326,8 +326,8 @@ class System
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->createdat = new \DateTime();
+        $this->updatedat = new \DateTime();
     }
 
     // ==================== LIFECYCLE METHODS ====================
@@ -339,6 +339,6 @@ class System
      */
     public function preUpdate(): void
     {
-        $this->updatedAt = new \DateTime();
+        $this->updatedat = new \DateTime();
     }
 }

@@ -14,7 +14,7 @@ jobs:
       mongo:
         image: mongo:8.0.15
         ports:
-          - 28017:27017
+          - 27017:27017
         options: >-
           --health-cmd="mongosh --eval 'db.runCommand({ ping: 1 })'"
           --health-interval=10s
@@ -46,7 +46,7 @@ jobs:
       - name: Wait for MongoDB to be ready
         run: |
           for i in {1..60}; do 
-            mongosh "mongodb://localhost:28017" --quiet --eval 'db.runCommand({ ping: 1 })' && echo "MongoDB is up" && exit 0 
+            mongosh "mongodb://localhost:27017" --quiet --eval 'db.runCommand({ ping: 1 })' && echo "MongoDB is up" && exit 0 
             sleep 1 
           done
           echo "MongoDB did not start in time" && exit 1
@@ -54,6 +54,6 @@ jobs:
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit --configuration phpunit.xml
         env:
-          MONGODB_URI: mongodb://localhost:28017
+          MONGODB_URI: mongodb://localhost:27017
           REDIS_HOST: localhost
           REDIS_PORT: 6379

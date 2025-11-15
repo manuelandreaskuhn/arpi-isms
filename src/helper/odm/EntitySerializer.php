@@ -16,19 +16,19 @@ class EntitySerializer
     {
         $data = [];
 
-        $this->serializeFields($data, $entity, $meta);
-        $this->serializeEmbedOne($data, $entity, $meta);
-        $this->serializeEmbedMany($data, $entity, $meta);
-        $this->serializeReferenceOne($data, $entity, $meta);
-        $this->serializeReferenceMany($data, $entity, $meta);
-
-        // ID-Feld
+        // ID-Feld nur hinzufügen wenn es einen Wert hat
         if ($meta->idField) {
             $idValue = $meta->idField->getValue($entity);
             if ($idValue !== null) {
                 $data['_id'] = $idValue;
             }
         }
+
+        $this->serializeFields($data, $entity, $meta);
+        $this->serializeEmbedOne($data, $entity, $meta);
+        $this->serializeEmbedMany($data, $entity, $meta);
+        $this->serializeReferenceOne($data, $entity, $meta);
+        $this->serializeReferenceMany($data, $entity, $meta);
 
         return $data;
     }

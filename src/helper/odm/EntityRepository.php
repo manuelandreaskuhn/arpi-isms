@@ -2,6 +2,7 @@
 namespace ARPI\Helper\ODM;
 
 use ARPI\Helper\ODM\Exception\UnitOfWorkException;
+use ARPI\Helper\ODM\Exception\ConnectionException;
 use MongoDB\Client;
 use MongoDB\Driver\Session;
 use MongoDB\BSON\ObjectId;
@@ -16,18 +17,29 @@ class EntityRepository
     private $db;
     private ?UnitOfWork $unitOfWork = null;
     private EntitySerializer $serializer;
+    private string $uri;
+    private string $dbName;
 
     /**
      * Erstellt eine neue EntityRepository Instanz.
      * @param string $uri MongoDB URI
      * @param string $dbName Name der Datenbank
+     * @param bool $verifyConnection Ob die Verbindung sofort getestet werden soll (Standard: true)
+     * @throws ConnectionException wenn Verbindung fehlschlägt
      */
-    public function __construct(string $uri, string $dbName)
+    public function __construct(string $uri, string $dbName, bool $verifyConnection = true)
     {
+        $this->uri = $uri;
+        $this->dbName = $dbName;
         $this->client = new Client($uri);
         $this->db = $this->client->selectDatabase($dbName);
         $this->serializer = new EntitySerializer();
-    }    
+
+        // Verbindung sofort testen
+        if ($verifyConnection) {
+            $this->verifyConnection();
+        }
+    }
 
     /**
      * Gibt den MongoDB Client zurück.
@@ -81,9 +93,10 @@ class EntityRepository
         $options = $session ? ['session' => $session] : [];
         $result = $collection->insertOne($data, $options);
 
-        // ID zurücksetzen, falls generiert
-        if ($meta->idField && !$meta->idField->getValue($entity)) {
-            $meta->idField->setValue($entity, $result->getInsertedId());
+        // ID immer zurücksetzen nach Insert
+        if ($meta->idField) {
+            $insertedId = $result->getInsertedId();
+            $meta->idField->setValue($entity, $insertedId);
         }
 
         return $result;
@@ -157,5 +170,61 @@ class EntityRepository
         }
 
         return $entity;
+    }
+
+    /**
+     * Prüft ob die MongoDB-Instanz Transaktionen unterstützt (Replica Set erforderlich).
+     */
+    public function supportsTransactions(): bool
+    {
+        try {
+            $result = $this->db->command(['isMaster' => 1]);
+            $isMaster = $result->toArray()[0];
+            
+            // Prüfe ob es ein Replica Set Member oder Mongos ist
+            return isset($isMaster->setName) || isset($isMaster->msg) && $isMaster->msg === 'isdbgrid';
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Verifiziert die MongoDB-Verbindung durch einen Ping.
+     * @throws ConnectionException wenn Verbindung fehlschlägt
+     */
+    private function verifyConnection(): void
+    {
+        try {
+            // Führe einen einfachen Ping-Befehl aus
+            $this->db->command(['ping' => 1]);
+        } 
+        catch (\MongoDB\Driver\Exception\AuthenticationException $e) {
+            throw new ConnectionException(
+                "MongoDB Authentication failed.",
+                $this->uri,
+                $this->dbName,
+                0,
+                $e
+            );
+        } 
+        catch (\MongoDB\Driver\Exception\ConnectionException $e) {
+            throw new ConnectionException(
+                "Cannot connect to MongoDB server.\n" .
+                "Is MongoDB running? Check with: docker-compose ps",
+                $this->uri,
+                $this->dbName,
+                0,
+                $e
+            );
+        } 
+        catch (\Exception $e) {
+            throw new ConnectionException(
+                "MongoDB connection verification failed: " . $e->getMessage(),
+                $this->uri,
+                $this->dbName,
+                0,
+                $e
+            );
+        }
     }
 }

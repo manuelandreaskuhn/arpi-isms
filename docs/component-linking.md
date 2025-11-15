@@ -2,12 +2,11 @@
 
 ## Inhaltsverzeichnis
 1. [Konzept & Architektur](#konzept--architektur)
-2. [Vorteile](#vorteile)
-3. [Implementierung](#implementierung)
-4. [Verwendung](#verwendung)
-5. [API-Referenz](#api-referenz)
-6. [Beispiele](#beispiele)
-7. [Best Practices](#best-practices)
+2. [Implementierung](#implementierung)
+3. [Verwendung](#verwendung)
+4. [API-Referenz](#api-referenz)
+5. [Beispiele](#beispiele)
+6. [Best Practices](#best-practices)
 
 ---
 
@@ -21,38 +20,38 @@ Das **Component Linking System** ist ein zentrales Framework zur Verwaltung von 
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Component Linking System                  │
+│                    Component Linking System                 │
 ├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  ┌──────────────────┐      ┌──────────────────┐            │
-│  │  componentCache  │◄─────┤  Data Sources   │            │
-│  │  - vm[]          │      │  - Page Collector│            │
-│  │  - hardware[]    │      │  - API/Database │            │
-│  │  - firewall[]    │      │  - Cache        │            │
-│  │  - backup[]      │      └──────────────────┘            │
+│                                                             │
+│  ┌──────────────────┐      ┌──────────────────┐             │
+│  │  componentCache  │◄─────┤  Data Sources    │             │
+│  │  - vm[]          │      │  - Page Collector│             │
+│  │  - hardware[]    │      │  - API/Database  │             │
+│  │  - firewall[]    │      │  - Cache         │             │
+│  │  - backup[]      │      └──────────────────┘             │
 │  │  - siem[]        │                                       │
 │  │  - vpn[]         │                                       │
 │  │  - proxy[]       │                                       │
 │  │  - network[]     │                                       │
 │  └──────────────────┘                                       │
-│           │                                                  │
-│           ▼                                                  │
-│  ┌──────────────────────────────────────────┐              │
-│  │  Dynamic Select Population               │              │
-│  │  - Auto-fill dropdowns                   │              │
-│  │  - Group by component type               │              │
-│  │  - Format labels (name + IP/type)        │              │
-│  │  - Handle "manual" option                │              │
-│  └──────────────────────────────────────────┘              │
-│           │                                                  │
-│           ▼                                                  │
-│  ┌──────────────────────────────────────────┐              │
-│  │  UI Components                           │              │
-│  │  - Custom Select Dropdowns               │              │
-│  │  - Manual Input Toggle                   │              │
-│  │  - Real-time Updates                     │              │
-│  └──────────────────────────────────────────┘              │
-│                                                               │
+│           │                                                 │
+│           ▼                                                 │
+│  ┌──────────────────────────────────────────┐               │
+│  │  Dynamic Select Population               │               │
+│  │  - Auto-fill dropdowns                   │               │
+│  │  - Group by component type               │               │
+│  │  - Format labels (name + IP/type)        │               │
+│  │  - Handle "manual" option                │               │
+│  └──────────────────────────────────────────┘               │
+│           │                                                 │
+│           ▼                                                 │
+│  ┌──────────────────────────────────────────┐               │
+│  │  UI Components                           │               │
+│  │  - Custom Select Dropdowns               │               │
+│  │  - Manual Input Toggle                   │               │
+│  │  - Real-time Updates                     │               │
+│  └──────────────────────────────────────────┘               │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -76,32 +75,6 @@ Das **Component Linking System** ist ein zentrales Framework zur Verwaltung von 
    ▼
 6. User sieht aktualisierte Auswahl
 ```
-
----
-
-## Vorteile
-
-### 1. **Datenintegrität**
-- ✅ Keine Duplikate durch Tippfehler
-- ✅ Konsistente Namensgebung
-- ✅ Referenzielle Integrität zwischen Komponenten
-
-### 2. **Benutzerfreundlichkeit**
-- ✅ Schnellere Dateneingabe (Auswahl statt Tippen)
-- ✅ Übersichtliche Gruppierung nach Typ
-- ✅ Zusätzliche Informationen (IP, Typ) im Label
-- ✅ Fallback auf manuelle Eingabe möglich
-
-### 3. **Wartbarkeit**
-- ✅ Zentrale Datenverwaltung
-- ✅ Automatische Updates bei Änderungen
-- ✅ Nachvollziehbare Beziehungen
-- ✅ Einfache Erweiterbarkeit
-
-### 4. **Konsistenz**
-- ✅ Einheitliche Darstellung über alle Wizards
-- ✅ Standardisierte Datenstrukturen
-- ✅ Wiederverwendbare Komponenten
 
 ---
 
@@ -661,38 +634,3 @@ export function addVMEntry() {
     }
 }
 ```
-
----
-
-## Zusammenfassung
-
-Das **Component Linking System** bietet:
-
-✅ **Zentrale Verwaltung** von Komponenten-Beziehungen  
-✅ **Automatische Befüllung** von Select-Feldern  
-✅ **Datenintegrität** durch Vermeidung von Duplikaten  
-✅ **Benutzerfreundlichkeit** durch schnelle Auswahl  
-✅ **Erweiterbarkeit** für zukünftige API-Integration  
-✅ **Konsistenz** über alle Wizards hinweg  
-
-**Einsatzbereiche:**
-- System Wizard (VMs, Hardware, Datenbanken)
-- Backup Wizard (Backup-Server, Backup-Systeme)
-- Network Wizard (Switches, Router, Firewalls)
-- VPN Wizard (VPN-Gateways)
-- SIEM Wizard (SIEM-Server)
-- Proxy Wizard (Proxy-Server)
-
-**Nächste Schritte:**
-1. Template mit `data-component-type` annotieren
-2. JavaScript-Wizard mit `initializeAllComponentSelects()` initialisieren
-3. Bei Komponenten-Änderungen `refreshAllComponentSelects()` aufrufen
-
----
-
-**Weitere Ressourcen:**
-- componentlinking.js - Kern-Implementierung
-- wizards.js - Custom Select Integration
-- newbackup.tpl - Beispiel-Template
-
-**Support:** Bei Fragen oder Problemen → Issue erstellen oder Entwickler-Team kontaktieren

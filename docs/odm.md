@@ -640,13 +640,6 @@ $serializer->deserializeEntity($vm, $document, $metadata);
 // $vm ist jetzt befüllt mit Daten aus $document
 ```
 
-**Features:**
-- ✅ Automatische Type-Konvertierung
-- ✅ DateTime ↔ MongoDB\BSON\UTCDateTime
-- ✅ ObjectId-Handling
-- ✅ Nested Properties
-- ✅ Null-Handling
-
 ## UnitOfWork im Detail
 
 ### Entity-Status
@@ -879,7 +872,7 @@ class NewVM extends BaseSite
 ### 1. BaseSite-Methoden nutzen (empfohlen)
 
 ```php
-// ✅ Gut: BaseSite-Methoden verwenden
+// BaseSite-Methoden verwenden
 class MyWizard extends BaseSite
 {
     public function save(array $data): void
@@ -888,17 +881,6 @@ class MyWizard extends BaseSite
         EntityHydrator::hydrate($entity, $data);
         $this->persist($entity);
         $this->flush();
-    }
-}
-
-// ❌ Vermeiden: Manuelle Initialisierung
-class MyWizard extends BaseSite
-{
-    public function save(array $data): void
-    {
-        $repo = new EntityRepository('mongodb://...', 'db');
-        $uow = new UnitOfWork($repo);
-        // ... unnötig kompliziert
     }
 }
 ```
@@ -923,13 +905,13 @@ try {
 ### 3. Batch-Operationen statt Einzeln
 
 ```php
-// ✅ Gut: Batch
+// Empfohlen: Batch
 foreach ($vms as $vm) {
     $unitOfWork->persist($vm);
 }
 $unitOfWork->flush(); // Ein DB-Call
 
-// ❌ Vermeiden: Loop
+// Vermeiden: Loop
 foreach ($vms as $vm) {
     $repository->save($vm); // Viele DB-Calls
 }
@@ -953,12 +935,12 @@ foreach ($largeDataset as $chunk) {
 ### 5. Type Hints immer verwenden
 
 ```php
-// ✅ Gut
+// Empfohlen
 public string $hostname;
 public ?string $ipaddress = null;
 public \DateTime $createdAt;
 
-// ❌ Vermeiden
+// Vermeiden
 public $hostname; // Kein Type Hint
 ```
 
@@ -967,7 +949,7 @@ public $hostname; // Kein Type Hint
 ```php
 public function __construct()
 {
-    $this->uuid = uniqid('vm_', true);
+    $this->uuid = \uniqid('vm_', true);
     $this->createdAt = new \DateTime();
     $this->updatedAt = new \DateTime();
     $this->tags = [];
@@ -1066,5 +1048,4 @@ $cursor = $collection->find(
 
 - [MongoDB PHP Library Documentation](https://www.mongodb.com/docs/php-library/current/)
 - [MongoDB Transactions](https://www.mongodb.com/docs/manual/core/transactions/)
-- [PHP 8 Attributes](https://www.php.net/manual/en/language.attributes.overview.php)
 

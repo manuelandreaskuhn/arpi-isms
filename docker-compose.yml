@@ -11,9 +11,14 @@ services:
       mongo:
         condition: service_healthy
     environment:
-      - MONGODB_URI=mongodb://mongo:28017
+      - MONGODB_URI=mongodb://mongo:27017
+      - MONGODB_DATABASE=arpi
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+    secrets:
+      - mongodb_username
+      - mongodb_password
+      - redis_password
     networks:
       - arpi-network
 
@@ -21,9 +26,16 @@ services:
     image: mongo:8.0.15
     container_name: arpi-isms-mongo
     ports:
-      - "28017:27017"
+      - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME_FILE=/run/secrets/mongodb_username
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongodb_password
+    secrets:
+      - mongodb_username
+      - mongodb_password
+    command: ["mongod", "--replSet", "rs0"]
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.runCommand({ ping: 1 })"]
       interval: 10s
@@ -31,6 +43,14 @@ services:
       retries: 5
     networks:
       - arpi-network
+
+secrets:
+  mongodb_username:
+    file: ./secrets/mongodb_username.txt
+  mongodb_password:
+    file: ./secrets/mongodb_password.txt
+  redis_password:
+    file: ./secrets/redis_password.txt
 
 volumes:
   mongo-data:

@@ -384,11 +384,12 @@ async function handleSystemSubmit(event) {
     console.log('System Data:', formData);
     
     try {
-        const response = await fetch('/api/systems', {
+        const response = await fetch('/api/systems?XDEBUG_TRIGGER=1', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify(formData)
         });
         

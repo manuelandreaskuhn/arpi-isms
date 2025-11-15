@@ -58,11 +58,11 @@ class EntityMetadata
         foreach ($ref->getProperties() as $prop) {
             $doc = $prop->getDocComment() ?: '';
 
-            if (preg_match('/@Id/', $doc)) {
+            if (preg_match('/@ODM\\\\Id/', $doc)) {
                 $meta->idField = new IdMetadata($prop);
                 continue;
             }
-            if (preg_match('/@Field\((.*?)\)/', $doc, $m)) {
+            if (preg_match('/@ODM\\\\Field\((.*?)\)/', $doc, $m)) {
                 $args = self::parseArgs($m[1]);
                 $meta->fields[] = new FieldMetadata($prop, $args['type'] ?? 'string', $args['nullable'] ?? false);
                 continue;
@@ -96,7 +96,12 @@ class EntityMetadata
     {
         $result = [];
         foreach (explode(',', $args) as $arg) {
-            [$k, $v] = array_map('trim', explode('=', $arg));
+            if (!str_contains($arg, '=')) {
+                continue;
+            }
+            [$k, $v] = array_map('trim', explode('=', $arg, 2));
+            // Entferne umgebende Anführungszeichen
+            $v = trim($v, '"\'');
             $result[$k] = $v === 'true' ? true : ($v === 'false' ? false : $v);
         }
         return $result;
