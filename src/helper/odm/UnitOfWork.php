@@ -156,6 +156,9 @@ class UnitOfWork
             $session->abortTransaction();
             throw new UnitOfWorkException("Transaction failed: " . $e->getMessage(), 0, $e);
         }
+        finally {
+            $session->endSession();
+        }
     }
 
     /**
