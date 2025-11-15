@@ -255,7 +255,6 @@ REDIS_PASSWORD=
 
 # Application
 APP_ENV=development
-APP_DEBUG=true
 ```
 
 #### 2. Eigene .env erstellen
@@ -284,7 +283,6 @@ REDIS_PASSWORD=rEdIs456SecurePass
 
 # Application
 APP_ENV=production
-APP_DEBUG=false
 ```
 
 #### 3. Berechtigungen setzen
