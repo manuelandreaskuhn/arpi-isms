@@ -23,14 +23,14 @@ jobs:
           extensions: mbstring, json, mongodb, redis, zip
           coverage: none
 
+      - name: Allow CycloneDX plugin
+        run: composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-compose true
+        
       - name: Install dependencies (no dev)
         run: composer install --no-dev --optimize-autoloader
 
       - name: Install CycloneDX Composer
         run: composer global require cyclonedx/cyclonedx-php-composer
-
-      - name: Allow CycloneDX plugin
-        run: composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-compose true
 
       - name: Generate SBOM (exclude dev)
         run: |
