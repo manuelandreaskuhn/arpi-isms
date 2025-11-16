@@ -1,0 +1,52 @@
+name: SBOM CycloneDX
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'composer.lock'
+  workflow_dispatch:
+
+jobs:
+  sbom:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer
+          extensions: mbstring, json, mongodb, redis, zip
+          coverage: none
+
+      - name: Install dependencies (no dev)
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Install CycloneDX Composer
+        run: composer global require cyclonedx/cyclonedx-php-composer
+
+      - name: Generate SBOM (exclude dev)
+        run: |
+          composer CycloneDX:make-sbom \
+            --omit=dev \
+            --output-format=JSON \
+            --output-file=sbom.json \
+            --spec-version=1.7
+
+      - name: Commit SBOM to branch
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add sbom.json
+          git commit -m "Update SBOM after composer.lock change"
+          git push origin HEAD:${{ github.ref }}
+		  
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.json
