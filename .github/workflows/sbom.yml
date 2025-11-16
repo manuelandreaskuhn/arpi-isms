@@ -44,7 +44,7 @@ jobs:
           git add sbom.json
           git commit -m "Update SBOM after composer.lock change"
           git push origin HEAD:${{ github.ref }}
-		  
+
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
         with:
