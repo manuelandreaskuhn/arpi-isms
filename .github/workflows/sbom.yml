@@ -6,6 +6,9 @@ on:
     paths:
       - 'composer.lock'
   workflow_dispatch:
+  
+permissions:
+  contents: write
 
 jobs:
   sbom:
@@ -14,6 +17,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          persist-credentials: true
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -25,7 +30,7 @@ jobs:
 
       - name: Allow CycloneDX plugin
         run: composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
-        
+  
       - name: Install dependencies (no dev)
         run: composer install --no-dev --optimize-autoloader
 
@@ -40,13 +45,15 @@ jobs:
             --output-file=sbom.json \
             --spec-version=1.7
 
-      - name: Commit SBOM to branch
+      - name: Commit and push SBOM
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add sbom.json
           git commit -m "Update SBOM after composer.lock change"
           git push origin HEAD:${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
