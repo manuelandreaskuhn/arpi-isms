@@ -29,6 +29,9 @@ jobs:
       - name: Install CycloneDX Composer
         run: composer global require cyclonedx/cyclonedx-php-composer
 
+      - name: Allow CycloneDX plugin
+        run: composer global config allow-plugins.cyclonedx/cyclonedx-php-composer true
+
       - name: Generate SBOM (exclude dev)
         run: |
           composer CycloneDX:make-sbom \
