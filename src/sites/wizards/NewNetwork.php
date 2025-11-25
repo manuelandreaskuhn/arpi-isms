@@ -13,7 +13,11 @@ use ARPI\Entities\Documents\Network;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/networkwizard.js')]
 class NewNetwork extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neues Netzwerk');
+    }
+    
     public function main(): string
     {
         return $this->renderTemplate('pages/wizards/komponenten/new-network.html');

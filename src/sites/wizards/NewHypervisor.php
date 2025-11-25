@@ -13,7 +13,11 @@ use ARPI\Entities\Documents\Hypervisor;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/hypervisorwizard.js')]
 class NewHypervisor extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neuer Hypervisor');
+    }
+
     public function main(): string
     {
         return $this->renderTemplate('pages/wizards/komponenten/new-hypervisor.html');

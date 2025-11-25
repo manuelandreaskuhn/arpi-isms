@@ -9,7 +9,8 @@ class AssetManagement extends BaseSite
 {
     public function prepare(): void
     {
-        
+        //Site Title
+        $this->setTitle('Asset Management');
     }
 
     public function main(): string

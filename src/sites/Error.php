@@ -30,6 +30,8 @@ class Error extends BaseSite
         http_response_code($code);
         $GLOBALS['title'] = 'Unbekannter Fehler';
         $GLOBALS['message'] = 'Die angeforderte Seite wurde nicht gefunden.';
+
+        $this->setTitle($GLOBALS['title']);
     }
 
     public function main(): string

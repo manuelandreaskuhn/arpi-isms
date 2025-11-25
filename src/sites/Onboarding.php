@@ -7,7 +7,8 @@ class Onboarding extends BaseSite
 {
     public function prepare(): void
     {
-        
+        // Site Titel
+        $this->setTitle('Onboarding');
     }
 
     public function save(): void

@@ -7,7 +7,8 @@ class Home extends BaseSite
 {
     public function prepare(): void
     {
-        
+        // Site Title
+        $this->setTitle('Startseite');
     }
 
     public function main(): string

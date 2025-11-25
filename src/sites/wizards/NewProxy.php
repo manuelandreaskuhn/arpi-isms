@@ -13,7 +13,11 @@ use ARPI\Entities\Documents\ProxyServer;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/proxywizard.js')]
 class NewProxy extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neuer Proxy-Server');
+    }
+    
     public function main(): string
     {
         return $this->renderTemplate('pages/wizards/komponenten/new-proxy.html');

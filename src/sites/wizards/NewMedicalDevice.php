@@ -13,7 +13,11 @@ use ARPI\Entities\Documents\MedicalDevice;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/medicaldevicewizard.js')]
 class NewMedicalDevice extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neues Medizingerät');
+    }
+    
     public function main(): string
     {
         return $this->renderTemplate('pages/wizards/komponenten/new-medicaldevice.html');

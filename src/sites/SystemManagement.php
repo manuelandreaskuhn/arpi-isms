@@ -11,7 +11,8 @@ class SystemManagement extends BaseSite
 {
     public function prepare(): void
     {
-        
+        // Site Title
+        $this->setTitle('System Management');
     }
 
     public function main(): string

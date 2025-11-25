@@ -13,7 +13,11 @@ use ARPI\Entities\Documents\System;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/systemwizard.js')]
 class NewSystem extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neues System');
+    }
+    
     public function main(): string
     {
         return $this->renderTemplate('pages/wizards/system/new-system.html');

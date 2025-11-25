@@ -15,7 +15,7 @@ class NewBackup extends BaseSite
 {
     public function prepare(): void
     {
-        // Keine spezielle Vorbereitung nötig
+        $this->setTitle('Neues Backup-System');
     }
 
     public function main(): string

@@ -15,7 +15,7 @@ class NewVPN extends BaseSite
 {
     public function prepare(): void
     {
-        // Keine spezielle Vorbereitung nötig
+        $this->setTitle('Neues VPN-System');
     }
 
     public function main(): string

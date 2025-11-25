@@ -13,7 +13,11 @@ use ARPI\Entities\Documents\TIInfrastructure;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/tiinfrastrukturwizard.js')]
 class NewTIInfrastruktur extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neue TI-Infrastruktur');
+    }
+    
     public function main(): string
     {
         return $this->renderTemplate('pages/wizards/komponenten/new-tiinfrastruktur.html');

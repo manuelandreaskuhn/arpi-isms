@@ -13,7 +13,10 @@ use ARPI\Entities\Documents\CommunicationServer;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/commserverwizard.js')]
 class NewComServer extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neuer Kommunikationsserver');
+    }
 
     public function main(): string
     {

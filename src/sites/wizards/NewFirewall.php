@@ -13,7 +13,10 @@ use ARPI\Entities\Documents\Firewall;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/firewallwizard.js')]
 class NewFirewall extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neue Firewall');
+    }
 
     public function main(): string
     {

@@ -13,7 +13,11 @@ use ARPI\Entities\Documents\SIEMSystem;
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/siemwizard.js')]
 class NewSIEM extends BaseSite
 {
-    public function prepare(): void {}
+    public function prepare(): void 
+    {
+        $this->setTitle('Neues SIEM-System');
+    }
+    
     public function main(): string
     {
         return $this->renderTemplate('pages/wizards/komponenten/new-siem.html');

@@ -88,6 +88,11 @@ abstract class BaseSite implements SiteInterface
         // Kann von Child-Klassen überschrieben werden
     }
 
+    public function setTitle(string $title): void
+    {
+        $this->data['site_title'] = $title;
+    }
+
     /**
      * Hilfsmethode zum Rendern mit Layout
      */
