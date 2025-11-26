@@ -16,6 +16,8 @@ class NewFirewall extends BaseSite
     public function prepare(): void 
     {
         $this->setTitle('Neue Firewall');
+        $firewallsoftware = $this->getSoftwareData('firewall');
+        $this->setData('firewallsoftware', $firewallsoftware);
     }
 
     public function main(): string

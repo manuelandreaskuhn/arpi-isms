@@ -315,7 +315,7 @@ export function updateSectionCounter(section) {
     if (!counter) return;
 
     const requiredFields = section.querySelectorAll('[required]');
-    const allInputs = section.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), textarea, .custom-select');
+    const allInputs = section.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), textarea, .custom-select, .toggle-switch input[type="checkbox"]');
     
     let previousFilledCount = 0;
     if (counter.dataset.filledCount) {
@@ -331,6 +331,8 @@ export function updateSectionCounter(section) {
             isFilled = field.dataset.value && field.dataset.value !== '';
         } else if (field.tagName === 'TEXTAREA') {
             isFilled = field.value.trim() !== '';
+        } else if (field.type === 'checkbox') {
+            isFilled = field.checked;
         } else {
             isFilled = field.value.trim() !== '';
         }
@@ -363,11 +365,20 @@ export function updateSectionCounter(section) {
     }
 }
 
+
 // Initialize all custom selects on page load
 document.addEventListener('DOMContentLoaded', function() {
     // Setup all custom selects
     document.querySelectorAll('.custom-select').forEach(select => {
         setupCustomSelect(select);
+    });
+
+    // Initialize Toggle slider status text initialization
+    document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(checkbox => {
+        const statusSpan = checkbox.closest('.toggle-wrapper').querySelector('.toggle-status');
+        if (statusSpan) {
+            statusSpan.textContent = checkbox.checked ? 'Aktiviert' : 'Nicht aktiviert';
+        }
     });
     
     // Initialize component linking for all component selects
@@ -378,6 +389,16 @@ document.addEventListener('DOMContentLoaded', function() {
         title.addEventListener('click', function() {
             const section = this.closest('.form-section');
             section.classList.toggle('collapsed');
+        });
+    });
+
+    // Initialize toggle slider change listeners
+    document.querySelectorAll('.toggle-switch input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const statusSpan = this.closest('.toggle-wrapper').querySelector('.toggle-status');
+            if (statusSpan) {
+                statusSpan.textContent = this.checked ? 'Aktiviert' : 'Nicht aktiviert';
+            }
         });
     });
 

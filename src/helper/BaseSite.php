@@ -181,6 +181,32 @@ abstract class BaseSite implements SiteInterface
         return $headertemplate . $template . $footertemplate;
     }
 
+    protected function getSoftwareData(string $softwareType): array
+    {
+        $datafolder = dirname(__DIR__) . '/data/';
+        $jsonfile = "";
+        switch ($softwareType) {
+            case 'firewall':
+                $jsonfile = $datafolder . 'firewall-software.json';
+                break;
+            case 'antivirus':
+                $jsonfile = $datafolder . 'antivirus-software.json';
+                break;
+            // Weitere Softwaretypen können hier hinzugefügt werden
+            default:
+                return [];
+        }
+        if (!file_exists($jsonfile)) {
+            return [];
+        }
+        $jsonContent = file_get_contents($jsonfile);
+        $data = json_decode($jsonContent, true) ?? [];
+        if(\key_exists('software', $data)) {
+            return $data['software'];
+        }
+        return $data;
+    }
+
     /**
      * Hilfsmethode für Redirects
      */

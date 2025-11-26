@@ -1,5 +1,5 @@
 {
-  "loadbalancerSoftware": [
+  "software": [
     {
       "id": "f5-bigip",
       "name": "F5 BIG-IP",

@@ -1,5 +1,5 @@
 {
-  "firewallSoftware": [
+  "software": [
     {
       "id": "palo-alto",
       "name": "Palo Alto Networks",

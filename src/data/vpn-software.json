@@ -1,5 +1,5 @@
 {
-  "vpnSoftware": [
+  "software": [
     {
       "id": "cisco-anyconnect",
       "name": "Cisco AnyConnect Secure Mobility Client",

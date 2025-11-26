@@ -1,5 +1,5 @@
 {
-  "backupSoftware": [
+  "software": [
     {
       "id": "veeam",
       "name": "Veeam Backup & Replication",

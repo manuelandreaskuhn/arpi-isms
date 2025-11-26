@@ -1,5 +1,5 @@
 {
-  "vendorGateways": [
+  "software": [
     {
       "id": "siemens-syngo",
       "name": "Siemens syngo Gateway",

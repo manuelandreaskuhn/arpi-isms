@@ -1,5 +1,5 @@
 {
-  "siemSoftware": [
+  "software": [
     {
       "id": "splunk",
       "name": "Splunk Enterprise Security",

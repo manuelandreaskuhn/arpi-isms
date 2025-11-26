@@ -1,5 +1,5 @@
 {
-  "databaseSoftware": [
+  "software": [
     {
       "id": "oracle",
       "name": "Oracle Database",

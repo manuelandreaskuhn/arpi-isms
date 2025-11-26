@@ -1,5 +1,5 @@
 {
-  "operatingSystemSoftware": [
+  "software": [
     {
       "id": "windowsserver2003",
       "name": "Windows Server 2003",

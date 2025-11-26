@@ -1,5 +1,5 @@
 {
-  "dbClusterSoftware": [
+  "software": [
     {
       "id": "oracle-rac",
       "name": "Oracle RAC (Real Application Cluster)",
