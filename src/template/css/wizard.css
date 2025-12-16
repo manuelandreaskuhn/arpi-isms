@@ -14,6 +14,18 @@
     margin-top: 5px;
 }
 
+aside.wizardnavigation-enabled .page-header-container {
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-left: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+    border-top: none;
+    background-color: #ebebeb63;
+}
+
 /* Page Header Styling */
 .page-header {
     flex: 1;
@@ -1076,12 +1088,12 @@ div.buttonlist {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    background: white;
-    border-radius: 12px;
     padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    border-left: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+    background-color: #ebebeb63;
 }
 
 .wizard-steps {

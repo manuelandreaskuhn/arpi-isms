@@ -87,8 +87,8 @@ function createWizardNavigation(sections) {
     container.appendChild(navButtonsNext);
 
     // Insert before first section
-    const firstSection = sections[0];
-    firstSection.parentNode.insertBefore(container, firstSection);
+    const pageHeaderContainer = document.querySelector('.page-header-container');
+    pageHeaderContainer.parentNode.insertBefore(container, pageHeaderContainer);
 
     // Add navigation button handlers
     const prevBtn = navButtonsPrev.querySelector('.wizard-btn-prev');

@@ -219,6 +219,12 @@ body > main > aside.breadcrumb {
     border-radius: 8px;
 }
 
+body > main > aside.wizardnavigation-enabled > div.breadcrumb,
+body > main > aside.wizardnavigation-enabled.breadcrumb {
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
 body > main > aside > div.breadcrumb > p,
 body > main > aside.breadcrumb > p {
     padding-left: 20px;
