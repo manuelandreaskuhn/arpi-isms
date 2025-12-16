@@ -449,3 +449,169 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     height: 20px;
     font-size: 0.8em;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.software-info-container {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    color: var(--font-color);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.software-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.software-info-title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--font-color);
+}
+
+.software-info-badge {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.software-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.software-info-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.software-info-item label {
+    display: block;
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.software-info-item span {
+    display: block;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+.software-info-description,
+.software-info-pricing,
+.software-info-notes {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.software-info-description label,
+.software-info-pricing label,
+.software-info-notes label,
+.software-info-section label,
+.software-info-cpe label {
+    display: block;
+    font-size: 0.85em;
+    opacity: 0.85;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.software-description-text,
+.software-notes-text,
+.software-pricing-text {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+.software-info-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.software-info-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.software-features,
+.software-platforms,
+.software-license,
+.software-usecases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.software-features .feature-tag,
+.software-platforms .platform-tag,
+.software-license .license-tag,
+.software-usecases .usecase-tag {
+    background: #eaeaea;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.85em;
+    font-weight: 500;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.software-info-cpe {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.software-cpe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.software-cpe-list .cpe-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    word-break: break-all;
+    border-left: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .software-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .software-info-row {
+        grid-template-columns: 1fr;
+    }
+}

@@ -3,6 +3,7 @@ namespace ARPI\Sites;
 
 use ARPI\Helper\BaseSite;
 use ARPI\API\WizardAPI;
+use ARPI\API\DataAPI;
 
 /**
  * Zentraler API-Endpoint
@@ -15,6 +16,13 @@ class API extends BaseSite
         // API-Request behandeln
         $path = $this->getAPIPath();
         $method = $_SERVER['REQUEST_METHOD'];
+
+        // Data-API aufrufen
+        if (strpos($path, '/api/data') === 0) {
+            $dataAPI = new DataAPI();
+            $dataAPI->handleRequest($path, $method);
+            exit;
+        }
         
         // Wizard-API aufrufen
         $wizardAPI = new WizardAPI();
