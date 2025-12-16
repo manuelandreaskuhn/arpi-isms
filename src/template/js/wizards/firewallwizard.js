@@ -22,6 +22,12 @@ function setupFirewallWizard() {
     
     // Setup HA configuration toggle
     setupHAToggle();
+    
+    // Setup additional zones
+    setupAdditionalZones();
+    
+    // Setup log retention slider
+    setupLogRetentionSlider();
 }
 
 function setupFirewallTypeToggle() {
@@ -267,4 +273,48 @@ function getDataUri() {
         }
     }
     return uri;
+}
+
+function setupAdditionalZones() {
+    const container = document.getElementById('additional-zones-container');
+    if (!container) return;
+    
+    container.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn-add-zone')) {
+            addZoneInput();
+        } else if (e.target.classList.contains('btn-remove-zone')) {
+            e.target.closest('.multi-input-item').remove();
+        }
+    });
+}
+
+function addZoneInput() {
+    const container = document.getElementById('additional-zones-container');
+    const newItem = document.createElement('div');
+    newItem.className = 'multi-input-item';
+    newItem.innerHTML = `
+        <input type="text" class="additional-zone-input" placeholder="z.B. VPN: 10.10.0.1">
+        <button type="button" class="btn-remove-zone">−</button>
+    `;
+    container.appendChild(newItem);
+}
+
+function setupLogRetentionSlider() {
+    const slider = document.getElementById('logretention-slider');
+    const input = document.getElementById('logretention');
+    const display = document.getElementById('logretention-display');
+    
+    if (!slider || !input || !display) return;
+    
+    slider.addEventListener('input', function() {
+        input.value = this.value;
+        display.textContent = this.value;
+    });
+    
+    input.addEventListener('input', function() {
+        const value = Math.min(Math.max(this.value, 30), 730);
+        this.value = value;
+        slider.value = value;
+        display.textContent = value;
+    });
 }

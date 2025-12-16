@@ -93,14 +93,15 @@
                         Management IP <span class="required">*</span>
                         <span class="help-icon" data-tooltip="firewall-mgmt-ip">?</span>
                     </label>
-                    <input type="text" id="managementip" name="managementip" required placeholder="z.B. 192.168.10.1">
+                    <input type="text" id="managementip" name="managementip" required placeholder="z.B. 192.168.10.1" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$">
+                    <div class="help-text">IPv4-Adresse im Format xxx.xxx.xxx.xxx</div>
                 </div>
                 <div class="form-group">
                     <label>
                         Management-URL
                         <span class="help-icon" data-tooltip="firewall-management-url">?</span>
                     </label>
-                    <input type="text" id="managementurl" name="managementurl" placeholder="z.B. https://frwl-srv-01.example.com:8443">
+                    <input type="url" id="managementurl" name="managementurl" placeholder="z.B. https://frwl-srv-01.example.com:8443">
                 </div>
             </div>
 
@@ -144,7 +145,8 @@
                         <span class="zone-label">External (WAN)</span>
                         <span class="help-icon" data-tooltip="firewall-external-if">?</span>
                     </div>
-                    <input type="text" id="externalif" name="externalif" placeholder="z.B. 203.0.113.1" class="zone-input">
+                    <input type="text" id="externalif" name="externalif" placeholder="z.B. eth0: 203.0.113.1" class="zone-input">
+                    <div class="zone-help-text">Format: Interface-Name: IP-Adresse</div>
                 </div>
 
                 <div class="firewall-center">
@@ -159,7 +161,8 @@
                             <span class="zone-label">Internal (LAN)</span>
                             <span class="help-icon" data-tooltip="firewall-internal-if">?</span>
                         </div>
-                        <input type="text" id="internalif" name="internalif" placeholder="z.B. 10.0.0.1" class="zone-input">
+                        <input type="text" id="internalif" name="internalif" placeholder="z.B. eth1: 10.0.0.1" class="zone-input">
+                        <div class="zone-help-text">Format: Interface-Name: IP-Adresse</div>
                     </div>
 
                     <div class="firewall-zone dmz-zone">
@@ -167,7 +170,8 @@
                             <span class="zone-label">DMZ</span>
                             <span class="help-icon" data-tooltip="firewall-dmz-if">?</span>
                         </div>
-                        <input type="text" id="dmzif" name="dmzif" placeholder="z.B. 172.16.0.1" class="zone-input">
+                        <input type="text" id="dmzif" name="dmzif" placeholder="z.B. eth2: 172.16.0.1" class="zone-input">
+                        <div class="zone-help-text">Optional - Format: Interface-Name: IP-Adresse</div>
                     </div>
                 </div>
             </div>
@@ -178,8 +182,13 @@
                         Weitere Zonen
                         <span class="help-icon" data-tooltip="firewall-other-zones">?</span>
                     </label>
-                    <input type="text" id="otherzones" name="otherzones" placeholder="z.B. Guest, Management, VPN">
-                    <div class="help-text">Kommagetrennt eingeben</div>
+                    <div class="multi-input-container" id="additional-zones-container">
+                        <div class="multi-input-item">
+                            <input type="text" class="additional-zone-input" placeholder="z.B. Guest: 192.168.100.1">
+                            <button type="button" class="btn-add-zone">+</button>
+                        </div>
+                    </div>
+                    <div class="help-text">Eine Zone pro Zeile. Format: Name: IP-Adresse</div>
                 </div>
             </div>
         </div>
@@ -193,12 +202,14 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <div class="form-row">
-                <div class="form-group">
-                    <label>
-                        IPS/IDS
-                        <span class="help-icon" data-tooltip="firewall-ips">?</span>
-                    </label>
+            <div class="security-features-grid">
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            IPS/IDS
+                            <span class="help-icon" data-tooltip="firewall-ips">?</span>
+                        </label>
+                    </div>
                     <div class="custom-select" data-name="ips">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -214,11 +225,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>
-                        Application Control
-                        <span class="help-icon" data-tooltip="firewall-appcontrol">?</span>
-                    </label>
+
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            Application Control
+                            <span class="help-icon" data-tooltip="firewall-appcontrol">?</span>
+                        </label>
+                    </div>
                     <div class="toggle-wrapper">
                         <label class="toggle-switch">
                             <input type="checkbox" id="appcontrol" name="appcontrol">
@@ -227,14 +241,14 @@
                         <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>
-                        SSL/TLS Inspection
-                        <span class="help-icon" data-tooltip="firewall-ssl-inspection">?</span>
-                    </label>
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            SSL/TLS Inspection
+                            <span class="help-icon" data-tooltip="firewall-ssl-inspection">?</span>
+                        </label>
+                    </div>
                     <div class="custom-select" data-name="sslinspection">
                         <div class="select-trigger">
                             <span class="placeholder">Bitte wählen</span>
@@ -250,11 +264,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>
-                        Anti-Malware / Virus Scan
-                        <span class="help-icon" data-tooltip="firewall-antimalware">?</span>
-                    </label>
+
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            Anti-Malware / Virus Scan
+                            <span class="help-icon" data-tooltip="firewall-antimalware">?</span>
+                        </label>
+                    </div>
                     <div class="toggle-wrapper">
                         <label class="toggle-switch">
                             <input type="checkbox" id="antimalware" name="antimalware">
@@ -263,14 +280,14 @@
                         <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>
-                        URL Filtering
-                        <span class="help-icon" data-tooltip="firewall-urlfilter">?</span>
-                    </label>
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            URL Filtering
+                            <span class="help-icon" data-tooltip="firewall-urlfilter">?</span>
+                        </label>
+                    </div>
                     <div class="toggle-wrapper">
                         <label class="toggle-switch">
                             <input type="checkbox" id="urlfilter" name="urlfilter">
@@ -279,11 +296,14 @@
                         <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>
-                        DDoS Protection
-                        <span class="help-icon" data-tooltip="firewall-ddos">?</span>
-                    </label>
+
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            DDoS Protection
+                            <span class="help-icon" data-tooltip="firewall-ddos">?</span>
+                        </label>
+                    </div>
                     <div class="toggle-wrapper">
                         <label class="toggle-switch">
                             <input type="checkbox" id="ddos" name="ddos">
@@ -304,11 +324,16 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <div class="form-group">
-                <label class="cluster-label">
+            <div class="ha-enable-card">
+                <label class="ha-enable-label">
                     <input type="checkbox" id="serverhighavailability" name="serverhighavailability">
-                    <span>High Availability / Clustering aktiviert</span>
-                    <span class="help-icon" data-tooltip="firewall-ha">?</span>
+                    <div class="ha-enable-content">
+                        <div class="ha-enable-text">
+                            <span class="ha-enable-title">High Availability / Clustering aktiviert</span>
+                            <span class="ha-enable-desc">Aktivieren Sie HA für Ausfallsicherheit und Redundanz</span>
+                        </div>
+                        <span class="help-icon" data-tooltip="firewall-ha">?</span>
+                    </div>
                 </label>
             </div>
 
@@ -360,46 +385,86 @@
                         Log Level
                         <span class="help-icon" data-tooltip="firewall-log-level">?</span>
                     </label>
-                    <div class="custom-select" data-name="loglevel">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="all">All Traffic (Allow + Deny)</div>
-                                <div class="select-option" data-value="deny-only">Deny Only</div>
-                                <div class="select-option" data-value="security-events">Security Events Only</div>
-                                <div class="select-option" data-value="minimal">Minimal</div>
+                    <div class="log-level-selector">
+                        <label class="radio-card">
+                            <input type="radio" name="loglevel" value="all">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">All Traffic</span>
+                                <span class="radio-card-desc">Allow + Deny (höchster Speicherbedarf)</span>
                             </div>
-                        </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="loglevel" value="deny-only">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Deny Only</span>
+                                <span class="radio-card-desc">Nur blockierte Verbindungen</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="loglevel" value="security-events" checked>
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Security Events</span>
+                                <span class="radio-card-desc">Empfohlen: Nur Sicherheitsereignisse</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="loglevel" value="minimal">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Minimal</span>
+                                <span class="radio-card-desc">Nur kritische Ereignisse</span>
+                            </div>
+                        </label>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>
-                        SIEM Integration
-                        <span class="help-icon" data-tooltip="firewall-siem">?</span>
-                    </label>
-                    <input type="text" id="siem" name="siem" placeholder="z.B. Splunk, QRadar, Syslog-Server">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label>
-                        Log Retention (Tage)
-                        <span class="help-icon" data-tooltip="firewall-log-retention">?</span>
-                    </label>
-                    <input type="number" id="logretention" name="logretention" placeholder="z.B. 90, 365">
                 </div>
                 <div class="form-group">
                     <label>
                         Monitoring / Alerting
                         <span class="help-icon" data-tooltip="firewall-monitoring">?</span>
                     </label>
-                    <input type="text" id="monitoring" name="monitoring" placeholder="z.B. SNMP, Prometheus, E-Mail">
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="monitoring[]" value="snmp">
+                            <span>SNMP Monitoring</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="monitoring[]" value="email">
+                            <span>E-Mail Alerts</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="monitoring[]" value="syslog">
+                            <span>Syslog</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="monitoring[]" value="webhook">
+                            <span>Webhook/API</span>
+                        </label>
+                    </div>
                 </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>
+                        SIEM Integration
+                        <span class="help-icon" data-tooltip="firewall-siem">?</span>
+                    </label>
+                    <input type="text" id="siem" name="siem" placeholder="z.B. Splunk, QRadar, syslog://10.0.0.50:514">
+                </div>
+                <div class="form-group">
+                    <label>
+                        Log Retention (Tage)
+                        <span class="help-icon" data-tooltip="firewall-log-retention">?</span>
+                    </label>
+                    <div class="input-with-slider">
+                        <input type="range" id="logretention-slider" min="30" max="730" value="90" step="30">
+                        <input type="number" id="logretention" name="logretention" value="90" min="30" max="730">
+                        <span class="slider-label"><span id="logretention-display">90</span> Tage</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                
             </div>
         </div>
     </div>
