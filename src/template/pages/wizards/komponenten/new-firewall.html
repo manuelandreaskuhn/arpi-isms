@@ -137,39 +137,49 @@
             </div>
 
             <div class="subsection-header">Netzwerk-Interfaces & Zonen</div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>
-                        Externe Interface / IP
+            
+            <div class="firewall-diagram-container">
+                <div class="firewall-zone external-zone">
+                    <div class="zone-header">
+                        <span class="zone-label">External (WAN)</span>
                         <span class="help-icon" data-tooltip="firewall-external-if">?</span>
-                    </label>
-                    <input type="text" id="externalif" name="externalif" placeholder="z.B. WAN, 203.0.113.1">
-                    <div class="help-text">Public/Internet-facing Interface</div>
+                    </div>
+                    <input type="text" id="externalif" name="externalif" placeholder="z.B. 203.0.113.1" class="zone-input">
                 </div>
-                <div class="form-group">
-                    <label>
-                        Interne Interface / IP
-                        <span class="help-icon" data-tooltip="firewall-internal-if">?</span>
-                    </label>
-                    <input type="text" id="internalif" name="internalif" placeholder="z.B. LAN, 10.0.0.1">
-                    <div class="help-text">Internes Netzwerk Interface</div>
+
+                <div class="firewall-center">
+                    <div class="firewall-icon">
+                        <span class="firewall-label">Firewall</span>
+                    </div>
+                </div>
+
+                <div class="firewall-zones-right">
+                    <div class="firewall-zone internal-zone">
+                        <div class="zone-header">
+                            <span class="zone-label">Internal (LAN)</span>
+                            <span class="help-icon" data-tooltip="firewall-internal-if">?</span>
+                        </div>
+                        <input type="text" id="internalif" name="internalif" placeholder="z.B. 10.0.0.1" class="zone-input">
+                    </div>
+
+                    <div class="firewall-zone dmz-zone">
+                        <div class="zone-header">
+                            <span class="zone-label">DMZ</span>
+                            <span class="help-icon" data-tooltip="firewall-dmz-if">?</span>
+                        </div>
+                        <input type="text" id="dmzif" name="dmzif" placeholder="z.B. 172.16.0.1" class="zone-input">
+                    </div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>
-                        DMZ Interface / IP
-                        <span class="help-icon" data-tooltip="firewall-dmz-if">?</span>
-                    </label>
-                    <input type="text" id="dmzif" name="dmzif" placeholder="z.B. DMZ, 172.16.0.1">
-                </div>
-                <div class="form-group">
-                    <label>
                         Weitere Zonen
                         <span class="help-icon" data-tooltip="firewall-other-zones">?</span>
                     </label>
                     <input type="text" id="otherzones" name="otherzones" placeholder="z.B. Guest, Management, VPN">
+                    <div class="help-text">Kommagetrennt eingeben</div>
                 </div>
             </div>
         </div>

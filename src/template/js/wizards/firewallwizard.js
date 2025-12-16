@@ -16,6 +16,12 @@ function setupFirewallWizard() {
     
     // Conditional fields based on firewall type
     setupFirewallTypeToggle();
+    
+    // Setup firewall diagram interactions
+    setupFirewallDiagram();
+    
+    // Setup HA configuration toggle
+    setupHAToggle();
 }
 
 function setupFirewallTypeToggle() {
@@ -33,6 +39,41 @@ function setupFirewallTypeToggle() {
         });
         observer.observe(typeSelect, { attributes: true, attributeFilter: ['data-value'] });
     }
+}
+
+function setupHAToggle() {
+    const haCheck = document.getElementById('serverhighavailability');
+    const haConfig = document.getElementById('fw-ha-config');
+    
+    if (haCheck && haConfig) {
+        haCheck.addEventListener('change', function() {
+            haConfig.style.display = this.checked ? 'block' : 'none';
+        });
+    }
+}
+
+function setupFirewallDiagram() {
+    const zoneInputs = document.querySelectorAll('.zone-input');
+    
+    zoneInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.style.borderWidth = '3px';
+        });
+        
+        input.addEventListener('blur', function() {
+            this.parentElement.style.borderWidth = '2px';
+        });
+        
+        // Add visual feedback when IP is entered
+        input.addEventListener('input', function() {
+            const zone = this.parentElement;
+            if (this.value.trim()) {
+                zone.style.opacity = '1';
+            } else {
+                zone.style.opacity = '0.85';
+            }
+        });
+    });
 }
 
 async function handleFirewallSubmit(event) {
