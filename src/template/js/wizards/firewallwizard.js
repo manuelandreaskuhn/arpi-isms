@@ -1,10 +1,12 @@
 import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
+import { initializeWizardNavigation } from './wizardnavigation.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeAllComponentSelects();
     initializeHelpTooltips();
+    initializeWizardNavigation();
     setupFirewallWizard();
 });
 
