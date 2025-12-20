@@ -8,14 +8,10 @@
     </div>
     <div class="page-header-container">
         <div class="page-header"></div>
-        <div class="formmanagement">
-            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
-            <button type="submit" form="newFirewallForm" class="btn-save" disabled>Speichern</button>
-        </div>
     </div>
 </aside>
 
-<form id="newFirewallForm">
+<form id="newFirewallForm" data-instance-uuid="">
 
     <!-- Basis-Informationen -->
     <div class="form-section">
@@ -399,7 +395,7 @@
                             </div>
                         </label>
                         <label class="radio-card">
-                            <input type="radio" name="loglevel" value="security-events" checked>
+                            <input type="radio" name="loglevel" value="security-events">
                             <div class="radio-card-content">
                                 <span class="radio-card-title">Security Events</span>
                                 <span class="radio-card-desc">Empfohlen: Nur Sicherheitsereignisse</span>
@@ -454,8 +450,7 @@
                         <span class="help-icon" data-tooltip="firewall-log-retention">?</span>
                     </label>
                     <div class="input-with-slider">
-                        <input type="range" id="logretention-slider" min="30" max="730" value="90" step="30">
-                        <input type="number" id="logretention" name="logretention" value="90" min="30" max="730">
+                        <input type="range" id="logretention-slider" name="logretention" min="30" max="730" value="90" step="30">
                         <span class="slider-label"><span id="logretention-display">90</span> Tage</span>
                     </div>
                 </div>
@@ -561,6 +556,21 @@
     </div>
 
 </form>
+
+<!-- Floating Form Management Bar -->
+<div class="floating-form-management">
+    <div class="form-status-container">
+        <span class="form-status-icon">●</span>
+        <div class="form-status-text">
+            <span class="form-status" data-lastchange="" data-status="unchanged">Keine Änderungen</span>
+            <span class="form-lastchange"></span>
+        </div>
+    </div>
+    <button type="submit" form="newFirewallForm" class="btn-save" disabled>
+        <span class="btn-save-icon"></span>
+        <span class="btn-save-text">Speichern</span>
+    </button>
+</div>
 
 <!-- Include help tooltips -->
 {{include:pages/wizards/komponenten/help/firewall-help.html}}

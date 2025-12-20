@@ -19,14 +19,27 @@ export function initializeWizardNavigation() {
         }
     });
 
-    // Monitor form changes
+    // Monitor form changes - only update active step
     const form = document.querySelector('form');
     if (form) {
-        form.addEventListener('input', debounce(() => updateAllStepStatus(), 300));
-        form.addEventListener('change', () => updateAllStepStatus());
+        form.addEventListener('input', debounce(() => {
+            const activeSection = getActiveSection();
+            if (activeSection) {
+                const activeIndex = getSectionIndex(activeSection);
+                updateStepStatus(activeIndex);
+            }
+        }, 300));
+        
+        form.addEventListener('change', () => {
+            const activeSection = getActiveSection();
+            if (activeSection) {
+                const activeIndex = getSectionIndex(activeSection);
+                updateStepStatus(activeIndex);
+            }
+        });
     }
 
-    // Initial status update
+    // Initial status update for all steps
     setTimeout(() => updateAllStepStatus(), 100);
 }
 
@@ -157,6 +170,25 @@ function updateAllStepStatus() {
         const stats = getSectionStats(section);
         updateStepDisplay(index, stats);
     });
+}
+
+function getActiveSection() {
+    const sections = document.querySelectorAll('.form-section');
+    return Array.from(sections).find(s => !s.classList.contains('collapsed'));
+}
+
+function getSectionIndex(section) {
+    const sections = Array.from(document.querySelectorAll('.form-section'));
+    return sections.indexOf(section);
+}
+
+function updateStepStatus(index) {
+    const sections = document.querySelectorAll('.form-section');
+    const section = sections[index];
+    if (!section) return;
+    
+    const stats = getSectionStats(section);
+    updateStepDisplay(index, stats);
 }
 
 function getSectionStats(section) {

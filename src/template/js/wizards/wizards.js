@@ -315,15 +315,33 @@ export function updateSectionCounter(section) {
     if (!counter) return;
 
     const requiredFields = section.querySelectorAll('[required]');
-    const allInputs = section.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), textarea, .custom-select, .toggle-switch input[type="checkbox"]');
+    const allInputs = section.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea, .custom-select, .toggle-switch input[type="checkbox"]');
+    
+    // Add radio button groups (count each unique name as one field)
+    const radioGroups = new Set();
+    section.querySelectorAll('input[type="radio"]').forEach(radio => {
+        if (radio.name) radioGroups.add(radio.name);
+    });
+    
+    // Add checkbox groups (count groups with name[] pattern)
+    const checkboxGroups = new Set();
+    section.querySelectorAll('input[type="checkbox"]:not(.toggle-switch input)').forEach(checkbox => {
+        if (checkbox.name && checkbox.name.includes('[]')) {
+            checkboxGroups.add(checkbox.name);
+        }
+    });
+    
+    // Add range sliders
+    const rangeSliders = section.querySelectorAll('input[type="range"]');
     
     let previousFilledCount = 0;
     if (counter.dataset.filledCount) {
         previousFilledCount = parseInt(counter.dataset.filledCount, 10);
     }
     let filledCount = 0;
-    let totalCount = allInputs.length;
+    let totalCount = allInputs.length + radioGroups.size + checkboxGroups.size + rangeSliders.length;
 
+    // Count regular inputs
     allInputs.forEach(field => {
         let isFilled = false;
         
@@ -339,6 +357,23 @@ export function updateSectionCounter(section) {
         
         if (isFilled) filledCount++;
     });
+    
+    // Count radio button groups (one filled per group)
+    radioGroups.forEach(groupName => {
+        const checkedRadio = section.querySelector(`input[type="radio"][name="${groupName}"]:checked`);
+        if (checkedRadio) filledCount++;
+    });
+    
+    // Count checkbox groups (at least one checked)
+    checkboxGroups.forEach(groupName => {
+        const checkedCheckbox = section.querySelector(`input[type="checkbox"][name="${groupName}"]:checked`);
+        if (checkedCheckbox) filledCount++;
+    });
+    
+    // Count range sliders (always count as filled if they have a value)
+    rangeSliders.forEach(slider => {
+        if (slider.value && slider.value !== '') filledCount++;
+    });
 
     counter.textContent = `${filledCount}/${totalCount}`;
     counter.dataset.filledCount = filledCount;
@@ -352,19 +387,105 @@ export function updateSectionCounter(section) {
         counter.classList.add('partial');
     }
 
-    //Update form status
-    let lastchangespan = document.querySelector(".formmanagement > span.form-status");
-    if (lastchangespan && filledCount !== previousFilledCount) {
-        lastchangespan.textContent = 'Ungespeicherte Änderungen';
-        lastchangespan.dataset.status = 'changed';
-
-        let savebutton = document.querySelector(".formmanagement > button.btn-save");
-        if (savebutton) {
-            savebutton.disabled = false;
+    // Update form status in floating bar only if count changed AND it's not initial load
+    const isInitialLoad = counter.dataset.initialized !== 'true';
+    
+    // Don't change status on initial load if fields are already filled (page refresh/navigation)
+    if (filledCount !== previousFilledCount && !isInitialLoad) {
+        updateFormStatus('changed');
+    } else if (isInitialLoad && filledCount > 0) {
+        // On initial load with filled fields, set status to 'changed' but don't show timestamp
+        updateFormStatus('notsaved', 'Nicht gespeichert');
+    }
+    
+    // Mark as initialized after first count
+    if (isInitialLoad) {
+        counter.dataset.initialized = 'true';
+    }
+    
+    // Save counter state to sessionStorage - only for THIS section
+    if (window.saveSectionCounters) {
+        const form = section.closest('form');
+        if (form) {
+            // Pass the specific section to only update that one
+            window.saveSectionCounters(form.id, section);
         }
     }
 }
 
+/**
+ * Update form status in the floating form management bar
+ */
+function updateFormStatus(status = 'notsaved', message = null) {
+    // Try floating bar first (new design)
+    let statusSpan = document.querySelector('.floating-form-management .form-status');
+    let saveButton = document.querySelector('.floating-form-management .btn-save');
+    let lastChangeSpan = document.querySelector('.floating-form-management .form-lastchange');
+    let statusIcon = document.querySelector('.floating-form-management .form-status-icon');
+    
+    // Fallback to old formmanagement structure if floating bar doesn't exist
+    if (!statusSpan) {
+        statusSpan = document.querySelector('.formmanagement .form-status');
+        saveButton = document.querySelector('.formmanagement .btn-save');
+        statusIcon = document.querySelector('.formmanagement .form-status-icon');
+    }
+    
+    if (!statusSpan) return;
+    
+    // Update status text and attribute
+    statusSpan.dataset.status = status;
+    
+    // Update icon color and animation via data attribute
+    if (statusIcon) {
+        statusIcon.dataset.status = status;
+    }
+    
+    switch(status) {
+        case 'unchanged':
+            statusSpan.textContent = message || 'Keine Änderungen';
+            if (saveButton) saveButton.disabled = true;
+            if (lastChangeSpan) {
+                lastChangeSpan.textContent = '';
+            }
+            break;
+            
+        case 'changed':
+        case 'notsaved':
+            statusSpan.textContent = message || 'Nicht gespeichert';
+            if (saveButton) saveButton.disabled = false;
+            if (lastChangeSpan) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('de-DE', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+                lastChangeSpan.textContent = `Letzte Änderung: ${timeString}`;
+                statusSpan.dataset.lastchange = now.toISOString();
+            }
+            break;
+            
+        case 'saved':
+            statusSpan.textContent = message || 'Gespeichert';
+            if (saveButton) saveButton.disabled = true;
+            if (lastChangeSpan) {
+                const savedTime = new Date(statusSpan.dataset.lastchange || Date.now());
+                const timeString = savedTime.toLocaleTimeString('de-DE', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+                lastChangeSpan.textContent = `Gespeichert um ${timeString}`;
+            }
+            break;
+            
+        case 'error':
+            statusSpan.textContent = message || 'Fehler beim Speichern';
+            if (saveButton) saveButton.disabled = false;
+            if (lastChangeSpan) {
+                lastChangeSpan.textContent = 'Bitte erneut versuchen';
+            }
+            break;
+    }
+}
 
 // Initialize all custom selects on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -402,20 +523,74 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    //Listeners for inputs to update section counters
+    // Initialize section counters FIRST (but DON'T overwrite restored values)
     document.querySelectorAll('.form-section').forEach(section => {
-        section.querySelectorAll('input, textarea').forEach(field => {
+        const counter = section.querySelector('.section-counter');
+        // Only update if counter hasn't been restored from sessionStorage
+        if (counter && !counter.dataset.restoredFromSession) {
+            updateSectionCounter(section);
+        } else if (counter) {
+            // Mark as initialized if it was restored
+            counter.dataset.initialized = 'true';
+        }
+    });
+
+    // Initialize form status AFTER counters are set with 'unchanged' status
+    updateFormStatus('unchanged', 'Keine Änderungen');
+    
+    // Listeners for ALL inputs to update section counters and form status
+    document.querySelectorAll('.form-section').forEach(section => {
+        // Text inputs and textareas
+        section.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea').forEach(field => {
             field.addEventListener('input', () => {
                 updateSectionCounter(section);
             });
         });
+        
+        // Radio buttons
+        section.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                updateSectionCounter(section);
+            });
+        });
+        
+        // Checkboxes (including toggle switches and checkbox groups)
+        section.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                updateSectionCounter(section);
+            });
+        });
+        
+        // Range sliders - trigger form status directly
+        section.querySelectorAll('input[type="range"]').forEach(slider => {
+            slider.addEventListener('input', () => {
+                updateSectionCounter(section);
+                // Directly update form status for sliders
+                updateFormStatus('changed');
+            });
+            
+            slider.addEventListener('change', () => {
+                updateSectionCounter(section);
+                // Directly update form status for sliders
+                updateFormStatus('changed');
+            });
+        });
     });
     
-    // Initialize section counters
-    document.querySelectorAll('.form-section').forEach(section => {
-        updateSectionCounter(section);
+    // Add form submit listener (example)
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate save operation
+            updateFormStatus('saved');
+            
+            // Your actual save logic here
+            console.log('Form submitted');
+        });
     });
 });
 
-// Make refresh function globally accessible
+// Make functions globally accessible
 window.refreshAllComponentSelects = refreshAllComponentSelects;
+window.updateFormStatus = updateFormStatus;
+window.updateSectionCounter = updateSectionCounter;

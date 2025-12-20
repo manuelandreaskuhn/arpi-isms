@@ -622,8 +622,7 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     align-items: center;
     justify-content: space-between;
     gap: 30px;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    padding: 0px 20px;
     border-radius: 12px;
     margin: 20px 0;
     min-height: 300px;

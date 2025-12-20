@@ -2,11 +2,35 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 import { initializeWizardNavigation } from './wizardnavigation.js';
+import { 
+    restoreFormData, 
+    enableAutoSave, 
+    clearFormData, 
+    saveSectionCounters,
+    getOrCreateInstanceUuid,
+    cleanupOldInstances
+} from './form-persistence.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeAllComponentSelects();
     initializeHelpTooltips();
     initializeWizardNavigation();
+    
+    // Make saveSectionCounters globally accessible with updated signature
+    window.saveSectionCounters = (formId, section = null) => saveSectionCounters(formId, section);
+    
+    // Initialize or restore UUID for this form instance
+    getOrCreateInstanceUuid('newFirewallForm');
+    
+    // Cleanup old instances (keep last 5)
+    cleanupOldInstances('newFirewallForm', 5);
+    
+    // Restore saved form data (including section counters)
+    restoreFormData('newFirewallForm');
+    
+    // Enable auto-save
+    enableAutoSave('newFirewallForm');
+    
     setupFirewallWizard();
 });
 
@@ -102,11 +126,12 @@ async function handleFirewallSubmit(event) {
         
         const result = await response.json();
         if (result.success) {
-            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
-            if (lastchangespan) {
-                lastchangespan.textContent = 'Gespeichert am ' + new Date().toLocaleString();
-                lastchangespan.dataset.lastchange = new Date().toISOString();
-                lastchangespan.dataset.status = 'saved';
+            // Clear saved form data on successful submit
+            clearFormData('newFirewallForm');
+            
+            // Use global updateFormStatus function
+            if (window.updateFormStatus) {
+                window.updateFormStatus('saved');
             }
 
             alert('Firewall erfolgreich erstellt!');
@@ -114,14 +139,19 @@ async function handleFirewallSubmit(event) {
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 
-            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
-            if (lastchangespan) {
-                lastchangespan.dataset.status = 'error';
+            // Use global updateFormStatus function
+            if (window.updateFormStatus) {
+                window.updateFormStatus('error');
             }
         }
     } catch (error) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
+        
+        // Use global updateFormStatus function
+        if (window.updateFormStatus) {
+            window.updateFormStatus('error');
+        }
     }
 }
 
@@ -303,20 +333,12 @@ function addZoneInput() {
 
 function setupLogRetentionSlider() {
     const slider = document.getElementById('logretention-slider');
-    const input = document.getElementById('logretention');
     const display = document.getElementById('logretention-display');
     
-    if (!slider || !input || !display) return;
+    if (!slider || !display) return;
     
+    // Sync display value with slider
     slider.addEventListener('input', function() {
-        input.value = this.value;
         display.textContent = this.value;
-    });
-    
-    input.addEventListener('input', function() {
-        const value = Math.min(Math.max(this.value, 30), 730);
-        this.value = value;
-        slider.value = value;
-        display.textContent = value;
     });
 }

@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup VPN wizard
     setupVPNWizard();
-    
-    console.log('VPN Wizard initialized');
 });
 
 function setupVPNWizard() {
