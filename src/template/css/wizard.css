@@ -24,6 +24,9 @@ aside.wizardnavigation-enabled .page-header-container {
     border-bottom: 1px solid #d7d7d7;
     border-top: none;
     background-color: #ebebeb63;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Page Header Styling */
@@ -1088,7 +1091,7 @@ div.buttonlist {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     padding-bottom: 0px;
     margin-bottom: 0px;
     border-left: 1px solid #d7d7d7;
