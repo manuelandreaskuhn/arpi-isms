@@ -200,31 +200,26 @@ async function loadFirewallSoftwareInfo(firewallId) {
 }
 
 function fillFirewallSoftwareInfo(data) {
-    const infoDiv = document.querySelector('.firewall-software-info');
-    if (!infoDiv) return;
-
     // firewall-software-info-section toggle
     const section = document.getElementById('firewall-software-info-section');
     if (section && section.classList.contains('collapsed')) {
         section.classList.remove('collapsed');
     }
+    
+    const infoDiv = document.querySelector('.software-info-container');    
 
     // Title and Badge
     const title = infoDiv.querySelector('.software-info-title');
-    const badge = infoDiv.querySelector('.software-info-badge');
     if (title) title.textContent = data.name || '';
-    if (badge) badge.textContent = data.status || '';
 
     // Grid items
     const vendor = infoDiv.querySelector('.software-vendor');
     const category = infoDiv.querySelector('.software-category');
     const type = infoDiv.querySelector('.software-type');
-    const marketShare = infoDiv.querySelector('.software-marketshare');
     
     if (vendor) vendor.textContent = data.vendor || '-';
     if (category) category.textContent = data.category || '-';
     if (type) type.textContent = data.type || '-';
-    if (marketShare) marketShare.textContent = data.marketShare || '-';
 
     // Description
     const description = infoDiv.querySelector('.software-description-text');
@@ -277,17 +272,9 @@ function fillFirewallSoftwareInfo(data) {
             .map(cpe => `<div class="cpe-item">${cpe}</div>`)
             .join('');
     }
-
-    // Show the info box
-    infoDiv.style.display = 'block';
 }
 
 function hideFirewallSoftwareInfo() {
-    const infoDiv = document.querySelector('.firewall-software-info');
-    if (infoDiv) {
-        infoDiv.style.display = 'none';
-    }
-
     // Collapse the section
     const section = document.getElementById('firewall-software-info-section');
     if (section && !section.classList.contains('collapsed')) {
