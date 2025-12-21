@@ -1098,6 +1098,7 @@ div.buttonlist {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    padding-top: 15px;
     padding-bottom: 0px;
     margin-bottom: 0px;
     border-left: 1px solid #d7d7d7;
