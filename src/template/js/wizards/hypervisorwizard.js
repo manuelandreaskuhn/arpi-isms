@@ -48,6 +48,9 @@ function setupHypervisorWizard() {
     
     // Software selection listener
     setupSoftwareListener();
+    
+    // Manual input toggles for component linking
+    setupManualInputToggles();
 }
 
 function setupClusterToggle() {
@@ -359,6 +362,36 @@ function setupSoftwareListener() {
             }
         });
         observer.observe(softwareSelect, { attributes: true, attributeFilter: ['data-value'] });
+    }
+}
+
+function setupManualInputToggles() {
+    // Monitoring manual input toggle
+    const monitoringSelect = document.querySelector('[data-name="monitoringid"]');
+    const monitoringManual = document.getElementById('monitoring-manual');
+    
+    if (monitoringSelect) {
+        const observer = new MutationObserver(() => {
+            const value = monitoringSelect.dataset.value;
+            if (monitoringManual) {
+                monitoringManual.style.display = (value === 'manual') ? 'block' : 'none';
+            }
+        });
+        observer.observe(monitoringSelect, { attributes: true, attributeFilter: ['data-value'] });
+    }
+    
+    // Backup manual input toggle
+    const backupSelect = document.querySelector('[data-name="backupid"]');
+    const backupManual = document.getElementById('backup-manual');
+    
+    if (backupSelect) {
+        const observer = new MutationObserver(() => {
+            const value = backupSelect.dataset.value;
+            if (backupManual) {
+                backupManual.style.display = (value === 'manual') ? 'block' : 'none';
+            }
+        });
+        observer.observe(backupSelect, { attributes: true, attributeFilter: ['data-value'] });
     }
 }
 

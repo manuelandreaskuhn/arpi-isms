@@ -761,18 +761,27 @@
                     </label>
                     <div class="custom-select" data-name="monitoringid" data-component-type="siem">
                         <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen oder manuell eintragen</span>
+                            <span class="placeholder">Bitte wählen (SIEM)</span>
                             <span class="arrow">▼</span>
                         </div>
                         <div class="select-dropdown">
                             <div class="select-options">
-                                <div class="select-option" data-value="">-- Komponente wählen oder manuell eintragen --</div>
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">SIEM Komponenten</div>
+                                <!-- Dynamic SIEM entries -->
                             </div>
                         </div>
                     </div>
-                    <input type="text" id="monitoring-manual" name="monitoring-manual" placeholder="Oder manuell: z.B. vROps, PRTG, Zabbix" style="margin-top: 8px;">
-                    <div class="help-text">SIEM-Komponente verlinken oder manuell eintragen</div>
+                    <div class="help-text">Wählen Sie eine SIEM-Komponente aus oder geben Sie manuell ein</div>
                 </div>
+                <div class="form-group" id="monitoring-manual" style="display:none;">
+                    <label>Monitoring-Tool (manuell)</label>
+                    <input type="text" id="monitoringtool" name="monitoringtool" placeholder="z.B. vROps, PRTG, Zabbix, Prometheus">
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>
                         Backup-Lösung
@@ -780,17 +789,23 @@
                     </label>
                     <div class="custom-select" data-name="backupid" data-component-type="backup">
                         <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen oder manuell eintragen</span>
+                            <span class="placeholder">Bitte wählen (Backup)</span>
                             <span class="arrow">▼</span>
                         </div>
                         <div class="select-dropdown">
                             <div class="select-options">
-                                <div class="select-option" data-value="">-- Komponente wählen oder manuell eintragen --</div>
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">Backup Systeme</div>
+                                <!-- Dynamic Backup entries -->
                             </div>
                         </div>
                     </div>
-                    <input type="text" id="backup-manual" name="backup-manual" placeholder="Oder manuell: z.B. Veeam, Altaro, Commvault" style="margin-top: 8px;">
-                    <div class="help-text">Backup-Komponente verlinken oder manuell eintragen</div>
+                    <div class="help-text">Wählen Sie ein Backup-System aus oder geben Sie manuell ein</div>
+                </div>
+                <div class="form-group" id="backup-manual" style="display:none;">
+                    <label>Backup-Lösung (manuell)</label>
+                    <input type="text" id="backupsolution" name="backupsolution" placeholder="z.B. Veeam, Altaro, Commvault">
                 </div>
             </div>
         </div>

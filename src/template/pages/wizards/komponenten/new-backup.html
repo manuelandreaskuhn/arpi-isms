@@ -1,4 +1,4 @@
-<aside>
+<aside class="wizardnavigation-enabled">
     <div class="breadcrumb">
         <p>Assetmanagement</p>
         <i>›</i>
@@ -7,15 +7,7 @@
         <p>Neues Backup-System anlegen</p>
     </div>
     <div class="page-header-container">
-        <div class="page-header">
-            <h1>Neues Backup-System anlegen</h1>
-            <p>Erfassen Sie die Details Ihres Backup-Systems, um eine zentrale Übersicht Ihrer Backup-Infrastruktur zu erhalten.</p>
-        </div>
-        <div class="formmanagement">
-            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
-            <button type="button" class="btn-cancel">Abbrechen</button>
-            <button type="submit" form="newBackupSystemForm" class="btn-save" disabled>Speichern</button>
-        </div>
+        <div class="page-header"></div>
     </div>
 </aside>
 
@@ -31,7 +23,7 @@
     </div>
 </div>
 
-<form id="newBackupSystemForm">
+<form id="newBackupSystemForm" data-instance-uuid="">
 
     <!-- Basis-Informationen -->
     <div class="form-section">
@@ -130,6 +122,69 @@
                 </div>
             </div>
         </div>
+
+        <!-- Informationen zur Software -->
+        <div id="backup-software-info-section" class="collapsed">
+            <div class="section-content">
+                <div class="subsection-header">Informationen zur Backup-Software</div>
+                <div class="software-info-container">
+                    <div class="software-info-grid">
+                        <div class="software-info-item">
+                            <label>Software</label>
+                            <span class="software-info-title"></span>
+                        </div>
+                        <div class="software-info-item">
+                            <label>Hersteller</label>
+                            <span class="software-vendor"></span>
+                        </div>
+                    </div>
+                    <div class="software-info-grid">
+                        <div class="software-info-item">
+                            <label>Kategorie:</label>
+                            <span id="sw-category">-</span>
+                        </div>
+                        <div class="software-info-item">
+                            <label>Typ:</label>
+                            <span id="sw-type">-</span>
+                        </div>
+                    </div>
+                    <div class="software-info-description">
+                        <label>Beschreibung:</label>
+                        <p class="software-description-text" id="sw-description">Bitte wählen Sie eine Backup-Software aus.</p>
+                    </div>
+                    <div class="software-info-row">
+                        <div class="software-info-section">
+                            <label>Features:</label>
+                            <div class="software-features" id="sw-features">-</div>
+                        </div>
+                        <div class="software-info-section">
+                            <label>Plattformen:</label>
+                            <div class="software-platforms" id="sw-platforms">-</div>
+                        </div>
+                    </div>
+                    <div class="software-info-row">
+                        <div class="software-info-section">
+                            <label>Lizenzmodelle:</label>
+                            <div class="software-license" id="sw-license">-</div>
+                        </div>
+                    </div>
+                    <div class="software-info-row">
+                        <div class="software-info-pricing">
+                            <label>Preisgestaltung:</label>
+                            <p class="software-pricing-text" id="sw-pricing">-</p>
+                        </div>
+                        <div class="software-info-notes">
+                            <label>Hinweise:</label>
+                            <p class="software-notes-text" id="sw-notes">-</p>
+                        </div>
+                    </div>
+                    <div class="software-info-cpe">
+                        <label>CPE-Identifikatoren:</label>
+                        <div class="software-cpe-list" id="sw-cpe">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Infrastruktur -->
@@ -183,7 +238,7 @@
                         Betriebssystem
                         <span class="help-icon" data-tooltip="backup-os">?</span>
                     </label>
-                    <input type="text" id="serveroperatingystem" name="serveroperatingystem" placeholder="z.B. Windows Server 2022, Linux Ubuntu 22.04">
+                    {{include:pages/wizards/system/operatingsystem-combobox.html|with:category:backup}}
                 </div>
                 <div class="form-group">
                     <label>
@@ -661,8 +716,29 @@
                         Monitoring-Integration
                         <span class="help-icon" data-tooltip="monitoring-integration">?</span>
                     </label>
-                    <input type="text" id="monitoringintegration" name="monitoringintegration" placeholder="z.B. PRTG, Zabbix, Prometheus, E-Mail">
+                    <div class="custom-select" data-name="monitoringintegration" data-component-type="siem">
+                        <div class="select-trigger">
+                            <span class="placeholder">Bitte wählen (SIEM)</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="select-dropdown">
+                            <div class="select-options">
+                                <div class="select-option" data-value="">Bitte wählen</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">SIEM Komponenten</div>
+                                <!-- Dynamic SIEM entries -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="help-text">Wählen Sie eine SIEM-Komponente aus oder geben Sie manuell ein</div>
                 </div>
+                <div class="form-group" id="monitoring-integration-manual" style="display:none;">
+                    <label>Monitoring-Tool (manuell)</label>
+                    <input type="text" id="monitoringtool" name="monitoringtool" placeholder="z.B. PRTG, Zabbix, Prometheus, E-Mail">
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>
                         Reporting
@@ -767,6 +843,22 @@
     </div>
 
 </form>
+
+
+<!-- Floating Form Management Bar -->
+<div class="floating-form-management">
+    <div class="form-status-container">
+        <span class="form-status-icon">●</span>
+        <div class="form-status-text">
+            <span class="form-status" data-lastchange="" data-status="unchanged">Keine Änderungen</span>
+            <span class="form-lastchange"></span>
+        </div>
+    </div>
+    <button type="submit" form="newBackupSystemForm" class="btn-save" disabled>
+        <span class="btn-save-icon"></span>
+        <span class="btn-save-text">Speichern</span>
+    </button>
+</div>
 
 <!-- Include help tooltips -->
 {{include:pages/wizards/komponenten/help/backup-help.html}}

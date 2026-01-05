@@ -558,6 +558,11 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     gap: 8px;
 }
 
+/* Generic badge styling for software info */
+.software-features .badge,
+.software-platforms .badge,
+.software-license .badge,
+.software-usecases .badge,
 .software-features .feature-tag,
 .software-platforms .platform-tag,
 .software-license .license-tag,
@@ -568,6 +573,7 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     font-size: 0.75em;
     white-space: nowrap;
     color: white;
+    display: inline-block;
 }
 
 .software-info-cpe {
@@ -583,6 +589,7 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     gap: 6px;
 }
 
+.software-cpe-list .cpe-id,
 .software-cpe-list .cpe-item {
     background: rgba(255, 255, 255, 0.1);
     padding: 8px 12px;
@@ -590,6 +597,8 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
     font-size: 0.85em;
     word-break: break-all;
     border-left: 3px solid rgba(255, 255, 255, 0.5);
+    font-family: 'Courier New', monospace;
+    display: block;
 }
 
 @media (max-width: 768px) {

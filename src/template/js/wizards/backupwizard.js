@@ -1,10 +1,36 @@
 import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
+import { initializeWizardNavigation } from './wizardnavigation.js';
+import { 
+    restoreFormData, 
+    enableAutoSave, 
+    clearFormData, 
+    saveSectionCounters,
+    getOrCreateInstanceUuid,
+    cleanupOldInstances
+} from './form-persistence.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeAllComponentSelects();
     initializeHelpTooltips();
+    initializeWizardNavigation();
+    
+    // Make saveSectionCounters globally accessible with updated signature
+    window.saveSectionCounters = (formId, section = null) => saveSectionCounters(formId, section);
+    
+    // Initialize or restore UUID for this form instance
+    getOrCreateInstanceUuid('newBackupSystemForm');
+    
+    // Cleanup old instances (keep last 5)
+    cleanupOldInstances('newBackupSystemForm', 5);
+    
+    // Restore saved form data (including section counters)
+    restoreFormData('newBackupSystemForm');
+    
+    // Enable auto-save
+    enableAutoSave('newBackupSystemForm');
+    
     setupBackupWizard();
 });
 
@@ -22,6 +48,130 @@ function setupBackupWizard() {
     
     // Immutability Period Toggle
     setupImmutabilityToggles();
+    
+    // Software selection listener
+    setupSoftwareListener();
+    
+    // Floating form management buttons
+    setupFormManagementButtons();
+    
+    // Manual input toggles for component linking
+    setupManualInputToggles();
+}
+
+function setupFormManagementButtons() {
+    const saveBtn = document.getElementById('saveBackupForm');
+    const cancelBtn = document.getElementById('cancelBackupForm');
+    const form = document.getElementById('newBackupSystemForm');
+    
+    if (saveBtn && form) {
+        saveBtn.addEventListener('click', () => {
+            form.dispatchEvent(new Event('submit'));
+        });
+    }
+    
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            if (confirm('Möchten Sie wirklich abbrechen? Alle ungespeicherten Änderungen gehen verloren.')) {
+                clearFormData('newBackupSystemForm');
+                window.location.href = '/assetmanagement/components';
+            }
+        });
+    }
+}
+
+function setupSoftwareListener() {
+    const softwareSelect = document.querySelector('[data-name="software"]');
+    if (softwareSelect) {
+        const observer = new MutationObserver(() => {
+            const value = softwareSelect.dataset.value;
+            if (value && value !== '' && value !== 'other') {
+                loadBackupSoftwareInfo(value);
+            }
+        });
+        observer.observe(softwareSelect, { attributes: true, attributeFilter: ['data-value'] });
+    }
+}
+
+async function loadBackupSoftwareInfo(softwareId) {
+    try {
+        const response = await fetch(`/api/data/backup-software/${softwareId}`);
+        if (!response.ok) throw new Error('Software info not found');
+        
+        const result = await response.json();
+        if (result.success && result.data) {
+            fillBackupSoftwareInfo(result.data);
+            
+            // Show info section
+            const infoSection = document.getElementById('backup-software-info-section');
+            if (infoSection) {
+                infoSection.classList.remove('collapsed');
+            }
+        } else {
+            throw new Error(result.error || 'Failed to load software info');
+        }
+    } catch (error) {
+        console.error('Error loading backup software info:', error);
+        
+        // Hide info section on error
+        const infoSection = document.getElementById('backup-software-info-section');
+        if (infoSection) {
+            infoSection.classList.add('collapsed');
+        }
+    }
+}
+
+function fillBackupSoftwareInfo(data) {
+    // Title and vendor
+    const titleEl = document.querySelector('.software-info-title');
+    const vendorEl = document.querySelector('.software-vendor');
+    if (titleEl) titleEl.textContent = data.name || '-';
+    if (vendorEl) vendorEl.textContent = data.vendor || '-';
+    
+    // Category and type
+    document.getElementById('sw-category').textContent = data.category || '-';
+    document.getElementById('sw-type').textContent = data.type || '-';
+    
+    // Description
+    document.getElementById('sw-description').textContent = data.description || 'Keine Beschreibung verfügbar.';
+    
+    // Features
+    const featuresEl = document.getElementById('sw-features');
+    if (data.features && data.features.length > 0) {
+        featuresEl.innerHTML = data.features.map(f => `<span class="badge">${f}</span>`).join('');
+    } else {
+        featuresEl.textContent = '-';
+    }
+    
+    // Platforms
+    const platformsEl = document.getElementById('sw-platforms');
+    if (data.platforms && data.platforms.length > 0) {
+        platformsEl.innerHTML = data.platforms.map(p => `<span class="badge">${p}</span>`).join('');
+    } else {
+        platformsEl.textContent = '-';
+    }
+    
+    // License models
+    const licenseEl = document.getElementById('sw-license');
+    if (data.licenseModel && data.licenseModel.length > 0) {
+        licenseEl.innerHTML = data.licenseModel.map(l => `<span class="badge">${l}</span>`).join('');
+    } else {
+        licenseEl.textContent = '-';
+    }
+    
+    // Pricing
+    document.getElementById('sw-pricing').textContent = data.pricing || '-';
+    
+    // Notes
+    document.getElementById('sw-notes').textContent = data.notes || '-';
+    
+    // CPE identifiers
+    const cpeEl = document.getElementById('sw-cpe');
+    if (data.cpe && data.cpe.length > 0) {
+        cpeEl.innerHTML = data.cpe.map(c => `<code class="cpe-id">${c}</code>`).join('');
+    } else {
+        cpeEl.textContent = '-';
+    }
 }
 
 function setupStorageLevelToggle() {
@@ -82,6 +232,22 @@ function setupImmutabilityToggles() {
             }
         });
         observer.observe(tertiaryImmutSelect, { attributes: true });
+    }
+}
+
+function setupManualInputToggles() {
+    // Monitoring manual input toggle
+    const monitoringSelect = document.querySelector('[data-name="monitoringintegration"]');
+    const monitoringManual = document.getElementById('monitoring-integration-manual');
+    
+    if (monitoringSelect) {
+        const observer = new MutationObserver(() => {
+            const value = monitoringSelect.dataset.value;
+            if (monitoringManual) {
+                monitoringManual.style.display = (value === 'manual') ? 'block' : 'none';
+            }
+        });
+        observer.observe(monitoringSelect, { attributes: true, attributeFilter: ['data-value'] });
     }
 }
 
