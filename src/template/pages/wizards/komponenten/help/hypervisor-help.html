@@ -287,6 +287,256 @@
         <em>DRS ist "Luxus" aber sehr praktisch - spart viel manuelle Arbeit!</em>
     </div>
 
+    <div data-tooltip-id="hypervisor-storage-type">
+        <h2>Storage-Typ</h2>
+        <p>Architektur des Storage-Systems für virtuelle Maschinen.</p>
+        <div>
+            <h3>Host-basierter Storage (Verteilter Storage):</h3>
+            <ul>
+                <li><strong>Was ist das?</strong>
+                    <ul>
+                        <li>Jeder Host hat lokale Festplatten/SSDs</li>
+                        <li>Software verbindet alle zu einem gemeinsamen Storage-Pool</li>
+                        <li>VMs können auf allen Hosts gespeichert werden</li>
+                    </ul>
+                </li>
+                <li><strong>Technologien:</strong>
+                    <ul>
+                        <li><strong>VMware vSAN:</strong> Sehr beliebt, integriert in vSphere</li>
+                        <li><strong>Microsoft Storage Spaces Direct (S2D):</strong> In Windows Server</li>
+                        <li><strong>Nutanix HCI:</strong> Hardware + Software-Lösung</li>
+                        <li><strong>Ceph:</strong> Open Source, sehr flexibel</li>
+                        <li><strong>Proxmox Ceph:</strong> Ceph mit Proxmox-Integration</li>
+                    </ul>
+                </li>
+                <li><strong>Vorteile:</strong>
+                    <ul>
+                        <li>Einfache Skalierung (neuer Host = mehr Storage)</li>
+                        <li>Keine separate Storage-Hardware nötig</li>
+                        <li>Oft günstiger als SAN</li>
+                        <li>Hohe Performance mit SSDs/NVMe</li>
+                    </ul>
+                </li>
+                <li><strong>Nachteile:</strong>
+                    <ul>
+                        <li>CPU/RAM der Hosts wird für Storage verwendet</li>
+                        <li>Netzwerk-intensiv (Storage-Traffic zwischen Hosts)</li>
+                        <li>Komplexere Konfiguration</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Externer Storage (Zentrales Storage-System):</h3>
+            <ul>
+                <li><strong>Was ist das?</strong>
+                    <ul>
+                        <li>Separates Storage-System (SAN/NAS)</li>
+                        <li>Alle Hosts greifen darauf zu</li>
+                        <li>Storage ist unabhängig von Hypervisor-Hosts</li>
+                    </ul>
+                </li>
+                <li><strong>Technologien:</strong>
+                    <ul>
+                        <li><strong>SAN (Fibre Channel):</strong> Sehr schnell, teuer, komplex</li>
+                        <li><strong>SAN (iSCSI):</strong> Über Ethernet, günstiger als FC</li>
+                        <li><strong>NAS (NFS/SMB):</strong> File-basiert, einfach</li>
+                        <li><strong>Object Storage:</strong> Für spezielle Anwendungen</li>
+                    </ul>
+                </li>
+                <li><strong>Vorteile:</strong>
+                    <ul>
+                        <li>Hosts haben mehr CPU/RAM für VMs</li>
+                        <li>Enterprise-Features (Dedupe, Compression, Snapshots)</li>
+                        <li>Unabhängige Skalierung</li>
+                        <li>Bewährte Technologie</li>
+                    </ul>
+                </li>
+                <li><strong>Nachteile:</strong>
+                    <ul>
+                        <li>Hohe Anschaffungskosten</li>
+                        <li>Separate Hardware = mehr Platz, Strom</li>
+                        <li>Single Point of Failure (wenn nicht redundant)</li>
+                        <li>Komplexe Verkabelung bei Fibre Channel</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Wann welchen Typ?</h3>
+            <ul>
+                <li><strong>Host-basiert:</strong> Moderne Umgebungen, wenn Hosts genug CPU/RAM haben, kleinere bis mittlere Installationen</li>
+                <li><strong>Extern:</strong> Große Umgebungen, wenn bereits SAN vorhanden, wenn Storage-Features wichtig sind</li>
+            </ul>
+        </div>
+        <em>Trend geht zu host-basiert (vSAN, HCI), aber externes Storage noch weit verbreitet!</em>
+    </div>
+
+    <div data-tooltip-id="external-storage-name">
+        <h2>Storage-System</h2>
+        <p>Name des externen Storage-Systems.</p>
+        <div>
+            <h3>Beispiele:</h3>
+            <ul>
+                <li>"SAN-Cluster-01" - Zentrales SAN</li>
+                <li>"NetApp-FAS8300-DC1" - NetApp Filer im Datacenter 1</li>
+                <li>"EMC-Unity-300" - Dell EMC Unity Storage</li>
+                <li>"Synology-RS3621xs" - Synology NAS</li>
+            </ul>
+        </div>
+        <em>Name sollte eindeutig sein und System identifizierbar machen.</em>
+    </div>
+
+    <div data-tooltip-id="external-storage-tech">
+        <h2>Storage-Technologie</h2>
+        <p>Wie ist das externe Storage-System angebunden?</p>
+        <div>
+            <h3>Technologien erklärt:</h3>
+            <ul>
+                <li><strong>SAN (Fibre Channel):</strong>
+                    <ul>
+                        <li>Dediziertes Fibre-Channel-Netzwerk</li>
+                        <li>Sehr schnell (16/32 Gbit/s)</li>
+                        <li>Block-basiert (LUNs)</li>
+                        <li>Teuer, komplex</li>
+                        <li><em>Gold-Standard für Mission-Critical</em></li>
+                    </ul>
+                </li>
+                <li><strong>SAN (iSCSI):</strong>
+                    <ul>
+                        <li>SCSI über Standard-Ethernet</li>
+                        <li>Günstiger als FC</li>
+                        <li>10 GbE empfohlen</li>
+                        <li>Block-basiert</li>
+                        <li><em>Guter Kompromiss Preis/Leistung</em></li>
+                    </ul>
+                </li>
+                <li><strong>NAS (NFS/SMB):</strong>
+                    <ul>
+                        <li>File-basiert über Netzwerk</li>
+                        <li>Einfach zu konfigurieren</li>
+                        <li>NFS für VMware/Linux, SMB für Hyper-V</li>
+                        <li>Etwas langsamer als SAN</li>
+                        <li><em>Gut für nicht-kritische VMs</em></li>
+                    </ul>
+                </li>
+                <li><strong>Object Storage:</strong>
+                    <ul>
+                        <li>S3-kompatibel</li>
+                        <li>Für Backups, Archive</li>
+                        <li>Nicht für Live-VMs</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <em>Wahl hängt ab von: Budget, Performance-Anforderungen, Expertise</em>
+    </div>
+
+    <div data-tooltip-id="external-storage-capacity">
+        <h2>Kapazität (TB)</h2>
+        <p>Verfügbarer Storage-Platz auf dem externen System.</p>
+        <div>
+            <h3>Was angeben:</h3>
+            <ul>
+                <li><strong>Nutzbare Kapazität</strong> (nach RAID, Overhead)</li>
+                <li>Nicht die Roh-Kapazität!</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Beispiel:</h3>
+            <ul>
+                <li>10x 2TB Disks = 20 TB Roh-Kapazität</li>
+                <li>RAID 6 → 16 TB nutzbar</li>
+                <li>→ Eintragen: <strong>16 TB</strong></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Planung:</h3>
+            <ul>
+                <li>80% Auslastung max. empfohlen</li>
+                <li>Snapshots brauchen extra Platz</li>
+                <li>VM-Wachstum einplanen</li>
+            </ul>
+        </div>
+        <em>Lieber zu viel Storage als zu wenig - volles Storage = VMs können nicht starten!</em>
+    </div>
+
+    <div data-tooltip-id="external-storage-redundancy">
+        <h2>Redundanz</h2>
+        <p>Wie sind die Daten gegen Ausfall geschützt?</p>
+        <div>
+            <h3>RAID-Level erklärt:</h3>
+            <ul>
+                <li><strong>RAID 0 (Striping):</strong>
+                    <ul>
+                        <li>Keine Redundanz!</li>
+                        <li>Höchste Performance</li>
+                        <li>Eine Disk kaputt = alles weg</li>
+                        <li><em>Nur für temp. Daten</em></li>
+                    </ul>
+                </li>
+                <li><strong>RAID 1 (Mirroring):</strong>
+                    <ul>
+                        <li>Alle Daten doppelt gespeichert</li>
+                        <li>50% Kapazität nutzbar</li>
+                        <li>Ein Disk-Ausfall OK</li>
+                        <li><em>Einfach, aber teuer</em></li>
+                    </ul>
+                </li>
+                <li><strong>RAID 5:</strong>
+                    <ul>
+                        <li>Daten + Parity verteilt</li>
+                        <li>Ein Disk-Ausfall OK</li>
+                        <li>~75-80% Kapazität nutzbar (bei 4 Disks)</li>
+                        <li><em>Standard für viele Jahre</em></li>
+                        <li>⚠️ Rebuild dauert lange bei großen Disks!</li>
+                    </ul>
+                </li>
+                <li><strong>RAID 6:</strong>
+                    <ul>
+                        <li>Doppelte Parity</li>
+                        <li>Zwei Disk-Ausfälle OK</li>
+                        <li>~66-70% Kapazität nutzbar</li>
+                        <li><em>Empfohlen für große Storage-Systeme!</em></li>
+                    </ul>
+                </li>
+                <li><strong>RAID 10 (1+0):</strong>
+                    <ul>
+                        <li>Mirroring + Striping</li>
+                        <li>50% Kapazität nutzbar</li>
+                        <li>Sehr schnell</li>
+                        <li>Mehrere Disk-Ausfälle möglich (kommt drauf an welche)</li>
+                        <li><em>Beste Performance</em></li>
+                    </ul>
+                </li>
+                <li><strong>Erasure Coding:</strong>
+                    <ul>
+                        <li>Moderne Alternative zu RAID</li>
+                        <li>Flexibler (z.B. 8+3 = 8 Data + 3 Parity)</li>
+                        <li>Besser für große Systeme</li>
+                        <li>Ceph, vSAN nutzen das</li>
+                    </ul>
+                </li>
+                <li><strong>Replikation:</strong>
+                    <ul>
+                        <li>Daten auf mehrere Storage-Systeme kopieren</li>
+                        <li>Für Disaster Recovery</li>
+                        <li>Synchron oder asynchron</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Empfehlungen:</h3>
+            <ul>
+                <li><strong>Performance:</strong> RAID 10 (teuer)</li>
+                <li><strong>Kapazität:</strong> RAID 6 (sicher)</li>
+                <li><strong>Budget:</strong> RAID 5 (aber nur mit kleinen Disks < 2TB)</li>
+            </ul>
+        </div>
+        <em>RAID ist KEIN Backup! Redundanz schützt vor Hardware-Ausfall, nicht vor Fehlern/Viren!</em>
+    </div>
+
     <div data-tooltip-id="hypervisor-hostlist">
         <h2>Host-Liste / Hostnames</h2>
         <p>Die einzelnen physischen Server im Cluster.</p>
@@ -328,6 +578,140 @@
             <h3>Beispiele:</h3>
             "RZ1", "Datacenter Berlin", "Colocation Frankfurt"
         </div>
+    </div>
+
+    <div data-tooltip-id="hypervisor-hostname">
+        <h2>Hostname</h2>
+        <p>Der vollständige Hostname (FQDN) des Hypervisor-Hosts.</p>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>Verwenden Sie sprechende Namen (esxi-host-01, nicht server123)</li>
+                <li>FQDN verwenden (host.example.com)</li>
+                <li>Konsistente Namenskonvention</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Beispiele:</h3>
+            <ul>
+                <li>esxi-host-01.example.com</li>
+                <li>hyperv-prod-01.krankenhaus.local</li>
+                <li>proxmox-node1.example.org</li>
+            </ul>
+        </div>
+    </div>
+
+    <div data-tooltip-id="hypervisor-location-cluster">
+        <h2>Standort / Rechenzentrum (Cluster)</h2>
+        <p>Der physische Standort des gesamten Clusters.</p>
+        <div>
+            <h3>Wichtig bei Cluster:</h3>
+            <ul>
+                <li><strong>Alle Hosts sollten am gleichen Standort sein</strong> (für Low-Latency)</li>
+                <li>Stretch Cluster = Hosts an verschiedenen Standorten (sehr komplex!)</li>
+                <li>Für Disaster Recovery: Zweiter Cluster an anderem Standort</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Beispiele:</h3>
+            "RZ1 Datacenter Berlin", "Colocation Frankfurt Interxion"
+        </div>
+    </div>
+
+    <div data-tooltip-id="hypervisor-cpu">
+        <h2>CPU Cores</h2>
+        <p>Anzahl der verfügbaren CPU-Kerne des einzelnen Hosts.</p>
+        <div>
+            <h3>Berechnung:</h3>
+            Anzahl der physischen CPU-Cores (z.B. 2x Intel Xeon 16-Core = 32 Cores)
+        </div>
+        <div>
+            <h3>Moderne Server:</h3>
+            <ul>
+                <li>Kleine Hosts: 8-16 Cores</li>
+                <li>Standard: 32-64 Cores</li>
+                <li>Große Hosts: 128+ Cores</li>
+            </ul>
+        </div>
+        <em>Mehr Cores = mehr VMs gleichzeitig laufen lassen!</em>
+    </div>
+
+    <div data-tooltip-id="hypervisor-ram">
+        <h2>RAM</h2>
+        <p>Verfügbarer Arbeitsspeicher des einzelnen Hosts in GB.</p>
+        <div>
+            <h3>Typische Größen:</h3>
+            <ul>
+                <li>Klein: 64-128 GB</li>
+                <li>Standard: 256-512 GB</li>
+                <li>Groß: 1-2 TB</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Wichtig:</h3>
+            RAM ist oft der limitierende Faktor - VMs brauchen viel Speicher!
+        </div>
+    </div>
+
+    <div data-tooltip-id="hypervisor-storage">
+        <h2>Storage</h2>
+        <p>Verfügbarer lokaler Storage des einzelnen Hosts in TB.</p>
+        <div>
+            <h3>Typische Größen:</h3>
+            <ul>
+                <li>Klein: 2-5 TB (nur SSDs)</li>
+                <li>Standard: 10-20 TB</li>
+                <li>Groß: 50+ TB</li>
+            </ul>
+        </div>
+        <em>Nur bei host-basiertem Storage relevant!</em>
+    </div>
+
+    <div data-tooltip-id="hypervisor-storage-type-single">
+        <h2>Storage-Typ (Einzelhost)</h2>
+        <p>Wie ist der Storage an den einzelnen Host angebunden?</p>
+        <div>
+            <h3>Optionen:</h3>
+            <ul>
+                <li><strong>Local Storage (DAS):</strong> Festplatten direkt im Server</li>
+                <li><strong>SAN (Fibre Channel):</strong> Über FC-Netzwerk angebunden</li>
+                <li><strong>SAN (iSCSI):</strong> Über IP-Netzwerk angebunden</li>
+                <li><strong>NAS (NFS/SMB):</strong> File-basierter Storage über Netzwerk</li>
+                <li><strong>Gemischt:</strong> Kombination verschiedener Typen</li>
+            </ul>
+        </div>
+    </div>
+
+    <div data-tooltip-id="hypervisor-datastore">
+        <h2>Datastore / Storage Pool Name</h2>
+        <p>Der Name des primären Datastores in Ihrer Hypervisor-Umgebung.</p>
+        <div>
+            <h3>Was ist ein Datastore?</h3>
+            Der "Ordner" wo VMs gespeichert werden - jeder Hypervisor braucht mindestens einen.
+        </div>
+        <div>
+            <h3>Beispiele:</h3>
+            <ul>
+                <li><strong>VMware:</strong> "datastore1", "vsan-cluster", "SAN-LUN01"</li>
+                <li><strong>Hyper-V:</strong> "C:\\ClusterStorage\\Volume1", "CSV01"</li>
+                <li><strong>Proxmox:</strong> "local", "local-lvm", "nfs-storage"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div data-tooltip-id="hypervisor-storage-capacity">
+        <h2>Storage Kapazität</h2>
+        <p>Verfügbarer Speicherplatz für VMs in TB.</p>
+        <div>
+            <h3>Planung:</h3>
+            <ul>
+                <li>Typische VM: 50-200 GB</li>
+                <li>Datenbank-Server: 500 GB - 2 TB</li>
+                <li>File-Server: 2-10 TB</li>
+                <li><strong>Max. 80% Auslastung empfohlen!</strong></li>
+            </ul>
+        </div>
+        <em>Snapshots und Thin Provisioning brauchen extra Platz!</em>
     </div>
 
     <div data-tooltip-id="hypervisor-total-cpu">
@@ -641,6 +1025,46 @@
             "vDS-Production" oder "vSwitch0"
         </div>
         <em>Distributed Switch ist Pflicht für größere Umgebungen!</em>
+    </div>
+
+    <div data-tooltip-id="hypervisor-physical-nics">
+        <h2>Physische NICs / Uplinks</h2>
+        <p>Die physischen Netzwerkkarten (Network Interface Cards) im Server.</p>
+        <div>
+            <h3>Typische Konfigurationen:</h3>
+            <ul>
+                <li><strong>2x 1 GbE:</strong> Minimum für kleine Umgebungen</li>
+                <li><strong>4x 10 GbE:</strong> Standard für Produktion</li>
+                <li><strong>2x 25 GbE:</strong> Modern, gut für Storage + vMotion</li>
+                <li><strong>2x 40/100 GbE:</strong> High-End für große Umgebungen</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practices:</h3>
+            <ul>
+                <li>Mindestens 2 NICs pro Netzwerk (Redundanz)</li>
+                <li>Separate NICs für Management, vMotion, Storage, VMs</li>
+                <li>10 GbE Minimum für Storage-Netzwerk</li>
+                <li>Link Aggregation (LACP) für höhere Bandbreite</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Typisches Setup (4 NICs):</h3>
+            <ul>
+                <li>NIC 1+2: Management + vMotion (Team/Bond)</li>
+                <li>NIC 3+4: VM Networks (Team/Bond)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Großes Setup (6+ NICs):</h3>
+            <ul>
+                <li>NIC 1+2: Management (redundant)</li>
+                <li>NIC 3+4: vMotion (redundant)</li>
+                <li>NIC 5+6: Storage (redundant)</li>
+                <li>NIC 7+8: VM Networks (redundant)</li>
+            </ul>
+        </div>
+        <em>Mehr NICs = bessere Performance + Redundanz, aber auch höhere Kosten!</em>
     </div>
 
     <div data-tooltip-id="hypervisor-mgmt-tool">

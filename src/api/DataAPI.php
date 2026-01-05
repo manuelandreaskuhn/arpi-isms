@@ -3,7 +3,7 @@ namespace ARPI\API;
 
 class DataAPI {
     private $dataDir;
-    private $allowedFiles = ['firewall-software'];
+    private $allowedFiles = ['firewall-software', 'hypervisor-software', 'backup-software', 'siem-software'];
     
     public function __construct() {
         // Set data directory path (one level up from api folder)
