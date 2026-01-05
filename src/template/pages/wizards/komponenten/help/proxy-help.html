@@ -1,30 +1,18 @@
 <div class="tooltip-definitions" style="display: none;">
     <div data-tooltip-id="proxy-name">
         <h2>Proxy-Server Name</h2>
-        <p>Ein eindeutiger Name für Ihren Proxy-Server.</p>
+        <p>Ein eindeutiger Name für Ihren Proxy-Server - dieser Vermittler zwischen Clients und dem Internet fungiert als "Dolmetscher" und "Türsteher" in einem.</p>
         <div>
-            <h3>Was ist ein Proxy-Server?</h3>
-            Ein Vermittler zwischen Clients und dem Internet - wie ein "Dolmetscher" und "Türsteher" in einem.
-        </div>
-        <div>
-            <h3>Warum Proxy-Server wichtig sind:</h3>
+            <h3>Vorteile:</h3>
             <ul>
-                <li><strong>Sicherheit:</strong> Zentrale Kontrolle über Internet-Zugriffe</li>
-                <li><strong>Content-Filtering:</strong> Blockieren unerwünschter Websites</li>
-                <li><strong>Caching:</strong> Schnellerer Zugriff durch lokale Kopien</li>
-                <li><strong>Anonymität:</strong> Versteckt interne IPs nach außen</li>
-                <li><strong>Bandbreiten-Kontrolle:</strong> Traffic-Management</li>
-                <li><strong>Compliance:</strong> Logging für Audit-Zwecke</li>
+                <li><strong>Sicherheit:</strong> Zentrale Kontrolle über Internet-Zugriffe und Content-Filtering unerwünschter Websites</li>
+                <li><strong>Performance:</strong> Caching für schnelleren Zugriff, Bandbreiten-Kontrolle und Traffic-Management</li>
+                <li><strong>Anonymität & Compliance:</strong> Versteckt interne IPs nach außen, Logging für Audit-Zwecke</li>
             </ul>
         </div>
         <div>
             <h3>Namens-Beispiele:</h3>
-            <ul>
-                <li>"Proxy-01" - Erster Proxy-Server</li>
-                <li>"Corporate-Proxy" - Unternehmens-Proxy</li>
-                <li>"Squid-Proxy-DMZ" - Squid in der DMZ</li>
-                <li>"Web-Gateway" - Web Security Gateway</li>
-            </ul>
+            <code>Proxy-01, Corporate-Proxy, Squid-Proxy-DMZ, Web-Gateway</code>
         </div>
         <em>Moderne Unternehmen: 80%+ des Web-Traffics läuft über Proxies!</em>
     </div>
@@ -127,6 +115,24 @@
         <em>HTTP/HTTPS Forward Proxy ist Standard für Unternehmens-Internet-Zugang!</em>
     </div>
 
+    <div data-tooltip-id="proxy-protocols">
+        <h2>Unterstützte Protokolle</h2>
+        <p>Welche Netzwerk-Protokolle der Proxy-Server verarbeiten kann.</p>
+        <div>
+            <h3>Protokolle:</h3>
+            <ul>
+                <li><strong>HTTP:</strong> Standard Web-Traffic (Port 80), unverschlüsselt</li>
+                <li><strong>HTTPS:</strong> Verschlüsselter Web-Traffic (Port 443) - heute 90%+ des Traffics</li>
+                <li><strong>FTP:</strong> File Transfer Protocol für Datei-Uploads/-Downloads</li>
+                <li><strong>SOCKS:</strong> Generischer Proxy für alle TCP/UDP-Verbindungen (nicht nur HTTP)</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Hinweis:</h3>
+            Die verfügbaren Protokolle werden automatisch basierend auf dem gewählten Proxy-Typ angepasst. Forward Proxies unterstützen typischerweise HTTP/HTTPS, SOCKS-Proxies alle Protokolle, Reverse Proxies nur HTTP/HTTPS.
+        </div>
+    </div>
+
     <div data-tooltip-id="proxy-port">
         <h2>Proxy-Port</h2>
         <p>Der TCP-Port, auf dem der Proxy lauscht.</p>
@@ -149,172 +155,35 @@
 
     <div data-tooltip-id="proxy-software">
         <h2>Proxy-Software</h2>
-        <p>Welche Software wird als Proxy verwendet?</p>
+        <p>Die Software-Lösung, die als Proxy-Server eingesetzt wird. Wählen Sie die passende Software basierend auf Ihren Anforderungen an Performance, Features und Budget.</p>
         <div>
-            <h3>Open Source Forward Proxies:</h3>
+            <h3>Forward Proxies (Internet-Zugang):</h3>
             <ul>
-                <li><strong>Squid Proxy:</strong>
-                    <ul>
-                        <li>Der Klassiker - seit 1996</li>
-                        <li>HTTP/HTTPS Caching Proxy</li>
-                        <li>Läuft auf Linux/Unix/BSD</li>
-                        <li>Sehr flexibel konfigurierbar (aber Lernkurve!)</li>
-                        <li>ACLs für komplexe Zugriffsregeln</li>
-                        <li>SSL-Bump für HTTPS-Inspection</li>
-                        <li>Integrierbar mit ICAP für Antivirus</li>
-                        <li><em>Standard in vielen Unternehmen - kostenlos, stabil, bewährt</em></li>
-                    </ul>
-                </li>
-                <li><strong>Privoxy:</strong>
-                    <ul>
-                        <li>Privacy-fokussierter Proxy</li>
-                        <li>Filtert Werbung und Tracking</li>
-                        <li>Für einzelne User oder kleine Gruppen</li>
-                    </ul>
-                </li>
-                <li><strong>Tinyproxy:</strong>
-                    <ul>
-                        <li>Minimalistisch, sehr klein</li>
-                        <li>Für einfache Szenarien</li>
-                    </ul>
-                </li>
+                <li><strong>Squid:</strong> Der Klassiker seit 1996 - kostenlos, stabil, mächtig. HTTP/HTTPS Caching, ACLs, SSL-Bump. Standard für bis zu 5000 User. Braucht Linux-Expertise.</li>
+                <li><strong>Blue Coat ProxySG:</strong> Enterprise SWG mit All-in-One Features (Proxy+Firewall+DLP+AV+URL-Filter). Für 10.000+ User, sehr teuer (€50k-200k+).</li>
+                <li><strong>Cisco WSA / Fortigate:</strong> Enterprise-Appliances mit Advanced Threat Protection, gut für KMU bis Großunternehmen.</li>
             </ul>
         </div>
         <div>
-            <h3>Open Source Reverse Proxies:</h3>
+            <h3>Reverse Proxies (Web-Apps schützen):</h3>
             <ul>
-                <li><strong>Nginx:</strong>
-                    <ul>
-                        <li>Moderner, sehr performanter Reverse Proxy</li>
-                        <li>Auch Load Balancer und Webserver</li>
-                        <li>Geringer Speicher-Verbrauch</li>
-                        <li>Event-driven (nicht prozess-basiert wie Apache)</li>
-                        <li>Gut für hohe Konkurrenz (viele gleichzeitige Connections)</li>
-                        <li>SSL-Terminierung, HTTP/2, HTTP/3 Support</li>
-                        <li><em>De-facto Standard für moderne Web-Apps</em></li>
-                    </ul>
-                </li>
-                <li><strong>HAProxy:</strong>
-                    <ul>
-                        <li>High-Performance Load Balancer und Reverse Proxy</li>
-                        <li>Fokus auf Reliability und Performance</li>
-                        <li>TCP und HTTP Load Balancing</li>
-                        <li>Sehr schnell, sehr stabil</li>
-                        <li>Umfangreiches Health-Checking</li>
-                        <li><em>Wenn Performance kritisch ist - HAProxy wählen</em></li>
-                    </ul>
-                </li>
-                <li><strong>Apache mod_proxy:</strong>
-                    <ul>
-                        <li>Apache Webserver als Reverse Proxy</li>
-                        <li>Wenn Apache schon vorhanden</li>
-                        <li>Weniger performant als Nginx/HAProxy</li>
-                    </ul>
-                </li>
-                <li><strong>Traefik:</strong>
-                    <ul>
-                        <li>Modern, Cloud-Native Reverse Proxy</li>
-                        <li>Automatische Service-Discovery</li>
-                        <li>Perfekt für Docker/Kubernetes</li>
-                        <li>Let's Encrypt Integration</li>
-                    </ul>
-                </li>
+                <li><strong>Nginx:</strong> Moderner Standard für Web-Apps - extrem performant, event-driven, HTTP/2+3 Support. De-facto Standard.</li>
+                <li><strong>HAProxy:</strong> High-Performance Load Balancer - wenn Performance kritisch ist. TCP+HTTP Load Balancing.</li>
+                <li><strong>Traefik:</strong> Cloud-Native für Docker/Kubernetes mit automatischer Service-Discovery.</li>
             </ul>
         </div>
         <div>
-            <h3>Enterprise / Commercial Proxies:</h3>
+            <h3>Cloud-Proxies (SaaS):</h3>
             <ul>
-                <li><strong>Blue Coat ProxySG (Symantec, jetzt Broadcom):</strong>
-                    <ul>
-                        <li>Enterprise Secure Web Gateway (SWG)</li>
-                        <li>Hardware-Appliance oder Virtual</li>
-                        <li>All-in-One: Proxy + Firewall + DLP + Antivirus + URL-Filter</li>
-                        <li>Sehr leistungsstark (10.000+ User)</li>
-                        <li>Sehr teuer (€50k-200k+)</li>
-                        <li><em>Rolls-Royce der Proxies - für Großunternehmen</em></li>
-                    </ul>
-                </li>
-                <li><strong>Fortigate Web Proxy:</strong>
-                    <ul>
-                        <li>Teil der Fortigate UTM-Firewall</li>
-                        <li>Integriert mit anderen Security-Features</li>
-                        <li>Gutes Preis-/Leistungsverhältnis</li>
-                        <li>Für KMU bis Mittelstand</li>
-                    </ul>
-                </li>
-                <li><strong>Cisco WSA (Web Security Appliance):</strong>
-                    <ul>
-                        <li>Cisco's Secure Web Gateway</li>
-                        <li>Advanced Threat Protection</li>
-                        <li>Integration mit Cisco Security-Ecosystem</li>
-                        <li>Teuer, Enterprise-fokussiert</li>
-                    </ul>
-                </li>
-                <li><strong>McAfee Web Gateway:</strong>
-                    <ul>
-                        <li>Teil der McAfee Security-Suite</li>
-                        <li>DLP, Malware-Scanning, URL-Filtering</li>
-                    </ul>
-                </li>
-                <li><strong>Palo Alto Networks:</strong>
-                    <ul>
-                        <li>Next-Gen Firewall mit Proxy-Funktionen</li>
-                        <li>App-ID, User-ID, Content-ID</li>
-                        <li>Sehr umfangreich, komplex</li>
-                    </ul>
-                </li>
+                <li><strong>Zscaler:</strong> Cloud-SWG ohne eigenen Server - gut für verteilte Standorte, Home-Office, Zero Trust. Subscription pro User.</li>
+                <li><strong>Cloudflare Gateway:</strong> Schnell durch weltweites CDN-Netzwerk.</li>
             </ul>
         </div>
         <div>
-            <h3>Cloud-basierte Proxies (SaaS):</h3>
-            <ul>
-                <li><strong>Zscaler:</strong>
-                    <ul>
-                        <li>Cloud-basierter Secure Web Gateway</li>
-                        <li>Kein eigener Server nötig</li>
-                        <li>Clients verbinden zu Zscaler-Cloud</li>
-                        <li>Gut für verteilte Standorte und Home-Office</li>
-                        <li>Skaliert automatisch</li>
-                        <li>Subscription-Modell (pro User)</li>
-                        <li><em>Zukunft - Zero Trust Network Access (ZTNA)</em></li>
-                    </ul>
-                </li>
-                <li><strong>Cloudflare Gateway:</strong>
-                    <ul>
-                        <li>Cloud-Proxy von Cloudflare</li>
-                        <li>Integriert mit Cloudflare's globalem Netzwerk</li>
-                        <li>Schnell durch weltweite Edge-Location</li>
-                    </ul>
-                </li>
-                <li><strong>Cisco Umbrella (früher OpenDNS):</strong>
-                    <ul>
-                        <li>DNS-basierter Cloud-Proxy</li>
-                        <li>Einfach zu deployen</li>
-                    </ul>
-                </li>
-            </ul>
+            <h3>Empfehlung:</h3>
+            <strong>KMU (bis 100):</strong> Squid/Fortigate · <strong>Mittelstand (100-1000):</strong> Squid/Cisco WSA · <strong>Enterprise (1000+):</strong> Blue Coat/Zscaler · <strong>Cloud/Modern:</strong> Zscaler
         </div>
-        <div>
-            <h3>Entscheidungskriterien:</h3>
-            <ul>
-                <li><strong>Budget:</strong> Open Source (Squid) vs. Commercial (Blue Coat €€€)</li>
-                <li><strong>User-Anzahl:</strong> Squid bis ~5000, Enterprise-Lösung 10k+</li>
-                <li><strong>Features:</strong> Nur Proxy oder auch DLP, Malware-Scan?</li>
-                <li><strong>Expertise:</strong> Linux-Admin für Squid, oder Appliance bevorzugt?</li>
-                <li><strong>Cloud vs. On-Prem:</strong> Viele Remote-User → Cloud (Zscaler)</li>
-                <li><strong>Compliance:</strong> Spezielle Anforderungen (KRITIS)?</li>
-            </ul>
-        </div>
-        <div>
-            <h3>Typische Kombinationen:</h3>
-            <ul>
-                <li><strong>KMU (bis 100 User):</strong> Squid oder Fortigate</li>
-                <li><strong>Mittelstand (100-1000):</strong> Squid oder Cisco WSA</li>
-                <li><strong>Enterprise (1000+):</strong> Blue Coat, Zscaler</li>
-                <li><strong>Modern/Cloud:</strong> Zscaler, Cloudflare Gateway</li>
-            </ul>
-        </div>
-        <em>Squid ist kostenlos und mächtig - aber braucht Linux-Expertise!</em>
+        <em>Die Software-Details werden automatisch aus der Datenbank geladen, sobald Sie eine Option wählen.</em>
     </div>
 
     <div data-tooltip-id="proxy-auth">
@@ -867,6 +736,42 @@ function FindProxyForURL(url, host) {
         </div>
     </div>
 
+    <div data-tooltip-id="proxy-failover-mechanism">
+        <h2>Failover-Mechanismus</h2>
+        <p>Wie der Wechsel zum sekundären Proxy-Server erfolgt, wenn der primäre Proxy ausfällt.</p>
+        <div>
+            <h3>Modi:</h3>
+            <ul>
+                <li><strong>Automatisch:</strong> Browser/System wechselt automatisch zum Backup-Proxy bei Ausfall des primären Proxies. Konfiguriert via PAC-Datei mit Fallback-Liste oder DNS Round-Robin. Seamless für Benutzer, keine Downtime.</li>
+                <li><strong>Manuell:</strong> Admin muss bei Ausfall manuell die Konfiguration ändern (DNS, GPO). Downtime während Umstellung, typisch 15-60 Minuten. Nur für unkritische Umgebungen.</li>
+                <li><strong>Load Balanced:</strong> Traffic wird permanent auf beide/mehrere Proxies verteilt (Active-Active). Bei Ausfall eines Proxies läuft der andere weiter. Beste Performance und Hochverfügbarkeit. Braucht Load Balancer (F5, HAProxy) oder DNS-basiert.</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Best Practice:</h3>
+            Für Produktiv-Umgebungen: "Automatisch" oder "Load Balanced". Manuell nur für Test-Umgebungen oder sehr kleine Installationen mit toleranter Downtime.
+        </div>
+    </div>
+
+    <div data-tooltip-id="proxy-content-filtering">
+        <h2>Content-Filtering</h2>
+        <p>Filterung basierend auf Inhaltsanalyse - geht über URL-Filtering hinaus und untersucht den tatsächlichen Inhalt von Webseiten.</p>
+        <div>
+            <h3>Was wird gefiltert:</h3>
+            <ul>
+                <li><strong>Textanalyse:</strong> Keywords, Phrasen, kontextuelle Inhalte (z.B. gewaltverherrlichende Sprache)</li>
+                <li><strong>Bildanalyse:</strong> OCR für Text in Bildern, Bilderkennung für unangemessene Inhalte</li>
+                <li><strong>Datei-Typen:</strong> Blockieren bestimmter Download-Formate (z.B. .exe, .torrent)</li>
+                <li><strong>Scripting:</strong> Erkennung von Drive-by-Downloads, Exploit-Kits in JavaScript</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Unterschied zu URL-Filtering:</h3>
+            URL-Filtering prüft nur die Domain/URL gegen Kategorien - Content-Filtering analysiert den tatsächlichen Seiteninhalt. Dadurch werden auch neue, noch nicht kategorisierte Seiten erkannt, ist aber rechenintensiver.
+        </div>
+        <em>Aktivierung empfohlen für maximale Sicherheit - braucht aber mehr CPU-Ressourcen!</em>
+    </div>
+
     <div data-tooltip-id="proxy-url-filtering">
         <h2>URL-Filtering</h2>
         <p>Blockieren bestimmter Websites nach Kategorien.</p>
@@ -1141,48 +1046,50 @@ function FindProxyForURL(url, host) {
 
     <div data-tooltip-id="proxy-logging">
         <h2>Access Logging</h2>
-        <p>Protokollierung der Proxy-Zugriffe.</p>
-        <div>
-            <h3>Was wird geloggt:</h3>
-            <ul>
-                <li>Wer (Benutzer oder IP)</li>
-                <li>Wann (Zeitstempel)</li>
-                <li>Wohin (URL)</li>
-                <li>Was (HTTP-Methode, Status-Code)</li>
-                <li>Wie viel (Bytes übertragen)</li>
-            </ul>
-        </div>
+        <p>Protokollierung der Proxy-Zugriffe: Wer (User/IP), Wann (Zeit), Wohin (URL), Was (HTTP-Methode, Status), Wie viel (Bytes).</p>
         <div>
             <h3>Log-Level:</h3>
             <ul>
-                <li><strong>Vollständig:</strong> Alle Requests inkl. URLs – detailliert, aber viel Daten</li>
-                <li><strong>Minimal:</strong> Nur IP, Zeit, Domain (nicht volle URL) – weniger Daten</li>
-                <li><strong>Deaktiviert:</strong> Kein Logging – nicht empfohlen!</li>
+                <li><strong>Vollständig:</strong> Alle Requests inkl. voller URLs - detailliert für Security-Analysen, aber hoher Speicherbedarf (GB/Tag bei vielen Usern)</li>
+                <li><strong>Minimal:</strong> Nur IP, Zeit, Domain ohne volle URL - weniger Datenschutz-sensitiv, ausreichend für Traffic-Statistiken</li>
+                <li><strong>Deaktiviert:</strong> Kein Logging - nicht empfohlen, da keine Forensik bei Security-Incidents möglich</li>
             </ul>
         </div>
         <div>
-            <h3>Warum Logging wichtig:</h3>
-            <ul>
-                <li>Security: Angriffe erkennen</li>
-                <li>Troubleshooting: Warum wurde Site blockiert?</li>
-                <li>Compliance: Audit-Trail</li>
-                <li>Forensik: Bei Incident zurückverfolgen</li>
-            </ul>
+            <h3>Verwendung:</h3>
+            Security (Angriffe erkennen), Troubleshooting (warum wurde Site blockiert), Compliance (Audit-Trail), Forensik (Incident Response)
         </div>
         <div>
             <h3>Datenschutz:</h3>
+            Persönliche Surf-Gewohnheiten sind sensibel - Log-Retention begrenzen (typisch 90 Tage), Zugriff beschränken, Betriebsrat einbeziehen bei Vollständigem Logging.
+        </div>
+        <em>Logging ist Pflicht für Security, aber Datenschutz beachten!</em>
+    </div>
+
+    <div data-tooltip-id="proxy-monitoring">
+        <h2>Monitoring-Integration</h2>
+        <p>Integration des Proxy-Servers mit Monitoring- und SIEM-Systemen zur Überwachung von Verfügbarkeit, Performance und Security-Events.</p>
+        <div>
+            <h3>Was überwacht wird:</h3>
             <ul>
-                <li>Persönliche Surf-Gewohnheiten sind sensibel</li>
-                <li>Log-Retention begrenzen (90 Tage typisch)</li>
-                <li>Zugriff beschränken</li>
-                <li>Betriebsrat einbeziehen</li>
+                <li><strong>Verfügbarkeit:</strong> Ist der Proxy erreichbar? Health-Checks per HTTP/HTTPS, Response-Time</li>
+                <li><strong>Performance:</strong> CPU, RAM, Disk I/O, Netzwerk-Throughput, Cache-Hit-Rate, Latenz</li>
+                <li><strong>Kapazität:</strong> Aktuelle Connections, Requests/Sekunde, Bandbreiten-Nutzung</li>
+                <li><strong>Security:</strong> Blockierte Requests, Malware-Detections, DLP-Violations, Failed Auth-Attempts</li>
             </ul>
         </div>
         <div>
-            <h3>Log-Größe:</h3>
-            Bei vielen Benutzern: GB pro Tag!
+            <h3>Integration:</h3>
+            <ul>
+                <li><strong>SIEM-Systeme:</strong> Weiterleitung der Access-Logs und Security-Events an zentrale SIEM-Lösung (Splunk, QRadar, ELK) via Syslog oder API</li>
+                <li><strong>Monitoring-Tools:</strong> SNMP, Agent-basiert oder Agentless-Monitoring der Proxy-Infrastruktur</li>
+                <li><strong>Alerting:</strong> Bei Ausfall, hoher Last, Security-Events automatische Benachrichtigung des Admin-Teams</li>
+            </ul>
         </div>
-        <em>Logging ist Pflicht für Security, aber Datenschutz beachten!</em>
+        <div>
+            <h3>Empfehlung:</h3>
+            Wählen Sie Ihre bestehende SIEM-Komponente aus der Liste oder geben Sie ein externes Monitoring-System manuell ein. Zentrale Überwachung ist kritisch für frühzeitige Problemerkennung.
+        </div>
     </div>
 
     <div data-tooltip-id="proxy-notes">

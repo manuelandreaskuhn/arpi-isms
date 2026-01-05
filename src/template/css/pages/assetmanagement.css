@@ -1083,7 +1083,9 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
 
 /* Radio Card Selector */
 .log-level-selector,
-.ha-selector {
+.ha-selector,
+.failover-mechanism-selector,
+.ssl-interception-selector {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 12px;
@@ -1218,6 +1220,57 @@ form#newSoftwareQuickForm > div.newentry > button:hover {
 .checkbox-item span {
     font-size: 0.9em;
     font-weight: 500;
+}
+
+/* Checkbox Cards */
+.checkbox-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.checkbox-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox-card-content {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-card input[type="checkbox"]:checked + .checkbox-card-content {
+    border-color: var(--primary-color);
+    background: rgba(22, 160, 133, 0.05);
+}
+
+.checkbox-card input[type="checkbox"]:disabled + .checkbox-card-content {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.checkbox-card:hover .checkbox-card-content:not(:has(input:disabled)) {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-card-title {
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #2c3e50;
 }
 
 /* HA Enable Card */

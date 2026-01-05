@@ -1,4 +1,4 @@
-<aside>
+<aside class="wizardnavigation-enabled">
     <div class="breadcrumb">
         <p>Assetmanagement</p>
         <i>›</i>
@@ -7,19 +7,23 @@
         <p>Neuen Proxy-Server anlegen</p>
     </div>
     <div class="page-header-container">
-        <div class="page-header">
-            <h1>Neuen Proxy-Server anlegen</h1>
-            <p>Erfassen Sie die Details Ihres Proxy-Servers, um eine zentrale Übersicht Ihrer Netzwerk-Infrastruktur zu erhalten.</p>
-        </div>
-        <div class="formmanagement">
-            <span class="form-status" data-lastchange="" data-status="notsaved">Nicht gespeichert</span>
-            <button type="button" class="btn-cancel">Abbrechen</button>
-            <button type="submit" form="newProxyForm" class="btn-save" disabled>Speichern</button>
-        </div>
+        <div class="page-header"></div>
     </div>
 </aside>
 
-<form id="newProxyForm">
+<div class="error-management" id="formErrorManagement" style="display:none;">
+    <div class="error-header">
+        <span class="error-icon">!</span>
+        <span class="error-title">Fehler im Formular</span>
+    </div>
+    <div class="error-content">
+        <ul class="error-list">
+            <!-- Dynamische Fehlerliste -->
+        </ul>
+    </div>
+</div>
+
+<form id="newProxyForm" data-instance-uuid="">
 
     <!-- Basis-Informationen -->
     <div class="form-section">
@@ -111,22 +115,37 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <label>Proxy-Protokoll</label>
-                    <div class="custom-select" data-name="protocol">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="http-https">HTTP/HTTPS</div>
-                                <div class="select-option" data-value="all">Alle Protokolle</div>
-                                <div class="select-option" data-value="ftp">FTP</div>
-                                <div class="select-option" data-value="custom">Benutzerdefiniert</div>
+                    <label>
+                        Unterstützte Protokolle
+                        <span class="help-icon" data-tooltip="proxy-protocols">?</span>
+                    </label>
+                    <div class="checkbox-cards" id="proxy-protocols-container">
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="protocols" value="http">
+                            <div class="checkbox-card-content">
+                                <span class="checkbox-card-title">HTTP</span>
                             </div>
-                        </div>
+                        </label>
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="protocols" value="https">
+                            <div class="checkbox-card-content">
+                                <span class="checkbox-card-title">HTTPS</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="protocols" value="ftp">
+                            <div class="checkbox-card-content">
+                                <span class="checkbox-card-title">FTP</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="protocols" value="socks">
+                            <div class="checkbox-card-content">
+                                <span class="checkbox-card-title">SOCKS</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -154,6 +173,69 @@
                             <div class="select-option" data-value="zscaler">Zscaler</div>
                             <div class="select-option" data-value="other">Sonstige</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informationen zur Software -->
+        <div id="proxy-software-info-section" class="collapsed">
+            <div class="section-content">
+                <div class="subsection-header">Informationen zur Proxy-Software</div>
+                <div class="software-info-container">
+                    <div class="software-info-grid">
+                        <div class="software-info-item">
+                            <label>Software</label>
+                            <span class="software-info-title"></span>
+                        </div>
+                        <div class="software-info-item">
+                            <label>Hersteller</label>
+                            <span class="software-vendor"></span>
+                        </div>
+                    </div>
+                    <div class="software-info-grid">
+                        <div class="software-info-item">
+                            <label>Kategorie:</label>
+                            <span id="sw-category">-</span>
+                        </div>
+                        <div class="software-info-item">
+                            <label>Typ:</label>
+                            <span id="sw-type">-</span>
+                        </div>
+                    </div>
+                    <div class="software-info-description">
+                        <label>Beschreibung:</label>
+                        <p class="software-description-text" id="sw-description">Bitte wählen Sie eine Proxy-Software aus.</p>
+                    </div>
+                    <div class="software-info-row">
+                        <div class="software-info-section">
+                            <label>Features:</label>
+                            <div class="software-features" id="sw-features">-</div>
+                        </div>
+                        <div class="software-info-section">
+                            <label>Plattformen:</label>
+                            <div class="software-platforms" id="sw-platforms">-</div>
+                        </div>
+                    </div>
+                    <div class="software-info-row">
+                        <div class="software-info-section">
+                            <label>Lizenzmodelle:</label>
+                            <div class="software-license" id="sw-license">-</div>
+                        </div>
+                    </div>
+                    <div class="software-info-row">
+                        <div class="software-info-pricing">
+                            <label>Preisgestaltung:</label>
+                            <p class="software-pricing-text" id="sw-pricing">-</p>
+                        </div>
+                        <div class="software-info-notes">
+                            <label>Hinweise:</label>
+                            <p class="software-notes-text" id="sw-notes">-</p>
+                        </div>
+                    </div>
+                    <div class="software-info-cpe">
+                        <label>CPE-Identifikatoren:</label>
+                        <div class="software-cpe-list" id="sw-cpe">-</div>
                     </div>
                 </div>
             </div>
@@ -247,18 +329,12 @@
                         WPAD (Web Proxy Auto-Discovery)
                         <span class="help-icon" data-tooltip="proxy-wpad">?</span>
                     </label>
-                    <div class="custom-select" data-name="proxywpad">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="enabled">Aktiviert</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
-                            </div>
-                        </div>
+                    <div class="toggle-wrapper">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="proxywpad" name="proxywpad">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
             </div>
@@ -269,22 +345,32 @@
                         SSL-Interception / HTTPS-Inspection
                         <span class="help-icon" data-tooltip="proxy-ssl-interception">?</span>
                     </label>
-                    <div class="custom-select" data-name="proxysslinterception">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="enabled">Aktiviert</div>
-                                <div class="select-option" data-value="partial">Teilweise (Whitelist)</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                    <div class="ssl-interception-selector">
+                        <label class="radio-card">
+                            <input type="radio" name="proxysslinterception" value="enabled">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Aktiviert</span>
+                                <span class="radio-card-desc">Vollständige SSL/TLS Inspection</span>
                             </div>
-                        </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="proxysslinterception" value="partial">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Teilweise</span>
+                                <span class="radio-card-desc">Nur bestimmte Sites (Whitelist)</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="proxysslinterception" value="disabled">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Deaktiviert</span>
+                                <span class="radio-card-desc">Keine SSL Inspection</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
-                <div class="form-group">
+
+                <div class="form-group" id="proxy-ssl-cert-field" style="display:none;">
                     <label>SSL-Zertifikat</label>
                     <input type="text" id="proxysslcert" name="proxysslcert" placeholder="z.B. Corporate-CA-Cert">
                     <div class="help-text">Für SSL-Interception erforderlich</div>
@@ -297,21 +383,15 @@
                         Proxy-Cache
                         <span class="help-icon" data-tooltip="proxy-cache">?</span>
                     </label>
-                    <div class="custom-select" data-name="proxycache">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="enabled">Aktiviert</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
-                            </div>
-                        </div>
+                    <div class="toggle-wrapper">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="proxycache" name="proxycache">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="proxy-cache-size-field" style="display:none;">
                     <label>Cache-Größe</label>
                     <input type="text" id="proxycachesize" name="proxycachesize" placeholder="z.B. 10GB, 50GB">
                 </div>
@@ -327,11 +407,16 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <div class="form-group">
-                <label class="cluster-label">
+            <div class="ha-enable-card">
+                <label class="ha-enable-label">
                     <input type="checkbox" id="proxy-failover-check">
-                    <span>Failover / Sekundärer Proxy konfiguriert</span>
-                    <span class="help-icon" data-tooltip="proxy-failover">?</span>
+                    <div class="ha-enable-content">
+                        <div class="ha-enable-text">
+                            <span class="ha-enable-title">Failover / Redundanz aktiviert</span>
+                            <span class="ha-enable-desc">Aktivieren Sie Failover für Ausfallsicherheit und Hochverfügbarkeit</span>
+                        </div>
+                        <span class="help-icon" data-tooltip="proxy-failover">?</span>
+                    </div>
                 </label>
             </div>
 
@@ -363,20 +448,32 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Failover-Mechanismus</label>
-                    <div class="custom-select" data-name="proxyfailovermechanism">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="automatic">Automatisch</div>
-                                <div class="select-option" data-value="manual">Manuell</div>
-                                <div class="select-option" data-value="load-balanced">Load Balanced</div>
+                    <label>
+                        Failover-Mechanismus
+                        <span class="help-icon" data-tooltip="proxy-failover-mechanism">?</span>
+                    </label>
+                    <div class="failover-mechanism-selector">
+                        <label class="radio-card">
+                            <input type="radio" name="proxyfailovermechanism" value="automatic">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Automatisch</span>
+                                <span class="radio-card-desc">Automatischer Failover bei Ausfall</span>
                             </div>
-                        </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="proxyfailovermechanism" value="manual">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Manuell</span>
+                                <span class="radio-card-desc">Manuelles Umschalten erforderlich</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="proxyfailovermechanism" value="load-balanced">
+                            <div class="radio-card-content">
+                                <span class="radio-card-title">Load Balanced</span>
+                                <span class="radio-card-desc">Lastverteilung über mehrere Proxies</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -391,81 +488,68 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
-            <div class="form-row">
-                <div class="form-group">
-                    <label>
-                        URL-Filtering
-                        <span class="help-icon" data-tooltip="proxy-url-filtering">?</span>
-                    </label>
-                    <div class="custom-select" data-name="proxyurlfiltering">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="enabled">Aktiviert</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
-                            </div>
-                        </div>
+            <div class="security-features-grid">
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            URL-Filtering
+                            <span class="help-icon" data-tooltip="proxy-url-filtering">?</span>
+                        </label>
+                    </div>
+                    <div class="toggle-wrapper">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="proxyurlfiltering" name="proxyurlfiltering">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Content-Filtering</label>
-                    <div class="custom-select" data-name="proxycontentfiltering">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="enabled">Aktiviert</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>
-                        Malware-Scanning
-                        <span class="help-icon" data-tooltip="proxy-malware-scanning">?</span>
-                    </label>
-                    <div class="custom-select" data-name="proxymalwarescanning">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="enabled">Aktiviert</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
-                            </div>
-                        </div>
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            Content-Filtering
+                            <span class="help-icon" data-tooltip="proxy-content-filtering">?</span>
+                        </label>
+                    </div>
+                    <div class="toggle-wrapper">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="proxycontentfiltering" name="proxycontentfiltering">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>
-                        DLP (Data Loss Prevention)
-                        <span class="help-icon" data-tooltip="proxy-dlp">?</span>
-                    </label>
-                    <div class="custom-select" data-name="proxydlp">
-                        <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="select-dropdown">
-                            <div class="select-options">
-                                <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="enabled">Aktiviert</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
-                            </div>
-                        </div>
+
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            Malware-Scanning
+                            <span class="help-icon" data-tooltip="proxy-malware-scanning">?</span>
+                        </label>
+                    </div>
+                    <div class="toggle-wrapper">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="proxymalwarescanning" name="proxymalwarescanning">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-status">Nicht aktiviert</span>
+                    </div>
+                </div>
+
+                <div class="security-feature-card">
+                    <div class="feature-header">
+                        <label>
+                            DLP (Data Loss Prevention)
+                            <span class="help-icon" data-tooltip="proxy-dlp">?</span>
+                        </label>
+                    </div>
+                    <div class="toggle-wrapper">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="proxydlp" name="proxydlp">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-status">Nicht aktiviert</span>
                     </div>
                 </div>
             </div>
@@ -480,36 +564,67 @@
             <span class="section-toggle-icon">▼</span>
         </div>
         <div class="section-content">
+            <div class="form-group">
+                <label>
+                    Access Logging
+                    <span class="help-icon" data-tooltip="proxy-logging">?</span>
+                </label>
+                <div class="log-level-selector">
+                    <label class="radio-card">
+                        <input type="radio" name="proxyaccesslog" value="full">
+                        <div class="radio-card-content">
+                            <span class="radio-card-title">Vollständig</span>
+                            <span class="radio-card-desc">Alle Zugriffe protokollieren</span>
+                        </div>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="proxyaccesslog" value="minimal">
+                        <div class="radio-card-content">
+                            <span class="radio-card-title">Minimal</span>
+                            <span class="radio-card-desc">Nur wichtige Events</span>
+                        </div>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="proxyaccesslog" value="disabled">
+                        <div class="radio-card-content">
+                            <span class="radio-card-title">Deaktiviert</span>
+                            <span class="radio-card-desc">Kein Access Logging</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Log-Aufbewahrung</label>
+                <input type="text" id="proxylogretention" name="proxylogretention" placeholder="z.B. 90 Tage, 1 Jahr">
+            </div>
+
             <div class="form-row">
                 <div class="form-group">
                     <label>
-                        Access Logging
-                        <span class="help-icon" data-tooltip="proxy-logging">?</span>
+                        Monitoring-Integration
+                        <span class="help-icon" data-tooltip="proxy-monitoring">?</span>
                     </label>
-                    <div class="custom-select" data-name="proxyaccesslog">
+                    <div class="custom-select" data-name="proxymonitoring" data-component-type="siem">
                         <div class="select-trigger">
-                            <span class="placeholder">Bitte wählen</span>
+                            <span class="placeholder">Bitte wählen (SIEM)</span>
                             <span class="arrow">▼</span>
                         </div>
                         <div class="select-dropdown">
                             <div class="select-options">
                                 <div class="select-option" data-value="">Bitte wählen</div>
-                                <div class="select-option" data-value="full">Vollständig</div>
-                                <div class="select-option" data-value="minimal">Minimal</div>
-                                <div class="select-option" data-value="disabled">Deaktiviert</div>
+                                <div class="select-option" data-value="manual">Manuell eingeben</div>
+                                <div class="select-group-header">SIEM Komponenten</div>
+                                <!-- Dynamic SIEM entries -->
                             </div>
                         </div>
                     </div>
+                    <div class="help-text">Wählen Sie eine SIEM-Komponente aus oder geben Sie manuell ein</div>
                 </div>
-                <div class="form-group">
-                    <label>Log-Aufbewahrung</label>
-                    <input type="text" id="proxylogretention" name="proxylogretention" placeholder="z.B. 90 Tage, 1 Jahr">
+                <div class="form-group" id="proxy-monitoring-manual" style="display:none;">
+                    <label>Monitoring-Tool (manuell)</label>
+                    <input type="text" id="proxymonitoringtool" name="proxymonitoringtool" placeholder="z.B. PRTG, Zabbix, Nagios">
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label>Monitoring-Integration</label>
-                <input type="text" id="proxymonitoring" name="proxymonitoring" placeholder="z.B. PRTG, Zabbix, Nagios">
             </div>
         </div>
     </div>
@@ -554,6 +669,21 @@
     </div>
 
 </form>
+
+<!-- Floating Form Management Bar -->
+<div class="floating-form-management">
+    <div class="form-status-container">
+        <span class="form-status-icon">●</span>
+        <div class="form-status-text">
+            <span class="form-status" data-lastchange="" data-status="unchanged">Keine Änderungen</span>
+            <span class="form-lastchange"></span>
+        </div>
+    </div>
+    <button type="submit" form="newProxyForm" class="btn-save" disabled>
+        <span class="btn-save-icon"></span>
+        <span class="btn-save-text">Speichern</span>
+    </button>
+</div>
 
 <!-- Include help tooltips -->
 {{include:pages/wizards/komponenten/help/proxy-help.html}}
