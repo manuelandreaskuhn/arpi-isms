@@ -1,0 +1,466 @@
+{
+  "wizard_id": "hypervisor",
+  "label": "Neuer Hypervisor",
+  "collection": "hypervisors",
+  "uuid_prefix": "hypervisor_",
+  "icon": "hypervisor",
+  "template_path": "pages/wizards/komponenten/new-hypervisor.html",
+  "messages": {
+    "create_success": "Hypervisor erstellt",
+    "update_success": "Hypervisor aktualisiert",
+    "delete_success": "Hypervisor gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "hypervisorname",
+          "element": "text-name",
+          "label": "Hypervisor Name",
+          "required": true
+        },
+        {
+          "name": "hypervisortype",
+          "element": "software-select",
+          "label": "Typ / Hersteller",
+          "required": true,
+          "attributes": {
+            "data-category": "hypervisor"
+          },
+          "info_panel": "hypervisor-software-info-section",
+          "options": [
+            {
+              "value": "vmware-esxi",
+              "label": "VMware ESXi"
+            },
+            {
+              "value": "vmware-vsphere",
+              "label": "VMware vSphere"
+            },
+            {
+              "value": "hyperv",
+              "label": "Microsoft Hyper-V"
+            },
+            {
+              "value": "hyperv-failover",
+              "label": "Microsoft Hyper-V Failover Cluster"
+            },
+            {
+              "value": "kvm",
+              "label": "KVM (Kernel-based Virtual Machine)"
+            },
+            {
+              "value": "proxmox",
+              "label": "Proxmox VE"
+            },
+            {
+              "value": "xen",
+              "label": "Xen / XCP-ng"
+            },
+            {
+              "value": "openstack",
+              "label": "OpenStack"
+            },
+            {
+              "value": "azure-hyperv",
+              "label": "Azure Hyper-V"
+            },
+            {
+              "value": "aws-nitro",
+              "label": "AWS Nitro"
+            },
+            {
+              "value": "gcp-kvm",
+              "label": "GCP KVM"
+            },
+            {
+              "value": "oracle-vm",
+              "label": "Oracle VM VirtualBox"
+            },
+            {
+              "value": "nutanix-ahv",
+              "label": "Nutanix AHV"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        },
+        {
+          "name": "hypervisorversion",
+          "element": "version",
+          "label": "Version",
+          "required": true
+        },
+        {
+          "name": "mgmturl",
+          "element": "management-url",
+          "label": "Management-URL"
+        }
+      ]
+    },
+    {
+      "id": "cluster",
+      "label": "Cluster-Konfiguration",
+      "order": 2,
+      "fields": [
+        {
+          "name": "iscluster",
+          "element": "toggle",
+          "label": "Cluster aktiviert"
+        },
+        {
+          "name": "hostname",
+          "element": "hostname",
+          "label": "Hostname (Single Host)",
+          "condition": {
+            "field": "iscluster",
+            "operator": "eq",
+            "value": false
+          }
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort / Rack"
+        },
+        {
+          "name": "clustername",
+          "element": "text-input",
+          "label": "Cluster-Name",
+          "condition": {
+            "field": "iscluster",
+            "operator": "eq",
+            "value": true
+          }
+        },
+        {
+          "name": "ha",
+          "element": "radio-group",
+          "label": "High Availability",
+          "condition": {
+            "field": "iscluster",
+            "operator": "eq",
+            "value": true
+          },
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "drs",
+          "element": "select-input",
+          "label": "DRS / Load Balancing",
+          "condition": {
+            "field": "iscluster",
+            "operator": "eq",
+            "value": true
+          },
+          "options": [
+            {
+              "value": "fully-automated",
+              "label": "Vollautomatisch"
+            },
+            {
+              "value": "partially-automated",
+              "label": "Teilautomatisch"
+            },
+            {
+              "value": "manual",
+              "label": "Manuell"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "hostlist",
+          "element": "text-input",
+          "label": "Cluster-Hosts",
+          "description": "Liste der Cluster-Hosts (dynamisch via JS hinzufügbar)",
+          "attributes": {
+            "data-dynamic-list": "hosts",
+            "data-list-fields": "hostname,ip,cpu,ram,storage"
+          },
+          "condition": {
+            "field": "iscluster",
+            "operator": "eq",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "label": "Ressourcen & Kapazität",
+      "order": 3,
+      "fields": [
+        {
+          "name": "totalcpu",
+          "element": "number-input",
+          "label": "CPU Cores gesamt",
+          "placeholder": "z.B. 32"
+        },
+        {
+          "name": "totalram",
+          "element": "number-input",
+          "label": "RAM gesamt (GB)",
+          "placeholder": "z.B. 256"
+        },
+        {
+          "name": "totalstorage",
+          "element": "number-input",
+          "label": "Storage gesamt (TB)",
+          "placeholder": "z.B. 10"
+        },
+        {
+          "name": "storagetype",
+          "element": "select-input",
+          "label": "Storage-Typ",
+          "options": [
+            {
+              "value": "local",
+              "label": "Lokaler Storage"
+            },
+            {
+              "value": "san",
+              "label": "SAN (FC)"
+            },
+            {
+              "value": "iscsi",
+              "label": "iSCSI"
+            },
+            {
+              "value": "nfs",
+              "label": "NFS"
+            },
+            {
+              "value": "vsan",
+              "label": "vSAN / HCI"
+            },
+            {
+              "value": "mixed",
+              "label": "Gemischt"
+            }
+          ]
+        },
+        {
+          "name": "vmcount",
+          "element": "number-input",
+          "label": "Anzahl VMs",
+          "placeholder": "z.B. 50"
+        },
+        {
+          "name": "cpuovercommit",
+          "element": "text-input",
+          "label": "CPU Overcommit-Verhältnis",
+          "placeholder": "z.B. 4:1"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "label": "Netzwerk-Konfiguration",
+      "order": 4,
+      "fields": [
+        {
+          "name": "mgmtnetwork",
+          "element": "text-input",
+          "label": "Management Netzwerk",
+          "placeholder": "z.B. 192.168.100.0/24"
+        },
+        {
+          "name": "vmotionnetwork",
+          "element": "text-input",
+          "label": "vMotion / Live Migration Netzwerk",
+          "placeholder": "z.B. 10.10.10.0/24"
+        },
+        {
+          "name": "storagenetwork",
+          "element": "text-input",
+          "label": "Storage Netzwerk",
+          "placeholder": "z.B. 10.20.20.0/24"
+        },
+        {
+          "name": "vmnetworks",
+          "element": "text-input",
+          "label": "VM Netzwerke",
+          "placeholder": "Liste der VM Netzwerke / Port Groups"
+        },
+        {
+          "name": "vswitch",
+          "element": "text-input",
+          "label": "Distributed / Virtual Switch",
+          "placeholder": "z.B. vDS-Production, dvSwitch01"
+        }
+      ]
+    },
+    {
+      "id": "management",
+      "label": "Management & Monitoring",
+      "order": 5,
+      "fields": [
+        {
+          "name": "mgmttool",
+          "element": "select-input",
+          "label": "Management-Tool",
+          "options": [
+            {
+              "value": "vcenter",
+              "label": "VMware vCenter"
+            },
+            {
+              "value": "scvmm",
+              "label": "Microsoft SCVMM"
+            },
+            {
+              "value": "proxmox-web",
+              "label": "Proxmox Web UI"
+            },
+            {
+              "value": "xen-orchestra",
+              "label": "XCP-ng / Xen Orchestra"
+            },
+            {
+              "value": "virsh",
+              "label": "libvirt / virsh"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        },
+        {
+          "name": "mgmtversion",
+          "element": "version",
+          "label": "Management-Tool Version"
+        },
+        {
+          "name": "monitoringid",
+          "element": "siem-reference",
+          "label": "Monitoring (SIEM-Integration)"
+        },
+        {
+          "name": "monitoring",
+          "element": "monitoring-tool",
+          "label": "Monitoring-Tool (manuell)"
+        },
+        {
+          "name": "backupid",
+          "element": "backup-reference",
+          "label": "Backup-Lösung"
+        },
+        {
+          "name": "backupsolution",
+          "element": "text-input",
+          "label": "Backup-Lösung (manuell)",
+          "placeholder": "Name der Backup-Lösung"
+        }
+      ]
+    },
+    {
+      "id": "licensing",
+      "label": "Lizenzierung & Support",
+      "order": 6,
+      "fields": [
+        {
+          "name": "licensemodel",
+          "element": "license-model",
+          "label": "Lizenzmodell",
+          "options": [
+            {
+              "value": "perpetual",
+              "label": "Perpetual"
+            },
+            {
+              "value": "subscription",
+              "label": "Subscription"
+            },
+            {
+              "value": "per-cpu",
+              "label": "Per CPU"
+            },
+            {
+              "value": "per-core",
+              "label": "Per Core"
+            },
+            {
+              "value": "per-vm",
+              "label": "Per VM"
+            },
+            {
+              "value": "free",
+              "label": "Kostenlos / Open Source"
+            }
+          ]
+        },
+        {
+          "name": "supportlevel",
+          "element": "select-input",
+          "label": "Support-Level",
+          "options": [
+            {
+              "value": "production",
+              "label": "Production Support (24/7)"
+            },
+            {
+              "value": "business",
+              "label": "Business Hours Support"
+            },
+            {
+              "value": "basic",
+              "label": "Basic Support"
+            },
+            {
+              "value": "community",
+              "label": "Community Support"
+            },
+            {
+              "value": "none",
+              "label": "Kein Support"
+            }
+          ]
+        },
+        {
+          "name": "supportend",
+          "element": "support-end-date",
+          "label": "Support-Vertragsende"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 7,
+      "fields": [
+        {
+          "name": "hypervisornotes",
+          "element": "notes",
+          "label": "Notizen / Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newHypervisorForm",
+  "breadcrumb_label": "Neuen Hypervisor anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/hypervisor-help.html",
+  "software_data": {
+    "hypervisorsoftware": "hypervisor"
+  }
+}

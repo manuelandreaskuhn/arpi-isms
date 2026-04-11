@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\ProxySchema;
-use ARPI\Entities\Documents\ProxyServer;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/proxywizard.js')]
@@ -20,18 +20,18 @@ class NewProxy extends BaseSite
     
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-proxy.html');
+        return $this->renderWizard('proxy');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        if (!$validator->validate($data, ProxySchema::getSchema())) {
+        if (!$validator->validate($data, (new WizardSchemaBuilder())->buildSchema('proxy'))) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $proxy = new ProxyServer();
+            $proxy = new DynamicDocument('proxy');
             EntityHydrator::hydrate($proxy, $data);
             $proxy->createdat = new \DateTime();
             $proxy->updatedat = new \DateTime();
@@ -53,7 +53,7 @@ class NewProxy extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = ProxySchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('proxy');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -61,7 +61,7 @@ class NewProxy extends BaseSite
         }
         
         try {
-            $proxy = $this->find(ProxyServer::class, $id);
+            $proxy = $this->findDynamic('proxy', $id);
             
             if (!$proxy) {
                 return ['success' => false, 'errors' => ['Proxy-Server nicht gefunden']];
@@ -86,7 +86,7 @@ class NewProxy extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $proxy = $this->find(ProxyServer::class, $id);
+            $proxy = $this->findDynamic('proxy', $id);
             
             if (!$proxy) {
                 return ['success' => false, 'errors' => ['Proxy-Server nicht gefunden']];

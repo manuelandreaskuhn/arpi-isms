@@ -1,0 +1,163 @@
+<aside class="breadcrumb">
+    <p>Assetmanagement</p>
+    <i>›</i>
+    <p>Komponenten</p>
+</aside>
+
+<div class="onetwocolumnlist">
+
+    <div class="columnlist">
+        <div class="infobox">
+            <h3>Neue Komponente anlegen</h3>
+            <i>Wählen Sie den Typ der neuen Komponente, um den Erfassungs-Wizard zu starten.</i>
+        </div>
+
+        <div class="wizard-create-list">
+            <a href="/Wizards/NewBackup.html" class="wizard-create-item">
+                <span class="wizard-create-icon">🗄</span>
+                <span class="wizard-create-label">Backup-System</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewComServer.html" class="wizard-create-item">
+                <span class="wizard-create-icon">🖧</span>
+                <span class="wizard-create-label">Kommunikationsserver</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewFirewall.html" class="wizard-create-item">
+                <span class="wizard-create-icon">🔥</span>
+                <span class="wizard-create-label">Firewall</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewHypervisor.html" class="wizard-create-item">
+                <span class="wizard-create-icon">⚙</span>
+                <span class="wizard-create-label">Hypervisor</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewMedicalDevice.html" class="wizard-create-item">
+                <span class="wizard-create-icon">🏥</span>
+                <span class="wizard-create-label">Medizinisches Gerät</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewNetwork.html" class="wizard-create-item">
+                <span class="wizard-create-icon">🌐</span>
+                <span class="wizard-create-label">Netzwerk</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewProxy.html" class="wizard-create-item">
+                <span class="wizard-create-icon">↔</span>
+                <span class="wizard-create-label">Proxy-Server</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewSIEM.html" class="wizard-create-item">
+                <span class="wizard-create-icon">🛡</span>
+                <span class="wizard-create-label">SIEM-System</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewTIInfrastruktur.html" class="wizard-create-item">
+                <span class="wizard-create-icon">📡</span>
+                <span class="wizard-create-label">TI-Infrastruktur</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewVPN.html" class="wizard-create-item">
+                <span class="wizard-create-icon">🔒</span>
+                <span class="wizard-create-label">VPN</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="columnlist">
+        <div class="infobox">
+            <h3>Komponenten <i class="count">0</i></h3>
+            <i>Übersicht aller erfassten Netzwerk- und Systemkomponenten</i>
+        </div>
+
+        <div class="search">
+            <input type="search" placeholder="Komponenten durchsuchen...">
+        </div>
+
+        <h2>Backup-Systeme</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Veeam-Prod</strong>
+                <div class="taginfo">
+                    <span class="tag">Veeam Backup &amp; Replication</span>
+                    <span class="tag">Backup-System</span>
+                </div>
+                <div class="editbutton">
+                    <button title="Bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Firewalls</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>FW-Prod-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">10.0.0.1</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Cisco ASA</span>
+                    <span class="tag">Firewall</span>
+                </div>
+                <div class="editbutton">
+                    <button title="Bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Hypervisoren</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>ESXi-Host-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">10.0.1.10</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">VMware ESXi</span>
+                    <span class="tag">Hypervisor</span>
+                </div>
+                <div class="editbutton">
+                    <button title="Bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Netzwerke</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>LAN-Produktion</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">192.168.1.0/24</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">VLAN 10</span>
+                    <span class="tag">Netzwerk</span>
+                </div>
+                <div class="editbutton">
+                    <button title="Bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Proxy-Server</h2>
+        <div class="list">
+            <div class="entry">
+                <strong>Proxy-DMZ-01</strong>
+                <div class="networkinfo">
+                    <span class="ipaddress">10.0.2.5</span>
+                </div>
+                <div class="taginfo">
+                    <span class="tag">Squid</span>
+                    <span class="tag">Proxy-Server</span>
+                </div>
+                <div class="editbutton">
+                    <button title="Bearbeiten"><i>✎</i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\VpnSchema;
-use ARPI\Entities\Documents\Vpn;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/vpnwizard.js')]
@@ -20,7 +20,7 @@ class NewVPN extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-vpn.html');
+        return $this->renderWizard('vpn');
     }
     
     /**
@@ -33,7 +33,7 @@ class NewVPN extends BaseSite
     {
         // 1. Schema validieren
         $validator = new SchemaValidator();
-        $schema = VpnSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('vpn');
         
         if (!$validator->validate($data, $schema)) {
             return [
@@ -43,7 +43,7 @@ class NewVPN extends BaseSite
         }
         
         // 2. Entity erstellen
-        $vpn = new Vpn();
+        $vpn = new DynamicDocument('vpn');
         
         // 3. Daten hydratieren
         try {
@@ -84,7 +84,7 @@ class NewVPN extends BaseSite
     {
         // 1. Schema validieren
         $validator = new SchemaValidator();
-        $schema = VpnSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('vpn');
         
         // Für Update sind nicht alle Felder required
         $updateSchema = $schema;
@@ -99,7 +99,7 @@ class NewVPN extends BaseSite
         
         try {
             // 2. VPN-System aus DB laden
-            $vpn = $this->find(Vpn::class, $id);
+            $vpn = $this->findDynamic('vpn', $id);
             
             if (!$vpn) {
                 return [
@@ -142,7 +142,7 @@ class NewVPN extends BaseSite
     {
         try {
             // VPN-System aus DB laden
-            $vpn = $this->find(Vpn::class, $id);
+            $vpn = $this->findDynamic('vpn', $id);
             
             if (!$vpn) {
                 return [

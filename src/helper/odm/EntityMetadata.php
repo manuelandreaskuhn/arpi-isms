@@ -1,6 +1,10 @@
 <?php
+
 namespace ARPI\Helper\ODM;
 
+use ARPI\Helper\ConfigLoader;
+use ARPI\Helper\ODM\Metadata\DynamicFieldMetadata;
+use ARPI\Helper\ODM\Metadata\DynamicIdMetadata;
 use ARPI\Helper\ODM\Metadata\EmbedManyMetadata;
 use ARPI\Helper\ODM\Metadata\EmbedOneMetadata;
 use ARPI\Helper\ODM\Metadata\FieldMetadata;
@@ -19,7 +23,7 @@ class EntityMetadata
     public string $collection;
     /** @var FieldMetadata[] */
     public array $fields = [];
-    public ?IdMetadata $idField = null;
+    public IdMetadata|DynamicIdMetadata|null $idField = null;
     /** @var EmbedOneMetadata[] */
     public array $embedOneFields = [];
     /** @var EmbedManyMetadata[] */
@@ -33,11 +37,16 @@ class EntityMetadata
 
     /**
      * Erstellt EntityMetadata aus einem Entity-Objekt.
+     * DynamicDocument-Instanzen werden direkt aus der Wizard-Konfiguration aufgebaut.
      * @param object $entity
      * @return self
      */
     public static function fromEntity(object $entity): self
     {
+        if ($entity instanceof DynamicDocument) {
+            return self::fromDynamicDocument($entity);
+        }
+
         $meta = new self();
         $ref = new ReflectionClass($entity);
 
@@ -85,6 +94,65 @@ class EntityMetadata
             }
         }
         return $meta;
+    }
+
+    /**
+     * Erstellt EntityMetadata für ein DynamicDocument aus der Wizard-Konfiguration.
+     * Die Felder werden aus den aufgelösten Wizard-Seiten abgeleitet.
+     * @param DynamicDocument $doc
+     * @return self
+     */
+    private static function fromDynamicDocument(DynamicDocument $doc): self
+    {
+        $meta = new self();
+        $meta->collection = $doc->getCollectionName();
+        $meta->isDocument = true;
+
+        // ID-Feld
+        $meta->idField = new DynamicIdMetadata();
+
+        // uuid immer als erstes String-Feld hinzufügen
+        $meta->fields[] = new DynamicFieldMetadata('uuid', 'string', false);
+
+        // Felder aus dem Wizard-Config ableiten
+        $config = ConfigLoader::getInstance()->getWizardConfig($doc->getWizardId());
+
+        foreach ($config['pages'] ?? [] as $page) {
+            foreach ($page['fields'] ?? [] as $field) {
+                // Gruppen-Einträge überspringen (haben kein 'name'-Key auf Top-Level)
+                if (!isset($field['name'])) {
+                    continue;
+                }
+                $name = $field['name'];
+                if ($name === 'uuid') {
+                    continue; // bereits hinzugefügt
+                }
+                $type = self::elementTypeToOdmType($field['element'] ?? 'text-input');
+                $meta->fields[] = new DynamicFieldMetadata($name, $type, true);
+            }
+        }
+
+        // Zeitstempel-Felder (werden immer gesetzt)
+        $meta->fields[] = new DynamicFieldMetadata('createdat', 'date', true);
+        $meta->fields[] = new DynamicFieldMetadata('updatedat', 'date', true);
+
+        return $meta;
+    }
+
+    /**
+     * Bildet einen Element-Typ aus dem Wizard-Katalog auf einen ODM-Typ ab.
+     * @param string $elementType
+     * @return string
+     */
+    private static function elementTypeToOdmType(string $elementType): string
+    {
+        return match ($elementType) {
+            'toggle', 'ha-enabled', 'checkbox' => 'bool',
+            'number-input', 'range-slider', 'log-retention', 'port',
+            'vlan-id', 'number', 'range'       => 'int',
+            'checkbox-group'                   => 'array',
+            default                            => 'string',
+        };
     }
 
     /**

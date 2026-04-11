@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\TIInfrastructureSchema;
-use ARPI\Entities\Documents\TIInfrastructure;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/tiinfrastrukturwizard.js')]
@@ -20,18 +20,18 @@ class NewTIInfrastruktur extends BaseSite
     
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-tiinfrastruktur.html');
+        return $this->renderWizard('tiinfrastruktur');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        if (!$validator->validate($data, TIInfrastructureSchema::getSchema())) {
+        if (!$validator->validate($data, (new WizardSchemaBuilder())->buildSchema('tiinfrastruktur'))) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $ti = new TIInfrastructure();
+            $ti = new DynamicDocument('tiinfrastruktur');
             EntityHydrator::hydrate($ti, $data);
             $ti->createdat = new \DateTime();
             $ti->updatedat = new \DateTime();
@@ -53,7 +53,7 @@ class NewTIInfrastruktur extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = TIInfrastructureSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('tiinfrastruktur');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -61,7 +61,7 @@ class NewTIInfrastruktur extends BaseSite
         }
         
         try {
-            $ti = $this->find(TIInfrastructure::class, $id);
+            $ti = $this->findDynamic('tiinfrastruktur', $id);
             
             if (!$ti) {
                 return ['success' => false, 'errors' => ['TI-Infrastruktur nicht gefunden']];
@@ -86,7 +86,7 @@ class NewTIInfrastruktur extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $ti = $this->find(TIInfrastructure::class, $id);
+            $ti = $this->findDynamic('tiinfrastruktur', $id);
             
             if (!$ti) {
                 return ['success' => false, 'errors' => ['TI-Infrastruktur nicht gefunden']];

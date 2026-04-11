@@ -1,0 +1,101 @@
+<div class="group-wrapper">
+    <div class="subsection-header">Stufe 2 – Sekundär-Storage</div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Storage-Typ (Sekundär)</label>
+            <div class="custom-select" data-name="secondarystoragetype">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="nas-offsite">NAS (Offsite)</div>
+                        <div class="select-option" data-value="cloud">Cloud-Storage (S3/Blob/etc.)</div>
+                        <div class="select-option" data-value="tape">Tape / Bandspeicher</div>
+                        <div class="select-option" data-value="object-storage">Object Storage</div>
+                        <div class="select-option" data-value="dedup-appliance-offsite">Deduplizierungs-Appliance
+                            (Offsite)</div>
+                        <div class="select-option" data-value="other">Sonstige</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Kapazität (TB)</label>
+            <input type="number" id="secondarystoragecapacity" name="secondarystoragecapacity" placeholder="z.B. 20"
+                min="0">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Storage-Pfad / Cloud-Bucket</label>
+            <input type="text" id="secondarystoragepath" name="secondarystoragepath"
+                placeholder="z.B. s3://backup-bucket">
+        </div>
+        <div class="form-group">
+            <label>Deduplizierung</label>
+            <div class="custom-select" data-name="secondarydeduplication">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="enabled">Aktiviert</div>
+                        <div class="select-option" data-value="disabled">Deaktiviert</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Replikationsfrequenz</label>
+            <div class="custom-select" data-name="secondaryreplicationfreq">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="continuous">Kontinuierlich</div>
+                        <div class="select-option" data-value="hourly">Stündlich</div>
+                        <div class="select-option" data-value="daily">Täglich</div>
+                        <div class="select-option" data-value="weekly">Wöchentlich</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Immutability</label>
+            <div class="custom-select" data-name="secondaryimmutability">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="enabled">Aktiviert (WORM)</div>
+                        <div class="select-option" data-value="disabled">Deaktiviert</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Immutability Periode</label>
+            <input type="text" id="secondaryimmutabilityperiod" name="secondaryimmutabilityperiod"
+                placeholder="z.B. 30 Tage">
+        </div>
+    </div>
+</div>

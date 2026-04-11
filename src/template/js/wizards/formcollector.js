@@ -5,33 +5,41 @@
  * @param {HTMLFormElement} form
  * @returns {Object}
  */
+/** Returns true if el is inside a conditionally hidden container */
+function isConditionallyHidden(el) {
+    return !!el.closest('[data-conditional-hidden="true"]');
+}
+
 export function collectFormData(form) {
     const data = {};
-    
+
     // Standard-Inputs (text, number, email, etc.)
     form.querySelectorAll('input[type="text"], input[type="number"], input[type="email"], input[type="date"]').forEach(input => {
+        if (isConditionallyHidden(input)) return;
         if (input.name) {
             data[input.name] = input.value || null;
         } else if (input.id) {
             data[input.id] = input.value || null;
         }
     });
-    
+
     // Textareas
     form.querySelectorAll('textarea').forEach(textarea => {
+        if (isConditionallyHidden(textarea)) return;
         if (textarea.name) {
             data[textarea.name] = textarea.value || null;
         } else if (textarea.id) {
             data[textarea.id] = textarea.value || null;
         }
     });
-    
+
     // Checkboxen (mehrere Werte zu Array)
     const checkboxGroups = {};
     form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        if (isConditionallyHidden(checkbox)) return;
         const name = checkbox.name || checkbox.id;
         if (!name) return;
-        
+
         if (checkbox.checked) {
             if (checkbox.value) {
                 // Multi-checkbox (name group)
@@ -45,19 +53,20 @@ export function collectFormData(form) {
             }
         }
     });
-    
+
     // Checkbox-Groups zu data hinzufügen
     Object.assign(data, checkboxGroups);
-    
+
     // Custom Selects
     form.querySelectorAll('.custom-select').forEach(select => {
+        if (isConditionallyHidden(select)) return;
         const name = select.dataset.name;
         const value = select.dataset.value;
         if (name) {
             data[name] = value || null;
         }
     });
-    
+
     // Numerische Werte konvertieren
     Object.keys(data).forEach(key => {
         const value = data[key];
@@ -68,7 +77,7 @@ export function collectFormData(form) {
             }
         }
     });
-    
+
     return data;
 }
 
@@ -81,14 +90,14 @@ export function collectFormData(form) {
 export function populateFormData(form, data) {
     Object.keys(data).forEach(key => {
         const value = data[key];
-        
+
         // Standard-Input
         const input = form.querySelector(`input[name="${key}"], input[id="${key}"], textarea[name="${key}"], textarea[id="${key}"]`);
         if (input) {
             input.value = value || '';
             return;
         }
-        
+
         // Custom Select
         const customSelect = form.querySelector(`.custom-select[data-name="${key}"]`);
         if (customSelect) {
@@ -100,7 +109,7 @@ export function populateFormData(form, data) {
             }
             return;
         }
-        
+
         // Checkboxen
         if (Array.isArray(value)) {
             value.forEach(v => {

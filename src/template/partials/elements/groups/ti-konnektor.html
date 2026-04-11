@@ -1,0 +1,50 @@
+<div class="group-wrapper">
+    <div class="subsection-header">Konnektor-Konfiguration</div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Konnektor-Hersteller</label>
+            <div class="custom-select" data-name="konnektorvendor">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="secunet">Secunet</div>
+                        <div class="select-option" data-value="tsystems">T-Systems</div>
+                        <div class="select-option" data-value="rise">RISE</div>
+                        <div class="select-option" data-value="compugroup">CompuGroup Medical (CGM)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Konnektor-Modell</label>
+            <input type="text" id="konnektormodel" name="konnektormodel" placeholder="z.B. secunet konnektor 2.0">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Firmware-Version</label>
+            <input type="text" id="konnektorfirmware" name="konnektorfirmware" placeholder="z.B. 5.8.1">
+        </div>
+        <div class="form-group">
+            <label>Seriennummer</label>
+            <input type="text" id="konnektorserial" name="konnektorserial" placeholder="Seriennummer des Konnektors">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Hostname / IP-Adresse</label>
+            <input type="text" id="konnektorip" name="konnektorip" placeholder="z.B. 10.0.0.100">
+        </div>
+        <div class="form-group">
+            <label>Management-URL</label>
+            <input type="url" id="konnektorurl" name="konnektorurl" placeholder="https://konnektor.intern.local">
+        </div>
+    </div>
+</div>

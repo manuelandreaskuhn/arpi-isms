@@ -1,4 +1,4 @@
-<aside>
+<aside class="wizardnavigation-enabled">
     <div class="breadcrumb">
         <p>Assetmanagement</p>
         <i>›</i>
@@ -333,7 +333,8 @@
                 Zugehörige IT-Objekte
                 <span class="help-icon" data-tooltip="it-components">?</span>
             </label>
-            <div class="help-text">Wählen Sie die IT-Komponenten aus, aus denen das System besteht oder mit denen es verbunden ist.</div>
+            <div class="help-text">Wählen Sie die IT-Komponenten aus, aus denen das System besteht oder mit denen es
+                verbunden ist.</div>
             <div class="checkbox-group">
                 <div class="checkbox-item">
                     <input type="checkbox" id="vm" name="components" value="vm">
@@ -405,11 +406,11 @@
         </div>
         <div class="section-content">
             <div class="help-text">Fügen Sie virtuelle Maschinen hinzu, die zu diesem System gehören.</div>
-            
+
             <div id="vmList" class="dynamic-list">
                 <!-- VM entries will be added here -->
             </div>
-            
+
             <div class="buttonlist">
                 <button type="button" class="btn-add-item" onclick="addVMEntry()">
                     <span>+</span> Virtuelle Maschine hinzufügen
@@ -431,11 +432,11 @@
         </div>
         <div class="section-content">
             <div class="help-text">Fügen Sie physische Server hinzu, die zu diesem System gehören.</div>
-            
+
             <div id="hardwareList" class="dynamic-list">
                 <!-- Hardware entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addHardwareEntry()">
                 <span>+</span> Hardware Server hinzufügen
             </button>
@@ -453,11 +454,11 @@
             <div class="help-text">
                 Dokumentieren Sie Datenbanken mit ihren Eigenschaften, Cluster-Konfiguration und Host-Zuordnung.
             </div>
-            
+
             <div id="databaseList" class="dynamic-list">
                 <!-- Database entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addDatabaseEntry()">
                 <span>+</span> Datenbank hinzufügen
             </button>
@@ -473,13 +474,14 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie Backup-Konfigurationen mit Strategien, Zeitplänen, Aufbewahrungsfristen und Wiederherstellungszielen.
+                Dokumentieren Sie Backup-Konfigurationen mit Strategien, Zeitplänen, Aufbewahrungsfristen und
+                Wiederherstellungszielen.
             </div>
-            
+
             <div id="backupList" class="dynamic-list">
                 <!-- Backup entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addBackupEntry()">
                 <span>+</span> Backup-Konfiguration hinzufügen
             </button>
@@ -495,13 +497,14 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Konfigurieren Sie zentrale Load Balancer für dieses System. Dokumentieren Sie Frontend-IPs, Backend-Pools, Health Checks und Routing-Regeln.
+                Konfigurieren Sie zentrale Load Balancer für dieses System. Dokumentieren Sie Frontend-IPs,
+                Backend-Pools, Health Checks und Routing-Regeln.
             </div>
-            
+
             <div id="loadbalancerList" class="dynamic-list">
                 <!-- Load balancer entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addLoadBalancerEntry()">
                 <span>+</span> Load Balancer Konfiguration hinzufügen
             </button>
@@ -517,13 +520,14 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie Firewall-Regeln für dieses System. Jede Regel definiert Zugriffe, NAT-Konfigurationen und Sicherheitsrichtlinien.
+                Dokumentieren Sie Firewall-Regeln für dieses System. Jede Regel definiert Zugriffe, NAT-Konfigurationen
+                und Sicherheitsrichtlinien.
             </div>
-            
+
             <div id="firewallList" class="dynamic-list">
                 <!-- Firewall entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addFirewallEntry()">
                 <span>+</span> Firewall-Regel hinzufügen
             </button>
@@ -539,13 +543,14 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie, wie Client-Arbeitsplätze auf dieses System zugreifen. Definieren Sie Client-Typen, Zugriffsmethoden, Protokolle und Verbindungswege.
+                Dokumentieren Sie, wie Client-Arbeitsplätze auf dieses System zugreifen. Definieren Sie Client-Typen,
+                Zugriffsmethoden, Protokolle und Verbindungswege.
             </div>
-            
+
             <div id="clientList" class="dynamic-list">
                 <!-- Client entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addClientEntry()">
                 <span>+</span> Client-Zugriff hinzufügen
             </button>
@@ -561,13 +566,14 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie angebundene Medizingeräte (CT, MRT, Ultraschall, Labor-Analysegeräte, etc.), die mit diesem System kommunizieren.
+                Dokumentieren Sie angebundene Medizingeräte (CT, MRT, Ultraschall, Labor-Analysegeräte, etc.), die mit
+                diesem System kommunizieren.
             </div>
-            
+
             <div id="medDeviceList" class="dynamic-list">
                 <!-- Medical device entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addMedDeviceEntry()">
                 <span>+</span> Medizingerät hinzufügen
             </button>
@@ -583,7 +589,8 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie die Anbindung an die Telematikinfrastruktur (TI) der Gematik, verwendete Dienste und Konnektoren.
+                Dokumentieren Sie die Anbindung an die Telematikinfrastruktur (TI) der Gematik, verwendete Dienste und
+                Konnektoren.
             </div>
 
             {{include:pages/wizards/system/tiinfrastruktur-include-template.html}}
@@ -599,7 +606,8 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie die Proxy-Konfiguration für dieses System, einschließlich Proxy-Typ, Authentifizierung und Ausnahmen.
+                Dokumentieren Sie die Proxy-Konfiguration für dieses System, einschließlich Proxy-Typ, Authentifizierung
+                und Ausnahmen.
             </div>
 
             {{include:pages/wizards/system/proxy-include-template.html}}
@@ -615,7 +623,8 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie die SIEM-Integration für dieses System, einschließlich Log-Quellen, Use Cases und Alerting-Konfiguration.
+                Dokumentieren Sie die SIEM-Integration für dieses System, einschließlich Log-Quellen, Use Cases und
+                Alerting-Konfiguration.
             </div>
 
             {{include:pages/wizards/system/siem-include-template.html}}
@@ -631,7 +640,8 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie den VPN-Zugang zu diesem System, einschließlich berechtigter Benutzergruppen und Zugriffsbeschränkungen.
+                Dokumentieren Sie den VPN-Zugang zu diesem System, einschließlich berechtigter Benutzergruppen und
+                Zugriffsbeschränkungen.
             </div>
 
             {{include:pages/wizards/system/vpn-include-template.html}}
@@ -647,13 +657,15 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie medizinische Schnittstellen (HL7v2, FHIR, DICOM, etc.) zwischen diesem System und anderen Systemen im Krankenhaus. Definieren Sie Quell- und Zielsysteme, Protokolle und übertragene Datentypen.
+                Dokumentieren Sie medizinische Schnittstellen (HL7v2, FHIR, DICOM, etc.) zwischen diesem System und
+                anderen Systemen im Krankenhaus. Definieren Sie Quell- und Zielsysteme, Protokolle und übertragene
+                Datentypen.
             </div>
-            
+
             <div id="medInterfaceList" class="dynamic-list">
                 <!-- Interface entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addMedInterfaceEntry()">
                 <span>+</span> Medizinische Schnittstelle hinzufügen
             </button>
@@ -669,13 +681,14 @@
         </div>
         <div class="section-content">
             <div class="help-text">
-                Dokumentieren Sie Container (Docker, Podman, Kubernetes Pods, etc.), die für dieses System verwendet werden. Definieren Sie Container-Typen, Konfigurationen und Orchestrierung.
+                Dokumentieren Sie Container (Docker, Podman, Kubernetes Pods, etc.), die für dieses System verwendet
+                werden. Definieren Sie Container-Typen, Konfigurationen und Orchestrierung.
             </div>
-            
+
             <div id="containerList" class="dynamic-list">
                 <!-- Container entries will be added here -->
             </div>
-            
+
             <button type="button" class="btn-add-item" onclick="addContainerEntry()">
                 <span>+</span> Container hinzufügen
             </button>

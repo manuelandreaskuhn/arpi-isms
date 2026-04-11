@@ -2,63 +2,63 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 import { initializeWizardNavigation } from './wizardnavigation.js';
-import { 
-    restoreFormData, 
-    enableAutoSave, 
-    clearFormData, 
+import {
+    restoreFormData,
+    enableAutoSave,
+    clearFormData,
     saveSectionCounters,
     getOrCreateInstanceUuid,
     cleanupOldInstances
 } from './form-persistence.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
     initializeHelpTooltips();
     initializeWizardNavigation();
-    
+
     // Make saveSectionCounters globally accessible with updated signature
     window.saveSectionCounters = (formId, section = null) => saveSectionCounters(formId, section);
-    
+
     // Initialize or restore UUID for this form instance
     getOrCreateInstanceUuid('newFirewallForm');
-    
+
     // Cleanup old instances (keep last 5)
     cleanupOldInstances('newFirewallForm', 5);
-    
+
     // Restore saved form data (including section counters)
     restoreFormData('newFirewallForm');
-    
+
     // Enable auto-save
     enableAutoSave('newFirewallForm');
-    
+
     setupFirewallWizard();
 });
 
 function setupFirewallWizard() {
     const form = document.getElementById('newFirewallForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleFirewallSubmit);
-    
+
     // Conditional fields based on firewall type
     setupFirewallTypeToggle();
-    
+
     // Setup firewall diagram interactions
     setupFirewallDiagram();
-    
+
     // Setup HA configuration toggle
     setupHAToggle();
-    
+
     // Setup additional zones
     setupAdditionalZones();
-    
+
     // Setup log retention slider
     setupLogRetentionSlider();
 }
 
 function setupFirewallTypeToggle() {
     const typeSelect = document.querySelector('[data-name="type"]');
-    
+
     if (typeSelect) {
         // Listen for changes on the custom select
         const observer = new MutationObserver(() => {
@@ -76,9 +76,9 @@ function setupFirewallTypeToggle() {
 function setupHAToggle() {
     const haCheck = document.getElementById('serverhighavailability');
     const haConfig = document.getElementById('fw-ha-config');
-    
+
     if (haCheck && haConfig) {
-        haCheck.addEventListener('change', function() {
+        haCheck.addEventListener('change', function () {
             haConfig.style.display = this.checked ? 'block' : 'none';
         });
     }
@@ -86,18 +86,18 @@ function setupHAToggle() {
 
 function setupFirewallDiagram() {
     const zoneInputs = document.querySelectorAll('.zone-input');
-    
+
     zoneInputs.forEach(input => {
-        input.addEventListener('focus', function() {
+        input.addEventListener('focus', function () {
             this.parentElement.style.borderWidth = '3px';
         });
-        
-        input.addEventListener('blur', function() {
+
+        input.addEventListener('blur', function () {
             this.parentElement.style.borderWidth = '2px';
         });
-        
+
         // Add visual feedback when IP is entered
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             const zone = this.parentElement;
             if (this.value.trim()) {
                 zone.style.opacity = '1';
@@ -110,10 +110,10 @@ function setupFirewallDiagram() {
 
 async function handleFirewallSubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
     console.log('Firewall Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -123,19 +123,19 @@ async function handleFirewallSubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             // Clear saved form data on successful submit
             clearFormData('newFirewallForm');
-            
+
             // Use global updateFormStatus function
             if (window.updateFormStatus) {
                 window.updateFormStatus('saved');
             }
 
             alert('Firewall erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 
@@ -147,7 +147,7 @@ async function handleFirewallSubmit(event) {
     } catch (error) {
         console.error('API Error:', error);
         alert('Verbindungsfehler zur API');
-        
+
         // Use global updateFormStatus function
         if (window.updateFormStatus) {
             window.updateFormStatus('error');
@@ -165,7 +165,7 @@ const haCheck = document.getElementById('fw-ha-check');
 const haConfig = document.getElementById('fw-ha-config');
 
 if (haCheck && haConfig) {
-    haCheck.addEventListener('change', function() {
+    haCheck.addEventListener('change', function () {
         haConfig.style.display = this.checked ? 'block' : 'none';
     });
 }
@@ -184,9 +184,9 @@ async function loadFirewallSoftwareInfo(firewallId) {
             },
             credentials: 'include'
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success && result.data) {
             fillFirewallSoftwareInfo(result.data);
         } else {
@@ -205,8 +205,8 @@ function fillFirewallSoftwareInfo(data) {
     if (section && section.classList.contains('collapsed')) {
         section.classList.remove('collapsed');
     }
-    
-    const infoDiv = document.querySelector('.software-info-container');    
+
+    const infoDiv = document.querySelector('.software-info-container');
 
     // Title and Badge
     const title = infoDiv.querySelector('.software-info-title');
@@ -216,7 +216,7 @@ function fillFirewallSoftwareInfo(data) {
     const vendor = infoDiv.querySelector('.software-vendor');
     const category = infoDiv.querySelector('.software-category');
     const type = infoDiv.querySelector('.software-type');
-    
+
     if (vendor) vendor.textContent = data.vendor || '-';
     if (category) category.textContent = data.category || '-';
     if (type) type.textContent = data.type || '-';
@@ -297,8 +297,8 @@ function getDataUri() {
 function setupAdditionalZones() {
     const container = document.getElementById('additional-zones-container');
     if (!container) return;
-    
-    container.addEventListener('click', function(e) {
+
+    container.addEventListener('click', function (e) {
         if (e.target.classList.contains('btn-add-zone')) {
             addZoneInput();
         } else if (e.target.classList.contains('btn-remove-zone')) {
@@ -321,11 +321,11 @@ function addZoneInput() {
 function setupLogRetentionSlider() {
     const slider = document.getElementById('logretention-slider');
     const display = document.getElementById('logretention-display');
-    
+
     if (!slider || !display) return;
-    
+
     // Sync display value with slider
-    slider.addEventListener('input', function() {
+    slider.addEventListener('input', function () {
         display.textContent = this.value;
     });
 }

@@ -2,7 +2,7 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
     initializeHelpTooltips();
     setupNetworkWizard();
@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupNetworkWizard() {
     const form = document.getElementById('newNetworkForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleNetworkSubmit);
-    
+
     // DHCP Toggle
     setupDHCPToggle();
 }
@@ -21,7 +21,7 @@ function setupNetworkWizard() {
 function setupDHCPToggle() {
     const dhcpSelect = document.querySelector('[data-name="dhcp"]');
     const dhcpRangeField = document.getElementById('dhcp-range-field');
-    
+
     if (dhcpSelect && dhcpRangeField) {
         const observer = new MutationObserver(() => {
             const value = dhcpSelect.dataset.value;
@@ -33,10 +33,10 @@ function setupDHCPToggle() {
 
 async function handleNetworkSubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
     console.log('Network Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -46,7 +46,7 @@ async function handleNetworkSubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");
@@ -57,7 +57,7 @@ async function handleNetworkSubmit(event) {
             }
 
             alert('Netzwerk erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Sites;
 
 use ARPI\Helper\BaseSite;
@@ -10,7 +11,7 @@ class AssetManagement extends BaseSite
     public function prepare(): void
     {
         //Site Title
-        $this->setTitle('Asset Management');
+        $this->setTitle('Assetmanagement – Übersicht');
     }
 
     public function main(): string

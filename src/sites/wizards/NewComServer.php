@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\CommunicationServerSchema;
-use ARPI\Entities\Documents\CommunicationServer;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/commserverwizard.js')]
@@ -20,20 +20,20 @@ class NewComServer extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-comserver.html');
+        return $this->renderWizard('comserver');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = CommunicationServerSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('comserver');
         
         if (!$validator->validate($data, $schema)) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $commServer = new CommunicationServer();
+            $commServer = new DynamicDocument('comserver');
             EntityHydrator::hydrate($commServer, $data);
             
             $commServer->createdat = new \DateTime();
@@ -56,7 +56,7 @@ class NewComServer extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = CommunicationServerSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('comserver');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -64,7 +64,7 @@ class NewComServer extends BaseSite
         }
         
         try {
-            $commServer = $this->find(CommunicationServer::class, $id);
+            $commServer = $this->findDynamic('comserver', $id);
             
             if (!$commServer) {
                 return ['success' => false, 'errors' => ['Kommunikationsserver nicht gefunden']];
@@ -89,7 +89,7 @@ class NewComServer extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $commServer = $this->find(CommunicationServer::class, $id);
+            $commServer = $this->findDynamic('comserver', $id);
             
             if (!$commServer) {
                 return ['success' => false, 'errors' => ['Kommunikationsserver nicht gefunden']];

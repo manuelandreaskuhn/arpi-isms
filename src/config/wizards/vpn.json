@@ -1,0 +1,820 @@
+{
+  "wizard_id": "vpn",
+  "label": "Neues VPN-System",
+  "collection": "vpns",
+  "uuid_prefix": "vpn_",
+  "icon": "vpn",
+  "template_path": "pages/wizards/komponenten/new-vpn.html",
+  "messages": {
+    "create_success": "VPN-System erfolgreich erstellt",
+    "update_success": "VPN-System erfolgreich aktualisiert",
+    "delete_success": "VPN-System erfolgreich gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "name",
+          "element": "text-name",
+          "label": "VPN-Name",
+          "required": true
+        },
+        {
+          "name": "type",
+          "element": "select-input",
+          "label": "VPN-Typ",
+          "required": true,
+          "options": [
+            {
+              "value": "remote-access",
+              "label": "Remote Access VPN (Client-to-Site)"
+            },
+            {
+              "value": "site-to-site",
+              "label": "Site-to-Site VPN"
+            },
+            {
+              "value": "mobile-vpn",
+              "label": "Mobile VPN"
+            },
+            {
+              "value": "ssl-vpn",
+              "label": "SSL VPN / Web VPN"
+            },
+            {
+              "value": "clientless",
+              "label": "Clientless VPN / Portal"
+            }
+          ]
+        },
+        {
+          "name": "purpose",
+          "element": "select-input",
+          "label": "VPN-Zweck",
+          "options": [
+            {
+              "value": "employee-access",
+              "label": "Mitarbeiter-Zugang"
+            },
+            {
+              "value": "admin-access",
+              "label": "Administrator-Zugang"
+            },
+            {
+              "value": "partner-access",
+              "label": "Partner / Lieferanten-Zugang"
+            },
+            {
+              "value": "site-connection",
+              "label": "Standort-Verbindung"
+            },
+            {
+              "value": "cloud-connection",
+              "label": "Cloud-Anbindung"
+            },
+            {
+              "value": "datacenter-connection",
+              "label": "Rechenzentrum-Verbindung"
+            }
+          ]
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort"
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "label": "VPN-Gateway & Infrastruktur",
+      "order": 2,
+      "fields": [
+        {
+          "name": "gatewayid",
+          "element": "vm-hardware-reference",
+          "label": "VPN-Gateway / Concentrator",
+          "required": true
+        },
+        {
+          "name": "gateway",
+          "element": "text-input",
+          "label": "VPN-Gateway (manuell)",
+          "placeholder": "Hostname oder IP des VPN-Gateways"
+        },
+        {
+          "name": "gatewaytype",
+          "element": "select-input",
+          "label": "Gateway-Typ",
+          "options": [
+            {
+              "value": "dedicated-appliance",
+              "label": "Dedizierte Appliance"
+            },
+            {
+              "value": "firewall-integrated",
+              "label": "Firewall-integriert"
+            },
+            {
+              "value": "software-gateway",
+              "label": "Software Gateway"
+            },
+            {
+              "value": "cloud-gateway",
+              "label": "Cloud VPN Gateway"
+            },
+            {
+              "value": "virtual-appliance",
+              "label": "Virtual Appliance"
+            }
+          ]
+        },
+        {
+          "name": "software",
+          "element": "select-input",
+          "label": "VPN-Software / Lösung",
+          "optgroups": [
+            {
+              "label": "Enterprise",
+              "options": [
+                {
+                  "value": "cisco-anyconnect",
+                  "label": "Cisco AnyConnect / Secure Client"
+                },
+                {
+                  "value": "palo-alto-gp",
+                  "label": "Palo Alto GlobalProtect"
+                },
+                {
+                  "value": "forti-vpn",
+                  "label": "Fortinet FortiClient VPN"
+                },
+                {
+                  "value": "checkpoint-vpn",
+                  "label": "Check Point VPN"
+                },
+                {
+                  "value": "sonicwall",
+                  "label": "SonicWall VPN"
+                },
+                {
+                  "value": "juniper-pulse",
+                  "label": "Ivanti (Juniper) Pulse Secure"
+                }
+              ]
+            },
+            {
+              "label": "Cloud",
+              "options": [
+                {
+                  "value": "aws-vpn",
+                  "label": "AWS VPN"
+                },
+                {
+                  "value": "azure-vpn",
+                  "label": "Azure VPN Gateway"
+                },
+                {
+                  "value": "gcp-vpn",
+                  "label": "GCP Cloud VPN"
+                }
+              ]
+            },
+            {
+              "label": "Open Source",
+              "options": [
+                {
+                  "value": "openvpn",
+                  "label": "OpenVPN"
+                },
+                {
+                  "value": "wireguard",
+                  "label": "WireGuard"
+                },
+                {
+                  "value": "strongswan",
+                  "label": "strongSwan / IPsec"
+                },
+                {
+                  "value": "softether",
+                  "label": "SoftEther VPN"
+                }
+              ]
+            },
+            {
+              "label": "Microsoft",
+              "options": [
+                {
+                  "value": "windows-rras",
+                  "label": "Windows RRAS"
+                },
+                {
+                  "value": "always-on-vpn",
+                  "label": "Windows Always On VPN"
+                }
+              ]
+            },
+            {
+              "label": "Sonstige",
+              "options": [
+                {
+                  "value": "other",
+                  "label": "Sonstige"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "version",
+          "element": "version",
+          "label": "Version"
+        },
+        {
+          "name": "publicip",
+          "element": "public-ip",
+          "label": "Öffentliche IP-Adresse"
+        },
+        {
+          "name": "mgmturl",
+          "element": "management-url",
+          "label": "Management-URL"
+        }
+      ]
+    },
+    {
+      "id": "protocol",
+      "label": "VPN-Protokoll & Verschlüsselung",
+      "order": 3,
+      "fields": [
+        {
+          "group": "vpn-encryption",
+          "label": "Protokoll & Verschlüsselungsparameter",
+          "field_overrides": {
+            "protocol": {
+              "required": true
+            },
+            "authmethod": {
+              "required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "auth",
+      "label": "Authentifizierung & Zugriffskontrolle",
+      "order": 4,
+      "fields": [
+        {
+          "group": "vpn-auth",
+          "label": "Authentifizierung",
+          "field_overrides": {
+            "authmethod": {
+              "required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "routing",
+      "label": "IP-Adressierung & Routing",
+      "order": 5,
+      "fields": [
+        {
+          "name": "ippool",
+          "element": "cidr",
+          "label": "VPN-IP-Pool (CIDR)",
+          "required": true,
+          "placeholder": "z.B. 10.8.0.0/24"
+        },
+        {
+          "name": "ippoolsize",
+          "element": "text-input",
+          "label": "IP-Pool Größe",
+          "placeholder": "z.B. 254 Adressen"
+        },
+        {
+          "group": "dns-config",
+          "label": "DNS für VPN-Clients",
+          "field_overrides": {
+            "dnsprimary": {
+              "name": "dns1",
+              "label": "DNS-Server (Primär)"
+            },
+            "dnssecondary": {
+              "name": "dns2",
+              "label": "DNS-Server (Sekundär)"
+            }
+          }
+        },
+        {
+          "name": "routingmode",
+          "element": "select-input",
+          "label": "Routing-Modus",
+          "options": [
+            {
+              "value": "full-tunnel",
+              "label": "Full Tunnel (gesamter Traffic via VPN)"
+            },
+            {
+              "value": "split-tunnel",
+              "label": "Split Tunnel (nur definierte Routen)"
+            },
+            {
+              "value": "inverse-split",
+              "label": "Inverse Split Tunnel"
+            }
+          ]
+        },
+        {
+          "name": "allowednetworks",
+          "element": "text-input",
+          "label": "Erlaubte Netzwerke / Routen",
+          "placeholder": "z.B. 192.168.0.0/16, 10.0.0.0/8"
+        },
+        {
+          "name": "dnssuffix",
+          "element": "text-input",
+          "label": "DNS-Suffix / Suchdomänen",
+          "placeholder": "z.B. corp.example.com"
+        }
+      ]
+    },
+    {
+      "id": "capacity",
+      "label": "Kapazität & Performance",
+      "order": 6,
+      "fields": [
+        {
+          "name": "maxconnections",
+          "element": "number-input",
+          "label": "Maximale gleichzeitige Verbindungen",
+          "placeholder": "z.B. 500"
+        },
+        {
+          "name": "licensedconnections",
+          "element": "number-input",
+          "label": "Lizenzierte Verbindungen",
+          "placeholder": "z.B. 250"
+        },
+        {
+          "name": "avgactiveusers",
+          "element": "number-input",
+          "label": "Durchschnittliche aktive Nutzer",
+          "placeholder": "z.B. 100"
+        },
+        {
+          "name": "peakusers",
+          "element": "number-input",
+          "label": "Peak-Nutzung (Spitzenlast)",
+          "placeholder": "z.B. 200"
+        },
+        {
+          "name": "bandwidthperconnection",
+          "element": "text-input",
+          "label": "Bandbreite pro Verbindung",
+          "placeholder": "z.B. 10 MBit/s"
+        },
+        {
+          "name": "totalbandwidth",
+          "element": "text-input",
+          "label": "Gesamte VPN-Bandbreite",
+          "placeholder": "z.B. 1 GBit/s"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "label": "Sicherheits-Features",
+      "order": 7,
+      "fields": [
+        {
+          "name": "sessiontimeout",
+          "element": "text-input",
+          "label": "Session Timeout (Inaktivität)",
+          "placeholder": "z.B. 30 Min, 1 Stunde"
+        },
+        {
+          "name": "maxsessionduration",
+          "element": "text-input",
+          "label": "Maximale Session-Dauer",
+          "placeholder": "z.B. 8 Stunden, 24 Stunden"
+        },
+        {
+          "name": "autodisconnect",
+          "element": "select-input",
+          "label": "Automatische Trennung",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "reconnect",
+          "element": "select-input",
+          "label": "Reconnect erlaubt",
+          "options": [
+            {
+              "value": "automatic",
+              "label": "Automatisch"
+            },
+            {
+              "value": "manual",
+              "label": "Nur manuell"
+            }
+          ]
+        },
+        {
+          "name": "compliancecheck",
+          "element": "select-input",
+          "label": "Endpoint Compliance Check",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "antiviruscheck",
+          "element": "select-input",
+          "label": "Antivirus-Prüfung am Endpoint",
+          "options": [
+            {
+              "value": "required",
+              "label": "Erforderlich"
+            },
+            {
+              "value": "optional",
+              "label": "Optional"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "firewallrequirement",
+          "element": "select-input",
+          "label": "Firewall-Anforderung am Endpoint",
+          "options": [
+            {
+              "value": "required",
+              "label": "Erforderlich"
+            },
+            {
+              "value": "optional",
+              "label": "Optional"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "ospatchcheck",
+          "element": "select-input",
+          "label": "OS-Patch-Level Prüfung",
+          "options": [
+            {
+              "value": "strict",
+              "label": "Strikt (aktuell erforderlich)"
+            },
+            {
+              "value": "moderate",
+              "label": "Moderat"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "killswitch",
+          "element": "select-input",
+          "label": "Kill Switch / Drop-on-Disconnect",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "alwayson",
+          "element": "select-input",
+          "label": "Always-On VPN",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert (Pflicht)"
+            },
+            {
+              "value": "optional",
+              "label": "Optional"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "trafficinspection",
+          "element": "select-input",
+          "label": "Traffic-Inspection / DPI",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Vollständig (DPI aktiviert)"
+            },
+            {
+              "value": "basic",
+              "label": "Standard (basic)"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "ipsids",
+          "element": "select-input",
+          "label": "IPS/IDS Integration",
+          "options": [
+            {
+              "value": "ips",
+              "label": "IPS (Intrusion Prevention)"
+            },
+            {
+              "value": "ids",
+              "label": "IDS (Intrusion Detection)"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logging",
+      "label": "Logging & Monitoring",
+      "order": 8,
+      "fields": [
+        {
+          "name": "logginglevel",
+          "element": "select-input",
+          "label": "Logging-Level",
+          "options": [
+            {
+              "value": "detailed",
+              "label": "Detailliert (alles)"
+            },
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "minimal",
+              "label": "Minimal"
+            }
+          ]
+        },
+        {
+          "name": "logretention",
+          "element": "text-input",
+          "label": "Log-Retention",
+          "placeholder": "z.B. 90 Tage, 1 Jahr"
+        },
+        {
+          "name": "siemintegration",
+          "element": "text-input",
+          "label": "SIEM-Integration",
+          "placeholder": "SIEM-System Hostname oder IP"
+        },
+        {
+          "name": "syslogserver",
+          "element": "text-input",
+          "label": "Syslog-Server",
+          "placeholder": "IP oder Hostname des Syslog-Servers"
+        },
+        {
+          "name": "monitoringtool",
+          "element": "monitoring-tool",
+          "label": "Monitoring-Tool"
+        },
+        {
+          "name": "loggedevents",
+          "element": "checkbox-group",
+          "label": "Protokollierte Ereignisse",
+          "options": [
+            {
+              "value": "authentication",
+              "label": "Authentifizierung (Login/Logout)"
+            },
+            {
+              "value": "connections",
+              "label": "Verbindungsaufbau/-abbau"
+            },
+            {
+              "value": "traffic",
+              "label": "Netzwerk-Traffic"
+            },
+            {
+              "value": "errors",
+              "label": "Fehler & Warnungen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha",
+      "label": "Redundanz & Hochverfügbarkeit",
+      "order": 9,
+      "fields": [
+        {
+          "name": "ha",
+          "element": "select-input",
+          "label": "Hochverfügbarkeit (HA)",
+          "options": [
+            {
+              "value": "active-active",
+              "label": "Active-Active"
+            },
+            {
+              "value": "active-passive",
+              "label": "Active-Passive"
+            },
+            {
+              "value": "cluster",
+              "label": "Cluster"
+            },
+            {
+              "value": "none",
+              "label": "Keine HA"
+            }
+          ]
+        },
+        {
+          "name": "secondarygatewayid",
+          "element": "vm-hardware-reference",
+          "label": "Sekundäres VPN-Gateway",
+          "condition": {
+            "field": "ha",
+            "operator": "neq",
+            "value": "none"
+          }
+        },
+        {
+          "name": "secondarygateway",
+          "element": "text-input",
+          "label": "Sekundäres Gateway (manuell)",
+          "condition": {
+            "field": "ha",
+            "operator": "neq",
+            "value": "none"
+          }
+        },
+        {
+          "name": "failovertime",
+          "element": "text-input",
+          "label": "Failover-Zeit",
+          "placeholder": "z.B. < 30 Sekunden",
+          "condition": {
+            "field": "ha",
+            "operator": "neq",
+            "value": "none"
+          }
+        },
+        {
+          "name": "loadbalancing",
+          "element": "select-input",
+          "label": "Load Balancing",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compliance",
+      "label": "Compliance & Richtlinien",
+      "order": 10,
+      "fields": [
+        {
+          "name": "compliance",
+          "element": "checkbox-group",
+          "label": "Compliance-Standards",
+          "options": [
+            {
+              "value": "dsgvo",
+              "label": "DSGVO / GDPR"
+            },
+            {
+              "value": "hipaa",
+              "label": "HIPAA"
+            },
+            {
+              "value": "pci-dss",
+              "label": "PCI DSS"
+            },
+            {
+              "value": "iso27001",
+              "label": "ISO 27001"
+            },
+            {
+              "value": "kritis",
+              "label": "KRITIS"
+            }
+          ]
+        },
+        {
+          "name": "lastsecurityaudit",
+          "element": "date-field",
+          "label": "Letzte Sicherheitsprüfung"
+        },
+        {
+          "name": "nextsecurityaudit",
+          "element": "date-field",
+          "label": "Nächste geplante Prüfung"
+        }
+      ]
+    },
+    {
+      "id": "responsibility",
+      "label": "Verantwortlichkeiten & Support",
+      "order": 11,
+      "fields": [
+        {
+          "name": "admin",
+          "element": "admin-contact",
+          "label": "VPN-Administrator"
+        },
+        {
+          "name": "support",
+          "element": "support-contact",
+          "label": "Support-Kontakt"
+        },
+        {
+          "name": "emergencycontact",
+          "element": "text-input",
+          "label": "Notfall-Kontakt (24/7)",
+          "placeholder": "Telefon für VPN-Notfälle rund um die Uhr"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 12,
+      "fields": [
+        {
+          "name": "notes",
+          "element": "notes",
+          "label": "Notizen / VPN-Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newVPNForm",
+  "breadcrumb_label": "Neues VPN-System anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/vpn-help.html",
+  "software_data": {
+    "vpnsoftware": "vpn"
+  }
+}

@@ -2,7 +2,7 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize component linking
     initializeAllComponentSelects();
 
@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupComServerWizard() {
     const form = document.getElementById('newComServerForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleComServerSubmit);
-    
+
     // HA configuration toggle
     setupHAToggle();
 }
@@ -26,7 +26,7 @@ function setupComServerWizard() {
 function setupHAToggle() {
     const haSelect = document.querySelector('[data-name="ha"]');
     const haFields = document.querySelector('.comserver-ha-config');
-    
+
     if (haSelect && haFields) {
         const observer = new MutationObserver(() => {
             const value = haSelect.dataset.value;
@@ -39,10 +39,10 @@ function setupHAToggle() {
 
 async function handleComServerSubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
     console.log('Communication Server Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -52,7 +52,7 @@ async function handleComServerSubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");
@@ -63,7 +63,7 @@ async function handleComServerSubmit(event) {
             }
 
             alert('Kommunikationsserver erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 

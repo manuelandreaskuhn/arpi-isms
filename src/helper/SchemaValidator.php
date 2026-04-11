@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Helper;
 
 /**
@@ -7,7 +8,7 @@ namespace ARPI\Helper;
 class SchemaValidator
 {
     private array $errors = [];
-    
+
     /**
      * Validiert Daten gegen Schema
      * 
@@ -18,7 +19,7 @@ class SchemaValidator
     public function validate(array $data, array $schema): bool
     {
         $this->errors = [];
-        
+
         // Required fields prüfen
         if (isset($schema['required'])) {
             foreach ($schema['required'] as $field) {
@@ -27,22 +28,22 @@ class SchemaValidator
                 }
             }
         }
-        
+
         // Properties validieren
         if (isset($schema['properties'])) {
             foreach ($data as $key => $value) {
                 if (!isset($schema['properties'][$key])) {
                     continue; // Unbekannte Property ignorieren
                 }
-                
+
                 $propertySchema = $schema['properties'][$key];
                 $this->validateProperty($key, $value, $propertySchema);
             }
         }
-        
+
         return empty($this->errors);
     }
-    
+
     /**
      * Validiert einzelne Property
      * 
@@ -57,7 +58,7 @@ class SchemaValidator
         if (isset($schema['type'])) {
             $types = is_array($schema['type']) ? $schema['type'] : [$schema['type']];
             $valid = false;
-            
+
             foreach ($types as $type) {
                 if ($type === 'null' && $value === null) {
                     $valid = true;
@@ -68,39 +69,52 @@ class SchemaValidator
                     break;
                 }
             }
-            
+
             if (!$valid && $value !== null) {
                 $this->errors[] = "Field '{$key}' has invalid type";
             }
         }
-        
+
         // Enum prüfen
         if (isset($schema['enum']) && $value !== null && $value !== '') {
             if (!in_array($value, $schema['enum'], true)) {
                 $this->errors[] = "Field '{$key}' must be one of: " . implode(', ', $schema['enum']);
             }
         }
-        
+
         // String-spezifische Validierungen
         if (isset($schema['minLength']) && is_string($value)) {
             if (strlen($value) < $schema['minLength']) {
                 $this->errors[] = "Field '{$key}' is too short";
             }
         }
-        
+
         if (isset($schema['maxLength']) && is_string($value)) {
             if (strlen($value) > $schema['maxLength']) {
                 $this->errors[] = "Field '{$key}' is too long";
             }
         }
-        
+
+        // Regex-Pattern-Validierung
+        if (isset($schema['pattern']) && is_string($value) && $value !== '') {
+            if (!preg_match('/' . $schema['pattern'] . '/', $value)) {
+                $this->errors[] = "Field '{$key}' has invalid format";
+            }
+        }
+
         // Numerische Validierungen
         if (isset($schema['minimum']) && is_numeric($value)) {
             if ($value < $schema['minimum']) {
                 $this->errors[] = "Field '{$key}' is below minimum";
             }
         }
-        
+
+        if (isset($schema['maximum']) && is_numeric($value)) {
+            if ($value > $schema['maximum']) {
+                $this->errors[] = "Field '{$key}' exceeds maximum";
+            }
+        }
+
         // Array-Validierung
         if (isset($schema['items']) && is_array($value)) {
             foreach ($value as $item) {
@@ -111,7 +125,7 @@ class SchemaValidator
                 }
             }
         }
-        
+
         // E-Mail Format
         if (isset($schema['format']) && $schema['format'] === 'email' && $value !== null) {
             if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
@@ -119,7 +133,7 @@ class SchemaValidator
             }
         }
     }
-    
+
     /**
      * Prüft Wert-Typ
      * 
@@ -148,7 +162,7 @@ class SchemaValidator
                 return true;
         }
     }
-    
+
     /**
      * Gibt Validierungsfehler zurück
      * 

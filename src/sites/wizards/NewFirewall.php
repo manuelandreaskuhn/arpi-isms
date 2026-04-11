@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\FirewallSchema;
-use ARPI\Entities\Documents\Firewall;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/firewallwizard.js')]
@@ -16,26 +16,24 @@ class NewFirewall extends BaseSite
     public function prepare(): void 
     {
         $this->setTitle('Neue Firewall');
-        $firewallsoftware = $this->getSoftwareData('firewall');
-        $this->setData('firewallsoftware', $firewallsoftware);
     }
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-firewall.html');
+        return $this->renderWizard('firewall');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = FirewallSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('firewall');
         
         if (!$validator->validate($data, $schema)) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $firewall = new Firewall();
+            $firewall = new DynamicDocument('firewall');
             EntityHydrator::hydrate($firewall, $data);
             
             $firewall->createdat = new \DateTime();
@@ -58,7 +56,7 @@ class NewFirewall extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = FirewallSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('firewall');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -66,7 +64,7 @@ class NewFirewall extends BaseSite
         }
         
         try {
-            $firewall = $this->find(Firewall::class, $id);
+            $firewall = $this->findDynamic('firewall', $id);
             
             if (!$firewall) {
                 return ['success' => false, 'errors' => ['Firewall nicht gefunden']];
@@ -91,7 +89,7 @@ class NewFirewall extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $firewall = $this->find(Firewall::class, $id);
+            $firewall = $this->findDynamic('firewall', $id);
             
             if (!$firewall) {
                 return ['success' => false, 'errors' => ['Firewall nicht gefunden']];

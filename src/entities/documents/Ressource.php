@@ -1,7 +1,7 @@
 <?php
+
 namespace ARPI\Entities\Documents;
 
-use ARPI\ODM\Mapping\Annotations as ODM;
 use MongoDB\BSON\ObjectId;
 use DateTime;
 
@@ -11,7 +11,8 @@ use DateTime;
  * @see User
  * @ODM\EmbeddedDocument
  */
-class Ressource {
+class Ressource
+{
 
     /**
      * MongoDB Object ID
@@ -134,7 +135,8 @@ class Ressource {
      * Initialisiert Default Werte (z.B. leere Arrays)
      * @return void 
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->uuid = \uniqid('ressource_', true);
         $this->id = new ObjectId();
         $this->roles = array();

@@ -1,0 +1,114 @@
+<div class="group-wrapper">
+    <div class="subsection-header">VPN-Protokoll &amp; Verschlüsselung</div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>VPN-Protokoll</label>
+            <div class="custom-select" data-name="protocol">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="ipsec-ikev2">IPsec (IKEv2)</div>
+                        <div class="select-option" data-value="ipsec-ikev1">IPsec (IKEv1)</div>
+                        <div class="select-option" data-value="ssl-tls">SSL/TLS VPN</div>
+                        <div class="select-option" data-value="openvpn-tcp">OpenVPN (TCP)</div>
+                        <div class="select-option" data-value="openvpn-udp">OpenVPN (UDP)</div>
+                        <div class="select-option" data-value="wireguard">WireGuard</div>
+                        <div class="select-option" data-value="l2tp-ipsec">L2TP/IPsec</div>
+                        <div class="select-option" data-value="pptp">PPTP (unsicher!)</div>
+                        <div class="select-option" data-value="sstp">SSTP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>VPN-Port(s)</label>
+            <input type="text" id="ports" name="ports" placeholder="z.B. 443, 500, 4500">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Verschlüsselungs-Algorithmus</label>
+            <div class="custom-select" data-name="encryptionalgo">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="aes-256-gcm">AES-256-GCM (empfohlen)</div>
+                        <div class="select-option" data-value="aes-256-cbc">AES-256-CBC</div>
+                        <div class="select-option" data-value="aes-128-gcm">AES-128-GCM</div>
+                        <div class="select-option" data-value="aes-128-cbc">AES-128-CBC</div>
+                        <div class="select-option" data-value="chacha20-poly1305">ChaCha20-Poly1305</div>
+                        <div class="select-option" data-value="3des">3DES (veraltet)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Hash-Algorithmus</label>
+            <div class="custom-select" data-name="hashalgo">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="sha-512">SHA-512</div>
+                        <div class="select-option" data-value="sha-384">SHA-384</div>
+                        <div class="select-option" data-value="sha-256">SHA-256 (empfohlen)</div>
+                        <div class="select-option" data-value="sha-1">SHA-1 (schwach)</div>
+                        <div class="select-option" data-value="md5">MD5 (unsicher)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Diffie-Hellman Group</label>
+            <div class="custom-select" data-name="dhgroup">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="group-21">Group 21 (521-bit ECP, stärkst)</div>
+                        <div class="select-option" data-value="group-20">Group 20 (384-bit ECP)</div>
+                        <div class="select-option" data-value="group-19">Group 19 (256-bit ECP, empfohlen)</div>
+                        <div class="select-option" data-value="group-14">Group 14 (2048-bit)</div>
+                        <div class="select-option" data-value="group-5">Group 5 (1536-bit)</div>
+                        <div class="select-option" data-value="group-2">Group 2 (1024-bit, veraltet)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Perfect Forward Secrecy (PFS)</label>
+            <div class="custom-select" data-name="pfs">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="enabled">Aktiviert (empfohlen)</div>
+                        <div class="select-option" data-value="disabled">Deaktiviert</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
     initializeHelpTooltips();
     setupTIWizard();
@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupTIWizard() {
     const form = document.getElementById('newTIInfrastructureForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleTISubmit);
-    
+
     // Konfiguration Toggle
     setupKonfigurationToggle();
 }
@@ -21,7 +21,7 @@ function setupTIWizard() {
 function setupKonfigurationToggle() {
     const konfigSelect = document.querySelector('[data-name="konfiguration"]');
     const redundantFields = document.querySelector('.ti-redundant-config');
-    
+
     if (konfigSelect && redundantFields) {
         const observer = new MutationObserver(() => {
             const value = konfigSelect.dataset.value;
@@ -34,10 +34,10 @@ function setupKonfigurationToggle() {
 
 async function handleTISubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
     console.log('TI Infrastructure Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -47,7 +47,7 @@ async function handleTISubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");
@@ -58,7 +58,7 @@ async function handleTISubmit(event) {
             }
 
             alert('TI-Infrastruktur erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 

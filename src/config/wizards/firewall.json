@@ -1,0 +1,288 @@
+{
+  "wizard_id": "firewall",
+  "label": "Neue Firewall",
+  "collection": "firewalls",
+  "uuid_prefix": "firewall_",
+  "icon": "firewall",
+  "template_path": "pages/wizards/komponenten/new-firewall.html",
+  "messages": {
+    "create_success": "Firewall erfolgreich erstellt",
+    "update_success": "Firewall erfolgreich aktualisiert",
+    "delete_success": "Firewall erfolgreich gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "name",
+          "element": "text-name",
+          "label": "Firewall Name",
+          "required": true
+        },
+        {
+          "name": "type",
+          "element": "software-select",
+          "label": "Typ / Hersteller",
+          "attributes": {
+            "data-category": "firewall"
+          },
+          "info_panel": "firewall-software-info-section"
+        },
+        {
+          "name": "model",
+          "element": "text-input",
+          "label": "Modell / Appliance",
+          "placeholder": "z.B. PA-3220, FortiGate 100F",
+          "required": true
+        },
+        {
+          "name": "serialnumber",
+          "element": "serial-number",
+          "label": "Seriennummer"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "label": "Netzwerk-Konfiguration",
+      "order": 2,
+      "fields": [
+        {
+          "name": "managementip",
+          "element": "ip-address",
+          "label": "Management IP",
+          "required": true
+        },
+        {
+          "name": "managementurl",
+          "element": "management-url",
+          "label": "Management-URL"
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort / Zone"
+        },
+        {
+          "name": "function",
+          "element": "select-input",
+          "label": "Funktion",
+          "options": [
+            {
+              "value": "perimeter",
+              "label": "Perimeter-Firewall (Internet-Edge)"
+            },
+            {
+              "value": "internal",
+              "label": "Interne Segmentierung"
+            },
+            {
+              "value": "dmz",
+              "label": "DMZ-Firewall"
+            },
+            {
+              "value": "datacenter",
+              "label": "Rechenzentrum-Firewall"
+            },
+            {
+              "value": "ngfw",
+              "label": "Next-Generation Firewall (NGFW)"
+            }
+          ]
+        },
+        {
+          "group": "firewall-zones",
+          "label": "Netzwerk-Zonen (External / Internal / DMZ)"
+        },
+        {
+          "name": "otherzones",
+          "element": "text-input",
+          "label": "Weitere Zonen",
+          "placeholder": "Weitere Netzwerk-Zonen kommagetrennt",
+          "attributes": {
+            "data-multi-input": "true"
+          }
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "label": "Security Features",
+      "order": 3,
+      "fields": [
+        {
+          "name": "ips",
+          "element": "select-input",
+          "label": "IPS/IDS",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "IPS aktiviert (Prevention)"
+            },
+            {
+              "value": "ids-only",
+              "label": "IDS-only (Detection)"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "sslinspection",
+          "element": "select-input",
+          "label": "SSL/TLS Inspection",
+          "options": [
+            {
+              "value": "full",
+              "label": "Vollständig (Full Inspection)"
+            },
+            {
+              "value": "partial",
+              "label": "Teilweise (partial)"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "appcontrol",
+          "element": "toggle",
+          "label": "Application Control"
+        },
+        {
+          "name": "antimalware",
+          "element": "toggle",
+          "label": "Anti-Malware / Virus Scan"
+        },
+        {
+          "name": "urlfilter",
+          "element": "toggle",
+          "label": "URL Filtering"
+        },
+        {
+          "name": "ddos",
+          "element": "toggle",
+          "label": "DDoS Protection"
+        }
+      ]
+    },
+    {
+      "id": "ha",
+      "label": "High Availability & Redundanz",
+      "order": 4,
+      "fields": [
+        {
+          "group": "ha-config",
+          "label": "Hochverfügbarkeit (HA)",
+          "field_overrides": {
+            "hapartner": {
+              "name": "partnerfirewall",
+              "label": "Partner / Standby Firewall"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "logging",
+      "label": "Logging & Monitoring",
+      "order": 5,
+      "fields": [
+        {
+          "name": "loglevel",
+          "element": "radio-group",
+          "label": "Log Level",
+          "options": [
+            {
+              "value": "all",
+              "label": "Alles loggen"
+            },
+            {
+              "value": "deny-only",
+              "label": "Nur verweigerte Verbindungen"
+            },
+            {
+              "value": "security-events",
+              "label": "Sicherheits-Events"
+            },
+            {
+              "value": "minimal",
+              "label": "Minimal"
+            }
+          ]
+        },
+        {
+          "name": "monitoring",
+          "element": "checkbox-group",
+          "label": "Monitoring / Alerting",
+          "options": [
+            {
+              "value": "snmp",
+              "label": "SNMP"
+            },
+            {
+              "value": "email",
+              "label": "E-Mail Alerts"
+            },
+            {
+              "value": "syslog",
+              "label": "Syslog"
+            },
+            {
+              "value": "webhook",
+              "label": "Webhook"
+            }
+          ]
+        },
+        {
+          "group": "siem-integration",
+          "label": "SIEM-Integration",
+          "field_overrides": {
+            "siemid": {
+              "label": "SIEM-System"
+            }
+          }
+        },
+        {
+          "name": "logretention",
+          "element": "range-slider",
+          "label": "Log Retention (Tage)",
+          "attributes": {
+            "min": 30,
+            "max": 730,
+            "step": 1,
+            "default": 90,
+            "unit": "Tage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 6,
+      "fields": [
+        {
+          "name": "fwnotes",
+          "element": "notes",
+          "label": "Notizen / Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newFirewallForm",
+  "breadcrumb_label": "Neue Firewall anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/firewall-help.html",
+  "software_data": {
+    "firewallsoftware": "firewall"
+  }
+}

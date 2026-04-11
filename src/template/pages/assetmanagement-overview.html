@@ -2,330 +2,280 @@
     <p>Assetmanagement</p>
 </aside>
 
-<div class="threecolumnlist">
+<!-- ==================== KPI-Karten ==================== -->
+<div class="stat-kpi-row">
 
-    <div class="columnlist">
-        <div class="infobox">
-            <h3>Systeme <i class="count">157</i></h3>
-            <i>Was sind Systeme: Eine Ansammlung von Komponenten, die zusammenarbeiten, um ein bestimmtes Ziel zu erreichen.</i>
+    <a class="stat-kpi-card" href="/SystemManagement.html">
+        <div class="stat-kpi-value">157</div>
+        <div class="stat-kpi-label">Systeme</div>
+        <div class="stat-kpi-sub">in 6 Gruppen</div>
+    </a>
 
-            <form id="newSystemQuickForm">
-                <div class="newentry">
-                    <input type="text" name="systemname" placeholder="Neues System hinzufügen...">
-                    <button type="submit" title="Hinzufügen"><i>+</i></button>
-                </div>
-            </form>
-        </div>
+    <a class="stat-kpi-card" href="/ComponentManagement.html">
+        <div class="stat-kpi-value">4.845</div>
+        <div class="stat-kpi-label">Komponenten</div>
+        <div class="stat-kpi-sub">12 Typen</div>
+    </a>
 
-        <div class="search">
-            <input type="search" placeholder="Systeme durchsuchen...">
-        </div>
-        
-        <h2>Radiologie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Systemname 1</strong>
-                <div class="taginfo">
-                    <span class="tag">Komponente 1</span>
-                    <span class="tag">Komponente 2</span>
-                    <span class="tag">Applikation 1</span>
+    <a class="stat-kpi-card" href="/ApplicationManagement.html">
+        <div class="stat-kpi-value">100</div>
+        <div class="stat-kpi-label">Applikationen</div>
+        <div class="stat-kpi-sub">in 47 Kategorien</div>
+    </a>
+
+    <div class="stat-kpi-card stat-kpi-card--alert">
+        <div class="stat-kpi-value">23</div>
+        <div class="stat-kpi-label">Offene CVEs</div>
+        <div class="stat-kpi-sub">davon 3 kritisch</div>
+    </div>
+
+</div>
+
+<!-- ==================== Hauptbereich ==================== -->
+<div class="stat-dashboard">
+
+    <!-- Linke Spalte -->
+    <div class="stat-col">
+
+        <!-- Sicherheitsstatus Software -->
+        <div class="stat-panel">
+            <h3 class="stat-panel-title">Sicherheitsstatus · Applikationen</h3>
+
+            <div class="stat-severity-row">
+                <span class="stat-severity-label">Kritisch</span>
+                <div class="stat-bar-track">
+                    <div class="stat-bar stat-bar--critical" style="width: 6%"></div>
                 </div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+                <span class="stat-severity-count stat-severity-count--critical">3</span>
             </div>
-
-            <div class="entry">
-                <strong>Systemname 2</strong>
-                <div class="taginfo">
-                    <span class="tag">Komponente 1</span>
-                    <span class="tag">Komponente 2</span>
-                    <span class="tag">Komponente 3</span>
-                    <span class="tag">Applikation 1</span>
-                    <span class="tag">Applikation 2</span>
+            <div class="stat-severity-row">
+                <span class="stat-severity-label">Hoch</span>
+                <div class="stat-bar-track">
+                    <div class="stat-bar stat-bar--high" style="width: 14%"></div>
                 </div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+                <span class="stat-severity-count stat-severity-count--high">7</span>
             </div>
-        </div>
-
-        <h2>Krankenhausverwaltung</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Systemname 1 lkasdlksa kasdfjd</strong>
-                <div class="taginfo">
-                    <span class="tag">Komponente 1</span>
-                    <span class="tag">Komponente 2</span>
-                    <span class="tag">Applikation 1</span>
+            <div class="stat-severity-row">
+                <span class="stat-severity-label">Mittel</span>
+                <div class="stat-bar-track">
+                    <div class="stat-bar stat-bar--medium" style="width: 26%"></div>
                 </div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+                <span class="stat-severity-count stat-severity-count--medium">13</span>
             </div>
-
-            <div class="entry">
-                <strong>Systemname 2</strong>
-                <div class="taginfo">
-                    <span class="tag">Komponente 1</span>
-                    <span class="tag">Komponente 2</span>
-                    <span class="tag">Applikation 1</span>
+            <div class="stat-severity-row">
+                <span class="stat-severity-label">Niedrig</span>
+                <div class="stat-bar-track">
+                    <div class="stat-bar stat-bar--low" style="width: 12%"></div>
                 </div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+                <span class="stat-severity-count stat-severity-count--low">6</span>
             </div>
-        </div>
-
-        <h2>Intensivpflege</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Systemname 1</strong>
-                <div class="taginfo">
-                    <span class="tag">Komponente 1</span>
-                    <span class="tag">Komponente 2</span>
-                    <span class="tag">Applikation 1</span>
+            <div class="stat-severity-row">
+                <span class="stat-severity-label">Keine</span>
+                <div class="stat-bar-track">
+                    <div class="stat-bar stat-bar--none" style="width: 71%"></div>
                 </div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+                <span class="stat-severity-count stat-severity-count--none">71</span>
             </div>
         </div>
 
-        <h2>Unbekannt</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Systemname 1</strong>
-                <div class="taginfo"></div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
+        <!-- Patchstatus Software -->
+        <div class="stat-panel">
+            <h3 class="stat-panel-title">Patchstatus · Applikationen</h3>
+            <div class="stat-donut-row">
+                <div class="stat-pill stat-pill--green">
+                    <span class="stat-pill-value">61</span>
+                    <span class="stat-pill-label">Aktuell</span>
+                </div>
+                <div class="stat-pill stat-pill--yellow">
+                    <span class="stat-pill-value">28</span>
+                    <span class="stat-pill-label">Update verfügbar</span>
+                </div>
+                <div class="stat-pill stat-pill--orange">
+                    <span class="stat-pill-value">11</span>
+                    <span class="stat-pill-label">Veraltet</span>
+                </div>
+            </div>
+            <div class="stat-segbar">
+                <div class="stat-segbar-seg stat-segbar-seg--green" style="width: 61%" title="61 Aktuell"></div>
+                <div class="stat-segbar-seg stat-segbar-seg--yellow" style="width: 28%" title="28 Update verfügbar">
+                </div>
+                <div class="stat-segbar-seg stat-segbar-seg--orange" style="width: 11%" title="11 Veraltet"></div>
+            </div>
+        </div>
+
+        <!-- Top CVE-Risiken -->
+        <div class="stat-panel">
+            <h3 class="stat-panel-title">Höchste CVE-Risiken</h3>
+            <div class="stat-risklist">
+                <div class="stat-risk-entry">
+                    <span class="stat-risk-name">Mirth Connect</span>
+                    <span class="stat-risk-meta">Medizinische Gateways</span>
+                    <span class="stat-badge stat-badge--critical">3 CVE · Kritisch</span>
+                </div>
+                <div class="stat-risk-entry">
+                    <span class="stat-risk-name">Terminplanung</span>
+                    <span class="stat-risk-meta">Krankenhausverwaltung</span>
+                    <span class="stat-badge stat-badge--high">5 CVE · Hoch</span>
+                </div>
+                <div class="stat-risk-entry">
+                    <span class="stat-risk-name">RIS-System</span>
+                    <span class="stat-risk-meta">Radiologie</span>
+                    <span class="stat-badge stat-badge--critical">2 CVE · Kritisch</span>
+                </div>
+                <div class="stat-risk-entry">
+                    <span class="stat-risk-name">Fortinet FortiGate</span>
+                    <span class="stat-risk-meta">Firewall-Software</span>
+                    <span class="stat-badge stat-badge--medium">1 CVE · Mittel</span>
+                </div>
+                <div class="stat-risk-entry">
+                    <span class="stat-risk-name">Abrechnungssystem</span>
+                    <span class="stat-risk-meta">Krankenhausverwaltung</span>
+                    <span class="stat-badge stat-badge--medium">1 CVE · Mittel</span>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <div class="columnlist">
-        <div class="infobox">
-            <h3>Komponenten <i class="count">4845</i></h3>
-            <i>Was sind Komponenten: Eine Reihe von Bausteinen, darunter Hardware und Netzwerke, die zusammen ein System bilden.</i>
+    <!-- Rechte Spalte -->
+    <div class="stat-col">
 
-            <form id="newKomponentQuickForm">
-                <div class="newentry">
-                    <input type="text" name="komponentenName" placeholder="Neue Komponente hinzufügen...">
-                    <select name="komponentenTyp">
-                        <option value="server">Physischer Server</option>
-                        <option value="vm">Virtuelle Maschine</option>
-                        <option value="hypervisor">Hypervisor</option>
-                        <option value="firewall">Firewall</option>
-                        <option value="switch">Switch</option>
-                        <option value="nas">Netzwerkspeicher</option>
-                        <option value="san">Storage Area Network</option>
-                        <option value="backup">Backup-System</option>
-                    </select>
-                    <button type="submit" title="Hinzufügen"><i>+</i></button>
+        <!-- Komponenten nach Typ -->
+        <div class="stat-panel">
+            <h3 class="stat-panel-title">Komponenten nach Typ</h3>
+            <div class="stat-typelist">
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">🔥</span>
+                    <span class="stat-type-name">Firewalls</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 78%"></div>
+                    </div>
+                    <span class="stat-type-count">24</span>
                 </div>
-            </form>
-        </div>
-
-        <div class="search">
-            <input type="search" placeholder="Komponenten durchsuchen...">
-        </div>
-
-        <h2>Server</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>server123</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.1</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">⚙</span>
+                    <span class="stat-type-name">Hypervisoren</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 55%"></div>
+                    </div>
+                    <span class="stat-type-count">17</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Physischer Server</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">🗄</span>
+                    <span class="stat-type-name">Backup-Systeme</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 42%"></div>
+                    </div>
+                    <span class="stat-type-count">13</span>
                 </div>
-            </div>
-            <div class="entry">
-                <strong>vm-1235</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.2</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">🌐</span>
+                    <span class="stat-type-name">Netzwerke</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 100%"></div>
+                    </div>
+                    <span class="stat-type-count">31</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Virtuelle Maschine</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">↔</span>
+                    <span class="stat-type-name">Proxy-Server</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 19%"></div>
+                    </div>
+                    <span class="stat-type-count">6</span>
                 </div>
-            </div>
-            <div class="entry">
-                <strong>db-server-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.3</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">🛡</span>
+                    <span class="stat-type-name">SIEM-Systeme</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 10%"></div>
+                    </div>
+                    <span class="stat-type-count">3</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Datenbankserver</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">🔒</span>
+                    <span class="stat-type-name">VPN</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 23%"></div>
+                    </div>
+                    <span class="stat-type-count">7</span>
                 </div>
-            </div>
-        </div>
-
-        <h2>Netzwerkgeräte</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>firewall-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.4</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">🖧</span>
+                    <span class="stat-type-name">Kommunikationsserver</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 16%"></div>
+                    </div>
+                    <span class="stat-type-count">5</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Firewall</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">📡</span>
+                    <span class="stat-type-name">TI-Infrastruktur</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 13%"></div>
+                    </div>
+                    <span class="stat-type-count">4</span>
                 </div>
-            </div>
-            <div class="entry">
-                <strong>switch-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.5</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Switch</span>
-                </div>
-            </div>
-        </div>
-
-        <h2>Speichersysteme</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>nas-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.6</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Netzwerkspeicher</span>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>san-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.7</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Storage Area Network</span>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>backup-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.8</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Backup-System</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-icon">🏥</span>
+                    <span class="stat-type-name">Medizinische Geräte</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--primary" style="width: 87%"></div>
+                    </div>
+                    <span class="stat-type-count">27</span>
                 </div>
             </div>
         </div>
 
-    </div>
-
-    <div class="columnlist">
-        <div class="infobox">
-            <h3>Applikationen <i class="count">100</i></h3>
-            <i>Was sind Applikationen: Softwarelösungen die entweder direkt oder indirekt Geschäftsprozesse unterstützen.</i>
-
-            <form id="newSoftwareQuickForm">
-                <div class="newentry">
-                    <input type="text" name="softwareName" placeholder="Neue Applikation hinzufügen...">
-                    <button type="submit" title="Hinzufügen"><i>+</i></button>
+        <!-- Systeme nach Bereich -->
+        <div class="stat-panel">
+            <h3 class="stat-panel-title">Systeme nach Bereich</h3>
+            <div class="stat-typelist">
+                <div class="stat-type-entry">
+                    <span class="stat-type-name">Radiologie</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--secondary" style="width: 55%"></div>
+                    </div>
+                    <span class="stat-type-count">22</span>
                 </div>
-            </form>
-        </div>
-
-        <div class="search">
-            <input type="search" placeholder="Applikationen durchsuchen...">
-        </div>
-
-        <h2>Krankenhausverwaltung</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>KIS-System</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-name">Krankenhausverwaltung</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--secondary" style="width: 100%"></div>
+                    </div>
+                    <span class="stat-type-count">40</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller A</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-name">Intensivpflege</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--secondary" style="width: 38%"></div>
+                    </div>
+                    <span class="stat-type-count">15</span>
                 </div>
-            </div>
-            <div class="entry">
-                <strong>Abrechnungssystem</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="medium">1 CVE</span>
-                    <span class="status" data-status="updates-available">Update verfügbar</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-name">Notaufnahme</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--secondary" style="width: 30%"></div>
+                    </div>
+                    <span class="stat-type-count">12</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller B</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-name">Labor</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--secondary" style="width: 45%"></div>
+                    </div>
+                    <span class="stat-type-count">18</span>
                 </div>
-            </div>
-            <div class="entry">
-                <strong>Terminplanung</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="high">5 CVE</span>
-                    <span class="status" data-status="outdated">Veraltet</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller C</span>
+                <div class="stat-type-entry">
+                    <span class="stat-type-name">Unbekannt</span>
+                    <div class="stat-bar-track stat-bar-track--sm">
+                        <div class="stat-bar stat-bar--muted" style="width: 25%"></div>
+                    </div>
+                    <span class="stat-type-count">10</span>
                 </div>
             </div>
         </div>
 
-        <h2>Radiologie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>PACS-System</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller D</span>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>RIS-System</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="critical">2 CVE</span>
-                    <span class="status" data-status="updates-available">Update verfügbar</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller E</span>
-                </div>
-            </div>
-        </div>
-
-        <h2>IT Tools</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Ticketing-System</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="low">1 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller F</span>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>Monitoring-Tool</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller G</span>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>Notepad++</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Hersteller H</span>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>

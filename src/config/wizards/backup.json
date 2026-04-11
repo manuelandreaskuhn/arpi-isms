@@ -1,0 +1,377 @@
+{
+  "wizard_id": "backup",
+  "label": "Neues Backup-System",
+  "collection": "backup_systems",
+  "uuid_prefix": "backup_",
+  "icon": "backup",
+  "template_path": "pages/wizards/komponenten/new-backup.html",
+  "messages": {
+    "create_success": "Backup-System erfolgreich erstellt",
+    "update_success": "Backup-System aktualisiert",
+    "delete_success": "Backup-System erfolgreich gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "name",
+          "element": "text-name",
+          "label": "Backup-System Name",
+          "required": true
+        },
+        {
+          "name": "software",
+          "element": "software-select",
+          "label": "Backup-Software",
+          "attributes": {
+            "data-category": "backup"
+          },
+          "info_panel": "backup-software-info-section",
+          "required": true
+        },
+        {
+          "name": "version",
+          "element": "version",
+          "label": "Version",
+          "required": true
+        },
+        {
+          "name": "licensemodel",
+          "element": "license-model",
+          "label": "Lizenzmodell",
+          "options": [
+            {
+              "value": "per-socket",
+              "label": "Per Socket"
+            },
+            {
+              "value": "per-vm",
+              "label": "Per VM"
+            },
+            {
+              "value": "per-tb",
+              "label": "Per TB"
+            },
+            {
+              "value": "per-host",
+              "label": "Per Host"
+            },
+            {
+              "value": "subscription",
+              "label": "Subscription"
+            },
+            {
+              "value": "perpetual",
+              "label": "Perpetual"
+            },
+            {
+              "value": "free",
+              "label": "Kostenlos / Open Source"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Infrastruktur & Server",
+      "order": 2,
+      "fields": [
+        {
+          "group": "server-reference",
+          "label": "Backup-Server",
+          "field_overrides": {
+            "serverid": {
+              "label": "Backup-Server / VM"
+            },
+            "serverhostname": {
+              "label": "Server-Name (manuell)"
+            }
+          }
+        },
+        {
+          "name": "serveroperatingystem",
+          "element": "operating-system",
+          "label": "Betriebssystem",
+          "attributes": {
+            "data-category": "backup"
+          }
+        },
+        {
+          "name": "serverlocation",
+          "element": "text-location",
+          "label": "Standort"
+        },
+        {
+          "name": "backupmanagementurl",
+          "element": "management-url",
+          "label": "Management-URL"
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "label": "Storage-Konfiguration",
+      "order": 3,
+      "fields": [
+        {
+          "name": "storagelevels",
+          "element": "select-input",
+          "label": "Storage-Stufen",
+          "options": [
+            {
+              "value": "2-tier",
+              "label": "2-stufig (Primär + Sekundär)"
+            },
+            {
+              "value": "3-tier",
+              "label": "3-stufig (Primär + Sekundär + Archiv)"
+            }
+          ]
+        },
+        {
+          "group": "storage-tier-primary",
+          "label": "Stufe 1 – Primär-Storage"
+        },
+        {
+          "group": "storage-tier-secondary",
+          "label": "Stufe 2 – Sekundär-Storage"
+        },
+        {
+          "group": "storage-tier-tertiary",
+          "label": "Stufe 3 – Archiv-Storage",
+          "condition": {
+            "field": "storagelevels",
+            "operator": "eq",
+            "value": "3-tier"
+          }
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "label": "Backup-Features & Konfiguration",
+      "order": 4,
+      "fields": [
+        {
+          "name": "backuptypes",
+          "element": "checkbox-group",
+          "label": "Backup-Typen",
+          "options": [
+            {
+              "value": "full",
+              "label": "Vollsicherung (Full Backup)"
+            },
+            {
+              "value": "incremental",
+              "label": "Inkrementell"
+            },
+            {
+              "value": "differential",
+              "label": "Differenziell"
+            },
+            {
+              "value": "forever-incremental",
+              "label": "Forever-Inkrementell"
+            }
+          ]
+        },
+        {
+          "name": "compression",
+          "element": "select-input",
+          "label": "Kompression",
+          "options": [
+            {
+              "value": "high",
+              "label": "Hoch"
+            },
+            {
+              "value": "medium",
+              "label": "Mittel"
+            },
+            {
+              "value": "low",
+              "label": "Niedrig"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "backupencryption",
+          "element": "select-input",
+          "label": "Verschlüsselung",
+          "options": [
+            {
+              "value": "aes-256",
+              "label": "AES-256 (empfohlen)"
+            },
+            {
+              "value": "aes-128",
+              "label": "AES-128"
+            },
+            {
+              "value": "other",
+              "label": "Andere"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "applicationaware",
+          "element": "select-input",
+          "label": "Application-Aware Processing",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ja"
+            },
+            {
+              "value": "no",
+              "label": "Nein"
+            }
+          ]
+        },
+        {
+          "name": "instantrecovery",
+          "element": "select-input",
+          "label": "Instant Recovery / VM",
+          "options": [
+            {
+              "value": "supported",
+              "label": "Unterstützt"
+            },
+            {
+              "value": "not-supported",
+              "label": "Nicht unterstützt"
+            }
+          ]
+        },
+        {
+          "name": "additionalfeatures",
+          "element": "checkbox-group",
+          "label": "Weitere Features",
+          "options": [
+            {
+              "value": "replication",
+              "label": "Replikation"
+            },
+            {
+              "value": "archiving",
+              "label": "Archivierung"
+            },
+            {
+              "value": "cdp",
+              "label": "CDP (Continuous Data Protection)"
+            },
+            {
+              "value": "cloud-tier",
+              "label": "Cloud-Tiering"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "label": "Monitoring & Alerting",
+      "order": 5,
+      "fields": [
+        {
+          "name": "monitoringintegration",
+          "element": "siem-reference",
+          "label": "Monitoring-Integration (SIEM)"
+        },
+        {
+          "name": "monitoringtool",
+          "element": "monitoring-tool",
+          "label": "Monitoring-Tool (manuell)"
+        },
+        {
+          "name": "reporting",
+          "element": "select-input",
+          "label": "Reporting-Intervall",
+          "options": [
+            {
+              "value": "daily",
+              "label": "Täglich"
+            },
+            {
+              "value": "weekly",
+              "label": "Wöchentlich"
+            },
+            {
+              "value": "monthly",
+              "label": "Monatlich"
+            },
+            {
+              "value": "on-failure",
+              "label": "Nur bei Fehler"
+            }
+          ]
+        },
+        {
+          "name": "alertemail",
+          "element": "alert-email",
+          "label": "Alarm-E-Mail Empfänger"
+        },
+        {
+          "name": "logretention",
+          "element": "text-input",
+          "label": "Log-Aufbewahrung",
+          "placeholder": "z.B. 90 Tage, 1 Jahr"
+        }
+      ]
+    },
+    {
+      "id": "responsibility",
+      "label": "Verantwortlichkeiten & Support",
+      "order": 6,
+      "fields": [
+        {
+          "name": "backupadmin",
+          "element": "admin-contact",
+          "label": "Backup-Administrator"
+        },
+        {
+          "name": "supportcontract",
+          "element": "support-contract",
+          "label": "Support-Vertrag"
+        },
+        {
+          "name": "supportend",
+          "element": "support-end-date",
+          "label": "Support-Vertragsende"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 7,
+      "fields": [
+        {
+          "name": "backupsystemnotes",
+          "element": "notes",
+          "label": "Notizen / Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newBackupSystemForm",
+  "breadcrumb_label": "Neues Backup-System anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/backup-help.html",
+  "software_data": {
+    "backupsoftware": "backup"
+  }
+}

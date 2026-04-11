@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\NetworkSchema;
-use ARPI\Entities\Documents\Network;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/networkwizard.js')]
@@ -20,18 +20,18 @@ class NewNetwork extends BaseSite
     
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-network.html');
+        return $this->renderWizard('network');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        if (!$validator->validate($data, NetworkSchema::getSchema())) {
+        if (!$validator->validate($data, (new WizardSchemaBuilder())->buildSchema('network'))) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $network = new Network();
+            $network = new DynamicDocument('network');
             EntityHydrator::hydrate($network, $data);
             $network->createdat = new \DateTime();
             $network->updatedat = new \DateTime();
@@ -53,7 +53,7 @@ class NewNetwork extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = NetworkSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('network');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -61,7 +61,7 @@ class NewNetwork extends BaseSite
         }
         
         try {
-            $network = $this->find(Network::class, $id);
+            $network = $this->findDynamic('network', $id);
             
             if (!$network) {
                 return ['success' => false, 'errors' => ['Netzwerk nicht gefunden']];
@@ -86,7 +86,7 @@ class NewNetwork extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $network = $this->find(Network::class, $id);
+            $network = $this->findDynamic('network', $id);
             
             if (!$network) {
                 return ['success' => false, 'errors' => ['Netzwerk nicht gefunden']];

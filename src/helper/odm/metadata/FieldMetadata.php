@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Helper\ODM\Metadata;
 
 use ReflectionProperty;
@@ -12,7 +13,6 @@ class FieldMetadata
     public string $type;
     public bool $nullable;
     private ReflectionProperty $prop;
-    private ?string $docComment = null;
 
     /**
      * Erstellt eine neue FieldMetadata Instanz.
@@ -26,7 +26,6 @@ class FieldMetadata
         $this->name = $prop->getName();
         $this->type = $type;
         $this->nullable = $nullable;
-        $this->docComment = $prop->getDocComment() ?: '';
     }
 
     /**
@@ -60,19 +59,15 @@ class FieldMetadata
     {
         if ($value === null) return null;
         switch ($this->type) {
-            case 'int': return (int)$value;
-            case 'bool': return (bool)$value;
-            case 'date': return is_string($value) ? new \MongoDB\BSON\UTCDateTime(strtotime($value)*1000) : $value;
-            case 'string': default: return (string)$value;
+            case 'int':
+                return (int)$value;
+            case 'bool':
+                return (bool)$value;
+            case 'date':
+                return is_string($value) ? new \MongoDB\BSON\UTCDateTime(strtotime($value) * 1000) : $value;
+            case 'string':
+            default:
+                return (string)$value;
         }
-    }
-
-    /**
-     * Gibt den PHP-Typ des Feldes zurück.
-     * @return string|null
-     */
-    public function getPhpType(): ?string
-    {
-        return $this->type;
     }
 }

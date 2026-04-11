@@ -2,13 +2,13 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize component linking
     initializeAllComponentSelects();
 
     // Initialize help tooltips
     initializeHelpTooltips();
-    
+
     // Setup VPN wizard
     setupVPNWizard();
 });
@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupVPNWizard() {
     const form = document.getElementById('newVPNForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleVPNSubmit);
-    
+
     // Gateway manual input toggle
     setupGatewayToggle();
-    
+
     // Secondary gateway manual input toggle
     setupSecondaryGatewayToggle();
 }
@@ -29,7 +29,7 @@ function setupVPNWizard() {
 function setupGatewayToggle() {
     const gatewaySelect = document.querySelector('[data-name="gatewayid"]');
     const manualInput = document.getElementById('vpn-gateway-manual');
-    
+
     if (gatewaySelect && manualInput) {
         const observer = new MutationObserver(() => {
             const value = gatewaySelect.dataset.value;
@@ -42,7 +42,7 @@ function setupGatewayToggle() {
 function setupSecondaryGatewayToggle() {
     const secondarySelect = document.querySelector('[data-name="secondarygatewayid"]');
     const manualInput = document.getElementById('secondary-gateway-manual');
-    
+
     if (secondarySelect && manualInput) {
         const observer = new MutationObserver(() => {
             const value = secondarySelect.dataset.value;
@@ -54,10 +54,10 @@ function setupSecondaryGatewayToggle() {
 
 async function handleVPNSubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
     console.log('VPN Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -67,7 +67,7 @@ async function handleVPNSubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");
@@ -78,7 +78,7 @@ async function handleVPNSubmit(event) {
             }
 
             alert('VPN-System erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 

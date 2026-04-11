@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\SystemSchema;
-use ARPI\Entities\Documents\System;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/systemwizard.js')]
@@ -20,18 +20,18 @@ class NewSystem extends BaseSite
     
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/system/new-system.html');
+        return $this->renderWizard('system');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        if (!$validator->validate($data, SystemSchema::getSchema())) {
+        if (!$validator->validate($data, (new WizardSchemaBuilder())->buildSchema('system'))) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $system = new System();
+            $system = new DynamicDocument('system');
             EntityHydrator::hydrate($system, $data);
             $system->createdat = new \DateTime();
             $system->updatedat = new \DateTime();
@@ -53,7 +53,7 @@ class NewSystem extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = SystemSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('system');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -61,7 +61,7 @@ class NewSystem extends BaseSite
         }
         
         try {
-            $system = $this->find(System::class, $id);
+            $system = $this->findDynamic('system', $id);
             
             if (!$system) {
                 return ['success' => false, 'errors' => ['System nicht gefunden']];
@@ -86,7 +86,7 @@ class NewSystem extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $system = $this->find(System::class, $id);
+            $system = $this->findDynamic('system', $id);
             
             if (!$system) {
                 return ['success' => false, 'errors' => ['System nicht gefunden']];

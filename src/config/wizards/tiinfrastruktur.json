@@ -1,0 +1,259 @@
+{
+  "wizard_id": "tiinfrastruktur",
+  "label": "Neue TI-Infrastruktur",
+  "collection": "tiinfrastrukturen",
+  "uuid_prefix": "ti_",
+  "icon": "tiinfrastruktur",
+  "template_path": "pages/wizards/komponenten/new-tiinfrastruktur.html",
+  "messages": {
+    "create_success": "TI-Infrastruktur erstellt",
+    "update_success": "TI-Infrastruktur aktualisiert",
+    "delete_success": "TI-Infrastruktur gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "name",
+          "element": "text-name",
+          "label": "TI-Infrastruktur Name",
+          "required": true
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort"
+        },
+        {
+          "name": "description",
+          "element": "text-description",
+          "label": "Beschreibung"
+        }
+      ]
+    },
+    {
+      "id": "konnektor",
+      "label": "Konnektor-Konfiguration",
+      "order": 2,
+      "fields": [
+        {
+          "group": "ti-konnektor",
+          "label": "TI-Konnektor",
+          "field_overrides": {
+            "konnektorvendor": {
+              "required": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gateway",
+      "label": "Gateway & Netzwerk",
+      "order": 3,
+      "fields": [
+        {
+          "name": "tigatewaytype",
+          "element": "select-input",
+          "label": "TI-Gateway / VPN-Zugangsdienst",
+          "options": [
+            {
+              "value": "sia",
+              "label": "Sichere Internetanbindung (SIA)"
+            },
+            {
+              "value": "vpn-zugd",
+              "label": "VPN-Zugangsdienst (VPN-ZugD)"
+            },
+            {
+              "value": "dedicated",
+              "label": "Dedizierte Leitung"
+            }
+          ]
+        },
+        {
+          "name": "tiprovider",
+          "element": "text-input",
+          "label": "TI-Provider / Anbieter",
+          "placeholder": "z.B. T-Systems, DTAG, Vodafone"
+        },
+        {
+          "name": "tibandwidth",
+          "element": "text-input",
+          "label": "Bandbreite",
+          "placeholder": "z.B. 50 MBit/s"
+        },
+        {
+          "name": "tinetworksegment",
+          "element": "network-segment",
+          "label": "Netzwerk-Segment"
+        }
+      ]
+    },
+    {
+      "id": "smcb",
+      "label": "SMC-B Karten",
+      "order": 4,
+      "fields": [
+        {
+          "group": "ti-smcb",
+          "label": "SMC-B Institutionskarte"
+        }
+      ]
+    },
+    {
+      "id": "fachdienste",
+      "label": "TI-Fachdienste",
+      "order": 5,
+      "fields": [
+        {
+          "name": "tifachdienste",
+          "element": "checkbox-group",
+          "label": "Aktivierte TI-Fachdienste",
+          "options": [
+            {
+              "value": "kim",
+              "label": "KIM (Kommunikation im Medizinwesen)"
+            },
+            {
+              "value": "erezept",
+              "label": "E-Rezept"
+            },
+            {
+              "value": "epa",
+              "label": "ePA (Elektronische Patientenakte)"
+            },
+            {
+              "value": "nfdm",
+              "label": "NFDM (Notfalldatenmanagement)"
+            },
+            {
+              "value": "vsdm",
+              "label": "VSDM (Versichertenstammdatendienst)"
+            },
+            {
+              "value": "vsdd",
+              "label": "VSDD (Verzeichnisdienst)"
+            },
+            {
+              "value": "tisqsig",
+              "label": "TI-SQSig (Qualifizierte Signatur)"
+            },
+            {
+              "value": "eml",
+              "label": "eML (Medikationsplan)"
+            },
+            {
+              "value": "eau",
+              "label": "eAU (Elektronische Arbeitsunfähigkeitsbescheinigung)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "label": "Sicherheit & Compliance",
+      "order": 6,
+      "fields": [
+        {
+          "name": "tisecurity",
+          "element": "select-input",
+          "label": "TI-Sicherheitsrichtlinien",
+          "options": [
+            {
+              "value": "vollstaendig",
+              "label": "Vollständig erfüllt"
+            },
+            {
+              "value": "teilweise",
+              "label": "Teilweise erfüllt"
+            },
+            {
+              "value": "nicht-erfuellt",
+              "label": "Nicht erfüllt"
+            }
+          ]
+        },
+        {
+          "name": "tilastsecuritycheck",
+          "element": "date-field",
+          "label": "Letzte Sicherheitsprüfung"
+        },
+        {
+          "name": "tigematikzulassung",
+          "element": "select-input",
+          "label": "Gematik-Zulassung",
+          "options": [
+            {
+              "value": "zugelassen",
+              "label": "Zugelassen"
+            },
+            {
+              "value": "zertifiziert",
+              "label": "Zertifiziert"
+            },
+            {
+              "value": "in-zulassung",
+              "label": "In Zulassung"
+            },
+            {
+              "value": "nicht-zugelassen",
+              "label": "Nicht zugelassen"
+            }
+          ]
+        },
+        {
+          "name": "tizulassungsnummer",
+          "element": "text-input",
+          "label": "Zulassungsnummer / Zertifikat",
+          "placeholder": "Zulassungs- oder Zertifikatnummer von Gematik"
+        }
+      ]
+    },
+    {
+      "id": "responsibility",
+      "label": "Verantwortlichkeiten & Support",
+      "order": 7,
+      "fields": [
+        {
+          "name": "tiverantwortlicher",
+          "element": "admin-contact",
+          "label": "TI-Verantwortlicher"
+        },
+        {
+          "name": "tisupport",
+          "element": "support-contact",
+          "label": "TI-Support / Dienstleister"
+        },
+        {
+          "name": "tisupportcontract",
+          "element": "text-input",
+          "label": "Support-Vertrag / SLA",
+          "placeholder": "SLA-Details oder Vertragsnummer"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 8,
+      "fields": [
+        {
+          "name": "tinotes",
+          "element": "notes",
+          "label": "Notizen / TI-Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newTIInfrastrukturForm",
+  "breadcrumb_label": "Neue TI-Infrastruktur anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/tiinfrastruktur-help.html",
+  "software_data": []
+}

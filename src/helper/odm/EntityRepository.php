@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Helper\ODM;
 
 use ARPI\Helper\ODM\Exception\UnitOfWorkException;
@@ -66,21 +67,6 @@ class EntityRepository
     }
 
     /**
-     * Speichert ein Entity-Objekt in der zugehörigen MongoDB-Collection.
-     * @param object $entity
-     * @return \MongoDB\InsertOneResult
-     */
-    public function save(object $entity)
-    {
-        $meta = EntityMetadata::fromEntity($entity);
-        $collection = $this->db->selectCollection($meta->collection);
-
-        $data = $this->serializer->serializeEntity($entity, $meta);
-
-        return $collection->insertOne($data);
-    }
-
-    /**
      * Fügt ein Entity in die Datenbank ein (mit optionaler Session).
      */
     public function insert(object $entity, ?Session $session = null): \MongoDB\InsertOneResult
@@ -89,7 +75,7 @@ class EntityRepository
         $collection = $this->db->selectCollection($meta->collection);
 
         $data = $this->serializer->serializeEntity($entity, $meta);
-        
+
         $options = $session ? ['session' => $session] : [];
         $result = $collection->insertOne($data, $options);
 
@@ -157,14 +143,41 @@ class EntityRepository
         $collection = $this->db->selectCollection($meta->collection);
 
         $document = $collection->findOne(['_id' => $id instanceof ObjectId ? $id : new ObjectId($id)]);
-        
+
         if (!$document) {
             return null;
         }
 
         $this->serializer->deserializeEntity($entity, $document->toArray(), $meta);
-        
+
         // In Unit of Work registrieren, falls vorhanden
+        if ($this->unitOfWork) {
+            $this->unitOfWork->attach($entity);
+        }
+
+        return $entity;
+    }
+
+    /**
+     * Lädt ein DynamicDocument anhand seiner ID und Wizard-ID.
+     * @param string $wizardId  Wizard-ID (z.B. "firewall")
+     * @param mixed  $id        MongoDB ObjectId oder ID-String
+     * @return DynamicDocument|null
+     */
+    public function findDynamic(string $wizardId, $id): ?DynamicDocument
+    {
+        $entity = new DynamicDocument($wizardId);
+        $meta   = EntityMetadata::fromEntity($entity);
+        $collection = $this->db->selectCollection($meta->collection);
+
+        $document = $collection->findOne(['_id' => $id instanceof ObjectId ? $id : new ObjectId($id)]);
+
+        if (!$document) {
+            return null;
+        }
+
+        $this->serializer->deserializeEntity($entity, $document->toArray(), $meta);
+
         if ($this->unitOfWork) {
             $this->unitOfWork->attach($entity);
         }
@@ -180,7 +193,7 @@ class EntityRepository
         try {
             $result = $this->db->command(['isMaster' => 1]);
             $isMaster = $result->toArray()[0];
-            
+
             // Prüfe ob es ein Replica Set Member oder Mongos ist
             return isset($isMaster->setName) || isset($isMaster->msg) && $isMaster->msg === 'isdbgrid';
         } catch (\Exception $e) {
@@ -197,8 +210,7 @@ class EntityRepository
         try {
             // Führe einen einfachen Ping-Befehl aus
             $this->db->command(['ping' => 1]);
-        } 
-        catch (\MongoDB\Driver\Exception\AuthenticationException $e) {
+        } catch (\MongoDB\Driver\Exception\AuthenticationException $e) {
             throw new ConnectionException(
                 "MongoDB Authentication failed.",
                 $this->uri,
@@ -206,18 +218,16 @@ class EntityRepository
                 0,
                 $e
             );
-        } 
-        catch (\MongoDB\Driver\Exception\ConnectionException $e) {
+        } catch (\MongoDB\Driver\Exception\ConnectionException $e) {
             throw new ConnectionException(
                 "Cannot connect to MongoDB server.\n" .
-                "Is MongoDB running? Check with: docker-compose ps",
+                    "Is MongoDB running? Check with: docker-compose ps",
                 $this->uri,
                 $this->dbName,
                 0,
                 $e
             );
-        } 
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw new ConnectionException(
                 "MongoDB connection verification failed: " . $e->getMessage(),
                 $this->uri,

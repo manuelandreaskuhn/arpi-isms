@@ -1,0 +1,40 @@
+<div class="group-wrapper">
+    <div class="subsection-header">SMC-B Kartenkonfiguration</div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>SMC-B Kartentyp</label>
+            <div class="custom-select" data-name="smcbtype">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="smcb-krankenhaus">SMC-B Krankenhaus</div>
+                        <div class="select-option" data-value="smcb-praxis">SMC-B Arztpraxis</div>
+                        <div class="select-option" data-value="smcb-apotheke">SMC-B Apotheke</div>
+                        <div class="select-option" data-value="smcb-institution">SMC-B Institution</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>ICCSN (Kartennummer)</label>
+            <input type="text" id="smcbiccsn" name="smcbiccsn"
+                placeholder="Integrierter Schaltkreis Karten-Seriennummer">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Gültig bis</label>
+            <input type="date" id="smcbvalid" name="smcbvalid">
+        </div>
+        <div class="form-group">
+            <label>Kartenleser</label>
+            <input type="text" id="cardreader" name="cardreader" placeholder="Modell und Seriennummer des Kartenlesers">
+        </div>
+    </div>
+</div>

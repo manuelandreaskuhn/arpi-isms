@@ -2,7 +2,7 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
     initializeHelpTooltips();
     setupMedicalDeviceWizard();
@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupMedicalDeviceWizard() {
     const form = document.getElementById('newMedicalDeviceForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleMedicalDeviceSubmit);
-    
+
     // Conditional Fields
     setupConditionalFields();
 }
@@ -22,7 +22,7 @@ function setupConditionalFields() {
     // Networked Toggle
     const networkedSelect = document.querySelector('[data-name="networked"]');
     const networkFields = document.querySelector('.meddevice-network-config');
-    
+
     if (networkedSelect && networkFields) {
         const observer = new MutationObserver(() => {
             const value = networkedSelect.dataset.value;
@@ -30,11 +30,11 @@ function setupConditionalFields() {
         });
         observer.observe(networkedSelect, { attributes: true });
     }
-    
+
     // Gateway Toggle
     const gatewaySelect = document.querySelector('[data-name="gateway"]');
     const gatewayFields = document.querySelector('.meddevice-gateway-config');
-    
+
     if (gatewaySelect && gatewayFields) {
         const observer = new MutationObserver(() => {
             const value = gatewaySelect.dataset.value;
@@ -46,10 +46,10 @@ function setupConditionalFields() {
 
 async function handleMedicalDeviceSubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
     console.log('Medical Device Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -59,7 +59,7 @@ async function handleMedicalDeviceSubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");
@@ -70,7 +70,7 @@ async function handleMedicalDeviceSubmit(event) {
             }
 
             alert('Medizingerät erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 

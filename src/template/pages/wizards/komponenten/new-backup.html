@@ -7,7 +7,10 @@
         <p>Neues Backup-System anlegen</p>
     </div>
     <div class="page-header-container">
-        <div class="page-header"></div>
+        <div class="page-header">
+            <h1>Neues Backup-System anlegen</h1>
+            <p>Erfassen Sie alle Details Ihres Backup-Systems für eine zentrale Übersicht der Backup-Infrastruktur.</p>
+        </div>
     </div>
 </aside>
 
@@ -64,10 +67,12 @@
                                 <div class="select-group-header">VMware / Virtualisierung</div>
                                 <div class="select-option" data-value="veeam-vmware">Veeam für VMware</div>
                                 <div class="select-option" data-value="altaro">Altaro VM Backup</div>
-                                <div class="select-option" data-value="vmware-data-protection">VMware Data Protection (VDP)</div>
+                                <div class="select-option" data-value="vmware-data-protection">VMware Data Protection
+                                    (VDP)</div>
                                 <div class="select-option" data-value="nakivo">Nakivo Backup</div>
                                 <div class="select-group-header">Windows / Microsoft</div>
-                                <div class="select-option" data-value="windows-server-backup">Windows Server Backup</div>
+                                <div class="select-option" data-value="windows-server-backup">Windows Server Backup
+                                </div>
                                 <div class="select-option" data-value="azure-backup">Azure Backup</div>
                                 <div class="select-option" data-value="dpm">System Center DPM</div>
                                 <div class="select-group-header">Open Source / Linux</div>
@@ -150,7 +155,8 @@
                     </div>
                     <div class="software-info-description">
                         <label>Beschreibung:</label>
-                        <p class="software-description-text" id="sw-description">Bitte wählen Sie eine Backup-Software aus.</p>
+                        <p class="software-description-text" id="sw-description">Bitte wählen Sie eine Backup-Software
+                            aus.</p>
                     </div>
                     <div class="software-info-row">
                         <div class="software-info-section">
@@ -221,7 +227,8 @@
                 </div>
                 <div class="form-group" id="backup-server-manual" style="display:none;">
                     <label>Server-Name (manuell)</label>
-                    <input type="text" id="serverhostname" name="serverhostname" placeholder="z.B. backup-srv-01.example.com">
+                    <input type="text" id="serverhostname" name="serverhostname"
+                        placeholder="z.B. backup-srv-01.example.com">
                 </div>
             </div>
 
@@ -245,7 +252,8 @@
                         Standort
                         <span class="help-icon" data-tooltip="backup-location">?</span>
                     </label>
-                    <input type="text" id="serverlocation" name="serverlocation" placeholder="z.B. RZ1, Backup-Raum, Cloud">
+                    <input type="text" id="serverlocation" name="serverlocation"
+                        placeholder="z.B. RZ1, Backup-Raum, Cloud">
                 </div>
             </div>
 
@@ -255,7 +263,8 @@
                         Management-URL
                         <span class="help-icon" data-tooltip="backup-mgmt-url">?</span>
                     </label>
-                    <input type="text" id="backupmanagementurl" name="backupmanagementurl" placeholder="z.B. https://backup.example.com:9443">
+                    <input type="text" id="backupmanagementurl" name="backupmanagementurl"
+                        placeholder="z.B. https://backup.example.com:9443">
                 </div>
             </div>
         </div>
@@ -310,7 +319,8 @@
                                 <div class="select-option" data-value="nas">NAS (Network Attached Storage)</div>
                                 <div class="select-option" data-value="san">SAN (Storage Area Network)</div>
                                 <div class="select-option" data-value="dedup-appliance">Deduplizierungs-Appliance</div>
-                                <div class="select-option" data-value="object-storage">Object Storage (S3-kompatibel)</div>
+                                <div class="select-option" data-value="object-storage">Object Storage (S3-kompatibel)
+                                </div>
                                 <div class="select-option" data-value="tape">Tape Library</div>
                                 <div class="select-option" data-value="cloud">Cloud Storage</div>
                             </div>
@@ -322,14 +332,16 @@
                         Kapazität (TB)
                         <span class="help-icon" data-tooltip="primary-storage-capacity">?</span>
                     </label>
-                    <input type="number" id="primarystoragecapacity" name="primarystoragecapacity" step="0.1" placeholder="z.B. 50, 100">
+                    <input type="number" id="primarystoragecapacity" name="primarystoragecapacity" step="0.1"
+                        placeholder="z.B. 50, 100">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label>Storage-Pfad / Repository</label>
-                    <input type="text" id="primarystoragepath" name="primarystoragepath" placeholder="z.B. \\NAS01\Backups, /mnt/backup">
+                    <input type="text" id="primarystoragepath" name="primarystoragepath"
+                        placeholder="z.B. \\NAS01\Backups, /mnt/backup">
                 </div>
                 <div class="form-group">
                     <label>
@@ -369,27 +381,32 @@
                                 <div class="select-options">
                                     <div class="select-option" data-value="">Bitte wählen</div>
                                     <div class="select-option" data-value="nas-offsite">NAS (Offsite)</div>
-                                    <div class="select-option" data-value="tape-offsite">Tape (Offsite / Iron Mountain)</div>
+                                    <div class="select-option" data-value="tape-offsite">Tape (Offsite / Iron Mountain)
+                                    </div>
                                     <div class="select-option" data-value="cloud-s3">Cloud (AWS S3)</div>
                                     <div class="select-option" data-value="cloud-azure">Cloud (Azure Blob)</div>
                                     <div class="select-option" data-value="cloud-gcp">Cloud (Google Cloud Storage)</div>
                                     <div class="select-option" data-value="cloud-other">Cloud (andere)</div>
-                                    <div class="select-option" data-value="external-datacenter">Externes Rechenzentrum</div>
-                                    <div class="select-option" data-value="dedup-appliance">Deduplizierungs-Appliance</div>
+                                    <div class="select-option" data-value="external-datacenter">Externes Rechenzentrum
+                                    </div>
+                                    <div class="select-option" data-value="dedup-appliance">Deduplizierungs-Appliance
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Kapazität (TB)</label>
-                        <input type="number" id="secondarystoragecapacity" name="secondarystoragecapacity" step="0.1" placeholder="z.B. 50, 100">
+                        <input type="number" id="secondarystoragecapacity" name="secondarystoragecapacity" step="0.1"
+                            placeholder="z.B. 50, 100">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Storage-Pfad / Cloud-Bucket</label>
-                        <input type="text" id="secondarystoragepath" name="secondarystoragepath" placeholder="z.B. s3://backup-bucket, \\offsite-nas\backup">
+                        <input type="text" id="secondarystoragepath" name="secondarystoragepath"
+                            placeholder="z.B. s3://backup-bucket, \\offsite-nas\backup">
                     </div>
                     <div class="form-group">
                         <label>Deduplizierung</label>
@@ -454,12 +471,14 @@
 
                 <div class="form-group" id="secondary-immutability-period" style="display:none;">
                     <label>Immutability Periode</label>
-                    <input type="text" id="secondaryimmutabilityperiod" name="secondaryimmutabilityperiod" placeholder="z.B. 14 Tage, 30 Tage, 90 Tage">
+                    <input type="text" id="secondaryimmutabilityperiod" name="secondaryimmutabilityperiod"
+                        placeholder="z.B. 14 Tage, 30 Tage, 90 Tage">
                     <div class="help-text">Zeitraum, in dem Backups nicht gelöscht/geändert werden können</div>
                 </div>
             </div>
 
-            <div class="subsection-header" id="tertiary-storage-header" style="display:none;">Stufe 3: Archiv / Langzeit-Storage</div>
+            <div class="subsection-header" id="tertiary-storage-header" style="display:none;">Stufe 3: Archiv /
+                Langzeit-Storage</div>
             <div id="tertiary-storage-config" style="display:none;">
                 <div class="form-row">
                     <div class="form-group">
@@ -479,22 +498,26 @@
                                     <div class="select-option" data-value="cloud-glacier">AWS Glacier</div>
                                     <div class="select-option" data-value="cloud-archive">Azure Archive Storage</div>
                                     <div class="select-option" data-value="cloud-coldline">Google Coldline/Archive</div>
-                                    <div class="select-option" data-value="object-storage-archive">Object Storage (Archiv-Tier)</div>
-                                    <div class="select-option" data-value="external-vault">Externer Tresor / Iron Mountain</div>
+                                    <div class="select-option" data-value="object-storage-archive">Object Storage
+                                        (Archiv-Tier)</div>
+                                    <div class="select-option" data-value="external-vault">Externer Tresor / Iron
+                                        Mountain</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Kapazität (TB)</label>
-                        <input type="number" id="tertiarystoragecapacity" name="tertiarystoragecapacity" step="0.1" placeholder="z.B. 100, 500">
+                        <input type="number" id="tertiarystoragecapacity" name="tertiarystoragecapacity" step="0.1"
+                            placeholder="z.B. 100, 500">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Storage-Pfad / Archive-Bucket</label>
-                        <input type="text" id="tertiarystoragepath" name="tertiarystoragepath" placeholder="z.B. glacier://backup-archive, Tape-Library-03">
+                        <input type="text" id="tertiarystoragepath" name="tertiarystoragepath"
+                            placeholder="z.B. glacier://backup-archive, Tape-Library-03">
                     </div>
                     <div class="form-group">
                         <label>
@@ -522,7 +545,8 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Aufbewahrungsdauer</label>
-                        <input type="text" id="tertiaryretention" name="tertiaryretention" placeholder="z.B. 7 Jahre, 10 Jahre, unbegrenzt">
+                        <input type="text" id="tertiaryretention" name="tertiaryretention"
+                            placeholder="z.B. 7 Jahre, 10 Jahre, unbegrenzt">
                     </div>
                     <div class="form-group">
                         <label>Immutability (Unveränderbarkeit)</label>
@@ -544,7 +568,8 @@
 
                 <div class="form-group" id="tertiary-immutability-period" style="display:none;">
                     <label>Immutability Periode</label>
-                    <input type="text" id="tertiaryimmutabilityperiod" name="tertiaryimmutabilityperiod" placeholder="z.B. 90 Tage, 1 Jahr, 7 Jahre">
+                    <input type="text" id="tertiaryimmutabilityperiod" name="tertiaryimmutabilityperiod"
+                        placeholder="z.B. 90 Tage, 1 Jahr, 7 Jahre">
                     <div class="help-text">Zeitraum, in dem Archiv-Backups nicht gelöscht/geändert werden können</div>
                 </div>
             </div>
@@ -734,7 +759,8 @@
                 </div>
                 <div class="form-group" id="monitoring-integration-manual" style="display:none;">
                     <label>Monitoring-Tool (manuell)</label>
-                    <input type="text" id="monitoringtool" name="monitoringtool" placeholder="z.B. PRTG, Zabbix, Prometheus, E-Mail">
+                    <input type="text" id="monitoringtool" name="monitoringtool"
+                        placeholder="z.B. PRTG, Zabbix, Prometheus, E-Mail">
                 </div>
             </div>
 
@@ -837,7 +863,8 @@
                     Notizen / Besonderheiten
                     <span class="help-icon" data-tooltip="backup-notes">?</span>
                 </label>
-                <textarea id="backupsystemnotes" name="backupsystemnotes" rows="4" placeholder="Zusätzliche Informationen zum Backup-System, spezielle Konfigurationen, bekannte Einschränkungen..."></textarea>
+                <textarea id="backupsystemnotes" name="backupsystemnotes" rows="4"
+                    placeholder="Zusätzliche Informationen zum Backup-System, spezielle Konfigurationen, bekannte Einschränkungen..."></textarea>
             </div>
         </div>
     </div>
@@ -854,7 +881,8 @@
             <span class="form-lastchange"></span>
         </div>
     </div>
-    <button type="submit" form="newBackupSystemForm" class="btn-save" disabled>
+    <button type="button" class="btn-cancel">Abbrechen</button>
+    <button type="submit" form="newBackupSystemForm" id="saveBackupForm" class="btn-save" disabled>
         <span class="btn-save-icon"></span>
         <span class="btn-save-text">Speichern</span>
     </button>

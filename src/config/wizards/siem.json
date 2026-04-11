@@ -1,0 +1,636 @@
+{
+  "wizard_id": "siem",
+  "label": "Neues SIEM-System",
+  "collection": "siems",
+  "uuid_prefix": "siem_",
+  "icon": "siem",
+  "template_path": "pages/wizards/komponenten/new-siem.html",
+  "messages": {
+    "create_success": "SIEM-System erstellt",
+    "update_success": "SIEM-System aktualisiert",
+    "delete_success": "SIEM-System gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "name",
+          "element": "text-name",
+          "label": "SIEM-System Name",
+          "required": true
+        },
+        {
+          "name": "software",
+          "element": "select-input",
+          "label": "SIEM-Software",
+          "required": true,
+          "optgroups": [
+            {
+              "label": "Enterprise",
+              "options": [
+                {
+                  "value": "splunk",
+                  "label": "Splunk Enterprise Security"
+                },
+                {
+                  "value": "qradar",
+                  "label": "IBM QRadar"
+                },
+                {
+                  "value": "arcsight",
+                  "label": "Micro Focus ArcSight"
+                },
+                {
+                  "value": "sentinel",
+                  "label": "Microsoft Sentinel"
+                },
+                {
+                  "value": "logrhythm",
+                  "label": "LogRhythm NextGen SIEM"
+                },
+                {
+                  "value": "securonix",
+                  "label": "Securonix SIEM"
+                }
+              ]
+            },
+            {
+              "label": "Open Source",
+              "options": [
+                {
+                  "value": "elastic",
+                  "label": "Elastic Security (ELK)"
+                },
+                {
+                  "value": "wazuh",
+                  "label": "Wazuh"
+                },
+                {
+                  "value": "ossec",
+                  "label": "OSSEC"
+                },
+                {
+                  "value": "ossim",
+                  "label": "AlienVault OSSIM"
+                }
+              ]
+            },
+            {
+              "label": "Cloud / SaaS",
+              "options": [
+                {
+                  "value": "sumo-logic",
+                  "label": "Sumo Logic"
+                },
+                {
+                  "value": "datadog",
+                  "label": "Datadog Security"
+                },
+                {
+                  "value": "rapid7",
+                  "label": "Rapid7 InsightIDR"
+                }
+              ]
+            },
+            {
+              "label": "Sonstige",
+              "options": [
+                {
+                  "value": "other",
+                  "label": "Sonstige"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "version",
+          "element": "version",
+          "label": "Version",
+          "required": true
+        },
+        {
+          "name": "licensemodel",
+          "element": "license-model",
+          "label": "Lizenzmodell",
+          "options": [
+            {
+              "value": "per-eps",
+              "label": "Per EPS (Events per Second)"
+            },
+            {
+              "value": "per-gb",
+              "label": "Per GB/Tag"
+            },
+            {
+              "value": "per-device",
+              "label": "Per Device / Agent"
+            },
+            {
+              "value": "per-user",
+              "label": "Per User"
+            },
+            {
+              "value": "subscription",
+              "label": "Subscription / SaaS"
+            },
+            {
+              "value": "perpetual",
+              "label": "Perpetual"
+            },
+            {
+              "value": "free",
+              "label": "Open Source / Kostenlos"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Infrastruktur & Deployment",
+      "order": 2,
+      "fields": [
+        {
+          "name": "deployment",
+          "element": "select-input",
+          "label": "Deployment-Typ",
+          "options": [
+            {
+              "value": "on-premise",
+              "label": "On-Premise"
+            },
+            {
+              "value": "cloud",
+              "label": "Cloud / SaaS"
+            },
+            {
+              "value": "hybrid",
+              "label": "Hybrid"
+            }
+          ]
+        },
+        {
+          "name": "serverid",
+          "element": "vm-hardware-reference",
+          "label": "SIEM-Server (VM / Hardware)"
+        },
+        {
+          "name": "hostname",
+          "element": "hostname",
+          "label": "SIEM-Server (manuell)"
+        },
+        {
+          "name": "mgmturl",
+          "element": "management-url",
+          "label": "Management-URL"
+        },
+        {
+          "name": "ipaddress",
+          "element": "ip-address",
+          "label": "IP-Adresse"
+        },
+        {
+          "name": "operatingsystem",
+          "element": "text-input",
+          "label": "Betriebssystem",
+          "placeholder": "z.B. Ubuntu 22.04, Windows Server 2022"
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort"
+        }
+      ]
+    },
+    {
+      "id": "logsources",
+      "label": "Log-Quellen & Integration",
+      "order": 3,
+      "fields": [
+        {
+          "name": "logsources",
+          "element": "number-input",
+          "label": "Anzahl Log-Quellen",
+          "placeholder": "z.B. 50"
+        },
+        {
+          "name": "eps",
+          "element": "number-input",
+          "label": "Events per Second (EPS)",
+          "placeholder": "z.B. 5000"
+        },
+        {
+          "name": "logvolume",
+          "element": "text-input",
+          "label": "Log-Volume pro Tag",
+          "placeholder": "z.B. 50 GB/Tag"
+        },
+        {
+          "name": "storage",
+          "element": "text-input",
+          "label": "Storage-Kapazität",
+          "placeholder": "z.B. 10 TB"
+        },
+        {
+          "name": "logsourcetypes",
+          "element": "checkbox-group",
+          "label": "Log-Quell-Typen",
+          "options": [
+            {
+              "value": "firewalls",
+              "label": "Firewalls / UTM"
+            },
+            {
+              "value": "ids-ips",
+              "label": "IDS/IPS"
+            },
+            {
+              "value": "servers",
+              "label": "Server (Windows/Linux)"
+            },
+            {
+              "value": "ad",
+              "label": "Active Directory / LDAP"
+            },
+            {
+              "value": "databases",
+              "label": "Datenbanken"
+            },
+            {
+              "value": "applications",
+              "label": "Anwendungen"
+            },
+            {
+              "value": "network",
+              "label": "Netzwerkgeräte (Switches/Router)"
+            },
+            {
+              "value": "endpoints",
+              "label": "Endpoints / EDR"
+            },
+            {
+              "value": "cloud",
+              "label": "Cloud Services"
+            },
+            {
+              "value": "email",
+              "label": "E-Mail Security"
+            },
+            {
+              "value": "comserver",
+              "label": "Kommunikationsserver (HL7/FHIR)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detection",
+      "label": "Detection & Analytics",
+      "order": 4,
+      "fields": [
+        {
+          "name": "usecases",
+          "element": "number-input",
+          "label": "Anzahl aktiver Use Cases",
+          "placeholder": "z.B. 100"
+        },
+        {
+          "name": "correlationrules",
+          "element": "number-input",
+          "label": "Correlation Rules",
+          "placeholder": "z.B. 500"
+        },
+        {
+          "name": "ueba",
+          "element": "select-input",
+          "label": "Machine Learning / UEBA",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "threatintel",
+          "element": "select-input",
+          "label": "Threat Intelligence Integration",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "threatfeeds",
+          "element": "text-input",
+          "label": "Threat Intelligence Feeds",
+          "placeholder": "z.B. MISP, VirusTotal, AlienVault OTX"
+        },
+        {
+          "name": "frameworks",
+          "element": "checkbox-group",
+          "label": "Verwendete Frameworks",
+          "options": [
+            {
+              "value": "mitre",
+              "label": "MITRE ATT&CK"
+            },
+            {
+              "value": "killchain",
+              "label": "Cyber Kill Chain"
+            },
+            {
+              "value": "nist",
+              "label": "NIST CSF"
+            },
+            {
+              "value": "sigma",
+              "label": "Sigma Rules"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "incident",
+      "label": "Incident Response & SOAR",
+      "order": 5,
+      "fields": [
+        {
+          "name": "incidentmgmt",
+          "element": "text-input",
+          "label": "Incident Management",
+          "placeholder": "System oder Prozess für Incident Management"
+        },
+        {
+          "name": "ticketing",
+          "element": "text-input",
+          "label": "Ticketing-System Integration",
+          "placeholder": "z.B. ServiceNow, JIRA, BMC Remedy"
+        },
+        {
+          "name": "soar",
+          "element": "select-input",
+          "label": "SOAR Integration",
+          "options": [
+            {
+              "value": "integrated",
+              "label": "Integriert (eingebaut)"
+            },
+            {
+              "value": "external",
+              "label": "Externes SOAR"
+            },
+            {
+              "value": "none",
+              "label": "Kein SOAR"
+            }
+          ]
+        },
+        {
+          "name": "soarplatform",
+          "element": "text-input",
+          "label": "SOAR-Plattform",
+          "placeholder": "z.B. Splunk SOAR, Palo Alto XSOAR",
+          "condition": {
+            "field": "soar",
+            "operator": "neq",
+            "value": "none"
+          }
+        }
+      ]
+    },
+    {
+      "id": "compliance",
+      "label": "Compliance & Reporting",
+      "order": 6,
+      "fields": [
+        {
+          "name": "retention",
+          "element": "number-input",
+          "label": "Log-Retention (Tage)",
+          "placeholder": "z.B. 365"
+        },
+        {
+          "name": "archiving",
+          "element": "select-input",
+          "label": "Archivierung",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert (Langzeit-Archiv)"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "compliance",
+          "element": "checkbox-group",
+          "label": "Compliance-Standards",
+          "options": [
+            {
+              "value": "pci-dss",
+              "label": "PCI DSS"
+            },
+            {
+              "value": "hipaa",
+              "label": "HIPAA"
+            },
+            {
+              "value": "gdpr",
+              "label": "DSGVO / GDPR"
+            },
+            {
+              "value": "iso27001",
+              "label": "ISO 27001"
+            },
+            {
+              "value": "nist",
+              "label": "NIST CSF"
+            },
+            {
+              "value": "sox",
+              "label": "SOX"
+            },
+            {
+              "value": "kritis",
+              "label": "KRITIS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alerting",
+      "label": "Alerting & Notification",
+      "order": 7,
+      "fields": [
+        {
+          "name": "alertmail",
+          "element": "alert-email",
+          "label": "Alert-Empfänger (E-Mail)"
+        },
+        {
+          "name": "alertfreq",
+          "element": "text-input",
+          "label": "Alert-Frequenz / Aggregation",
+          "placeholder": "z.B. Sofort, alle 15 Min, stündlich"
+        },
+        {
+          "name": "notifications",
+          "element": "checkbox-group",
+          "label": "Benachrichtigungs-Kanäle",
+          "options": [
+            {
+              "value": "email",
+              "label": "E-Mail"
+            },
+            {
+              "value": "sms",
+              "label": "SMS"
+            },
+            {
+              "value": "slack",
+              "label": "Slack"
+            },
+            {
+              "value": "teams",
+              "label": "MS Teams"
+            },
+            {
+              "value": "webhook",
+              "label": "Webhook"
+            }
+          ]
+        },
+        {
+          "name": "dashboard",
+          "element": "url-input",
+          "label": "Dashboard-URL",
+          "placeholder": "https://siem.example.com/dashboard"
+        }
+      ]
+    },
+    {
+      "id": "soc",
+      "label": "SOC Integration & Team",
+      "order": 8,
+      "fields": [
+        {
+          "name": "soctype",
+          "element": "select-input",
+          "label": "SOC-Typ",
+          "options": [
+            {
+              "value": "internal",
+              "label": "Internes SOC"
+            },
+            {
+              "value": "external",
+              "label": "Externes SOC / MSSP"
+            },
+            {
+              "value": "hybrid",
+              "label": "Hybrid SOC"
+            },
+            {
+              "value": "none",
+              "label": "Kein SOC"
+            }
+          ]
+        },
+        {
+          "name": "sochours",
+          "element": "select-input",
+          "label": "SOC-Betriebszeiten",
+          "options": [
+            {
+              "value": "24-7",
+              "label": "24/7 (rund um die Uhr)"
+            },
+            {
+              "value": "business",
+              "label": "Business Hours (8x5)"
+            },
+            {
+              "value": "extended",
+              "label": "Extended Hours"
+            }
+          ]
+        },
+        {
+          "name": "socresponsible",
+          "element": "text-input",
+          "label": "SOC-Verantwortlicher",
+          "placeholder": "Name oder Team"
+        },
+        {
+          "name": "mssp",
+          "element": "text-input",
+          "label": "MSSP / Dienstleister",
+          "placeholder": "Name des externen Security-Dienstleisters"
+        }
+      ]
+    },
+    {
+      "id": "responsibility",
+      "label": "Verantwortlichkeiten & Support",
+      "order": 9,
+      "fields": [
+        {
+          "name": "admin",
+          "element": "admin-contact",
+          "label": "SIEM-Administrator"
+        },
+        {
+          "name": "support",
+          "element": "support-contract",
+          "label": "Support-Vertrag"
+        },
+        {
+          "name": "supportcontact",
+          "element": "support-contact",
+          "label": "Support-Kontakt"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 10,
+      "fields": [
+        {
+          "name": "notes",
+          "element": "notes",
+          "label": "Notizen / SIEM-Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newSIEMForm",
+  "breadcrumb_label": "Neues SIEM-System anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/siem-help.html",
+  "software_data": {
+    "siemsoftware": "siem"
+  }
+}

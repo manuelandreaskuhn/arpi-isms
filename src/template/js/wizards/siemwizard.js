@@ -2,7 +2,7 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
     initializeHelpTooltips();
     setupSIEMWizard();
@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupSIEMWizard() {
     const form = document.getElementById('newSIEMForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleSIEMSubmit);
-    
+
     // Distributed architecture toggle
     setupDistributedToggle();
 }
@@ -21,7 +21,7 @@ function setupSIEMWizard() {
 function setupDistributedToggle() {
     const archSelect = document.querySelector('[data-name="architecture"]');
     const distributedFields = document.querySelector('.siem-distributed-config');
-    
+
     if (archSelect && distributedFields) {
         const observer = new MutationObserver(() => {
             const value = archSelect.dataset.value;
@@ -34,10 +34,10 @@ function setupDistributedToggle() {
 
 async function handleSIEMSubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
     console.log('SIEM System Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -47,7 +47,7 @@ async function handleSIEMSubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");
@@ -58,7 +58,7 @@ async function handleSIEMSubmit(event) {
             }
 
             alert('SIEM-System erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 

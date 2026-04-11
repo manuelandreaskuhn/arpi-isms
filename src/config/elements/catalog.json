@@ -1,0 +1,479 @@
+{
+    "version": "1.0.0",
+    "description": "Katalog aller atomaren Daten-Elemente für das konfigurierbare Wizard-System. Jedes Element definiert einen wiederverwendbaren Eingabe-Baustein mit zugehörigem HTML-Tag.",
+    "elements": [
+        {
+            "id": "text-name",
+            "type": "text",
+            "html_tag": "isms-name",
+            "label": "Name",
+            "placeholder": "Name eingeben...",
+            "description": "Bezeichnung / Name einer Komponente"
+        },
+        {
+            "id": "text-description",
+            "type": "textarea",
+            "html_tag": "isms-description",
+            "label": "Beschreibung",
+            "placeholder": "Beschreibung eingeben...",
+            "description": "Freitextbeschreibung einer Komponente"
+        },
+        {
+            "id": "text-location",
+            "type": "text",
+            "html_tag": "isms-location",
+            "label": "Standort",
+            "placeholder": "z.B. Serverraum 1, Rack A",
+            "description": "Physischer Standort der Komponente"
+        },
+        {
+            "id": "ip-address",
+            "type": "text",
+            "html_tag": "isms-ip",
+            "label": "IP-Adresse",
+            "placeholder": "192.168.1.1",
+            "validation": {
+                "pattern": "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+                "message": "Bitte eine gültige IPv4-Adresse eingeben"
+            },
+            "description": "IPv4-Adresse"
+        },
+        {
+            "id": "cidr",
+            "type": "text",
+            "html_tag": "isms-cidr",
+            "label": "Netzwerk (CIDR)",
+            "placeholder": "192.168.1.0/24",
+            "validation": {
+                "pattern": "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([0-9]|[1-2][0-9]|3[0-2])$",
+                "message": "Bitte CIDR-Notation eingeben (z.B. 192.168.1.0/24)"
+            },
+            "description": "Netzwerkadresse in CIDR-Notation"
+        },
+        {
+            "id": "hostname",
+            "type": "text",
+            "html_tag": "isms-hostname",
+            "label": "Hostname",
+            "placeholder": "server01.example.com",
+            "description": "DNS-Hostname oder Rechnername"
+        },
+        {
+            "id": "management-url",
+            "type": "url",
+            "html_tag": "isms-mgmt-url",
+            "label": "Management-URL",
+            "placeholder": "https://mgmt.example.com",
+            "description": "URL des Management-Interfaces / Web-GUI"
+        },
+        {
+            "id": "version",
+            "type": "text",
+            "html_tag": "isms-version",
+            "label": "Version",
+            "placeholder": "z.B. 1.0.0",
+            "description": "Software- oder Firmware-Version"
+        },
+        {
+            "id": "serial-number",
+            "type": "text",
+            "html_tag": "isms-serial",
+            "label": "Seriennummer",
+            "placeholder": "SN-XXXXXXXX",
+            "description": "Hardware-Seriennummer des Geräts"
+        },
+        {
+            "id": "notes",
+            "type": "textarea",
+            "html_tag": "isms-notes",
+            "label": "Notizen / Besonderheiten",
+            "placeholder": "Zusätzliche Informationen...",
+            "description": "Freitext für zusätzliche Informationen und Besonderheiten"
+        },
+        {
+            "id": "admin-contact",
+            "type": "text",
+            "html_tag": "isms-admin",
+            "label": "Administrator",
+            "placeholder": "Name oder E-Mail des Administrators",
+            "description": "Verantwortlicher Administrator für diese Komponente"
+        },
+        {
+            "id": "support-contact",
+            "type": "text",
+            "html_tag": "isms-support-contact",
+            "label": "Support-Kontakt",
+            "placeholder": "Telefon oder E-Mail des Supports",
+            "description": "Support-Kontaktdaten (Hersteller oder interner Support)"
+        },
+        {
+            "id": "support-contract",
+            "type": "select",
+            "html_tag": "isms-support-contract",
+            "label": "Support-Vertrag",
+            "description": "Art des abgeschlossenen Support-Vertrags",
+            "options": [
+                {
+                    "value": "24-7",
+                    "label": "24/7 Support"
+                },
+                {
+                    "value": "business-hours",
+                    "label": "Business Hours (8x5)"
+                },
+                {
+                    "value": "basic",
+                    "label": "Basic Support"
+                },
+                {
+                    "value": "none",
+                    "label": "Kein Support"
+                }
+            ]
+        },
+        {
+            "id": "support-end-date",
+            "type": "text",
+            "html_tag": "isms-support-end",
+            "label": "Support-Vertragsende",
+            "placeholder": "TT.MM.JJJJ",
+            "description": "Datum des Ablaufs des Support-Vertrags"
+        },
+        {
+            "id": "operating-system",
+            "type": "select",
+            "html_tag": "isms-os",
+            "label": "Betriebssystem",
+            "description": "Betriebssystem der Komponente (aus konfigurierbarer Liste per Kategorie)",
+            "attributes": {
+                "data-category": null
+            },
+            "note": "Optionen werden aus /data/operatingsystem-software.json geladen (via API), gefiltert nach data-category"
+        },
+        {
+            "id": "software-select",
+            "type": "software-select",
+            "html_tag": "isms-software",
+            "label": "Software",
+            "description": "Software-Auswahl mit Info-Panel. Optionen werden aus /data/{category}-software.json geladen.",
+            "attributes": {
+                "data-category": null
+            }
+        },
+        {
+            "id": "environment",
+            "type": "select",
+            "html_tag": "isms-environment",
+            "label": "Umgebung",
+            "description": "Betriebsumgebung der Komponente",
+            "options": [
+                {
+                    "value": "production",
+                    "label": "Produktion"
+                },
+                {
+                    "value": "staging",
+                    "label": "Test/Staging"
+                },
+                {
+                    "value": "development",
+                    "label": "Entwicklung"
+                },
+                {
+                    "value": "training",
+                    "label": "Schulung"
+                }
+            ]
+        },
+        {
+            "id": "criticality",
+            "type": "select",
+            "html_tag": "isms-criticality",
+            "label": "Kritikalität",
+            "description": "Kritikalitätsstufe der Komponente für den Betrieb",
+            "options": [
+                {
+                    "value": "critical",
+                    "label": "Kritisch (24/7)"
+                },
+                {
+                    "value": "high",
+                    "label": "Hoch"
+                },
+                {
+                    "value": "medium",
+                    "label": "Mittel"
+                },
+                {
+                    "value": "low",
+                    "label": "Niedrig"
+                }
+            ]
+        },
+        {
+            "id": "ha-enabled",
+            "type": "checkbox",
+            "html_tag": "isms-ha-enabled",
+            "label": "Hochverfügbarkeit (HA) aktiviert",
+            "description": "Gibt an ob Hochverfügbarkeit konfiguriert ist"
+        },
+        {
+            "id": "log-retention",
+            "type": "number",
+            "html_tag": "isms-log-retention",
+            "label": "Log-Aufbewahrung (Tage)",
+            "placeholder": "90",
+            "description": "Aufbewahrungsdauer von Log-Daten in Tagen"
+        },
+        {
+            "id": "alert-email",
+            "type": "email",
+            "html_tag": "isms-alert-email",
+            "label": "Alarm-E-Mail",
+            "placeholder": "admin@example.com",
+            "description": "E-Mail-Adresse(n) für Alarmmeldungen und Reports"
+        },
+        {
+            "id": "license-model",
+            "type": "select",
+            "html_tag": "isms-license-model",
+            "label": "Lizenzmodell",
+            "description": "Art der Lizenzierung (über Wizard-Konfiguration frei definierbar)",
+            "options": []
+        },
+        {
+            "id": "monitoring-tool",
+            "type": "text",
+            "html_tag": "isms-monitoring-tool",
+            "label": "Monitoring-Tool",
+            "placeholder": "z.B. Nagios, Zabbix, Prometheus",
+            "description": "Name des eingesetzten Monitoring-Tools (manuell)"
+        },
+        {
+            "id": "component-reference",
+            "type": "component-ref",
+            "html_tag": "isms-component-ref",
+            "label": "Komponente",
+            "description": "Referenz auf eine andere Komponente im System (dynamische Auswahl zur Laufzeit)",
+            "attributes": {
+                "data-component-type": null,
+                "placeholder": "Komponente auswählen..."
+            }
+        },
+        {
+            "id": "siem-reference",
+            "type": "component-ref",
+            "html_tag": "isms-siem-ref",
+            "label": "SIEM-System",
+            "description": "Referenz auf ein konfiguriertes SIEM-System",
+            "attributes": {
+                "data-component-type": "siem"
+            }
+        },
+        {
+            "id": "firewall-reference",
+            "type": "component-ref",
+            "html_tag": "isms-firewall-ref",
+            "label": "Firewall",
+            "description": "Referenz auf eine konfigurierte Firewall",
+            "attributes": {
+                "data-component-type": "firewall"
+            }
+        },
+        {
+            "id": "backup-reference",
+            "type": "component-ref",
+            "html_tag": "isms-backup-ref",
+            "label": "Backup-System",
+            "description": "Referenz auf ein konfiguriertes Backup-System",
+            "attributes": {
+                "data-component-type": "backup"
+            }
+        },
+        {
+            "id": "vm-hardware-reference",
+            "type": "component-ref",
+            "html_tag": "isms-vm-hw-ref",
+            "label": "Server / VM",
+            "description": "Referenz auf eine virtuelle Maschine oder einen Hardware-Server",
+            "attributes": {
+                "data-component-type": "vm,hardware"
+            }
+        },
+        {
+            "id": "vendor",
+            "type": "text",
+            "html_tag": "isms-vendor",
+            "label": "Hersteller",
+            "placeholder": "Herstellername",
+            "description": "Name des Herstellers oder Softwareanbieters"
+        },
+        {
+            "id": "port",
+            "type": "number",
+            "html_tag": "isms-port",
+            "label": "Port",
+            "placeholder": "443",
+            "validation": {
+                "min": 1,
+                "max": 65535,
+                "message": "Port muss zwischen 1 und 65535 liegen"
+            },
+            "description": "Netzwerk-Port-Nummer"
+        },
+        {
+            "id": "mac-address",
+            "type": "text",
+            "html_tag": "isms-mac",
+            "label": "MAC-Adresse",
+            "placeholder": "00:00:00:00:00:00",
+            "validation": {
+                "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
+                "message": "Bitte eine gültige MAC-Adresse eingeben (Format: 00:00:00:00:00:00)"
+            },
+            "description": "Hardware-MAC-Adresse des Netzwerk-Interfaces"
+        },
+        {
+            "id": "vlan-id",
+            "type": "number",
+            "html_tag": "isms-vlan-id",
+            "label": "VLAN-ID",
+            "placeholder": "100",
+            "validation": {
+                "min": 1,
+                "max": 4094,
+                "message": "VLAN-ID muss zwischen 1 und 4094 liegen"
+            },
+            "description": "IEEE 802.1Q VLAN-Kennung"
+        },
+        {
+            "id": "subnet-mask",
+            "type": "text",
+            "html_tag": "isms-subnet",
+            "label": "Subnetz-Maske",
+            "placeholder": "255.255.255.0",
+            "description": "Subnetz-Maske in Dezimal-Schreibweise"
+        },
+        {
+            "id": "gateway-ip",
+            "type": "text",
+            "html_tag": "isms-gateway-ip",
+            "label": "Gateway",
+            "placeholder": "192.168.1.1",
+            "description": "Standard-Gateway / Router IP-Adresse des Netzwerks"
+        },
+        {
+            "id": "dns-server",
+            "type": "text",
+            "html_tag": "isms-dns",
+            "label": "DNS-Server",
+            "placeholder": "192.168.1.53",
+            "description": "IP-Adresse eines DNS-Servers"
+        },
+        {
+            "id": "date-field",
+            "type": "text",
+            "html_tag": "isms-date",
+            "label": "Datum",
+            "placeholder": "TT.MM.JJJJ",
+            "description": "Datumsfeld (Format: TT.MM.JJJJ)"
+        },
+        {
+            "id": "checkbox-group",
+            "type": "checkbox-group",
+            "html_tag": "isms-checkboxes",
+            "label": "Auswahl",
+            "description": "Mehrfachauswahl aus vorgegebenen Optionen (speichert als Array)",
+            "options": []
+        },
+        {
+            "id": "range-slider",
+            "type": "range",
+            "html_tag": "isms-range",
+            "label": "Wert",
+            "description": "Schieberegler für numerische Werte mit Min/Max/Step/Unit",
+            "attributes": {
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": ""
+            }
+        },
+        {
+            "id": "toggle",
+            "type": "checkbox",
+            "html_tag": "isms-toggle",
+            "label": "Aktiviert",
+            "description": "Ein/Aus-Toggle-Schalter für boolesche Werte"
+        },
+        {
+            "id": "radio-group",
+            "type": "radio",
+            "html_tag": "isms-radio",
+            "label": "Auswahl",
+            "description": "Einzelauswahl aus vorgegebenen Optionen (Radio-Buttons)",
+            "options": []
+        },
+        {
+            "id": "number-input",
+            "type": "number",
+            "html_tag": "isms-number",
+            "label": "Zahl",
+            "description": "Numerisches Eingabefeld"
+        },
+        {
+            "id": "text-input",
+            "type": "text",
+            "html_tag": "isms-text",
+            "label": "Text",
+            "description": "Einfaches einzeiliges Texteingabefeld"
+        },
+        {
+            "id": "textarea-input",
+            "type": "textarea",
+            "html_tag": "isms-textarea",
+            "label": "Mehrzeiliger Text",
+            "description": "Mehrzeiliges Texteingabefeld"
+        },
+        {
+            "id": "url-input",
+            "type": "url",
+            "html_tag": "isms-url",
+            "label": "URL",
+            "placeholder": "https://",
+            "description": "URL-Eingabefeld mit Protokoll-Validierung"
+        },
+        {
+            "id": "email-input",
+            "type": "email",
+            "html_tag": "isms-email",
+            "label": "E-Mail",
+            "placeholder": "name@example.com",
+            "description": "E-Mail-Adresse mit Format-Validierung"
+        },
+        {
+            "id": "select-input",
+            "type": "select",
+            "html_tag": "isms-select",
+            "label": "Auswahl",
+            "description": "Dropdown-Auswahl aus vorgegebenen Optionen",
+            "options": []
+        },
+        {
+            "id": "network-segment",
+            "type": "text",
+            "html_tag": "isms-network-segment",
+            "label": "Netzwerk-Segment / VLAN",
+            "placeholder": "z.B. VLAN-100 oder 192.168.1.0/24",
+            "description": "Netzwerk-Segment oder VLAN-Bezeichnung"
+        },
+        {
+            "id": "public-ip",
+            "type": "text",
+            "html_tag": "isms-public-ip",
+            "label": "Öffentliche IP-Adresse",
+            "placeholder": "z.B. 203.0.113.1",
+            "description": "Öffentliche (extern erreichbare) IP-Adresse"
+        }
+    ]
+}

@@ -2,7 +2,7 @@
  * Generate a UUID for form instance
  */
 function generateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         const r = Math.random() * 16 | 0;
         const v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
@@ -22,15 +22,15 @@ function getStorageKey(formId, instanceUuid) {
 export function getOrCreateInstanceUuid(formId) {
     const form = document.getElementById(formId);
     if (!form) return null;
-    
+
     let instanceUuid = form.dataset.instanceUuid;
-    
+
     // If no UUID exists, generate one
     if (!instanceUuid || instanceUuid === '') {
         instanceUuid = generateUUID();
         form.dataset.instanceUuid = instanceUuid;
     }
-    
+
     return instanceUuid;
 }
 
@@ -40,13 +40,13 @@ export function getOrCreateInstanceUuid(formId) {
 export function saveFormData(formId) {
     const form = document.getElementById(formId);
     if (!form) return;
-    
+
     const instanceUuid = getOrCreateInstanceUuid(formId);
     if (!instanceUuid) return;
-    
+
     const formData = new FormData(form);
     const data = {};
-    
+
     // Regular form fields
     for (let [key, value] of formData.entries()) {
         if (data[key]) {
@@ -60,7 +60,7 @@ export function saveFormData(formId) {
             data[key] = value;
         }
     }
-    
+
     // Custom selects
     form.querySelectorAll('.custom-select').forEach(select => {
         const name = select.dataset.name;
@@ -69,7 +69,7 @@ export function saveFormData(formId) {
             data[name] = value;
         }
     });
-    
+
     // Save ALL section counter states (read current DOM state)
     const counters = {};
     document.querySelectorAll('.form-section').forEach(section => {
@@ -89,7 +89,7 @@ export function saveFormData(formId) {
     data['__section_counters__'] = counters;
     data['__instance_uuid__'] = instanceUuid;
     data['__timestamp__'] = new Date().toISOString();
-    
+
     const storageKey = getStorageKey(formId, instanceUuid);
     sessionStorage.setItem(storageKey, JSON.stringify(data));
 }
@@ -100,29 +100,29 @@ export function saveFormData(formId) {
 export function restoreFormData(formId) {
     const form = document.getElementById(formId);
     if (!form) return;
-    
+
     const instanceUuid = getOrCreateInstanceUuid(formId);
     if (!instanceUuid) return;
-    
+
     const storageKey = getStorageKey(formId, instanceUuid);
     const savedData = sessionStorage.getItem(storageKey);
-    
+
     if (!savedData) {
         return;
     }
-    
+
     try {
         const data = JSON.parse(savedData);
-        
+
         // Verify this is the correct instance
         if (data['__instance_uuid__'] && data['__instance_uuid__'] !== instanceUuid) {
             return;
         }
-        
+
         // Restore regular fields FIRST
         Object.entries(data).forEach(([name, value]) => {
             if (name.startsWith('__')) return; // Skip metadata fields
-            
+
             const fields = form.querySelectorAll(`[name="${name}"]`);
             fields.forEach(field => {
                 if (field.type === 'checkbox' || field.type === 'radio') {
@@ -145,7 +145,7 @@ export function restoreFormData(formId) {
                     field.value = value;
                 }
             });
-            
+
             // Restore custom selects
             const customSelect = form.querySelector(`.custom-select[data-name="${name}"]`);
             if (customSelect && value) {
@@ -155,7 +155,7 @@ export function restoreFormData(formId) {
                 const placeholder = trigger?.querySelector('.placeholder');
                 const valueSpan = trigger?.querySelector('.value');
                 const option = customSelect.querySelector(`.select-option[data-value="${value}"]`);
-                
+
                 if (option && placeholder && valueSpan) {
                     placeholder.style.display = 'none';
                     valueSpan.style.display = 'inline';
@@ -164,7 +164,7 @@ export function restoreFormData(formId) {
                 }
             }
         });
-        
+
         // Restore section counters IMMEDIATELY
         if (data['__section_counters__']) {
             document.querySelectorAll('.form-section').forEach(section => {
@@ -180,7 +180,7 @@ export function restoreFormData(formId) {
                         counter.dataset.filledCount = counterData.filledCount;
                         counter.dataset.totalCount = counterData.totalCount;
                         counter.dataset.initialized = 'true';
-                        
+
                         // Update counter styling
                         const filledCount = parseInt(counterData.filledCount, 10);
                         const totalCount = parseInt(counterData.totalCount, 10);
@@ -194,7 +194,10 @@ export function restoreFormData(formId) {
                 }
             });
         }
-        
+
+        // Signal that form data has been restored so conditional fields can re-evaluate
+        form.dispatchEvent(new CustomEvent('formDataRestored', { bubbles: true }));
+
     } catch (e) {
         console.error('Error restoring form data:', e);
     }
@@ -206,10 +209,10 @@ export function restoreFormData(formId) {
 export function clearFormData(formId) {
     const form = document.getElementById(formId);
     if (!form) return;
-    
+
     const instanceUuid = form.dataset.instanceUuid;
     if (!instanceUuid) return;
-    
+
     const storageKey = getStorageKey(formId, instanceUuid);
     sessionStorage.removeItem(storageKey);
 }
@@ -220,10 +223,10 @@ export function clearFormData(formId) {
 export function enableAutoSave(formId) {
     const form = document.getElementById(formId);
     if (!form) return;
-    
+
     // Ensure UUID exists
     getOrCreateInstanceUuid(formId);
-    
+
     // Debounce function to avoid too frequent saves
     let saveTimeout;
     const debouncedSave = () => {
@@ -232,11 +235,11 @@ export function enableAutoSave(formId) {
             saveFormData(formId);
         }, 300);
     };
-    
+
     // Save on any input change
     form.addEventListener('input', debouncedSave);
     form.addEventListener('change', debouncedSave);
-    
+
     // Also save when custom selects change
     form.addEventListener('custom-select-change', debouncedSave);
 }
@@ -278,14 +281,14 @@ export function listFormInstances(formId) {
  */
 export function cleanupOldInstances(formId, keepCount = 5) {
     const instances = listFormInstances(formId);
-    
+
     // Sort by timestamp (newest first)
     instances.sort((a, b) => {
         const timeA = new Date(a.timestamp || 0);
         const timeB = new Date(b.timestamp || 0);
         return timeB - timeA;
     });
-    
+
     // Remove old instances
     if (instances.length > keepCount) {
         const toRemove = instances.slice(keepCount);

@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\HypervisorSchema;
-use ARPI\Entities\Documents\Hypervisor;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/hypervisorwizard.js')]
@@ -20,18 +20,18 @@ class NewHypervisor extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-hypervisor.html');
+        return $this->renderWizard('hypervisor');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        if (!$validator->validate($data, HypervisorSchema::getSchema())) {
+        if (!$validator->validate($data, (new WizardSchemaBuilder())->buildSchema('hypervisor'))) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $hypervisor = new Hypervisor();
+            $hypervisor = new DynamicDocument('hypervisor');
             EntityHydrator::hydrate($hypervisor, $data);
             $hypervisor->createdat = new \DateTime();
             $hypervisor->updatedat = new \DateTime();
@@ -53,7 +53,7 @@ class NewHypervisor extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = HypervisorSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('hypervisor');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -61,7 +61,7 @@ class NewHypervisor extends BaseSite
         }
         
         try {
-            $hypervisor = $this->find(Hypervisor::class, $id);
+            $hypervisor = $this->findDynamic('hypervisor', $id);
             
             if (!$hypervisor) {
                 return ['success' => false, 'errors' => ['Hypervisor nicht gefunden']];
@@ -86,7 +86,7 @@ class NewHypervisor extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $hypervisor = $this->find(Hypervisor::class, $id);
+            $hypervisor = $this->findDynamic('hypervisor', $id);
             
             if (!$hypervisor) {
                 return ['success' => false, 'errors' => ['Hypervisor nicht gefunden']];

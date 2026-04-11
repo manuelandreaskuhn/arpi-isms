@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Helper;
 
 use ARPI\Entities\Annotations\Css as CssAttr;
@@ -45,7 +46,6 @@ abstract class BaseSite implements SiteInterface
     {
         // i18n initialisieren
         $i18nModule = $this->template->getModule('i18n');
-        
     }
 
     /**
@@ -53,19 +53,18 @@ abstract class BaseSite implements SiteInterface
      */
     protected function initODM(): void
     {
-        try {    
+        try {
             $config = Config::getInstance();
 
             // Sichere Konfiguration mit Credentials-Handling
             $mongoUri = $config->getMongoDbUri();
             $dbName = $config->getMongoDbDatabase();
-            
+
             // EntityRepository und UnitOfWork initialisieren
             // verifyConnection=true testet die Verbindung sofort
             $this->repository = new EntityRepository($mongoUri, $dbName, true);
             $this->unitOfWork = new UnitOfWork($this->repository);
             $this->repository->setUnitOfWork($this->unitOfWork);
-            
         } catch (ConnectionException $e) {
             error_log("MongoDB Connection failed: " . $e->getMessage());
             die("Database connection error. Please contact the administrator.");
@@ -139,8 +138,14 @@ abstract class BaseSite implements SiteInterface
     }
 
     // Optional: Getter, falls benötigt
-    public function getCssFiles(): array { return $this->cssFiles; }
-    public function getJsFiles(): array { return $this->jsFiles; }
+    public function getCssFiles(): array
+    {
+        return $this->cssFiles;
+    }
+    public function getJsFiles(): array
+    {
+        return $this->jsFiles;
+    }
 
     /**
      * Klassen-Annotationen (@css / @js) einlesen und Assets übernehmen.
@@ -164,6 +169,103 @@ abstract class BaseSite implements SiteInterface
             }
         } catch (\ReflectionException $e) {
             // still proceed without annotations
+        }
+    }
+
+    /**
+     * Rendert einen vollständigen Wizard aus seiner JSON-Konfiguration.
+     * Erzeugt Breadcrumb, Error-Box, <form>, Sektionen (via WizardRenderer),
+     * Floating-Bar und optionales Help-Include – identisch zur statischen Vorlage.
+     *
+     * @param string $wizardId  ID aus src/config/wizards/{wizardId}.json
+     * @param array  $values    Optionale Formular-Werte (Edit-Modus)
+     */
+    protected function renderWizard(string $wizardId, array $values = []): string
+    {
+        $config   = ConfigLoader::getInstance()->getWizardConfig($wizardId);
+        $renderer = new WizardRenderer();
+
+        $formId   = htmlspecialchars($config['form_id']            ?? 'wizardForm',         ENT_QUOTES);
+        $label    = htmlspecialchars($config['breadcrumb_label']   ?? ($config['label'] ?? ''), ENT_QUOTES);
+        $section  = htmlspecialchars($config['breadcrumb_section'] ?? 'Komponenten',         ENT_QUOTES);
+        $helpTpl  = $config['help_template'] ?? null;
+
+        // Software-Daten aus Konfiguration automatisch laden
+        $this->loadWizardSoftwareData($config['software_data'] ?? []);
+
+        // Wenn template_path gesetzt, vollständiges statisches Template verwenden
+        // (für Wizards mit dynamischen Listen wie dem System-Wizard)
+        if (!empty($config['template_path'])) {
+            $GLOBALS['assetcss'] = $this->cssFiles;
+            $GLOBALS['assetjs']  = $this->jsFiles;
+
+            $tplContent = '{{include:' . $config['template_path'] . '}}';
+            $processed  = $this->template->process($tplContent, $this->data);
+
+            return $this->render('partials/header.html')
+                . $processed
+                . $this->render('partials/footer.html');
+        }
+
+        $aside = '<aside class="wizardnavigation-enabled">' . "\n"
+            . '    <div class="breadcrumb">' . "\n"
+            . '        <p>Assetmanagement</p><i>›</i>' . "\n"
+            . '        <p>' . $section . '</p><i>›</i>' . "\n"
+            . '        <p>' . $label . '</p>' . "\n"
+            . '    </div>' . "\n"
+            . '    <div class="page-header-container"><div class="page-header"></div></div>' . "\n"
+            . '</aside>' . "\n";
+
+        $errorBox = '<div class="error-management" id="formErrorManagement" style="display:none;">' . "\n"
+            . '    <div class="error-header"><span class="error-icon">!</span>'
+            . '<span class="error-title">Fehler im Formular</span></div>' . "\n"
+            . '    <div class="error-content"><ul class="error-list"></ul></div>' . "\n"
+            . '</div>' . "\n";
+
+        $sections = $renderer->renderAllPages($wizardId, $values);
+        $form = '<form id="' . $formId . '" data-instance-uuid="">' . "\n"
+            . $sections
+            . '</form>' . "\n";
+
+        $floatingBar = '<div class="floating-form-management">' . "\n"
+            . '    <div class="form-status-container">' . "\n"
+            . '        <span class="form-status-icon">●</span>' . "\n"
+            . '        <div class="form-status-text">' . "\n"
+            . '            <span class="form-status" data-lastchange="" data-status="unchanged">Keine Änderungen</span>' . "\n"
+            . '            <span class="form-lastchange"></span>' . "\n"
+            . '        </div>' . "\n"
+            . '    </div>' . "\n"
+            . '    <button type="submit" form="' . $formId . '" class="btn-save" disabled>' . "\n"
+            . '        <span class="btn-save-icon"></span>' . "\n"
+            . '        <span class="btn-save-text">Speichern</span>' . "\n"
+            . '    </button>' . "\n"
+            . '</div>' . "\n";
+
+        $helpInclude = ($helpTpl !== null) ? '{{include:' . $helpTpl . '}}' . "\n" : '';
+
+        $wizardHtml = $aside . $errorBox . $form . $floatingBar . $helpInclude;
+
+        // Template-Engine für {{include:...}} im Help-Include ausführen
+        $processed = $this->template->process($wizardHtml, $this->data);
+
+        $GLOBALS['assetcss'] = $this->cssFiles;
+        $GLOBALS['assetjs']  = $this->jsFiles;
+
+        return $this->render('partials/header.html')
+            . $processed
+            . $this->render('partials/footer.html');
+    }
+
+    /**
+     * Lädt Software-Daten und stellt sie als Template-Variable bereit.
+     * Konfiguriert über "software_data" im Wizard-JSON: ["templateKey" => "softwareType"]
+     */
+    protected function loadWizardSoftwareData(array $softwareDataMap): void
+    {
+        foreach ($softwareDataMap as $templateKey => $softwareType) {
+            if (!isset($this->data[$templateKey])) {
+                $this->data[$templateKey] = $this->getSoftwareData($softwareType);
+            }
         }
     }
 
@@ -192,6 +294,18 @@ abstract class BaseSite implements SiteInterface
             case 'antivirus':
                 $jsonfile = $datafolder . 'antivirus-software.json';
                 break;
+            case 'backup':
+                $jsonfile = $datafolder . 'backup-software.json';
+                break;
+            case 'hypervisor':
+                $jsonfile = $datafolder . 'hypervisor-software.json';
+                break;
+            case 'siem':
+                $jsonfile = $datafolder . 'siem-software.json';
+                break;
+            case 'vpn':
+                $jsonfile = $datafolder . 'vpn-software.json';
+                break;
             // Weitere Softwaretypen können hier hinzugefügt werden
             default:
                 return [];
@@ -201,7 +315,7 @@ abstract class BaseSite implements SiteInterface
         }
         $jsonContent = file_get_contents($jsonfile);
         $data = json_decode($jsonContent, true) ?? [];
-        if(\key_exists('software', $data)) {
+        if (\key_exists('software', $data)) {
             return $data['software'];
         }
         return $data;
@@ -278,6 +392,14 @@ abstract class BaseSite implements SiteInterface
     protected function find(string $entityClass, $id): ?object
     {
         return $this->repository->find($entityClass, $id);
+    }
+
+    /**
+     * Hilfsmethode zum Laden eines DynamicDocument anhand der Wizard-ID
+     */
+    protected function findDynamic(string $wizardId, $id): ?\ARPI\Helper\ODM\DynamicDocument
+    {
+        return $this->repository->findDynamic($wizardId, $id);
     }
 
     /**

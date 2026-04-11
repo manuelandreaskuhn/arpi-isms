@@ -1,0 +1,109 @@
+<div class="group-wrapper">
+    <div class="subsection-header">Gateway-Konfiguration</div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Gateway-Typ / Hersteller</label>
+            <div class="custom-select" data-name="gatewaytype">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="vendor-gateway">Hersteller-spezifisches Gateway</div>
+                        <div class="select-option" data-value="dicom-gateway">DICOM-Gateway</div>
+                        <div class="select-option" data-value="hl7-interface">HL7 Interface Engine</div>
+                        <div class="select-option" data-value="mirth">Mirth Connect</div>
+                        <div class="select-option" data-value="integration-engine">Integration Engine</div>
+                        <div class="select-option" data-value="protocol-converter">Protokoll-Konverter</div>
+                        <div class="select-option" data-value="middleware">Middleware</div>
+                        <div class="select-option" data-value="other">Sonstige</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Gateway Modell / Produkt</label>
+            <input type="text" id="gatewaymodel" name="gatewaymodel" placeholder="Hersteller und Modellbezeichnung">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Gateway IP-Adresse</label>
+            <input type="text" id="gatewayip" name="gatewayip" placeholder="z.B. 10.0.0.1">
+        </div>
+        <div class="form-group">
+            <label>Gateway Hostname</label>
+            <input type="text" id="gatewayhostname" name="gatewayhostname" placeholder="z.B. gateway.intern.local">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Verbindung Gerät → Gateway</label>
+            <input type="text" id="devicetogateway" name="devicetogateway" placeholder="Protokoll und Verbindungsart">
+        </div>
+        <div class="form-group">
+            <label>Verbindung Gateway → PACS/RIS</label>
+            <input type="text" id="gatewaytopacs" name="gatewaytopacs" placeholder="Protokoll und Verbindungsart">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group form-group--full">
+            <label>Gateway-Funktionen</label>
+            <textarea id="gatewayfunctions" name="gatewayfunctions" rows="3"
+                placeholder="Protokollkonvertierung, Routing, Filterung, etc."></textarea>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Gateway-Standort</label>
+            <div class="custom-select" data-name="gatewaylocation">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="ondevice">Am Gerät (integriert)</div>
+                        <div class="select-option" data-value="nearby">In der Nähe des Geräts</div>
+                        <div class="select-option" data-value="department">Abteilung / Stationsbereich</div>
+                        <div class="select-option" data-value="datacenter">Rechenzentrum</div>
+                        <div class="select-option" data-value="cloud">Cloud</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Gateway-Redundanz</label>
+            <div class="custom-select" data-name="gatewayredundancy">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="yes">Redundant (dediziert)</div>
+                        <div class="select-option" data-value="no">Keine Redundanz</div>
+                        <div class="select-option" data-value="shared">Geteiltes Gateway</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group form-group--full">
+            <label>Gateway-Notizen</label>
+            <textarea id="gatewaynotes" name="gatewaynotes" rows="3"
+                placeholder="Weitere Hinweise zum Gateway"></textarea>
+        </div>
+    </div>
+</div>

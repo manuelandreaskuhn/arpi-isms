@@ -7,7 +7,11 @@
         <p>Neuen Proxy-Server anlegen</p>
     </div>
     <div class="page-header-container">
-        <div class="page-header"></div>
+        <div class="page-header">
+            <h1>Neuen Proxy-Server anlegen</h1>
+            <p>Erfassen Sie die Konfiguration Ihres Proxy-Servers für eine zentrale Übersicht der Netzwerkinfrastruktur.
+            </p>
+        </div>
     </div>
 </aside>
 
@@ -63,7 +67,8 @@
                 </div>
                 <div class="form-group" id="proxy-server-manual" style="display:none;">
                     <label>Proxy-Server (manuell)</label>
-                    <input type="text" id="hostname" name="hostname" required placeholder="z.B. proxy.example.com, 192.168.1.100">
+                    <input type="text" id="hostname" name="hostname" required
+                        placeholder="z.B. proxy.example.com, 192.168.1.100">
                 </div>
             </div>
 
@@ -205,7 +210,8 @@
                     </div>
                     <div class="software-info-description">
                         <label>Beschreibung:</label>
-                        <p class="software-description-text" id="sw-description">Bitte wählen Sie eine Proxy-Software aus.</p>
+                        <p class="software-description-text" id="sw-description">Bitte wählen Sie eine Proxy-Software
+                            aus.</p>
                     </div>
                     <div class="software-info-row">
                         <div class="software-info-section">
@@ -277,13 +283,15 @@
                 </div>
                 <div class="form-group">
                     <label>Authentifizierungs-Backend</label>
-                    <input type="text" id="proxyauthbackend" name="proxyauthbackend" placeholder="z.B. Active Directory, LDAP-Server">
+                    <input type="text" id="proxyauthbackend" name="proxyauthbackend"
+                        placeholder="z.B. Active Directory, LDAP-Server">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Dienstkonto / Service Account</label>
-                <input type="text" id="proxyserviceaccount" name="proxyserviceaccount" placeholder="z.B. DOMAIN\proxy-service">
+                <input type="text" id="proxyserviceaccount" name="proxyserviceaccount"
+                    placeholder="z.B. DOMAIN\proxy-service">
             </div>
         </div>
     </div>
@@ -301,8 +309,10 @@
                     Standard Ausnahmen / Bypass-Liste
                     <span class="help-icon" data-tooltip="proxy-exceptions">?</span>
                 </label>
-                <textarea id="proxyexceptions" name="proxyexceptions" rows="4" placeholder="z.B. localhost, 127.0.0.1, *.local, 10.0.0.0/8, internal.example.com"></textarea>
-                <div class="help-text">Hosts oder Netzwerke, die den Proxy standardmäßig umgehen (kommagetrennt oder zeilenweise)</div>
+                <textarea id="proxyexceptions" name="proxyexceptions" rows="4"
+                    placeholder="z.B. localhost, 127.0.0.1, *.local, 10.0.0.0/8, internal.example.com"></textarea>
+                <div class="help-text">Hosts oder Netzwerke, die den Proxy standardmäßig umgehen (kommagetrennt oder
+                    zeilenweise)</div>
             </div>
         </div>
     </div>
@@ -321,7 +331,8 @@
                         PAC-Datei (Proxy Auto-Config)
                         <span class="help-icon" data-tooltip="proxy-pac">?</span>
                     </label>
-                    <input type="text" id="proxypac" name="proxypac" placeholder="z.B. http://proxy.example.com/proxy.pac">
+                    <input type="text" id="proxypac" name="proxypac"
+                        placeholder="z.B. http://proxy.example.com/proxy.pac">
                     <div class="help-text">URL zur automatischen Proxy-Konfigurationsdatei</div>
                 </div>
                 <div class="form-group">
@@ -413,7 +424,8 @@
                     <div class="ha-enable-content">
                         <div class="ha-enable-text">
                             <span class="ha-enable-title">Failover / Redundanz aktiviert</span>
-                            <span class="ha-enable-desc">Aktivieren Sie Failover für Ausfallsicherheit und Hochverfügbarkeit</span>
+                            <span class="ha-enable-desc">Aktivieren Sie Failover für Ausfallsicherheit und
+                                Hochverfügbarkeit</span>
                         </div>
                         <span class="help-icon" data-tooltip="proxy-failover">?</span>
                     </div>
@@ -443,7 +455,8 @@
                     </div>
                     <div class="form-group" id="proxy-secondary-manual" style="display:none;">
                         <label>Sekundärer Proxy (manuell)</label>
-                        <input type="text" id="proxysecondary" name="proxysecondary" placeholder="z.B. proxy-backup.example.com">
+                        <input type="text" id="proxysecondary" name="proxysecondary"
+                            placeholder="z.B. proxy-backup.example.com">
                     </div>
                 </div>
 
@@ -623,7 +636,8 @@
                 </div>
                 <div class="form-group" id="proxy-monitoring-manual" style="display:none;">
                     <label>Monitoring-Tool (manuell)</label>
-                    <input type="text" id="proxymonitoringtool" name="proxymonitoringtool" placeholder="z.B. PRTG, Zabbix, Nagios">
+                    <input type="text" id="proxymonitoringtool" name="proxymonitoringtool"
+                        placeholder="z.B. PRTG, Zabbix, Nagios">
                 </div>
             </div>
         </div>
@@ -644,7 +658,8 @@
                 </div>
                 <div class="form-group">
                     <label>Support-Kontakt</label>
-                    <input type="text" id="proxysupport" name="proxysupport" placeholder="z.B. network-team@example.com">
+                    <input type="text" id="proxysupport" name="proxysupport"
+                        placeholder="z.B. network-team@example.com">
                 </div>
             </div>
         </div>
@@ -663,7 +678,8 @@
                     Notizen / Proxy-Besonderheiten
                     <span class="help-icon" data-tooltip="proxy-notes">?</span>
                 </label>
-                <textarea id="proxynotes" name="proxynotes" rows="4" placeholder="Zusätzliche Informationen zum Proxy-Server, bekannte Probleme, spezielle Konfigurationen..."></textarea>
+                <textarea id="proxynotes" name="proxynotes" rows="4"
+                    placeholder="Zusätzliche Informationen zum Proxy-Server, bekannte Probleme, spezielle Konfigurationen..."></textarea>
             </div>
         </div>
     </div>
@@ -679,6 +695,7 @@
             <span class="form-lastchange"></span>
         </div>
     </div>
+    <button type="button" class="btn-cancel">Abbrechen</button>
     <button type="submit" form="newProxyForm" class="btn-save" disabled>
         <span class="btn-save-icon"></span>
         <span class="btn-save-text">Speichern</span>

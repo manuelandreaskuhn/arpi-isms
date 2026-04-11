@@ -1,7 +1,7 @@
 <?php
+
 namespace ARPI\Entities\Documents;
 
-use ARPI\ODM\Mapping\Annotations as ODM;
 use DateTime;
 use MongoDB\BSON\ObjectId;
 
@@ -14,7 +14,8 @@ use MongoDB\BSON\ObjectId;
  * @ODM\Document(collection="users")
  * @package Entities
  */
-class User {
+class User
+{
 
     /**
      * MongoDB Object ID
@@ -122,12 +123,13 @@ class User {
      */
     public ?Customer $lastcustomer;
 
-    
+
     /**
      * Initialisiert Default Werte (z.B. leere Arrays)
      * @return void 
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->uuid = \uniqid('ressource_', true);
         $this->customers = array();
         $this->id = new ObjectId();

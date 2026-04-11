@@ -8,35 +8,35 @@ import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
 import { initializeWizardNavigation } from './wizardnavigation.js';
-import { 
-    restoreFormData, 
-    enableAutoSave, 
-    clearFormData, 
+import {
+    restoreFormData,
+    enableAutoSave,
+    clearFormData,
     saveSectionCounters,
     getOrCreateInstanceUuid,
     cleanupOldInstances
 } from './form-persistence.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
     initializeHelpTooltips();
     initializeWizardNavigation();
-    
+
     // Make saveSectionCounters globally accessible with updated signature
     window.saveSectionCounters = (formId, section = null) => saveSectionCounters(formId, section);
-    
+
     // Initialize or restore UUID for this form instance
     getOrCreateInstanceUuid('newProxyForm');
-    
+
     // Cleanup old instances (keep last 5)
     cleanupOldInstances('newProxyForm', 5);
-    
+
     // Restore saved form data (including section counters)
     restoreFormData('newProxyForm');
-    
+
     // Enable auto-save
     enableAutoSave('newProxyForm');
-    
+
     setupProxyWizard();
     setupProxyTypeListener();
     setupToggleSwitches();
@@ -46,18 +46,18 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupProxyWizard() {
     const form = document.getElementById('newProxyForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleProxySubmit);
-    
+
     // Software selection listener
     setupSoftwareListener();
-    
+
     // Floating form management buttons
     setupFormManagementButtons();
-    
+
     // Manual input toggles for component linking
     setupManualInputToggles();
-    
+
     // Failover configuration toggle
     setupFailoverToggle();
 }
@@ -65,7 +65,7 @@ function setupProxyWizard() {
 function setupFormManagementButtons() {
     const saveButtons = document.querySelectorAll('.btn-save');
     const form = document.getElementById('newProxyForm');
-    
+
     saveButtons.forEach(button => {
         button.addEventListener('click', () => {
             if (form) {
@@ -73,16 +73,8 @@ function setupFormManagementButtons() {
             }
         });
     });
-    
-    const cancelButtons = document.querySelectorAll('.btn-cancel');
-    cancelButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (confirm('Möchten Sie wirklich abbrechen? Alle ungespeicherten Änderungen gehen verloren.')) {
-                clearFormData('newProxyForm');
-                window.location.href = '/assetmanagement/komponenten';
-            }
-        });
-    });
+
+
 }
 
 function setupSoftwareListener() {
@@ -105,7 +97,7 @@ async function loadProxySoftwareInfo(softwareId) {
     try {
         const response = await fetch(`/api/data/proxy-software/${softwareId}`);
         if (!response.ok) throw new Error('Software info not found');
-        
+
         const result = await response.json();
         if (result.success && result.data) {
             fillProxySoftwareInfo(result.data);
@@ -128,14 +120,14 @@ function fillProxySoftwareInfo(data) {
     const vendorEl = document.querySelector('.software-vendor');
     if (titleEl) titleEl.textContent = data.name || '-';
     if (vendorEl) vendorEl.textContent = data.vendor || '-';
-    
+
     // Category and type
     document.getElementById('sw-category').textContent = data.category || '-';
     document.getElementById('sw-type').textContent = data.type || '-';
-    
+
     // Description
     document.getElementById('sw-description').textContent = data.description || 'Keine Beschreibung verfügbar.';
-    
+
     // Features
     const featuresEl = document.getElementById('sw-features');
     if (data.features && data.features.length > 0) {
@@ -143,7 +135,7 @@ function fillProxySoftwareInfo(data) {
     } else {
         featuresEl.textContent = '-';
     }
-    
+
     // Platforms
     const platformsEl = document.getElementById('sw-platforms');
     if (data.platforms && data.platforms.length > 0) {
@@ -151,7 +143,7 @@ function fillProxySoftwareInfo(data) {
     } else {
         platformsEl.textContent = '-';
     }
-    
+
     // License models
     const licenseEl = document.getElementById('sw-license');
     if (data.licenseModel && data.licenseModel.length > 0) {
@@ -159,13 +151,13 @@ function fillProxySoftwareInfo(data) {
     } else {
         licenseEl.textContent = '-';
     }
-    
+
     // Pricing
     document.getElementById('sw-pricing').textContent = data.pricing || '-';
-    
+
     // Notes
     document.getElementById('sw-notes').textContent = data.notes || '-';
-    
+
     // CPE identifiers
     const cpeEl = document.getElementById('sw-cpe');
     if (data.cpe && data.cpe.length > 0) {
@@ -202,7 +194,7 @@ function setupManualInputToggles() {
     // Proxy Server manual input
     const proxyServerSelect = document.querySelector('[data-name="serverid"]');
     const proxyServerManual = document.getElementById('proxy-server-manual');
-    
+
     if (proxyServerSelect) {
         const observer = new MutationObserver(() => {
             const value = proxyServerSelect.dataset.value;
@@ -216,7 +208,7 @@ function setupManualInputToggles() {
     // Monitoring Integration manual input
     const monitoringSelect = document.querySelector('[data-name="proxymonitoring"]');
     const monitoringManual = document.getElementById('proxy-monitoring-manual');
-    
+
     if (monitoringSelect) {
         const observer = new MutationObserver(() => {
             const value = monitoringSelect.dataset.value;
@@ -230,7 +222,7 @@ function setupManualInputToggles() {
     // Secondary Proxy manual input
     const secondarySelect = document.querySelector('[data-name="proxysecondaryid"]');
     const secondaryManual = document.getElementById('proxy-secondary-manual');
-    
+
     if (secondarySelect) {
         const observer = new MutationObserver(() => {
             const value = secondarySelect.dataset.value;
@@ -248,9 +240,9 @@ function setupManualInputToggles() {
 function setupFailoverToggle() {
     const checkbox = document.getElementById('proxy-failover-check');
     const config = document.getElementById('proxy-failover-config');
-    
+
     if (checkbox && config) {
-        checkbox.addEventListener('change', function() {
+        checkbox.addEventListener('change', function () {
             if (this.checked) {
                 config.style.display = 'block';
             } else {
@@ -291,13 +283,13 @@ function adjustProtocolsForProxyType(proxyType) {
     };
 
     const allowedProtocols = protocols[proxyType] || ['http', 'https', 'ftp', 'socks'];
-    
+
     // Update checkboxes
     const checkboxes = protocolsContainer.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         const protocol = checkbox.value;
         const isAllowed = allowedProtocols.includes(protocol);
-        
+
         if (!isAllowed) {
             checkbox.checked = false;
             checkbox.disabled = true;
@@ -314,19 +306,19 @@ function adjustProtocolsForProxyType(proxyType) {
  */
 function setupToggleSwitches() {
     const toggles = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
-    
+
     toggles.forEach(toggle => {
         const wrapper = toggle.closest('.toggle-wrapper');
         if (!wrapper) return;
-        
+
         const statusSpan = wrapper.querySelector('.toggle-status');
         if (!statusSpan) return;
-        
+
         // Set initial state
         updateToggleStatus(toggle, statusSpan);
-        
+
         // Listen for changes
-        toggle.addEventListener('change', function() {
+        toggle.addEventListener('change', function () {
             updateToggleStatus(this, statusSpan);
         });
     });
@@ -352,9 +344,9 @@ function setupConditionalFields() {
     // SSL Certificate field - show only when SSL Interception is enabled or partial
     const sslRadios = document.querySelectorAll('input[name="proxysslinterception"]');
     const sslCertField = document.getElementById('proxy-ssl-cert-field');
-    
+
     sslRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
+        radio.addEventListener('change', function () {
             if (sslCertField) {
                 const value = this.value;
                 if (value === 'enabled' || value === 'partial') {
@@ -369,9 +361,9 @@ function setupConditionalFields() {
     // Cache Size field - show only when Cache is enabled
     const cacheToggle = document.getElementById('proxycache');
     const cacheSizeField = document.getElementById('proxy-cache-size-field');
-    
+
     if (cacheToggle && cacheSizeField) {
-        cacheToggle.addEventListener('change', function() {
+        cacheToggle.addEventListener('change', function () {
             if (this.checked) {
                 cacheSizeField.style.display = 'block';
             } else {
@@ -383,12 +375,12 @@ function setupConditionalFields() {
 
 async function handleProxySubmit(event) {
     event.preventDefault();
-    
+
     // Formular-Daten sammeln
     const formData = collectFormData(event.target);
-    
+
     console.log('Proxy Server Data:', formData);
-    
+
     // An API senden
     try {
         const response = await fetch(getFetchUri(), {
@@ -399,7 +391,7 @@ async function handleProxySubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");
@@ -410,7 +402,7 @@ async function handleProxySubmit(event) {
             }
 
             alert('Proxy-Server erfolgreich erstellt!');
-            window.location.href = '/assetmanagement/components';
+            window.location.href = '/ComponentManagement.html';
         } else {
             alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
 

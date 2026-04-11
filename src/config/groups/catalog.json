@@ -1,0 +1,1145 @@
+{
+    "version": "1.0.0",
+    "description": "Katalog aller Gruppen-Elemente. Eine Gruppe fasst logisch zusammengehörige Felder als wiederverwendbare Einheit zusammen. Gruppen werden als eigene HTML-Tags gerendert.",
+    "groups": [
+        {
+            "id": "firewall-zones",
+            "label": "Netzwerk-Zonen",
+            "description": "Standard-Netzwerk-Zonen einer Firewall: External (WAN), Internal (LAN) und DMZ Interface. Diese drei Interfaces bilden die Grundstruktur jeder Netzwerk-Firewall.",
+            "html_tag": "isms-firewall-zones",
+            "template_file": "partials/elements/groups/firewall-zones.html",
+            "fields": [
+                {
+                    "element_ref": "ip-address",
+                    "name": "externalif",
+                    "label": "External (WAN) Interface",
+                    "placeholder": "z.B. 203.0.113.1 oder eth0"
+                },
+                {
+                    "element_ref": "ip-address",
+                    "name": "internalif",
+                    "label": "Internal (LAN) Interface",
+                    "placeholder": "z.B. 192.168.1.1 oder eth1"
+                },
+                {
+                    "element_ref": "ip-address",
+                    "name": "dmzif",
+                    "label": "DMZ Interface",
+                    "placeholder": "z.B. 172.16.1.1 oder eth2"
+                }
+            ]
+        },
+        {
+            "id": "dhcp-config",
+            "label": "DHCP-Konfiguration",
+            "description": "Vollständige DHCP-Einstellungen eines Netzwerks: Aktivierung, Server, Pool-Bereich, Lease-Zeit und statische Reservierungen.",
+            "html_tag": "isms-dhcp-config",
+            "template_file": "partials/elements/groups/dhcp-config.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "dhcpenabled",
+                    "label": "DHCP aktiviert",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Ja"
+                        },
+                        {
+                            "value": "no",
+                            "label": "Nein (statische IPs)"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "dhcpserver",
+                    "label": "DHCP-Server",
+                    "placeholder": "IP oder Hostname des DHCP-Servers"
+                },
+                {
+                    "element_ref": "ip-address",
+                    "name": "dhcpstart",
+                    "label": "DHCP-Pool (Start)",
+                    "placeholder": "192.168.1.10"
+                },
+                {
+                    "element_ref": "ip-address",
+                    "name": "dhcpend",
+                    "label": "DHCP-Pool (Ende)",
+                    "placeholder": "192.168.1.254"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "dhcplease",
+                    "label": "DHCP-Lease-Zeit",
+                    "placeholder": "z.B. 24h, 1d, 8h"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "dhcpreservations",
+                    "label": "DHCP-Reservierungen",
+                    "placeholder": "Feste IP-Zuweisungen nach MAC-Adresse"
+                }
+            ]
+        },
+        {
+            "id": "siem-integration",
+            "label": "SIEM-Integration",
+            "description": "Anbindung an ein SIEM-System für zentrales Log-Management und Security Monitoring. Enthält Referenz auf SIEM-Komponente, Log-Format und Transport-Protokoll.",
+            "html_tag": "isms-siem-integration",
+            "template_file": "partials/elements/groups/siem-integration.html",
+            "fields": [
+                {
+                    "element_ref": "siem-reference",
+                    "name": "siemid",
+                    "label": "SIEM-System"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "siem_manual",
+                    "label": "SIEM (manuell)",
+                    "placeholder": "SIEM-System manuell angeben"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "siemlogformat",
+                    "label": "Log-Format",
+                    "options": [
+                        {
+                            "value": "syslog",
+                            "label": "Syslog"
+                        },
+                        {
+                            "value": "json",
+                            "label": "JSON"
+                        },
+                        {
+                            "value": "cef",
+                            "label": "CEF"
+                        },
+                        {
+                            "value": "leef",
+                            "label": "LEEF"
+                        },
+                        {
+                            "value": "custom",
+                            "label": "Custom"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "siemtransportprotocol",
+                    "label": "Transport-Protokoll",
+                    "options": [
+                        {
+                            "value": "tcp",
+                            "label": "TCP"
+                        },
+                        {
+                            "value": "udp",
+                            "label": "UDP"
+                        },
+                        {
+                            "value": "tls",
+                            "label": "TLS"
+                        },
+                        {
+                            "value": "https",
+                            "label": "HTTPS"
+                        },
+                        {
+                            "value": "beats",
+                            "label": "Beats"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ha-config",
+            "label": "Hochverfügbarkeit (HA)",
+            "description": "Konfiguration der Hochverfügbarkeit einer Komponente: Aktivierung, Betriebsmodus und Referenz auf Partner-Gerät.",
+            "html_tag": "isms-ha-config",
+            "template_file": "partials/elements/groups/ha-config.html",
+            "fields": [
+                {
+                    "element_ref": "ha-enabled",
+                    "name": "serverhighavailability",
+                    "label": "HA aktiviert"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "hamode",
+                    "label": "HA-Modus",
+                    "options": [
+                        {
+                            "value": "active-passive",
+                            "label": "Active-Passive"
+                        },
+                        {
+                            "value": "active-active",
+                            "label": "Active-Active"
+                        },
+                        {
+                            "value": "cluster",
+                            "label": "Cluster"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "hapartner",
+                    "label": "Partner / Standby-Gerät",
+                    "placeholder": "Hostname oder IP des HA-Partners"
+                }
+            ]
+        },
+        {
+            "id": "storage-tier-primary",
+            "label": "Stufe 1 (Primär-Storage)",
+            "description": "Konfiguration der primären Storage-Stufe eines Backup-Systems (lokaler/naher Speicher): Typ, Kapazität, Pfad, Deduplizierung.",
+            "html_tag": "isms-storage-tier-primary",
+            "template_file": "partials/elements/groups/storage-tier-primary.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "primarystoragetype",
+                    "label": "Storage-Typ (Primär)",
+                    "options": [
+                        {
+                            "value": "local-disk",
+                            "label": "Lokale Festplatte / SSD"
+                        },
+                        {
+                            "value": "nas",
+                            "label": "NAS (Network Attached Storage)"
+                        },
+                        {
+                            "value": "san",
+                            "label": "SAN (Storage Area Network)"
+                        },
+                        {
+                            "value": "dedup-appliance",
+                            "label": "Deduplizierungs-Appliance"
+                        },
+                        {
+                            "value": "object-storage",
+                            "label": "Object Storage (On-Premise)"
+                        },
+                        {
+                            "value": "tape",
+                            "label": "Tape / Bandspeicher"
+                        },
+                        {
+                            "value": "other",
+                            "label": "Sonstige"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "number-input",
+                    "name": "primarystoragecapacity",
+                    "label": "Kapazität (TB)",
+                    "placeholder": "z.B. 10"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "primarystoragepath",
+                    "label": "Storage-Pfad / Repository",
+                    "placeholder": "z.B. /backup/primary"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "primarydeduplication",
+                    "label": "Deduplizierung",
+                    "options": [
+                        {
+                            "value": "enabled",
+                            "label": "Aktiviert"
+                        },
+                        {
+                            "value": "disabled",
+                            "label": "Deaktiviert"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "storage-tier-secondary",
+            "label": "Stufe 2 (Sekundär-Storage)",
+            "description": "Konfiguration der sekundären Storage-Stufe (Offsite / Cloud / Tape): Typ, Kapazität, Pfad, Deduplizierung, Replikationsfrequenz, Immutability.",
+            "html_tag": "isms-storage-tier-secondary",
+            "template_file": "partials/elements/groups/storage-tier-secondary.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "secondarystoragetype",
+                    "label": "Storage-Typ (Sekundär)",
+                    "options": [
+                        {
+                            "value": "nas-offsite",
+                            "label": "NAS (Offsite)"
+                        },
+                        {
+                            "value": "cloud",
+                            "label": "Cloud-Storage (S3/Blob/etc.)"
+                        },
+                        {
+                            "value": "tape",
+                            "label": "Tape / Bandspeicher"
+                        },
+                        {
+                            "value": "object-storage",
+                            "label": "Object Storage"
+                        },
+                        {
+                            "value": "dedup-appliance-offsite",
+                            "label": "Deduplizierungs-Appliance (Offsite)"
+                        },
+                        {
+                            "value": "other",
+                            "label": "Sonstige"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "number-input",
+                    "name": "secondarystoragecapacity",
+                    "label": "Kapazität (TB)",
+                    "placeholder": "z.B. 20"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "secondarystoragepath",
+                    "label": "Storage-Pfad / Cloud-Bucket",
+                    "placeholder": "z.B. s3://backup-bucket"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "secondarydeduplication",
+                    "label": "Deduplizierung",
+                    "options": [
+                        {
+                            "value": "enabled",
+                            "label": "Aktiviert"
+                        },
+                        {
+                            "value": "disabled",
+                            "label": "Deaktiviert"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "secondaryreplicationfreq",
+                    "label": "Replikationsfrequenz",
+                    "options": [
+                        {
+                            "value": "continuous",
+                            "label": "Kontinuierlich"
+                        },
+                        {
+                            "value": "hourly",
+                            "label": "Stündlich"
+                        },
+                        {
+                            "value": "daily",
+                            "label": "Täglich"
+                        },
+                        {
+                            "value": "weekly",
+                            "label": "Wöchentlich"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "secondaryimmutability",
+                    "label": "Immutability",
+                    "options": [
+                        {
+                            "value": "enabled",
+                            "label": "Aktiviert (WORM)"
+                        },
+                        {
+                            "value": "disabled",
+                            "label": "Deaktiviert"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "secondaryimmutabilityperiod",
+                    "label": "Immutability Periode",
+                    "placeholder": "z.B. 30 Tage"
+                }
+            ]
+        },
+        {
+            "id": "storage-tier-tertiary",
+            "label": "Stufe 3 (Archiv-Storage)",
+            "description": "Konfiguration der tertiären Storage-Stufe (Langzeit-Archiv): Typ, Kapazität, Pfad, Archivierungsfrequenz, Aufbewahrungsdauer, Immutability.",
+            "html_tag": "isms-storage-tier-tertiary",
+            "template_file": "partials/elements/groups/storage-tier-tertiary.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "tertiarystoragetype",
+                    "label": "Storage-Typ (Archiv)",
+                    "options": [
+                        {
+                            "value": "glacier",
+                            "label": "AWS Glacier / Deep Archive"
+                        },
+                        {
+                            "value": "azure-archive",
+                            "label": "Azure Archive Storage"
+                        },
+                        {
+                            "value": "gcs-coldline",
+                            "label": "GCS Coldline/Archive"
+                        },
+                        {
+                            "value": "tape-offsite",
+                            "label": "Tape (Offsite / Tresor)"
+                        },
+                        {
+                            "value": "object-storage-archive",
+                            "label": "Object Storage (Archiv-Tier)"
+                        },
+                        {
+                            "value": "other",
+                            "label": "Sonstige"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "number-input",
+                    "name": "tertiarystoragecapacity",
+                    "label": "Kapazität (TB)",
+                    "placeholder": "z.B. 50"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "tertiarystoragepath",
+                    "label": "Storage-Pfad / Archive-Bucket",
+                    "placeholder": "z.B. s3://archive-bucket"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "tertiaryarchivefreq",
+                    "label": "Archivierungsfrequenz",
+                    "options": [
+                        {
+                            "value": "weekly",
+                            "label": "Wöchentlich"
+                        },
+                        {
+                            "value": "monthly",
+                            "label": "Monatlich"
+                        },
+                        {
+                            "value": "quarterly",
+                            "label": "Quartalsweise"
+                        },
+                        {
+                            "value": "yearly",
+                            "label": "Jährlich"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "tertiaryretention",
+                    "label": "Aufbewahrungsdauer",
+                    "placeholder": "z.B. 7 Jahre"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "tertiaryimmutability",
+                    "label": "Immutability",
+                    "options": [
+                        {
+                            "value": "enabled",
+                            "label": "Aktiviert (WORM)"
+                        },
+                        {
+                            "value": "disabled",
+                            "label": "Deaktiviert"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "tertiaryimmutabilityperiod",
+                    "label": "Immutability Periode",
+                    "placeholder": "z.B. 7 Jahre"
+                }
+            ]
+        },
+        {
+            "id": "monitoring-alerting",
+            "label": "Monitoring & Alerting",
+            "description": "Konfiguration von Monitoring-Tool, Alarm-E-Mail und Log-Aufbewahrungsdauer.",
+            "html_tag": "isms-monitoring",
+            "template_file": "partials/elements/groups/monitoring-alerting.html",
+            "fields": [
+                {
+                    "element_ref": "monitoring-tool",
+                    "name": "monitoringtool",
+                    "label": "Monitoring-Tool"
+                },
+                {
+                    "element_ref": "alert-email",
+                    "name": "alertemail",
+                    "label": "Alarm-E-Mail Empfänger"
+                },
+                {
+                    "element_ref": "log-retention",
+                    "name": "logretention",
+                    "label": "Log-Aufbewahrung (Tage)"
+                }
+            ]
+        },
+        {
+            "id": "responsibility",
+            "label": "Verantwortlichkeiten & Support",
+            "description": "Administrative Verantwortlichkeiten und Support-Informationen: zuständiger Administrator, Support-Vertrag, Kontakt, Vertragsende.",
+            "html_tag": "isms-responsibility",
+            "template_file": "partials/elements/groups/responsibility.html",
+            "fields": [
+                {
+                    "element_ref": "admin-contact",
+                    "name": "admin",
+                    "label": "Administrator"
+                },
+                {
+                    "element_ref": "support-contract",
+                    "name": "supportcontract",
+                    "label": "Support-Vertrag"
+                },
+                {
+                    "element_ref": "support-contact",
+                    "name": "supportcontact",
+                    "label": "Support-Kontakt"
+                },
+                {
+                    "element_ref": "support-end-date",
+                    "name": "supportend",
+                    "label": "Support-Vertragsende"
+                }
+            ]
+        },
+        {
+            "id": "gateway-device",
+            "label": "Gateway-Konfiguration",
+            "description": "Konfiguration eines vorgelagerten Gateways (z.B. DICOM-Gateway, HL7-Interface, Protokoll-Konverter). Enthält Typ, Modell, Netzwerk-Daten, Funktionen, Standort und Redundanz.",
+            "html_tag": "isms-gateway-device",
+            "template_file": "partials/elements/groups/gateway-device.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "gatewaytype",
+                    "label": "Gateway-Typ / Hersteller",
+                    "options": [
+                        {
+                            "value": "vendor-gateway",
+                            "label": "Hersteller-spezifisches Gateway"
+                        },
+                        {
+                            "value": "dicom-gateway",
+                            "label": "DICOM-Gateway"
+                        },
+                        {
+                            "value": "hl7-interface",
+                            "label": "HL7 Interface Engine"
+                        },
+                        {
+                            "value": "mirth",
+                            "label": "Mirth Connect"
+                        },
+                        {
+                            "value": "integration-engine",
+                            "label": "Integration Engine"
+                        },
+                        {
+                            "value": "protocol-converter",
+                            "label": "Protokoll-Konverter"
+                        },
+                        {
+                            "value": "middleware",
+                            "label": "Middleware"
+                        },
+                        {
+                            "value": "other",
+                            "label": "Sonstige"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "gatewaymodel",
+                    "label": "Gateway Modell / Produkt",
+                    "placeholder": "Hersteller und Modellbezeichnung"
+                },
+                {
+                    "element_ref": "ip-address",
+                    "name": "gatewayip",
+                    "label": "Gateway IP-Adresse"
+                },
+                {
+                    "element_ref": "hostname",
+                    "name": "gatewayhostname",
+                    "label": "Gateway Hostname"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "devicetogateway",
+                    "label": "Verbindung Gerät → Gateway",
+                    "placeholder": "Protokoll und Verbindungsart"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "gatewaytopacs",
+                    "label": "Verbindung Gateway → PACS/RIS",
+                    "placeholder": "Protokoll und Verbindungsart"
+                },
+                {
+                    "element_ref": "textarea-input",
+                    "name": "gatewayfunctions",
+                    "label": "Gateway-Funktionen",
+                    "placeholder": "Protokollkonvertierung, Routing, Filterung, etc."
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "gatewaylocation",
+                    "label": "Gateway-Standort",
+                    "options": [
+                        {
+                            "value": "ondevice",
+                            "label": "Am Gerät (integriert)"
+                        },
+                        {
+                            "value": "nearby",
+                            "label": "In der Nähe des Geräts"
+                        },
+                        {
+                            "value": "department",
+                            "label": "Abteilung / Stationsbereich"
+                        },
+                        {
+                            "value": "datacenter",
+                            "label": "Rechenzentrum"
+                        },
+                        {
+                            "value": "cloud",
+                            "label": "Cloud"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "gatewayredundancy",
+                    "label": "Gateway-Redundanz",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Redundant (dediziert)"
+                        },
+                        {
+                            "value": "no",
+                            "label": "Keine Redundanz"
+                        },
+                        {
+                            "value": "shared",
+                            "label": "Geteiltes Gateway"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "notes",
+                    "name": "gatewaynotes",
+                    "label": "Gateway-Notizen"
+                }
+            ]
+        },
+        {
+            "id": "dns-config",
+            "label": "DNS-Konfiguration",
+            "description": "Primärer und sekundärer DNS-Server eines Netzwerks.",
+            "html_tag": "isms-dns-config",
+            "template_file": "partials/elements/groups/dns-config.html",
+            "fields": [
+                {
+                    "element_ref": "dns-server",
+                    "name": "dnsprimary",
+                    "label": "DNS-Server (Primär)"
+                },
+                {
+                    "element_ref": "dns-server",
+                    "name": "dnssecondary",
+                    "label": "DNS-Server (Sekundär)"
+                }
+            ]
+        },
+        {
+            "id": "server-reference",
+            "label": "Server-Referenz",
+            "description": "Referenz auf einen Server (VM oder Hardware-Server) mit optionaler manueller Eingabe von Hostname und IP.",
+            "html_tag": "isms-server-ref",
+            "template_file": "partials/elements/groups/server-reference.html",
+            "fields": [
+                {
+                    "element_ref": "vm-hardware-reference",
+                    "name": "serverid",
+                    "label": "Backup-Server / VM"
+                },
+                {
+                    "element_ref": "hostname",
+                    "name": "serverhostname",
+                    "label": "Server-Name (manuell)"
+                },
+                {
+                    "element_ref": "ip-address",
+                    "name": "serverip",
+                    "label": "IP-Adresse"
+                }
+            ]
+        },
+        {
+            "id": "compliance-standards",
+            "label": "Compliance & Standards",
+            "description": "Relevante Compliance-Standards und Zertifizierungen die für diese Komponente gelten. Inkl. Datum der letzten Sicherheitsüberprüfung.",
+            "html_tag": "isms-compliance",
+            "template_file": "partials/elements/groups/compliance-standards.html",
+            "fields": [
+                {
+                    "element_ref": "checkbox-group",
+                    "name": "compliance",
+                    "label": "Relevante Compliance-Standards",
+                    "options": [
+                        {
+                            "value": "dsgvo",
+                            "label": "DSGVO / GDPR"
+                        },
+                        {
+                            "value": "hipaa",
+                            "label": "HIPAA"
+                        },
+                        {
+                            "value": "pci-dss",
+                            "label": "PCI DSS"
+                        },
+                        {
+                            "value": "iso27001",
+                            "label": "ISO 27001"
+                        },
+                        {
+                            "value": "nist",
+                            "label": "NIST CSF"
+                        },
+                        {
+                            "value": "kritis",
+                            "label": "KRITIS"
+                        },
+                        {
+                            "value": "bsi-grundschutz",
+                            "label": "BSI-Grundschutz"
+                        },
+                        {
+                            "value": "sox",
+                            "label": "SOX"
+                        },
+                        {
+                            "value": "b3s",
+                            "label": "B3S"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "date-field",
+                    "name": "lastaudit",
+                    "label": "Letzte Sicherheitsüberprüfung"
+                },
+                {
+                    "element_ref": "date-field",
+                    "name": "nextaudit",
+                    "label": "Nächste geplante Prüfung"
+                }
+            ]
+        },
+        {
+            "id": "vpn-encryption",
+            "label": "VPN-Protokoll & Verschlüsselung",
+            "description": "Konfiguration des VPN-Protokolls und der kryptographischen Parameter: Protokoll, Port, Verschlüsselung, Hash, DH-Gruppe, PFS.",
+            "html_tag": "isms-vpn-encryption",
+            "template_file": "partials/elements/groups/vpn-encryption.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "protocol",
+                    "label": "VPN-Protokoll",
+                    "options": [
+                        {
+                            "value": "ipsec-ikev2",
+                            "label": "IPsec (IKEv2)"
+                        },
+                        {
+                            "value": "ipsec-ikev1",
+                            "label": "IPsec (IKEv1)"
+                        },
+                        {
+                            "value": "ssl-tls",
+                            "label": "SSL/TLS VPN"
+                        },
+                        {
+                            "value": "openvpn-tcp",
+                            "label": "OpenVPN (TCP)"
+                        },
+                        {
+                            "value": "openvpn-udp",
+                            "label": "OpenVPN (UDP)"
+                        },
+                        {
+                            "value": "wireguard",
+                            "label": "WireGuard"
+                        },
+                        {
+                            "value": "l2tp-ipsec",
+                            "label": "L2TP/IPsec"
+                        },
+                        {
+                            "value": "pptp",
+                            "label": "PPTP (unsicher!)"
+                        },
+                        {
+                            "value": "sstp",
+                            "label": "SSTP"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "ports",
+                    "label": "VPN-Port(s)",
+                    "placeholder": "z.B. 443, 500, 4500"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "encryptionalgo",
+                    "label": "Verschlüsselungs-Algorithmus",
+                    "options": [
+                        {
+                            "value": "aes-256-gcm",
+                            "label": "AES-256-GCM (empfohlen)"
+                        },
+                        {
+                            "value": "aes-256-cbc",
+                            "label": "AES-256-CBC"
+                        },
+                        {
+                            "value": "aes-128-gcm",
+                            "label": "AES-128-GCM"
+                        },
+                        {
+                            "value": "aes-128-cbc",
+                            "label": "AES-128-CBC"
+                        },
+                        {
+                            "value": "chacha20-poly1305",
+                            "label": "ChaCha20-Poly1305"
+                        },
+                        {
+                            "value": "3des",
+                            "label": "3DES (veraltet)"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "hashalgo",
+                    "label": "Hash-Algorithmus",
+                    "options": [
+                        {
+                            "value": "sha-512",
+                            "label": "SHA-512"
+                        },
+                        {
+                            "value": "sha-384",
+                            "label": "SHA-384"
+                        },
+                        {
+                            "value": "sha-256",
+                            "label": "SHA-256 (empfohlen)"
+                        },
+                        {
+                            "value": "sha-1",
+                            "label": "SHA-1 (schwach)"
+                        },
+                        {
+                            "value": "md5",
+                            "label": "MD5 (unsicher)"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "dhgroup",
+                    "label": "Diffie-Hellman Group",
+                    "options": [
+                        {
+                            "value": "group-21",
+                            "label": "Group 21 (521-bit ECP, stärkst)"
+                        },
+                        {
+                            "value": "group-20",
+                            "label": "Group 20 (384-bit ECP)"
+                        },
+                        {
+                            "value": "group-19",
+                            "label": "Group 19 (256-bit ECP, empfohlen)"
+                        },
+                        {
+                            "value": "group-14",
+                            "label": "Group 14 (2048-bit)"
+                        },
+                        {
+                            "value": "group-5",
+                            "label": "Group 5 (1536-bit)"
+                        },
+                        {
+                            "value": "group-2",
+                            "label": "Group 2 (1024-bit, veraltet)"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "pfs",
+                    "label": "Perfect Forward Secrecy (PFS)",
+                    "options": [
+                        {
+                            "value": "enabled",
+                            "label": "Aktiviert (empfohlen)"
+                        },
+                        {
+                            "value": "disabled",
+                            "label": "Deaktiviert"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "vpn-auth",
+            "label": "Authentifizierung & Zugriffskontrolle",
+            "description": "VPN-Authentifizierungseinstellungen: Methode, MFA-Provider, Backend, RADIUS, Zertifikate und Benutzergruppen.",
+            "html_tag": "isms-vpn-auth",
+            "template_file": "partials/elements/groups/vpn-auth.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "authmethod",
+                    "label": "Authentifizierungs-Methode",
+                    "options": [
+                        {
+                            "value": "certificate",
+                            "label": "Zertifikat-basiert"
+                        },
+                        {
+                            "value": "username-password",
+                            "label": "Benutzername/Passwort"
+                        },
+                        {
+                            "value": "cert-and-password",
+                            "label": "Zertifikat + Passwort"
+                        },
+                        {
+                            "value": "mfa",
+                            "label": "Multi-Faktor (MFA)"
+                        },
+                        {
+                            "value": "psk",
+                            "label": "Pre-Shared Key (PSK)"
+                        },
+                        {
+                            "value": "smartcard",
+                            "label": "Smartcard / PKI"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "mfaprovider",
+                    "label": "MFA-Provider",
+                    "placeholder": "z.B. Duo, Google Authenticator, Azure MFA"
+                },
+                {
+                    "element_ref": "select-input",
+                    "name": "authbackend",
+                    "label": "Authentifizierungs-Backend",
+                    "options": [
+                        {
+                            "value": "ad",
+                            "label": "Active Directory"
+                        },
+                        {
+                            "value": "ldap",
+                            "label": "LDAP"
+                        },
+                        {
+                            "value": "radius",
+                            "label": "RADIUS"
+                        },
+                        {
+                            "value": "saml",
+                            "label": "SAML / SSO"
+                        },
+                        {
+                            "value": "local",
+                            "label": "Lokale Datenbank"
+                        },
+                        {
+                            "value": "azure-ad",
+                            "label": "Azure AD / Entra ID"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "radiusserver",
+                    "label": "RADIUS-Server",
+                    "placeholder": "IP oder Hostname des RADIUS-Servers"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "ca",
+                    "label": "Zertifizierungsstelle (CA)",
+                    "placeholder": "Name der CA oder CN des Root-Zertifikats"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "certvalidity",
+                    "label": "Zertifikat-Gültigkeit",
+                    "placeholder": "z.B. 1 Jahr, bis 31.12.2026"
+                },
+                {
+                    "element_ref": "textarea-input",
+                    "name": "usergroups",
+                    "label": "Definierte Benutzergruppen",
+                    "placeholder": "AD-Gruppen oder lokale Gruppen mit Zugriffsrechten"
+                }
+            ]
+        },
+        {
+            "id": "ti-konnektor",
+            "label": "Konnektor-Konfiguration",
+            "description": "Konfiguration des TI-Konnektors: Hersteller, Modell, Firmware, Seriennummer, IP-Adresse und Management-URL.",
+            "html_tag": "isms-ti-konnektor",
+            "template_file": "partials/elements/groups/ti-konnektor.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "konnektorvendor",
+                    "label": "Konnektor-Hersteller",
+                    "options": [
+                        {
+                            "value": "secunet",
+                            "label": "Secunet"
+                        },
+                        {
+                            "value": "tsystems",
+                            "label": "T-Systems"
+                        },
+                        {
+                            "value": "rise",
+                            "label": "RISE"
+                        },
+                        {
+                            "value": "compugroup",
+                            "label": "CompuGroup Medical (CGM)"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "konnektormodel",
+                    "label": "Konnektor-Modell",
+                    "placeholder": "z.B. secunet konnektor 2.0"
+                },
+                {
+                    "element_ref": "version",
+                    "name": "konnektorfirmware",
+                    "label": "Firmware-Version"
+                },
+                {
+                    "element_ref": "serial-number",
+                    "name": "konnektorserial",
+                    "label": "Seriennummer"
+                },
+                {
+                    "element_ref": "ip-address",
+                    "name": "konnektorip",
+                    "label": "Hostname / IP-Adresse"
+                },
+                {
+                    "element_ref": "management-url",
+                    "name": "konnektorurl",
+                    "label": "Management-URL"
+                }
+            ]
+        },
+        {
+            "id": "ti-smcb",
+            "label": "SMC-B Kartenkonfiguration",
+            "description": "Konfiguration der SMC-B Institutionskarte für die TI: Kartentyp, ICCSN, Gültigkeitsdatum und Kartenleser.",
+            "html_tag": "isms-ti-smcb",
+            "template_file": "partials/elements/groups/ti-smcb.html",
+            "fields": [
+                {
+                    "element_ref": "select-input",
+                    "name": "smcbtype",
+                    "label": "SMC-B Kartentyp",
+                    "options": [
+                        {
+                            "value": "smcb-krankenhaus",
+                            "label": "SMC-B Krankenhaus"
+                        },
+                        {
+                            "value": "smcb-praxis",
+                            "label": "SMC-B Arztpraxis"
+                        },
+                        {
+                            "value": "smcb-apotheke",
+                            "label": "SMC-B Apotheke"
+                        },
+                        {
+                            "value": "smcb-institution",
+                            "label": "SMC-B Institution"
+                        }
+                    ]
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "smcbiccsn",
+                    "label": "ICCSN (Kartennummer)",
+                    "placeholder": "Integrierter Schaltkreis Karten-Seriennummer"
+                },
+                {
+                    "element_ref": "date-field",
+                    "name": "smcbvalid",
+                    "label": "Gültig bis"
+                },
+                {
+                    "element_ref": "text-input",
+                    "name": "cardreader",
+                    "label": "Kartenleser",
+                    "placeholder": "Modell und Seriennummer des Kartenlesers"
+                }
+            ]
+        }
+    ]
+}

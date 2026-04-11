@@ -1,0 +1,39 @@
+<div class="group-wrapper">
+    <div class="subsection-header">Netzwerk-Interfaces &amp; Zonen</div>
+
+    <div class="firewall-diagram-container">
+        <div class="firewall-zone external-zone">
+            <div class="zone-header">
+                <span class="zone-label">External (WAN)</span>
+            </div>
+            <input type="text" id="externalif" name="externalif" placeholder="z.B. eth0: 203.0.113.1"
+                class="zone-input">
+            <div class="zone-help-text">Format: Interface: IP-Adresse</div>
+        </div>
+
+        <div class="firewall-center">
+            <div class="firewall-icon">
+                <span class="firewall-label">Firewall</span>
+            </div>
+        </div>
+
+        <div class="firewall-zones-right">
+            <div class="firewall-zone internal-zone">
+                <div class="zone-header">
+                    <span class="zone-label">Internal (LAN)</span>
+                </div>
+                <input type="text" id="internalif" name="internalif" placeholder="z.B. eth1: 10.0.0.1"
+                    class="zone-input">
+                <div class="zone-help-text">Format: Interface: IP-Adresse</div>
+            </div>
+
+            <div class="firewall-zone dmz-zone">
+                <div class="zone-header">
+                    <span class="zone-label">DMZ</span>
+                </div>
+                <input type="text" id="dmzif" name="dmzif" placeholder="z.B. eth2: 172.16.0.1" class="zone-input">
+                <div class="zone-help-text">Optional – Format: Interface: IP-Adresse</div>
+            </div>
+        </div>
+    </div>
+</div>

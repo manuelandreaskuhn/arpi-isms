@@ -1,0 +1,721 @@
+{
+  "wizard_id": "medicaldevice",
+  "label": "Neues Medizingerät",
+  "collection": "medicaldevices",
+  "uuid_prefix": "meddevice_",
+  "icon": "medicaldevice",
+  "template_path": "pages/wizards/komponenten/new-medicaldevice.html",
+  "messages": {
+    "create_success": "Medizingerät erstellt",
+    "update_success": "Medizingerät aktualisiert",
+    "delete_success": "Medizingerät gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "devicename",
+          "element": "text-name",
+          "label": "Gerätename / Bezeichnung",
+          "required": true
+        },
+        {
+          "name": "inventorynumber",
+          "element": "text-input",
+          "label": "Inventarnummer",
+          "placeholder": "z.B. INV-2024-0001",
+          "required": true
+        },
+        {
+          "name": "manufacturer",
+          "element": "vendor",
+          "label": "Hersteller",
+          "required": true
+        },
+        {
+          "name": "model",
+          "element": "text-input",
+          "label": "Modell / Typ",
+          "placeholder": "z.B. Siemens SOMATOM Definition Flash"
+        },
+        {
+          "name": "serialnumber",
+          "element": "serial-number",
+          "label": "Seriennummer"
+        },
+        {
+          "name": "devicecategory",
+          "element": "select-input",
+          "label": "Geräte-Kategorie",
+          "required": true,
+          "options": [
+            {
+              "value": "ct",
+              "label": "Computertomograph (CT)"
+            },
+            {
+              "value": "mrt",
+              "label": "Magnetresonanztomograph (MRT)"
+            },
+            {
+              "value": "roentgen",
+              "label": "Röntgengerät"
+            },
+            {
+              "value": "ultrasound",
+              "label": "Ultraschall"
+            },
+            {
+              "value": "mammography",
+              "label": "Mammographie"
+            },
+            {
+              "value": "pet-ct",
+              "label": "PET-CT"
+            },
+            {
+              "value": "angiography",
+              "label": "Angiographie"
+            },
+            {
+              "value": "lab-analyzer",
+              "label": "Labor-Analysegerät"
+            },
+            {
+              "value": "blood-analyzer",
+              "label": "Blutanalysegerät"
+            },
+            {
+              "value": "mikroskope",
+              "label": "Digitalmikroskop"
+            },
+            {
+              "value": "pcr",
+              "label": "PCR-Gerät"
+            },
+            {
+              "value": "monitor",
+              "label": "Patientenmonitor"
+            },
+            {
+              "value": "ventilator",
+              "label": "Beatmungsgerät"
+            },
+            {
+              "value": "infusion-pump",
+              "label": "Infusionspumpe"
+            },
+            {
+              "value": "defibrillator",
+              "label": "Defibrillator"
+            },
+            {
+              "value": "ecg",
+              "label": "EKG-Gerät"
+            },
+            {
+              "value": "anesthesia",
+              "label": "Narkosegerät"
+            },
+            {
+              "value": "op-table",
+              "label": "OP-Tisch"
+            },
+            {
+              "value": "op-light",
+              "label": "OP-Leuchte"
+            },
+            {
+              "value": "surgical-robot",
+              "label": "Chirurgieroboter"
+            },
+            {
+              "value": "endoscopy",
+              "label": "Endoskopie-System"
+            },
+            {
+              "value": "laser",
+              "label": "Medizinlaser"
+            },
+            {
+              "value": "dialysis",
+              "label": "Dialysegerät"
+            },
+            {
+              "value": "radiation-therapy",
+              "label": "Strahlentherapie"
+            },
+            {
+              "value": "physiotherapy",
+              "label": "Physiotherapie-Gerät"
+            },
+            {
+              "value": "sterilization",
+              "label": "Sterilisationsgerät"
+            },
+            {
+              "value": "incubator",
+              "label": "Inkubator"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mdr",
+      "label": "Medizinprodukt-Klassifizierung (MDR)",
+      "order": 2,
+      "fields": [
+        {
+          "name": "riskclass",
+          "element": "select-input",
+          "label": "Risikoklasse (MDR 2017/745)",
+          "required": true,
+          "options": [
+            {
+              "value": "class-i",
+              "label": "Klasse I (geringes Risiko)"
+            },
+            {
+              "value": "class-iia",
+              "label": "Klasse IIa (mittleres Risiko)"
+            },
+            {
+              "value": "class-iib",
+              "label": "Klasse IIb (hohes Risiko)"
+            },
+            {
+              "value": "class-iii",
+              "label": "Klasse III (höchstes Risiko)"
+            },
+            {
+              "value": "not-classified",
+              "label": "Nicht klassifiziert"
+            }
+          ]
+        },
+        {
+          "name": "cemarking",
+          "element": "select-input",
+          "label": "CE-Kennzeichnung",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ja (CE-zertifiziert)"
+            },
+            {
+              "value": "no",
+              "label": "Nein"
+            },
+            {
+              "value": "not-required",
+              "label": "Nicht erforderlich"
+            }
+          ]
+        },
+        {
+          "name": "udi",
+          "element": "text-input",
+          "label": "UDI (Unique Device Identifier)",
+          "placeholder": "UDI-DI oder UDI-PI"
+        },
+        {
+          "name": "notifiedbody",
+          "element": "text-input",
+          "label": "Benannte Stelle / Notified Body",
+          "placeholder": "z.B. TÜV SÜD, BSI, DQS"
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "label": "Standort & Nutzung",
+      "order": 3,
+      "fields": [
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort / Raum",
+          "required": true
+        },
+        {
+          "name": "department",
+          "element": "text-input",
+          "label": "Abteilung / Fachbereich",
+          "placeholder": "z.B. Radiologie, Kardiologie"
+        },
+        {
+          "name": "usagestatus",
+          "element": "select-input",
+          "label": "Nutzungsstatus",
+          "options": [
+            {
+              "value": "in-use",
+              "label": "In Betrieb"
+            },
+            {
+              "value": "standby",
+              "label": "Bereitschaft / Standby"
+            },
+            {
+              "value": "maintenance",
+              "label": "In Wartung"
+            },
+            {
+              "value": "repair",
+              "label": "In Reparatur"
+            },
+            {
+              "value": "decommissioned",
+              "label": "Außer Betrieb"
+            },
+            {
+              "value": "storage",
+              "label": "Lager / Eingelagert"
+            }
+          ]
+        },
+        {
+          "name": "operatinghours",
+          "element": "text-input",
+          "label": "Betriebsstunden / Nutzungsgrad",
+          "placeholder": "z.B. 8:00-18:00 Uhr, Mo-Fr"
+        },
+        {
+          "name": "purchasedate",
+          "element": "date-field",
+          "label": "Anschaffungsdatum"
+        },
+        {
+          "name": "commissioningdate",
+          "element": "date-field",
+          "label": "Inbetriebnahmedatum"
+        }
+      ]
+    },
+    {
+      "id": "it_integration",
+      "label": "IT-Integration & Konnektivität",
+      "order": 4,
+      "fields": [
+        {
+          "name": "isnetworked",
+          "element": "toggle",
+          "label": "Netzwerkfähig / Vernetzt"
+        },
+        {
+          "name": "networkconnection",
+          "element": "select-input",
+          "label": "Netzwerk-Anbindung",
+          "condition": {
+            "field": "isnetworked",
+            "operator": "eq",
+            "value": true
+          },
+          "options": [
+            {
+              "value": "ethernet",
+              "label": "Ethernet (kabelgebunden)"
+            },
+            {
+              "value": "wifi",
+              "label": "WLAN / WiFi"
+            },
+            {
+              "value": "both",
+              "label": "Ethernet + WLAN"
+            },
+            {
+              "value": "bluetooth",
+              "label": "Bluetooth"
+            },
+            {
+              "value": "serial",
+              "label": "Seriell (RS-232/RS-485)"
+            },
+            {
+              "value": "usb",
+              "label": "USB"
+            }
+          ]
+        },
+        {
+          "name": "ipaddress",
+          "element": "ip-address",
+          "label": "IP-Adresse",
+          "condition": {
+            "field": "isnetworked",
+            "operator": "eq",
+            "value": true
+          }
+        },
+        {
+          "name": "macaddress",
+          "element": "mac-address",
+          "label": "MAC-Adresse",
+          "condition": {
+            "field": "isnetworked",
+            "operator": "eq",
+            "value": true
+          }
+        },
+        {
+          "name": "hostname",
+          "element": "hostname",
+          "label": "Hostname / DNS Name",
+          "condition": {
+            "field": "isnetworked",
+            "operator": "eq",
+            "value": true
+          }
+        },
+        {
+          "name": "pacsintegration",
+          "element": "select-input",
+          "label": "PACS-Integration",
+          "options": [
+            {
+              "value": "direct",
+              "label": "Direkt"
+            },
+            {
+              "value": "gateway",
+              "label": "Über Gateway"
+            },
+            {
+              "value": "no",
+              "label": "Keine PACS-Anbindung"
+            },
+            {
+              "value": "not-applicable",
+              "label": "Nicht zutreffend"
+            }
+          ]
+        },
+        {
+          "name": "rishisintegration",
+          "element": "select-input",
+          "label": "RIS/HIS-Integration",
+          "options": [
+            {
+              "value": "direct",
+              "label": "Direkt"
+            },
+            {
+              "value": "gateway",
+              "label": "Über Gateway"
+            },
+            {
+              "value": "no",
+              "label": "Keine RIS/HIS-Anbindung"
+            },
+            {
+              "value": "not-applicable",
+              "label": "Nicht zutreffend"
+            }
+          ]
+        },
+        {
+          "name": "protocol",
+          "element": "text-input",
+          "label": "Kommunikationsprotokoll",
+          "placeholder": "z.B. DICOM 3.0, HL7 v2.5, FHIR"
+        },
+        {
+          "name": "networksegment",
+          "element": "network-segment",
+          "label": "Netzwerk-Segment / VLAN"
+        },
+        {
+          "name": "hasgateway",
+          "element": "toggle",
+          "label": "Gateway vorhanden"
+        },
+        {
+          "group": "gateway-device",
+          "label": "Gateway-Konfiguration",
+          "condition": {
+            "field": "hasgateway",
+            "operator": "eq",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "label": "Wartung & Service",
+      "order": 5,
+      "fields": [
+        {
+          "name": "maintenancecontract",
+          "element": "select-input",
+          "label": "Wartungsvertrag",
+          "options": [
+            {
+              "value": "full-service",
+              "label": "Full-Service Vertrag"
+            },
+            {
+              "value": "preventive",
+              "label": "Präventive Wartung"
+            },
+            {
+              "value": "on-demand",
+              "label": "Auf Anfrage (On-demand)"
+            },
+            {
+              "value": "none",
+              "label": "Kein Wartungsvertrag"
+            }
+          ]
+        },
+        {
+          "name": "servicepartner",
+          "element": "text-input",
+          "label": "Service-Partner",
+          "placeholder": "Name des Wartungsdienstleisters"
+        },
+        {
+          "name": "maintenanceinterval",
+          "element": "text-input",
+          "label": "Wartungsintervall",
+          "placeholder": "z.B. halbjährlich, jährlich"
+        },
+        {
+          "name": "lastmaintenance",
+          "element": "date-field",
+          "label": "Letzte Wartung"
+        },
+        {
+          "name": "nextmaintenance",
+          "element": "date-field",
+          "label": "Nächste Wartung"
+        },
+        {
+          "name": "mtkcheck",
+          "element": "text-input",
+          "label": "MTK-Prüfung (Messtechnische Kontrolle)",
+          "placeholder": "Datum der letzten MTK-Prüfung"
+        }
+      ]
+    },
+    {
+      "id": "software",
+      "label": "Software & Betriebssystem",
+      "order": 6,
+      "fields": [
+        {
+          "name": "operatingsystem",
+          "element": "text-input",
+          "label": "Betriebssystem",
+          "placeholder": "z.B. Windows Embedded, Linux"
+        },
+        {
+          "name": "osversion",
+          "element": "version",
+          "label": "OS Version"
+        },
+        {
+          "name": "applicationsoftware",
+          "element": "text-input",
+          "label": "Anwendungssoftware",
+          "placeholder": "z.B. Syngo, IntelliVue"
+        },
+        {
+          "name": "softwareversion",
+          "element": "version",
+          "label": "Software-Version"
+        },
+        {
+          "name": "updatepolicy",
+          "element": "select-input",
+          "label": "Update-Politik",
+          "options": [
+            {
+              "value": "regular",
+              "label": "Regulär (automatisch / zeitnah)"
+            },
+            {
+              "value": "controlled",
+              "label": "Kontrolliert (nach Test)"
+            },
+            {
+              "value": "frozen",
+              "label": "Eingefroren (kein Update)"
+            },
+            {
+              "value": "end-of-life",
+              "label": "End-of-Life (kein Herstellersupport)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "itsecurity",
+      "label": "IT-Sicherheitsmaßnahmen",
+      "order": 7,
+      "fields": [
+        {
+          "name": "antivirus",
+          "element": "select-input",
+          "label": "Anti-Virus / Malware-Schutz",
+          "options": [
+            {
+              "value": "installed",
+              "label": "Installiert und aktiv"
+            },
+            {
+              "value": "not-supported",
+              "label": "Nicht unterstützt (Hersteller)"
+            },
+            {
+              "value": "compensated",
+              "label": "Kompensationsmaßnahme"
+            },
+            {
+              "value": "none",
+              "label": "Kein Schutz"
+            }
+          ]
+        },
+        {
+          "name": "firewall",
+          "element": "select-input",
+          "label": "Netzwerk-Isolation / Firewall",
+          "options": [
+            {
+              "value": "isolated",
+              "label": "Vollständig isoliert"
+            },
+            {
+              "value": "segmented",
+              "label": "Segmentiert (VLAN)"
+            },
+            {
+              "value": "filtered",
+              "label": "Gefiltert (ACL/Firewall)"
+            },
+            {
+              "value": "open",
+              "label": "Keine Einschränkung"
+            }
+          ]
+        },
+        {
+          "name": "encryption",
+          "element": "select-input",
+          "label": "Verschlüsselung",
+          "options": [
+            {
+              "value": "full",
+              "label": "Vollständig (at rest + in transit)"
+            },
+            {
+              "value": "transfer",
+              "label": "Nur Übertragung (in transit)"
+            },
+            {
+              "value": "storage",
+              "label": "Nur Speicher (at rest)"
+            },
+            {
+              "value": "none",
+              "label": "Keine Verschlüsselung"
+            }
+          ]
+        },
+        {
+          "name": "accesscontrol",
+          "element": "select-input",
+          "label": "Zugriffskontrolle",
+          "options": [
+            {
+              "value": "multi-factor",
+              "label": "Multi-Faktor (MFA)"
+            },
+            {
+              "value": "password",
+              "label": "Passwort-basiert"
+            },
+            {
+              "value": "card",
+              "label": "Chipkarte / Badge"
+            },
+            {
+              "value": "biometric",
+              "label": "Biometrisch"
+            },
+            {
+              "value": "none",
+              "label": "Kein Zugriffschutz"
+            }
+          ]
+        },
+        {
+          "name": "securityassessment",
+          "element": "text-input",
+          "label": "Sicherheitsbewertung / Pentest",
+          "placeholder": "Datum und Ergebnis der letzten Sicherheitsbewertung"
+        }
+      ]
+    },
+    {
+      "id": "contacts",
+      "label": "Ansprechpartner & Kontakte",
+      "order": 8,
+      "fields": [
+        {
+          "name": "mpbeauftragter",
+          "element": "text-input",
+          "label": "Medizinprodukt-Beauftragter (MPB)",
+          "placeholder": "Name und Kontakt des MPB"
+        },
+        {
+          "name": "technicalcontact",
+          "element": "text-input",
+          "label": "Technischer Ansprechpartner",
+          "placeholder": "IT / Medizintechnik"
+        },
+        {
+          "name": "medicalcontact",
+          "element": "text-input",
+          "label": "Medizinischer Ansprechpartner",
+          "placeholder": "Arzt / Abteilungsleitung"
+        },
+        {
+          "name": "emergencycontact",
+          "element": "text-input",
+          "label": "Notfall-Kontakt (24/7)",
+          "placeholder": "Telefon für Notfälle"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 9,
+      "fields": [
+        {
+          "name": "devicenotes",
+          "element": "notes",
+          "label": "Notizen / Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newMedicalDeviceForm",
+  "breadcrumb_label": "Neues Medizingerät anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/medicaldevice-help.html",
+  "software_data": []
+}

@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\SIEMSchema;
-use ARPI\Entities\Documents\SIEMSystem;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/siemwizard.js')]
@@ -20,18 +20,18 @@ class NewSIEM extends BaseSite
     
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-siem.html');
+        return $this->renderWizard('siem');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        if (!$validator->validate($data, SIEMSchema::getSchema())) {
+        if (!$validator->validate($data, (new WizardSchemaBuilder())->buildSchema('siem'))) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $siem = new SIEMSystem();
+            $siem = new DynamicDocument('siem');
             EntityHydrator::hydrate($siem, $data);
             $siem->createdat = new \DateTime();
             $siem->updatedat = new \DateTime();
@@ -53,7 +53,7 @@ class NewSIEM extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = SIEMSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('siem');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -61,7 +61,7 @@ class NewSIEM extends BaseSite
         }
         
         try {
-            $siem = $this->find(SIEMSystem::class, $id);
+            $siem = $this->findDynamic('siem', $id);
             
             if (!$siem) {
                 return ['success' => false, 'errors' => ['SIEM-System nicht gefunden']];
@@ -86,7 +86,7 @@ class NewSIEM extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $siem = $this->find(SIEMSystem::class, $id);
+            $siem = $this->findDynamic('siem', $id);
             
             if (!$siem) {
                 return ['success' => false, 'errors' => ['SIEM-System nicht gefunden']];

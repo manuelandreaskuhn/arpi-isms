@@ -1,0 +1,513 @@
+{
+  "wizard_id": "system",
+  "label": "Neues System",
+  "collection": "systems",
+  "uuid_prefix": "system_",
+  "icon": "system",
+  "note": "System nutzt MongoDB ObjectId statt UUID. Zeitstempel-Feld heißt updatedAt (camelCase) statt updatedat.",
+  "template_path": "pages/wizards/system/new-system.html",
+  "messages": {
+    "create_success": "System erfolgreich erstellt",
+    "update_success": "System aktualisiert",
+    "delete_success": "System gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "systemname",
+          "element": "text-name",
+          "label": "Systemname",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "software",
+      "label": "Software-Informationen",
+      "order": 2,
+      "fields": [
+        {
+          "name": "software",
+          "element": "text-input",
+          "label": "Software / Produkt",
+          "placeholder": "z.B. SAP, Oracle, Microsoft 365"
+        },
+        {
+          "name": "vendor",
+          "element": "vendor",
+          "label": "Hersteller"
+        },
+        {
+          "name": "version",
+          "element": "version",
+          "label": "Version"
+        },
+        {
+          "name": "licensetype",
+          "element": "select-input",
+          "label": "Lizenztyp",
+          "options": [
+            {
+              "value": "commercial",
+              "label": "Kommerziell"
+            },
+            {
+              "value": "subscription",
+              "label": "Subscription"
+            },
+            {
+              "value": "opensource",
+              "label": "Open Source"
+            },
+            {
+              "value": "inhouse",
+              "label": "Eigenentwicklung"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "categorization",
+      "label": "Kategorisierung",
+      "order": 3,
+      "fields": [
+        {
+          "name": "department",
+          "element": "select-input",
+          "label": "Fachbereich / Abteilung",
+          "attributes": {
+            "data-source": "department-combobox"
+          },
+          "note": "Optionen aus department-combobox.html (dynamisch geladen)"
+        },
+        {
+          "name": "criticality",
+          "element": "criticality",
+          "label": "Kritikalität"
+        },
+        {
+          "name": "environment",
+          "element": "environment",
+          "label": "Umgebung"
+        },
+        {
+          "name": "hosting",
+          "element": "select-input",
+          "label": "Hosting / Standort",
+          "options": [
+            {
+              "value": "on-premise",
+              "label": "On-Premise (eigenes RZ)"
+            },
+            {
+              "value": "datacenter-service",
+              "label": "Dienstleister-Rechenzentrum"
+            },
+            {
+              "value": "public-cloud",
+              "label": "Cloud (Public Cloud)"
+            },
+            {
+              "value": "hybrid",
+              "label": "Hybrid"
+            }
+          ]
+        },
+        {
+          "name": "cloudprovider",
+          "element": "text-input",
+          "label": "Cloud-Anbieter",
+          "placeholder": "z.B. AWS, Azure, GCP",
+          "condition": {
+            "field": "hosting",
+            "operator": "in",
+            "value": [
+              "public-cloud",
+              "hybrid"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "label": "IT-Sicherheit & Compliance",
+      "order": 4,
+      "fields": [
+        {
+          "name": "dataclassification",
+          "element": "select-input",
+          "label": "Datenschutz-Klassifizierung",
+          "options": [
+            {
+              "value": "patient-data",
+              "label": "Patientendaten (DSGVO)"
+            },
+            {
+              "value": "personal-data",
+              "label": "Personenbezogene Daten"
+            },
+            {
+              "value": "internal",
+              "label": "Interne Daten"
+            },
+            {
+              "value": "public",
+              "label": "Öffentlich"
+            }
+          ]
+        },
+        {
+          "name": "encryption",
+          "element": "select-input",
+          "label": "Verschlüsselung",
+          "options": [
+            {
+              "value": "in-transit-at-rest",
+              "label": "In Transit & At Rest"
+            },
+            {
+              "value": "in-transit",
+              "label": "Nur In Transit (TLS/SSL)"
+            },
+            {
+              "value": "at-rest",
+              "label": "Nur At Rest"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "authentication",
+          "element": "select-input",
+          "label": "Authentifizierung",
+          "options": [
+            {
+              "value": "mfa",
+              "label": "Multi-Faktor (MFA)"
+            },
+            {
+              "value": "sso",
+              "label": "Single Sign-On (SSO)"
+            },
+            {
+              "value": "active-directory",
+              "label": "Active Directory"
+            },
+            {
+              "value": "local",
+              "label": "Lokale Benutzer"
+            },
+            {
+              "value": "certificate",
+              "label": "Zertifikatsbasiert"
+            }
+          ]
+        },
+        {
+          "name": "compliance",
+          "element": "checkbox-group",
+          "label": "Compliance",
+          "options": [
+            {
+              "value": "dsgvo",
+              "label": "DSGVO-konform"
+            },
+            {
+              "value": "bsi-grundschutz",
+              "label": "BSI-Grundschutz"
+            },
+            {
+              "value": "b3s",
+              "label": "B3S (Branchenspezifischer Sicherheitsstandard)"
+            },
+            {
+              "value": "iso27001",
+              "label": "ISO 27001"
+            },
+            {
+              "value": "kritis",
+              "label": "KRITIS-relevant"
+            },
+            {
+              "value": "medizinprodukt",
+              "label": "Medizinprodukt (MDR)"
+            }
+          ]
+        },
+        {
+          "name": "lastaudit",
+          "element": "date-field",
+          "label": "Letzte Sicherheitsüberprüfung"
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "label": "IT-Komponenten",
+      "order": 5,
+      "description": "Wählen Sie alle IT-Komponenten die diesem System zugeordnet werden sollen. Für jede aktivierte Komponente erscheint ein eigener Abschnitt.",
+      "fields": [
+        {
+          "name": "componenttypes",
+          "element": "checkbox-group",
+          "label": "Komponenten-Typen",
+          "options": [
+            {
+              "value": "vm",
+              "label": "Virtuelle Maschinen"
+            },
+            {
+              "value": "hardware",
+              "label": "Hardware Server"
+            },
+            {
+              "value": "database",
+              "label": "Datenbanken"
+            },
+            {
+              "value": "backup",
+              "label": "Backup-Systeme"
+            },
+            {
+              "value": "loadbalancer",
+              "label": "Load Balancer"
+            },
+            {
+              "value": "firewall",
+              "label": "Firewall-Regeln"
+            },
+            {
+              "value": "client",
+              "label": "Client-Arbeitsplätze"
+            },
+            {
+              "value": "meddevice",
+              "label": "Medizingeräte"
+            },
+            {
+              "value": "tiinfrastructure",
+              "label": "TI-Infrastruktur (Gematik)"
+            },
+            {
+              "value": "proxy",
+              "label": "Proxy-Server"
+            },
+            {
+              "value": "siem",
+              "label": "SIEM-System"
+            },
+            {
+              "value": "vpn",
+              "label": "VPN-Zugang"
+            },
+            {
+              "value": "medinterface",
+              "label": "Medizinische Schnittstellen"
+            },
+            {
+              "value": "container",
+              "label": "Container"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vms",
+      "label": "Virtuelle Maschinen",
+      "order": 6,
+      "type": "dynamic-list",
+      "entity_property": "virtualmachines",
+      "include_template": "pages/wizards/system/vm-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "vm"
+      }
+    },
+    {
+      "id": "hardwareservers",
+      "label": "Hardware Server",
+      "order": 7,
+      "type": "dynamic-list",
+      "entity_property": "hardwareservers",
+      "include_template": "pages/wizards/system/hardware-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "hardware"
+      }
+    },
+    {
+      "id": "databases",
+      "label": "Datenbanken",
+      "order": 8,
+      "type": "dynamic-list",
+      "entity_property": "databases",
+      "include_template": "pages/wizards/system/database-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "database"
+      }
+    },
+    {
+      "id": "backupsystems",
+      "label": "Backup-Systeme",
+      "order": 9,
+      "type": "dynamic-list",
+      "entity_property": "backupsystems",
+      "include_template": "pages/wizards/system/backup-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "backup"
+      }
+    },
+    {
+      "id": "loadbalancers",
+      "label": "Load Balancer",
+      "order": 10,
+      "type": "dynamic-list",
+      "entity_property": "loadbalancers",
+      "include_template": "pages/wizards/system/loadbalancer-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "loadbalancer"
+      }
+    },
+    {
+      "id": "firewallrules",
+      "label": "Firewall-Regeln",
+      "order": 11,
+      "type": "dynamic-list",
+      "entity_property": "firewallrules",
+      "include_template": "pages/wizards/system/firewall-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "firewall"
+      }
+    },
+    {
+      "id": "clientaccesses",
+      "label": "Client-Arbeitsplätze",
+      "order": 12,
+      "type": "dynamic-list",
+      "entity_property": "clientaccesses",
+      "include_template": "pages/wizards/system/client-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "client"
+      }
+    },
+    {
+      "id": "meddevices",
+      "label": "Medizingeräte",
+      "order": 13,
+      "type": "dynamic-list",
+      "entity_property": "medicaldevices",
+      "include_template": "pages/wizards/system/meddevice-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "meddevice"
+      }
+    },
+    {
+      "id": "tiinfrastructure",
+      "label": "Gematik TI-Infrastruktur",
+      "order": 14,
+      "type": "embedded-one",
+      "entity_property": "tiinfrastructure",
+      "include_template": "pages/wizards/system/tiinfrastruktur-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "tiinfrastructure"
+      }
+    },
+    {
+      "id": "proxyconfiguration",
+      "label": "Proxy-Server",
+      "order": 15,
+      "type": "embedded-one",
+      "entity_property": "proxyconfiguration",
+      "include_template": "pages/wizards/system/proxy-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "proxy"
+      }
+    },
+    {
+      "id": "siemintegration",
+      "label": "SIEM-System",
+      "order": 16,
+      "type": "embedded-one",
+      "entity_property": "siemintegration",
+      "include_template": "pages/wizards/system/siem-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "siem"
+      }
+    },
+    {
+      "id": "vpnaccess",
+      "label": "VPN-Zugang",
+      "order": 17,
+      "type": "embedded-one",
+      "entity_property": "vpnaccess",
+      "include_template": "pages/wizards/system/vpn-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "vpn"
+      }
+    },
+    {
+      "id": "medinterfaces",
+      "label": "Medizinische Schnittstellen",
+      "order": 18,
+      "type": "dynamic-list",
+      "entity_property": "medicalinterfaces",
+      "include_template": "pages/wizards/system/medinterface-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "medinterface"
+      }
+    },
+    {
+      "id": "containers",
+      "label": "Container",
+      "order": 19,
+      "type": "dynamic-list",
+      "entity_property": "containers",
+      "include_template": "pages/wizards/system/container-include-template.html",
+      "condition": {
+        "field": "componenttypes",
+        "operator": "contains",
+        "value": "container"
+      }
+    }
+  ],
+  "form_id": "newSystemForm",
+  "breadcrumb_label": "Neues System anlegen",
+  "breadcrumb_section": "Systeme",
+  "help_template": null,
+  "software_data": []
+}

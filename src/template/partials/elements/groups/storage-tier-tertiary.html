@@ -1,0 +1,89 @@
+<div class="group-wrapper">
+    <div class="subsection-header">Stufe 3 – Archiv-Storage</div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Storage-Typ (Archiv)</label>
+            <div class="custom-select" data-name="tertiarystoragetype">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="glacier">AWS Glacier / Deep Archive</div>
+                        <div class="select-option" data-value="azure-archive">Azure Archive Storage</div>
+                        <div class="select-option" data-value="gcs-coldline">GCS Coldline/Archive</div>
+                        <div class="select-option" data-value="tape-offsite">Tape (Offsite / Tresor)</div>
+                        <div class="select-option" data-value="object-storage-archive">Object Storage (Archiv-Tier)
+                        </div>
+                        <div class="select-option" data-value="other">Sonstige</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Kapazität (TB)</label>
+            <input type="number" id="tertiarystoragecapacity" name="tertiarystoragecapacity" placeholder="z.B. 50"
+                min="0">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Storage-Pfad / Archive-Bucket</label>
+            <input type="text" id="tertiarystoragepath" name="tertiarystoragepath"
+                placeholder="z.B. s3://archive-bucket">
+        </div>
+        <div class="form-group">
+            <label>Archivierungsfrequenz</label>
+            <div class="custom-select" data-name="tertiaryarchivefreq">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="weekly">Wöchentlich</div>
+                        <div class="select-option" data-value="monthly">Monatlich</div>
+                        <div class="select-option" data-value="quarterly">Quartalsweise</div>
+                        <div class="select-option" data-value="yearly">Jährlich</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Aufbewahrungsdauer</label>
+            <input type="text" id="tertiaryretention" name="tertiaryretention" placeholder="z.B. 7 Jahre">
+        </div>
+        <div class="form-group">
+            <label>Immutability</label>
+            <div class="custom-select" data-name="tertiaryimmutability">
+                <div class="select-trigger">
+                    <span class="placeholder">Bitte wählen</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="select-dropdown">
+                    <div class="select-options">
+                        <div class="select-option" data-value="">Bitte wählen</div>
+                        <div class="select-option" data-value="enabled">Aktiviert (WORM)</div>
+                        <div class="select-option" data-value="disabled">Deaktiviert</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Immutability Periode</label>
+            <input type="text" id="tertiaryimmutabilityperiod" name="tertiaryimmutabilityperiod"
+                placeholder="z.B. 7 Jahre">
+        </div>
+    </div>
+</div>

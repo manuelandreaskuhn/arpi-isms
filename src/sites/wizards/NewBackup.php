@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\BackupSystemSchema;
-use ARPI\Entities\Documents\BackupSystem;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/backupwizard.js')]
@@ -20,7 +20,7 @@ class NewBackup extends BaseSite
 
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-backup.html');
+        return $this->renderWizard('backup');
     }
     
     /**
@@ -33,7 +33,7 @@ class NewBackup extends BaseSite
     {
         // 1. Schema validieren
         $validator = new SchemaValidator();
-        $schema = BackupSystemSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('backup');
         
         if (!$validator->validate($data, $schema)) {
             return [
@@ -43,7 +43,7 @@ class NewBackup extends BaseSite
         }
         
         // 2. Entity erstellen
-        $backupSystem = new BackupSystem();
+        $backupSystem = new DynamicDocument('backup');
         
         // 3. Daten hydratieren
         try {
@@ -84,7 +84,7 @@ class NewBackup extends BaseSite
     {
         // 1. Schema validieren
         $validator = new SchemaValidator();
-        $schema = BackupSystemSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('backup');
         
         // Für Update sind nicht alle Felder required
         $updateSchema = $schema;
@@ -99,7 +99,7 @@ class NewBackup extends BaseSite
         
         try {
             // 2. Backup-System aus DB laden
-            $backupSystem = $this->find(BackupSystem::class, $id);
+            $backupSystem = $this->findDynamic('backup', $id);
             
             if (!$backupSystem) {
                 return [
@@ -142,7 +142,7 @@ class NewBackup extends BaseSite
     {
         try {
             // Backup-System aus DB laden
-            $backupSystem = $this->find(BackupSystem::class, $id);
+            $backupSystem = $this->findDynamic('backup', $id);
             
             if (!$backupSystem) {
                 return [

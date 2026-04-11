@@ -6,8 +6,8 @@ use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 use ARPI\Helper\SchemaValidator;
 use ARPI\Helper\ODM\EntityHydrator;
-use ARPI\Schemas\MedicalDeviceSchema;
-use ARPI\Entities\Documents\MedicalDevice;
+use ARPI\Helper\WizardSchemaBuilder;
+use ARPI\Helper\ODM\DynamicDocument;
 
 #[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/medicaldevicewizard.js')]
@@ -20,18 +20,18 @@ class NewMedicalDevice extends BaseSite
     
     public function main(): string
     {
-        return $this->renderTemplate('pages/wizards/komponenten/new-medicaldevice.html');
+        return $this->renderWizard('medicaldevice');
     }
     
     public function create(array $data): array
     {
         $validator = new SchemaValidator();
-        if (!$validator->validate($data, MedicalDeviceSchema::getSchema())) {
+        if (!$validator->validate($data, (new WizardSchemaBuilder())->buildSchema('medicaldevice'))) {
             return ['success' => false, 'errors' => $validator->getErrors()];
         }
         
         try {
-            $device = new MedicalDevice();
+            $device = new DynamicDocument('medicaldevice');
             EntityHydrator::hydrate($device, $data);
             $device->createdat = new \DateTime();
             $device->updatedat = new \DateTime();
@@ -53,7 +53,7 @@ class NewMedicalDevice extends BaseSite
     public function update(string $id, array $data): array
     {
         $validator = new SchemaValidator();
-        $schema = MedicalDeviceSchema::getSchema();
+        $schema = (new WizardSchemaBuilder())->buildSchema('medicaldevice');
         unset($schema['required']);
         
         if (!$validator->validate($data, $schema)) {
@@ -61,7 +61,7 @@ class NewMedicalDevice extends BaseSite
         }
         
         try {
-            $device = $this->find(MedicalDevice::class, $id);
+            $device = $this->findDynamic('medicaldevice', $id);
             
             if (!$device) {
                 return ['success' => false, 'errors' => ['Medizingerät nicht gefunden']];
@@ -86,7 +86,7 @@ class NewMedicalDevice extends BaseSite
     public function delete(string $id): array
     {
         try {
-            $device = $this->find(MedicalDevice::class, $id);
+            $device = $this->findDynamic('medicaldevice', $id);
             
             if (!$device) {
                 return ['success' => false, 'errors' => ['Medizingerät nicht gefunden']];

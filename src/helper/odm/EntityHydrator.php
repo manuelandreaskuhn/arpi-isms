@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Helper\ODM;
 
 use MongoDB\BSON\ObjectId;
@@ -18,25 +19,33 @@ class EntityHydrator
      */
     public static function hydrate(object $entity, array $data): object
     {
+        // DynamicDocument: Felder direkt in das Datenarray schreiben
+        if ($entity instanceof DynamicDocument) {
+            foreach ($data as $key => $value) {
+                $entity->$key = $value;
+            }
+            return $entity;
+        }
+
         $reflection = new \ReflectionClass($entity);
-        
+
         foreach ($data as $key => $value) {
             if (!$reflection->hasProperty($key)) {
                 continue; // Property existiert nicht
             }
-            
+
             $property = $reflection->getProperty($key);
-            
+
             // Typ-konvertierung basierend auf Property-Typ
             $type = self::getPropertyType($property);
             $convertedValue = self::convertValue($value, $type);
-            
+
             $entity->$key = $convertedValue;
         }
-        
+
         return $entity;
     }
-    
+
     /**
      * Ermittelt den Property-Typ aus Reflection
      * 
@@ -46,18 +55,18 @@ class EntityHydrator
     private static function getPropertyType(\ReflectionProperty $property): ?string
     {
         $type = $property->getType();
-        
+
         if (!$type) {
             return null;
         }
-        
+
         if ($type instanceof \ReflectionNamedType) {
             return $type->getName();
         }
-        
+
         return null;
     }
-    
+
     /**
      * Konvertiert einen Wert basierend auf Zieltyp
      * 
@@ -70,41 +79,41 @@ class EntityHydrator
         if ($value === null) {
             return null;
         }
-        
+
         switch ($type) {
             case 'int':
                 return (int) $value;
-                
+
             case 'float':
                 return (float) $value;
-                
+
             case 'bool':
                 return filter_var($value, FILTER_VALIDATE_BOOLEAN);
-                
+
             case 'string':
                 return (string) $value;
-                
+
             case 'array':
                 return is_array($value) ? $value : [$value];
-                
+
             case 'DateTime':
                 if ($value instanceof \DateTime) {
                     return $value;
                 }
                 return new \DateTime($value);
-                
+
             case 'ObjectId':
             case 'MongoDB\\BSON\\ObjectId':
                 if ($value instanceof ObjectId) {
                     return $value;
                 }
                 return new ObjectId($value);
-                
+
             default:
                 return $value;
         }
     }
-    
+
     /**
      * Extrahiert Daten aus Entity zurück in Array
      * 
@@ -113,13 +122,22 @@ class EntityHydrator
      */
     public static function extract(object $entity): array
     {
+        // DynamicDocument: Datenarray zurückgeben, id als String
+        if ($entity instanceof DynamicDocument) {
+            $data = $entity->toArray();
+            if ($entity->id !== null) {
+                $data['id'] = (string) $entity->id;
+            }
+            return $data;
+        }
+
         $reflection = new \ReflectionClass($entity);
         $data = [];
-        
+
         foreach ($reflection->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
             $name = $property->getName();
             $value = $entity->$name;
-            
+
             // ObjectId zu String konvertieren
             if ($value instanceof ObjectId) {
                 $data[$name] = (string) $value;
@@ -133,7 +151,7 @@ class EntityHydrator
                 $data[$name] = $value;
             }
         }
-        
+
         return $data;
     }
 }

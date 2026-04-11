@@ -1,7 +1,7 @@
 <?php
+
 namespace ARPI\Entities\Documents;
 
-use ARPI\ODM\Mapping\Annotations as ODM;
 use MongoDB\BSON\ObjectId;
 
 /**
@@ -13,7 +13,8 @@ use MongoDB\BSON\ObjectId;
  * @ODM\Document(collection="customers")
  * @package Entities
  */
-class Customer { 
+class Customer
+{
 
     /**
      * MongoDB ObjectId
@@ -88,7 +89,8 @@ class Customer {
      * Initialisiert Default Werte (z.B. leere Arrays)
      * @return void 
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->uuid = \uniqid('customer_', true);
     }
 }

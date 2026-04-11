@@ -1,0 +1,851 @@
+{
+  "wizard_id": "network",
+  "label": "Neues Netzwerk",
+  "collection": "networks",
+  "uuid_prefix": "network_",
+  "icon": "network",
+  "template_path": "pages/wizards/komponenten/new-network.html",
+  "messages": {
+    "create_success": "Netzwerk erstellt",
+    "update_success": "Netzwerk aktualisiert",
+    "delete_success": "Netzwerk gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "name",
+          "element": "text-name",
+          "label": "Netzwerk-Name",
+          "required": true
+        },
+        {
+          "name": "type",
+          "element": "select-input",
+          "label": "Netzwerk-Typ",
+          "required": true,
+          "options": [
+            {
+              "value": "lan",
+              "label": "LAN (Local Area Network)"
+            },
+            {
+              "value": "vlan",
+              "label": "VLAN (Virtual LAN)"
+            },
+            {
+              "value": "wan",
+              "label": "WAN (Wide Area Network)"
+            },
+            {
+              "value": "dmz",
+              "label": "DMZ (Demilitarisierte Zone)"
+            },
+            {
+              "value": "management",
+              "label": "Management-Netzwerk"
+            },
+            {
+              "value": "storage",
+              "label": "Storage-Netzwerk (SAN)"
+            },
+            {
+              "value": "wifi",
+              "label": "WiFi / WLAN"
+            },
+            {
+              "value": "vpn",
+              "label": "VPN-Netzwerk"
+            }
+          ]
+        },
+        {
+          "name": "vlanid",
+          "element": "vlan-id",
+          "label": "VLAN-ID",
+          "required": true
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort"
+        }
+      ]
+    },
+    {
+      "id": "ip",
+      "label": "IP-Adressierung & Subnetting",
+      "order": 2,
+      "fields": [
+        {
+          "name": "cidr",
+          "element": "cidr",
+          "label": "Netzwerk-Adresse (CIDR)",
+          "required": true
+        },
+        {
+          "name": "subnetmask",
+          "element": "subnet-mask",
+          "label": "Subnetz-Maske"
+        },
+        {
+          "name": "gateway",
+          "element": "gateway-ip",
+          "label": "Gateway / Router"
+        },
+        {
+          "name": "iprange",
+          "element": "text-input",
+          "label": "IP-Adressbereich (nutzbar)",
+          "placeholder": "z.B. 192.168.1.1 - 192.168.1.254"
+        },
+        {
+          "group": "dns-config"
+        },
+        {
+          "group": "dhcp-config"
+        }
+      ]
+    },
+    {
+      "id": "segmentation",
+      "label": "Netzwerk-Segmentierung & Zonen",
+      "order": 3,
+      "fields": [
+        {
+          "name": "securityzone",
+          "element": "select-input",
+          "label": "Sicherheitszone",
+          "options": [
+            {
+              "value": "internal",
+              "label": "Internal / Trusted"
+            },
+            {
+              "value": "dmz",
+              "label": "DMZ (Demilitarisierte Zone)"
+            },
+            {
+              "value": "external",
+              "label": "External / Untrusted"
+            },
+            {
+              "value": "management",
+              "label": "Management-Zone"
+            },
+            {
+              "value": "guest",
+              "label": "Gast-Netzwerk"
+            },
+            {
+              "value": "restricted",
+              "label": "Restricted / High Security"
+            }
+          ]
+        },
+        {
+          "name": "trustlevel",
+          "element": "select-input",
+          "label": "Trust-Level",
+          "options": [
+            {
+              "value": "high",
+              "label": "Hoch (vertrauenswürdig)"
+            },
+            {
+              "value": "medium",
+              "label": "Mittel"
+            },
+            {
+              "value": "low",
+              "label": "Niedrig"
+            },
+            {
+              "value": "zero",
+              "label": "Zero Trust"
+            }
+          ]
+        },
+        {
+          "name": "isolation",
+          "element": "select-input",
+          "label": "Netzwerk-Isolation",
+          "options": [
+            {
+              "value": "full",
+              "label": "Vollständig isoliert"
+            },
+            {
+              "value": "partial",
+              "label": "Teilweise isoliert"
+            },
+            {
+              "value": "none",
+              "label": "Keine Isolation"
+            }
+          ]
+        },
+        {
+          "name": "intervlanrouting",
+          "element": "select-input",
+          "label": "Inter-VLAN Routing",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "restricted",
+              "label": "Eingeschränkt (ACLs)"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "connectednetworks",
+          "element": "textarea-input",
+          "label": "Verbundene Netzwerke / Routing",
+          "placeholder": "Liste der verbundenen Netzwerke und Routen"
+        }
+      ]
+    },
+    {
+      "id": "hardware",
+      "label": "Netzwerk-Hardware & Infrastruktur",
+      "order": 4,
+      "fields": [
+        {
+          "name": "coreswitchid",
+          "element": "component-reference",
+          "label": "Core Switch(es)",
+          "attributes": {
+            "data-component-type": "network"
+          }
+        },
+        {
+          "name": "coreswitch",
+          "element": "text-input",
+          "label": "Core Switch (manuell)",
+          "placeholder": "Hostname oder Modell des Core Switch"
+        },
+        {
+          "name": "distributionswitch",
+          "element": "text-input",
+          "label": "Distribution Switches",
+          "placeholder": "Hostname(s) der Distribution Switches"
+        },
+        {
+          "name": "accessswitch",
+          "element": "text-input",
+          "label": "Access Switches",
+          "placeholder": "Hostname(s) der Access Switches"
+        },
+        {
+          "name": "switchmgmtip",
+          "element": "ip-address",
+          "label": "Switch Management-IP"
+        },
+        {
+          "name": "routerid",
+          "element": "component-reference",
+          "label": "Router / L3-Switch",
+          "attributes": {
+            "data-component-type": "network"
+          }
+        },
+        {
+          "name": "router",
+          "element": "text-input",
+          "label": "Router (manuell)",
+          "placeholder": "Hostname oder Modell des Routers"
+        },
+        {
+          "name": "firewallid",
+          "element": "firewall-reference",
+          "label": "Firewall"
+        },
+        {
+          "name": "firewall",
+          "element": "text-input",
+          "label": "Firewall (manuell)",
+          "placeholder": "Hostname oder Modell der Firewall"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "label": "Sicherheits-Features",
+      "order": 5,
+      "fields": [
+        {
+          "name": "dot1x",
+          "element": "select-input",
+          "label": "802.1X (Port-based NAC)",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "partial",
+              "label": "Teilweise aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "radiusserver",
+          "element": "text-input",
+          "label": "RADIUS-Server",
+          "placeholder": "IP oder Hostname des RADIUS-Servers"
+        },
+        {
+          "name": "macfiltering",
+          "element": "select-input",
+          "label": "MAC-Adress-Filtering",
+          "options": [
+            {
+              "value": "whitelist",
+              "label": "Whitelist"
+            },
+            {
+              "value": "blacklist",
+              "label": "Blacklist"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "portsecurity",
+          "element": "select-input",
+          "label": "Port Security",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "sticky",
+              "label": "Sticky MAC"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "dhcpsnooping",
+          "element": "select-input",
+          "label": "DHCP Snooping",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "arpinspection",
+          "element": "select-input",
+          "label": "Dynamic ARP Inspection (DAI)",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "ipsourceguard",
+          "element": "select-input",
+          "label": "IP Source Guard",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "stormcontrol",
+          "element": "select-input",
+          "label": "Storm Control",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert (Broadcast/Multicast)"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "idsips",
+          "element": "select-input",
+          "label": "IDS/IPS Integration",
+          "options": [
+            {
+              "value": "ips",
+              "label": "IPS (Intrusion Prevention)"
+            },
+            {
+              "value": "ids",
+              "label": "IDS (Intrusion Detection)"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "flowmonitoring",
+          "element": "select-input",
+          "label": "Flow-Monitoring",
+          "options": [
+            {
+              "value": "netflow",
+              "label": "NetFlow"
+            },
+            {
+              "value": "sflow",
+              "label": "sFlow"
+            },
+            {
+              "value": "ipfix",
+              "label": "IPFIX"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "spanport",
+          "element": "select-input",
+          "label": "SPAN / Mirror Port",
+          "options": [
+            {
+              "value": "configured",
+              "label": "Konfiguriert"
+            },
+            {
+              "value": "not-configured",
+              "label": "Nicht konfiguriert"
+            }
+          ]
+        },
+        {
+          "name": "monitoringtool",
+          "element": "monitoring-tool",
+          "label": "Network Monitoring Tool"
+        }
+      ]
+    },
+    {
+      "id": "vpn",
+      "label": "VPN & Remote Access",
+      "order": 6,
+      "fields": [
+        {
+          "name": "vpnenabled",
+          "element": "select-input",
+          "label": "VPN-Zugang verfügbar",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ja"
+            },
+            {
+              "value": "no",
+              "label": "Nein"
+            }
+          ]
+        },
+        {
+          "name": "vpntype",
+          "element": "select-input",
+          "label": "VPN-Typ",
+          "condition": {
+            "field": "vpnenabled",
+            "operator": "eq",
+            "value": "yes"
+          },
+          "options": [
+            {
+              "value": "site-to-site",
+              "label": "Site-to-Site VPN"
+            },
+            {
+              "value": "remote-access",
+              "label": "Remote Access VPN"
+            },
+            {
+              "value": "both",
+              "label": "Beides"
+            }
+          ]
+        },
+        {
+          "name": "vpnprotocol",
+          "element": "select-input",
+          "label": "VPN-Protokoll",
+          "condition": {
+            "field": "vpnenabled",
+            "operator": "eq",
+            "value": "yes"
+          },
+          "options": [
+            {
+              "value": "ipsec",
+              "label": "IPSec"
+            },
+            {
+              "value": "ssl-vpn",
+              "label": "SSL VPN"
+            },
+            {
+              "value": "openvpn",
+              "label": "OpenVPN"
+            },
+            {
+              "value": "wireguard",
+              "label": "WireGuard"
+            },
+            {
+              "value": "l2tp-ipsec",
+              "label": "L2TP/IPSec"
+            }
+          ]
+        },
+        {
+          "name": "vpngateway",
+          "element": "text-input",
+          "label": "VPN-Gateway",
+          "placeholder": "IP oder Hostname des VPN-Gateways"
+        },
+        {
+          "name": "vpnpool",
+          "element": "cidr",
+          "label": "VPN-Pool (IP-Range)",
+          "placeholder": "z.B. 10.8.0.0/24"
+        },
+        {
+          "name": "vpnmaxconnections",
+          "element": "number-input",
+          "label": "Max. VPN-Verbindungen"
+        }
+      ]
+    },
+    {
+      "id": "redundancy",
+      "label": "Redundanz & Hochverfügbarkeit",
+      "order": 7,
+      "fields": [
+        {
+          "name": "redundancy",
+          "element": "select-input",
+          "label": "Redundanz",
+          "options": [
+            {
+              "value": "full",
+              "label": "Vollständig redundant"
+            },
+            {
+              "value": "partial",
+              "label": "Teilweise redundant"
+            },
+            {
+              "value": "none",
+              "label": "Keine Redundanz"
+            }
+          ]
+        },
+        {
+          "name": "spanningtree",
+          "element": "select-input",
+          "label": "Spanning Tree Protokoll",
+          "options": [
+            {
+              "value": "rstp",
+              "label": "RSTP (Rapid STP)"
+            },
+            {
+              "value": "mstp",
+              "label": "MSTP (Multiple STP)"
+            },
+            {
+              "value": "stp",
+              "label": "STP (klassisch)"
+            },
+            {
+              "value": "none",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "lacp",
+          "element": "select-input",
+          "label": "Link Aggregation (LACP)",
+          "options": [
+            {
+              "value": "active",
+              "label": "Aktiviert (802.3ad)"
+            },
+            {
+              "value": "static",
+              "label": "Static Port Channel"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "gatewayredundancy",
+          "element": "select-input",
+          "label": "Gateway-Redundanz",
+          "options": [
+            {
+              "value": "vrrp",
+              "label": "VRRP"
+            },
+            {
+              "value": "hsrp",
+              "label": "HSRP"
+            },
+            {
+              "value": "glbp",
+              "label": "GLBP"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "uplinkredundancy",
+          "element": "text-input",
+          "label": "Uplink-Redundanz",
+          "placeholder": "Beschreibung der Uplink-Redundanz"
+        }
+      ]
+    },
+    {
+      "id": "qos",
+      "label": "Performance & Quality of Service",
+      "order": 8,
+      "fields": [
+        {
+          "name": "bandwidth",
+          "element": "text-input",
+          "label": "Bandbreite",
+          "placeholder": "z.B. 1 GBit/s, 10 GBit/s"
+        },
+        {
+          "name": "qosenabled",
+          "element": "select-input",
+          "label": "QoS aktiviert",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ja"
+            },
+            {
+              "value": "no",
+              "label": "Nein"
+            }
+          ]
+        },
+        {
+          "name": "qosmechanism",
+          "element": "select-input",
+          "label": "QoS-Mechanismus",
+          "condition": {
+            "field": "qosenabled",
+            "operator": "eq",
+            "value": "yes"
+          },
+          "options": [
+            {
+              "value": "diffserv",
+              "label": "DiffServ (DSCP)"
+            },
+            {
+              "value": "cos",
+              "label": "CoS (802.1p)"
+            },
+            {
+              "value": "both",
+              "label": "DiffServ + CoS"
+            },
+            {
+              "value": "none",
+              "label": "Kein Mechanismus"
+            }
+          ]
+        },
+        {
+          "name": "trafficshaping",
+          "element": "select-input",
+          "label": "Traffic Shaping / Policing",
+          "condition": {
+            "field": "qosenabled",
+            "operator": "eq",
+            "value": "yes"
+          },
+          "options": [
+            {
+              "value": "shaping",
+              "label": "Shaping"
+            },
+            {
+              "value": "policing",
+              "label": "Policing"
+            },
+            {
+              "value": "both",
+              "label": "Beides"
+            },
+            {
+              "value": "none",
+              "label": "Keines"
+            }
+          ]
+        },
+        {
+          "name": "prioritizedservices",
+          "element": "textarea-input",
+          "label": "Priorisierte Dienste",
+          "placeholder": "z.B. VoIP, Video-Conferencing, DICOM"
+        }
+      ]
+    },
+    {
+      "id": "documentation",
+      "label": "Dokumentation & Compliance",
+      "order": 9,
+      "fields": [
+        {
+          "name": "networkdiagram",
+          "element": "select-input",
+          "label": "Netzwerk-Diagramm vorhanden",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ja (aktuell)"
+            },
+            {
+              "value": "outdated",
+              "label": "Ja (veraltet)"
+            },
+            {
+              "value": "no",
+              "label": "Nein"
+            }
+          ]
+        },
+        {
+          "name": "ipam",
+          "element": "text-input",
+          "label": "IP-Adress-Management (IPAM)",
+          "placeholder": "Tool oder System für IPAM"
+        },
+        {
+          "name": "lastaudit",
+          "element": "date-field",
+          "label": "Letzte Netzwerk-Audit"
+        },
+        {
+          "name": "compliance",
+          "element": "checkbox-group",
+          "label": "Compliance-Standards",
+          "options": [
+            {
+              "value": "pci-dss",
+              "label": "PCI DSS"
+            },
+            {
+              "value": "hipaa",
+              "label": "HIPAA"
+            },
+            {
+              "value": "dsgvo",
+              "label": "DSGVO"
+            },
+            {
+              "value": "kritis",
+              "label": "KRITIS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "responsibility",
+      "label": "Verantwortlichkeiten",
+      "order": 10,
+      "fields": [
+        {
+          "name": "networkadmin",
+          "element": "admin-contact",
+          "label": "Netzwerk-Administrator"
+        },
+        {
+          "name": "networksupport",
+          "element": "support-contact",
+          "label": "Support-Kontakt"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 11,
+      "fields": [
+        {
+          "name": "networknotes",
+          "element": "notes",
+          "label": "Notizen / Netzwerk-Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newNetworkForm",
+  "breadcrumb_label": "Neues Netzwerk anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/network-help.html",
+  "software_data": []
+}

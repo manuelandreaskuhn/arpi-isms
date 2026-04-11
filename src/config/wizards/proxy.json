@@ -1,0 +1,429 @@
+{
+  "wizard_id": "proxy",
+  "label": "Neuer Proxy-Server",
+  "collection": "proxies",
+  "uuid_prefix": "proxy_",
+  "icon": "proxy",
+  "template_path": "pages/wizards/komponenten/new-proxy.html",
+  "messages": {
+    "create_success": "Proxy-Server erstellt",
+    "update_success": "Proxy-Server aktualisiert",
+    "delete_success": "Proxy-Server gelöscht"
+  },
+  "pages": [
+    {
+      "id": "basic",
+      "label": "Basis-Informationen",
+      "badge": "Pflicht",
+      "order": 1,
+      "fields": [
+        {
+          "name": "name",
+          "element": "text-name",
+          "label": "Proxy-Server Name",
+          "required": true
+        },
+        {
+          "name": "serverid",
+          "element": "vm-hardware-reference",
+          "label": "Proxy-Server (VM / Hardware)",
+          "required": true
+        },
+        {
+          "name": "hostname",
+          "element": "hostname",
+          "label": "Proxy-Server (manuell)"
+        },
+        {
+          "name": "proxyport",
+          "element": "port",
+          "label": "Proxy-Port",
+          "required": true,
+          "placeholder": "z.B. 3128, 8080"
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort"
+        }
+      ]
+    },
+    {
+      "id": "type",
+      "label": "Proxy-Typ & Protokoll",
+      "order": 2,
+      "fields": [
+        {
+          "name": "type",
+          "element": "select-input",
+          "label": "Proxy-Typ",
+          "required": true,
+          "options": [
+            {
+              "value": "http",
+              "label": "HTTP Proxy"
+            },
+            {
+              "value": "https",
+              "label": "HTTPS Proxy"
+            },
+            {
+              "value": "socks4",
+              "label": "SOCKS4"
+            },
+            {
+              "value": "socks5",
+              "label": "SOCKS5"
+            },
+            {
+              "value": "transparent",
+              "label": "Transparent Proxy"
+            },
+            {
+              "value": "reverse",
+              "label": "Reverse Proxy"
+            }
+          ]
+        },
+        {
+          "name": "protocols",
+          "element": "checkbox-group",
+          "label": "Protokoll-Support",
+          "options": [
+            {
+              "value": "http",
+              "label": "HTTP"
+            },
+            {
+              "value": "https",
+              "label": "HTTPS"
+            },
+            {
+              "value": "ftp",
+              "label": "FTP"
+            },
+            {
+              "value": "socks",
+              "label": "SOCKS"
+            }
+          ]
+        },
+        {
+          "name": "software",
+          "element": "select-input",
+          "label": "Proxy-Software",
+          "required": true,
+          "options": [
+            {
+              "value": "squid",
+              "label": "Squid"
+            },
+            {
+              "value": "nginx",
+              "label": "Nginx"
+            },
+            {
+              "value": "haproxy",
+              "label": "HAProxy"
+            },
+            {
+              "value": "apache",
+              "label": "Apache mod_proxy"
+            },
+            {
+              "value": "bluecoat",
+              "label": "Blue Coat ProxySG"
+            },
+            {
+              "value": "fortigate",
+              "label": "Fortigate Web Proxy"
+            },
+            {
+              "value": "cisco-wsa",
+              "label": "Cisco WSA (Web Security Appliance)"
+            },
+            {
+              "value": "zscaler",
+              "label": "Zscaler"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "auth",
+      "label": "Authentifizierung",
+      "order": 3,
+      "fields": [
+        {
+          "name": "proxyauth",
+          "element": "select-input",
+          "label": "Authentifizierung erforderlich",
+          "options": [
+            {
+              "value": "none",
+              "label": "Keine Authentifizierung"
+            },
+            {
+              "value": "basic",
+              "label": "Basic Authentication"
+            },
+            {
+              "value": "ntlm",
+              "label": "NTLM"
+            },
+            {
+              "value": "kerberos",
+              "label": "Kerberos"
+            },
+            {
+              "value": "digest",
+              "label": "Digest Authentication"
+            },
+            {
+              "value": "ldap",
+              "label": "LDAP"
+            },
+            {
+              "value": "radius",
+              "label": "RADIUS"
+            }
+          ]
+        },
+        {
+          "name": "proxyauthbackend",
+          "element": "text-input",
+          "label": "Authentifizierungs-Backend",
+          "placeholder": "z.B. AD-Server, LDAP-URL, RADIUS-Server"
+        },
+        {
+          "name": "proxyserviceaccount",
+          "element": "text-input",
+          "label": "Dienstkonto / Service Account",
+          "placeholder": "z.B. svc-proxy@domain.com"
+        }
+      ]
+    },
+    {
+      "id": "exceptions",
+      "label": "Proxy-Ausnahmen (No Proxy)",
+      "order": 4,
+      "fields": [
+        {
+          "name": "proxyexceptions",
+          "element": "textarea-input",
+          "label": "Ausnahmen / Bypass-Liste",
+          "placeholder": "Hosts/Domains die den Proxy umgehen, z.B. *.local, 192.168.0.0/16"
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "label": "Erweiterte Konfiguration",
+      "order": 5,
+      "fields": [
+        {
+          "name": "proxypac",
+          "element": "url-input",
+          "label": "PAC-Datei URL",
+          "placeholder": "http://proxy.example.com/proxy.pac"
+        },
+        {
+          "name": "proxywpad",
+          "element": "toggle",
+          "label": "WPAD (Web Proxy Auto-Discovery) aktiviert"
+        },
+        {
+          "name": "proxysslinterception",
+          "element": "radio-group",
+          "label": "SSL-Interception / SSL-Inspection",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Vollständig"
+            },
+            {
+              "value": "partial",
+              "label": "Teilweise"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "proxysslcert",
+          "element": "text-input",
+          "label": "SSL-Zertifikat / CA",
+          "placeholder": "Name oder CN des CA-Zertifikats für SSL-Inspection",
+          "condition": {
+            "field": "proxysslinterception",
+            "operator": "neq",
+            "value": "disabled"
+          }
+        },
+        {
+          "name": "proxycache",
+          "element": "toggle",
+          "label": "Proxy-Cache aktiviert"
+        },
+        {
+          "name": "proxycachesize",
+          "element": "text-input",
+          "label": "Cache-Größe",
+          "placeholder": "z.B. 10 GB",
+          "condition": {
+            "field": "proxycache",
+            "operator": "eq",
+            "value": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "failover",
+      "label": "Failover & Redundanz",
+      "order": 6,
+      "fields": [
+        {
+          "name": "proxysecondaryid",
+          "element": "vm-hardware-reference",
+          "label": "Sekundärer Proxy-Server"
+        },
+        {
+          "name": "proxysecondary",
+          "element": "text-input",
+          "label": "Sekundärer Proxy (manuell)",
+          "placeholder": "Hostname oder IP des Backup-Proxys"
+        },
+        {
+          "name": "proxyfailovermechanism",
+          "element": "radio-group",
+          "label": "Failover-Mechanismus",
+          "options": [
+            {
+              "value": "automatic",
+              "label": "Automatisch"
+            },
+            {
+              "value": "manual",
+              "label": "Manuell"
+            },
+            {
+              "value": "load-balanced",
+              "label": "Load Balanced"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "filtering",
+      "label": "Filtering & Sicherheit",
+      "order": 7,
+      "fields": [
+        {
+          "name": "proxyurlfiltering",
+          "element": "toggle",
+          "label": "URL-Filtering aktiviert"
+        },
+        {
+          "name": "proxycontentfiltering",
+          "element": "toggle",
+          "label": "Content-Filtering aktiviert"
+        },
+        {
+          "name": "proxymalwarescanning",
+          "element": "toggle",
+          "label": "Malware-Scanning aktiviert"
+        },
+        {
+          "name": "proxydlp",
+          "element": "toggle",
+          "label": "DLP (Data Loss Prevention) aktiviert"
+        }
+      ]
+    },
+    {
+      "id": "logging",
+      "label": "Logging & Monitoring",
+      "order": 8,
+      "fields": [
+        {
+          "name": "proxyaccesslog",
+          "element": "radio-group",
+          "label": "Access-Log",
+          "options": [
+            {
+              "value": "full",
+              "label": "Vollständig"
+            },
+            {
+              "value": "minimal",
+              "label": "Minimal"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "proxylogretention",
+          "element": "text-input",
+          "label": "Log-Aufbewahrung",
+          "placeholder": "z.B. 90 Tage, 1 Jahr"
+        },
+        {
+          "name": "proxymonitoring",
+          "element": "siem-reference",
+          "label": "Monitoring-Integration (SIEM)"
+        },
+        {
+          "name": "proxymonitoringtool",
+          "element": "monitoring-tool",
+          "label": "Monitoring-Tool (manuell)"
+        }
+      ]
+    },
+    {
+      "id": "responsibility",
+      "label": "Verantwortlichkeiten & Support",
+      "order": 9,
+      "fields": [
+        {
+          "name": "proxyadmin",
+          "element": "admin-contact",
+          "label": "Proxy-Administrator"
+        },
+        {
+          "name": "proxysupport",
+          "element": "support-contact",
+          "label": "Support-Kontakt"
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "label": "Zusätzliche Informationen",
+      "order": 10,
+      "fields": [
+        {
+          "name": "proxynotes",
+          "element": "notes",
+          "label": "Notizen / Proxy-Besonderheiten"
+        }
+      ]
+    }
+  ],
+  "form_id": "newProxyForm",
+  "breadcrumb_label": "Neuen Proxy-Server anlegen",
+  "breadcrumb_section": "Komponenten",
+  "help_template": "pages/wizards/komponenten/help/proxy-help.html",
+  "software_data": []
+}
