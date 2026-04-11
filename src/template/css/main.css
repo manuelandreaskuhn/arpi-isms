@@ -6,10 +6,11 @@
     --font-stack: 'Helvetica Neue', sans-serif;
 }
 
-html, body {
+html,
+body {
     margin: 0 auto;
     padding: 0;
-    height: 100%;
+    min-height: 100%;
 
     font-family: var(--font-stack);
     color: var(--font-color);
@@ -29,39 +30,41 @@ body {
     max-width: 1920px;
 }
 
-body > header {
+body>header {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: nowrap;
-    
+
     min-width: 330px;
     max-width: 330px;
-    height: -webkit-fill-available;
-    height: --moz-fill-available;
-    height: fill-available;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
-body > header > div#logo {
+body>header>div#logo {
     padding: 10px;
     height: 130px;
     margin: 0 auto;
 }
 
-body > header > div#logo > img {
+body>header>div#logo>img {
     height: 100%;
 }
 
-body > header > div#quicksearch {
+body>header>div#quicksearch {
     width: calc(100% - 20px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-body > header > div#quicksearch > input[type="text"] {
+body>header>div#quicksearch>input[type="text"] {
     width: 100%;
     padding: 8px 40px 8px 16px;
     border: none;
@@ -73,12 +76,12 @@ body > header > div#quicksearch > input[type="text"] {
     outline: none;
 }
 
-body > header > div#quicksearch > input[type="text"]:focus {
+body>header>div#quicksearch>input[type="text"]:focus {
     background: #fff;
     box-shadow: 0 4px 16px rgba(22, 106, 161, 0.425);
 }
 
-body > header > div#quicksearch::after {
+body>header>div#quicksearch::after {
     content: "";
     position: absolute;
     right: 20px;
@@ -91,15 +94,16 @@ body > header > div#quicksearch::after {
     z-index: 2;
 }
 
-body > header > div#quicksearch {
+body>header>div#quicksearch {
     position: relative;
 }
 
-body > header > nav {
-    margin-top: 20px;
+body>header>nav {
+    margin-top: 12px;
+    width: 100%;
 }
 
-body > header > nav > ul {
+body>header>nav>ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -107,50 +111,84 @@ body > header > nav > ul {
     width: 100%;
 }
 
-body > header > nav > ul > strong {
+body>header>nav>ul>strong {
     display: block;
-    padding: 15px 0;
-    padding-bottom: 5px;
-    color: var(--primary-color);
-    font-weight: 600;
+    padding: 14px 20px 4px;
+    color: #94a3b8;
+    font-weight: 700;
+    font-size: 0.71em;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
     text-emphasis: none;
-    text-align: center;
+    text-align: left;
 }
 
-body > header > nav > ul > li {
+body>header>nav>ul>strong>a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.15s;
+}
+
+body>header>nav>ul>strong>a::after {
+    content: '›';
+    font-size: 1.3em;
+    line-height: 1;
+    opacity: 0;
+    transform: translateX(-3px);
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+body>header>nav>ul>strong>a:hover,
+body>header>nav>ul>strong>a.active {
+    color: var(--primary-color);
+}
+
+body>header>nav>ul>strong>a:hover::after,
+body>header>nav>ul>strong>a.active::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+body>header>nav>ul>li {
     width: 100%;
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
+    text-align: left;
+    font-size: 0.90em;
 }
 
-body > header > nav > ul > li > a {
+body>header>nav>ul>li>a {
     display: block;
-    padding: 8px 0;
+    padding: 7px 20px 7px 17px;
     text-decoration: none;
     color: var(--font-color);
     font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-body > header > nav > ul > li > a:hover,
-body > header > nav > ul > li > a.active,
-body > header > nav > ul > li > a:active,
-body > header > nav > ul > li > a:focus,
-body > header > nav > ul > li > a:focus-visible,
-body > header > nav > ul > li > a.selected,
-body > header > nav > ul > li > a.current {
-    background-color: var(--primary-color);
-    color: white;
+body>header>nav>ul>li>a:hover,
+body>header>nav>ul>li>a.active,
+body>header>nav>ul>li>a:active,
+body>header>nav>ul>li>a:focus,
+body>header>nav>ul>li>a:focus-visible,
+body>header>nav>ul>li>a.selected,
+body>header>nav>ul>li>a.current {
+    background-color: #f0f7ff;
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
     text-decoration: none;
     cursor: pointer;
 }
 
-body > header > div#account {
+body>header>div#account {
     margin-top: auto;
     width: calc(100% - 2px);
     box-shadow: 0 -2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-body > header > div#account > figure {
+body>header>div#account>figure {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -159,24 +197,24 @@ body > header > div#account > figure {
     margin: 0px;
 }
 
-body > header > div#account > figure > img {
+body>header>div#account>figure>img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-body > header > div#account > figure > figcaption {
+body>header>div#account>figure>figcaption {
     font-weight: 500;
 }
 
-body > header > div#account > figure > figcaption > strong {
+body>header>div#account>figure>figcaption>strong {
     display: block;
     font-size: 1em;
     color: var(--font-color);
 }
 
-body > header > div#account > figure > figcaption > a {
+body>header>div#account>figure>figcaption>a {
     text-decoration: none;
     color: var(--font-color);
     font-size: 0.84em;
@@ -191,22 +229,22 @@ body > header > div#account > figure > figcaption > a {
 
 
 
-body > main {
+body>main {
     flex-grow: 1;
     padding: 20px;
     padding-left: 50px;
 }
 
-body > main > aside {
+body>main>aside {
     margin-bottom: 40px;
 }
 
-body > main > aside.breadcrumb {
-    margin-bottom: 30px;
+body>main>aside.breadcrumb {
+    margin-bottom: 20px;
 }
 
-body > main > aside > div.breadcrumb,
-body > main > aside.breadcrumb {
+body>main>aside>div.breadcrumb,
+body>main>aside.breadcrumb {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -219,14 +257,14 @@ body > main > aside.breadcrumb {
     border-radius: 8px;
 }
 
-body > main > aside.wizardnavigation-enabled > div.breadcrumb,
-body > main > aside.wizardnavigation-enabled.breadcrumb {
+body>main>aside.wizardnavigation-enabled>div.breadcrumb,
+body>main>aside.wizardnavigation-enabled.breadcrumb {
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
 }
 
-body > main > aside > div.breadcrumb > p,
-body > main > aside.breadcrumb > p {
+body>main>aside>div.breadcrumb>p,
+body>main>aside.breadcrumb>p {
     padding-left: 20px;
     padding-right: 20px;
     margin: 0;
@@ -235,26 +273,26 @@ body > main > aside.breadcrumb > p {
     color: #4a5568;
 }
 
-body > main > aside > div.breadcrumb > p:first-of-type,
-body > main > aside.breadcrumb > p:first-of-type {
+body>main>aside>div.breadcrumb>p:first-of-type,
+body>main>aside.breadcrumb>p:first-of-type {
     margin-left: 0;
 }
 
-body > main > aside > div.breadcrumb > p:last-of-type,
-body > main > aside.breadcrumb > p:last-of-type {
+body>main>aside>div.breadcrumb>p:last-of-type,
+body>main>aside.breadcrumb>p:last-of-type {
     margin-right: 0;
     font-weight: 600;
     color: #2d3748;
 }
 
-body > main > aside > div.breadcrumb > i,
-body > main > aside.breadcrumb > i {
+body>main>aside>div.breadcrumb>i,
+body>main>aside.breadcrumb>i {
     pointer-events: none;
     align-self: center;
     font-style: normal;
     color: #a0aec0;
 }
 
-body > main > div.removeaside aside {
+body>main>div.removeaside aside {
     display: none;
 }
