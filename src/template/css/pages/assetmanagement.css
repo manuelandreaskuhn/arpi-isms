@@ -2420,4 +2420,801 @@ div.columnlist>h2.app-section-header {
 div.columnlist>h2.app-section-header::before {
     content: none;
 }
+
+/* =============================================================
+   System-Management – Tabellenliste
+   ============================================================= */
+
+/* Toolbar */
+div.syslist-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+}
+
+div.syslist-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+div.syslist-toolbar-right {
+    flex-shrink: 0;
+}
+
+span.syslist-total-count {
+    font-weight: 700;
+    color: #2c3e50;
+    white-space: nowrap;
+    min-width: 90px;
+}
+
+div.syslist-search-wrap {
+    flex: 1;
+    min-width: 180px;
+}
+
+div.syslist-search-wrap>input[type="search"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    background: #f8fafc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+div.syslist-search-wrap>input[type="search"]:focus {
+    border-color: var(--primary-color);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+div.syslist-sort-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+div.syslist-sort-wrap>label {
+    color: #64748b;
+    font-size: 0.95em;
+}
+
+div.syslist-sort-wrap>select {
+    padding: 5px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #f8fafc;
+    cursor: pointer;
+}
+
+div.syslist-groupby-wrap {
+    display: flex;
+    gap: 6px;
+}
+
+button.syslist-collapse-btn {
+    padding: 5px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #f8fafc;
+    color: #4a5568;
+    cursor: pointer;
+    font-size: 0.95em;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+button.syslist-collapse-btn:hover {
+    background: #e8f0fe;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+a.syslist-btn-new {
+    display: inline-block;
+    padding: 7px 16px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+a.syslist-btn-new:hover {
+    background: #2176ae;
+}
+
+/* Filter-Chips */
+div.syslist-filterbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    font-size: 0.83em;
+}
+
+span.syslist-filter-label {
+    color: #64748b;
+    font-weight: 600;
+    margin-right: 2px;
+    white-space: nowrap;
+}
+
+button.syslist-chip {
+    padding: 3px 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    color: #4a5568;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+
+button.syslist-chip:hover {
+    background: #e8f0fe;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+button.syslist-chip.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Tabellen-Kopfzeile */
+div.syslist-table-header {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 0.74em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 4px;
+    user-select: none;
+}
+
+/* Gemeinsame Spaltenbreiten – gelten für Header + Rows */
+.syslist-col-name {
+    flex: 0 0 210px;
+}
+
+.syslist-col-komp {
+    flex: 0 0 120px;
+    text-align: center;
+}
+
+.syslist-col-app {
+    flex: 0 0 120px;
+    text-align: center;
+}
+
+.syslist-col-status {
+    flex: 0 0 110px;
+    text-align: center;
+}
+
+.syslist-col-krit {
+    flex: 0 0 105px;
+    text-align: center;
+}
+
+.syslist-col-desc {
+    flex: 1 1 0;
+    color: #94a3b8;
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.syslist-col-actions {
+    flex: 0 0 40px;
+    text-align: right;
+}
+
+/* Gruppen */
+div.syslist-group {
+    margin-bottom: 6px;
+}
+
+div.syslist-group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.85em;
+    font-weight: 700;
+    color: #2c3e50;
+    transition: background 0.15s;
+}
+
+div.syslist-group-header:hover {
+    background: #e8f0fe;
+    border-color: var(--primary-color);
+}
+
+span.syslist-group-toggle {
+    font-size: 0.85em;
+    color: #64748b;
+    min-width: 12px;
+    transition: transform 0.15s;
+}
+
+span.syslist-group-name {
+    flex: 1;
+    color: var(--primary-color);
+}
+
+span.syslist-group-count {
+    background: #2c3e50;
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 10px;
+}
+
+/* Zeilen */
+div.syslist-group-body {
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+}
+
+div.syslist-row {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.83em;
+    color: #444;
+    transition: background 0.12s;
+}
+
+div.syslist-row:last-child {
+    border-bottom: none;
+}
+
+div.syslist-row:hover {
+    background: #f8faff;
+}
+
+div.syslist-row .syslist-col-name>strong {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Badges */
+span.syslist-badge {
+    display: inline-block;
+    padding: 1px 9px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 700;
+}
+
+span.syslist-badge--komp {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+span.syslist-badge--app {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Status-Badges */
+span.syslist-status {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.82em;
+    font-weight: 600;
+}
+
+span.syslist-status--aktiv {
+    background: #dcfce7;
+    color: #166534;
+}
+
+span.syslist-status--wartung {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+span.syslist-status--ausser-betrieb {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Kritikalitäts-Badges */
+span.syslist-krit {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.82em;
+    font-weight: 600;
+}
+
+span.syslist-krit--kritisch {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+span.syslist-krit--hoch {
+    background: #ffedd5;
+    color: #9a3412;
+}
+
+span.syslist-krit--mittel {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+span.syslist-krit--niedrig {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Edit-Button */
+button.syslist-edit-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 1.1em;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+}
+
+button.syslist-edit-btn:hover {
+    color: var(--primary-color);
+    background: #e8f0fe;
+}
+
+/* Leer-Meldung */
+div.syslist-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #94a3b8;
+    font-size: 0.9em;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .syslist-col-desc {
+        display: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .syslist-col-krit {
+        display: none;
+    }
+
+    .syslist-col-komp,
+    .syslist-col-app,
+    .syslist-col-status {
+        flex: 0 0 80px;
+    }
+
+    .syslist-col-name {
+        flex: 1 1 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .syslist-col-status {
+        display: none;
+    }
+
+    div.syslist-table-header {
+        display: none;
+    }
+
+    div.syslist-toolbar-left {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ================================================================
+   COMPONENT MANAGEMENT – Layout & Spalten
+   ================================================================ */
+
+/* Outer layout: narrow create panel + full list panel */
+div.comp-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+div.comp-create-panel {
+    flex: 0 0 320px;
+    min-width: 0;
+}
+
+div.comp-list-panel {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+/* Component table columns */
+.complist-col-name {
+    flex: 0 0 190px;
+}
+
+.complist-col-ip {
+    flex: 0 0 140px;
+    font-size: 0.82em;
+    font-family: monospace;
+    color: #475569;
+}
+
+.complist-col-software {
+    flex: 0 0 175px;
+}
+
+.complist-col-system {
+    flex: 0 0 90px;
+    text-align: center;
+}
+
+.complist-col-status {
+    flex: 0 0 110px;
+    text-align: center;
+}
+
+.complist-col-actions {
+    flex: 0 0 40px;
+    text-align: right;
+}
+
+/* Software badge */
+span.comp-soft-badge {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 0.8em;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* IP monospace chip */
+code.comp-ip {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.88em;
+    background: transparent;
+    color: inherit;
+}
+
+/* Responsive – component layout */
+@media (max-width: 1100px) {
+    .complist-col-software {
+        display: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .complist-col-ip {
+        flex: 0 0 110px;
+    }
+
+    .complist-col-name {
+        flex: 1 1 0;
+    }
+}
+
+@media (max-width: 680px) {
+    div.comp-layout {
+        flex-direction: column;
+    }
+
+    div.comp-create-panel {
+        flex: unset;
+        width: 100%;
+    }
+}
+
+/* ================================================================
+   APPLICATION MANAGEMENT – Layout & Spalten
+   ================================================================ */
+
+/* Outer layout: slim nav sidebar + full list panel */
+div.app-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+div.app-nav-panel {
+    flex: 0 0 300px;
+    min-width: 0;
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+div.app-list-panel {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+/* Nav sidebar */
+strong.app-nav-heading {
+    display: block;
+    font-size: 0.72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #373b41;
+    padding: 10px 4px 4px;
+    margin-top: 6px;
+}
+
+ul.app-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.app-nav-list li a {
+    display: block;
+    padding: 3px 8px;
+    font-size: 0.8em;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.12s, color 0.12s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul.app-nav-list li a:hover {
+    background: #e8f0fe;
+    color: var(--primary-color);
+}
+
+/* Application table columns */
+.applist-col-name {
+    flex: 0 0 400px;
+}
+
+.applist-col-vendor {
+    flex: 0 0 200px;
+    font-size: 0.85em;
+    color: #64748b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.applist-col-version {
+    flex: 0 0 90px;
+    font-size: 0.82em;
+    color: #94a3b8;
+}
+
+.applist-col-cve {
+    flex: 0 0 80px;
+    text-align: center;
+}
+
+.applist-col-patch {
+    flex: 0 0 130px;
+    text-align: center;
+}
+
+.applist-col-systems {
+    flex: 0 0 80px;
+    text-align: center;
+}
+
+.applist-col-actions {
+    flex: 0 0 40px;
+    text-align: right;
+}
+
+/* CVE badges */
+span.applist-cve {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.82em;
+    font-weight: 700;
+}
+
+span.applist-cve--none {
+    background: #dcfce7;
+    color: #166534;
+}
+
+span.applist-cve--medium {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+span.applist-cve--high {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Responsive – application layout */
+@media (max-width: 1200px) {
+    .applist-col-vendor {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .applist-col-version {
+        display: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .applist-col-patch {
+        display: none;
+    }
+
+    .applist-col-name {
+        flex: 1 1 0;
+    }
+}
+
+@media (max-width: 680px) {
+    div.app-layout {
+        flex-direction: column;
+    }
+
+    div.app-nav-panel {
+        flex: unset;
+        width: 100%;
+        position: static;
+        max-height: none;
+    }
+}
+
+/* ================================================================
+   MULTI-VERSION ROWS – Applikationsliste
+   ================================================================ */
+
+/* Expandable summary row */
+div.syslist-row.approw--expandable {
+    cursor: pointer;
+}
+
+div.syslist-row.approw--expandable:hover {
+    background: #f0f7ff;
+}
+
+span.approw-toggle {
+    display: inline-block;
+    width: 12px;
+    font-size: 0.72em;
+    color: #94a3b8;
+    margin-right: 5px;
+    flex-shrink: 0;
+    transition: color 0.12s;
+}
+
+div.syslist-row.approw--expanded span.approw-toggle {
+    color: var(--primary-color);
+}
+
+/* "N Ver." badge in version column */
+span.approw-vercount {
+    display: inline-block;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 0.78em;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 10px;
+}
+
+/* Version sub-block */
+div.approw-versions {
+    margin-left: 524px;
+    margin-bottom: 1px;
+    background: #f8fafc;
+    border-radius: 0 0 5px 0;
+}
+
+div.approw-version-item {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 5px 12px;
+    font-size: 0.8em;
+    border-bottom: 1px solid #f1f5f9;
+    color: #475569;
+}
+
+div.approw-version-item:last-child {
+    border-bottom: none;
+}
+
+/* Version sub-row columns */
+span.appver-version {
+    flex: 0 0 90px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #334155;
+}
+
+span.appver-latest {
+    flex: 0 0 72px;
+}
+
+span.appver-latest-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 0.78em;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 10px;
+}
+
+span.appver-cve {
+    flex: 0 0 80px;
+    text-align: center;
+}
+
+span.appver-patch {
+    flex: 0 0 130px;
+    text-align: center;
+}
+
+span.appver-systems {
+    flex: 0 0 80px;
+    text-align: center;
 }

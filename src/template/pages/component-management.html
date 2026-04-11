@@ -4,14 +4,14 @@
     <p>Komponenten</p>
 </aside>
 
-<div class="onetwocolumnlist">
+<div class="comp-layout">
 
-    <div class="columnlist">
+    <!-- ==================== Anlegen-Panel ==================== -->
+    <div class="comp-create-panel">
         <div class="infobox">
-            <h3>Neue Komponente anlegen</h3>
-            <i>Wählen Sie den Typ der neuen Komponente, um den Erfassungs-Wizard zu starten.</i>
+            <h3>Neue Komponente</h3>
+            <i>Typ wählen, um den Erfassungs-Wizard zu starten.</i>
         </div>
-
         <div class="wizard-create-list">
             <a href="/Wizards/NewBackup.html" class="wizard-create-item">
                 <span class="wizard-create-icon">🗄</span>
@@ -31,6 +31,11 @@
             <a href="/Wizards/NewHypervisor.html" class="wizard-create-item">
                 <span class="wizard-create-icon">⚙</span>
                 <span class="wizard-create-label">Hypervisor</span>
+                <span class="wizard-create-arrow">›</span>
+            </a>
+            <a href="/Wizards/NewLoadbalancer.html" class="wizard-create-item">
+                <span class="wizard-create-icon">⚖</span>
+                <span class="wizard-create-label">Load Balancer</span>
                 <span class="wizard-create-arrow">›</span>
             </a>
             <a href="/Wizards/NewMedicalDevice.html" class="wizard-create-item">
@@ -66,98 +71,450 @@
         </div>
     </div>
 
-    <div class="columnlist">
-        <div class="infobox">
-            <h3>Komponenten <i class="count">0</i></h3>
-            <i>Übersicht aller erfassten Netzwerk- und Systemkomponenten</i>
-        </div>
+    <!-- ==================== Listen-Panel ==================== -->
+    <div class="comp-list-panel">
 
-        <div class="search">
-            <input type="search" placeholder="Komponenten durchsuchen...">
-        </div>
-
-        <h2>Backup-Systeme</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Veeam-Prod</strong>
-                <div class="taginfo">
-                    <span class="tag">Veeam Backup &amp; Replication</span>
-                    <span class="tag">Backup-System</span>
+        <!-- Toolbar -->
+        <div class="syslist-toolbar">
+            <div class="syslist-toolbar-left">
+                <span class="syslist-total-count" id="compVisibleCount">24 Komponenten</span>
+                <div class="syslist-search-wrap">
+                    <input type="search" id="compSearch" placeholder="Komponenten durchsuchen…" autocomplete="off">
                 </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
+                <div class="syslist-sort-wrap">
+                    <label for="compSort">Sortieren:</label>
+                    <select id="compSort">
+                        <option value="name-asc">Name A–Z</option>
+                        <option value="name-desc">Name Z–A</option>
+                    </select>
+                </div>
+                <div class="syslist-groupby-wrap">
+                    <button class="syslist-collapse-btn" id="compCollapseAll" title="Alle Gruppen einklappen">⊟
+                        Zuklappen</button>
+                    <button class="syslist-collapse-btn" id="compExpandAll" title="Alle Gruppen ausklappen">⊞
+                        Aufklappen</button>
                 </div>
             </div>
+            <div class="syslist-toolbar-right"></div>
         </div>
 
-        <h2>Firewalls</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>FW-Prod-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">10.0.0.1</span>
+        <!-- Filter Chips -->
+        <div class="syslist-filterbar" id="compFilterBar">
+            <span class="syslist-filter-label">Typ:</span>
+            <button class="syslist-chip active" data-filter="all">Alle</button>
+            <button class="syslist-chip" data-filter="Backup">Backup</button>
+            <button class="syslist-chip" data-filter="Firewall">Firewall</button>
+            <button class="syslist-chip" data-filter="Hypervisor">Hypervisor</button>
+            <button class="syslist-chip" data-filter="Kommunikation">Kommunikation</button>
+            <button class="syslist-chip" data-filter="LoadBalancer">Load Balancer</button>
+            <button class="syslist-chip" data-filter="Medizin">Medizin</button>
+            <button class="syslist-chip" data-filter="Netzwerk">Netzwerk</button>
+            <button class="syslist-chip" data-filter="Proxy">Proxy</button>
+            <button class="syslist-chip" data-filter="SIEM">SIEM</button>
+            <button class="syslist-chip" data-filter="TI">TI-Infrastruktur</button>
+            <button class="syslist-chip" data-filter="VPN">VPN</button>
+        </div>
+
+        <!-- Tabellen-Kopf -->
+        <div class="syslist-table-header">
+            <span class="complist-col-name">Komponente</span>
+            <span class="complist-col-ip">IP / Netzwerk</span>
+            <span class="complist-col-software">Software</span>
+            <span class="complist-col-system">Systeme</span>
+            <span class="complist-col-status">Status</span>
+            <span class="complist-col-actions"></span>
+        </div>
+
+        <!-- Gruppen -->
+        <div id="compListContainer">
+
+            <!-- Gruppe: Backup -->
+            <div class="syslist-group" data-typ="Backup">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Backup-Systeme</span>
+                    <span class="syslist-group-count">2</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Cisco ASA</span>
-                    <span class="tag">Firewall</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="veeam-prod" data-typ="Backup">
+                        <span class="complist-col-name"><strong>Veeam-Prod</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.5.20</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Veeam B&amp;R 12</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">14</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="veeam-offsite" data-typ="Backup">
+                        <span class="complist-col-name"><strong>Veeam-Offsite</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">192.168.10.50</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Veeam B&amp;R 12</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">8</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <h2>Hypervisoren</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>ESXi-Host-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">10.0.1.10</span>
+            <!-- Gruppe: Firewall -->
+            <div class="syslist-group" data-typ="Firewall">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Firewalls</span>
+                    <span class="syslist-group-count">3</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">VMware ESXi</span>
-                    <span class="tag">Hypervisor</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="fw-prod-01" data-typ="Firewall">
+                        <span class="complist-col-name"><strong>FW-Prod-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.0.1</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Cisco ASA 9.x</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">42</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="fw-dmz-01" data-typ="Firewall">
+                        <span class="complist-col-name"><strong>FW-DMZ-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.0.2</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Cisco ASA 9.x</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">18</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="fw-med-01" data-typ="Firewall">
+                        <span class="complist-col-name"><strong>FW-Med-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.20.0.1</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Fortinet
+                                FortiGate</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">27</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--wartung">Wartung</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <h2>Netzwerke</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>LAN-Produktion</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">192.168.1.0/24</span>
+            <!-- Gruppe: Hypervisor -->
+            <div class="syslist-group" data-typ="Hypervisor">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Hypervisoren</span>
+                    <span class="syslist-group-count">3</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">VLAN 10</span>
-                    <span class="tag">Netzwerk</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="esxi-host-01" data-typ="Hypervisor">
+                        <span class="complist-col-name"><strong>ESXi-Host-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.1.10</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">VMware ESXi 8.0</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">6</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="esxi-host-02" data-typ="Hypervisor">
+                        <span class="complist-col-name"><strong>ESXi-Host-02</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.1.11</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">VMware ESXi 8.0</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">5</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="esxi-host-03" data-typ="Hypervisor">
+                        <span class="complist-col-name"><strong>ESXi-Host-03</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.1.12</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">VMware ESXi 8.0</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">4</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <h2>Proxy-Server</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Proxy-DMZ-01</strong>
-                <div class="networkinfo">
-                    <span class="ipaddress">10.0.2.5</span>
+            <!-- Gruppe: Kommunikation -->
+            <div class="syslist-group" data-typ="Kommunikation">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Kommunikationsserver</span>
+                    <span class="syslist-group-count">2</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Squid</span>
-                    <span class="tag">Proxy-Server</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="hl7-gateway-01" data-typ="Kommunikation">
+                        <span class="complist-col-name"><strong>HL7-Gateway-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.3.10</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">InterSystems
+                                HealthShare</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">12</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="dicom-router-int" data-typ="Kommunikation">
+                        <span class="complist-col-name"><strong>DICOM-Router-Int</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.3.11</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Laurel Bridge
+                                Navigator</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">7</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <!-- Gruppe: Medizin -->
+            <div class="syslist-group" data-typ="Medizin">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Medizinische Geräte</span>
+                    <span class="syslist-group-count">3</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="ultraschall-rad-01" data-typ="Medizin">
+                        <span class="complist-col-name"><strong>Ultraschall-RAD-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.20.1.15</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Philips EPIQ</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="ekg-auswertung-01" data-typ="Medizin">
+                        <span class="complist-col-name"><strong>EKG-Auswertung-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.20.2.20</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">GE MAC 5500</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">3</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="infusionspumpe-srv" data-typ="Medizin">
+                        <span class="complist-col-name"><strong>Infusionspumpe-Srv</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.20.3.30</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Fresenius Agilia</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">8</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppe: Netzwerk -->
+            <div class="syslist-group" data-typ="Netzwerk">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Netzwerke</span>
+                    <span class="syslist-group-count">4</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="lan-produktion" data-typ="Netzwerk">
+                        <span class="complist-col-name"><strong>LAN-Produktion</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">192.168.1.0/24</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">VLAN 10</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">35</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="lan-management" data-typ="Netzwerk">
+                        <span class="complist-col-name"><strong>LAN-Management</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.0.0/24</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">VLAN 100</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">22</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="dmz" data-typ="Netzwerk">
+                        <span class="complist-col-name"><strong>DMZ</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.2.0/24</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">VLAN 200</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">11</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="lan-medizin" data-typ="Netzwerk">
+                        <span class="complist-col-name"><strong>LAN-Medizin</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.20.0.0/16</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">VLAN 20</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">19</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppe: Proxy -->
+            <div class="syslist-group" data-typ="Proxy">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Proxy-Server</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="proxy-dmz-01" data-typ="Proxy">
+                        <span class="complist-col-name"><strong>Proxy-DMZ-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.2.5</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Squid 6.x</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">24</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="proxy-int-01" data-typ="Proxy">
+                        <span class="complist-col-name"><strong>Proxy-Int-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.1.100</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Squid 6.x</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">16</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppe: SIEM -->
+            <div class="syslist-group" data-typ="SIEM">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">SIEM-Systeme</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="siem-collector-01" data-typ="SIEM">
+                        <span class="complist-col-name"><strong>SIEM-Collector-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.1.50</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Splunk
+                                Enterprise</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">42</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppe: TI-Infrastruktur -->
+            <div class="syslist-group" data-typ="TI">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">TI-Infrastruktur</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="konnektor-ti-01" data-typ="TI">
+                        <span class="complist-col-name"><strong>Konnektor-TI-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.4.10</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">secunet
+                                Konnektor</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">5</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="vsd-service-01" data-typ="TI">
+                        <span class="complist-col-name"><strong>VSD-Service-01</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.4.11</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">gematik VSD</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">3</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppe: VPN -->
+            <div class="syslist-group" data-typ="VPN">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">VPN</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="vpn-gateway-prod" data-typ="VPN">
+                        <span class="complist-col-name"><strong>VPN-Gateway-Prod</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.0.10</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">Cisco AnyConnect</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">18</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row" data-name="vpn-gateway-bb" data-typ="VPN">
+                        <span class="complist-col-name"><strong>VPN-Gateway-BB</strong></span>
+                        <span class="complist-col-ip"><code class="comp-ip">10.0.0.11</code></span>
+                        <span class="complist-col-software"><span class="comp-soft-badge">OpenVPN 2.6</span></span>
+                        <span class="complist-col-system"><span
+                                class="syslist-badge syslist-badge--komp">6</span></span>
+                        <span class="complist-col-status"><span
+                                class="syslist-status syslist-status--wartung">Wartung</span></span>
+                        <span class="complist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keine Treffer -->
+            <div class="syslist-empty" id="compEmptyMsg" style="display:none;">
+                Keine Komponenten gefunden.
+            </div>
+
+        </div>
     </div>
 
 </div>
+
+<script type="module" src="/template/js/component-management.js"></script>

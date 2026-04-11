@@ -4,75 +4,576 @@
     <p>Systeme</p>
 </aside>
 
-<div class="onetwocolumnlist">
-
-    <div class="columnlist">
-        <div class="infobox">
-            <h3>Systeme <i class="count">157</i></h3>
-            <i>Was sind Systeme: Eine Ansammlung von Komponenten, die zusammenarbeiten, um ein bestimmtes Ziel zu
-                erreichen.</i>
-
-            <form id="newSystemQuickForm">
-                <div class="newentry">
-                    <input type="text" name="systemname" placeholder="Neues System hinzufügen...">
-                    <button type="submit" title="Hinzufügen"><i>+</i></button>
-                </div>
-            </form>
+<!-- ==================== Toolbar ==================== -->
+<div class="syslist-toolbar">
+    <div class="syslist-toolbar-left">
+        <span class="syslist-total-count" id="sysVisibleCount">157 Systeme</span>
+        <div class="syslist-search-wrap">
+            <input type="search" id="sysSearch" placeholder="Systeme durchsuchen…" autocomplete="off">
         </div>
-
-        <div class="search">
-            <input type="search" placeholder="Systeme durchsuchen...">
+        <div class="syslist-sort-wrap">
+            <label for="sysSort">Sortieren:</label>
+            <select id="sysSort">
+                <option value="name-asc">Name A–Z</option>
+                <option value="name-desc">Name Z–A</option>
+                <option value="komp-desc">Meiste Komponenten</option>
+                <option value="app-desc">Meiste Applikationen</option>
+            </select>
         </div>
+        <div class="syslist-groupby-wrap">
+            <button class="syslist-collapse-btn" id="sysCollapseAll" title="Alle Gruppen einklappen">⊟
+                Zuklappen</button>
+            <button class="syslist-collapse-btn" id="sysExpandAll" title="Alle Gruppen ausklappen">⊞ Aufklappen</button>
+        </div>
+    </div>
+    <div class="syslist-toolbar-right">
+        <a href="/Wizards/NewSystem.html" class="syslist-btn-new">+ Neues System anlegen</a>
+    </div>
+</div>
 
-        <!-- Beispielgruppen/Liste (bei Bedarf dynamisch ersetzen) -->
-        <h2>Radiologie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Systemname 1</strong>
-                <div class="taginfo">
-                    <span class="tag">Komponente 1</span>
-                    <span class="tag">Komponente 2</span>
-                    <span class="tag">Applikation 1</span>
-                </div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+<!-- ==================== Filter-Chips ==================== -->
+<div class="syslist-filterbar" id="sysFilterBar">
+    <span class="syslist-filter-label">Bereich:</span>
+    <button class="syslist-chip active" data-filter="all">Alle</button>
+    <button class="syslist-chip" data-filter="Radiologie">Radiologie</button>
+    <button class="syslist-chip" data-filter="Krankenhausverwaltung">Krankenhausverwaltung</button>
+    <button class="syslist-chip" data-filter="Intensivpflege">Intensivpflege</button>
+    <button class="syslist-chip" data-filter="Labor">Labor</button>
+    <button class="syslist-chip" data-filter="Notaufnahme">Notaufnahme</button>
+    <button class="syslist-chip" data-filter="Apotheke">Apotheke</button>
+    <button class="syslist-chip" data-filter="IT-Infrastruktur">IT-Infrastruktur</button>
+    <button class="syslist-chip" data-filter="Unbekannt">Unbekannt</button>
+</div>
+
+<!-- ==================== Tabellen-Kopf ==================== -->
+<div class="syslist-table-header">
+    <span class="syslist-col-name">System</span>
+    <span class="syslist-col-komp">Komponenten</span>
+    <span class="syslist-col-app">Applikationen</span>
+    <span class="syslist-col-status">Status</span>
+    <span class="syslist-col-krit">Kritikalität</span>
+    <span class="syslist-col-desc">Beschreibung</span>
+    <span class="syslist-col-actions"></span>
+</div>
+
+<!-- ==================== Gruppen ==================== -->
+<div id="sysListContainer">
+
+    <!-- Gruppe: Radiologie -->
+    <div class="syslist-group" data-bereich="Radiologie">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">Radiologie</span>
+            <span class="syslist-group-count">6</span>
+        </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="pacs-server-01" data-bereich="Radiologie">
+                <span class="syslist-col-name"><strong>PACS-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Primäres PACS-System für Bildarchivierung</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
             </div>
-            <div class="entry">
-                <strong>Systemname 2</strong>
-                <div class="taginfo">
-                    <span class="tag">Komponente 1</span>
-                    <span class="tag">Komponente 2</span>
-                    <span class="tag">Komponente 3</span>
-                    <span class="tag">Applikation 1</span>
-                    <span class="tag">Applikation 2</span>
-                </div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+            <div class="syslist-row" data-name="ris-workstation-rad" data-bereich="Radiologie">
+                <span class="syslist-col-name"><strong>RIS-Workstation-RAD</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Radiologisches Informationssystem</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
             </div>
-        </div>
-
-        <h2>Unbekannt</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Systemname X</strong>
-                <div class="taginfo"></div>
-                <div class="editbutton">
-                    <button title="System bearbeiten"><i>✎</i></button>
-                </div>
+            <div class="syslist-row" data-name="dicom-router-01" data-bereich="Radiologie">
+                <span class="syslist-col-name"><strong>DICOM-Router-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">0</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">DICOM-Routing und Worklist-Management</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="ct-workstation-01" data-bereich="Radiologie">
+                <span class="syslist-col-name"><strong>CT-Workstation-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">5</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Befundungsstation für CT-Bilder</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="mrt-workstation-01" data-bereich="Radiologie">
+                <span class="syslist-col-name"><strong>MRT-Workstation-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Befundungsstation für MRT-Bilder</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="vna-archiv-01" data-bereich="Radiologie">
+                <span class="syslist-col-name"><strong>VNA-Archiv-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">6</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Vendor Neutral Archive für Langzeitarchivierung</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
             </div>
         </div>
     </div>
 
-    <!-- Neues System anlegen -->
-    <div class="columnlist">
-        <div class="infobox">
-            <h3>Neues System anlegen</h3>
-            <i>Erstellen Sie ein neues IT-System und verknüpfen Sie Komponenten, Hardware-Details und
-                Sicherheitseinstellungen in einem geführten Wizard.</i>
-            <a href="/Wizards/NewSystem.html" class="btn-new-wizard">+ Neues System anlegen</a>
+    <!-- Gruppe: Krankenhausverwaltung -->
+    <div class="syslist-group" data-bereich="Krankenhausverwaltung">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">Krankenhausverwaltung</span>
+            <span class="syslist-group-count">8</span>
         </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="kis-prod-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>KIS-Prod-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">8</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">3</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Primäres Krankenhausinformationssystem</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="kis-failover-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>KIS-Failover-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">8</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">3</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Failover-Cluster für KIS</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="abrechnung-server-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>Abrechnung-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Abrechnungssystem DRG / EBM</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="patientenaufnahme-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>Patientenaufnahme-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Stationäre und ambulante Aufnahme</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="terminverwaltung-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>Terminverwaltung-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Zentrales Terminmanagement</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="dokumentenmanagement-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>Dokumentenmanagement-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Digitales Archiv und DMS</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="arztbrief-system-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>Arztbrief-System-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Automatisierte Arztbrieferstellung</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="bettenbelegung-01" data-bereich="Krankenhausverwaltung">
+                <span class="syslist-col-name"><strong>Bettenbelegung-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">1</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Echtzeit-Bettenbelegungsübersicht</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gruppe: Intensivpflege -->
+    <div class="syslist-group" data-bereich="Intensivpflege">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">Intensivpflege</span>
+            <span class="syslist-group-count">5</span>
+        </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="pdms-icu-01" data-bereich="Intensivpflege">
+                <span class="syslist-col-name"><strong>PDMS-ICU-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">6</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Patientendatenmanagementsystem Intensiv</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="monitor-central-icu" data-bereich="Intensivpflege">
+                <span class="syslist-col-name"><strong>Monitor-Central-ICU</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">12</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Zentrales Vitalparameter-Monitoring</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="beatmung-server-01" data-bereich="Intensivpflege">
+                <span class="syslist-col-name"><strong>Beatmung-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Datenerfassung Beatmungsgeräte</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="pflegedoku-icu-01" data-bereich="Intensivpflege">
+                <span class="syslist-col-name"><strong>Pflegedoku-ICU-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Pflegedokumentation Intensivstation</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="alarmmanagement-icu" data-bereich="Intensivpflege">
+                <span class="syslist-col-name"><strong>Alarmmanagement-ICU</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Zentrales Alarmsystem Intensivpflege</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gruppe: Labor -->
+    <div class="syslist-group" data-bereich="Labor">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">Labor</span>
+            <span class="syslist-group-count">6</span>
+        </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="lis-prod-01" data-bereich="Labor">
+                <span class="syslist-col-name"><strong>LIS-Prod-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">5</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Laborinformationssystem Hauptlabor</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="mikrobiologie-server" data-bereich="Labor">
+                <span class="syslist-col-name"><strong>Mikrobiologie-Server</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">System für mikrobiologische Befunde</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="pathologie-server-01" data-bereich="Labor">
+                <span class="syslist-col-name"><strong>Pathologie-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Digitale Pathologie und Histologie</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="transfusion-server-01" data-bereich="Labor">
+                <span class="syslist-col-name"><strong>Transfusion-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Blutbank und Transfusionsmedizin</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="poct-server-01" data-bereich="Labor">
+                <span class="syslist-col-name"><strong>POCT-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Point-of-Care-Testing Datenverwaltung</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="labor-befundserver" data-bereich="Labor">
+                <span class="syslist-col-name"><strong>Labor-Befundserver</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Befundverteilung an alle Abteilungen</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gruppe: Notaufnahme -->
+    <div class="syslist-group" data-bereich="Notaufnahme">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">Notaufnahme</span>
+            <span class="syslist-group-count">4</span>
+        </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="notaufnahme-triagesystem" data-bereich="Notaufnahme">
+                <span class="syslist-col-name"><strong>Notaufnahme-Triagesystem</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Triage- und Erstaufnahme-Management</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="emergency-monitor-01" data-bereich="Notaufnahme">
+                <span class="syslist-col-name"><strong>Emergency-Monitor-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">8</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Überwachungsmonitor Notaufnahme</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="schockraum-system-01" data-bereich="Notaufnahme">
+                <span class="syslist-col-name"><strong>Schockraum-System-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">5</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">IT-Infrastruktur Schockraum</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="rettungsdienst-anbindung" data-bereich="Notaufnahme">
+                <span class="syslist-col-name"><strong>Rettungsdienst-Anbindung</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">0</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--kritisch">Kritisch</span></span>
+                <span class="syslist-col-desc">Schnittstelle zum Rettungsdienstleitstelle</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gruppe: Apotheke -->
+    <div class="syslist-group" data-bereich="Apotheke">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">Apotheke</span>
+            <span class="syslist-group-count">3</span>
+        </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="apotheken-server-01" data-bereich="Apotheke">
+                <span class="syslist-col-name"><strong>Apotheken-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Warenwirtschaft und Medikamentenverwaltung</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="zyto-system-01" data-bereich="Apotheke">
+                <span class="syslist-col-name"><strong>Zyto-System-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Zytostatika-Herstellung und Dokumentation</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="medikamentenausgabe-01" data-bereich="Apotheke">
+                <span class="syslist-col-name"><strong>Medikamentenausgabe-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--hoch">Hoch</span></span>
+                <span class="syslist-col-desc">Automatisierte Medikamentenausgabe (Pyxis)</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gruppe: IT-Infrastruktur -->
+    <div class="syslist-group" data-bereich="IT-Infrastruktur">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">IT-Infrastruktur</span>
+            <span class="syslist-group-count">7</span>
+        </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="ad-server-prod-01" data-bereich="IT-Infrastruktur">
+                <span class="syslist-col-name"><strong>AD-Server-Prod-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--mittel">Mittel</span></span>
+                <span class="syslist-col-desc">Active Directory Primärer Domaincontroller</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="ad-server-prod-02" data-bereich="IT-Infrastruktur">
+                <span class="syslist-col-name"><strong>AD-Server-Prod-02</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--mittel">Mittel</span></span>
+                <span class="syslist-col-desc">Active Directory Sekundärer Domaincontroller</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="fileserver-prod-01" data-bereich="IT-Infrastruktur">
+                <span class="syslist-col-name"><strong>Fileserver-Prod-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--mittel">Mittel</span></span>
+                <span class="syslist-col-desc">Zentraler Netzwerk-Dateiserver</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="backup-system-prod" data-bereich="IT-Infrastruktur">
+                <span class="syslist-col-name"><strong>Backup-System-Prod</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">5</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span
+                        class="syslist-status syslist-status--wartung">Wartung</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--mittel">Mittel</span></span>
+                <span class="syslist-col-desc">Zentrales Backup und Disaster Recovery</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="monitoring-server-01" data-bereich="IT-Infrastruktur">
+                <span class="syslist-col-name"><strong>Monitoring-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">2</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--mittel">Mittel</span></span>
+                <span class="syslist-col-desc">Netzwerkmonitoring und Alerting</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="siem-server-01" data-bereich="IT-Infrastruktur">
+                <span class="syslist-col-name"><strong>SIEM-Server-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--mittel">Mittel</span></span>
+                <span class="syslist-col-desc">Security Information and Event Management</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="vpn-gateway-prod" data-bereich="IT-Infrastruktur">
+                <span class="syslist-col-name"><strong>VPN-Gateway-Prod</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--mittel">Mittel</span></span>
+                <span class="syslist-col-desc">Zentrales VPN für Remote-Zugriff</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gruppe: Unbekannt -->
+    <div class="syslist-group" data-bereich="Unbekannt">
+        <div class="syslist-group-header">
+            <span class="syslist-group-toggle">▾</span>
+            <span class="syslist-group-name">Unbekannt</span>
+            <span class="syslist-group-count">3</span>
+        </div>
+        <div class="syslist-group-body">
+            <div class="syslist-row" data-name="server-unbekannt-01" data-bereich="Unbekannt">
+                <span class="syslist-col-name"><strong>Server-Unbekannt-01</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">0</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">0</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--niedrig">Niedrig</span></span>
+                <span class="syslist-col-desc">—</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="system-x-02" data-bereich="Unbekannt">
+                <span class="syslist-col-name"><strong>System-X-02</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">1</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">0</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--aktiv">Aktiv</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--niedrig">Niedrig</span></span>
+                <span class="syslist-col-desc">—</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+            <div class="syslist-row" data-name="legacy-server-03" data-bereich="Unbekannt">
+                <span class="syslist-col-name"><strong>Legacy-Server-03</strong></span>
+                <span class="syslist-col-komp"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                <span class="syslist-col-app"><span class="syslist-badge syslist-badge--app">1</span></span>
+                <span class="syslist-col-status"><span class="syslist-status syslist-status--ausser-betrieb">Außer
+                        Betrieb</span></span>
+                <span class="syslist-col-krit"><span class="syslist-krit syslist-krit--niedrig">Niedrig</span></span>
+                <span class="syslist-col-desc">Unklassifiziertes Altsystem</span>
+                <span class="syslist-col-actions"><button class="syslist-edit-btn"
+                        title="System bearbeiten">✎</button></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keine Treffer -->
+    <div class="syslist-empty" id="sysEmptyMsg" style="display:none;">
+        Keine Systeme gefunden.
     </div>
 
 </div>
+
+<script type="module" src="/template/js/system-management.js"></script>

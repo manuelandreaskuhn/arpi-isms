@@ -4,1000 +4,1494 @@
     <p>Applikationen</p>
 </aside>
 
-<div class="onetwocolumnlist">
+<div class="app-layout">
 
-    <div class="columnlist">
-        <div class="infobox">
-            <h3>Applikationen <i class="count">0</i></h3>
-            <i>Softwarelösungen die entweder direkt oder indirekt Geschäftsprozesse unterstützen.</i>
-
-            <form id="newSoftwareQuickForm">
-                <div class="newentry">
-                    <input type="text" name="softwareName" placeholder="Neue Applikation hinzufügen...">
-                    <button type="submit" title="Hinzufügen"><i>+</i></button>
-                </div>
-            </form>
-        </div>
-
-        <div class="app-category-nav">
-            <strong>IT-Software</strong>
-            <ul>
-                <li><a href="#backup">Backup-Systeme</a></li>
-                <li><a href="#commserver">Kommunikationsserver</a></li>
-                <li><a href="#database">Datenbanken</a></li>
-                <li><a href="#dbcluster">Datenbank-Cluster</a></li>
-                <li><a href="#loadbalancer">Load Balancer</a></li>
-                <li><a href="#medgateway">Medizinische Gateways</a></li>
-                <li><a href="#operatingsystem">Betriebssysteme</a></li>
-                <li><a href="#siem">SIEM-Systeme</a></li>
-                <li><a href="#firewall">Firewall-Software</a></li>
-                <li><a href="#proxy">Proxy-Server</a></li>
-                <li><a href="#vpn">VPN-Lösungen</a></li>
-                <li><a href="#hypervisor">Hypervisoren</a></li>
-            </ul>
-
-            <strong>Medizinische Software</strong>
-            <ul>
-                <li><a href="#kis">Krankenhausinformationssysteme</a></li>
-                <li><a href="#pacs">PACS</a></li>
-                <li><a href="#radiologie">Radiologie (RIS)</a></li>
-                <li><a href="#lab">Labor</a></li>
-                <li><a href="#pdms">Patientendatenmanagementsystem</a></li>
-                <li><a href="#pflege">Pflegedokumentation</a></li>
-                <li><a href="#op-management">OP-Management</a></li>
-                <li><a href="#notaufnahme">Notaufnahme</a></li>
-                <li><a href="#kardiologie">Kardiologie</a></li>
-                <li><a href="#onkologie">Onkologie</a></li>
-                <li><a href="#mikrobiologie">Mikrobiologie</a></li>
-                <li><a href="#pathologie">Pathologie</a></li>
-                <li><a href="#transfusion">Transfusionsmedizin</a></li>
-                <li><a href="#dialyse">Dialyse</a></li>
-                <li><a href="#strahlentherapie">Strahlentherapie</a></li>
-                <li><a href="#nuklearmedizin">Nuklearmedizin</a></li>
-                <li><a href="#endo">Endoskopie</a></li>
-                <li><a href="#schlaflabor">Schlaflabor</a></li>
-                <li><a href="#reha">Rehabilitation</a></li>
-                <li><a href="#geburtshilfe">Geburtshilfe</a></li>
-                <li><a href="#psychatrie">Psychiatrie</a></li>
-                <li><a href="#wundmanagement">Wundmanagement</a></li>
-                <li><a href="#hygiene">Hygiene</a></li>
-                <li><a href="#cdss">Klinische Entscheidungsunterstützung</a></li>
-                <li><a href="#telemedizin">Telemedizin</a></li>
-                <li><a href="#klinische-studien">Klinische Studien</a></li>
-                <li><a href="#medizin-controlling">Medizin-Controlling</a></li>
-                <li><a href="#arztbrief">Arztbrief</a></li>
-                <li><a href="#konnektor">TI-Konnektor</a></li>
-                <li><a href="#apo">Apotheke</a></li>
-                <li><a href="#praxis">Praxisverwaltung</a></li>
-                <li><a href="#praxis-abrechnung">Praxis-Abrechnung</a></li>
-                <li><a href="#praxis-dokumentation">Praxis-Dokumentation</a></li>
-                <li><a href="#praxis-labor">Praxis-Labor</a></li>
-                <li><a href="#praxis-telematik">Praxis-Telematik</a></li>
-                <li><a href="#praxis-terminverwaltung">Praxis-Terminverwaltung</a></li>
-            </ul>
-        </div>
+    <!-- ==================== Navigation-Panel ==================== -->
+    <div class="app-nav-panel">
+        <strong class="app-nav-heading">IT-Software</strong>
+        <ul class="app-nav-list">
+            <li><a href="#grp-backup">Backup-Systeme</a></li>
+            <li><a href="#grp-commserver">Kommunikationsserver</a></li>
+            <li><a href="#grp-database">Datenbanken</a></li>
+            <li><a href="#grp-dbcluster">Datenbank-Cluster</a></li>
+            <li><a href="#grp-loadbalancer">Load Balancer</a></li>
+            <li><a href="#grp-medgateway">Medizinische Gateways</a></li>
+            <li><a href="#grp-operatingsystem">Betriebssysteme</a></li>
+            <li><a href="#grp-siem">SIEM-Systeme</a></li>
+            <li><a href="#grp-firewall">Firewall-Software</a></li>
+            <li><a href="#grp-proxy">Proxy-Server</a></li>
+            <li><a href="#grp-vpn">VPN-Lösungen</a></li>
+            <li><a href="#grp-hypervisor">Hypervisoren</a></li>
+        </ul>
+        <strong class="app-nav-heading">Medizinische Software</strong>
+        <ul class="app-nav-list">
+            <li><a href="#grp-kis">Krankenhausinformationssysteme</a></li>
+            <li><a href="#grp-pacs">PACS</a></li>
+            <li><a href="#grp-radiologie">Radiologie (RIS)</a></li>
+            <li><a href="#grp-lab">Labor (LIS)</a></li>
+            <li><a href="#grp-pdms">Patientendatenmanagementsystem</a></li>
+            <li><a href="#grp-pflege">Pflegedokumentation</a></li>
+            <li><a href="#grp-op-management">OP-Management</a></li>
+            <li><a href="#grp-notaufnahme">Notaufnahme</a></li>
+            <li><a href="#grp-kardiologie">Kardiologie</a></li>
+            <li><a href="#grp-onkologie">Onkologie</a></li>
+            <li><a href="#grp-mikrobiologie">Mikrobiologie</a></li>
+            <li><a href="#grp-pathologie">Pathologie</a></li>
+            <li><a href="#grp-transfusion">Transfusionsmedizin</a></li>
+            <li><a href="#grp-dialyse">Dialyse</a></li>
+            <li><a href="#grp-strahlentherapie">Strahlentherapie</a></li>
+            <li><a href="#grp-nuklearmedizin">Nuklearmedizin</a></li>
+            <li><a href="#grp-endo">Endoskopie</a></li>
+            <li><a href="#grp-schlaflabor">Schlaflabor</a></li>
+            <li><a href="#grp-reha">Rehabilitation</a></li>
+            <li><a href="#grp-geburtshilfe">Geburtshilfe</a></li>
+            <li><a href="#grp-psychatrie">Psychiatrie</a></li>
+            <li><a href="#grp-wundmanagement">Wundmanagement</a></li>
+            <li><a href="#grp-hygiene">Hygiene</a></li>
+            <li><a href="#grp-cdss">Klin. Entscheidungsunterstützung</a></li>
+            <li><a href="#grp-telemedizin">Telemedizin</a></li>
+            <li><a href="#grp-klinische-studien">Klinische Studien</a></li>
+            <li><a href="#grp-medizin-controlling">Medizin-Controlling</a></li>
+            <li><a href="#grp-arztbrief">Arztbrief</a></li>
+            <li><a href="#grp-konnektor">TI-Konnektor</a></li>
+            <li><a href="#grp-apo">Apotheke</a></li>
+            <li><a href="#grp-praxis">Praxisverwaltung</a></li>
+            <li><a href="#grp-praxis-abrechnung">Praxis-Abrechnung</a></li>
+            <li><a href="#grp-praxis-dokumentation">Praxis-Dokumentation</a></li>
+            <li><a href="#grp-praxis-labor">Praxis-Labor</a></li>
+            <li><a href="#grp-praxis-telematik">Praxis-Telematik</a></li>
+            <li><a href="#grp-praxis-terminverwaltung">Praxis-Terminverwaltung</a></li>
+        </ul>
     </div>
 
-    <div class="columnlist">
-        <div class="search">
-            <input type="search" placeholder="Applikationen durchsuchen...">
+    <!-- ==================== Listen-Panel ==================== -->
+    <div class="app-list-panel">
+
+        <!-- Toolbar -->
+        <div class="syslist-toolbar">
+            <div class="syslist-toolbar-left">
+                <span class="syslist-total-count" id="appVisibleCount">55 Applikationen</span>
+                <div class="syslist-search-wrap">
+                    <input type="search" id="appSearch" placeholder="Applikationen durchsuchen…" autocomplete="off">
+                </div>
+                <div class="syslist-sort-wrap">
+                    <label for="appSort">Sortieren:</label>
+                    <select id="appSort">
+                        <option value="name-asc">Name A–Z</option>
+                        <option value="name-desc">Name Z–A</option>
+                        <option value="cve-desc">Meiste CVE</option>
+                        <option value="systems-desc">Meiste Systeme</option>
+                    </select>
+                </div>
+                <div class="syslist-groupby-wrap">
+                    <button class="syslist-collapse-btn" id="appCollapseAll" title="Alle Gruppen einklappen">⊟
+                        Zuklappen</button>
+                    <button class="syslist-collapse-btn" id="appExpandAll" title="Alle Gruppen ausklappen">⊞
+                        Aufklappen</button>
+                </div>
+            </div>
+            <div class="syslist-toolbar-right"></div>
         </div>
 
-        <!-- ==================== IT-Software ==================== -->
-
-        <h2 class="app-section-header" id="it-software">IT-Software</h2>
-
-        <h2 id="backup">Backup-Systeme</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Veeam Backup &amp; Replication</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Veeam Software</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>Commvault</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Commvault Systems</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
+        <!-- Filter Chips -->
+        <div class="syslist-filterbar" id="appFilterBar">
+            <span class="syslist-filter-label">Kategorie:</span>
+            <button class="syslist-chip active" data-filter="all">Alle</button>
+            <button class="syslist-chip" data-filter="it">IT-Software</button>
+            <button class="syslist-chip" data-filter="med">Medizinische Software</button>
         </div>
 
-        <h2 id="commserver">Kommunikationsserver</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Microsoft Exchange Server</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="medium">2 CVE</span>
-                    <span class="status" data-status="updates-available">Update verfügbar</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Microsoft</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
+        <!-- Tabellen-Kopf -->
+        <div class="syslist-table-header">
+            <span class="applist-col-name">Applikation</span>
+            <span class="applist-col-vendor">Hersteller</span>
+            <span class="applist-col-version">Version</span>
+            <span class="applist-col-cve">CVE</span>
+            <span class="applist-col-patch">Patch-Status</span>
+            <span class="applist-col-systems">Systeme</span>
+            <span class="applist-col-actions"></span>
         </div>
 
-        <h2 id="database">Datenbanken</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Microsoft SQL Server</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
+        <!-- Gruppen -->
+        <div id="appListContainer">
+
+            <!-- Backup-Systeme -->
+            <div class="syslist-group" id="grp-backup" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Backup-Systeme</span>
+                    <span class="syslist-group-count">2</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">Microsoft</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
+                <div class="syslist-group-body">
+                    <div class="syslist-row approw--expandable" data-name="veeam-backup">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Veeam Backup &amp;
+                                Replication</strong></span>
+                        <span class="applist-col-vendor">Veeam Software</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                        <span class="applist-col-patch"><span class="syslist-status syslist-status--wartung">Update
+                                verfügbar</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">14</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">v12</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span
+                                    class="syslist-badge syslist-badge--komp">10</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">v11</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                            <span class="appver-patch"><span class="syslist-status syslist-status--wartung">Update
+                                    verfügbar</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                        </div>
+                    </div>
+                    <div class="syslist-row" data-name="commvault">
+                        <span class="applist-col-name"><strong>Commvault</strong></span>
+                        <span class="applist-col-vendor">Commvault Systems</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">8</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
                 </div>
             </div>
-            <div class="entry">
-                <strong>PostgreSQL</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
+
+            <!-- Kommunikationsserver -->
+            <div class="syslist-group" id="grp-commserver" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Kommunikationsserver</span>
+                    <span class="syslist-group-count">1</span>
                 </div>
-                <div class="taginfo">
-                    <span class="tag">PostgreSQL Global Development Group</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
+                <div class="syslist-group-body">
+                    <div class="syslist-row approw--expandable" data-name="ms-exchange">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Microsoft Exchange
+                                Server</strong></span>
+                        <span class="applist-col-vendor">Microsoft</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--high">3 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">3</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">2019 CU14</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                            <span class="appver-patch"><span class="syslist-status syslist-status--wartung">Update
+                                    verfügbar</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">2016 CU23</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--high">3 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">1</span></span>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Datenbanken -->
+            <div class="syslist-group" id="grp-database" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Datenbanken</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row approw--expandable" data-name="ms-sql-server">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Microsoft SQL
+                                Server</strong></span>
+                        <span class="applist-col-vendor">Microsoft</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                        <span class="applist-col-patch"><span class="syslist-status syslist-status--wartung">Update
+                                verfügbar</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">12</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">2022</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">9</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">2019 CU25</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                            <span class="appver-patch"><span class="syslist-status syslist-status--wartung">Update
+                                    verfügbar</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                        </div>
+                    </div>
+                    <div class="syslist-row" data-name="postgresql">
+                        <span class="applist-col-name"><strong>PostgreSQL</strong></span>
+                        <span class="applist-col-vendor">PostgreSQL Global Dev</span>
+                        <span class="applist-col-version">16</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">7</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Datenbank-Cluster -->
+            <div class="syslist-group" id="grp-dbcluster" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Datenbank-Cluster</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="ms-sql-alwayson">
+                        <span class="applist-col-name"><strong>MS SQL Server Always On</strong></span>
+                        <span class="applist-col-vendor">Microsoft</span>
+                        <span class="applist-col-version">2022</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">4</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load Balancer -->
+            <div class="syslist-group" id="grp-loadbalancer" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Load Balancer</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="f5-bigip">
+                        <span class="applist-col-name"><strong>F5 BIG-IP</strong></span>
+                        <span class="applist-col-vendor">F5 Networks</span>
+                        <span class="applist-col-version">v17</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medizinische Gateways -->
+            <div class="syslist-group" id="grp-medgateway" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Medizinische Gateways</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="mirth-connect">
+                        <span class="applist-col-name"><strong>Mirth Connect</strong></span>
+                        <span class="applist-col-vendor">NextGen Healthcare</span>
+                        <span class="applist-col-version">4.2</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--high">3 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">6</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Betriebssysteme -->
+            <div class="syslist-group" id="grp-operatingsystem" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Betriebssysteme</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row approw--expandable" data-name="windows-server">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Windows
+                                Server</strong></span>
+                        <span class="applist-col-vendor">Microsoft</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                        <span class="applist-col-patch"><span class="syslist-status syslist-status--wartung">Update
+                                verfügbar</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">38</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">2022</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span
+                                    class="syslist-badge syslist-badge--komp">34</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">2019</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                            <span class="appver-patch"><span class="syslist-status syslist-status--wartung">Update
+                                    verfügbar</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">4</span></span>
+                        </div>
+                    </div>
+                    <div class="syslist-row approw--expandable" data-name="ubuntu-server">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Ubuntu Server
+                                LTS</strong></span>
+                        <span class="applist-col-vendor">Canonical</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                        <span class="applist-col-patch"><span class="syslist-status syslist-status--wartung">Update
+                                verfügbar</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">14</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">22.04</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span
+                                    class="syslist-badge syslist-badge--komp">12</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">20.04</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                            <span class="appver-patch"><span class="syslist-status syslist-status--wartung">Update
+                                    verfügbar</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIEM-Systeme -->
+            <div class="syslist-group" id="grp-siem" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">SIEM-Systeme</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="splunk-enterprise">
+                        <span class="applist-col-name"><strong>Splunk Enterprise Security</strong></span>
+                        <span class="applist-col-vendor">Splunk</span>
+                        <span class="applist-col-version">9.2</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Firewall-Software -->
+            <div class="syslist-group" id="grp-firewall" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Firewall-Software</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="palo-alto-ngfw">
+                        <span class="applist-col-name"><strong>Palo Alto Networks NGFW</strong></span>
+                        <span class="applist-col-vendor">Palo Alto Networks</span>
+                        <span class="applist-col-version">PAN-OS 11</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">3</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="syslist-row approw--expandable" data-name="fortinet-fortigate">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Fortinet
+                                FortiGate</strong></span>
+                        <span class="applist-col-vendor">Fortinet</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--medium">2 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">FortiOS 7.4</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">1</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">FortiOS 7.2</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">2 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">1</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proxy-Server -->
+            <div class="syslist-group" id="grp-proxy" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Proxy-Server</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="zscaler">
+                        <span class="applist-col-name"><strong>Zscaler Internet Access</strong></span>
+                        <span class="applist-col-vendor">Zscaler</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">18</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VPN-Lösungen -->
+            <div class="syslist-group" id="grp-vpn" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">VPN-Lösungen</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="cisco-anyconnect">
+                        <span class="applist-col-name"><strong>Cisco AnyConnect</strong></span>
+                        <span class="applist-col-vendor">Cisco</span>
+                        <span class="applist-col-version">4.10</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hypervisoren -->
+            <div class="syslist-group" id="grp-hypervisor" data-typ="it">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Hypervisoren</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row approw--expandable" data-name="vmware-vsphere">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>VMware
+                                vSphere</strong></span>
+                        <span class="applist-col-vendor">Broadcom (VMware)</span>
+                        <span class="applist-col-version"><span class="approw-vercount">3 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--high">3 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">10</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">v8.0 U2</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">5</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">v7.0 U3</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                            <span class="appver-patch"><span class="syslist-status syslist-status--wartung">Update
+                                    verfügbar</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">3</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">v6.7 U3</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--high">3 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                        </div>
+                    </div>
+                    <div class="syslist-row" data-name="ms-hyperv">
+                        <span class="applist-col-name"><strong>Microsoft Hyper-V</strong></span>
+                        <span class="applist-col-vendor">Microsoft</span>
+                        <span class="applist-col-version">Server 2022</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">3</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Krankenhausinformationssysteme -->
+            <div class="syslist-group" id="grp-kis" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Krankenhausinformationssysteme</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row approw--expandable" data-name="orbis">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Orbis</strong></span>
+                        <span class="applist-col-vendor">Dedalus HealthCare</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">v2.9</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">1</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">v2.7</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">1 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">1</span></span>
+                        </div>
+                    </div>
+                    <div class="syslist-row" data-name="sap-health">
+                        <span class="applist-col-name"><strong>SAP Health</strong></span>
+                        <span class="applist-col-vendor">SAP</span>
+                        <span class="applist-col-version">S/4HANA</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PACS -->
+            <div class="syslist-group" id="grp-pacs" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">PACS</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="chili-pacs">
+                        <span class="applist-col-name"><strong>Chili PACS</strong></span>
+                        <span class="applist-col-vendor">Chili GmbH</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radiologie (RIS) -->
+            <div class="syslist-group" id="grp-radiologie" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Radiologie (RIS)</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="medavis-ris">
+                        <span class="applist-col-name"><strong>Medavis RIS</strong></span>
+                        <span class="applist-col-vendor">Medavis</span>
+                        <span class="applist-col-version">6.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Labor (LIS) -->
+            <div class="syslist-group" id="grp-lab" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Labor (LIS)</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="lauris-online">
+                        <span class="applist-col-name"><strong>Lauris Online</strong></span>
+                        <span class="applist-col-vendor">Soliton</span>
+                        <span class="applist-col-version">5.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patientendatenmanagementsystem -->
+            <div class="syslist-group" id="grp-pdms" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Patientendatenmanagementsystem</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="metavision">
+                        <span class="applist-col-name"><strong>Metavision</strong></span>
+                        <span class="applist-col-vendor">iMDsoft</span>
+                        <span class="applist-col-version">6.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pflegedokumentation -->
+            <div class="syslist-group" id="grp-pflege" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Pflegedokumentation</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="e-plex">
+                        <span class="applist-col-name"><strong>E-Plex</strong></span>
+                        <span class="applist-col-vendor">Dedalus HealthCare</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">4</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OP-Management -->
+            <div class="syslist-group" id="grp-op-management" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">OP-Management</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="nursingexpert-op">
+                        <span class="applist-col-name"><strong>NursingExpert OP</strong></span>
+                        <span class="applist-col-vendor">Nexus AG</span>
+                        <span class="applist-col-version">5.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notaufnahme -->
+            <div class="syslist-group" id="grp-notaufnahme" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Notaufnahme</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="cliniccentre-emergency">
+                        <span class="applist-col-name"><strong>ClinicCentre Emergency</strong></span>
+                        <span class="applist-col-vendor">Siemens Healthineers</span>
+                        <span class="applist-col-version">4.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kardiologie -->
+            <div class="syslist-group" id="grp-kardiologie" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Kardiologie</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="scia-expert">
+                        <span class="applist-col-name"><strong>SCIA Expert</strong></span>
+                        <span class="applist-col-vendor">Getemed</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onkologie -->
+            <div class="syslist-group" id="grp-onkologie" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Onkologie</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="imed-oncology">
+                        <span class="applist-col-name"><strong>iMed Oncology</strong></span>
+                        <span class="applist-col-vendor">iMed Medical</span>
+                        <span class="applist-col-version">2.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mikrobiologie -->
+            <div class="syslist-group" id="grp-mikrobiologie" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Mikrobiologie</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="hybase">
+                        <span class="applist-col-name"><strong>HYBASE</strong></span>
+                        <span class="applist-col-vendor">Meditrans</span>
+                        <span class="applist-col-version">4.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pathologie -->
+            <div class="syslist-group" id="grp-pathologie" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Pathologie</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="pathowin">
+                        <span class="applist-col-name"><strong>Pathowin</strong></span>
+                        <span class="applist-col-vendor">Westlab</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transfusionsmedizin -->
+            <div class="syslist-group" id="grp-transfusion" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Transfusionsmedizin</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="itransfusion">
+                        <span class="applist-col-name"><strong>iTransfusion</strong></span>
+                        <span class="applist-col-vendor">Haemonetics</span>
+                        <span class="applist-col-version">7.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialyse -->
+            <div class="syslist-group" id="grp-dialyse" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Dialyse</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="nephroplus">
+                        <span class="applist-col-name"><strong>NephroPlus</strong></span>
+                        <span class="applist-col-vendor">B. Braun</span>
+                        <span class="applist-col-version">2.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strahlentherapie -->
+            <div class="syslist-group" id="grp-strahlentherapie" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Strahlentherapie</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="eclipse-tps">
+                        <span class="applist-col-name"><strong>Eclipse TPS</strong></span>
+                        <span class="applist-col-vendor">Varian Medical</span>
+                        <span class="applist-col-version">16.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nuklearmedizin -->
+            <div class="syslist-group" id="grp-nuklearmedizin" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Nuklearmedizin</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="medview-nm">
+                        <span class="applist-col-name"><strong>MedView NM</strong></span>
+                        <span class="applist-col-vendor">Hermes Medical</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Endoskopie -->
+            <div class="syslist-group" id="grp-endo" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Endoskopie</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="endobase">
+                        <span class="applist-col-name"><strong>EndoBase</strong></span>
+                        <span class="applist-col-vendor">Olympus</span>
+                        <span class="applist-col-version">2.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schlaflabor -->
+            <div class="syslist-group" id="grp-schlaflabor" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Schlaflabor</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="somnomedics-domino">
+                        <span class="applist-col-name"><strong>SomnoMedics DOMINO</strong></span>
+                        <span class="applist-col-vendor">SomnoMedics</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rehabilitation -->
+            <div class="syslist-group" id="grp-reha" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Rehabilitation</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="rehavital">
+                        <span class="applist-col-name"><strong>RehaVital</strong></span>
+                        <span class="applist-col-vendor">RehaVital GmbH</span>
+                        <span class="applist-col-version">4.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Geburtshilfe -->
+            <div class="syslist-group" id="grp-geburtshilfe" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Geburtshilfe</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="peridata">
+                        <span class="applist-col-name"><strong>PeriData</strong></span>
+                        <span class="applist-col-vendor">Viewpoint</span>
+                        <span class="applist-col-version">5.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Psychiatrie -->
+            <div class="syslist-group" id="grp-psychatrie" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Psychiatrie</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="openmedical-psych">
+                        <span class="applist-col-name"><strong>OpenMedical Psych</strong></span>
+                        <span class="applist-col-vendor">OpenMedical</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wundmanagement -->
+            <div class="syslist-group" id="grp-wundmanagement" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Wundmanagement</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="wunddoku">
+                        <span class="applist-col-name"><strong>WundDoku</strong></span>
+                        <span class="applist-col-vendor">WundDoku GmbH</span>
+                        <span class="applist-col-version">2.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hygiene -->
+            <div class="syslist-group" id="grp-hygiene" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Hygiene</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="hygdoc">
+                        <span class="applist-col-name"><strong>HygDoc</strong></span>
+                        <span class="applist-col-vendor">Hospitch</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">3</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Klin. Entscheidungsunterstützung -->
+            <div class="syslist-group" id="grp-cdss" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Klin. Entscheidungsunterstützung</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="isabel-ddx">
+                        <span class="applist-col-name"><strong>Isabel DDx</strong></span>
+                        <span class="applist-col-vendor">Isabel Healthcare</span>
+                        <span class="applist-col-version">5.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Telemedizin -->
+            <div class="syslist-group" id="grp-telemedizin" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Telemedizin</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="teleclinic">
+                        <span class="applist-col-name"><strong>TeleClinic</strong></span>
+                        <span class="applist-col-vendor">TeleClinic GmbH</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Klinische Studien -->
+            <div class="syslist-group" id="grp-klinische-studien" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Klinische Studien</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="openclinica">
+                        <span class="applist-col-name"><strong>OpenClinica Enterprise</strong></span>
+                        <span class="applist-col-vendor">Veeva Systems</span>
+                        <span class="applist-col-version">7.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medizin-Controlling -->
+            <div class="syslist-group" id="grp-medizin-controlling" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Medizin-Controlling</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="id-diacos-pharma">
+                        <span class="applist-col-name"><strong>ID DIACOS Pharma</strong></span>
+                        <span class="applist-col-vendor">ID Information &amp; Data</span>
+                        <span class="applist-col-version">14.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arztbrief -->
+            <div class="syslist-group" id="grp-arztbrief" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Arztbrief</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="epikur-arztbrief">
+                        <span class="applist-col-name"><strong>Epikur Arztbrief</strong></span>
+                        <span class="applist-col-vendor">Epikur Software</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TI-Konnektor -->
+            <div class="syslist-group" id="grp-konnektor" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">TI-Konnektor</span>
+                    <span class="syslist-group-count">2</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row approw--expandable" data-name="secunet-konnektor">
+                        <span class="applist-col-name"><span class="approw-toggle">▸</span><strong>Secunet
+                                Konnektor</strong></span>
+                        <span class="applist-col-vendor">secunet Security</span>
+                        <span class="applist-col-version"><span class="approw-vercount">2 Versionen</span></span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--medium">2 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">4</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                    <div class="approw-versions" style="display:none;">
+                        <div class="approw-version-item">
+                            <span class="appver-latest"><span class="appver-latest-badge">Neueste</span></span>
+                            <span class="appver-version">5.x</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                        </div>
+                        <div class="approw-version-item">
+                            <span class="appver-latest"></span>
+                            <span class="appver-version">4.x</span>
+                            <span class="appver-cve"><span class="applist-cve applist-cve--medium">2 CVE</span></span>
+                            <span class="appver-patch"><span
+                                    class="syslist-status syslist-status--ausser-betrieb">Veraltet</span></span>
+                            <span class="appver-systems"><span class="syslist-badge syslist-badge--komp">2</span></span>
+                        </div>
+                    </div>
+                    <div class="syslist-row" data-name="rise-konnektor">
+                        <span class="applist-col-name"><strong>RISE Konnektor</strong></span>
+                        <span class="applist-col-vendor">RISE GmbH</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">2</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apotheke -->
+            <div class="syslist-group" id="grp-apo" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Apotheke</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="lauer-taxe">
+                        <span class="applist-col-name"><strong>Lauer-Taxe</strong></span>
+                        <span class="applist-col-vendor">LAUER-FISCHER</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Praxisverwaltung -->
+            <div class="syslist-group" id="grp-praxis" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Praxisverwaltung</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="turbomed">
+                        <span class="applist-col-name"><strong>Turbomed</strong></span>
+                        <span class="applist-col-vendor">CompuGroup Medical</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Praxis-Abrechnung -->
+            <div class="syslist-group" id="grp-praxis-abrechnung" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Praxis-Abrechnung</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="arztplan-abrechnung">
+                        <span class="applist-col-name"><strong>arzTplan Abrechnung</strong></span>
+                        <span class="applist-col-vendor">arzTplan</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Praxis-Dokumentation -->
+            <div class="syslist-group" id="grp-praxis-dokumentation" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Praxis-Dokumentation</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="easymed-doku">
+                        <span class="applist-col-name"><strong>easymed Doku</strong></span>
+                        <span class="applist-col-vendor">easymed GmbH</span>
+                        <span class="applist-col-version">3.x</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Praxis-Labor -->
+            <div class="syslist-group" id="grp-praxis-labor" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Praxis-Labor</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="clinic-win-data-labor">
+                        <span class="applist-col-name"><strong>Clinic Win Data Labor</strong></span>
+                        <span class="applist-col-vendor">Clinic Win Data</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Praxis-Telematik -->
+            <div class="syslist-group" id="grp-praxis-telematik" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Praxis-Telematik</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="kv-safenet">
+                        <span class="applist-col-name"><strong>KV SafeNet</strong></span>
+                        <span class="applist-col-vendor">KV Telematik GmbH</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Praxis-Terminverwaltung -->
+            <div class="syslist-group" id="grp-praxis-terminverwaltung" data-typ="med">
+                <div class="syslist-group-header">
+                    <span class="syslist-group-toggle">▾</span>
+                    <span class="syslist-group-name">Praxis-Terminverwaltung</span>
+                    <span class="syslist-group-count">1</span>
+                </div>
+                <div class="syslist-group-body">
+                    <div class="syslist-row" data-name="doctolib">
+                        <span class="applist-col-name"><strong>Doctolib</strong></span>
+                        <span class="applist-col-vendor">Doctolib GmbH</span>
+                        <span class="applist-col-version">2024</span>
+                        <span class="applist-col-cve"><span class="applist-cve applist-cve--none">0 CVE</span></span>
+                        <span class="applist-col-patch"><span
+                                class="syslist-status syslist-status--aktiv">Aktuell</span></span>
+                        <span class="applist-col-systems"><span
+                                class="syslist-badge syslist-badge--komp">1</span></span>
+                        <span class="applist-col-actions"><button class="syslist-edit-btn"
+                                title="Bearbeiten">✎</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keine Treffer -->
+            <div class="syslist-empty" id="appEmptyMsg" style="display:none;">
+                Keine Applikationen gefunden.
+            </div>
+
         </div>
-
-        <h2 id="dbcluster">Datenbank-Cluster</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Microsoft SQL Server Always On</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Microsoft</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="loadbalancer">Load Balancer</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>F5 BIG-IP</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">F5 Networks</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="medgateway">Medizinische Gateways</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Mirth Connect</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="high">3 CVE</span>
-                    <span class="status" data-status="outdated">Veraltet</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">NextGen Healthcare</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="operatingsystem">Betriebssysteme</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Windows Server 2022</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Microsoft</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>Ubuntu Server 22.04 LTS</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Canonical</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="siem">SIEM-Systeme</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Splunk Enterprise Security</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Splunk</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="firewall">Firewall-Software</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Palo Alto Networks NGFW</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Palo Alto Networks</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>Fortinet FortiGate</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="medium">1 CVE</span>
-                    <span class="status" data-status="updates-available">Update verfügbar</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Fortinet</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="proxy">Proxy-Server</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Zscaler Internet Access</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Zscaler</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="vpn">VPN-Lösungen</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Cisco AnyConnect</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Cisco</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="hypervisor">Hypervisoren</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>VMware vSphere</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Broadcom (VMware)</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>Microsoft Hyper-V</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Microsoft</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== Medizinische Software ==================== -->
-
-        <h2 class="app-section-header" id="medical-software">Medizinische Software</h2>
-
-        <h2 id="kis">Krankenhausinformationssysteme (KIS)</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Orbis</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Dedalus HealthCare</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>SAP Health</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">SAP</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="pacs">PACS</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Chili PACS</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Chili GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="radiologie">Radiologie (RIS)</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Medavis RIS</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Medavis</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="lab">Labor</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Lauris Online</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Soliton</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="pdms">Patientendatenmanagementsystem (PDMS)</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Metavision</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">iMDsoft</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="pflege">Pflegedokumentation</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>E-Plex</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Dedalus HealthCare</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="op-management">OP-Management</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>NursingExpert OP</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Nexus AG</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="notaufnahme">Notaufnahme</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>ClinicCentre Emergency</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Siemens Healthineers</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="kardiologie">Kardiologie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>SCIA Expert</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Getemed</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="onkologie">Onkologie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>iMed Oncology</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">iMed Medical</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="mikrobiologie">Mikrobiologie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>HYBASE</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Meditrans</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="pathologie">Pathologie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Pathowin</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Westlab</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="transfusion">Transfusionsmedizin</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>iTransfusion</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Haemonetics</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="dialyse">Dialyse</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>NephroPlus</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">B. Braun</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="strahlentherapie">Strahlentherapie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Eclipse TPS</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Varian Medical Systems</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="nuklearmedizin">Nuklearmedizin</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>MedView NM</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Invia Medical Imaging</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="endo">Endoskopie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>EndoBase</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Henke-Sass Wolf</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="schlaflabor">Schlaflabor</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>SomnoMedics DOMINO</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">SomnoMedics GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="reha">Rehabilitation</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>RehaVital</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">MediFox</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="geburtshilfe">Geburtshilfe</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>PeriData</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">PeriData Software GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="psychatrie">Psychiatrie</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>OpenMedical Psych</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">OpenMedical GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="wundmanagement">Wundmanagement</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>WundDoku</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Savantis</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="hygiene">Hygiene</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>HygDoc</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Kliniken.de</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="cdss">Klinische Entscheidungsunterstützung (CDSS)</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Isabel DDx</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Isabel Healthcare</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="telemedizin">Telemedizin</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>TeleClinic</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">TeleClinic GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="klinische-studien">Klinische Studien</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>OpenClinica Enterprise</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">OpenClinica</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="medizin-controlling">Medizin-Controlling</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>ID DIACOS Pharma</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">ID GmbH &amp; Co. KGaA</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="arztbrief">Arztbrief</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Epikur Arztbrief</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Epikur Software &amp; IT GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="konnektor">TI-Konnektor</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Secunet konnektor</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Secunet Security Networks AG</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-            <div class="entry">
-                <strong>RISE Konnektor</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Research Industrial Systems Engineering</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="apo">Apotheke</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Lauer-Taxe</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Lauer-Fischer GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="praxis">Praxisverwaltung</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Turbomed</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">CompuGroup Medical</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="praxis-abrechnung">Praxis-Abrechnung</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>arzTplan Abrechnung</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">arzTplan GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="praxis-dokumentation">Praxis-Dokumentation</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>easymed Doku</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">easymed</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="praxis-labor">Praxis-Labor</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Clinic Win Data Labor</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Clinic Win Data GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="praxis-telematik">Praxis-Telematik</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>KV SafeNet</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">KBV / KV-Telematik GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
-        <h2 id="praxis-terminverwaltung">Praxis-Terminverwaltung</h2>
-        <div class="list">
-            <div class="entry">
-                <strong>Doctolib</strong>
-                <div class="securitystatus">
-                    <span class="cvestatus" data-status="none">0 CVE</span>
-                    <span class="status" data-status="up-to-date">Aktuell</span>
-                </div>
-                <div class="taginfo">
-                    <span class="tag">Doctolib GmbH</span>
-                </div>
-                <div class="editbutton">
-                    <button title="Bearbeiten"><i>✎</i></button>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 </div>
+
+<script type="module" src="/template/js/application-management.js"></script>
