@@ -1,0 +1,91 @@
+<aside class="settings-sidebar">
+    <nav class="settings-nav">
+        <section class="settings-nav-section">
+            <h3 class="settings-nav-heading">Wizard-Konfiguration</h3>
+            <ul class="settings-nav-list" id="wizardNavList">
+                <!-- JS loads wizard items here via /api/config/wizards -->
+            </ul>
+        </section>
+    </nav>
+</aside>
+
+<div class="settings-main" id="settingsMain">
+
+    <!-- ==================== Leerer Zustand ==================== -->
+    <div class="settings-empty" id="settingsEmpty">
+        <div class="settings-empty-icon">⚙</div>
+        <h2>Wizard-Konfiguration</h2>
+        <p>Wähle links einen Wizard aus, um seine Konfiguration zu bearbeiten.<br>
+            Änderungen werden als kundenspezifische Konfiguration gespeichert und überschreiben die
+            Standard-Konfiguration.</p>
+    </div>
+
+    <!-- ==================== Editor-Bereich ==================== -->
+    <div class="settings-editor" id="settingsEditor" hidden>
+
+        <!-- Editor-Header -->
+        <div class="editor-header">
+            <div class="editor-header-info">
+                <h2 class="editor-wizard-title" id="editorTitle">Wizard</h2>
+                <span class="editor-config-badge" id="editorBadge"></span>
+            </div>
+            <div class="editor-header-actions">
+                <button class="btn-reset" id="btnResetConfig" title="Auf Standard-Konfiguration zurücksetzen">
+                    Standard wiederherstellen
+                </button>
+                <button class="btn-save-config" id="btnSaveConfig" disabled>
+                    Speichern
+                </button>
+            </div>
+        </div>
+
+        <!-- Ungespeicherte-Änderungen-Hinweis -->
+        <div class="editor-dirty-banner" id="editorDirtyBanner" hidden>
+            <span>⚠ Ungespeicherte Änderungen</span>
+        </div>
+
+        <!-- Seiten-Container (wird von JS befüllt) -->
+        <div class="editor-pages" id="editorPages"></div>
+
+        <!-- "Seite hinzufügen"-Button -->
+        <button class="btn-add-page" id="btnAddPage">+ Neue Seite hinzufügen</button>
+
+    </div>
+
+</div>
+
+<!-- ==================== Feld-Hinzufügen-Dialog ==================== -->
+<dialog class="add-field-dialog" id="addFieldDialog">
+    <form method="dialog" class="add-field-form">
+        <h3>Feld hinzufügen</h3>
+
+        <label class="add-field-label" for="addFieldSearch">Element suchen</label>
+        <input type="search" id="addFieldSearch" class="add-field-search" placeholder="z.B. IP-Adresse, Hostname…"
+            autocomplete="off" />
+
+        <ul class="add-field-list" id="addFieldList"></ul>
+
+        <div class="add-field-footer">
+            <button type="button" class="btn-cancel" id="btnAddFieldCancel">Abbrechen</button>
+        </div>
+    </form>
+</dialog>
+
+<!-- ==================== Seite-Hinzufügen-Dialog ==================== -->
+<dialog class="add-page-dialog" id="addPageDialog">
+    <form method="dialog" class="add-page-form">
+        <h3>Neue Seite</h3>
+
+        <label for="newPageId">Seiten-ID (eindeutig, keine Leerzeichen)</label>
+        <input type="text" id="newPageId" placeholder="z.B. security" pattern="[a-z0-9\-_]+" required
+            autocomplete="off" />
+
+        <label for="newPageLabel">Bezeichnung</label>
+        <input type="text" id="newPageLabel" placeholder="z.B. Sicherheits-Einstellungen" required autocomplete="off" />
+
+        <div class="add-page-footer">
+            <button type="button" class="btn-cancel" id="btnAddPageCancel">Abbrechen</button>
+            <button type="submit" class="btn-confirm" id="btnAddPageConfirm">Hinzufügen</button>
+        </div>
+    </form>
+</dialog>

@@ -6,6 +6,7 @@ use ARPI\Helper\BaseSite;
 use ARPI\API\WizardAPI;
 use ARPI\API\DataAPI;
 use ARPI\API\HelpAPI;
+use ARPI\API\ConfigAPI;
 
 /**
  * Zentraler API-Endpoint
@@ -23,6 +24,13 @@ class API extends BaseSite
         if (strpos($path, '/api/data') === 0) {
             $dataAPI = new DataAPI();
             $dataAPI->handleRequest($path, $method);
+            exit;
+        }
+
+        // Config-API aufrufen
+        if (strpos($path, '/api/config') === 0) {
+            $configAPI = new ConfigAPI();
+            $configAPI->handleRequest($path, $method);
             exit;
         }
 

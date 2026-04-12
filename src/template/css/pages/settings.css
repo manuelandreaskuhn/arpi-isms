@@ -1,0 +1,780 @@
+/* ============================================================
+   Settings Page — Layout
+   ============================================================ */
+
+/* Sicherstellen dass [hidden] immer display:none ist,
+   auch wenn explizite display-Regeln gesetzt sind */
+.settings-main [hidden] {
+    display: none !important;
+}
+
+/* Überschreibe den Standard-main-Padding für Settings-Layout */
+body>main:has(.settings-sidebar) {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* -------- Sidebar -------- */
+.settings-sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #fff;
+    border-right: 1px solid #e2e8f0;
+    overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 24px 0 16px;
+    box-sizing: border-box;
+}
+
+.settings-nav-section {
+    margin-bottom: 24px;
+}
+
+.settings-nav-heading {
+    font-size: 0.70em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #94a3b8;
+    padding: 0 20px 6px;
+    margin: 0;
+    display: block;
+}
+
+.settings-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.settings-nav-list li {
+    margin: 0;
+}
+
+.settings-nav-list .wizard-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 16px 8px 17px;
+    cursor: pointer;
+    font-size: 0.88em;
+    font-weight: 500;
+    color: #334155;
+    border: none;
+    border-left: 3px solid transparent;
+    background: none;
+    border-radius: 0;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.14s, color 0.14s, border-color 0.14s;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.settings-nav-list .wizard-nav-item:hover {
+    background: #f0f7ff;
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.settings-nav-list .wizard-nav-item.active {
+    background: #eff6ff;
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    font-weight: 600;
+}
+
+.wizard-nav-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.badge-custom {
+    font-size: 0.72em;
+    font-weight: 600;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 2px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* -------- Main-Bereich -------- */
+.settings-main {
+    flex: 1;
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
+    background: #f8fafc;
+}
+
+/* -------- Leerer Zustand -------- */
+.settings-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 400px;
+    color: #94a3b8;
+    text-align: center;
+    padding: 48px;
+    gap: 12px;
+}
+
+.settings-empty-icon {
+    font-size: 3em;
+    line-height: 1;
+    opacity: 0.4;
+}
+
+.settings-empty h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #64748b;
+}
+
+.settings-empty p {
+    margin: 0;
+    font-size: 0.88em;
+    line-height: 1.6;
+    max-width: 440px;
+}
+
+/* ============================================================
+   Editor
+   ============================================================ */
+
+.settings-editor {
+    padding: 28px 32px;
+    max-width: 960px;
+}
+
+/* -------- Editor-Header -------- */
+.editor-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.editor-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.editor-wizard-title {
+    margin: 0;
+    font-size: 1.4em;
+    color: #1e293b;
+}
+
+.editor-config-badge {
+    font-size: 0.75em;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.editor-config-badge.badge-default {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.editor-config-badge.badge-custom {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.editor-header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* -------- Dirty-Banner -------- */
+.editor-dirty-banner {
+    background: #fef9c3;
+    border: 1px solid #fde047;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.83em;
+    color: #713f12;
+    margin-bottom: 16px;
+}
+
+/* -------- Buttons -------- */
+.btn-save-config {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 0.88em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+}
+
+.btn-save-config:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.btn-save-config:not(:disabled):hover {
+    background: #2176ae;
+}
+
+.btn-reset {
+    background: transparent;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.btn-reset:hover {
+    background: #fef2f2;
+    border-color: #dc2626;
+}
+
+.btn-add-page {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    color: #64748b;
+    font-size: 0.88em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.btn-add-page:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #f0f7ff;
+}
+
+/* ============================================================
+   Seiten-Karten
+   ============================================================ */
+
+.editor-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.page-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.15s;
+}
+
+.page-card.drag-over {
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.page-card.dragging {
+    opacity: 0.55;
+}
+
+/* -------- Seiten-Header -------- */
+.page-card-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: grab;
+    gap: 10px;
+    user-select: none;
+}
+
+.page-card-header:active {
+    cursor: grabbing;
+}
+
+.page-drag-handle {
+    color: #cbd5e1;
+    font-size: 1.1em;
+    flex-shrink: 0;
+    cursor: grab;
+    line-height: 1;
+}
+
+.page-order-badge {
+    font-size: 0.72em;
+    font-weight: 700;
+    background: #e2e8f0;
+    color: #475569;
+    padding: 2px 8px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.page-label-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #1e293b;
+    padding: 2px 4px;
+    border-radius: 4px;
+    min-width: 0;
+    transition: background 0.14s;
+}
+
+.page-label-input:focus {
+    outline: none;
+    background: #eff6ff;
+}
+
+.page-badge-input {
+    width: 90px;
+    border: 1px solid transparent;
+    background: transparent;
+    font-size: 0.75em;
+    color: #64748b;
+    padding: 2px 6px;
+    border-radius: 6px;
+    transition: border-color 0.14s, background 0.14s;
+    text-align: center;
+}
+
+.page-badge-input:focus {
+    outline: none;
+    border-color: #93c5fd;
+    background: #eff6ff;
+}
+
+.page-header-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.btn-page-collapse {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 1em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: color 0.12s, transform 0.2s;
+}
+
+.btn-page-collapse:hover {
+    color: var(--primary-color);
+}
+
+.btn-page-collapse.collapsed {
+    transform: rotate(-90deg);
+}
+
+.btn-page-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #cbd5e1;
+    font-size: 1em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: color 0.12s;
+}
+
+.btn-page-delete:hover {
+    color: #dc2626;
+}
+
+/* -------- Felder-Liste -------- */
+.page-fields {
+    padding: 10px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 44px;
+}
+
+.page-fields.collapsed {
+    display: none;
+}
+
+.page-fields-drop-zone {
+    min-height: 44px;
+    border-radius: 8px;
+    transition: background 0.14s;
+}
+
+.page-fields-drop-zone.drag-over-fields {
+    background: #eff6ff;
+    outline: 2px dashed #93c5fd;
+    outline-offset: -2px;
+}
+
+/* -------- Feld-Zeile -------- */
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    background: #f8fafc;
+    border: 1px solid #e9eef4;
+    border-radius: 8px;
+    transition: box-shadow 0.12s, background 0.12s;
+    cursor: grab;
+}
+
+.field-row:active {
+    cursor: grabbing;
+}
+
+.field-row.dragging {
+    opacity: 0.5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.field-row.drag-over {
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.field-drag-handle {
+    color: #cbd5e1;
+    font-size: 1em;
+    flex-shrink: 0;
+    cursor: grab;
+    line-height: 1;
+}
+
+.field-label-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 0.88em;
+    font-weight: 500;
+    color: #334155;
+    padding: 1px 4px;
+    border-radius: 4px;
+    min-width: 0;
+    transition: background 0.14s;
+}
+
+.field-label-input:focus {
+    outline: none;
+    background: #eff6ff;
+}
+
+.field-element-tag {
+    font-size: 0.73em;
+    font-weight: 500;
+    background: #f1f5f9;
+    color: #64748b;
+    padding: 2px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.field-required-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75em;
+    color: #94a3b8;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.field-required-toggle input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.field-required-toggle.required-active {
+    color: #dc2626;
+}
+
+.field-move-select {
+    font-size: 0.75em;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #64748b;
+    background: #fff;
+    cursor: pointer;
+    max-width: 130px;
+}
+
+.field-move-select:focus {
+    outline: none;
+    border-color: #93c5fd;
+}
+
+.btn-field-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #cbd5e1;
+    font-size: 1em;
+    padding: 2px 4px;
+    border-radius: 4px;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: color 0.12s;
+}
+
+.btn-field-delete:hover {
+    color: #dc2626;
+}
+
+/* -------- Feld hinzufügen -------- */
+.btn-add-field {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    margin-top: 6px;
+    background: transparent;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 0.82em;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.14s, color 0.14s, background 0.14s;
+}
+
+.btn-add-field:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #f0f7ff;
+}
+
+/* ============================================================
+   Dialoge
+   ============================================================ */
+
+dialog {
+    border: none;
+    border-radius: 14px;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    max-width: 480px;
+    width: 90vw;
+}
+
+dialog::backdrop {
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.add-field-form,
+.add-page-form {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.add-field-form h3,
+.add-page-form h3 {
+    margin: 0 0 4px;
+    font-size: 1.05em;
+    color: #1e293b;
+}
+
+.add-field-label {
+    font-size: 0.83em;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.add-field-search {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.88em;
+    box-sizing: border-box;
+    transition: border-color 0.14s;
+}
+
+.add-field-search:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.add-field-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 320px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.add-field-list .element-group-header {
+    padding: 6px 14px 4px;
+    font-size: 0.70em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #94a3b8;
+    background: #f8fafc;
+    border-bottom: 1px solid #f1f5f9;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    cursor: default;
+    pointer-events: none;
+}
+
+.add-field-list .element-item {
+    padding: 8px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.12s;
+}
+
+.add-field-list .element-item:last-child {
+    border-bottom: none;
+}
+
+.add-field-list .element-item:hover {
+    background: #eff6ff;
+}
+
+.add-field-list .element-list-empty {
+    padding: 14px;
+    color: #94a3b8;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+.add-field-list .element-name {
+    font-size: 0.88em;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.add-field-list .element-desc {
+    font-size: 0.77em;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.add-page-form label {
+    font-size: 0.83em;
+    font-weight: 600;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.add-page-form input[type="text"] {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.88em;
+    transition: border-color 0.14s;
+}
+
+.add-page-form input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.add-field-footer,
+.add-page-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background 0.14s;
+}
+
+.btn-cancel:hover {
+    background: #f1f5f9;
+}
+
+.btn-confirm {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.14s;
+}
+
+.btn-confirm:hover {
+    background: #2176ae;
+}
+
+/* ============================================================
+   Loading-State
+   ============================================================ */
+
+.editor-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    color: #94a3b8;
+    font-size: 0.9em;
+}
+
+.editor-error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 10px;
+    padding: 16px 20px;
+    color: #dc2626;
+    font-size: 0.88em;
+    margin: 20px 0;
+}

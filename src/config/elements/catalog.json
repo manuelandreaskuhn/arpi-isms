@@ -371,8 +371,8 @@
             "id": "checkbox-group",
             "type": "checkbox-group",
             "html_tag": "isms-checkboxes",
-            "label": "Auswahl",
-            "description": "Mehrfachauswahl aus vorgegebenen Optionen (speichert als Array)",
+            "label": "Auswahl (Mehrfach)",
+            "description": "Mehrfachauswahl via Checkboxen — mehrere Optionen gleichzeitig wählbar, Wert wird als Array gespeichert. Geeignet für Kategorien, Tags oder Funktionen.",
             "options": []
         },
         {
@@ -399,8 +399,8 @@
             "id": "radio-group",
             "type": "radio",
             "html_tag": "isms-radio",
-            "label": "Auswahl",
-            "description": "Einzelauswahl aus vorgegebenen Optionen (Radio-Buttons)",
+            "label": "Auswahl (Einzeln, Radio)",
+            "description": "Einzelauswahl via Radio-Buttons — genau eine Option wählbar, alle Optionen direkt sichtbar. Geeignet für wenige (2–5) klar unterschiedliche Alternativen.",
             "options": []
         },
         {
@@ -444,8 +444,8 @@
             "id": "select-input",
             "type": "select",
             "html_tag": "isms-select",
-            "label": "Auswahl",
-            "description": "Dropdown-Auswahl aus vorgegebenen Optionen",
+            "label": "Auswahl (Dropdown)",
+            "description": "Einzelauswahl via Dropdown-Menü — platzsparend, eine Option wählbar. Geeignet für längere Optionslisten oder wenn die Standardauswahl überwiegt.",
             "options": []
         },
         {
