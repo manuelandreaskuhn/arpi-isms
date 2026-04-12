@@ -4,7 +4,6 @@
   "collection": "hypervisors",
   "uuid_prefix": "hypervisor_",
   "icon": "hypervisor",
-  "template_path": "pages/wizards/komponenten/new-hypervisor.html",
   "messages": {
     "create_success": "Hypervisor erstellt",
     "update_success": "Hypervisor aktualisiert",
@@ -201,6 +200,117 @@
             "operator": "eq",
             "value": true
           }
+        },
+        {
+          "name": "storagemode",
+          "element": "radio-group",
+          "label": "Storage-Typ",
+          "options": [
+            {
+              "value": "host-based",
+              "label": "Host-basiert",
+              "description": "Verteilter Storage über alle Hosts"
+            },
+            {
+              "value": "external",
+              "label": "Extern",
+              "description": "Zentrales Storage-System (SAN/NAS)"
+            }
+          ]
+        },
+        {
+          "name": "estoragename",
+          "element": "text-input",
+          "label": "Storage-System",
+          "placeholder": "z.B. SAN-Cluster-01",
+          "condition": {
+            "field": "storagemode",
+            "operator": "eq",
+            "value": "external"
+          }
+        },
+        {
+          "name": "estoragetech",
+          "element": "select-input",
+          "label": "Storage-Technologie",
+          "condition": {
+            "field": "storagemode",
+            "operator": "eq",
+            "value": "external"
+          },
+          "options": [
+            {
+              "value": "san-fc",
+              "label": "SAN (Fibre Channel)"
+            },
+            {
+              "value": "san-iscsi",
+              "label": "SAN (iSCSI)"
+            },
+            {
+              "value": "nas",
+              "label": "NAS"
+            },
+            {
+              "value": "object-storage",
+              "label": "Object Storage"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        },
+        {
+          "name": "estoragecapacity",
+          "element": "number-input",
+          "label": "Kapazität (TB)",
+          "placeholder": "z.B. 50",
+          "condition": {
+            "field": "storagemode",
+            "operator": "eq",
+            "value": "external"
+          }
+        },
+        {
+          "name": "estorageredundancy",
+          "element": "select-input",
+          "label": "Redundanz",
+          "condition": {
+            "field": "storagemode",
+            "operator": "eq",
+            "value": "external"
+          },
+          "options": [
+            {
+              "value": "raid1",
+              "label": "RAID 1 (Mirror)"
+            },
+            {
+              "value": "raid5",
+              "label": "RAID 5"
+            },
+            {
+              "value": "raid6",
+              "label": "RAID 6"
+            },
+            {
+              "value": "raid10",
+              "label": "RAID 10"
+            },
+            {
+              "value": "erasure-coding",
+              "label": "Erasure Coding"
+            },
+            {
+              "value": "replication",
+              "label": "Replikation"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
         }
       ]
     },
@@ -269,6 +379,45 @@
           "element": "text-input",
           "label": "CPU Overcommit-Verhältnis",
           "placeholder": "z.B. 4:1"
+        },
+        {
+          "name": "datastorename",
+          "element": "text-input",
+          "label": "Datastore / Storage Pool",
+          "placeholder": "z.B. datastore1, local-ssd"
+        },
+        {
+          "name": "storagecapacity",
+          "element": "number-input",
+          "label": "Storage-Kapazität (TB)",
+          "placeholder": "z.B. 10, 50"
+        },
+        {
+          "name": "storageredundancy",
+          "element": "select-input",
+          "label": "Storage-Redundanz",
+          "options": [
+            {
+              "value": "none",
+              "label": "Keine"
+            },
+            {
+              "value": "raid1",
+              "label": "RAID 1 (Mirror)"
+            },
+            {
+              "value": "raid5",
+              "label": "RAID 5"
+            },
+            {
+              "value": "raid6",
+              "label": "RAID 6"
+            },
+            {
+              "value": "raid10",
+              "label": "RAID 10"
+            }
+          ]
         }
       ]
     },
@@ -306,6 +455,12 @@
           "element": "text-input",
           "label": "Distributed / Virtual Switch",
           "placeholder": "z.B. vDS-Production, dvSwitch01"
+        },
+        {
+          "name": "physicalnics",
+          "element": "text-input",
+          "label": "Physische NICs / Uplinks",
+          "placeholder": "z.B. 4x 10GbE, 2x 25GbE"
         }
       ]
     },
@@ -459,7 +614,6 @@
   "form_id": "newHypervisorForm",
   "breadcrumb_label": "Neuen Hypervisor anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/hypervisor-help.html",
   "software_data": {
     "hypervisorsoftware": "hypervisor"
   }

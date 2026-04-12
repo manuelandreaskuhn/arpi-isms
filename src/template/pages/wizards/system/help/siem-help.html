@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="siem-enabled">
+    <div data-tooltip-id="siemid">
         <h2>System ist an SIEM angebunden</h2>
         <p>Sendet dieses System Sicherheitslogs an ein zentrales SIEM?</p>
         <div>
@@ -23,7 +23,7 @@
         <em>Kritische Systeme sollten IMMER an SIEM angebunden sein!</em>
     </div>
 
-    <div data-tooltip-id="siem-component">
+    <div data-tooltip-id="siemid">
         <h2>SIEM-System Komponente</h2>
         <p>Welches SIEM-System wird verwendet?</p>
         <div>
@@ -63,7 +63,7 @@
         <em>Das SIEM muss vorher als Komponente angelegt worden sein</em>
     </div>
 
-    <div data-tooltip-id="siem-host-assignment">
+    <div data-tooltip-id="siemlogs">
         <h2>An SIEM angeschlossene Komponenten</h2>
         <p>Welche VMs und Server senden ihre Logs an das SIEM?</p>
         <div>
@@ -86,7 +86,7 @@
         <em>Mehr Abdeckung = bessere Sicherheit, aber auch mehr Kosten</em>
     </div>
 
-    <div data-tooltip-id="siem-log-sources">
+    <div data-tooltip-id="siemlogs">
         <h2>Log-Quellen</h2>
         <p>Welche Arten von Logs werden gesammelt?</p>
         <div>
@@ -155,7 +155,7 @@
         <em>Mehr Log-Typen = bessere Sichtbarkeit, aber mehr Speicher und Kosten</em>
     </div>
 
-    <div data-tooltip-id="siem-database-selection">
+    <div data-tooltip-id="siemlogs">
         <h2>Datenbanken mit Log-Übertragung</h2>
         <p>Welche Datenbanken senden Logs ans SIEM?</p>
         <div>
@@ -179,7 +179,7 @@
         <em>Bei Patientendaten: DB-Logging ist Pflicht (DSGVO Art. 32)!</em>
     </div>
 
-    <div data-tooltip-id="siem-log-protocol">
+    <div data-tooltip-id="siemlogprotocol">
         <h2>Log-Transport-Protokoll</h2>
         <p>Wie werden die Logs zum SIEM übertragen?</p>
         <div>
@@ -233,7 +233,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="siem-collector">
+    <div data-tooltip-id="siemcollector">
         <h2>SIEM Collector / Forwarder</h2>
         <p>Die Zwischenstation zwischen System und zentralem SIEM.</p>
         <div>
@@ -265,7 +265,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="siem-log-volume">
+    <div data-tooltip-id="siemlogvolume">
         <h2>Log-Volume (täglich)</h2>
         <p>Wie viel Log-Daten produziert dieses System pro Tag?</p>
         <div>
@@ -297,7 +297,7 @@
         <em>Bei pay-per-GB: Genaue Messung = Kostenersparnis!</em>
     </div>
 
-    <div data-tooltip-id="siem-eps">
+    <div data-tooltip-id="siemeps">
         <h2>Events per Second (EPS)</h2>
         <p>Wie viele Log-Events pro Sekunde werden generiert?</p>
         <div>
@@ -324,7 +324,7 @@
         <em>Spitzen-Zeiten beachten - EPS kann stark schwanken!</em>
     </div>
 
-    <div data-tooltip-id="siem-use-cases">
+    <div data-tooltip-id="siemusecases">
         <h2>Aktive Use Cases</h2>
         <p>Welche Security-Szenarien werden für dieses System überwacht?</p>
         <div>
@@ -350,7 +350,7 @@
         <em>Je mehr Use Cases, desto besser die Security-Abdeckung</em>
     </div>
 
-    <div data-tooltip-id="siem-mitre">
+    <div data-tooltip-id="siemmitrecoverage">
         <h2>MITRE ATT&CK Coverage</h2>
         <p>Welche Angriffstechniken nach MITRE ATT&CK Framework werden abgedeckt?</p>
         <div>
@@ -379,7 +379,7 @@
         <em>MITRE ATT&CK hilft, Lücken in der Detection zu finden</em>
     </div>
 
-    <div data-tooltip-id="siem-alert-priority">
+    <div data-tooltip-id="siemalertpriority">
         <h2>Alert-Priorität</h2>
         <p>Wie kritisch sind Alerts von diesem System?</p>
         <div>
@@ -426,7 +426,7 @@
         <em>Kritikalität des Systems bestimmt Alert-Priorität</em>
     </div>
 
-    <div data-tooltip-id="siem-alert-recipients">
+    <div data-tooltip-id="siemalertrecipients">
         <h2>Alert-Empfänger</h2>
         <p>Wer wird bei Security-Alerts benachrichtigt?</p>
         <div>
@@ -450,7 +450,7 @@
         <em>Alert-Fatigue vermeiden - nur relevante Empfänger!</em>
     </div>
 
-    <div data-tooltip-id="siem-alert-count">
+    <div data-tooltip-id="siemalertcount">
         <h2>Durchschnittliche Alert-Anzahl</h2>
         <p>Wie viele Alerts werden typischerweise generiert?</p>
         <div>
@@ -472,7 +472,7 @@
         <em>Viele Alerts ≠ gute Security. Qualität > Quantität!</em>
     </div>
 
-    <div data-tooltip-id="siem-response-sla">
+    <div data-tooltip-id="siemresponsesla">
         <h2>Incident Response Zeit (SLA)</h2>
         <p>Wie schnell muss auf Alerts reagiert werden?</p>
         <div>
@@ -491,7 +491,7 @@
         <em>SLA muss realistisch und erreichbar sein!</em>
     </div>
 
-    <div data-tooltip-id="siem-soar">
+    <div data-tooltip-id="siemsoar">
         <h2>SOAR Integration</h2>
         <p>Gibt es automatisierte Reaktionen auf Security-Events?</p>
         <div>
@@ -531,7 +531,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="siem-retention">
+    <div data-tooltip-id="siemretention">
         <h2>Log-Retention</h2>
         <p>Wie lange werden Logs im SIEM aufbewahrt?</p>
         <div>
@@ -569,7 +569,7 @@
         <em>Bei Patientendaten: Mindestens 2 Jahre gemäß DSGVO!</em>
     </div>
 
-    <div data-tooltip-id="siem-compliance">
+    <div data-tooltip-id="siemcompliance">
         <h2>Compliance-Anforderungen</h2>
         <p>Welche regulatorischen Anforderungen gelten für dieses System?</p>
         <div>
@@ -584,7 +584,7 @@
         <em>Compliance bestimmt Log-Retention und Monitoring-Anforderungen</em>
     </div>
 
-    <div data-tooltip-id="siem-dashboard">
+    <div data-tooltip-id="siemdashboard">
         <h2>SIEM-Dashboard URL</h2>
         <p>Link zum spezifischen Dashboard für dieses System.</p>
         <div>
@@ -604,7 +604,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="siem-reporting">
+    <div data-tooltip-id="siemreporting">
         <h2>Reporting-Frequenz</h2>
         <p>Wie oft werden Security-Reports erstellt?</p>
         <div>
@@ -627,7 +627,7 @@
         </div>
     </div>
     
-    <div data-tooltip-id="siem-notes">
+    <div data-tooltip-id="siemnotes">
         <h2>Systemspezifische SIEM-Notizen</h2>
         <p>Zusätzliche wichtige Informationen zur SIEM-Integration.</p>
         <div>

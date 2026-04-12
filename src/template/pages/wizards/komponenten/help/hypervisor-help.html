@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="hypervisor-name">
+    <div data-tooltip-id="hypervisorname">
         <h2>Hypervisor Name</h2>
         <p>Ein eindeutiger Name für Ihren Hypervisor oder Cluster.</p>
         <div>
@@ -27,7 +27,7 @@
         <em>Ohne Virtualisierung bräuchten Sie für jede Anwendung einen eigenen Server!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-type">
+    <div data-tooltip-id="hypervisortype">
         <h2>Typ / Hersteller</h2>
         <p>Welche Virtualisierungs-Software wird verwendet?</p>
         <div>
@@ -85,7 +85,7 @@
         <em>Wahl hängt ab von: Budget, Expertise, Ökosystem (Windows vs Linux)</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-version">
+    <div data-tooltip-id="hypervisorversion">
         <h2>Version</h2>
         <p>Die installierte Hypervisor-Version.</p>
         <div>
@@ -117,7 +117,7 @@
         <em>Hypervisor MUSS aktuell gehalten werden - alte Versionen = Angriffspunkt!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-mgmt-url">
+    <div data-tooltip-id="mgmturl">
         <h2>Management IP / URL</h2>
         <p>Die Adresse zur Verwaltung des Hypervisors.</p>
         <div>
@@ -141,7 +141,7 @@
         <em>Management-Zugriff ist kritisch - wenn kompromittiert, sind ALLE VMs gefährdet!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-cluster">
+    <div data-tooltip-id="iscluster">
         <h2>Cluster-Konfiguration</h2>
         <p>Laufen mehrere Hypervisor-Hosts zusammen als Cluster?</p>
         <div>
@@ -167,7 +167,7 @@
         <em>Für kritische Systeme (KIS, PACS): Cluster ist Pflicht!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-cluster-name">
+    <div data-tooltip-id="clustername">
         <h2>Cluster Name</h2>
         <p>Der Name des Clusters (Gruppe von Hosts).</p>
         <div>
@@ -181,7 +181,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-cluster-hosts">
+    <div data-tooltip-id="hostlist">
         <h2>Anzahl Hosts im Cluster</h2>
         <p>Wie viele physische Server sind im Cluster?</p>
         <div>
@@ -204,7 +204,7 @@
         <em>Minimum 3 Hosts empfohlen - sonst kein echtes HA!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-ha">
+    <div data-tooltip-id="ha">
         <h2>HA (High Availability)</h2>
         <p>Automatischer Neustart von VMs bei Host-Ausfall.</p>
         <div>
@@ -237,7 +237,7 @@
         <em>HA aktivieren ist Best Practice für Produktiv-Cluster!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-drs">
+    <div data-tooltip-id="drs">
         <h2>DRS / Load Balancing</h2>
         <p>Automatische Lastverteilung von VMs über Hosts.</p>
         <div>
@@ -287,7 +287,7 @@
         <em>DRS ist "Luxus" aber sehr praktisch - spart viel manuelle Arbeit!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-storage-type">
+    <div data-tooltip-id="storagetype">
         <h2>Storage-Typ</h2>
         <p>Architektur des Storage-Systems für virtuelle Maschinen.</p>
         <div>
@@ -372,7 +372,7 @@
         <em>Trend geht zu host-basiert (vSAN, HCI), aber externes Storage noch weit verbreitet!</em>
     </div>
 
-    <div data-tooltip-id="external-storage-name">
+    <div data-tooltip-id="estoragename">
         <h2>Storage-System</h2>
         <p>Name des externen Storage-Systems.</p>
         <div>
@@ -387,7 +387,7 @@
         <em>Name sollte eindeutig sein und System identifizierbar machen.</em>
     </div>
 
-    <div data-tooltip-id="external-storage-tech">
+    <div data-tooltip-id="estoragetech">
         <h2>Storage-Technologie</h2>
         <p>Wie ist das externe Storage-System angebunden?</p>
         <div>
@@ -432,7 +432,7 @@
         <em>Wahl hängt ab von: Budget, Performance-Anforderungen, Expertise</em>
     </div>
 
-    <div data-tooltip-id="external-storage-capacity">
+    <div data-tooltip-id="estoragecapacity">
         <h2>Kapazität (TB)</h2>
         <p>Verfügbarer Storage-Platz auf dem externen System.</p>
         <div>
@@ -461,7 +461,7 @@
         <em>Lieber zu viel Storage als zu wenig - volles Storage = VMs können nicht starten!</em>
     </div>
 
-    <div data-tooltip-id="external-storage-redundancy">
+    <div data-tooltip-id="estorageredundancy">
         <h2>Redundanz</h2>
         <p>Wie sind die Daten gegen Ausfall geschützt?</p>
         <div>
@@ -537,7 +537,7 @@
         <em>RAID ist KEIN Backup! Redundanz schützt vor Hardware-Ausfall, nicht vor Fehlern/Viren!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-hostlist">
+    <div data-tooltip-id="hostlist">
         <h2>Host-Liste / Hostnames</h2>
         <p>Die einzelnen physischen Server im Cluster.</p>
         <div>
@@ -562,7 +562,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-location">
+    <div data-tooltip-id="location">
         <h2>Standort / Rechenzentrum</h2>
         <p>Wo stehen die physischen Server?</p>
         <div>
@@ -580,7 +580,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-hostname">
+    <div data-tooltip-id="hostname">
         <h2>Hostname</h2>
         <p>Der vollständige Hostname (FQDN) des Hypervisor-Hosts.</p>
         <div>
@@ -601,7 +601,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-location-cluster">
+    <div data-tooltip-id="location">
         <h2>Standort / Rechenzentrum (Cluster)</h2>
         <p>Der physische Standort des gesamten Clusters.</p>
         <div>
@@ -618,7 +618,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-cpu">
+    <div data-tooltip-id="hostname">
         <h2>CPU Cores</h2>
         <p>Anzahl der verfügbaren CPU-Kerne des einzelnen Hosts.</p>
         <div>
@@ -636,7 +636,7 @@
         <em>Mehr Cores = mehr VMs gleichzeitig laufen lassen!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-ram">
+    <div data-tooltip-id="hostname">
         <h2>RAM</h2>
         <p>Verfügbarer Arbeitsspeicher des einzelnen Hosts in GB.</p>
         <div>
@@ -653,7 +653,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-storage">
+    <div data-tooltip-id="storagecapacity">
         <h2>Storage</h2>
         <p>Verfügbarer lokaler Storage des einzelnen Hosts in TB.</p>
         <div>
@@ -667,7 +667,7 @@
         <em>Nur bei host-basiertem Storage relevant!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-storage-type-single">
+    <div data-tooltip-id="storagetype">
         <h2>Storage-Typ (Einzelhost)</h2>
         <p>Wie ist der Storage an den einzelnen Host angebunden?</p>
         <div>
@@ -682,7 +682,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-datastore">
+    <div data-tooltip-id="datastorename">
         <h2>Datastore / Storage Pool Name</h2>
         <p>Der Name des primären Datastores in Ihrer Hypervisor-Umgebung.</p>
         <div>
@@ -699,7 +699,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-storage-capacity">
+    <div data-tooltip-id="storagecapacity">
         <h2>Storage Kapazität</h2>
         <p>Verfügbarer Speicherplatz für VMs in TB.</p>
         <div>
@@ -714,7 +714,7 @@
         <em>Snapshots und Thin Provisioning brauchen extra Platz!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-total-cpu">
+    <div data-tooltip-id="totalcpu">
         <h2>Gesamt CPU Cores</h2>
         <p>Die Summe aller physischen CPU-Kerne über alle Hosts.</p>
         <div>
@@ -739,7 +739,7 @@
         <em>Mehr Cores = mehr VMs, aber beachte auch RAM und Storage als limitierende Faktoren!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-total-ram">
+    <div data-tooltip-id="totalram">
         <h2>Gesamt RAM (GB)</h2>
         <p>Die Summe aller physischen RAM über alle Hosts.</p>
         <div>
@@ -769,7 +769,7 @@
         <em>RAM-Engpässe führen zu Swapping = drastische Performance-Einbußen!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-total-storage">
+    <div data-tooltip-id="totalstorage">
         <h2>Gesamt Storage (TB)</h2>
         <p>Gesamter verfügbarer Storage für VMs.</p>
         <div>
@@ -801,7 +801,7 @@
         <em>Voller Storage = keine neuen VMs, Snapshots können nicht erstellt werden!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-storage-type">
+    <div data-tooltip-id="storagetype">
         <h2>Storage-Typ</h2>
         <p>Wie ist der Storage angebunden?</p>
         <div>
@@ -851,7 +851,7 @@
         <em>Shared Storage ist Voraussetzung für HA und vMotion!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-vm-count">
+    <div data-tooltip-id="vmcount">
         <h2>Anzahl VMs (aktuell)</h2>
         <p>Wie viele VMs laufen derzeit auf dem Cluster?</p>
         <div>
@@ -868,7 +868,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-cpu-overcommit">
+    <div data-tooltip-id="cpuovercommit">
         <h2>Overcommitment Ratio (CPU)</h2>
         <p>Wie viele vCPUs pro physischem Core?</p>
         <div>
@@ -904,7 +904,7 @@
         <em>4:1 ist sicher für gemischte Workloads, 8:1 funktioniert oft, mehr ist riskant</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-mgmt-network">
+    <div data-tooltip-id="mgmtnetwork">
         <h2>Management Netzwerk</h2>
         <p>Das Netzwerk für Hypervisor-Management.</p>
         <div>
@@ -929,7 +929,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-vmotion-network">
+    <div data-tooltip-id="vmotionnetwork">
         <h2>vMotion / Live Migration Netzwerk</h2>
         <p>Das Netzwerk für Live-Migration von VMs zwischen Hosts.</p>
         <div>
@@ -961,7 +961,7 @@
         <em>Langsames vMotion-Netzwerk = Migration dauert Minuten statt Sekunden!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-storage-network">
+    <div data-tooltip-id="storagenetwork">
         <h2>Storage Netzwerk</h2>
         <p>Das Netzwerk für Storage-Kommunikation (iSCSI, NFS).</p>
         <div>
@@ -988,7 +988,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-vm-networks">
+    <div data-tooltip-id="vmnetworks">
         <h2>VM Netzwerke / Port Groups</h2>
         <p>Die Netzwerke, die VMs nutzen können.</p>
         <div>
@@ -1010,7 +1010,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-vswitch">
+    <div data-tooltip-id="vswitch">
         <h2>Distributed Switch / Virtual Switch</h2>
         <p>Der virtuelle Switch für Netzwerk-Konfiguration.</p>
         <div>
@@ -1027,7 +1027,7 @@
         <em>Distributed Switch ist Pflicht für größere Umgebungen!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-physical-nics">
+    <div data-tooltip-id="physicalnics">
         <h2>Physische NICs / Uplinks</h2>
         <p>Die physischen Netzwerkkarten (Network Interface Cards) im Server.</p>
         <div>
@@ -1067,7 +1067,7 @@
         <em>Mehr NICs = bessere Performance + Redundanz, aber auch höhere Kosten!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-mgmt-tool">
+    <div data-tooltip-id="mgmttool">
         <h2>Management-Tool</h2>
         <p>Die Software zur Verwaltung des Hypervisors.</p>
         <div>
@@ -1086,7 +1086,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="hypervisor-monitoring">
+    <div data-tooltip-id="monitoringid">
         <h2>Monitoring / Alerting</h2>
         <p>Wie wird der Hypervisor überwacht?</p>
         <div>
@@ -1112,7 +1112,7 @@
         <em>Hypervisor-Ausfall = viele VMs down - Monitoring ist kritisch!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-backup">
+    <div data-tooltip-id="backupid">
         <h2>Backup-Lösung</h2>
         <p>Welche Software sichert die VMs?</p>
         <div>
@@ -1132,7 +1132,7 @@
         <em>VM-Backup ist essentiell - Snapshots sind KEIN Backup!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-license-model">
+    <div data-tooltip-id="licensemodel">
         <h2>Lizenzmodell</h2>
         <p>Wie wird der Hypervisor lizenziert?</p>
         <div>
@@ -1163,7 +1163,7 @@
         <em>Lizenzkosten können sehr hoch sein (mehrere 10.000 EUR/Jahr) - gut planen und vergleichen!</em>
     </div>
 
-    <div data-tooltip-id="hypervisor-support-level">
+    <div data-tooltip-id="supportlevel">
         <h2>Support-Level</h2>
         <p>Welchen Support-Vertrag haben Sie?</p>
         <div>
@@ -1179,7 +1179,7 @@
         <em>Bei kritischen Clustern: 24/7 Support ist Pflicht!</em>
     </div>
     
-    <div data-tooltip-id="hypervisor-notes">
+    <div data-tooltip-id="hypervisornotes">
         <h2>Notizen / Besonderheiten</h2>
         <p>Zusätzliche wichtige Informationen zum Hypervisor.</p>
         <div>

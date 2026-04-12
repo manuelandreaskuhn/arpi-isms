@@ -4,7 +4,6 @@
   "collection": "backup_systems",
   "uuid_prefix": "backup_",
   "icon": "backup",
-  "template_path": "pages/wizards/komponenten/new-backup.html",
   "messages": {
     "create_success": "Backup-System erfolgreich erstellt",
     "update_success": "Backup-System aktualisiert",
@@ -370,7 +369,6 @@
   "form_id": "newBackupSystemForm",
   "breadcrumb_label": "Neues Backup-System anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/backup-help.html",
   "software_data": {
     "backupsoftware": "backup"
   }

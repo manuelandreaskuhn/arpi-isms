@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="network-name">
+    <div data-tooltip-id="networkname">
         <h2>Netzwerk-Name</h2>
         <p>Ein eindeutiger, beschreibender Name für das Netzwerk-Segment.</p>
         <div>
@@ -27,7 +27,7 @@
         <em>Gute Namen = schnelleres Verständnis der Netzwerk-Architektur!</em>
     </div>
 
-    <div data-tooltip-id="network-type">
+    <div data-tooltip-id="networktype">
         <h2>Netzwerk-Typ</h2>
         <p>Die Art bzw. Funktion des Netzwerks.</p>
         <div>
@@ -103,7 +103,7 @@
         <em>Verschiedene Netzwerk-Typen haben unterschiedliche Security- und Performance-Anforderungen!</em>
     </div>
 
-    <div data-tooltip-id="network-vlan-id">
+    <div data-tooltip-id="vlanid">
         <h2>VLAN-ID</h2>
         <p>Die eindeutige Nummer des VLANs (1-4094).</p>
         <div>
@@ -128,7 +128,7 @@
         <em>VLAN 1 niemals produktiv nutzen - Sicherheitsrisiko!</em>
     </div>
 
-    <div data-tooltip-id="network-cidr">
+    <div data-tooltip-id="networkcidr">
         <h2>Netzwerk-Adresse (CIDR)</h2>
         <p>Die IP-Adresse und Größe des Netzwerks in CIDR-Notation.</p>
         <div>
@@ -178,7 +178,7 @@
         <em>CIDR-Rechner nutzen für komplexes Subnetting: ipcalc, sipcalc, subnet-calculator.com</em>
     </div>
 
-    <div data-tooltip-id="network-gateway">
+    <div data-tooltip-id="gateway">
         <h2>Gateway / Router</h2>
         <p>Die IP-Adresse des Standard-Gateways (meist der Router).</p>
         <div>
@@ -200,7 +200,7 @@
         <em>Gateway ist meist erste oder letzte nutzbare IP des Netzes</em>
     </div>
 
-    <div data-tooltip-id="network-dhcp">
+    <div data-tooltip-id="dhcpsnooping">
         <h2>DHCP (Dynamic Host Configuration Protocol)</h2>
         <p>Automatische IP-Vergabe an Geräte.</p>
         <div>
@@ -259,7 +259,7 @@
         <em>Faustregel: Server = statisch, Clients = DHCP, Drucker/IoT = DHCP-Reservierung</em>
     </div>
 
-    <div data-tooltip-id="network-dhcp-pool">
+    <div data-tooltip-id="dhcpsnooping">
         <h2>DHCP-Pool (IP-Range)</h2>
         <p>Der Bereich von IPs, die DHCP vergeben darf.</p>
         <div>
@@ -299,7 +299,7 @@
         <em>Gut geplante IP-Ranges erleichtern Troubleshooting enorm!</em>
     </div>
 
-    <div data-tooltip-id="network-dhcp-lease">
+    <div data-tooltip-id="dhcpsnooping">
         <h2>DHCP-Lease-Zeit</h2>
         <p>Wie lange eine IP-Adresse "gemietet" wird bevor Erneuerung nötig ist.</p>
         <div>
@@ -361,7 +361,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="network-security-zone">
+    <div data-tooltip-id="securityzone">
         <h2>Sicherheitszone</h2>
         <p>Die Vertrauensstufe dieses Netzwerks.</p>
         <div>
@@ -420,7 +420,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="network-isolation">
+    <div data-tooltip-id="isolation">
         <h2>Netzwerk-Isolation</h2>
         <p>Wie stark ist dieses Netz von anderen getrennt?</p>
         <div>
@@ -454,7 +454,7 @@
         <em>Mehr Isolation = höhere Sicherheit, aber komplexere Verwaltung</em>
     </div>
 
-    <div data-tooltip-id="network-802-1x">
+    <div data-tooltip-id="dot1x">
         <h2>802.1X (Port-based NAC)</h2>
         <p>Authentifizierung bevor Netzwerkzugang gewährt wird.</p>
         <div>
@@ -519,7 +519,7 @@
         <em>802.1X + EAP-TLS ist Gold-Standard für Enterprise-Security!</em>
     </div>
 
-    <div data-tooltip-id="network-mac-filtering">
+    <div data-tooltip-id="macfiltering">
         <h2>MAC-Adress-Filtering</h2>
         <p>Zugriffskontrolle basierend auf Hardware-Adressen.</p>
         <div>
@@ -544,7 +544,7 @@
         <em>MAC-Filtering = Security durch Obskurität, nicht wirklich sicher!</em>
     </div>
 
-    <div data-tooltip-id="network-dhcp-snooping">
+    <div data-tooltip-id="dhcpsnooping">
         <h2>DHCP Snooping</h2>
         <p>Schutz vor Rogue DHCP-Servern.</p>
         <div>
@@ -608,7 +608,7 @@
         <em>DHCP Snooping ist Layer-2-Security-Grundlage - immer aktivieren!</em>
     </div>
 
-    <div data-tooltip-id="network-arp-inspection">
+    <div data-tooltip-id="arpinspection">
         <h2>Dynamic ARP Inspection (DAI)</h2>
         <p>Schutz vor ARP-Spoofing/Poisoning-Angriffen.</p>
         <div>
@@ -675,7 +675,7 @@
         <em>DAI verhindert effektiv ARP-Man-in-the-Middle-Angriffe!</em>
     </div>
 
-    <div data-tooltip-id="network-spanning-tree">
+    <div data-tooltip-id="spanningtree">
         <h2>STP/RSTP/MSTP (Spanning Tree Protocol)</h2>
         <p>Verhindert Switch-Loops und ermöglicht redundante Pfade.</p>
         <div>
@@ -762,7 +762,7 @@
         <em>RSTP ist absolute Pflicht bei redundanten Switch-Topologien!</em>
     </div>
 
-    <div data-tooltip-id="network-lacp">
+    <div data-tooltip-id="lacp">
         <h2>Link Aggregation (LACP)</h2>
         <p>Mehrere Netzwerk-Links zu einem logischen bündeln.</p>
         <div>
@@ -791,7 +791,7 @@
         <em>LACP ist Standard für Server-Uplinks!</em>
     </div>
 
-    <div data-tooltip-id="network-vrrp">
+    <div data-tooltip-id="gatewayredundancy">
         <h2>VRRP/HSRP/GLBP (Gateway Redundancy)</h2>
         <p>Redundante Default-Gateways für Hochverfügbarkeit.</p>
         <div>
@@ -897,7 +897,7 @@
         <em>Gateway-Redundanz ist absolute Pflicht für produktive Netze!</em>
     </div>
 
-    <div data-tooltip-id="network-qos">
+    <div data-tooltip-id="qosenabled">
         <h2>QoS (Quality of Service)</h2>
         <p>Priorisierung und Verwaltung von Netzwerk-Traffic.</p>
         <div>
@@ -1034,7 +1034,7 @@
         <em>QoS ist essentiell für VoIP, Video und Unified Communications!</em>
     </div>
 
-    <div data-tooltip-id="network-netflow">
+    <div data-tooltip-id="flowmonitoring">
         <h2>NetFlow / sFlow / IPFIX</h2>
         <p>Monitoring von Netzwerk-Traffic-Flows.</p>
         <div>
@@ -1086,7 +1086,7 @@
         <em>Flow-Monitoring = "Wer spricht mit wem im Netzwerk"</em>
     </div>
 
-    <div data-tooltip-id="network-vpn">
+    <div data-tooltip-id="vpnenabled">
         <h2>VPN (Virtual Private Network)</h2>
         <p>Verschlüsselte Netzwerk-Verbindung.</p>
         <div>
@@ -1122,7 +1122,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="network-compliance">
+    <div data-tooltip-id="compliance">
         <h2>Compliance-Anforderungen</h2>
         <p>Welche gesetzlichen/regulatorischen Standards müssen erfüllt werden?</p>
         <div>
@@ -1166,7 +1166,7 @@
         <em>Compliance ist nicht optional - bei Verstößen drohen Millionen-Bußgelder!</em>
     </div>
 
-    <div data-tooltip-id="network-ipam">
+    <div data-tooltip-id="ipam">
         <h2>IP-Adress-Management (IPAM)</h2>
         <p>Tool zur Verwaltung von IP-Adressen.</p>
         <div>
@@ -1191,7 +1191,7 @@
         <em>Excel ist KEIN IPAM - ab 100+ IPs besser echtes Tool nutzen!</em>
     </div>
 
-    <div data-tooltip-id="network-notes">
+    <div data-tooltip-id="networknotes">
         <h2>Notizen / Netzwerk-Besonderheiten</h2>
         <p>Zusätzliche wichtige Informationen zu diesem Netzwerk.</p>
         <div>

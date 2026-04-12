@@ -31,6 +31,7 @@ class WizardRenderer
 
     /**
      * Rendert alle Seiten eines Wizards als zusammenhängendes HTML.
+     * Unterstützt: fields, dynamic-list, embedded-one
      *
      * @param string $wizardId    ID des Wizards (z.B. "firewall")
      * @param array  $formValues  Aktuelle Formular-Werte (für Edit-Ansicht)
@@ -41,20 +42,59 @@ class WizardRenderer
         $html  = '';
 
         foreach ($pages as $index => $page) {
-            // Nur Seiten mit Feldern rendern; dynamic-list/embedded-one vorerst überspringen
-            if (isset($page['type']) && $page['type'] !== 'fields') {
-                continue;
-            }
-
+            $type    = $page['type'] ?? 'fields';
             $isFirst = ($index === 0);
-            $html   .= $this->renderPage($page, $isFirst, $formValues);
+
+            $html .= match ($type) {
+                'dynamic-list'  => $this->renderDynamicList($page),
+                'embedded-one'  => $this->renderEmbeddedOne($page, $formValues),
+                default         => $this->renderPage($page, $isFirst, $formValues),
+            };
         }
 
         return $html;
     }
 
     /**
-     * Rendert eine einzelne Wizard-Seite als form-section.
+     * Rendert `<template>`-Blöcke für alle dynamic-list-Seiten eines Wizards.
+     * Diese müssen AUSSERHALB des `<form>`-Tags in das DOM eingefügt werden.
+     *
+     * @param string $wizardId  ID des Wizards
+     */
+    public function renderEntryTemplates(string $wizardId): string
+    {
+        $pages = $this->loader->getResolvedPages($wizardId);
+        $html  = '';
+
+        foreach ($pages as $page) {
+            if (($page['type'] ?? '') !== 'dynamic-list') {
+                continue;
+            }
+
+            $entryType  = htmlspecialchars($page['entry_type']  ?? '', ENT_QUOTES);
+            $entryTitle = htmlspecialchars($page['entry_title'] ?? '', ENT_QUOTES);
+            $templateId = $entryType . 'EntryTemplate';
+
+            $html .= '<template id="' . $templateId . '">' . "\n";
+            $html .= '    <div class="dynamic-entry" data-type="' . $entryType . '">' . "\n";
+            $html .= '        <div class="entry-header">' . "\n";
+            $html .= '            <span class="entry-title">' . $entryTitle
+                . ' #<span class="entry-number"></span></span>' . "\n";
+            $html .= '            <button type="button" class="btn-remove-entry"'
+                . ' onclick="removeEntry(this, \'' . $entryType . '\')">×</button>' . "\n";
+            $html .= '        </div>' . "\n";
+            $html .= '        <div class="entry-content">' . "\n";
+            $html .= $this->renderFields($page['fields'] ?? [], []);
+            $html .= '        </div>' . "\n";
+            $html .= '    </div>' . "\n";
+            $html .= '</template>' . "\n";
+        }
+
+        return $html;
+    }
+
+    /**
+     * Rendert eine einzelne Wizard-Seite als form-section (type: fields).
      *
      * @param array $page        Aufgelöste Seiten-Konfiguration
      * @param bool  $isFirst     Erste Seite ist standardmäßig ausgeklappt
@@ -75,6 +115,82 @@ class WizardRenderer
         // Software-Info-Panels nach dem section-content einfügen
         $html .= $this->renderSoftwareInfoPanels($fields);
 
+        $html .= '</div>' . "\n";
+
+        return $html;
+    }
+
+    /**
+     * Rendert eine dynamic-list Seite: leere Liste + Add-Button + optionaler CMDB-Search.
+     * Die eigentlichen Eintrags-Felder werden in <template>-Blöcken durch renderEntryTemplates() generiert.
+     */
+    private function renderDynamicList(array $page): string
+    {
+        $entryType   = $page['entry_type']       ?? '';
+        $addFn       = htmlspecialchars($page['add_fn']       ?? '', ENT_QUOTES);
+        $addLabel    = htmlspecialchars($page['add_label']    ?? 'Eintrag hinzuf\u00fcgen', ENT_QUOTES);
+        $helpText    = $page['help_text']         ?? '';
+        $cmdbType    = $page['cmdb_search_type']  ?? null;
+        $listId      = htmlspecialchars($entryType . 'List', ENT_QUOTES);
+        $sectionName = htmlspecialchars($page['section_name'] ?? $page['entity_property'] ?? '', ENT_QUOTES);
+        $condition   = $this->buildConditionAttr($page['condition'] ?? null);
+
+        $html  = '<div class="form-section collapsed" data-name="' . $sectionName . '"' . $condition . '>' . "\n";
+        $html .= $this->renderSectionTitle($page, 0);
+        $html .= '    <div class="section-content">' . "\n";
+
+        if ($helpText !== '') {
+            $html .= '        <div class="help-text">' . htmlspecialchars($helpText, ENT_QUOTES) . '</div>' . "\n";
+        }
+
+        $html .= '        <div id="' . $listId . '" class="dynamic-list"></div>' . "\n";
+
+        if ($cmdbType !== null) {
+            $cmdbTypeEsc = htmlspecialchars($cmdbType, ENT_QUOTES);
+            $html .= '        <div class="buttonlist">' . "\n";
+            $html .= '            <button type="button" class="btn-add-item" onclick="' . $addFn . '()">' . "\n";
+            $html .= '                <span>+</span> ' . $addLabel . "\n";
+            $html .= '            </button>' . "\n";
+            $html .= '            <button type="button" class="btn-search-cmdb"'
+                . ' onclick="openCMDBSearch(\'' . $cmdbTypeEsc . '\')">' . "\n";
+            $html .= '                <span></span> Suche existierende ' . $addLabel . "\n";
+            $html .= '            </button>' . "\n";
+            $html .= '        </div>' . "\n";
+        } else {
+            $html .= '        <button type="button" class="btn-add-item" onclick="' . $addFn . '()">' . "\n";
+            $html .= '            <span>+</span> ' . $addLabel . "\n";
+            $html .= '        </button>' . "\n";
+        }
+
+        $html .= '    </div>' . "\n";
+        $html .= '</div>' . "\n";
+
+        return $html;
+    }
+
+    /**
+     * Rendert eine embedded-one Seite: Felder direkt in die section-content rendern.
+     * Analog zu renderPage(), aber mit data-name und condition auf der Sektion.
+     */
+    private function renderEmbeddedOne(array $page, array $formValues): string
+    {
+        $fields      = $page['fields'] ?? [];
+        $fieldCount  = $this->countFormFields($fields);
+        $helpText    = $page['help_text'] ?? '';
+        $sectionName = htmlspecialchars($page['section_name'] ?? $page['entity_property'] ?? '', ENT_QUOTES);
+        $condition   = $this->buildConditionAttr($page['condition'] ?? null);
+
+        $html  = '<div class="form-section collapsed" data-name="' . $sectionName . '"' . $condition . '>' . "\n";
+        $html .= $this->renderSectionTitle($page, $fieldCount);
+        $html .= '    <div class="section-content">' . "\n";
+
+        if ($helpText !== '') {
+            $html .= '        <div class="help-text">' . htmlspecialchars($helpText, ENT_QUOTES) . '</div>' . "\n";
+        }
+
+        $html .= $this->renderFields($fields, $formValues);
+        $html .= '    </div>' . "\n";
+        $html .= $this->renderSoftwareInfoPanels($fields);
         $html .= '</div>' . "\n";
 
         return $html;
@@ -278,32 +394,58 @@ class WizardRenderer
 
     private function renderSelect(array $field, string $value): string
     {
-        $name    = htmlspecialchars($field['name'] ?? '', ENT_QUOTES);
-        $options = $field['options'] ?? [];
-        $extra   = $this->buildDataAttributes($field['attributes'] ?? []);
+        $name       = htmlspecialchars($field['name'] ?? '', ENT_QUOTES);
+        $options    = $field['options'] ?? [];
+        $extra      = $this->buildDataAttributes($field['attributes'] ?? []);
+        $searchable = !empty($field['searchable']);
+        $multiple   = !empty($field['multiple']);
 
-        $html  = '                <div class="custom-select" data-name="' . $name . '"' . $extra . '>' . "\n";
+        // Placeholder für Multi-Select anpassen
+        $placeholder = $multiple ? 'Auswählen...' : 'Bitte wählen';
+
+        $multiAttr = $multiple ? ' data-multiple="true"' : '';
+
+        $html  = '                <div class="custom-select" data-name="' . $name . '"' . $multiAttr . $extra . '>' . "\n";
         $html .= '                    <div class="select-trigger">' . "\n";
-        $html .= '                        <span class="placeholder">Bitte wählen</span>' . "\n";
+        $html .= '                        <span class="placeholder">' . htmlspecialchars($placeholder, ENT_QUOTES) . '</span>' . "\n";
         $html .= '                        <span class="arrow">▼</span>' . "\n";
         $html .= '                    </div>' . "\n";
         $html .= '                    <div class="select-dropdown">' . "\n";
+
+        if ($searchable) {
+            $html .= '                        <div class="select-search">' . "\n";
+            $html .= '                            <input type="search" placeholder="Suchen...">' . "\n";
+            $html .= '                        </div>' . "\n";
+        }
+
         $html .= '                        <div class="select-options">' . "\n";
-        $html .= '                            <div class="select-option" data-value="">Bitte wählen</div>' . "\n";
+
+        if (!$multiple) {
+            $html .= '                            <div class="select-option" data-value="">Bitte wählen</div>' . "\n";
+        }
+
+        // Wertemenge für Selected-Check (Multi: Array, Single: Skalar)
+        $selectedValues = $multiple
+            ? (is_array($value) ? $value : (array) json_decode($value ?: '[]', true))
+            : [$value];
 
         if (isset($options[0]['optgroup'])) {
             // Optgruppen
             foreach ($options as $group) {
-                $html .= '                            <div class="select-optgroup">' . htmlspecialchars($group['optgroup'], ENT_QUOTES) . '</div>' . "\n";
+                $html .= '                            <div class="select-group-header">' . htmlspecialchars($group['optgroup'], ENT_QUOTES) . '</div>' . "\n";
                 foreach ($group['items'] as $opt) {
-                    $selected = ($value === ($opt['value'] ?? '')) ? ' data-selected="true"' : '';
-                    $html .= '                            <div class="select-option" data-value="' . htmlspecialchars($opt['value'] ?? '', ENT_QUOTES) . '"' . $selected . '>' . htmlspecialchars($opt['label'] ?? '', ENT_QUOTES) . '</div>' . "\n";
+                    $v        = htmlspecialchars($opt['value'] ?? '', ENT_QUOTES);
+                    $l        = htmlspecialchars($opt['label'] ?? '', ENT_QUOTES);
+                    $selected = in_array($opt['value'] ?? '', $selectedValues, true) ? ' data-selected="true"' : '';
+                    $html    .= '                            <div class="select-option" data-value="' . $v . '"' . $selected . '>' . $l . '</div>' . "\n";
                 }
             }
         } else {
             foreach ($options as $opt) {
-                $selected = ($value === ($opt['value'] ?? '')) ? ' data-selected="true"' : '';
-                $html .= '                            <div class="select-option" data-value="' . htmlspecialchars($opt['value'] ?? '', ENT_QUOTES) . '"' . $selected . '>' . htmlspecialchars($opt['label'] ?? '', ENT_QUOTES) . '</div>' . "\n";
+                $v        = htmlspecialchars($opt['value'] ?? '', ENT_QUOTES);
+                $l        = htmlspecialchars($opt['label'] ?? '', ENT_QUOTES);
+                $selected = in_array($opt['value'] ?? '', $selectedValues, true) ? ' data-selected="true"' : '';
+                $html    .= '                            <div class="select-option" data-value="' . $v . '"' . $selected . '>' . $l . '</div>' . "\n";
             }
         }
 
@@ -415,9 +557,15 @@ class WizardRenderer
 
     private function renderComponentRef(array $field, string $value): string
     {
-        $name         = htmlspecialchars($field['name'] ?? '', ENT_QUOTES);
-        $componentType = htmlspecialchars($field['attributes']['component-type'] ?? '', ENT_QUOTES);
-        $placeholder  = htmlspecialchars($field['placeholder'] ?? 'Komponente auswählen', ENT_QUOTES);
+        $name          = htmlspecialchars($field['name'] ?? '', ENT_QUOTES);
+        $componentType = htmlspecialchars(
+            $field['attributes']['data-component-type'] ?? $field['attributes']['component-type'] ?? '',
+            ENT_QUOTES
+        );
+        $placeholder   = htmlspecialchars(
+            $field['placeholder'] ?? $field['attributes']['placeholder'] ?? 'Komponente auswählen',
+            ENT_QUOTES
+        );
 
         return '                <div class="custom-select component-ref-select" data-name="' . $name . '"'
             . ' data-component-type="' . $componentType . '" data-selected-value="' . htmlspecialchars($value, ENT_QUOTES) . '">' . "\n"
@@ -550,9 +698,16 @@ class WizardRenderer
 
         $field    = htmlspecialchars($condition['field'] ?? '', ENT_QUOTES);
         $operator = htmlspecialchars($condition['operator'] ?? 'eq', ENT_QUOTES);
-        $value    = is_array($condition['value'])
-            ? htmlspecialchars(implode(',', $condition['value']), ENT_QUOTES)
-            : htmlspecialchars((string) $condition['value'], ENT_QUOTES);
+
+        $raw = $condition['value'];
+        if (is_array($raw)) {
+            $value = htmlspecialchars(implode(',', array_map('strval', $raw)), ENT_QUOTES);
+        } elseif (is_bool($raw)) {
+            // JS readFieldValue() returns 'true' when checked, '' when unchecked
+            $value = $raw ? 'true' : '';
+        } else {
+            $value = htmlspecialchars((string) $raw, ENT_QUOTES);
+        }
 
         return ' data-condition-field="' . $field . '"'
             . ' data-condition-op="' . $operator . '"'

@@ -1,0 +1,410 @@
+{
+    "wizard_id": "loadbalancer",
+    "label": "Neuer Load Balancer",
+    "collection": "load_balancers",
+    "uuid_prefix": "loadbalancer_",
+    "icon": "loadbalancer",
+    "messages": {
+        "create_success": "Load Balancer erfolgreich erstellt",
+        "update_success": "Load Balancer erfolgreich aktualisiert",
+        "delete_success": "Load Balancer erfolgreich gelöscht"
+    },
+    "pages": [
+        {
+            "id": "basic",
+            "label": "Basis-Informationen",
+            "badge": "Pflicht",
+            "order": 1,
+            "fields": [
+                {
+                    "name": "name",
+                    "element": "text-name",
+                    "label": "Name",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "element": "software-select",
+                    "label": "Hersteller / Produkt",
+                    "attributes": {
+                        "data-category": "loadbalancer"
+                    },
+                    "info_panel": "lb-software-info-section"
+                },
+                {
+                    "name": "model",
+                    "element": "text-input",
+                    "label": "Modell / Appliance",
+                    "placeholder": "z.B. F5 BIG-IP 2000s, NGINX Plus"
+                },
+                {
+                    "name": "serialnumber",
+                    "element": "serial-number",
+                    "label": "Seriennummer"
+                },
+                {
+                    "name": "version",
+                    "element": "version",
+                    "label": "Software-Version"
+                },
+                {
+                    "name": "environment",
+                    "element": "environment",
+                    "label": "Umgebung",
+                    "required": true
+                },
+                {
+                    "name": "criticality",
+                    "element": "criticality",
+                    "label": "Kritikalität",
+                    "required": true
+                },
+                {
+                    "name": "description",
+                    "element": "text-description",
+                    "label": "Beschreibung"
+                }
+            ]
+        },
+        {
+            "id": "network",
+            "label": "Netzwerk & Adressen",
+            "order": 2,
+            "fields": [
+                {
+                    "name": "managementip",
+                    "element": "ip-address",
+                    "label": "Management-IP",
+                    "required": true
+                },
+                {
+                    "name": "managementurl",
+                    "element": "management-url",
+                    "label": "Management-URL"
+                },
+                {
+                    "name": "vip",
+                    "element": "ip-address",
+                    "label": "Virtual IP (VIP)",
+                    "placeholder": "z.B. 10.0.0.100"
+                },
+                {
+                    "name": "vip_additional",
+                    "element": "text-input",
+                    "label": "Weitere VIPs",
+                    "placeholder": "Kommagetrennte IPs"
+                },
+                {
+                    "name": "location",
+                    "element": "text-location",
+                    "label": "Standort / Rack"
+                },
+                {
+                    "name": "networksegment",
+                    "element": "network-segment",
+                    "label": "Netzwerk-Segment / VLAN"
+                }
+            ]
+        },
+        {
+            "id": "loadbalancing",
+            "label": "Load-Balancing Konfiguration",
+            "order": 3,
+            "fields": [
+                {
+                    "name": "lbmode",
+                    "element": "select-input",
+                    "label": "Betriebsmodus",
+                    "options": [
+                        {
+                            "value": "layer4",
+                            "label": "Layer 4 (TCP/UDP)"
+                        },
+                        {
+                            "value": "layer7",
+                            "label": "Layer 7 (HTTP/HTTPS)"
+                        },
+                        {
+                            "value": "gslb",
+                            "label": "Global Server Load Balancing (GSLB)"
+                        },
+                        {
+                            "value": "adc",
+                            "label": "Application Delivery Controller (ADC)"
+                        }
+                    ]
+                },
+                {
+                    "name": "algorithm",
+                    "element": "select-input",
+                    "label": "Algorithmus",
+                    "options": [
+                        {
+                            "value": "roundrobin",
+                            "label": "Round Robin"
+                        },
+                        {
+                            "value": "leastconn",
+                            "label": "Least Connections"
+                        },
+                        {
+                            "value": "weighted",
+                            "label": "Weighted Round Robin"
+                        },
+                        {
+                            "value": "iphash",
+                            "label": "IP Hash"
+                        },
+                        {
+                            "value": "random",
+                            "label": "Random"
+                        },
+                        {
+                            "value": "resource",
+                            "label": "Resource Based"
+                        }
+                    ]
+                },
+                {
+                    "name": "sessionpersistence",
+                    "element": "select-input",
+                    "label": "Session Persistence",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": "Keine"
+                        },
+                        {
+                            "value": "cookie",
+                            "label": "Cookie-basiert"
+                        },
+                        {
+                            "value": "sourceip",
+                            "label": "Source IP"
+                        },
+                        {
+                            "value": "ssl",
+                            "label": "SSL Session ID"
+                        }
+                    ]
+                },
+                {
+                    "name": "healthcheck",
+                    "element": "select-input",
+                    "label": "Health-Check Methode",
+                    "options": [
+                        {
+                            "value": "tcp",
+                            "label": "TCP (Port-Check)"
+                        },
+                        {
+                            "value": "http",
+                            "label": "HTTP"
+                        },
+                        {
+                            "value": "https",
+                            "label": "HTTPS"
+                        },
+                        {
+                            "value": "ping",
+                            "label": "ICMP Ping"
+                        },
+                        {
+                            "value": "custom",
+                            "label": "Custom Script"
+                        }
+                    ]
+                },
+                {
+                    "name": "healthcheckpath",
+                    "element": "url-input",
+                    "label": "Health-Check URL / Pfad",
+                    "placeholder": "/health oder /status"
+                },
+                {
+                    "name": "checkinterval",
+                    "element": "number-input",
+                    "label": "Check-Intervall (Sekunden)",
+                    "placeholder": "5"
+                },
+                {
+                    "name": "checktimeout",
+                    "element": "number-input",
+                    "label": "Check-Timeout (Sekunden)",
+                    "placeholder": "3"
+                }
+            ]
+        },
+        {
+            "id": "ssl",
+            "label": "SSL / TLS",
+            "order": 4,
+            "fields": [
+                {
+                    "name": "ssltermination",
+                    "element": "select-input",
+                    "label": "SSL Termination",
+                    "options": [
+                        {
+                            "value": "none",
+                            "label": "Kein SSL"
+                        },
+                        {
+                            "value": "termination",
+                            "label": "SSL Termination (am LB)"
+                        },
+                        {
+                            "value": "passthrough",
+                            "label": "SSL Passthrough (zu Backends)"
+                        },
+                        {
+                            "value": "bridging",
+                            "label": "SSL Bridging (Re-encryption)"
+                        }
+                    ]
+                },
+                {
+                    "name": "tlsversion",
+                    "element": "select-input",
+                    "label": "Mindest-TLS-Version",
+                    "options": [
+                        {
+                            "value": "tls12",
+                            "label": "TLS 1.2"
+                        },
+                        {
+                            "value": "tls13",
+                            "label": "TLS 1.3"
+                        },
+                        {
+                            "value": "tls12-13",
+                            "label": "TLS 1.2 + 1.3"
+                        }
+                    ]
+                },
+                {
+                    "name": "certname",
+                    "element": "text-input",
+                    "label": "Zertifikat / CN",
+                    "placeholder": "z.B. *.beispiel.de"
+                },
+                {
+                    "name": "waf",
+                    "element": "toggle",
+                    "label": "WAF (Web Application Firewall)"
+                }
+            ]
+        },
+        {
+            "id": "ha",
+            "label": "High Availability",
+            "order": 5,
+            "fields": [
+                {
+                    "name": "serverhighavailability",
+                    "element": "ha-enabled",
+                    "label": "Hochverfügbarkeit aktiviert"
+                },
+                {
+                    "name": "hamode",
+                    "element": "select-input",
+                    "label": "HA-Modus",
+                    "placeholder": "z.B. Active/Passive",
+                    "condition": {
+                        "field": "serverhighavailability",
+                        "operator": "eq",
+                        "value": true
+                    },
+                    "options": [
+                        {
+                            "value": "active-passive",
+                            "label": "Active / Passive"
+                        },
+                        {
+                            "value": "active-active",
+                            "label": "Active / Active"
+                        },
+                        {
+                            "value": "n-plus-one",
+                            "label": "N+1 Redundanz"
+                        }
+                    ]
+                },
+                {
+                    "name": "hapartner",
+                    "element": "text-input",
+                    "label": "Partner / Standby Load Balancer",
+                    "placeholder": "Name oder IP des Partner-LB",
+                    "condition": {
+                        "field": "serverhighavailability",
+                        "operator": "eq",
+                        "value": true
+                    }
+                }
+            ]
+        },
+        {
+            "id": "monitoring",
+            "label": "Monitoring & Benachrichtigung",
+            "order": 6,
+            "fields": [
+                {
+                    "name": "monitoringid",
+                    "element": "component-reference",
+                    "label": "Monitoring-System",
+                    "attributes": {
+                        "data-component-type": "monitoring",
+                        "placeholder": "Monitoring-System auswählen"
+                    }
+                },
+                {
+                    "name": "monitoringipname",
+                    "element": "text-input",
+                    "label": "Monitoring-System (manuell)",
+                    "condition": {
+                        "field": "monitoringid",
+                        "operator": "eq",
+                        "value": "manual"
+                    }
+                },
+                {
+                    "name": "alertemail",
+                    "element": "alert-email",
+                    "label": "Alarm-E-Mail"
+                }
+            ]
+        },
+        {
+            "id": "maintenance",
+            "label": "Wartung & Support",
+            "order": 7,
+            "fields": [
+                {
+                    "name": "admincontact",
+                    "element": "admin-contact",
+                    "label": "Administrator"
+                },
+                {
+                    "name": "supportcontact",
+                    "element": "support-contact",
+                    "label": "Support-Kontakt"
+                },
+                {
+                    "name": "supportcontract",
+                    "element": "support-contract",
+                    "label": "Support-Vertrag"
+                },
+                {
+                    "name": "supportend",
+                    "element": "support-end-date",
+                    "label": "Support-Vertragsende"
+                },
+                {
+                    "name": "notes",
+                    "element": "notes",
+                    "label": "Notizen"
+                }
+            ]
+        }
+    ]
+}

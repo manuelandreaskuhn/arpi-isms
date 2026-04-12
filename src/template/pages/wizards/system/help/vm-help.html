@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="vm-hostname">
+    <div data-tooltip-id="hostname">
         <h2>Hostname (VM)</h2>
         <p>Der eindeutige Name der virtuellen Maschine im Netzwerk.</p>
         <div>
@@ -25,7 +25,7 @@
         <em>Gute Namen helfen bei Übersicht und Troubleshooting!</em>
     </div>
 
-    <div data-tooltip-id="vm-ip">
+    <div data-tooltip-id="ipaddress">
         <h2>IP-Adresse (VM)</h2>
         <p>Die Netzwerk-Adresse dieser virtuellen Maschine.</p>
         <div>
@@ -46,7 +46,7 @@
         <em>Produktiv-Server sollten IMMER statische IPs haben!</em>
     </div>
 
-    <div data-tooltip-id="vm-os">
+    <div data-tooltip-id="operatingsystem">
         <h2>Betriebssystem (VM)</h2>
         <p>Das installierte Betriebssystem auf dieser VM.</p>
         <div>
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="vm-role">
+    <div data-tooltip-id="serverrole">
         <h2>Rolle / Funktion (VM)</h2>
         <p>Die Hauptaufgabe dieser VM.</p>
         <div>
@@ -84,7 +84,7 @@
         <em>VMs sind ideal für Server-Rollen - flexibel und gut zu verwalten</em>
     </div>
 
-    <div data-tooltip-id="vm-hypervisor">
+    <div data-tooltip-id="hypervisorid">
         <h2>Hypervisor</h2>
         <p>Die Virtualisierungs-Plattform, auf der diese VM läuft.</p>
         <div>
@@ -129,7 +129,7 @@
         <em>Der Hypervisor muss vorher als Komponente angelegt sein</em>
     </div>
 
-    <div data-tooltip-id="vm-esxi-host">
+    <div data-tooltip-id="esxihost">
         <h2>ESXi Host / Physical Host</h2>
         <p>Der spezifische physische Server, auf dem diese VM läuft.</p>
         <div>
@@ -155,7 +155,7 @@
         <em>Optional - bei Cluster kann VM auf verschiedenen Hosts laufen</em>
     </div>
 
-    <div data-tooltip-id="vm-vcpu">
+    <div data-tooltip-id="vcpu">
         <h2>vCPU (Virtuelle CPUs)</h2>
         <p>Anzahl der virtuellen Prozessor-Kerne für diese VM.</p>
         <div>
@@ -185,7 +185,7 @@
         <em>Mehr vCPUs ≠ automatisch schneller!</em>
     </div>
 
-    <div data-tooltip-id="vm-ram">
+    <div data-tooltip-id="ramingb">
         <h2>RAM (Arbeitsspeicher)</h2>
         <p>Der zugewiesene Arbeitsspeicher für diese VM in Gigabyte.</p>
         <div>
@@ -221,7 +221,7 @@
         <em>RAM kann meist live hinzugefügt werden (Hot-Add)</em>
     </div>
 
-    <div data-tooltip-id="vm-storage">
+    <div data-tooltip-id="storageingb">
         <h2>Storage (Festplatten)</h2>
         <p>Der zugewiesene Festplatten-Speicher für diese VM in Gigabyte.</p>
         <div>
@@ -252,7 +252,7 @@
         <em>Storage kann meist online erweitert werden</em>
     </div>
 
-    <div data-tooltip-id="vm-datastore">
+    <div data-tooltip-id="datastore">
         <h2>Datastore / Storage Pool</h2>
         <p>Der Speicherort, wo die VM-Dateien liegen.</p>
         <div>
@@ -286,7 +286,7 @@
         <em>Kritische VMs auf schnelle (SSD) Datastores legen!</em>
     </div>
 
-    <div data-tooltip-id="vm-hw-version">
+    <div data-tooltip-id="hwversion">
         <h2>VM Hardware Version</h2>
         <p>Die Version der virtuellen Hardware-Plattform.</p>
         <div>
@@ -320,7 +320,7 @@
         <em>Neue VMs sollten neueste HW-Version verwenden</em>
     </div>
 
-    <div data-tooltip-id="vm-tools">
+    <div data-tooltip-id="vmtools">
         <h2>VM Tools Status</h2>
         <p>Status der installierten Gast-Tools (VMware Tools, Integration Services).</p>
         <div>
@@ -357,7 +357,7 @@
         <em>VM Tools sollten IMMER installiert und aktuell sein!</em>
     </div>
 
-    <div data-tooltip-id="vm-snapshots">
+    <div data-tooltip-id="snapshots">
         <h2>Snapshots vorhanden</h2>
         <p>Gibt es Snapshots (Momentaufnahmen) dieser VM?</p>
         <div>
@@ -404,7 +404,7 @@
         <em>Snapshots sind KEIN Backup-Ersatz! Nur temporär nutzen.</em>
     </div>
 
-    <div data-tooltip-id="vm-boot-order">
+    <div data-tooltip-id="bootorder">
         <h2>Boot-Reihenfolge</h2>
         <p>In welcher Reihenfolge versucht die VM zu booten?</p>
         <div>

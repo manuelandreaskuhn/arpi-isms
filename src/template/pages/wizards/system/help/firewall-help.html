@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="firewall-selection">
+    <div data-tooltip-id="firewallid">
         <h2>Zentrale Firewall</h2>
         <p>Die Firewall-Appliance oder der Firewall-Dienst, auf dem diese Regel konfiguriert wird.</p>
         <div>
@@ -25,7 +25,7 @@
         <em>Die Firewall muss vorher als Komponente angelegt worden sein</em>
     </div>
 
-    <div data-tooltip-id="rule-name">
+    <div data-tooltip-id="rulename">
         <h2>Regelname / Policy</h2>
         <p>Ein beschreibender Name für diese Firewall-Regel.</p>
         <div>
@@ -56,7 +56,7 @@
         <em>Gute Namen helfen später beim Troubleshooting!</em>
     </div>
 
-    <div data-tooltip-id="rule-priority">
+    <div data-tooltip-id="rulepriority">
         <h2>Regel-Priorität</h2>
         <p>Die Reihenfolge, in der Firewall-Regeln geprüft werden.</p>
         <div>
@@ -87,7 +87,7 @@
         <em>Niedrigere Zahl = höhere Priorität = wird zuerst geprüft</em>
     </div>
 
-    <div data-tooltip-id="source-zone">
+    <div data-tooltip-id="sourcezone">
         <h2>Quell-Zone</h2>
         <p>Die Netzwerk-Zone, aus der der Traffic kommt.</p>
         <div>
@@ -116,7 +116,7 @@
         <em>Zonen helfen, Sicherheitsrichtlinien durchzusetzen</em>
     </div>
 
-    <div data-tooltip-id="dest-zone">
+    <div data-tooltip-id="destzone">
         <h2>Ziel-Zone</h2>
         <p>Die Netzwerk-Zone, in die der Traffic geht.</p>
         <div>
@@ -134,7 +134,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="source-address">
+    <div data-tooltip-id="sourceaddr">
         <h2>Quell-Adresse(n)</h2>
         <p>Die IP-Adresse oder das Netzwerk, von dem der Traffic ausgeht.</p>
         <div>
@@ -159,7 +159,7 @@
         <em>Tipp: Verwenden Sie Objekt-Namen statt IPs - einfacher zu verwalten!</em>
     </div>
 
-    <div data-tooltip-id="dest-address">
+    <div data-tooltip-id="destaddr">
         <h2>Ziel-Adresse(n)</h2>
         <p>Die IP-Adresse oder das Netzwerk, zu dem der Traffic geht.</p>
         <div>
@@ -177,7 +177,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="service-port">
+    <div data-tooltip-id="service">
         <h2>Service / Ports</h2>
         <p>Der Netzwerk-Dienst oder Port, der erlaubt/blockiert werden soll.</p>
         <div>
@@ -205,7 +205,7 @@
         <em>Wichtig: Nur die wirklich benötigten Ports freigeben (Principle of Least Privilege)!</em>
     </div>
 
-    <div data-tooltip-id="rule-action">
+    <div data-tooltip-id="ruleaction">
         <h2>Regel-Aktion</h2>
         <p>Was soll mit dem Traffic passieren?</p>
         <div>
@@ -254,7 +254,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="rule-logging">
+    <div data-tooltip-id="rulelogging">
         <h2>Logging</h2>
         <p>Wie detailliert soll diese Regel protokolliert werden?</p>
         <div>
@@ -302,7 +302,7 @@
         <em>Logs helfen bei Fehlersuche und Sicherheits-Audits!</em>
     </div>
 
-    <div data-tooltip-id="rule-status">
+    <div data-tooltip-id="rulestatus">
         <h2>Regel-Status</h2>
         <p>Ist die Regel aktuell aktiv?</p>
         <div>
@@ -324,7 +324,7 @@
         <em>Tipp: Deaktivierte Regeln nach einiger Zeit löschen, wenn nicht mehr benötigt!</em>
     </div>
 
-    <div data-tooltip-id="nat-enabled">
+    <div data-tooltip-id="nattype">
         <h2>NAT aktivieren</h2>
         <p>Network Address Translation - Übersetzung von IP-Adressen.</p>
         <div>
@@ -351,7 +351,7 @@
         <em>Nicht jede Regel braucht NAT - nur bei Adress-Übersetzung nötig!</em>
     </div>
 
-    <div data-tooltip-id="nat-type">
+    <div data-tooltip-id="nattype">
         <h2>NAT-Typ</h2>
         <p>Die Art der Adress-Übersetzung.</p>
         <div>
@@ -400,7 +400,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="nat-pool">
+    <div data-tooltip-id="natpool">
         <h2>NAT Pool / Adresse</h2>
         <p>Die IP-Adresse(n), auf die übersetzt wird.</p>
         <div>
@@ -421,7 +421,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="nat-original">
+    <div data-tooltip-id="natoriginal">
         <h2>Original IP/Port</h2>
         <p>Die ursprüngliche (interne) IP-Adresse und Port VOR der Übersetzung.</p>
         <div>
@@ -439,7 +439,7 @@
         <em>Dies ist, was intern existiert - nicht von außen sichtbar</em>
     </div>
 
-    <div data-tooltip-id="nat-translated">
+    <div data-tooltip-id="nattranslated">
         <h2>Translated IP/Port</h2>
         <p>Die übersetzte (öffentliche) IP-Adresse und Port NACH der Übersetzung.</p>
         <div>
@@ -460,7 +460,7 @@
         <em>Dies sehen externe Clients - die "Außenansicht"</em>
     </div>
 
-    <div data-tooltip-id="fw-host-assignment">
+    <div data-tooltip-id="fwnotes">
         <h2>Zugeordnete VMs / Server</h2>
         <p>Optional: Dokumentation, welche Server von dieser Regel betroffen sind.</p>
         <div>
@@ -479,7 +479,7 @@
         <em>Hilft dem nächsten Admin zu verstehen, wofür die Regel ist!</em>
     </div>
 
-    <div data-tooltip-id="valid-from">
+    <div data-tooltip-id="validfrom">
         <h2>Gültig von</h2>
         <p>Ab wann ist die Regel aktiv?</p>
         <div>
@@ -500,7 +500,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="valid-to">
+    <div data-tooltip-id="validto">
         <h2>Gültig bis</h2>
         <p>Bis wann ist die Regel aktiv?</p>
         <div>
@@ -580,7 +580,7 @@
         <em>Eine Regel ohne Begründung sollte überprüft werden!</em>
     </div>
 
-    <div data-tooltip-id="fw-notes">
+    <div data-tooltip-id="fwnotes">
         <h2>Notizen / Regeldetails</h2>
         <p>Zusätzliche wichtige Informationen zu dieser Regel.</p>
         <div>

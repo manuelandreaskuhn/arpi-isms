@@ -5,7 +5,6 @@
   "uuid_prefix": "system_",
   "icon": "system",
   "note": "System nutzt MongoDB ObjectId statt UUID. Zeitstempel-Feld heißt updatedAt (camelCase) statt updatedat.",
-  "template_path": "pages/wizards/system/new-system.html",
   "messages": {
     "create_success": "System erfolgreich erstellt",
     "update_success": "System aktualisiert",
@@ -79,12 +78,8 @@
       "fields": [
         {
           "name": "department",
-          "element": "select-input",
-          "label": "Fachbereich / Abteilung",
-          "attributes": {
-            "data-source": "department-combobox"
-          },
-          "note": "Optionen aus department-combobox.html (dynamisch geladen)"
+          "element": "department",
+          "label": "Fachbereich / Abteilung"
         },
         {
           "name": "criticality",
@@ -328,12 +323,113 @@
       "order": 6,
       "type": "dynamic-list",
       "entity_property": "virtualmachines",
-      "include_template": "pages/wizards/system/vm-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "vm"
-      }
+      },
+      "fields": [
+        {
+          "name": "hostname",
+          "element": "hostname",
+          "label": "Hostname",
+          "required": true
+        },
+        {
+          "name": "ipaddress",
+          "element": "ip-address",
+          "label": "IP-Adresse"
+        },
+        {
+          "name": "operatingsystem",
+          "element": "operating-system",
+          "label": "Betriebssystem",
+          "attributes": {
+            "data-category": "vm"
+          }
+        },
+        {
+          "name": "serverrole",
+          "element": "server-role",
+          "label": "Rolle / Funktion",
+          "attributes": {
+            "data-category": "vm"
+          }
+        },
+        {
+          "name": "hypervisorid",
+          "element": "hypervisor-reference",
+          "label": "Hypervisor",
+          "required": true
+        },
+        {
+          "name": "esxihost",
+          "element": "text-input",
+          "label": "ESXi Host / Physical Host",
+          "placeholder": "z.B. esxi-host-01.example.com"
+        },
+        {
+          "name": "vcpu",
+          "element": "number-input",
+          "label": "vCPU",
+          "placeholder": "z.B. 4"
+        },
+        {
+          "name": "ramingb",
+          "element": "number-input",
+          "label": "RAM (GB)",
+          "placeholder": "z.B. 16"
+        },
+        {
+          "name": "storageingb",
+          "element": "number-input",
+          "label": "Storage (GB)",
+          "placeholder": "z.B. 500"
+        },
+        {
+          "name": "datastore",
+          "element": "text-input",
+          "label": "Datastore / Storage Pool",
+          "placeholder": "z.B. datastore-ssd-01"
+        },
+        {
+          "name": "hwversion",
+          "element": "version",
+          "label": "Hardware-Version"
+        },
+        {
+          "name": "vmtools",
+          "element": "version",
+          "label": "VM Tools Version"
+        },
+        {
+          "name": "snapshots",
+          "element": "select-input",
+          "label": "Snapshots",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "bootorder",
+          "element": "text-input",
+          "label": "Boot-Reihenfolge",
+          "placeholder": "z.B. HDD, Network"
+        }
+      ],
+      "help_text": "Fügen Sie virtuelle Maschinen hinzu, die zu diesem System gehören.",
+      "entry_type": "vm",
+      "add_fn": "addVMEntry",
+      "add_label": "Virtuelle Maschine hinzufügen",
+      "entry_title": "VM",
+      "cmdb_search_type": "vm"
     },
     {
       "id": "hardwareservers",
@@ -341,12 +437,84 @@
       "order": 7,
       "type": "dynamic-list",
       "entity_property": "hardwareservers",
-      "include_template": "pages/wizards/system/hardware-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "hardware"
-      }
+      },
+      "fields": [
+        {
+          "name": "hostname",
+          "element": "hostname",
+          "label": "Hostname",
+          "required": true
+        },
+        {
+          "name": "ipaddress",
+          "element": "ip-address",
+          "label": "IP-Adresse"
+        },
+        {
+          "name": "model",
+          "element": "text-input",
+          "label": "Hersteller & Modell",
+          "placeholder": "z.B. Dell PowerEdge R750"
+        },
+        {
+          "name": "serialnumber",
+          "element": "serial-number",
+          "label": "Seriennummer"
+        },
+        {
+          "name": "operatingsystem",
+          "element": "operating-system",
+          "label": "Betriebssystem",
+          "attributes": {
+            "data-category": "hardware"
+          }
+        },
+        {
+          "name": "serverrole",
+          "element": "server-role",
+          "label": "Rolle / Funktion",
+          "attributes": {
+            "data-category": "hardware"
+          }
+        },
+        {
+          "name": "cpu",
+          "element": "text-input",
+          "label": "CPU",
+          "placeholder": "z.B. 2x Intel Xeon Gold 6248R"
+        },
+        {
+          "name": "ramingb",
+          "element": "number-input",
+          "label": "RAM (GB)",
+          "placeholder": "z.B. 128"
+        },
+        {
+          "name": "storage",
+          "element": "text-input",
+          "label": "Storage",
+          "placeholder": "z.B. 4x 960GB SSD RAID 10"
+        },
+        {
+          "name": "location",
+          "element": "text-location",
+          "label": "Standort / Rack"
+        },
+        {
+          "name": "warranty",
+          "element": "date-field",
+          "label": "Garantie / Support bis"
+        }
+      ],
+      "help_text": "Fügen Sie physische Server hinzu, die zu diesem System gehören.",
+      "entry_type": "hardware",
+      "add_fn": "addHardwareEntry",
+      "add_label": "Hardware Server hinzufügen",
+      "entry_title": "Server"
     },
     {
       "id": "databases",
@@ -354,12 +522,141 @@
       "order": 8,
       "type": "dynamic-list",
       "entity_property": "databases",
-      "include_template": "pages/wizards/system/database-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "database"
-      }
+      },
+      "fields": [
+        {
+          "name": "dbname",
+          "element": "text-name",
+          "label": "Datenbankname",
+          "required": true
+        },
+        {
+          "name": "dbtype",
+          "element": "database-type",
+          "label": "Datenbank-Typ"
+        },
+        {
+          "name": "dbversion",
+          "element": "version",
+          "label": "Version",
+          "placeholder": "z.B. 19c, 2022, 8.0.35"
+        },
+        {
+          "name": "charset",
+          "element": "text-input",
+          "label": "Zeichensatz / Charset",
+          "placeholder": "z.B. UTF8, AL32UTF8, utf8mb4"
+        },
+        {
+          "name": "dbport",
+          "element": "port",
+          "label": "Port"
+        },
+        {
+          "name": "tablespace",
+          "element": "text-input",
+          "label": "Tablespace / Schema",
+          "placeholder": "z.B. USERS, dbo"
+        },
+        {
+          "name": "clustertype",
+          "element": "database-cluster-type",
+          "label": "Cluster-Typ"
+        },
+        {
+          "name": "clustername",
+          "element": "text-input",
+          "label": "Cluster-Name",
+          "placeholder": "z.B. KIS-DB-CLUSTER-01"
+        },
+        {
+          "name": "clusternodes",
+          "element": "number-input",
+          "label": "Anzahl Knoten",
+          "placeholder": "z.B. 2"
+        },
+        {
+          "name": "failovermode",
+          "element": "select-input",
+          "label": "Failover-Modus",
+          "options": [
+            {
+              "value": "automatic",
+              "label": "Automatisch"
+            },
+            {
+              "value": "semiautomatic",
+              "label": "Semi-Automatisch"
+            },
+            {
+              "value": "manual",
+              "label": "Manuell"
+            }
+          ]
+        },
+        {
+          "name": "dbsize",
+          "element": "number-input",
+          "label": "Datenbankgröße (GB)"
+        },
+        {
+          "name": "maxconnections",
+          "element": "number-input",
+          "label": "Max. Verbindungen"
+        },
+        {
+          "name": "dbauthentication",
+          "element": "select-input",
+          "label": "Authentifizierung",
+          "options": [
+            {
+              "value": "sql",
+              "label": "SQL-Authentifizierung"
+            },
+            {
+              "value": "windows",
+              "label": "Windows / Kerberos"
+            },
+            {
+              "value": "certificate",
+              "label": "Zertifikatsbasiert"
+            },
+            {
+              "value": "ldap",
+              "label": "LDAP / AD"
+            }
+          ]
+        },
+        {
+          "name": "dbencryption",
+          "element": "select-input",
+          "label": "Verschlüsselung (at rest)",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "dbnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie Datenbanken mit ihren Eigenschaften, Cluster-Konfiguration und Host-Zuordnung.",
+      "entry_type": "database",
+      "add_fn": "addDatabaseEntry",
+      "add_label": "Datenbank hinzufügen",
+      "entry_title": "Datenbank"
     },
     {
       "id": "backupsystems",
@@ -367,12 +664,199 @@
       "order": 9,
       "type": "dynamic-list",
       "entity_property": "backupsystems",
-      "include_template": "pages/wizards/system/backup-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "backup"
-      }
+      },
+      "fields": [
+        {
+          "name": "jobname",
+          "element": "text-name",
+          "label": "Job-Name",
+          "required": true
+        },
+        {
+          "name": "backupsystemid",
+          "element": "backup-reference",
+          "label": "Backup-System"
+        },
+        {
+          "name": "backuptype",
+          "element": "select-input",
+          "label": "Backup-Typ",
+          "options": [
+            {
+              "value": "full",
+              "label": "Vollsicherung (Full)"
+            },
+            {
+              "value": "incremental",
+              "label": "Inkrementell"
+            },
+            {
+              "value": "differential",
+              "label": "Differenziell"
+            },
+            {
+              "value": "forever-inc",
+              "label": "Forever-Inkrementell"
+            }
+          ]
+        },
+        {
+          "name": "frequency",
+          "element": "select-input",
+          "label": "Häufigkeit",
+          "options": [
+            {
+              "value": "daily",
+              "label": "Täglich"
+            },
+            {
+              "value": "weekly",
+              "label": "Wöchentlich"
+            },
+            {
+              "value": "monthly",
+              "label": "Monatlich"
+            },
+            {
+              "value": "hourly",
+              "label": "Stündlich"
+            }
+          ]
+        },
+        {
+          "name": "backuptime",
+          "element": "text-input",
+          "label": "Backup-Zeit",
+          "placeholder": "z.B. 22:00 Uhr"
+        },
+        {
+          "name": "backupwindow",
+          "element": "text-input",
+          "label": "Backup-Fenster",
+          "placeholder": "z.B. 22:00–04:00 Uhr"
+        },
+        {
+          "name": "backupdays",
+          "element": "text-input",
+          "label": "Backup-Tage",
+          "placeholder": "z.B. Mo-Fr, täglich"
+        },
+        {
+          "name": "retentiondaily",
+          "element": "number-input",
+          "label": "Aufbewahrung täglich (Tage)"
+        },
+        {
+          "name": "retentionweekly",
+          "element": "number-input",
+          "label": "Aufbewahrung wöchentlich (Wochen)"
+        },
+        {
+          "name": "retentionmonthly",
+          "element": "number-input",
+          "label": "Aufbewahrung monatlich (Monate)"
+        },
+        {
+          "name": "retentionyearly",
+          "element": "number-input",
+          "label": "Aufbewahrung jährlich (Jahre)"
+        },
+        {
+          "name": "gfsenabled",
+          "element": "toggle",
+          "label": "GFS (Grandfather-Father-Son) aktiviert"
+        },
+        {
+          "name": "gfsdaily",
+          "element": "number-input",
+          "label": "GFS: Tägliche Versionen"
+        },
+        {
+          "name": "gfsweekly",
+          "element": "number-input",
+          "label": "GFS: Wöchentliche Versionen"
+        },
+        {
+          "name": "gfsmonthly",
+          "element": "number-input",
+          "label": "GFS: Monatliche Versionen"
+        },
+        {
+          "name": "gfsyearly",
+          "element": "number-input",
+          "label": "GFS: Jährliche Versionen"
+        },
+        {
+          "name": "rpo",
+          "element": "text-input",
+          "label": "RPO (Recovery Point Objective)",
+          "placeholder": "z.B. 24h, 4h"
+        },
+        {
+          "name": "rto",
+          "element": "text-input",
+          "label": "RTO (Recovery Time Objective)",
+          "placeholder": "z.B. 4h, 1h"
+        },
+        {
+          "name": "verification",
+          "element": "select-input",
+          "label": "Backup-Verifizierung",
+          "options": [
+            {
+              "value": "automatic",
+              "label": "Automatisch"
+            },
+            {
+              "value": "manual",
+              "label": "Manuell"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "lastrestoretest",
+          "element": "date-field",
+          "label": "Letzter Restore-Test"
+        },
+        {
+          "name": "testfrequency",
+          "element": "select-input",
+          "label": "Test-Häufigkeit",
+          "options": [
+            {
+              "value": "monthly",
+              "label": "Monatlich"
+            },
+            {
+              "value": "quarterly",
+              "label": "Quartalsweise"
+            },
+            {
+              "value": "yearly",
+              "label": "Jährlich"
+            }
+          ]
+        },
+        {
+          "name": "backupnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie Backup-Konfigurationen mit Strategien, Zeitplänen, Aufbewahrungsfristen und Wiederherstellungszielen.",
+      "entry_type": "backup",
+      "add_fn": "addBackupEntry",
+      "add_label": "Backup-Konfiguration hinzufügen",
+      "entry_title": "Backup",
+      "section_name": "backups"
     },
     {
       "id": "loadbalancers",
@@ -380,12 +864,257 @@
       "order": 10,
       "type": "dynamic-list",
       "entity_property": "loadbalancers",
-      "include_template": "pages/wizards/system/loadbalancer-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "loadbalancer"
-      }
+      },
+      "fields": [
+        {
+          "name": "lbname",
+          "element": "text-name",
+          "label": "Load-Balancer Name",
+          "required": true
+        },
+        {
+          "name": "lbtype",
+          "element": "select-input",
+          "label": "LB-Typ",
+          "options": [
+            {
+              "value": "nginx",
+              "label": "NGINX"
+            },
+            {
+              "value": "haproxy",
+              "label": "HAProxy"
+            },
+            {
+              "value": "f5",
+              "label": "F5 BIG-IP"
+            },
+            {
+              "value": "netscaler",
+              "label": "Citrix NetScaler / ADC"
+            },
+            {
+              "value": "aws-alb",
+              "label": "AWS ALB"
+            },
+            {
+              "value": "aws-nlb",
+              "label": "AWS NLB"
+            },
+            {
+              "value": "azure-lb",
+              "label": "Azure Load Balancer"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        },
+        {
+          "name": "vip",
+          "element": "ip-address",
+          "label": "VIP / Virtuelle IP",
+          "required": true
+        },
+        {
+          "name": "lbports",
+          "element": "text-input",
+          "label": "Ports",
+          "placeholder": "z.B. 80, 443"
+        },
+        {
+          "name": "lbprotocol",
+          "element": "select-input",
+          "label": "Protokoll",
+          "options": [
+            {
+              "value": "http",
+              "label": "HTTP"
+            },
+            {
+              "value": "https",
+              "label": "HTTPS"
+            },
+            {
+              "value": "tcp",
+              "label": "TCP"
+            },
+            {
+              "value": "udp",
+              "label": "UDP"
+            }
+          ]
+        },
+        {
+          "name": "lbalgorithm",
+          "element": "select-input",
+          "label": "Algorithmus",
+          "options": [
+            {
+              "value": "round-robin",
+              "label": "Round Robin"
+            },
+            {
+              "value": "least-conn",
+              "label": "Least Connections"
+            },
+            {
+              "value": "ip-hash",
+              "label": "IP Hash"
+            },
+            {
+              "value": "weighted",
+              "label": "Gewichtet"
+            }
+          ]
+        },
+        {
+          "name": "sessionpersistence",
+          "element": "select-input",
+          "label": "Session Persistence",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert (Sticky Sessions)"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "ssltermination",
+          "element": "select-input",
+          "label": "SSL-Terminierung",
+          "options": [
+            {
+              "value": "ssl-offloading",
+              "label": "SSL-Offloading (am LB)"
+            },
+            {
+              "value": "ssl-passthrough",
+              "label": "SSL-Passthrough (zum Backend)"
+            },
+            {
+              "value": "ssl-bridging",
+              "label": "SSL-Bridging (Re-Encryption)"
+            }
+          ]
+        },
+        {
+          "name": "sslcertificate",
+          "element": "text-input",
+          "label": "SSL-Zertifikat",
+          "placeholder": "z.B. *.example.com (Let's Encrypt)"
+        },
+        {
+          "name": "tlsversion",
+          "element": "select-input",
+          "label": "Mindest-TLS-Version",
+          "options": [
+            {
+              "value": "tls1.3",
+              "label": "TLS 1.3"
+            },
+            {
+              "value": "tls1.2",
+              "label": "TLS 1.2"
+            }
+          ]
+        },
+        {
+          "name": "healthcheckmethod",
+          "element": "select-input",
+          "label": "Health-Check-Methode",
+          "options": [
+            {
+              "value": "http",
+              "label": "HTTP/HTTPS"
+            },
+            {
+              "value": "tcp",
+              "label": "TCP Connect"
+            },
+            {
+              "value": "ping",
+              "label": "ICMP Ping"
+            }
+          ]
+        },
+        {
+          "name": "healthcheckpath",
+          "element": "text-input",
+          "label": "Health-Check-Pfad",
+          "placeholder": "/health"
+        },
+        {
+          "name": "checkinterval",
+          "element": "number-input",
+          "label": "Check-Intervall (s)"
+        },
+        {
+          "name": "checktimeout",
+          "element": "number-input",
+          "label": "Check-Timeout (s)"
+        },
+        {
+          "name": "backendport",
+          "element": "port",
+          "label": "Backend-Port"
+        },
+        {
+          "name": "waf",
+          "element": "toggle",
+          "label": "WAF (Web Application Firewall)"
+        },
+        {
+          "name": "hamode",
+          "element": "select-input",
+          "label": "HA-Modus",
+          "options": [
+            {
+              "value": "active-passive",
+              "label": "Active-Passive"
+            },
+            {
+              "value": "active-active",
+              "label": "Active-Active"
+            }
+          ]
+        },
+        {
+          "name": "partnerlb",
+          "element": "text-input",
+          "label": "Partner-Load-Balancer",
+          "placeholder": "Hostname des HA-Partners"
+        },
+        {
+          "name": "lblocation",
+          "element": "text-location",
+          "label": "Standort"
+        },
+        {
+          "name": "lbmgmtip",
+          "element": "ip-address",
+          "label": "Management-IP"
+        },
+        {
+          "name": "lbnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Konfigurieren Sie zentrale Load Balancer für dieses System. Dokumentieren Sie Frontend-IPs, Backend-Pools, Health Checks und Routing-Regeln.",
+      "entry_type": "loadbalancer",
+      "add_fn": "addLoadBalancerEntry",
+      "add_label": "Load Balancer Konfiguration hinzufügen",
+      "entry_title": "Load Balancer"
     },
     {
       "id": "firewallrules",
@@ -393,12 +1122,168 @@
       "order": 11,
       "type": "dynamic-list",
       "entity_property": "firewallrules",
-      "include_template": "pages/wizards/system/firewall-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "firewall"
-      }
+      },
+      "fields": [
+        {
+          "name": "rulename",
+          "element": "text-name",
+          "label": "Regel-Name",
+          "required": true
+        },
+        {
+          "name": "firewallid",
+          "element": "firewall-reference",
+          "label": "Firewall-Komponente"
+        },
+        {
+          "name": "sourcezone",
+          "element": "text-input",
+          "label": "Quell-Zone",
+          "placeholder": "z.B. LAN, DMZ, WAN"
+        },
+        {
+          "name": "destzone",
+          "element": "text-input",
+          "label": "Ziel-Zone",
+          "placeholder": "z.B. LAN, DMZ, WAN"
+        },
+        {
+          "name": "sourceaddr",
+          "element": "text-input",
+          "label": "Quell-Adresse",
+          "placeholder": "IP, Netz oder Gruppe"
+        },
+        {
+          "name": "destaddr",
+          "element": "text-input",
+          "label": "Ziel-Adresse",
+          "placeholder": "IP, Netz oder Gruppe"
+        },
+        {
+          "name": "service",
+          "element": "text-input",
+          "label": "Dienst / Port",
+          "placeholder": "z.B. TCP/443, HTTPS"
+        },
+        {
+          "name": "ruleaction",
+          "element": "select-input",
+          "label": "Aktion",
+          "options": [
+            {
+              "value": "allow",
+              "label": "Erlauben"
+            },
+            {
+              "value": "deny",
+              "label": "Verweigern"
+            },
+            {
+              "value": "drop",
+              "label": "Verwerfen"
+            }
+          ]
+        },
+        {
+          "name": "rulestatus",
+          "element": "select-input",
+          "label": "Status",
+          "options": [
+            {
+              "value": "active",
+              "label": "Aktiv"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "rulepriority",
+          "element": "number-input",
+          "label": "Priorität",
+          "placeholder": "z.B. 100"
+        },
+        {
+          "name": "rulelogging",
+          "element": "toggle",
+          "label": "Logging aktiviert"
+        },
+        {
+          "name": "nattype",
+          "element": "select-input",
+          "label": "NAT-Typ",
+          "options": [
+            {
+              "value": "none",
+              "label": "Kein NAT"
+            },
+            {
+              "value": "source",
+              "label": "Source NAT (SNAT)"
+            },
+            {
+              "value": "destination",
+              "label": "Destination NAT (DNAT)"
+            }
+          ]
+        },
+        {
+          "name": "natoriginal",
+          "element": "text-input",
+          "label": "NAT Original",
+          "placeholder": "Originale Adresse/Port"
+        },
+        {
+          "name": "nattranslated",
+          "element": "text-input",
+          "label": "NAT Übersetzt",
+          "placeholder": "Übersetzte Adresse/Port"
+        },
+        {
+          "name": "natpool",
+          "element": "text-input",
+          "label": "NAT-Pool",
+          "placeholder": "z.B. 203.0.113.1–203.0.113.10"
+        },
+        {
+          "name": "schedule",
+          "element": "text-input",
+          "label": "Zeitplan",
+          "placeholder": "z.B. Mo-Fr 08:00-18:00"
+        },
+        {
+          "name": "validfrom",
+          "element": "date-field",
+          "label": "Gültig ab"
+        },
+        {
+          "name": "validto",
+          "element": "date-field",
+          "label": "Gültig bis"
+        },
+        {
+          "name": "justification",
+          "element": "textarea-input",
+          "label": "Begründung / Ticketreferenz"
+        },
+        {
+          "name": "fwnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie Firewall-Regeln für dieses System. Jede Regel definiert Zugriffe, NAT-Konfigurationen und Sicherheitsrichtlinien.",
+      "entry_type": "firewall",
+      "add_fn": "addFirewallEntry",
+      "add_label": "Firewall-Regel hinzufügen",
+      "entry_title": "Firewall-Regel",
+      "section_name": "firewalls"
     },
     {
       "id": "clientaccesses",
@@ -406,12 +1291,284 @@
       "order": 12,
       "type": "dynamic-list",
       "entity_property": "clientaccesses",
-      "include_template": "pages/wizards/system/client-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "client"
-      }
+      },
+      "fields": [
+        {
+          "name": "clientaccessname",
+          "element": "text-name",
+          "label": "Zugriffsname",
+          "required": true
+        },
+        {
+          "name": "clienttype",
+          "element": "select-input",
+          "label": "Client-Typ",
+          "options": [
+            {
+              "value": "windows",
+              "label": "Windows"
+            },
+            {
+              "value": "macos",
+              "label": "macOS"
+            },
+            {
+              "value": "linux",
+              "label": "Linux"
+            },
+            {
+              "value": "ios",
+              "label": "iOS"
+            },
+            {
+              "value": "android",
+              "label": "Android"
+            },
+            {
+              "value": "webapp",
+              "label": "Web-Browser"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        },
+        {
+          "name": "clientos",
+          "element": "text-input",
+          "label": "Betriebssystem",
+          "placeholder": "z.B. Windows 11 Pro 23H2"
+        },
+        {
+          "name": "clientsoftware",
+          "element": "text-input",
+          "label": "Client-Software",
+          "placeholder": "z.B. Citrix Workspace, SAP GUI"
+        },
+        {
+          "name": "accessprotocol",
+          "element": "select-input",
+          "label": "Zugriffsprotokoll",
+          "options": [
+            {
+              "value": "rdp",
+              "label": "RDP"
+            },
+            {
+              "value": "citrix",
+              "label": "Citrix ICA/HDX"
+            },
+            {
+              "value": "https",
+              "label": "HTTPS (Web)"
+            },
+            {
+              "value": "ssh",
+              "label": "SSH"
+            },
+            {
+              "value": "vnc",
+              "label": "VNC"
+            },
+            {
+              "value": "other",
+              "label": "Sonstiges"
+            }
+          ]
+        },
+        {
+          "name": "accessurl",
+          "element": "url-input",
+          "label": "Zugriffs-URL"
+        },
+        {
+          "name": "dnsname",
+          "element": "hostname",
+          "label": "DNS-Name / Alias"
+        },
+        {
+          "name": "clientport",
+          "element": "port",
+          "label": "Port"
+        },
+        {
+          "name": "clientauth",
+          "element": "select-input",
+          "label": "Authentifizierung",
+          "options": [
+            {
+              "value": "ad",
+              "label": "Active Directory"
+            },
+            {
+              "value": "mfa",
+              "label": "MFA"
+            },
+            {
+              "value": "sso",
+              "label": "SSO"
+            },
+            {
+              "value": "local",
+              "label": "Lokale Benutzer"
+            },
+            {
+              "value": "certificate",
+              "label": "Zertifikatsbasiert"
+            }
+          ]
+        },
+        {
+          "name": "clientencryption",
+          "element": "select-input",
+          "label": "Verschlüsselung",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ja (TLS/SSL)"
+            },
+            {
+              "value": "no",
+              "label": "Nein"
+            }
+          ]
+        },
+        {
+          "name": "usergroup",
+          "element": "text-input",
+          "label": "Benutzergruppen",
+          "placeholder": "z.B. Ärzte, Pflegepersonal"
+        },
+        {
+          "name": "clientcount",
+          "element": "number-input",
+          "label": "Anzahl Clients"
+        },
+        {
+          "name": "workinghoursaccess",
+          "element": "toggle",
+          "label": "Zugriff nur zu Arbeitszeiten"
+        },
+        {
+          "name": "connectiontarget",
+          "element": "text-input",
+          "label": "Verbindungsziel",
+          "placeholder": "Server oder Service"
+        },
+        {
+          "name": "targetloadbalancer",
+          "element": "component-reference",
+          "label": "Load-Balancer",
+          "attributes": {
+            "data-component-type": "loadbalancer"
+          }
+        },
+        {
+          "name": "targetloadbalancername",
+          "element": "text-input",
+          "label": "Load-Balancer (manuell)"
+        },
+        {
+          "name": "bandwidth",
+          "element": "text-input",
+          "label": "Bandbreite",
+          "placeholder": "z.B. 100 Mbit/s"
+        },
+        {
+          "name": "networksegment",
+          "element": "network-segment",
+          "label": "Netzwerk-Segment"
+        },
+        {
+          "name": "installmethod",
+          "element": "select-input",
+          "label": "Installationsmethode",
+          "options": [
+            {
+              "value": "manual",
+              "label": "Manuell"
+            },
+            {
+              "value": "gpo",
+              "label": "GPO (Group Policy)"
+            },
+            {
+              "value": "mdm",
+              "label": "MDM / Intune"
+            },
+            {
+              "value": "sccm",
+              "label": "SCCM / Endpoint Manager"
+            },
+            {
+              "value": "package",
+              "label": "Paketmanager"
+            }
+          ]
+        },
+        {
+          "name": "updatemechanism",
+          "element": "text-input",
+          "label": "Update-Mechanismus",
+          "placeholder": "z.B. WSUS, Auto-Update"
+        },
+        {
+          "name": "sessionmanagement",
+          "element": "select-input",
+          "label": "Session-Management",
+          "options": [
+            {
+              "value": "persistent",
+              "label": "Persistent"
+            },
+            {
+              "value": "stateless",
+              "label": "Stateless"
+            },
+            {
+              "value": "timeout",
+              "label": "Session Timeout"
+            }
+          ]
+        },
+        {
+          "name": "offlinecapability",
+          "element": "toggle",
+          "label": "Offline-Fähigkeit"
+        },
+        {
+          "name": "clientlicensing",
+          "element": "text-input",
+          "label": "Lizenzierung",
+          "placeholder": "z.B. 50 benannte User"
+        },
+        {
+          "name": "systemrequirements",
+          "element": "textarea-input",
+          "label": "Systemanforderungen"
+        },
+        {
+          "name": "specialrequirements",
+          "element": "textarea-input",
+          "label": "Besondere Anforderungen"
+        },
+        {
+          "name": "clientnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie, wie Client-Arbeitsplätze auf dieses System zugreifen. Definieren Sie Client-Typen, Zugriffsmethoden, Protokolle und Verbindungswege.",
+      "entry_type": "client",
+      "add_fn": "addClientEntry",
+      "add_label": "Client-Zugriff hinzufügen",
+      "entry_title": "Client-Zugriff",
+      "section_name": "clients"
     },
     {
       "id": "meddevices",
@@ -419,12 +1576,145 @@
       "order": 13,
       "type": "dynamic-list",
       "entity_property": "medicaldevices",
-      "include_template": "pages/wizards/system/meddevice-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "meddevice"
-      }
+      },
+      "fields": [
+        {
+          "name": "meddevicename",
+          "element": "text-name",
+          "label": "Gerätename",
+          "required": true
+        },
+        {
+          "name": "meddevicemanufacturer",
+          "element": "vendor",
+          "label": "Hersteller"
+        },
+        {
+          "name": "meddevicemodel",
+          "element": "text-input",
+          "label": "Modell",
+          "placeholder": "Modellbezeichnung"
+        },
+        {
+          "name": "meddeviceserial",
+          "element": "serial-number",
+          "label": "Seriennummer"
+        },
+        {
+          "name": "meddeviceudi",
+          "element": "text-input",
+          "label": "UDI (Unique Device Identifier)",
+          "placeholder": "z.B. (01)04150000001512"
+        },
+        {
+          "name": "meddeviceclass",
+          "element": "select-input",
+          "label": "Risikoklasse (MDR)",
+          "options": [
+            {
+              "value": "I",
+              "label": "Klasse I – Geringes Risiko"
+            },
+            {
+              "value": "IIa",
+              "label": "Klasse IIa – Mittleres Risiko"
+            },
+            {
+              "value": "IIb",
+              "label": "Klasse IIb – Erhöhtes Risiko"
+            },
+            {
+              "value": "III",
+              "label": "Klasse III – Hohes Risiko"
+            }
+          ]
+        },
+        {
+          "name": "meddevicecemarking",
+          "element": "toggle",
+          "label": "CE-Zertifizierung vorhanden"
+        },
+        {
+          "name": "meddevicecategory",
+          "element": "text-input",
+          "label": "Gerätekategorie",
+          "placeholder": "z.B. CT, MRT, Labor"
+        },
+        {
+          "name": "meddevicesoftware",
+          "element": "text-input",
+          "label": "Gerätesoftware/-firmware"
+        },
+        {
+          "name": "meddevicehostname",
+          "element": "hostname",
+          "label": "Hostname"
+        },
+        {
+          "name": "meddeviceip",
+          "element": "ip-address",
+          "label": "IP-Adresse"
+        },
+        {
+          "name": "meddeviceprotocol",
+          "element": "text-input",
+          "label": "Kommunikationsprotokoll",
+          "placeholder": "z.B. HL7, DICOM, FHIR"
+        },
+        {
+          "name": "meddeviceismedicaldevice",
+          "element": "toggle",
+          "label": "Eingestuft als Medizinprodukt (MPG/MDR)"
+        },
+        {
+          "name": "meddeviceconnectedcomponent",
+          "element": "component-reference",
+          "label": "Verbundenes System",
+          "attributes": {
+            "data-component-type": "system"
+          }
+        },
+        {
+          "name": "meddeviceconnectedname",
+          "element": "text-input",
+          "label": "Verbundenes System (manuell)"
+        },
+        {
+          "name": "meddevicelocation",
+          "element": "text-location",
+          "label": "Standort"
+        },
+        {
+          "name": "meddevicemaintenance",
+          "element": "date-field",
+          "label": "Letzte Wartung"
+        },
+        {
+          "name": "meddevicenextmaintenance",
+          "element": "date-field",
+          "label": "Nächste Wartung"
+        },
+        {
+          "name": "meddevicecontact",
+          "element": "admin-contact",
+          "label": "Verantwortlicher / Kontakt"
+        },
+        {
+          "name": "meddevicenotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie angebundene Medizingeräte (CT, MRT, Ultraschall, Labor-Analysegeräte, etc.), die mit diesem System kommunizieren.",
+      "entry_type": "medDevice",
+      "add_fn": "addMedDeviceEntry",
+      "add_label": "Medizingerät hinzufügen",
+      "entry_title": "Medizingerät",
+      "section_name": "meddevices"
     },
     {
       "id": "tiinfrastructure",
@@ -432,12 +1722,146 @@
       "order": 14,
       "type": "embedded-one",
       "entity_property": "tiinfrastructure",
-      "include_template": "pages/wizards/system/tiinfrastruktur-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "tiinfrastructure"
-      }
+      },
+      "fields": [
+        {
+          "name": "tiinfrastructurname",
+          "element": "text-name",
+          "label": "TI-Infrastrukturbezeichnung",
+          "required": true
+        },
+        {
+          "name": "tiinfrastrukturid",
+          "element": "component-reference",
+          "label": "TI-Konnektor-Komponente",
+          "attributes": {
+            "data-component-type": "tiinfrastructure"
+          }
+        },
+        {
+          "name": "tikimclient",
+          "element": "text-input",
+          "label": "KIM-Clientmodul",
+          "placeholder": "z.B. KIM-Client 1.5"
+        },
+        {
+          "name": "tikimaddress",
+          "element": "email-input",
+          "label": "KIM-Adresse",
+          "placeholder": "z.B. praxis@kim.telematik"
+        },
+        {
+          "name": "tikimprovider",
+          "element": "text-input",
+          "label": "KIM-Anbieter",
+          "placeholder": "z.B. Telekom, gematik"
+        },
+        {
+          "name": "tikimencryption",
+          "element": "select-input",
+          "label": "KIM-Verschlüsselung",
+          "options": [
+            {
+              "value": "smime",
+              "label": "S/MIME"
+            },
+            {
+              "value": "pgp",
+              "label": "PGP"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        },
+        {
+          "name": "tidienste",
+          "element": "checkbox-group",
+          "label": "TI-Dienste",
+          "options": [
+            {
+              "value": "egk",
+              "label": "eGK (elektronische Gesundheitskarte)"
+            },
+            {
+              "value": "kim",
+              "label": "KIM (Kommunikation im Medizinwesen)"
+            },
+            {
+              "value": "tim",
+              "label": "TIM (TI-Messenger)"
+            },
+            {
+              "value": "epa",
+              "label": "ePA (elektronische Patientenakte)"
+            },
+            {
+              "value": "erp",
+              "label": "eRezept"
+            },
+            {
+              "value": "nfd",
+              "label": "NFD (Notfalldaten)"
+            },
+            {
+              "value": "egk-amts",
+              "label": "AMTS (Arzneimitteltherapiesicherheit)"
+            },
+            {
+              "value": "au",
+              "label": "eAU (Arbeitsunfähigkeitsbescheinigung)"
+            }
+          ]
+        },
+        {
+          "name": "tierezeptavs",
+          "element": "text-input",
+          "label": "eRezept-AVS",
+          "placeholder": "Name des Apothekenverwaltungssystems"
+        },
+        {
+          "name": "tierezepttype",
+          "element": "select-input",
+          "label": "eRezept-Typ",
+          "options": [
+            {
+              "value": "gkv",
+              "label": "GKV (Kassenrezept)"
+            },
+            {
+              "value": "pkv",
+              "label": "PKV (Privatrezept)"
+            },
+            {
+              "value": "btm",
+              "label": "Betäubungsmittelrezept"
+            }
+          ]
+        },
+        {
+          "name": "tierezeptversion",
+          "element": "version",
+          "label": "eRezept-Version"
+        },
+        {
+          "name": "tierezeptmodule",
+          "element": "text-input",
+          "label": "eRezept-Module",
+          "placeholder": "z.B. Signaturmodul, Druckmodul"
+        },
+        {
+          "name": "tisystemnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie die Anbindung an die Telematikinfrastruktur (TI) der Gematik, verwendete Dienste und Konnektoren.",
+      "section_name": "gematicti"
     },
     {
       "id": "proxyconfiguration",
@@ -445,12 +1869,83 @@
       "order": 15,
       "type": "embedded-one",
       "entity_property": "proxyconfiguration",
-      "include_template": "pages/wizards/system/proxy-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "proxy"
-      }
+      },
+      "fields": [
+        {
+          "name": "proxyid",
+          "element": "component-reference",
+          "label": "Proxy-Server Komponente",
+          "attributes": {
+            "data-component-type": "proxy"
+          }
+        },
+        {
+          "name": "proxyexceptions",
+          "element": "textarea-input",
+          "label": "Zusätzliche Ausnahmen",
+          "placeholder": "z.B. internal-api.example.com, 192.168.100.0/24"
+        },
+        {
+          "name": "proxyprotocols",
+          "element": "checkbox-group",
+          "label": "Verwendete Protokolle",
+          "options": [
+            {
+              "value": "http",
+              "label": "HTTP"
+            },
+            {
+              "value": "https",
+              "label": "HTTPS"
+            },
+            {
+              "value": "ftp",
+              "label": "FTP"
+            }
+          ]
+        },
+        {
+          "name": "proxyauth",
+          "element": "select-input",
+          "label": "Proxy-Authentifizierung",
+          "options": [
+            {
+              "value": "system-default",
+              "label": "System-Standard (vom Proxy)"
+            },
+            {
+              "value": "custom",
+              "label": "Benutzerdefiniert"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "proxyuser",
+          "element": "text-input",
+          "label": "Benutzer / Dienstkonto",
+          "placeholder": "z.B. DOMAIN\\system-service-account",
+          "condition": {
+            "field": "proxyauth",
+            "operator": "eq",
+            "value": "custom"
+          }
+        },
+        {
+          "name": "proxynotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie die Proxy-Konfiguration für dieses System, einschließlich Proxy-Typ, Authentifizierung und Ausnahmen.",
+      "section_name": "proxy"
     },
     {
       "id": "siemintegration",
@@ -458,12 +1953,227 @@
       "order": 16,
       "type": "embedded-one",
       "entity_property": "siemintegration",
-      "include_template": "pages/wizards/system/siem-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "siem"
-      }
+      },
+      "fields": [
+        {
+          "name": "siemid",
+          "element": "siem-reference",
+          "label": "SIEM-System"
+        },
+        {
+          "name": "siemlogs",
+          "element": "checkbox-group",
+          "label": "Log-Quellen",
+          "options": [
+            {
+              "value": "windows-eventlog",
+              "label": "Windows Eventlog"
+            },
+            {
+              "value": "syslog",
+              "label": "Syslog"
+            },
+            {
+              "value": "access-log",
+              "label": "Access-Log"
+            },
+            {
+              "value": "application-log",
+              "label": "Applikations-Log"
+            },
+            {
+              "value": "audit-log",
+              "label": "Audit-Log"
+            },
+            {
+              "value": "firewall-log",
+              "label": "Firewall-Log"
+            }
+          ]
+        },
+        {
+          "name": "siemlogprotocol",
+          "element": "select-input",
+          "label": "Log-Transport-Protokoll",
+          "options": [
+            {
+              "value": "syslog-udp",
+              "label": "Syslog (UDP)"
+            },
+            {
+              "value": "syslog-tcp",
+              "label": "Syslog (TCP)"
+            },
+            {
+              "value": "syslog-tls",
+              "label": "Syslog (TLS)"
+            },
+            {
+              "value": "beats",
+              "label": "Beats (Elastic)"
+            },
+            {
+              "value": "api",
+              "label": "API"
+            }
+          ]
+        },
+        {
+          "name": "siemcollector",
+          "element": "text-input",
+          "label": "Collector / Agent",
+          "placeholder": "z.B. Winlogbeat, Filebeat, NXLog"
+        },
+        {
+          "name": "siemeps",
+          "element": "number-input",
+          "label": "Events/Sekunde (EPS)",
+          "placeholder": "z.B. 500"
+        },
+        {
+          "name": "siemlogvolume",
+          "element": "text-input",
+          "label": "Log-Volumen",
+          "placeholder": "z.B. 5 GB/Tag"
+        },
+        {
+          "name": "siemretention",
+          "element": "number-input",
+          "label": "Aufbewahrungsdauer (Tage)"
+        },
+        {
+          "name": "siemusecases",
+          "element": "textarea-input",
+          "label": "Use Cases / Erkennungsregeln"
+        },
+        {
+          "name": "siemmitrecoverage",
+          "element": "select-input",
+          "label": "MITRE ATT&CK Coverage",
+          "options": [
+            {
+              "value": "none",
+              "label": "Keine"
+            },
+            {
+              "value": "low",
+              "label": "Niedrig (<30%)"
+            },
+            {
+              "value": "medium",
+              "label": "Mittel (30–60%)"
+            },
+            {
+              "value": "high",
+              "label": "Hoch (>60%)"
+            }
+          ]
+        },
+        {
+          "name": "siemsoar",
+          "element": "toggle",
+          "label": "SOAR-Integration"
+        },
+        {
+          "name": "siemdashboard",
+          "element": "text-input",
+          "label": "Dashboard-URL",
+          "placeholder": "https://siem.example.com/dashboard"
+        },
+        {
+          "name": "siemreporting",
+          "element": "select-input",
+          "label": "Reporting-Häufigkeit",
+          "options": [
+            {
+              "value": "daily",
+              "label": "Täglich"
+            },
+            {
+              "value": "weekly",
+              "label": "Wöchentlich"
+            },
+            {
+              "value": "monthly",
+              "label": "Monatlich"
+            }
+          ]
+        },
+        {
+          "name": "siemresponsesla",
+          "element": "text-input",
+          "label": "Reaktionszeit-SLA",
+          "placeholder": "z.B. Kritisch: 15 min"
+        },
+        {
+          "name": "siemalertpriority",
+          "element": "select-input",
+          "label": "Alert-Schwellwert",
+          "options": [
+            {
+              "value": "low",
+              "label": "Niedrig"
+            },
+            {
+              "value": "medium",
+              "label": "Mittel"
+            },
+            {
+              "value": "high",
+              "label": "Hoch"
+            },
+            {
+              "value": "critical",
+              "label": "Kritisch"
+            }
+          ]
+        },
+        {
+          "name": "siemalertcount",
+          "element": "number-input",
+          "label": "Aktive Alertregeln"
+        },
+        {
+          "name": "siemalertrecipients",
+          "element": "text-input",
+          "label": "Alert-Empfänger",
+          "placeholder": "E-Mail oder Webhook-URL"
+        },
+        {
+          "name": "siemcompliance",
+          "element": "checkbox-group",
+          "label": "Compliance-Anforderungen",
+          "options": [
+            {
+              "value": "dsgvo",
+              "label": "DSGVO"
+            },
+            {
+              "value": "iso27001",
+              "label": "ISO 27001"
+            },
+            {
+              "value": "bsi",
+              "label": "BSI-Grundschutz"
+            },
+            {
+              "value": "kritis",
+              "label": "KRITIS"
+            }
+          ]
+        },
+        {
+          "name": "siemnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie die SIEM-Integration für dieses System, einschließlich Log-Quellen, Use Cases und Alerting-Konfiguration.",
+      "section_name": "siem"
     },
     {
       "id": "vpnaccess",
@@ -471,12 +2181,104 @@
       "order": 17,
       "type": "embedded-one",
       "entity_property": "vpnaccess",
-      "include_template": "pages/wizards/system/vpn-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "vpn"
-      }
+      },
+      "fields": [
+        {
+          "name": "vpnid",
+          "element": "component-reference",
+          "label": "VPN-Komponente",
+          "attributes": {
+            "data-component-type": "vpn"
+          }
+        },
+        {
+          "name": "vpnaccesstype",
+          "element": "select-input",
+          "label": "Zugriffs-Typ",
+          "options": [
+            {
+              "value": "remote-access",
+              "label": "Remote Access (Benutzer)"
+            },
+            {
+              "value": "site-to-site",
+              "label": "Site-to-Site"
+            },
+            {
+              "value": "clientless",
+              "label": "Clientless SSL-VPN"
+            }
+          ]
+        },
+        {
+          "name": "vpnusergroups",
+          "element": "text-input",
+          "label": "Berechtigte Benutzergruppen",
+          "placeholder": "z.B. VPN-Users, Admins"
+        },
+        {
+          "name": "vpnallowedips",
+          "element": "textarea-input",
+          "label": "Erlaubte Ziel-IPs / Netzwerke",
+          "placeholder": "z.B. 192.168.10.0/24, 10.0.0.0/8"
+        },
+        {
+          "name": "vpnallowedservices",
+          "element": "textarea-input",
+          "label": "Erlaubte Dienste",
+          "placeholder": "z.B. HTTP (80), HTTPS (443), RDP (3389)"
+        },
+        {
+          "name": "vpnaccesshours",
+          "element": "text-input",
+          "label": "Zugriffszeiten",
+          "placeholder": "z.B. Mo-Fr 06:00-22:00 Uhr"
+        },
+        {
+          "name": "vpnaddauth",
+          "element": "select-input",
+          "label": "Zusatz-Authentifizierung",
+          "options": [
+            {
+              "value": "mfa",
+              "label": "MFA (Multi-Faktor)"
+            },
+            {
+              "value": "certificate",
+              "label": "Client-Zertifikat"
+            },
+            {
+              "value": "radius",
+              "label": "RADIUS"
+            },
+            {
+              "value": "none",
+              "label": "Keine"
+            }
+          ]
+        },
+        {
+          "name": "vpnendpointcompliance",
+          "element": "toggle",
+          "label": "Endpoint-Compliance-Prüfung"
+        },
+        {
+          "name": "vpnlogging",
+          "element": "toggle",
+          "label": "Verbindungsprotokollierung"
+        },
+        {
+          "name": "vpnnotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie den VPN-Zugang zu diesem System, einschließlich berechtigter Benutzergruppen und Zugriffsbeschränkungen.",
+      "section_name": "vpn"
     },
     {
       "id": "medinterfaces",
@@ -484,12 +2286,211 @@
       "order": 18,
       "type": "dynamic-list",
       "entity_property": "medicalinterfaces",
-      "include_template": "pages/wizards/system/medinterface-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "medinterface"
-      }
+      },
+      "fields": [
+        {
+          "name": "interfaceName",
+          "element": "text-name",
+          "label": "Schnittstellen-Bezeichnung",
+          "required": true
+        },
+        {
+          "name": "interfaceType",
+          "element": "select-input",
+          "label": "Schnittstellen-Typ",
+          "options": [
+            {
+              "value": "hl7v2",
+              "label": "HL7v2"
+            },
+            {
+              "value": "fhir",
+              "label": "FHIR (R4/R5)"
+            },
+            {
+              "value": "dicom",
+              "label": "DICOM"
+            },
+            {
+              "value": "restapi",
+              "label": "REST API"
+            },
+            {
+              "value": "soapws",
+              "label": "SOAP Webservice"
+            },
+            {
+              "value": "database",
+              "label": "Datenbankzugriff"
+            },
+            {
+              "value": "filesystem",
+              "label": "Dateisystem / Share"
+            },
+            {
+              "value": "mq",
+              "label": "Message Queue"
+            },
+            {
+              "value": "other",
+              "label": "Sonstige"
+            }
+          ]
+        },
+        {
+          "name": "sourceSystem",
+          "element": "text-input",
+          "label": "Quellsystem",
+          "placeholder": "Systemname"
+        },
+        {
+          "name": "sourceComponent",
+          "element": "component-reference",
+          "label": "Quellsystem-Komponente",
+          "attributes": {
+            "data-component-type": "system"
+          }
+        },
+        {
+          "name": "targetSystem",
+          "element": "text-input",
+          "label": "Zielsystem",
+          "placeholder": "Systemname"
+        },
+        {
+          "name": "targetComponent",
+          "element": "component-reference",
+          "label": "Zielsystem-Komponente",
+          "attributes": {
+            "data-component-type": "system"
+          }
+        },
+        {
+          "name": "dataDirection",
+          "element": "select-input",
+          "label": "Datenflussrichtung",
+          "options": [
+            {
+              "value": "source-to-target",
+              "label": "Quelle → Ziel (einseitig)"
+            },
+            {
+              "value": "target-to-source",
+              "label": "Ziel → Quelle (einseitig)"
+            },
+            {
+              "value": "bidirectional",
+              "label": "Bidirektional"
+            }
+          ]
+        },
+        {
+          "name": "dataTypes",
+          "element": "textarea-input",
+          "label": "Übertragene Datentypen",
+          "placeholder": "z.B. Patientenstammdaten, Befunde, Bilder"
+        },
+        {
+          "name": "transportProtocol",
+          "element": "select-input",
+          "label": "Transport-Protokoll",
+          "options": [
+            {
+              "value": "mllp",
+              "label": "MLLP (Minimal Lower Layer Protocol)"
+            },
+            {
+              "value": "http",
+              "label": "HTTP"
+            },
+            {
+              "value": "https",
+              "label": "HTTPS"
+            },
+            {
+              "value": "ftp",
+              "label": "FTP / SFTP"
+            },
+            {
+              "value": "tcp",
+              "label": "TCP"
+            },
+            {
+              "value": "other",
+              "label": "Sonstiges"
+            }
+          ]
+        },
+        {
+          "name": "targetPort",
+          "element": "port",
+          "label": "Zielport"
+        },
+        {
+          "name": "connectionType",
+          "element": "select-input",
+          "label": "Verbindungstyp",
+          "options": [
+            {
+              "value": "persistent",
+              "label": "Persistent"
+            },
+            {
+              "value": "ondemand",
+              "label": "On-Demand"
+            },
+            {
+              "value": "scheduled",
+              "label": "Geplant"
+            }
+          ]
+        },
+        {
+          "name": "messageVolume",
+          "element": "number-input",
+          "label": "Nachrichtenvolumen / h"
+        },
+        {
+          "name": "timeoutSeconds",
+          "element": "number-input",
+          "label": "Timeout (Sekunden)"
+        },
+        {
+          "name": "directEncryption",
+          "element": "select-input",
+          "label": "Transportverschlüsselung",
+          "options": [
+            {
+              "value": "tls",
+              "label": "TLS/SSL"
+            },
+            {
+              "value": "none",
+              "label": "Keine (intern)"
+            }
+          ]
+        },
+        {
+          "name": "interfaceCriticality",
+          "element": "criticality",
+          "label": "Kritikalität"
+        },
+        {
+          "name": "interfaceNotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie medizinische Schnittstellen (HL7v2, FHIR, DICOM, etc.) zwischen diesem System und anderen Systemen im Krankenhaus.",
+      "entry_type": "medInterface",
+      "add_fn": "addMedInterfaceEntry",
+      "add_label": "Medizinische Schnittstelle hinzufügen",
+      "entry_title": "Schnittstelle",
+      "section_name": "medinterfaces"
     },
     {
       "id": "containers",
@@ -497,17 +2498,300 @@
       "order": 19,
       "type": "dynamic-list",
       "entity_property": "containers",
-      "include_template": "pages/wizards/system/container-include-template.html",
       "condition": {
         "field": "componenttypes",
         "operator": "contains",
         "value": "container"
-      }
+      },
+      "fields": [
+        {
+          "name": "containerName",
+          "element": "text-name",
+          "label": "Container-Name",
+          "required": true
+        },
+        {
+          "name": "containerImage",
+          "element": "text-input",
+          "label": "Container-Image",
+          "placeholder": "z.B. nginx:1.25-alpine",
+          "required": true
+        },
+        {
+          "name": "containerRegistry",
+          "element": "url-input",
+          "label": "Registry-URL",
+          "placeholder": "z.B. registry.example.com"
+        },
+        {
+          "name": "containerType",
+          "element": "select-input",
+          "label": "Container-Runtime",
+          "options": [
+            {
+              "value": "docker",
+              "label": "Docker"
+            },
+            {
+              "value": "podman",
+              "label": "Podman"
+            },
+            {
+              "value": "containerd",
+              "label": "containerd"
+            },
+            {
+              "value": "cri-o",
+              "label": "CRI-O"
+            }
+          ]
+        },
+        {
+          "name": "containerOrchestration",
+          "element": "select-input",
+          "label": "Orchestrierung",
+          "options": [
+            {
+              "value": "kubernetes",
+              "label": "Kubernetes"
+            },
+            {
+              "value": "docker-compose",
+              "label": "Docker Compose"
+            },
+            {
+              "value": "docker-swarm",
+              "label": "Docker Swarm"
+            },
+            {
+              "value": "standalone",
+              "label": "Standalone"
+            }
+          ]
+        },
+        {
+          "name": "containerHost",
+          "element": "component-reference",
+          "label": "Host-System",
+          "attributes": {
+            "data-component-type": "vm,hardware"
+          }
+        },
+        {
+          "name": "containerK8sNamespace",
+          "element": "text-input",
+          "label": "K8s Namespace",
+          "placeholder": "z.B. production, monitoring"
+        },
+        {
+          "name": "containerK8sDeployment",
+          "element": "text-input",
+          "label": "K8s Deployment-Name"
+        },
+        {
+          "name": "containerK8sReplicas",
+          "element": "number-input",
+          "label": "K8s Replicas"
+        },
+        {
+          "name": "containerK8sService",
+          "element": "text-input",
+          "label": "K8s Service-Name"
+        },
+        {
+          "name": "containerPorts",
+          "element": "text-input",
+          "label": "Ports",
+          "placeholder": "z.B. 8080:80, 443:443"
+        },
+        {
+          "name": "containerNetworkMode",
+          "element": "select-input",
+          "label": "Netzwerk-Modus",
+          "options": [
+            {
+              "value": "bridge",
+              "label": "Bridge"
+            },
+            {
+              "value": "host",
+              "label": "Host"
+            },
+            {
+              "value": "overlay",
+              "label": "Overlay"
+            },
+            {
+              "value": "none",
+              "label": "Kein Netzwerk"
+            }
+          ]
+        },
+        {
+          "name": "containerCPURequest",
+          "element": "text-input",
+          "label": "CPU-Request",
+          "placeholder": "z.B. 250m, 1"
+        },
+        {
+          "name": "containerCPULimit",
+          "element": "text-input",
+          "label": "CPU-Limit",
+          "placeholder": "z.B. 500m, 2"
+        },
+        {
+          "name": "containerMemoryRequest",
+          "element": "text-input",
+          "label": "Memory-Request",
+          "placeholder": "z.B. 256Mi, 1Gi"
+        },
+        {
+          "name": "containerMemoryLimit",
+          "element": "text-input",
+          "label": "Memory-Limit",
+          "placeholder": "z.B. 512Mi, 2Gi"
+        },
+        {
+          "name": "containerImageScan",
+          "element": "select-input",
+          "label": "Image-Scanning",
+          "options": [
+            {
+              "value": "enabled",
+              "label": "Aktiviert"
+            },
+            {
+              "value": "disabled",
+              "label": "Deaktiviert"
+            }
+          ]
+        },
+        {
+          "name": "containerReadinessProbe",
+          "element": "text-input",
+          "label": "Readiness Probe",
+          "placeholder": "z.B. HTTP /health :8080"
+        },
+        {
+          "name": "containerHealthCheck",
+          "element": "text-input",
+          "label": "Health Check CMD"
+        },
+        {
+          "name": "containerRestartPolicy",
+          "element": "select-input",
+          "label": "Restart Policy",
+          "options": [
+            {
+              "value": "always",
+              "label": "Always"
+            },
+            {
+              "value": "unless-stopped",
+              "label": "Unless Stopped"
+            },
+            {
+              "value": "on-failure",
+              "label": "On Failure"
+            },
+            {
+              "value": "no",
+              "label": "No"
+            }
+          ]
+        },
+        {
+          "name": "containerLogDriver",
+          "element": "select-input",
+          "label": "Log-Treiber",
+          "options": [
+            {
+              "value": "json-file",
+              "label": "json-file"
+            },
+            {
+              "value": "syslog",
+              "label": "syslog"
+            },
+            {
+              "value": "fluentd",
+              "label": "Fluentd"
+            },
+            {
+              "value": "gelf",
+              "label": "GELF"
+            },
+            {
+              "value": "splunk",
+              "label": "Splunk"
+            }
+          ]
+        },
+        {
+          "name": "containerVolumes",
+          "element": "textarea-input",
+          "label": "Volumes",
+          "placeholder": "z.B. /data:/app/data:ro"
+        },
+        {
+          "name": "containerVolumeType",
+          "element": "select-input",
+          "label": "Volume-Typ",
+          "options": [
+            {
+              "value": "bind",
+              "label": "Bind Mount"
+            },
+            {
+              "value": "volume",
+              "label": "Named Volume"
+            },
+            {
+              "value": "tmpfs",
+              "label": "tmpfs"
+            },
+            {
+              "value": "pvc",
+              "label": "Kubernetes PVC"
+            }
+          ]
+        },
+        {
+          "name": "containerEnvVars",
+          "element": "textarea-input",
+          "label": "Umgebungsvariablen",
+          "placeholder": "z.B. APP_ENV=production"
+        },
+        {
+          "name": "containerHasSecrets",
+          "element": "toggle",
+          "label": "Secrets / Zertifikate verwaltet"
+        },
+        {
+          "name": "containerHasVolumes",
+          "element": "toggle",
+          "label": "Persistente Volumes"
+        },
+        {
+          "name": "containerHasEnv",
+          "element": "toggle",
+          "label": "Umgebungsvariablen konfiguriert"
+        },
+        {
+          "name": "containerNotes",
+          "element": "notes",
+          "label": "Notizen"
+        }
+      ],
+      "help_text": "Dokumentieren Sie Container (Docker, Podman, Kubernetes Pods, etc.), die für dieses System verwendet werden.",
+      "entry_type": "container",
+      "add_fn": "addContainerEntry",
+      "add_label": "Container hinzufügen",
+      "entry_title": "Container"
     }
   ],
   "form_id": "newSystemForm",
   "breadcrumb_label": "Neues System anlegen",
   "breadcrumb_section": "Systeme",
-  "help_template": null,
   "software_data": []
 }

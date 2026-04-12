@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="proxy-name">
+    <div data-tooltip-id="name">
         <h2>Proxy-Server Name</h2>
         <p>Ein eindeutiger Name für Ihren Proxy-Server - dieser Vermittler zwischen Clients und dem Internet fungiert als "Dolmetscher" und "Türsteher" in einem.</p>
         <div>
@@ -17,7 +17,7 @@
         <em>Moderne Unternehmen: 80%+ des Web-Traffics läuft über Proxies!</em>
     </div>
 
-    <div data-tooltip-id="proxy-type">
+    <div data-tooltip-id="type">
         <h2>Proxy-Typ</h2>
         <p>Die Art des Proxy-Servers und welche Protokolle er verarbeitet.</p>
         <div>
@@ -115,7 +115,7 @@
         <em>HTTP/HTTPS Forward Proxy ist Standard für Unternehmens-Internet-Zugang!</em>
     </div>
 
-    <div data-tooltip-id="proxy-protocols">
+    <div data-tooltip-id="protocols">
         <h2>Unterstützte Protokolle</h2>
         <p>Welche Netzwerk-Protokolle der Proxy-Server verarbeiten kann.</p>
         <div>
@@ -133,7 +133,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="proxy-port">
+    <div data-tooltip-id="proxyport">
         <h2>Proxy-Port</h2>
         <p>Der TCP-Port, auf dem der Proxy lauscht.</p>
         <div>
@@ -153,7 +153,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="proxy-software">
+    <div data-tooltip-id="software">
         <h2>Proxy-Software</h2>
         <p>Die Software-Lösung, die als Proxy-Server eingesetzt wird. Wählen Sie die passende Software basierend auf Ihren Anforderungen an Performance, Features und Budget.</p>
         <div>
@@ -186,7 +186,7 @@
         <em>Die Software-Details werden automatisch aus der Datenbank geladen, sobald Sie eine Option wählen.</em>
     </div>
 
-    <div data-tooltip-id="proxy-auth">
+    <div data-tooltip-id="proxyauth">
         <h2>Authentifizierung</h2>
         <p>Wie authentifizieren sich Benutzer am Proxy?</p>
         <div>
@@ -306,7 +306,7 @@
         <em>NTLM/Kerberos ist Standard - transparent für Windows-User!</em>
     </div>
 
-    <div data-tooltip-id="proxy-exceptions">
+    <div data-tooltip-id="proxyexceptions">
         <h2>Proxy-Ausnahmen (No Proxy / Bypass-Liste)</h2>
         <p>Welche Hosts/Netze umgehen den Proxy?</p>
         <div>
@@ -340,7 +340,7 @@
         <em>Zu viele Ausnahmen = Proxy wird umgangen = weniger Sicherheit!</em>
     </div>
 
-    <div data-tooltip-id="proxy-pac">
+    <div data-tooltip-id="proxypac">
         <h2>PAC-Datei (Proxy Auto-Config)</h2>
         <p>JavaScript-Datei für automatische Proxy-Konfiguration.</p>
         <div>
@@ -377,7 +377,7 @@ function FindProxyForURL(url, host) {
         <em>PAC ist mächtig, aber braucht JavaScript-Kenntnisse!</em>
     </div>
 
-    <div data-tooltip-id="proxy-wpad">
+    <div data-tooltip-id="proxywpad">
         <h2>WPAD (Web Proxy Auto-Discovery)</h2>
         <p>Automatische Erkennung der Proxy-Konfiguration.</p>
         <div>
@@ -411,7 +411,7 @@ function FindProxyForURL(url, host) {
         <em>WPAD ist praktisch, aber Sicherheitsrisiko - gut überlegen!</em>
     </div>
 
-    <div data-tooltip-id="proxy-ssl-interception">
+    <div data-tooltip-id="proxysslinterception">
         <h2>SSL-Interception / HTTPS-Inspection</h2>
         <p>Entschlüsselung von HTTPS-Traffic zur Inspektion.</p>
         <div>
@@ -548,7 +548,7 @@ function FindProxyForURL(url, host) {
         <em>SSL-Interception ist das größte Privacy vs. Security Dilemma - gut abwägen!</em>
     </div>
 
-    <div data-tooltip-id="proxy-cache">
+    <div data-tooltip-id="proxycache">
         <h2>Proxy-Cache</h2>
         <p>Lokales Speichern von Web-Inhalten zur Beschleunigung und Bandbreiten-Einsparung.</p>
         <div>
@@ -698,7 +698,7 @@ function FindProxyForURL(url, host) {
         <em>Caching war wichtig in den 2000ern - heute weniger relevant (HTTPS, schnelles Internet, CDNs)</em>
     </div>
 
-    <div data-tooltip-id="proxy-failover">
+    <div data-tooltip-id="proxysecondaryid">
         <h2>Failover / Sekundärer Proxy</h2>
         <p>Redundanter Proxy für Hochverfügbarkeit.</p>
         <div>
@@ -736,7 +736,7 @@ function FindProxyForURL(url, host) {
         </div>
     </div>
 
-    <div data-tooltip-id="proxy-failover-mechanism">
+    <div data-tooltip-id="proxyfailovermechanism">
         <h2>Failover-Mechanismus</h2>
         <p>Wie der Wechsel zum sekundären Proxy-Server erfolgt, wenn der primäre Proxy ausfällt.</p>
         <div>
@@ -753,7 +753,7 @@ function FindProxyForURL(url, host) {
         </div>
     </div>
 
-    <div data-tooltip-id="proxy-content-filtering">
+    <div data-tooltip-id="proxycontentfiltering">
         <h2>Content-Filtering</h2>
         <p>Filterung basierend auf Inhaltsanalyse - geht über URL-Filtering hinaus und untersucht den tatsächlichen Inhalt von Webseiten.</p>
         <div>
@@ -772,7 +772,7 @@ function FindProxyForURL(url, host) {
         <em>Aktivierung empfohlen für maximale Sicherheit - braucht aber mehr CPU-Ressourcen!</em>
     </div>
 
-    <div data-tooltip-id="proxy-url-filtering">
+    <div data-tooltip-id="proxyurlfiltering">
         <h2>URL-Filtering</h2>
         <p>Blockieren bestimmter Websites nach Kategorien.</p>
         <div>
@@ -810,7 +810,7 @@ function FindProxyForURL(url, host) {
         <em>URL-Filtering = zentraler Schutz vor Web-Threats!</em>
     </div>
 
-    <div data-tooltip-id="proxy-malware-scanning">
+    <div data-tooltip-id="proxymalwarescanning">
         <h2>Malware-Scanning</h2>
         <p>Scannt Downloads auf Schadsoftware.</p>
         <div>
@@ -841,7 +841,7 @@ function FindProxyForURL(url, host) {
         <em>Zusätzlicher Schutz zur Endpoint-Security!</em>
     </div>
 
-    <div data-tooltip-id="proxy-dlp">
+    <div data-tooltip-id="proxydlp">
         <h2>DLP (Data Loss Prevention)</h2>
         <p>Verhindert unautorisierten Abfluss sensibler Unternehmensdaten.</p>
         <div>
@@ -1044,7 +1044,7 @@ function FindProxyForURL(url, host) {
         <em>DLP ist komplex und braucht sorgfältiges Tuning - aber essentiell für Compliance!</em>
     </div>
 
-    <div data-tooltip-id="proxy-logging">
+    <div data-tooltip-id="proxyaccesslog">
         <h2>Access Logging</h2>
         <p>Protokollierung der Proxy-Zugriffe: Wer (User/IP), Wann (Zeit), Wohin (URL), Was (HTTP-Methode, Status), Wie viel (Bytes).</p>
         <div>
@@ -1066,7 +1066,7 @@ function FindProxyForURL(url, host) {
         <em>Logging ist Pflicht für Security, aber Datenschutz beachten!</em>
     </div>
 
-    <div data-tooltip-id="proxy-monitoring">
+    <div data-tooltip-id="proxymonitoring">
         <h2>Monitoring-Integration</h2>
         <p>Integration des Proxy-Servers mit Monitoring- und SIEM-Systemen zur Überwachung von Verfügbarkeit, Performance und Security-Events.</p>
         <div>
@@ -1092,7 +1092,7 @@ function FindProxyForURL(url, host) {
         </div>
     </div>
 
-    <div data-tooltip-id="proxy-notes">
+    <div data-tooltip-id="proxynotes">
         <h2>Notizen / Proxy-Besonderheiten</h2>
         <p>Zusätzliche wichtige Informationen zum Proxy-Server.</p>
         <div>

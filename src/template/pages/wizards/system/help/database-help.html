@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="db-name">
+    <div data-tooltip-id="dbname">
         <h2>Datenbankname</h2>
         <p>Der eindeutige Name Ihrer Datenbank-Instanz.</p>
         <div>
@@ -22,7 +22,7 @@
         <em>Bei Oracle: Dies ist der SID oder Service Name</em>
     </div>
 
-    <div data-tooltip-id="db-type">
+    <div data-tooltip-id="dbtype">
         <h2>Datenbank-Typ</h2>
         <p>Das Datenbank-Management-System (DBMS), das Sie verwenden.</p>
         <div>
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="db-version">
+    <div data-tooltip-id="dbversion">
         <h2>Datenbank-Version</h2>
         <p>Die exakte Version Ihres Datenbank-Systems.</p>
         <div>
@@ -70,7 +70,7 @@
         <em>Tipp: Verwenden Sie `SELECT VERSION()` oder ähnliche Befehle zur Abfrage</em>
     </div>
 
-    <div data-tooltip-id="db-charset">
+    <div data-tooltip-id="charset">
         <h2>Zeichensatz / Charset</h2>
         <p>Definiert, welche Zeichen in der Datenbank gespeichert werden können.</p>
         <div>
@@ -97,7 +97,7 @@
         <em>Für neue Datenbanken IMMER UTF-8 wählen!</em>
     </div>
 
-    <div data-tooltip-id="db-port">
+    <div data-tooltip-id="dbport">
         <h2>Datenbank-Port</h2>
         <p>Der Netzwerk-Port, über den auf die Datenbank zugegriffen wird.</p>
         <div>
@@ -122,7 +122,7 @@
         <em>Standard-Ports verwenden = einfacher zu merken, aber potentiell unsicherer</em>
     </div>
 
-    <div data-tooltip-id="db-tablespace">
+    <div data-tooltip-id="tablespace">
         <h2>Tablespace / Schema</h2>
         <p>Logische Gruppierung von Datenbank-Objekten (Tabellen, Indizes, etc.)</p>
         <div>
@@ -148,7 +148,7 @@
         <em>Bei Oracle: Verschiedene Tablespaces für Daten und Indizes = bessere Performance</em>
     </div>
 
-    <div data-tooltip-id="db-cluster-check">
+    <div data-tooltip-id="clustertype">
         <h2>Datenbank-Cluster / High Availability</h2>
         <p>Mehrere Datenbank-Server arbeiten zusammen für Hochverfügbarkeit.</p>
         <div>
@@ -174,7 +174,7 @@
         <em>WICHTIG: Cluster braucht mehr Ressourcen und ist komplexer zu verwalten!</em>
     </div>
 
-    <div data-tooltip-id="cluster-type">
+    <div data-tooltip-id="clustertype">
         <h2>Cluster-Typ</h2>
         <p>Die Art, wie die Datenbanken im Cluster zusammenarbeiten.</p>
         <div>
@@ -217,7 +217,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="cluster-name">
+    <div data-tooltip-id="clustername">
         <h2>Cluster-Name</h2>
         <p>Eindeutiger Name für Ihren Datenbank-Cluster.</p>
         <div>
@@ -238,7 +238,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="cluster-nodes">
+    <div data-tooltip-id="clusternodes">
         <h2>Anzahl Knoten</h2>
         <p>Wie viele Server/Instanzen bilden den Cluster?</p>
         <div>
@@ -260,7 +260,7 @@
         <em>Minimum: 2 Knoten für HA, empfohlen: 3 Knoten für Produktion</em>
     </div>
 
-    <div data-tooltip-id="failover-mode">
+    <div data-tooltip-id="failovermode">
         <h2>Failover-Modus</h2>
         <p>Wie wird bei Ausfall eines Knotens reagiert?</p>
         <div>
@@ -300,7 +300,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="db-host-assignment">
+    <div data-tooltip-id="dbname">
         <h2>Host-Zuordnung</h2>
         <p>Auf welchen Servern läuft diese Datenbank?</p>
         <div>
@@ -329,7 +329,7 @@
         <em>Die Server müssen vorher als VMs oder Hardware angelegt worden sein!</em>
     </div>
 
-    <div data-tooltip-id="db-size">
+    <div data-tooltip-id="dbsize">
         <h2>Datenbankgröße</h2>
         <p>Aktueller Speicherplatz-Verbrauch der Datenbank in Gigabyte.</p>
         <div>
@@ -357,7 +357,7 @@
         <em>Zur Ermittlung: Abfrage `SELECT SUM(bytes)/1024/1024/1024 FROM dba_segments;` (Oracle)</em>
     </div>
 
-    <div data-tooltip-id="max-connections">
+    <div data-tooltip-id="maxconnections">
         <h2>Maximale Verbindungen</h2>
         <p>Wie viele gleichzeitige Client-Verbindungen sind erlaubt?</p>
         <div>
@@ -389,7 +389,7 @@
         <em>Connection Pooling reduziert benötigte Verbindungen erheblich!</em>
     </div>
 
-    <div data-tooltip-id="db-encryption">
+    <div data-tooltip-id="dbencryption">
         <h2>Verschlüsselung</h2>
         <p>Wie werden Daten in der Datenbank verschlüsselt?</p>
         <div>
@@ -427,7 +427,7 @@
         <em>Verschlüsselung kostet 5-15% Performance - aber Sicherheit geht vor!</em>
     </div>
 
-    <div data-tooltip-id="db-authentication">
+    <div data-tooltip-id="dbauthentication">
         <h2>Authentifizierung</h2>
         <p>Wie melden sich Benutzer an der Datenbank an?</p>
         <div>
@@ -477,7 +477,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="db-notes">
+    <div data-tooltip-id="dbnotes">
         <h2>Notizen / Besonderheiten</h2>
         <p>Zusätzliche wichtige Informationen zu dieser Datenbank.</p>
         <div>

@@ -4,7 +4,6 @@
   "collection": "comm_servers",
   "uuid_prefix": "commserver_",
   "icon": "comserver",
-  "template_path": "pages/wizards/komponenten/new-comserver.html",
   "messages": {
     "create_success": "Kommunikationsserver erfolgreich erstellt",
     "update_success": "Kommunikationsserver aktualisiert",
@@ -467,6 +466,5 @@
   "form_id": "newCommServerForm",
   "breadcrumb_label": "Neuen Kommunikationsserver anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/commserver-help.html",
   "software_data": []
 }

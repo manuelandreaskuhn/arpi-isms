@@ -4,7 +4,6 @@
   "collection": "firewalls",
   "uuid_prefix": "firewall_",
   "icon": "firewall",
-  "template_path": "pages/wizards/komponenten/new-firewall.html",
   "messages": {
     "create_success": "Firewall erfolgreich erstellt",
     "update_success": "Firewall erfolgreich aktualisiert",
@@ -281,7 +280,6 @@
   "form_id": "newFirewallForm",
   "breadcrumb_label": "Neue Firewall anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/firewall-help.html",
   "software_data": {
     "firewallsoftware": "firewall"
   }

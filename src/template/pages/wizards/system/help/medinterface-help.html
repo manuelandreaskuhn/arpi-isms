@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="interface-name">
+    <div data-tooltip-id="interfaceName">
         <h2>Schnittstellenname</h2>
         <p>Ein beschreibender Name für diese medizinische Schnittstelle.</p>
         <div>
@@ -26,7 +26,7 @@
         <em>Gute Namen beschreiben: Welche Systeme? Welche Daten?</em>
     </div>
 
-    <div data-tooltip-id="interface-type">
+    <div data-tooltip-id="interfaceType">
         <h2>Schnittstellentyp</h2>
         <p>Das verwendete Standard-Protokoll für den Datenaustausch.</p>
         <div>
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="data-direction">
+    <div data-tooltip-id="dataDirection">
         <h2>Datenflussrichtung</h2>
         <p>In welche Richtung fließen die Daten?</p>
         <div>
@@ -143,7 +143,7 @@
         <em>Tipp: Bei bidirektional können Sie auch zwei separate Schnittstellen dokumentieren (klarer)</em>
     </div>
 
-    <div data-tooltip-id="source-system">
+    <div data-tooltip-id="sourceSystem">
         <h2>Quellsystem / Sender</h2>
         <p>Das System, das die Daten sendet (die Quelle).</p>
         <div>
@@ -164,7 +164,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="source-component">
+    <div data-tooltip-id="sourceComponent">
         <h2>Quell-Komponente</h2>
         <p>Die konkrete VM oder der Server, auf dem das Quellsystem läuft (optional).</p>
         <div>
@@ -182,7 +182,7 @@
         <em>Nur auswählen, wenn die Komponente vorher als VM/Server angelegt wurde</em>
     </div>
 
-    <div data-tooltip-id="connection-type">
+    <div data-tooltip-id="connectionType">
         <h2>Verbindungstyp</h2>
         <p>WIE kommunizieren die Systeme miteinander?</p>
         <div>
@@ -234,7 +234,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="direct-port">
+    <div data-tooltip-id="connectionType">
         <h2>Port (Direkte Verbindung)</h2>
         <p>Der TCP-Port, auf dem das Zielsystem lauscht.</p>
         <div>
@@ -262,7 +262,7 @@
         <em>Port muss in Firewall freigeschaltet sein!</em>
     </div>
 
-    <div data-tooltip-id="direct-encryption">
+    <div data-tooltip-id="directEncryption">
         <h2>Verschlüsselung (Direkte Verbindung)</h2>
         <p>Wie werden die Daten während der Übertragung geschützt?</p>
         <div>
@@ -298,7 +298,7 @@
         <em>WICHTIG: Patientendaten MÜSSEN verschlüsselt übertragen werden!</em>
     </div>
 
-    <div data-tooltip-id="commserver-select">
+    <div data-tooltip-id="connectionType">
         <h2>Kommunikationsserver auswählen</h2>
         <p>Wählen Sie einen bestehenden Interface Engine aus der Liste oder geben Sie manuell ein.</p>
         <div>
@@ -334,7 +334,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="commserver-channel">
+    <div data-tooltip-id="connectionType">
         <h2>Channel / Route Name</h2>
         <p>Der Name des Channels oder der Route auf dem Kommunikationsserver.</p>
         <div>
@@ -352,7 +352,7 @@
         <em>Hilft beim Troubleshooting - man weiß, wo man in der Interface Engine schauen muss</em>
     </div>
 
-    <div data-tooltip-id="fileshare-path">
+    <div data-tooltip-id="connectionType">
         <h2>File Share Pfad</h2>
         <p>Der Netzwerk-Pfad zum gemeinsamen Verzeichnis.</p>
         <div>
@@ -374,7 +374,7 @@
         <em>Berechtigungen beachten: Sender braucht Schreib-, Empfänger Leserechte!</em>
     </div>
 
-    <div data-tooltip-id="fileshare-protocol">
+    <div data-tooltip-id="connectionType">
         <h2>File Share Protokoll</h2>
         <p>Das Protokoll für den Dateizugriff.</p>
         <div>
@@ -393,7 +393,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="file-pattern">
+    <div data-tooltip-id="connectionType">
         <h2>Dateiformat / -muster</h2>
         <p>Das Namens-Muster oder Format der Dateien.</p>
         <div>
@@ -408,7 +408,7 @@
         <em>Wildcard * = beliebige Zeichen</em>
     </div>
 
-    <div data-tooltip-id="mq-system">
+    <div data-tooltip-id="connectionType">
         <h2>Message Queue System</h2>
         <p>Die verwendete Message Queue Software.</p>
         <div>
@@ -428,7 +428,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="mq-queue">
+    <div data-tooltip-id="connectionType">
         <h2>Queue / Topic Name</h2>
         <p>Der Name der Warteschlange oder des Topics.</p>
         <div>
@@ -448,7 +448,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="target-system">
+    <div data-tooltip-id="targetSystem">
         <h2>Zielsystem / Empfänger</h2>
         <p>Das System, das die Daten empfängt (das Ziel).</p>
         <div>
@@ -461,7 +461,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="target-component">
+    <div data-tooltip-id="targetComponent">
         <h2>Ziel-Komponente</h2>
         <p>Die konkrete Komponente (Load Balancer, VM, Server) des Zielsystems.</p>
         <div>
@@ -478,7 +478,7 @@
         <em>Bei Load Balancer: Traffic wird auf mehrere Backend-Server verteilt</em>
     </div>
 
-    <div data-tooltip-id="data-types">
+    <div data-tooltip-id="dataTypes">
         <h2>Übertragene Datentypen</h2>
         <p>Welche Art von medizinischen Daten werden über diese Schnittstelle ausgetauscht?</p>
         <div>
@@ -502,7 +502,7 @@
         <em>Mehrfachauswahl möglich - eine Schnittstelle kann mehrere Datentypen übertragen</em>
     </div>
 
-    <div data-tooltip-id="transport-protocol">
+    <div data-tooltip-id="transportProtocol">
         <h2>Protokoll / Transport</h2>
         <p>Das technische Transport-Protokoll auf niedrigerer Ebene.</p>
         <div>
@@ -520,7 +520,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="message-volume">
+    <div data-tooltip-id="messageVolume">
         <h2>Nachrichtenvolumen</h2>
         <p>Wie viele Nachrichten pro Tag werden übertragen?</p>
         <div>
@@ -543,7 +543,7 @@
         <em>Bei Lastspitzen (z.B. Monatsende) kann es mehr sein!</em>
     </div>
 
-    <div data-tooltip-id="interface-criticality">
+    <div data-tooltip-id="interfaceCriticality">
         <h2>SLA / Kritikalität</h2>
         <p>Wie wichtig ist die Schnittstelle? Wie schnell müssen Nachrichten ankommen?</p>
         <div>
@@ -581,7 +581,7 @@
         <em>Kritikalität bestimmt Monitoring-Frequenz und Fehler-Eskalation!</em>
     </div>
 
-    <div data-tooltip-id="timeout">
+    <div data-tooltip-id="timeoutSeconds">
         <h2>Timeout</h2>
         <p>Wie lange wartet das System auf eine Antwort, bevor es einen Fehler meldet?</p>
         <div>
@@ -603,7 +603,7 @@
         <em>Zu kurz = viele False-Positive-Fehler. Zu lang = lange Wartezeit bei echten Problemen</em>
     </div>
 
-    <div data-tooltip-id="interface-notes">
+    <div data-tooltip-id="interfaceNotes">
         <h2>Anmerkungen / Besonderheiten</h2>
         <p>Zusätzliche wichtige Informationen zu dieser Schnittstelle.</p>
         <div>

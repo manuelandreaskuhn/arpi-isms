@@ -4,7 +4,6 @@
   "collection": "networks",
   "uuid_prefix": "network_",
   "icon": "network",
-  "template_path": "pages/wizards/komponenten/new-network.html",
   "messages": {
     "create_success": "Netzwerk erstellt",
     "update_success": "Netzwerk aktualisiert",
@@ -18,13 +17,13 @@
       "order": 1,
       "fields": [
         {
-          "name": "name",
+          "name": "networkname",
           "element": "text-name",
           "label": "Netzwerk-Name",
           "required": true
         },
         {
-          "name": "type",
+          "name": "networktype",
           "element": "select-input",
           "label": "Netzwerk-Typ",
           "required": true,
@@ -70,7 +69,7 @@
           "required": true
         },
         {
-          "name": "location",
+          "name": "networklocation",
           "element": "text-location",
           "label": "Standort"
         }
@@ -82,7 +81,7 @@
       "order": 2,
       "fields": [
         {
-          "name": "cidr",
+          "name": "networkcidr",
           "element": "cidr",
           "label": "Netzwerk-Adresse (CIDR)",
           "required": true
@@ -846,6 +845,5 @@
   "form_id": "newNetworkForm",
   "breadcrumb_label": "Neues Netzwerk anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/network-help.html",
   "software_data": []
 }

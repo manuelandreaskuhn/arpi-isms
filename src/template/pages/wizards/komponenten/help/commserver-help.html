@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="commserver-name">
+    <div data-tooltip-id="name">
         <h2>Name des Kommunikationsservers</h2>
         <p>Ein eindeutiger Name für Ihren Kommunikationsserver.</p>
         <div>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="commserver-type">
+    <div data-tooltip-id="type">
         <h2>Typ / Produkt</h2>
         <p>Welche Interface Engine Software wird verwendet?</p>
         <div>
@@ -97,7 +97,7 @@
         <em>Wahl hängt ab von: Budget, Support-Bedarf, Team-Know-how, Skalierung</em>
     </div>
 
-    <div data-tooltip-id="commserver-vendor">
+    <div data-tooltip-id="vendor">
         <h2>Hersteller</h2>
         <p>Das Unternehmen, das die Software herstellt.</p>
         <div>
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="commserver-version">
+    <div data-tooltip-id="version">
         <h2>Version</h2>
         <p>Die installierte Software-Version.</p>
         <div>
@@ -142,7 +142,7 @@
         <em>Interface Engines MÜSSEN aktuell gehalten werden - alte Versionen = Sicherheitsrisiko!</em>
     </div>
 
-    <div data-tooltip-id="commserver-criticality">
+    <div data-tooltip-id="criticality">
         <h2>Kritikalität</h2>
         <p>Wie kritisch ist dieser Server für den Krankenhausbetrieb?</p>
         <div>
@@ -165,7 +165,7 @@
         <em>Interface Engine ist meist DAS kritischste System - ohne sie: keine Datenkommunikation!</em>
     </div>
 
-    <div data-tooltip-id="commserver-hostname">
+    <div data-tooltip-id="name">
         <h2>Hostname / FQDN</h2>
         <p>Der vollständige Netzwerk-Name des Servers.</p>
         <div>
@@ -183,7 +183,7 @@
         <em>FQDN wichtig für SSL-Zertifikate und DNS-Auflösung</em>
     </div>
 
-    <div data-tooltip-id="commserver-os">
+    <div data-tooltip-id="serveroperatingystem">
         <h2>Betriebssystem</h2>
         <p>Auf welchem OS läuft die Interface Engine?</p>
         <div>
@@ -202,7 +202,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="commserver-id">
+    <div data-tooltip-id="name">
         <h2>Kommunikations-Server / Hostname</h2>
         <p>Wählen Sie den physischen oder virtuellen Server aus, auf dem die Interface Engine läuft.</p>
         <div>
@@ -224,7 +224,7 @@
         <em>Empfehlung: Server zuerst als VM/Hardware anlegen, dann hier verknüpfen</em>
     </div>
 
-    <div data-tooltip-id="commserver-management-url">
+    <div data-tooltip-id="commservermanagementurl">
         <h2>Management-URL</h2>
         <p>Die vollständige URL zur Web-Administrationsoberfläche der Interface Engine.</p>
         <div>
@@ -251,7 +251,7 @@
         <em>Diese URL benötigen Sie für den täglichen Zugriff auf die Interface Engine!</em>
     </div>
 
-    <div data-tooltip-id="commserver-admin-port">
+    <div data-tooltip-id="commservermanagementurl">
         <h2>Web-Management-Port</h2>
         <p>Der Port für die Web-Administrationsoberfläche.</p>
         <div>
@@ -275,7 +275,7 @@
         <em>Niemals Management-Ports offen ins Internet - hohes Sicherheitsrisiko!</em>
     </div>
 
-    <div data-tooltip-id="commserver-environment">
+    <div data-tooltip-id="environment">
         <h2>Umgebung</h2>
         <p>In welcher Umgebung läuft dieser Server?</p>
         <div>
@@ -293,7 +293,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="commserver-protocols">
+    <div data-tooltip-id="protocols">
         <h2>Protokoll-Support</h2>
         <p>Welche Kommunikations-Protokolle und Standards werden unterstützt?</p>
         <div>
@@ -316,7 +316,7 @@
         <em>Moderne Interface Engines sollten mindestens HL7 v2, FHIR und REST unterstützen</em>
     </div>
 
-    <div data-tooltip-id="commserver-channel-count">
+    <div data-tooltip-id="protocols">
         <h2>Anzahl aktiver Channels/Routen</h2>
         <p>Wie viele Schnittstellen (Channels) sind konfiguriert?</p>
         <div>
@@ -338,7 +338,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="commserver-throughput">
+    <div data-tooltip-id="protocols">
         <h2>Nachrichtendurchsatz</h2>
         <p>Wie viele Nachrichten werden pro Tag verarbeitet?</p>
         <div>
@@ -361,7 +361,7 @@
         <em>Bei Spitzenzeiten (Montag morgen) kann Durchsatz 3-5x höher sein!</em>
     </div>
 
-    <div data-tooltip-id="commserver-channels">
+    <div data-tooltip-id="protocols">
         <h2>Wichtige Channels</h2>
         <p>Listen Sie die kritischsten oder wichtigsten Channels/Routen auf.</p>
         <div>
@@ -391,7 +391,7 @@
         <em>Diese Liste hilft bei Notfällen: "Welcher Channel ist ausgefallen und was ist der Impact?"</em>
     </div>
 
-    <div data-tooltip-id="commserver-ha">
+    <div data-tooltip-id="serverhighavailability">
         <h2>Hochverfügbarkeits-Konfiguration (HA/Cluster)</h2>
         <p>Läuft die Interface Engine redundant?</p>
         <div>
@@ -414,7 +414,7 @@
         <em>Für kritische Produktiv-Systeme: HA ist Pflicht!</em>
     </div>
 
-    <div data-tooltip-id="commserver-cluster-type">
+    <div data-tooltip-id="serverclustertype">
         <h2>Cluster-Typ</h2>
         <p>Wie arbeiten die Server im Cluster zusammen?</p>
         <div>
@@ -449,7 +449,7 @@
         <em>Active-Active ist ideal für hohe Last, Active-Passive für einfache Redundanz</em>
     </div>
 
-    <div data-tooltip-id="commserver-node-count">
+    <div data-tooltip-id="servernodecount">
         <h2>Anzahl Knoten</h2>
         <p>Wie viele Server sind im Cluster?</p>
         <div>
@@ -463,7 +463,7 @@
         <em>Ungerade Anzahl (3, 5) hilft bei Split-Brain-Prävention</em>
     </div>
 
-    <div data-tooltip-id="commserver-monitoring">
+    <div data-tooltip-id="monitoringtool">
         <h2>Monitoring-Tool</h2>
         <p>Wie wird der Server überwacht?</p>
         <div>
@@ -494,7 +494,7 @@
         <em>Ohne Monitoring: Keine Ahnung wenn Channels ausfallen!</em>
     </div>
 
-    <div data-tooltip-id="commserver-log-retention">
+    <div data-tooltip-id="monitoringlogretention">
         <h2>Log-Retention (Tage)</h2>
         <p>Wie lange werden Logs aufbewahrt?</p>
         <div>
@@ -521,7 +521,7 @@
         <em>Balance: Genug für Troubleshooting, nicht zu viel für Storage</em>
     </div>
 
-    <div data-tooltip-id="commserver-siem">
+    <div data-tooltip-id="siemserverintegration">
         <h2>SIEM-Integration</h2>
         <p>Werden Logs an ein zentrales SIEM-System gesendet?</p>
         <div>
@@ -556,7 +556,7 @@
         <em>Bei kritischen Interface Engines: SIEM ist nicht optional - es ist Pflicht für Compliance und Security!</em>
     </div>
 
-    <div data-tooltip-id="commserver-siem-log-format">
+    <div data-tooltip-id="siemlogformat">
         <h2>Log-Format</h2>
         <p>In welchem Format werden Logs zum SIEM gesendet?</p>
         <div>
@@ -572,7 +572,7 @@
         <em>JSON ist meist beste Wahl - flexibel und gut parsebar</em>
     </div>
 
-    <div data-tooltip-id="commserver-siem-transport">
+    <div data-tooltip-id="siemtransportprotocol">
         <h2>Transport-Protokoll</h2>
         <p>Wie werden Logs zum SIEM übertragen?</p>
         <div>
@@ -588,7 +588,7 @@
         <em>Für sensible Logs (Patientendaten): Immer verschlüsselt (TLS/HTTPS)!</em>
     </div>
 
-    <div data-tooltip-id="commserver-siem-log-types">
+    <div data-tooltip-id="siemlogtypes">
         <h2>Log-Kategorien</h2>
         <p>Welche Log-Typen werden zum SIEM gesendet?</p>
         <div>
@@ -605,7 +605,7 @@
         <em>Für Compliance: Mindestens Security, Access und Audit Logs!</em>
     </div>
 
-    <div data-tooltip-id="commserver-auth">
+    <div data-tooltip-id="serverauth">
         <h2>Authentifizierung</h2>
         <p>Wie authentifizieren sich Administratoren?</p>
         <div>
@@ -621,7 +621,7 @@
         <em>AD/LDAP ist empfohlen - zentrale Verwaltung, einfacher zu kontrollieren</em>
     </div>
 
-    <div data-tooltip-id="commserver-tls">
+    <div data-tooltip-id="servertls">
         <h2>TLS/SSL für Admin-Zugriff</h2>
         <p>Ist die Admin-Oberfläche verschlüsselt?</p>
         <div>
@@ -643,7 +643,7 @@
         <em>Produktiv-Systeme MÜSSEN TLS haben!</em>
     </div>
 
-    <div data-tooltip-id="commserver-access">
+    <div data-tooltip-id="serveraccesspermissions">
         <h2>Zugriffsberechtigung</h2>
         <p>Wer darf auf den Server zugreifen?</p>
         <div>
@@ -662,7 +662,7 @@
         <em>Dokumentieren Sie: Wer hat warum Zugriff?</em>
     </div>
 
-    <div data-tooltip-id="commserver-maintenance">
+    <div data-tooltip-id="servermaintenancewindow">
         <h2>Wartungsfenster</h2>
         <p>Wann werden Updates und Wartung durchgeführt?</p>
         <div>
@@ -684,7 +684,7 @@
         <em>Bei HA-Cluster: Rolling Updates ohne Downtime möglich!</em>
     </div>
 
-    <div data-tooltip-id="commserver-last-update">
+    <div data-tooltip-id="serverlastupdated">
         <h2>Letztes Update</h2>
         <p>Wann wurde die Software zuletzt aktualisiert?</p>
         <div>
@@ -705,7 +705,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="commserver-support">
+    <div data-tooltip-id="serversupportcontact">
         <h2>Support-Kontakt</h2>
         <p>Wen kontaktieren bei Problemen?</p>
         <div>
@@ -723,7 +723,7 @@
         <em>Bei kritischen Systemen: 24/7 Erreichbarkeit Pflicht!</em>
     </div>
     
-    <div data-tooltip-id="commserver-notes">
+    <div data-tooltip-id="notes">
         <h2>Anmerkungen</h2>
         <p>Zusätzliche wichtige Informationen.</p>
         <div>

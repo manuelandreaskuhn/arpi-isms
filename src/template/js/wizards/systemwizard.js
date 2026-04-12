@@ -1,49 +1,49 @@
 import { updateListenersForDynamicEntry, updateSectionCounter, removeCustomSelects } from './wizards.js';
-import { 
-    addVMEntry, 
-    addHardwareEntry, 
+import {
+    addVMEntry,
+    addHardwareEntry,
     removeEntry,
     refreshVMHypervisors,
-    refreshAllVMHypervisors 
+    refreshAllVMHypervisors
 } from './system/vmhardware.js';
-import { 
+import {
     addDatabaseEntry,
-    refreshHostAssignments 
+    refreshHostAssignments
 } from './system/database.js';
-import { 
+import {
     addBackupEntry,
     setupBackupConditionalFields,
     refreshBackupHostAssignments,
     refreshBackupSystems,
-    refreshAllBackupSystems 
+    refreshAllBackupSystems
 } from './system/backup.js';
-import { 
+import {
     addLoadBalancerEntry,
     setupLoadBalancerConditionalFields,
-    refreshLoadBalancerHostAssignments 
+    refreshLoadBalancerHostAssignments
 } from './system/loadbalancer.js';
-import { 
+import {
     addFirewallEntry,
     setupFirewallConditionalFields,
-    refreshFirewallHostAssignments 
+    refreshFirewallHostAssignments
 } from './system/firewall.js';
-import { 
+import {
     addClientEntry,
     setupClientConditionalFields,
     refreshClientHostAssignments,
-    refreshClientTargets 
+    refreshClientTargets
 } from './system/client.js';
 import { setupTIConditionalFields } from './system/ti.js';
 import { setupProxyConditionalFields } from './system/proxy.js';
-import { 
+import {
     setupSIEMConditionalFields,
     refreshSIEMHostAssignments,
-    refreshSIEMDatabaseAssignments 
+    refreshSIEMDatabaseAssignments
 } from './system/siem.js';
 import { setupVPNConditionalFields, refreshVPNHostAssignments } from './system/vpn.js';
-import { 
+import {
     addMedInterfaceEntry,
-    refreshInterfaceComponents 
+    refreshInterfaceComponents
 } from './system/medinterface.js';
 import {
     addContainerEntry,
@@ -59,16 +59,16 @@ import { initializeHelpTooltips } from './helptooltip.js';
 import { refreshAllComponentSelects } from './componentlinking.js';
 import { collectFormData } from './formcollector.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize help tooltips
     initializeHelpTooltips();
-    
+
     // Initialize component selects
     refreshAllComponentSelects();
-    
+
     // Setup form submission
     setupSystemFormSubmit();
-    
+
     // Initially hide sections
     const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
     const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const medInterfaceSection = document.querySelector('.form-section[data-name="medinterfaces"]');
     const containerSection = document.querySelector('.form-section[data-name="containers"]');
     const medDeviceSection = document.querySelector('.form-section[data-name="meddevices"]');
-    
+
     if (vmSection) vmSection.style.display = 'none';
     if (hardwareSection) hardwareSection.style.display = 'none';
     if (databaseSection) databaseSection.style.display = 'none';
@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (medInterfaceSection) medInterfaceSection.style.display = 'none';
     if (containerSection) containerSection.style.display = 'none';
     if (medDeviceSection) medDeviceSection.style.display = 'none';
-    
+
     // VM checkbox handler
     const vmCheckbox = document.getElementById('vm');
     if (vmCheckbox) {
-        vmCheckbox.addEventListener('change', function() {
+        vmCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 vmSection.style.display = 'block';
             } else {
@@ -107,11 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Hardware checkbox handler
     const hardwareCheckbox = document.getElementById('hardware');
     if (hardwareCheckbox) {
-        hardwareCheckbox.addEventListener('change', function() {
+        hardwareCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 hardwareSection.style.display = 'block';
             } else {
@@ -123,11 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Database checkbox handler
     const databaseCheckbox = document.getElementById('database');
     if (databaseCheckbox) {
-        databaseCheckbox.addEventListener('change', function() {
+        databaseCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 databaseSection.style.display = 'block';
             } else {
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Backup checkbox handler
     const backupCheckbox = document.getElementById('backup');
     if (backupCheckbox) {
-        backupCheckbox.addEventListener('change', function() {
+        backupCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 backupSection.style.display = 'block';
             } else {
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load Balancer checkbox handler
     const loadbalancerCheckbox = document.getElementById('loadbalancer');
     if (loadbalancerCheckbox) {
-        loadbalancerCheckbox.addEventListener('change', function() {
+        loadbalancerCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 loadbalancerSection.style.display = 'block';
             } else {
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Firewall checkbox handler
     const firewallCheckbox = document.getElementById('firewall');
     if (firewallCheckbox) {
-        firewallCheckbox.addEventListener('change', function() {
+        firewallCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 firewallSection.style.display = 'block';
             } else {
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Client checkbox handler
     const clientCheckbox = document.getElementById('client');
     if (clientCheckbox) {
-        clientCheckbox.addEventListener('change', function() {
+        clientCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 clientSection.style.display = 'block';
             } else {
@@ -198,11 +198,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Gematik TI checkbox handler
     const gematictiCheckbox = document.getElementById('gematicti');
     const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
-    
+
     if (gematictiCheckbox && gematictiSection) {
         gematictiSection.style.display = 'none';
-        
-        gematictiCheckbox.addEventListener('change', function() {
+
+        gematictiCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 gematictiSection.style.display = 'block';
                 setupTIConditionalFields(gematictiSection);
@@ -217,11 +217,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Proxy checkbox handler
     const proxyCheckbox = document.getElementById('proxy');
     const proxySection = document.querySelector('.form-section[data-name="proxy"]');
-    
+
     if (proxyCheckbox && proxySection) {
         proxySection.style.display = 'none';
-        
-        proxyCheckbox.addEventListener('change', function() {
+
+        proxyCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 proxySection.style.display = 'block';
                 setupProxyConditionalFields(proxySection);
@@ -234,11 +234,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // SIEM checkbox handler
     const siemCheckbox = document.getElementById('siem');
     const siemSection = document.querySelector('.form-section[data-name="siem"]');
-    
+
     if (siemCheckbox && siemSection) {
         siemSection.style.display = 'none';
-        
-        siemCheckbox.addEventListener('change', function() {
+
+        siemCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 siemSection.style.display = 'block';
                 setupSIEMConditionalFields(siemSection);
@@ -251,11 +251,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // VPN checkbox handler
     const vpnCheckbox = document.getElementById('vpn');
     const vpnSection = document.querySelector('.form-section[data-name="vpn"]');
-    
+
     if (vpnCheckbox && vpnSection) {
         vpnSection.style.display = 'none';
-        
-        vpnCheckbox.addEventListener('change', function() {
+
+        vpnCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 vpnSection.style.display = 'block';
                 setupVPNConditionalFields(vpnSection);
@@ -267,9 +267,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Medical Interface checkbox handler
     const medInterfaceCheckbox = document.getElementById('medinterface');
-    
+
     if (medInterfaceCheckbox && medInterfaceSection) {
-        medInterfaceCheckbox.addEventListener('change', function() {
+        medInterfaceCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 medInterfaceSection.style.display = 'block';
                 // Refresh component selects für Interfaces
@@ -284,9 +284,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Container checkbox handler
     const containerCheckbox = document.getElementById('container');
-    
+
     if (containerCheckbox && containerSection) {
-        containerCheckbox.addEventListener('change', function() {
+        containerCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 containerSection.style.display = 'block';
             } else {
@@ -299,9 +299,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Medical Device checkbox handler
     const medDeviceCheckbox = document.getElementById('meddevice');
-    
+
     if (medDeviceCheckbox && medDeviceSection) {
-        medDeviceCheckbox.addEventListener('change', function() {
+        medDeviceCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 medDeviceSection.style.display = 'block';
             } else {
@@ -315,11 +315,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hypervisor checkbox handler
     const hypervisorCheckbox = document.getElementById('hypervisor');
     const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
-    
+
     if (hypervisorCheckbox && hypervisorSection) {
         hypervisorSection.style.display = 'none';
-        
-        hypervisorCheckbox.addEventListener('change', function() {
+
+        hypervisorCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 hypervisorSection.style.display = 'block';
                 refreshAllComponentSelects();
@@ -332,11 +332,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // CommunicationServer checkbox handler
     const commserverCheckbox = document.getElementById('commserver');
     const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
-    
+
     if (commserverCheckbox && commserverSection) {
         commserverSection.style.display = 'none';
-        
-        commserverCheckbox.addEventListener('change', function() {
+
+        commserverCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 commserverSection.style.display = 'block';
                 refreshAllComponentSelects();
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Cluster-Konfiguration anzeigen/ausblenden
-    document.addEventListener('change', function(e) {
+    document.addEventListener('change', function (e) {
         if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
             const clusterConfig = e.target.closest('.entry-content')?.querySelector('.cluster-config');
             if (clusterConfig) {
@@ -360,15 +360,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupSystemFormSubmit() {
     const form = document.getElementById('newSystemForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', handleSystemSubmit);
 }
 
 async function handleSystemSubmit(event) {
     event.preventDefault();
-    
+
     const formData = collectFormData(event.target);
-    
+
     // Collect dynamic entries (VMs, Hardware, etc.)
     formData.virtualmachines = collectVMData();
     formData.hardwareservers = collectHardwareData();
@@ -380,9 +380,24 @@ async function handleSystemSubmit(event) {
     formData.medicaldevices = collectMedDeviceData();
     formData.medicalinterfaces = collectMedInterfaceData();
     formData.containers = collectContainerData();
-    
+
+    // Collect embedded-one sections as nested sub-objects (required by SystemHelper)
+    const embeddedOneSections = [
+        { selector: '.form-section[data-name="gematicti"]', key: 'tiinfrastructure', checkbox: 'gematicti' },
+        { selector: '.form-section[data-name="proxy"]', key: 'proxyconfiguration', checkbox: 'proxy' },
+        { selector: '.form-section[data-name="siem"]', key: 'siemintegration', checkbox: 'siem' },
+        { selector: '.form-section[data-name="vpn"]', key: 'vpnaccess', checkbox: 'vpn' },
+    ];
+    embeddedOneSections.forEach(({ selector, key, checkbox }) => {
+        const section = document.querySelector(selector);
+        const checkboxEl = document.getElementById(checkbox);
+        if (section && checkboxEl?.checked) {
+            formData[key] = collectFormData(section);
+        }
+    });
+
     console.log('System Data:', formData);
-    
+
     try {
         const response = await fetch(getFetchUri(), {
             method: 'POST',
@@ -392,7 +407,7 @@ async function handleSystemSubmit(event) {
             credentials: 'include',
             body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         if (result.success) {
             let lastchangespan = document.querySelector(".formmanagement > span.form-status");

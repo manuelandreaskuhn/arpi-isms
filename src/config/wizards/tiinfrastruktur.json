@@ -4,7 +4,6 @@
   "collection": "tiinfrastrukturen",
   "uuid_prefix": "ti_",
   "icon": "tiinfrastruktur",
-  "template_path": "pages/wizards/komponenten/new-tiinfrastruktur.html",
   "messages": {
     "create_success": "TI-Infrastruktur erstellt",
     "update_success": "TI-Infrastruktur aktualisiert",
@@ -254,6 +253,5 @@
   "form_id": "newTIInfrastrukturForm",
   "breadcrumb_label": "Neue TI-Infrastruktur anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/tiinfrastruktur-help.html",
   "software_data": []
 }

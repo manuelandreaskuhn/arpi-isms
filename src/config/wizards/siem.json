@@ -4,7 +4,6 @@
   "collection": "siems",
   "uuid_prefix": "siem_",
   "icon": "siem",
-  "template_path": "pages/wizards/komponenten/new-siem.html",
   "messages": {
     "create_success": "SIEM-System erstellt",
     "update_success": "SIEM-System aktualisiert",
@@ -629,7 +628,6 @@
   "form_id": "newSIEMForm",
   "breadcrumb_label": "Neues SIEM-System anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/siem-help.html",
   "software_data": {
     "siemsoftware": "siem"
   }

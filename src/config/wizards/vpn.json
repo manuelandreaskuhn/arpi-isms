@@ -4,7 +4,6 @@
   "collection": "vpns",
   "uuid_prefix": "vpn_",
   "icon": "vpn",
-  "template_path": "pages/wizards/komponenten/new-vpn.html",
   "messages": {
     "create_success": "VPN-System erfolgreich erstellt",
     "update_success": "VPN-System erfolgreich aktualisiert",
@@ -813,7 +812,6 @@
   "form_id": "newVPNForm",
   "breadcrumb_label": "Neues VPN-System anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/vpn-help.html",
   "software_data": {
     "vpnsoftware": "vpn"
   }

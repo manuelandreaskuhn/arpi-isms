@@ -140,17 +140,6 @@
             "description": "Datum des Ablaufs des Support-Vertrags"
         },
         {
-            "id": "operating-system",
-            "type": "select",
-            "html_tag": "isms-os",
-            "label": "Betriebssystem",
-            "description": "Betriebssystem der Komponente (aus konfigurierbarer Liste per Kategorie)",
-            "attributes": {
-                "data-category": null
-            },
-            "note": "Optionen werden aus /data/operatingsystem-software.json geladen (via API), gefiltert nach data-category"
-        },
-        {
             "id": "software-select",
             "type": "software-select",
             "html_tag": "isms-software",
@@ -474,6 +463,1014 @@
             "label": "Öffentliche IP-Adresse",
             "placeholder": "z.B. 203.0.113.1",
             "description": "Öffentliche (extern erreichbare) IP-Adresse"
+        },
+        {
+            "id": "department",
+            "type": "select",
+            "html_tag": "isms-department",
+            "label": "Fachbereich / Abteilung",
+            "description": "Klinische Abteilung oder Verwaltungsbereich. Searchable-Multi-Select mit Optgruppen.",
+            "searchable": true,
+            "multiple": true,
+            "options": [
+                {
+                    "optgroup": "Diagnostik & Bildgebung",
+                    "items": [
+                        {
+                            "value": "radiology",
+                            "label": "Radiologie"
+                        },
+                        {
+                            "value": "nuclearmedicine",
+                            "label": "Nuklearmedizin"
+                        },
+                        {
+                            "value": "laboratorymedicine",
+                            "label": "Laboratoriumsmedizin"
+                        },
+                        {
+                            "value": "pathology",
+                            "label": "Pathologie"
+                        },
+                        {
+                            "value": "microbiology",
+                            "label": "Mikrobiologie"
+                        },
+                        {
+                            "value": "functionaldiagnostics",
+                            "label": "Funktionsdiagnostik"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Klinische Fachrichtungen",
+                    "items": [
+                        {
+                            "value": "internalmedicine",
+                            "label": "Innere Medizin"
+                        },
+                        {
+                            "value": "surgery",
+                            "label": "Chirurgie"
+                        },
+                        {
+                            "value": "anesthesiology",
+                            "label": "Anästhesiologie"
+                        },
+                        {
+                            "value": "neurology",
+                            "label": "Neurologie"
+                        },
+                        {
+                            "value": "neurosurgery",
+                            "label": "Neurochirurgie"
+                        },
+                        {
+                            "value": "gynecology",
+                            "label": "Gynäkologie und Geburtshilfe"
+                        },
+                        {
+                            "value": "pediatrics",
+                            "label": "Pädiatrie (Kinder- und Jugendmedizin)"
+                        },
+                        {
+                            "value": "geriatrics",
+                            "label": "Geriatrie (Altersmedizin)"
+                        },
+                        {
+                            "value": "psychiatry",
+                            "label": "Psychiatrie und Psychotherapie"
+                        },
+                        {
+                            "value": "psychosomatics",
+                            "label": "Psychosomatik"
+                        },
+                        {
+                            "value": "urology",
+                            "label": "Urologie"
+                        },
+                        {
+                            "value": "dermatology",
+                            "label": "Dermatologie"
+                        },
+                        {
+                            "value": "ent",
+                            "label": "HNO (Hals-Nasen-Ohren-Heilkunde)"
+                        },
+                        {
+                            "value": "ophthalmology",
+                            "label": "Augenheilkunde"
+                        },
+                        {
+                            "value": "oncology",
+                            "label": "Onkologie / Hämatologie"
+                        },
+                        {
+                            "value": "orthopedics",
+                            "label": "Orthopädie"
+                        },
+                        {
+                            "value": "rheumatology",
+                            "label": "Rheumatologie"
+                        },
+                        {
+                            "value": "endocrinology",
+                            "label": "Endokrinologie / Diabetologie"
+                        },
+                        {
+                            "value": "infectiology",
+                            "label": "Infektiologie"
+                        },
+                        {
+                            "value": "palliativecare",
+                            "label": "Palliativmedizin"
+                        },
+                        {
+                            "value": "paintherapy",
+                            "label": "Schmerztherapie"
+                        },
+                        {
+                            "value": "emergencymedicine",
+                            "label": "Notfallmedizin / Zentrale Notaufnahme"
+                        },
+                        {
+                            "value": "intensivecare",
+                            "label": "Intensivmedizin"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Verwaltung & Organisation",
+                    "items": [
+                        {
+                            "value": "hospitaladministration",
+                            "label": "Krankenhausverwaltung"
+                        },
+                        {
+                            "value": "patientadmission",
+                            "label": "Patientenaufnahme & -management"
+                        },
+                        {
+                            "value": "controlling",
+                            "label": "Controlling & Finanzen"
+                        },
+                        {
+                            "value": "humanresources",
+                            "label": "Personalwesen"
+                        },
+                        {
+                            "value": "qualitymanagement",
+                            "label": "Qualitätsmanagement"
+                        },
+                        {
+                            "value": "legal",
+                            "label": "Rechtsabteilung"
+                        },
+                        {
+                            "value": "publicrelations",
+                            "label": "Öffentlichkeitsarbeit / Marketing"
+                        },
+                        {
+                            "value": "it",
+                            "label": "IT-Abteilung / Medizininformatik"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Technischer & infrastruktureller Dienst",
+                    "items": [
+                        {
+                            "value": "technicalservice",
+                            "label": "Technischer Dienst / Haustechnik"
+                        },
+                        {
+                            "value": "medicaltechnology",
+                            "label": "Medizintechnik"
+                        },
+                        {
+                            "value": "cleaning",
+                            "label": "Reinigung & Hygiene"
+                        },
+                        {
+                            "value": "security",
+                            "label": "Sicherheitsdienst"
+                        },
+                        {
+                            "value": "transport",
+                            "label": "Transportdienst"
+                        },
+                        {
+                            "value": "laundry",
+                            "label": "Wäscherei"
+                        },
+                        {
+                            "value": "kitchen",
+                            "label": "Küche & Verpflegung"
+                        },
+                        {
+                            "value": "archive",
+                            "label": "Archiv / Dokumentation"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Bildung & Forschung",
+                    "items": [
+                        {
+                            "value": "academicteaching",
+                            "label": "Akademisches Lehrzentrum"
+                        },
+                        {
+                            "value": "medicalschools",
+                            "label": "Pflege- und Medizinschulen"
+                        },
+                        {
+                            "value": "research",
+                            "label": "Forschungsabteilungen"
+                        },
+                        {
+                            "value": "studycoordination",
+                            "label": "Studienkoordination / Ethikkommission"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Pflege & Therapie",
+                    "items": [
+                        {
+                            "value": "nursingmanagement",
+                            "label": "Pflegedienstleitung"
+                        },
+                        {
+                            "value": "wardnursing",
+                            "label": "Stationspflege"
+                        },
+                        {
+                            "value": "operatingroomnursing",
+                            "label": "OP- und Anästhesiepflege"
+                        },
+                        {
+                            "value": "intensivecarenursing",
+                            "label": "Intensivpflege"
+                        },
+                        {
+                            "value": "physiotherapy",
+                            "label": "Physiotherapie"
+                        },
+                        {
+                            "value": "occupationaltherapy",
+                            "label": "Ergotherapie"
+                        },
+                        {
+                            "value": "speechtherapy",
+                            "label": "Logopädie"
+                        },
+                        {
+                            "value": "socialservice",
+                            "label": "Sozialdienst"
+                        },
+                        {
+                            "value": "pastoralcare",
+                            "label": "Seelsorge"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "operating-system",
+            "type": "select",
+            "html_tag": "isms-os",
+            "label": "Betriebssystem",
+            "description": "Betriebssystem des Servers / der VM. Gefiltert via data-category (vm, hardware, backup).",
+            "searchable": true,
+            "attributes": {
+                "data-category": null
+            },
+            "options": [
+                {
+                    "optgroup": "Windows",
+                    "items": [
+                        {
+                            "value": "windowsserver2003",
+                            "label": "Windows Server 2003"
+                        },
+                        {
+                            "value": "windowsserver2003r2",
+                            "label": "Windows Server 2003 R2"
+                        },
+                        {
+                            "value": "windowsserver2008",
+                            "label": "Windows Server 2008"
+                        },
+                        {
+                            "value": "windowsserver2008r2",
+                            "label": "Windows Server 2008 R2"
+                        },
+                        {
+                            "value": "windowsserver2012",
+                            "label": "Windows Server 2012"
+                        },
+                        {
+                            "value": "windowsserver2012r2",
+                            "label": "Windows Server 2012 R2"
+                        },
+                        {
+                            "value": "windowsserver2016",
+                            "label": "Windows Server 2016"
+                        },
+                        {
+                            "value": "windowsserver2019",
+                            "label": "Windows Server 2019"
+                        },
+                        {
+                            "value": "windowsserver2022",
+                            "label": "Windows Server 2022"
+                        },
+                        {
+                            "value": "windowsserver2025",
+                            "label": "Windows Server 2025"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Linux",
+                    "items": [
+                        {
+                            "value": "centos7",
+                            "label": "CentOS 7"
+                        },
+                        {
+                            "value": "centos8",
+                            "label": "CentOS 8"
+                        },
+                        {
+                            "value": "centosstream8",
+                            "label": "CentOS Stream 8"
+                        },
+                        {
+                            "value": "centosstream9",
+                            "label": "CentOS Stream 9"
+                        },
+                        {
+                            "value": "debian8",
+                            "label": "Debian 8"
+                        },
+                        {
+                            "value": "debian9",
+                            "label": "Debian 9"
+                        },
+                        {
+                            "value": "debian10",
+                            "label": "Debian 10"
+                        },
+                        {
+                            "value": "debian11",
+                            "label": "Debian 11"
+                        },
+                        {
+                            "value": "debian12",
+                            "label": "Debian 12"
+                        },
+                        {
+                            "value": "debian13",
+                            "label": "Debian 13"
+                        },
+                        {
+                            "value": "redhatenterpriselinux7",
+                            "label": "Red Hat Enterprise Linux 7"
+                        },
+                        {
+                            "value": "redhatenterpriselinux8",
+                            "label": "Red Hat Enterprise Linux 8"
+                        },
+                        {
+                            "value": "redhatenterpriselinux9",
+                            "label": "Red Hat Enterprise Linux 9"
+                        },
+                        {
+                            "value": "redhatenterpriselinux10",
+                            "label": "Red Hat Enterprise Linux 10"
+                        },
+                        {
+                            "value": "suselinuxenterpriseserver15",
+                            "label": "SUSE Linux Enterprise Server 15"
+                        },
+                        {
+                            "value": "ubuntuserver1404lts",
+                            "label": "Ubuntu Server 14.04 LTS"
+                        },
+                        {
+                            "value": "ubuntuserver1604lts",
+                            "label": "Ubuntu Server 16.04 LTS"
+                        },
+                        {
+                            "value": "ubuntuserver1804lts",
+                            "label": "Ubuntu Server 18.04 LTS"
+                        },
+                        {
+                            "value": "ubuntuserver2004lts",
+                            "label": "Ubuntu Server 20.04 LTS"
+                        },
+                        {
+                            "value": "ubuntuserver2204lts",
+                            "label": "Ubuntu Server 22.04 LTS"
+                        },
+                        {
+                            "value": "ubuntuserver2404lts",
+                            "label": "Ubuntu Server 24.04 LTS"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Virtualisierung / Hypervisor",
+                    "items": [
+                        {
+                            "value": "vmwareesxi90",
+                            "label": "VMware ESXi 9.0"
+                        },
+                        {
+                            "value": "vmwareesxi80",
+                            "label": "VMware ESXi 8.0"
+                        },
+                        {
+                            "value": "vmwareesxi70",
+                            "label": "VMware ESXi 7.0"
+                        },
+                        {
+                            "value": "vmwareesxi67",
+                            "label": "VMware ESXi 6.7"
+                        },
+                        {
+                            "value": "vmwareesxi65",
+                            "label": "VMware ESXi 6.5"
+                        },
+                        {
+                            "value": "vmwareesxi60",
+                            "label": "VMware ESXi 6.0"
+                        },
+                        {
+                            "value": "microsofthyperv2025",
+                            "label": "Microsoft Hyper-V 2025"
+                        },
+                        {
+                            "value": "microsofthyperv2022",
+                            "label": "Microsoft Hyper-V 2022"
+                        },
+                        {
+                            "value": "microsofthyperv2019",
+                            "label": "Microsoft Hyper-V 2019"
+                        },
+                        {
+                            "value": "microsofthyperv2016",
+                            "label": "Microsoft Hyper-V 2016"
+                        },
+                        {
+                            "value": "proxmoxve9",
+                            "label": "Proxmox VE 9"
+                        },
+                        {
+                            "value": "proxmoxve8",
+                            "label": "Proxmox VE 8"
+                        },
+                        {
+                            "value": "proxmoxve7",
+                            "label": "Proxmox VE 7"
+                        },
+                        {
+                            "value": "proxmoxve6",
+                            "label": "Proxmox VE 6"
+                        },
+                        {
+                            "value": "xenserver84",
+                            "label": "XenServer 8.4"
+                        },
+                        {
+                            "value": "citrixhypervisor82",
+                            "label": "Citrix Hypervisor 8.2"
+                        },
+                        {
+                            "value": "citrixhypervisor81",
+                            "label": "Citrix Hypervisor 8.1"
+                        },
+                        {
+                            "value": "citrixhypervisor80",
+                            "label": "Citrix Hypervisor 8.0"
+                        },
+                        {
+                            "value": "oraclevmserver",
+                            "label": "Oracle VM Server"
+                        },
+                        {
+                            "value": "nutanixahv",
+                            "label": "Nutanix AHV"
+                        },
+                        {
+                            "value": "redhatvirtualization",
+                            "label": "Red Hat Virtualisierung"
+                        },
+                        {
+                            "value": "xcpng",
+                            "label": "XCP-ng"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Sonstige",
+                    "items": [
+                        {
+                            "value": "kvm",
+                            "label": "KVM"
+                        },
+                        {
+                            "value": "other",
+                            "label": "Sonstiges / Anderes"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "server-role",
+            "type": "select",
+            "html_tag": "isms-server-role",
+            "label": "Rolle / Funktion",
+            "description": "Betriebliche Rolle des Servers. Gefiltert via data-category.",
+            "searchable": true,
+            "attributes": {
+                "data-category": null
+            },
+            "options": [
+                {
+                    "optgroup": "Applikation",
+                    "items": [
+                        {
+                            "value": "applikationsserver",
+                            "label": "Applikationsserver"
+                        },
+                        {
+                            "value": "archivierungsserver",
+                            "label": "Archivierungsserver"
+                        },
+                        {
+                            "value": "fileserver",
+                            "label": "Fileserver"
+                        },
+                        {
+                            "value": "mailserver",
+                            "label": "Mailserver"
+                        },
+                        {
+                            "value": "terminalserver",
+                            "label": "Terminal Server"
+                        },
+                        {
+                            "value": "webserver",
+                            "label": "Webserver"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Datenbank",
+                    "items": [
+                        {
+                            "value": "datenbankserver",
+                            "label": "Datenbankserver"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Infrastruktur",
+                    "items": [
+                        {
+                            "value": "backupserver",
+                            "label": "Backup Server"
+                        },
+                        {
+                            "value": "domaincontroller",
+                            "label": "Domain Controller"
+                        },
+                        {
+                            "value": "jumphostbastion",
+                            "label": "Jump Host / Bastion"
+                        },
+                        {
+                            "value": "loadbalancer",
+                            "label": "Load Balancer"
+                        },
+                        {
+                            "value": "monitoringserver",
+                            "label": "Monitoring Server"
+                        },
+                        {
+                            "value": "reverseproxy",
+                            "label": "Reverse Proxy"
+                        },
+                        {
+                            "value": "storagecontroller",
+                            "label": "Storage Controller"
+                        },
+                        {
+                            "value": "virtualisierungshost",
+                            "label": "Virtualisierungshost"
+                        },
+                        {
+                            "value": "logserver",
+                            "label": "Log Server / SIEM"
+                        },
+                        {
+                            "value": "pkicertificateauthority",
+                            "label": "PKI / Certificate Authority"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Netzwerk",
+                    "items": [
+                        {
+                            "value": "dhcpserver",
+                            "label": "DHCP Server"
+                        },
+                        {
+                            "value": "dnsserver",
+                            "label": "DNS Server"
+                        },
+                        {
+                            "value": "vpngateway",
+                            "label": "VPN Gateway"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Sicherheit",
+                    "items": [
+                        {
+                            "value": "firewall",
+                            "label": "Firewall"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "database-type",
+            "type": "select",
+            "html_tag": "isms-db-type",
+            "label": "Datenbank-Typ",
+            "description": "Art der Datenbank-Technologie (Relational, NoSQL, In-Memory etc.).",
+            "searchable": true,
+            "options": [
+                {
+                    "optgroup": "Relational",
+                    "items": [
+                        {
+                            "value": "oracle",
+                            "label": "Oracle Database"
+                        },
+                        {
+                            "value": "mssql",
+                            "label": "Microsoft SQL Server"
+                        },
+                        {
+                            "value": "mysql",
+                            "label": "MySQL"
+                        },
+                        {
+                            "value": "mariadb",
+                            "label": "MariaDB"
+                        },
+                        {
+                            "value": "postgresql",
+                            "label": "PostgreSQL"
+                        },
+                        {
+                            "value": "db2",
+                            "label": "IBM DB2"
+                        },
+                        {
+                            "value": "sqlite",
+                            "label": "SQLite"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "NoSQL",
+                    "items": [
+                        {
+                            "value": "mongodb",
+                            "label": "MongoDB"
+                        },
+                        {
+                            "value": "redis",
+                            "label": "Redis"
+                        },
+                        {
+                            "value": "cassandra",
+                            "label": "Apache Cassandra"
+                        },
+                        {
+                            "value": "couchdb",
+                            "label": "CouchDB"
+                        },
+                        {
+                            "value": "elasticsearch",
+                            "label": "Elasticsearch"
+                        },
+                        {
+                            "value": "neo4j",
+                            "label": "Neo4j"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "In-Memory",
+                    "items": [
+                        {
+                            "value": "saphana",
+                            "label": "SAP HANA"
+                        },
+                        {
+                            "value": "memcached",
+                            "label": "Memcached"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Sonstige",
+                    "items": [
+                        {
+                            "value": "other",
+                            "label": "Sonstiges"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "database-cluster-type",
+            "type": "select",
+            "html_tag": "isms-db-cluster-type",
+            "label": "Cluster-Typ",
+            "description": "Cluster- oder Replikations-Verfahren, abhängig vom gewählten Datenbank-Typ.",
+            "searchable": true,
+            "options": [
+                {
+                    "optgroup": "Oracle",
+                    "items": [
+                        {
+                            "value": "oracle-rac",
+                            "label": "Oracle RAC (Real Application Cluster)"
+                        },
+                        {
+                            "value": "oracle-dataguard",
+                            "label": "Oracle Data Guard"
+                        },
+                        {
+                            "value": "oracle-goldengate",
+                            "label": "Oracle GoldenGate"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Microsoft SQL Server",
+                    "items": [
+                        {
+                            "value": "mssql-alwayson",
+                            "label": "Always On Availability Groups"
+                        },
+                        {
+                            "value": "mssql-fci",
+                            "label": "Failover Cluster Instance (FCI)"
+                        },
+                        {
+                            "value": "mssql-logshipping",
+                            "label": "Log Shipping"
+                        },
+                        {
+                            "value": "mssql-mirroring",
+                            "label": "Database Mirroring"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "MySQL / MariaDB",
+                    "items": [
+                        {
+                            "value": "mysql-replication",
+                            "label": "MySQL Replication (Master-Slave)"
+                        },
+                        {
+                            "value": "mysql-group",
+                            "label": "MySQL Group Replication"
+                        },
+                        {
+                            "value": "mysql-ndb",
+                            "label": "MySQL NDB Cluster"
+                        },
+                        {
+                            "value": "mariadb-galera",
+                            "label": "MariaDB Galera Cluster"
+                        },
+                        {
+                            "value": "mariadb-maxscale",
+                            "label": "MariaDB MaxScale"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "PostgreSQL",
+                    "items": [
+                        {
+                            "value": "pg-streaming",
+                            "label": "Streaming Replication"
+                        },
+                        {
+                            "value": "pg-patroni",
+                            "label": "Patroni"
+                        },
+                        {
+                            "value": "pg-stolon",
+                            "label": "Stolon"
+                        },
+                        {
+                            "value": "pg-pgpool",
+                            "label": "pgpool-II"
+                        },
+                        {
+                            "value": "pg-repmgr",
+                            "label": "Repmgr"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "MongoDB",
+                    "items": [
+                        {
+                            "value": "mongo-replicaset",
+                            "label": "Replica Set"
+                        },
+                        {
+                            "value": "mongo-sharded",
+                            "label": "Sharded Cluster"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Redis",
+                    "items": [
+                        {
+                            "value": "redis-sentinel",
+                            "label": "Redis Sentinel"
+                        },
+                        {
+                            "value": "redis-cluster",
+                            "label": "Redis Cluster"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Cassandra",
+                    "items": [
+                        {
+                            "value": "cassandra-cluster",
+                            "label": "Cassandra Cluster"
+                        }
+                    ]
+                },
+                {
+                    "optgroup": "Generisch",
+                    "items": [
+                        {
+                            "value": "active-passive",
+                            "label": "Aktiv-Passiv"
+                        },
+                        {
+                            "value": "active-active",
+                            "label": "Aktiv-Aktiv"
+                        },
+                        {
+                            "value": "loadbalanced",
+                            "label": "Load Balanced"
+                        },
+                        {
+                            "value": "masterreplica",
+                            "label": "Master-Replica"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "hypervisor-type",
+            "type": "select",
+            "html_tag": "isms-hypervisor-type",
+            "label": "Hypervisor",
+            "description": "Hypervisor-Software und Version (für den Hypervisor-Wizard).",
+            "searchable": true,
+            "options": [
+                {
+                    "value": "vmwareesxi90",
+                    "label": "VMware ESXi 9.0"
+                },
+                {
+                    "value": "vmwareesxi80",
+                    "label": "VMware ESXi 8.0"
+                },
+                {
+                    "value": "vmwareesxi70",
+                    "label": "VMware ESXi 7.0"
+                },
+                {
+                    "value": "vmwareesxi67",
+                    "label": "VMware ESXi 6.7"
+                },
+                {
+                    "value": "vmwareesxi65",
+                    "label": "VMware ESXi 6.5"
+                },
+                {
+                    "value": "vmwareesxi60",
+                    "label": "VMware ESXi 6.0"
+                },
+                {
+                    "value": "microsofthyperv2025",
+                    "label": "Microsoft Hyper-V 2025"
+                },
+                {
+                    "value": "microsofthyperv2022",
+                    "label": "Microsoft Hyper-V 2022"
+                },
+                {
+                    "value": "microsofthyperv2019",
+                    "label": "Microsoft Hyper-V 2019"
+                },
+                {
+                    "value": "microsofthyperv2016",
+                    "label": "Microsoft Hyper-V 2016"
+                },
+                {
+                    "value": "proxmoxve9",
+                    "label": "Proxmox VE 9"
+                },
+                {
+                    "value": "proxmoxve8",
+                    "label": "Proxmox VE 8"
+                },
+                {
+                    "value": "proxmoxve7",
+                    "label": "Proxmox VE 7"
+                },
+                {
+                    "value": "proxmoxve6",
+                    "label": "Proxmox VE 6"
+                },
+                {
+                    "value": "kvm",
+                    "label": "KVM"
+                },
+                {
+                    "value": "xenserver84",
+                    "label": "XenServer 8.4"
+                },
+                {
+                    "value": "citrixhypervisor82",
+                    "label": "Citrix Hypervisor 8.2"
+                },
+                {
+                    "value": "citrixhypervisor81",
+                    "label": "Citrix Hypervisor 8.1"
+                },
+                {
+                    "value": "citrixhypervisor80",
+                    "label": "Citrix Hypervisor 8.0"
+                },
+                {
+                    "value": "oraclevmserver",
+                    "label": "Oracle VM Server"
+                },
+                {
+                    "value": "nutanixahv",
+                    "label": "Nutanix AHV"
+                },
+                {
+                    "value": "redhatvirtualization",
+                    "label": "Red Hat Virtualisierung"
+                },
+                {
+                    "value": "xcpng",
+                    "label": "XCP-ng"
+                }
+            ]
+        },
+        {
+            "id": "hypervisor-reference",
+            "type": "component-ref",
+            "html_tag": "isms-hypervisor-ref",
+            "label": "Hypervisor-Komponente",
+            "description": "Referenz auf einen konfigurierten Hypervisor in der Datenbank (dynamische Laufzeitauflösung).",
+            "attributes": {
+                "data-component-type": "hypervisor"
+            }
         }
     ]
 }

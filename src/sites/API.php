@@ -1,9 +1,11 @@
 <?php
+
 namespace ARPI\Sites;
 
 use ARPI\Helper\BaseSite;
 use ARPI\API\WizardAPI;
 use ARPI\API\DataAPI;
+use ARPI\API\HelpAPI;
 
 /**
  * Zentraler API-Endpoint
@@ -23,7 +25,14 @@ class API extends BaseSite
             $dataAPI->handleRequest($path, $method);
             exit;
         }
-        
+
+        // Help-API aufrufen
+        if (strpos($path, '/api/help') === 0) {
+            $helpAPI = new HelpAPI();
+            $helpAPI->handleRequest($path, $method);
+            exit;
+        }
+
         // Wizard-API aufrufen
         $wizardAPI = new WizardAPI();
         $wizardAPI->handleRequest($path, $method);
@@ -41,7 +50,7 @@ class API extends BaseSite
             'errors' => ['API endpoint not found']
         ]);
     }
-    
+
     /**
      * Ermittelt den API-Pfad aus GET-Parameter oder REQUEST_URI
      * 
@@ -53,15 +62,15 @@ class API extends BaseSite
         if (isset($_GET['path'])) {
             return '/api/' . trim($_GET['path'], '/');
         }
-        
+
         // Fallback: Aus REQUEST_URI parsen
         $path = $_SERVER['REQUEST_URI'];
-        
+
         // Query-String entfernen
         if (($pos = strpos($path, '?')) !== false) {
             $path = substr($path, 0, $pos);
         }
-        
+
         return $path;
     }
 }

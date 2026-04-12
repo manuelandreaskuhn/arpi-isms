@@ -4,7 +4,6 @@
   "collection": "proxies",
   "uuid_prefix": "proxy_",
   "icon": "proxy",
-  "template_path": "pages/wizards/komponenten/new-proxy.html",
   "messages": {
     "create_success": "Proxy-Server erstellt",
     "update_success": "Proxy-Server aktualisiert",
@@ -424,6 +423,5 @@
   "form_id": "newProxyForm",
   "breadcrumb_label": "Neuen Proxy-Server anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/proxy-help.html",
   "software_data": []
 }

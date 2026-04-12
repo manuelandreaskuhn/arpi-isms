@@ -188,7 +188,7 @@ abstract class BaseSite implements SiteInterface
         $formId   = htmlspecialchars($config['form_id']            ?? 'wizardForm',         ENT_QUOTES);
         $label    = htmlspecialchars($config['breadcrumb_label']   ?? ($config['label'] ?? ''), ENT_QUOTES);
         $section  = htmlspecialchars($config['breadcrumb_section'] ?? 'Komponenten',         ENT_QUOTES);
-        $helpTpl  = $config['help_template'] ?? null;
+        $safeWizardId = htmlspecialchars($wizardId, ENT_QUOTES);
 
         // Software-Daten aus Konfiguration automatisch laden
         $this->loadWizardSoftwareData($config['software_data'] ?? []);
@@ -222,10 +222,12 @@ abstract class BaseSite implements SiteInterface
             . '    <div class="error-content"><ul class="error-list"></ul></div>' . "\n"
             . '</div>' . "\n";
 
-        $sections = $renderer->renderAllPages($wizardId, $values);
-        $form = '<form id="' . $formId . '" data-instance-uuid="">' . "\n"
+        $sections        = $renderer->renderAllPages($wizardId, $values);
+        $entryTemplates = $renderer->renderEntryTemplates($wizardId);
+        $form = '<form id="' . $formId . '" data-instance-uuid="" data-wizard-id="' . $safeWizardId . '">' . "\n"
             . $sections
-            . '</form>' . "\n";
+            . '</form>' . "\n"
+            . $entryTemplates;
 
         $floatingBar = '<div class="floating-form-management">' . "\n"
             . '    <div class="form-status-container">' . "\n"
@@ -241,9 +243,7 @@ abstract class BaseSite implements SiteInterface
             . '    </button>' . "\n"
             . '</div>' . "\n";
 
-        $helpInclude = ($helpTpl !== null) ? '{{include:' . $helpTpl . '}}' . "\n" : '';
-
-        $wizardHtml = $aside . $errorBox . $form . $floatingBar . $helpInclude;
+        $wizardHtml = $aside . $errorBox . $form . $floatingBar;
 
         // Template-Engine für {{include:...}} im Help-Include ausführen
         $processed = $this->template->process($wizardHtml, $this->data);

@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\API;
 
 /**
@@ -14,6 +15,7 @@ class WizardAPI
         'backup-systems' => \ARPI\Sites\Wizards\NewBackup::class,
         'hypervisors' => \ARPI\Sites\Wizards\NewHypervisor::class,
         'firewalls' => \ARPI\Sites\Wizards\NewFirewall::class,
+        'load-balancers' => \ARPI\Sites\Wizards\NewLoadbalancer::class,
         'networks' => \ARPI\Sites\Wizards\NewNetwork::class,
         'proxies' => \ARPI\Sites\Wizards\NewProxy::class,
         'siems' => \ARPI\Sites\Wizards\NewSIEM::class,
@@ -23,7 +25,7 @@ class WizardAPI
         'systems' => \ARPI\Sites\Wizards\NewSystem::class,
         'vpns' => \ARPI\Sites\Wizards\NewVPN::class
     ];
-    
+
     /**
      * Behandelt eingehende API-Requests
      * 
@@ -37,27 +39,27 @@ class WizardAPI
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
         header('Access-Control-Allow-Headers: Content-Type, Authorization');
-        
+
         // Parse Request-Pfad
         $pathParts = explode('/', trim($path, '/'));
-        
+
         // Format: /api/{resource} oder /api/{resource}/{id}
         if (count($pathParts) < 2 || $pathParts[0] !== 'api') {
             $this->sendError(404, ['Invalid API endpoint']);
             return;
         }
-        
+
         $resource = $pathParts[1];
         $id = $pathParts[2] ?? null;
-        
+
         // Wizard-Klasse ermitteln
         if (!isset(self::RESOURCE_MAP[$resource])) {
             $this->sendError(404, ["Resource '{$resource}' not found"]);
             return;
         }
-        
+
         $wizardClass = self::RESOURCE_MAP[$resource];
-        
+
         // Wizard instanziieren
         try {
             $wizard = new $wizardClass();
@@ -65,13 +67,13 @@ class WizardAPI
             $this->sendError(500, ['Failed to initialize wizard: ' . $e->getMessage()]);
             return;
         }
-        
+
         // Request-Methode behandeln
         switch ($method) {
             case 'POST':
                 $this->handleCreate($wizard);
                 break;
-                
+
             case 'PUT':
             case 'PATCH':
                 if (!$id) {
@@ -80,7 +82,7 @@ class WizardAPI
                 }
                 $this->handleUpdate($wizard, $id);
                 break;
-                
+
             case 'DELETE':
                 if (!$id) {
                     $this->sendError(400, ['ID required for delete']);
@@ -88,7 +90,7 @@ class WizardAPI
                 }
                 $this->handleDelete($wizard, $id);
                 break;
-                
+
             case 'GET':
                 if ($id) {
                     $this->handleGet($wizard, $id);
@@ -96,13 +98,13 @@ class WizardAPI
                     $this->handleList($wizard);
                 }
                 break;
-                
+
             default:
                 $this->sendError(405, ['Method not allowed']);
                 break;
         }
     }
-    
+
     /**
      * Behandelt CREATE-Request (POST)
      * 
@@ -112,26 +114,26 @@ class WizardAPI
     private function handleCreate(object $wizard): void
     {
         $data = $this->getJsonInput();
-        
+
         if ($data === null) {
             $this->sendError(400, ['Invalid JSON']);
             return;
         }
-        
+
         if (!method_exists($wizard, 'create')) {
             $this->sendError(501, ['Create method not implemented']);
             return;
         }
-        
+
         $result = $wizard->create($data);
-        
+
         if ($result['success']) {
             $this->sendSuccess(201, $result);
         } else {
             $this->sendError(400, $result['errors']);
         }
     }
-    
+
     /**
      * Behandelt UPDATE-Request (PUT/PATCH)
      * 
@@ -142,26 +144,26 @@ class WizardAPI
     private function handleUpdate(object $wizard, string $id): void
     {
         $data = $this->getJsonInput();
-        
+
         if ($data === null) {
             $this->sendError(400, ['Invalid JSON']);
             return;
         }
-        
+
         if (!method_exists($wizard, 'update')) {
             $this->sendError(501, ['Update method not implemented']);
             return;
         }
-        
+
         $result = $wizard->update($id, $data);
-        
+
         if ($result['success']) {
             $this->sendSuccess(200, $result);
         } else {
             $this->sendError(400, $result['errors']);
         }
     }
-    
+
     /**
      * Behandelt DELETE-Request
      * 
@@ -175,16 +177,16 @@ class WizardAPI
             $this->sendError(501, ['Delete method not implemented']);
             return;
         }
-        
+
         $result = $wizard->delete($id);
-        
+
         if ($result['success']) {
             $this->sendSuccess(200, $result);
         } else {
             $this->sendError(400, $result['errors']);
         }
     }
-    
+
     /**
      * Behandelt GET-Request für einzelnes Item
      * 
@@ -198,16 +200,16 @@ class WizardAPI
             $this->sendError(501, ['Get method not implemented']);
             return;
         }
-        
+
         $result = $wizard->get($id);
-        
+
         if ($result['success']) {
             $this->sendSuccess(200, $result);
         } else {
             $this->sendError(404, $result['errors']);
         }
     }
-    
+
     /**
      * Behandelt GET-Request für Liste
      * 
@@ -220,16 +222,16 @@ class WizardAPI
             $this->sendError(501, ['List method not implemented']);
             return;
         }
-        
+
         $result = $wizard->list();
-        
+
         if ($result['success']) {
             $this->sendSuccess(200, $result);
         } else {
             $this->sendError(400, $result['errors']);
         }
     }
-    
+
     /**
      * Liest JSON-Input aus Request-Body
      * 
@@ -239,14 +241,14 @@ class WizardAPI
     {
         $jsonData = file_get_contents('php://input');
         $data = json_decode($jsonData, true);
-        
+
         if (json_last_error() !== JSON_ERROR_NONE) {
             return null;
         }
-        
+
         return $data;
     }
-    
+
     /**
      * Sendet Erfolgs-Response
      * 
@@ -259,7 +261,7 @@ class WizardAPI
         http_response_code($statusCode);
         echo json_encode($data);
     }
-    
+
     /**
      * Sendet Fehler-Response
      * 

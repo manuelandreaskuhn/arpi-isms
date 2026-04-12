@@ -1,5 +1,5 @@
 <div class="tooltip-definitions" style="display: none;">
-    <div data-tooltip-id="container-name">
+    <div data-tooltip-id="containerName">
         <h2>Container-Name</h2>
         <p>Ein eindeutiger, beschreibender Name für diesen Container.</p>
         <div>
@@ -22,7 +22,7 @@
         <em>Der Name sollte ohne Erklärung verständlich sein!</em>
     </div>
 
-    <div data-tooltip-id="container-type">
+    <div data-tooltip-id="containerType">
         <h2>Container-Typ</h2>
         <p>Was läuft in diesem Container? Sie können mehrere Typen auswählen.</p>
         <div>
@@ -47,7 +47,7 @@
         <em>Tipp: Wählen Sie alle zutreffenden Typen aus!</em>
     </div>
 
-    <div data-tooltip-id="container-runtime">
+    <div data-tooltip-id="containerType">
         <h2>Container-Runtime</h2>
         <p>Die Software, die Container auf dem Host ausführt.</p>
         <div>
@@ -71,7 +71,7 @@
         <em>Docker ist die einfachste und häufigste Wahl!</em>
     </div>
 
-    <div data-tooltip-id="container-orchestration">
+    <div data-tooltip-id="containerOrchestration">
         <h2>Orchestrierung</h2>
         <p>System zur automatischen Verwaltung vieler Container.</p>
         <div>
@@ -106,7 +106,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="k8s-namespace">
+    <div data-tooltip-id="containerK8sNamespace">
         <h2>Kubernetes Namespace</h2>
         <p>Logische Trennung von Ressourcen in Kubernetes.</p>
         <div>
@@ -126,7 +126,7 @@
         <em>Namespaces helfen, Ordnung zu halten und Berechtigungen zu steuern!</em>
     </div>
 
-    <div data-tooltip-id="k8s-deployment">
+    <div data-tooltip-id="containerK8sDeployment">
         <h2>Deployment / Pod Name</h2>
         <p>Der Name des Kubernetes Deployment oder Pod.</p>
         <div>
@@ -147,7 +147,7 @@
         <em>Ein Deployment verwaltet mehrere Pods (Replicas)</em>
     </div>
 
-    <div data-tooltip-id="k8s-replicas">
+    <div data-tooltip-id="containerK8sReplicas">
         <h2>Replicas</h2>
         <p>Anzahl der identischen Container-Kopien, die parallel laufen.</p>
         <div>
@@ -170,7 +170,7 @@
         <em>Mehr Replicas = mehr Ressourcen benötigt!</em>
     </div>
 
-    <div data-tooltip-id="k8s-service">
+    <div data-tooltip-id="containerK8sService">
         <h2>Kubernetes Service Name</h2>
         <p>Der interne DNS-Name, unter dem der Container erreichbar ist.</p>
         <div>
@@ -187,7 +187,7 @@
         <em>Andere Container nutzen den Service-Namen zur Kommunikation!</em>
     </div>
 
-    <div data-tooltip-id="container-image">
+    <div data-tooltip-id="containerImage">
         <h2>Container-Image</h2>
         <p>Das "Installations-Paket" für den Container - enthält die komplette Software.</p>
         <div>
@@ -214,7 +214,7 @@
         <em>Wichtig: Immer spezifische Versionen verwenden, nicht "latest"!</em>
     </div>
 
-    <div data-tooltip-id="container-registry">
+    <div data-tooltip-id="containerRegistry">
         <h2>Image-Registry</h2>
         <p>Der "App-Store" für Container-Images - wo das Image gespeichert ist.</p>
         <div>
@@ -251,7 +251,7 @@
         <em>Für Patientendaten: Nur private Registries verwenden!</em>
     </div>
 
-    <div data-tooltip-id="image-scan">
+    <div data-tooltip-id="containerImageScan">
         <h2>Image Security Scanning</h2>
         <p>Automatische Überprüfung des Container-Images auf Sicherheitslücken.</p>
         <div>
@@ -275,7 +275,7 @@
         <em>WICHTIG: Für Produktiv-Systeme IMMER aktivieren!</em>
     </div>
 
-    <div data-tooltip-id="cpu-limit">
+    <div data-tooltip-id="containerCPULimit">
         <h2>CPU-Limit</h2>
         <p>Maximale CPU-Leistung, die der Container nutzen darf.</p>
         <div>
@@ -307,7 +307,7 @@
         <em>Limit = Container kann nicht mehr verbrauchen, auch wenn CPU frei ist</em>
     </div>
 
-    <div data-tooltip-id="memory-limit">
+    <div data-tooltip-id="containerMemoryLimit">
         <h2>Memory-Limit</h2>
         <p>Maximaler RAM, den der Container nutzen darf.</p>
         <div>
@@ -335,7 +335,7 @@
         <em>Wichtig: Limit muss größer sein als tatsächlicher Bedarf!</em>
     </div>
 
-    <div data-tooltip-id="cpu-request">
+    <div data-tooltip-id="containerCPURequest">
         <h2>CPU-Request</h2>
         <p>Garantierte CPU-Leistung, die dem Container mindestens zur Verfügung steht.</p>
         <div>
@@ -356,7 +356,7 @@
         <em>Request wird für die Platzierung auf Hosts verwendet</em>
     </div>
 
-    <div data-tooltip-id="memory-request">
+    <div data-tooltip-id="containerMemoryRequest">
         <h2>Memory-Request</h2>
         <p>Garantierter RAM, der dem Container mindestens zur Verfügung steht.</p>
         <div>
@@ -373,7 +373,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="exposed-ports">
+    <div data-tooltip-id="containerPorts">
         <h2>Exposed Ports</h2>
         <p>Netzwerk-Ports, über die der Container erreichbar ist.</p>
         <div>
@@ -400,7 +400,7 @@
         <em>Nur Ports exponieren, die wirklich von außen erreichbar sein müssen!</em>
     </div>
 
-    <div data-tooltip-id="network-mode">
+    <div data-tooltip-id="containerNetworkMode">
         <h2>Netzwerk-Modus</h2>
         <p>Wie der Container mit dem Netzwerk verbunden ist.</p>
         <div>
@@ -423,7 +423,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="volumes-check">
+    <div data-tooltip-id="containerHasVolumes">
         <h2>Persistent Volumes</h2>
         <p>Speicher, der auch nach Container-Neustart erhalten bleibt.</p>
         <div>
@@ -449,7 +449,7 @@
         <em>Für Datenbanken und wichtige Daten IMMER Volumes verwenden!</em>
     </div>
 
-    <div data-tooltip-id="volume-mounts">
+    <div data-tooltip-id="containerVolumes">
         <h2>Volume-Mounts</h2>
         <p>Verbindung zwischen Host-Speicher und Container-Pfad.</p>
         <div>
@@ -476,7 +476,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="volume-type">
+    <div data-tooltip-id="containerVolumeType">
         <h2>Volume-Typ</h2>
         <p>Die Art des verwendeten Speichers.</p>
         <div>
@@ -503,7 +503,7 @@
         <em>Für Produktion: Immer Netzwerk-Storage oder Cloud-Storage!</em>
     </div>
 
-    <div data-tooltip-id="env-vars-check">
+    <div data-tooltip-id="containerHasEnv">
         <h2>Umgebungsvariablen</h2>
         <p>Konfigurationswerte, die an den Container übergeben werden.</p>
         <div>
@@ -526,7 +526,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="env-vars-list">
+    <div data-tooltip-id="containerEnvVars">
         <h2>Wichtige Umgebungsvariablen</h2>
         <p>Dokumentieren Sie die Namen der wichtigsten Konfigurations-Variablen.</p>
         <div>
@@ -547,7 +547,7 @@
         <em>Hilft zu verstehen, wie der Container konfiguriert wird</em>
     </div>
 
-    <div data-tooltip-id="secrets-check">
+    <div data-tooltip-id="containerHasSecrets">
         <h2>Secrets / Sensitive Daten</h2>
         <p>Werden sensible Daten wie Passwörter verwendet?</p>
         <div>
@@ -571,7 +571,7 @@
         <em>Kubernetes/Docker haben spezielle Secret-Management-Systeme</em>
     </div>
 
-    <div data-tooltip-id="health-check">
+    <div data-tooltip-id="containerHealthCheck">
         <h2>Health Check</h2>
         <p>Automatische Prüfung, ob der Container noch funktioniert.</p>
         <div>
@@ -597,7 +597,7 @@
         <em>Für Produktion IMMER Health Checks konfigurieren!</em>
     </div>
 
-    <div data-tooltip-id="readiness-probe">
+    <div data-tooltip-id="containerReadinessProbe">
         <h2>Readiness Probe</h2>
         <p>Prüft, ob Container bereit ist, Traffic zu empfangen.</p>
         <div>
@@ -619,7 +619,7 @@
         <em>Verhindert, dass Nutzer auf nicht-bereite Container geleitet werden</em>
     </div>
 
-    <div data-tooltip-id="restart-policy">
+    <div data-tooltip-id="containerRestartPolicy">
         <h2>Restart-Policy</h2>
         <p>Wann soll der Container automatisch neu gestartet werden?</p>
         <div>
@@ -637,7 +637,7 @@
         </div>
     </div>
 
-    <div data-tooltip-id="log-driver">
+    <div data-tooltip-id="containerLogDriver">
         <h2>Log-Driver</h2>
         <p>Wohin werden die Container-Logs geschrieben?</p>
         <div>
@@ -662,7 +662,7 @@
         <em>Zentrale Log-Verwaltung vereinfacht Fehlersuche!</em>
     </div>
 
-    <div data-tooltip-id="container-host">
+    <div data-tooltip-id="containerHost">
         <h2>Container-Host</h2>
         <p>Auf welchem physischen/virtuellen Server läuft dieser Container?</p>
         <div>
@@ -684,7 +684,7 @@
         <em>Ohne Orchestrierung sollte immer ein Host zugeordnet werden!</em>
     </div>
 
-    <div data-tooltip-id="container-notes">
+    <div data-tooltip-id="containerNotes">
         <h2>Anmerkungen</h2>
         <p>Zusätzliche wichtige Informationen zu diesem Container.</p>
         <div>

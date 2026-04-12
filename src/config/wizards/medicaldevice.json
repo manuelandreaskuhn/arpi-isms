@@ -4,7 +4,6 @@
   "collection": "medicaldevices",
   "uuid_prefix": "meddevice_",
   "icon": "medicaldevice",
-  "template_path": "pages/wizards/komponenten/new-medicaldevice.html",
   "messages": {
     "create_success": "Medizingerät erstellt",
     "update_success": "Medizingerät aktualisiert",
@@ -716,6 +715,5 @@
   "form_id": "newMedicalDeviceForm",
   "breadcrumb_label": "Neues Medizingerät anlegen",
   "breadcrumb_section": "Komponenten",
-  "help_template": "pages/wizards/komponenten/help/medicaldevice-help.html",
   "software_data": []
 }

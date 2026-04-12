@@ -1,15 +1,28 @@
 import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
+import { initializeWizardNavigation } from './wizardnavigation.js';
+import {
+    restoreFormData,
+    enableAutoSave,
+    clearFormData,
+    saveSectionCounters,
+    getOrCreateInstanceUuid,
+    cleanupOldInstances
+} from './form-persistence.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize component linking
     initializeAllComponentSelects();
-
-    // Initialize help tooltips
     initializeHelpTooltips();
+    initializeWizardNavigation();
 
-    // Setup VPN wizard
+    window.saveSectionCounters = (formId, section = null) => saveSectionCounters(formId, section);
+
+    getOrCreateInstanceUuid('newVPNForm');
+    cleanupOldInstances('newVPNForm', 5);
+    restoreFormData('newVPNForm');
+    enableAutoSave('newVPNForm');
+
     setupVPNWizard();
 });
 

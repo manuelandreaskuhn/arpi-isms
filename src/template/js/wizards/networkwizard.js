@@ -1,10 +1,28 @@
 import { initializeAllComponentSelects } from './componentlinking.js';
 import { initializeHelpTooltips } from './helptooltip.js';
 import { collectFormData } from './formcollector.js';
+import { initializeWizardNavigation } from './wizardnavigation.js';
+import {
+    restoreFormData,
+    enableAutoSave,
+    clearFormData,
+    saveSectionCounters,
+    getOrCreateInstanceUuid,
+    cleanupOldInstances
+} from './form-persistence.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
     initializeHelpTooltips();
+    initializeWizardNavigation();
+
+    window.saveSectionCounters = (formId, section = null) => saveSectionCounters(formId, section);
+
+    getOrCreateInstanceUuid('newNetworkForm');
+    cleanupOldInstances('newNetworkForm', 5);
+    restoreFormData('newNetworkForm');
+    enableAutoSave('newNetworkForm');
+
     setupNetworkWizard();
 });
 
