@@ -90,6 +90,7 @@ class ConfigAPI
             return [
                 'id'       => $id,
                 'isCustom' => $this->loader->hasCustomConfig($id),
+                'label'    => $this->fixLabel($this->loader->getDefaultWizardConfig($id)['label'] ?? $id),
             ];
         }, $ids);
 
@@ -205,5 +206,14 @@ class ConfigAPI
     {
         http_response_code($code);
         echo json_encode(['success' => false, 'error' => $message], JSON_UNESCAPED_UNICODE);
+    }
+
+    private function fixLabel(string $label): string
+    {
+        // Beispiel: "Neues Backup-System", "Neuer Kommunikationsserver", etc..
+        // → "Neues Backup-System" → "Backup-System", "Neuer Kommunikationsserver" → "Kommunikationsserver"
+        // Splitte das Erste Wort (egal was es ist) ab.
+        $parts = explode(' ', $label, 2);
+        return $parts[1] ?? $label;
     }
 }

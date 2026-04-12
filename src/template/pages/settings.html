@@ -63,7 +63,16 @@
         <input type="search" id="addFieldSearch" class="add-field-search" placeholder="z.B. IP-Adresse, Hostname…"
             autocomplete="off" />
 
-        <ul class="add-field-list" id="addFieldList"></ul>
+        <div class="add-field-body">
+            <ul class="add-field-list" id="addFieldList"></ul>
+            <div class="element-preview" id="elementPreview" hidden>
+                <div class="element-preview-type" id="previewType"></div>
+                <div class="element-preview-label" id="previewLabel"></div>
+                <div class="element-preview-desc" id="previewDesc"></div>
+                <div class="element-preview-tag" id="previewTag"></div>
+                <div class="element-preview-extra" id="previewExtra"></div>
+            </div>
+        </div>
 
         <div class="add-field-footer">
             <button type="button" class="btn-cancel" id="btnAddFieldCancel">Abbrechen</button>

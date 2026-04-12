@@ -62,6 +62,9 @@ let addFieldSearch;
 /** @type {HTMLUListElement} */
 let addFieldList;
 
+/** @type {HTMLDivElement} */
+let elementPreview, previewType, previewLabel, previewDesc, previewTag, previewExtra;
+
 // Welche Seite wird gerade befüllt?
 let pendingAddFieldPageIdx = null;
 
@@ -84,6 +87,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     addPageDialog = document.getElementById('addPageDialog');
     addFieldSearch = document.getElementById('addFieldSearch');
     addFieldList = document.getElementById('addFieldList');
+    elementPreview = document.getElementById('elementPreview');
+    previewType = document.getElementById('previewType');
+    previewLabel = document.getElementById('previewLabel');
+    previewDesc = document.getElementById('previewDesc');
+    previewTag = document.getElementById('previewTag');
+    previewExtra = document.getElementById('previewExtra');
 
     btnSaveConfig.addEventListener('click', handleSave);
     btnResetConfig.addEventListener('click', handleReset);
@@ -729,12 +738,102 @@ function buildElementItem(element) {
         li.appendChild(desc);
     }
 
+    li.addEventListener('mouseenter', () => showElementPreview(element));
+    li.addEventListener('mouseleave', hideElementPreview);
+
     li.addEventListener('click', () => {
         addFieldFromElement(element);
         addFieldDialog.close();
     });
 
     return li;
+}
+
+// ============================================================
+// Element-Vorschau
+// ============================================================
+
+const TYPE_LABELS = {
+    'text': 'Text',
+    'textarea': 'Mehrzeiliger Text',
+    'number': 'Zahl',
+    'url': 'URL',
+    'email': 'E-Mail',
+    'select': 'Dropdown',
+    'radio': 'Radio-Buttons',
+    'checkbox': 'Checkbox',
+    'checkbox-group': 'Mehrfachauswahl',
+    'range': 'Schieberegler',
+    'component-ref': 'Komponenten-Referenz',
+    'software-select': 'Software-Auswahl',
+};
+
+function showElementPreview(element) {
+    // Typ-Badge
+    const typeLabel = TYPE_LABELS[element.type] ?? element.type ?? '—';
+    previewType.textContent = typeLabel;
+    previewType.dataset.type = element.type ?? '';
+
+    // Label + ID
+    previewLabel.textContent = element.label ?? element.id;
+
+    // Beschreibung
+    previewDesc.textContent = element.description ?? '';
+    previewDesc.hidden = !element.description;
+
+    // HTML-Tag
+    previewTag.textContent = element.html_tag ? `<${element.html_tag}>` : '';
+    previewTag.hidden = !element.html_tag;
+
+    // Extras: Placeholder, Validation, Options-Vorschau
+    previewExtra.innerHTML = '';
+
+    if (element.placeholder) {
+        const row = buildPreviewRow('Placeholder', element.placeholder);
+        previewExtra.appendChild(row);
+    }
+
+    if (element.validation) {
+        if (element.validation.message) {
+            const row = buildPreviewRow('Validierung', element.validation.message);
+            previewExtra.appendChild(row);
+        }
+        if (element.validation.min !== undefined || element.validation.max !== undefined) {
+            const range = [
+                element.validation.min !== undefined ? `Min: ${element.validation.min}` : null,
+                element.validation.max !== undefined ? `Max: ${element.validation.max}` : null,
+            ].filter(Boolean).join('  ·  ');
+            previewExtra.appendChild(buildPreviewRow('Bereich', range));
+        }
+    }
+
+    if (Array.isArray(element.options) && element.options.length > 0) {
+        // Flatten optgroup structures: [{optgroup, items:[...]}, ...] or [{value, label}, ...]
+        const flat = element.options.flatMap(o => o.items ?? [o]);
+        const optLabels = flat.slice(0, 5).map(o => o.label ?? o.value ?? '');
+        const suffix = flat.length > 5 ? ` … +${flat.length - 5}` : '';
+        previewExtra.appendChild(buildPreviewRow('Optionen', optLabels.join(', ') + suffix));
+    }
+
+    elementPreview.hidden = false;
+}
+
+function hideElementPreview() {
+    elementPreview.hidden = true;
+}
+
+function buildPreviewRow(key, value) {
+    const row = document.createElement('div');
+    row.className = 'preview-row';
+    const k = document.createElement('span');
+    k.className = 'preview-key';
+    k.textContent = key;
+    const v = document.createElement('span');
+    v.className = 'preview-val';
+    v.textContent = value;
+    row.appendChild(k);
+    row.appendChild(v);
+    return row;
 }
 
 function addFieldFromElement(element) {
