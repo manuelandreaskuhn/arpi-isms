@@ -24,6 +24,7 @@ body>main:has(.settings-sidebar) {
     min-width: 240px;
     background: #fff;
     border-right: 1px solid #e2e8f0;
+    border-left: 1px solid #c9c9c9;
     overflow-y: auto;
     height: 100vh;
     position: sticky;
