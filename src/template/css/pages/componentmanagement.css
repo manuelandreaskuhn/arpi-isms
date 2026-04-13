@@ -22,7 +22,8 @@ div.comp-list-panel {
 
 /* Component table columns */
 .complist-col-name {
-    flex: 0 0 190px;
+    flex: 0 0 240px;
+    padding-left: 5px;
 }
 
 .complist-col-ip {
