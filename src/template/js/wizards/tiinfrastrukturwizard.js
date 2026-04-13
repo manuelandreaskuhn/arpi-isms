@@ -1,98 +1,21 @@
-import { initializeAllComponentSelects } from './componentlinking.js';
-import { initializeHelpTooltips } from './helptooltip.js';
-import { collectFormData } from './formcollector.js';
-import { initializeWizardNavigation } from './wizardnavigation.js';
-import {
-    restoreFormData,
-    enableAutoSave,
-    clearFormData,
-    saveSectionCounters,
-    getOrCreateInstanceUuid,
-    cleanupOldInstances
-} from './form-persistence.js';
+import { initWizard, createSubmitHandler, toggleOnSelect } from './wizard-base.js';
 
-document.addEventListener('DOMContentLoaded', function () {
-    initializeAllComponentSelects();
-    initializeHelpTooltips();
-    initializeWizardNavigation();
+const FORM_ID = 'newTIInfrastructureForm';
 
-    window.saveSectionCounters = (formId, section = null) => saveSectionCounters(formId, section);
-
-    getOrCreateInstanceUuid('newTIInfrastructureForm');
-    cleanupOldInstances('newTIInfrastructureForm', 5);
-    restoreFormData('newTIInfrastructureForm');
-    enableAutoSave('newTIInfrastructureForm');
-
-    setupTIWizard();
+initWizard(FORM_ID, (form) => {
+    form.addEventListener('submit', createSubmitHandler(
+        FORM_ID,
+        '/api/ti-infrastructures',
+        'TI-Infrastruktur erfolgreich erstellt!',
+        '/ComponentManagement.html'
+    ));
+    setupKonfigurationToggle();
 });
 
-function setupTIWizard() {
-    const form = document.getElementById('newTIInfrastructureForm');
-    if (!form) return;
-
-    form.addEventListener('submit', handleTISubmit);
-
-    // Konfiguration Toggle
-    setupKonfigurationToggle();
-}
-
 function setupKonfigurationToggle() {
-    const konfigSelect = document.querySelector('[data-name="konfiguration"]');
-    const redundantFields = document.querySelector('.ti-redundant-config');
-
-    if (konfigSelect && redundantFields) {
-        const observer = new MutationObserver(() => {
-            const value = konfigSelect.dataset.value;
-            const show = (value === 'redundant' || value === 'cluster');
-            redundantFields.style.display = show ? 'block' : 'none';
-        });
-        observer.observe(konfigSelect, { attributes: true });
-    }
-}
-
-async function handleTISubmit(event) {
-    event.preventDefault();
-    if (!event.target.reportValidity()) return;
-
-    const formData = collectFormData(event.target);
-    console.log('TI Infrastructure Data:', formData);
-
-    try {
-        const response = await fetch(getFetchUri(), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-        if (result.success) {
-            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
-            if (lastchangespan) {
-                lastchangespan.textContent = 'Gespeichert am ' + new Date().toLocaleString();
-                lastchangespan.dataset.lastchange = new Date().toISOString();
-                lastchangespan.dataset.status = 'saved';
-            }
-
-            alert('TI-Infrastruktur erfolgreich erstellt!');
-            window.location.href = '/ComponentManagement.html';
-        } else {
-            alert('Fehler beim Erstellen:\n' + result.errors.join('\n'));
-
-            let lastchangespan = document.querySelector(".formmanagement > span.form-status");
-            if (lastchangespan) {
-                lastchangespan.dataset.status = 'error';
-            }
-        }
-    } catch (error) {
-        console.error('API Error:', error);
-        alert('Verbindungsfehler zur API');
-    }
-}
-
-function getFetchUri() {
-    let uri = '/api/ti-infrastructures';
-    return uri;
+    toggleOnSelect(
+        '[data-name="konfiguration"]',
+        ['redundant', 'cluster'],
+        '.ti-redundant-config'
+    );
 }

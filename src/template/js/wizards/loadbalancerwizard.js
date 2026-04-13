@@ -10,6 +10,7 @@ import {
     getOrCreateInstanceUuid,
     cleanupOldInstances
 } from './form-persistence.js';
+import { fillSoftwareInfo, hideSoftwareInfo } from './software-info.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
@@ -45,7 +46,7 @@ function setupSoftwareListener() {
             if (value && value !== '') {
                 loadLBSoftwareInfo(value);
             } else {
-                hideLBSoftwareInfo();
+                hideSoftwareInfo('lb-software-info-section');
             }
         });
         observer.observe(softwareSelect, { attributes: true, attributeFilter: ['data-value'] });
@@ -69,7 +70,7 @@ function setupManualInputToggles() {
 
 async function loadLBSoftwareInfo(lbId) {
     if (!lbId || lbId === 'other') {
-        hideLBSoftwareInfo();
+        hideSoftwareInfo('lb-software-info-section');
         return;
     }
 
@@ -83,57 +84,13 @@ async function loadLBSoftwareInfo(lbId) {
         const result = await response.json();
 
         if (result.success && result.data) {
-            fillLBSoftwareInfo(result.data);
+            fillSoftwareInfo(result.data, 'lb-software-info-section');
         } else {
-            hideLBSoftwareInfo();
+            hideSoftwareInfo('lb-software-info-section');
         }
     } catch (error) {
         console.error('API Error:', error);
-        hideLBSoftwareInfo();
-    }
-}
-
-function fillLBSoftwareInfo(data) {
-    const section = document.getElementById('lb-software-info-section');
-    if (section && section.classList.contains('collapsed')) {
-        section.classList.remove('collapsed');
-    }
-
-    const infoDiv = document.querySelector('.software-info-container');
-    if (!infoDiv) return;
-
-    const title = infoDiv.querySelector('.software-info-title');
-    if (title) title.textContent = data.name || '';
-
-    const vendor = infoDiv.querySelector('.software-vendor');
-    if (vendor) vendor.textContent = data.vendor || '-';
-
-    const category = document.getElementById('sw-category');
-    if (category) category.textContent = data.category || '-';
-
-    const type = document.getElementById('sw-type');
-    if (type) type.textContent = data.type || '-';
-
-    const description = document.getElementById('sw-description');
-    if (description) description.textContent = data.description || '';
-
-    const featuresContainer = document.getElementById('sw-features');
-    if (featuresContainer && data.features) {
-        featuresContainer.innerHTML = data.features
-            .map(f => `<span class="feature-tag">${f}</span>`).join('');
-    }
-
-    const pricing = document.getElementById('sw-pricing');
-    if (pricing) pricing.textContent = data.pricing || '-';
-
-    const notes = document.getElementById('sw-notes');
-    if (notes) notes.textContent = data.notes || '';
-}
-
-function hideLBSoftwareInfo() {
-    const section = document.getElementById('lb-software-info-section');
-    if (section && !section.classList.contains('collapsed')) {
-        section.classList.add('collapsed');
+        hideSoftwareInfo('lb-software-info-section');
     }
 }
 

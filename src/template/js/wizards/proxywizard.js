@@ -16,6 +16,7 @@ import {
     getOrCreateInstanceUuid,
     cleanupOldInstances
 } from './form-persistence.js';
+import { fillSoftwareInfo, hideSoftwareInfo } from './software-info.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
@@ -100,103 +101,13 @@ async function loadProxySoftwareInfo(softwareId) {
 
         const result = await response.json();
         if (result.success && result.data) {
-            fillProxySoftwareInfo(result.data);
-            showProxySoftwareInfo();
+            fillSoftwareInfo(result.data, 'proxy-software-info-section');
         } else {
             throw new Error(result.error || 'Failed to load software info');
         }
     } catch (error) {
         console.error('Error loading proxy software info:', error);
-        hideProxySoftwareInfo();
-    }
-}
-
-/**
- * Fill software information section
- */
-function fillProxySoftwareInfo(data) {
-    // Title and vendor
-    const titleEl = document.querySelector('.software-info-title');
-    const vendorEl = document.querySelector('.software-vendor');
-    if (titleEl) titleEl.textContent = data.name || '-';
-    if (vendorEl) vendorEl.textContent = data.vendor || '-';
-
-    // Category and type
-    const categoryEl = document.getElementById('sw-category');
-    if (categoryEl) categoryEl.textContent = data.category || '-';
-    const typeEl = document.getElementById('sw-type');
-    if (typeEl) typeEl.textContent = data.type || '-';
-
-    // Description
-    const descEl = document.getElementById('sw-description');
-    if (descEl) descEl.textContent = data.description || 'Keine Beschreibung verfügbar.';
-
-    // Features
-    const featuresEl = document.getElementById('sw-features');
-    if (featuresEl) {
-        if (data.features && data.features.length > 0) {
-            featuresEl.innerHTML = data.features.map(f => `<span class="badge">${f}</span>`).join('');
-        } else {
-            featuresEl.textContent = '-';
-        }
-    }
-
-    // Platforms
-    const platformsEl = document.getElementById('sw-platforms');
-    if (platformsEl) {
-        if (data.platforms && data.platforms.length > 0) {
-            platformsEl.innerHTML = data.platforms.map(p => `<span class="badge">${p}</span>`).join('');
-        } else {
-            platformsEl.textContent = '-';
-        }
-    }
-
-    // License models
-    const licenseEl = document.getElementById('sw-license');
-    if (licenseEl) {
-        if (data.licenseModel && data.licenseModel.length > 0) {
-            licenseEl.innerHTML = data.licenseModel.map(l => `<span class="badge">${l}</span>`).join('');
-        } else {
-            licenseEl.textContent = '-';
-        }
-    }
-
-    // Pricing
-    const pricingEl = document.getElementById('sw-pricing');
-    if (pricingEl) pricingEl.textContent = data.pricing || '-';
-
-    // Notes
-    const notesEl = document.getElementById('sw-notes');
-    if (notesEl) notesEl.textContent = data.notes || '-';
-
-    // CPE identifiers
-    const cpeEl = document.getElementById('sw-cpe');
-    if (cpeEl) {
-        if (data.cpe && data.cpe.length > 0) {
-            cpeEl.innerHTML = data.cpe.map(c => `<code class="cpe-id">${c}</code>`).join('');
-        } else {
-            cpeEl.textContent = '-';
-        }
-    }
-}
-
-/**
- * Show software information section
- */
-function showProxySoftwareInfo() {
-    const section = document.getElementById('proxy-software-info-section');
-    if (section) {
-        section.classList.remove('collapsed');
-    }
-}
-
-/**
- * Hide software information section
- */
-function hideProxySoftwareInfo() {
-    const section = document.getElementById('proxy-software-info-section');
-    if (section) {
-        section.classList.add('collapsed');
+        hideSoftwareInfo('proxy-software-info-section');
     }
 }
 

@@ -10,6 +10,7 @@ import {
     getOrCreateInstanceUuid,
     cleanupOldInstances
 } from './form-persistence.js';
+import { fillSoftwareInfo, hideSoftwareInfo } from './software-info.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     initializeAllComponentSelects();
@@ -66,7 +67,7 @@ function setupFirewallTypeToggle() {
             if (value && value !== '') {
                 loadFirewallSoftwareInfo(value);
             } else {
-                hideFirewallSoftwareInfo();
+                hideSoftwareInfo('firewall-software-info-section');
             }
         });
         observer.observe(typeSelect, { attributes: true, attributeFilter: ['data-value'] });
@@ -173,7 +174,7 @@ if (haCheck && haConfig) {
 
 async function loadFirewallSoftwareInfo(firewallId) {
     if (!firewallId || firewallId === 'other') {
-        hideFirewallSoftwareInfo();
+        hideSoftwareInfo('firewall-software-info-section');
         return;
     }
 
@@ -189,98 +190,14 @@ async function loadFirewallSoftwareInfo(firewallId) {
         const result = await response.json();
 
         if (result.success && result.data) {
-            fillFirewallSoftwareInfo(result.data);
+            fillSoftwareInfo(result.data, 'firewall-software-info-section');
         } else {
             console.error('Failed to load firewall software info:', result.error);
-            hideFirewallSoftwareInfo();
+            hideSoftwareInfo('firewall-software-info-section');
         }
     } catch (error) {
         console.error('API Error:', error);
-        hideFirewallSoftwareInfo();
-    }
-}
-
-function fillFirewallSoftwareInfo(data) {
-    // firewall-software-info-section toggle
-    const section = document.getElementById('firewall-software-info-section');
-    if (section && section.classList.contains('collapsed')) {
-        section.classList.remove('collapsed');
-    }
-
-    const infoDiv = document.querySelector('.software-info-container');
-    if (!infoDiv) return;
-
-    // Title and Badge
-    const title = infoDiv.querySelector('.software-info-title');
-    if (title) title.textContent = data.name || '';
-
-    // Grid items
-    const vendor = infoDiv.querySelector('.software-vendor');
-    const category = infoDiv.querySelector('.software-category');
-    const type = infoDiv.querySelector('.software-type');
-
-    if (vendor) vendor.textContent = data.vendor || '-';
-    if (category) category.textContent = data.category || '-';
-    if (type) type.textContent = data.type || '-';
-
-    // Description
-    const description = infoDiv.querySelector('.software-description-text');
-    if (description) description.textContent = data.description || '';
-
-    // Features
-    const featuresContainer = infoDiv.querySelector('.software-features');
-    if (featuresContainer && data.features) {
-        featuresContainer.innerHTML = data.features
-            .map(feature => `<span class="feature-tag">${feature}</span>`)
-            .join('');
-    }
-
-    // Platforms
-    const platformsContainer = infoDiv.querySelector('.software-platforms');
-    if (platformsContainer && data.platforms) {
-        platformsContainer.innerHTML = data.platforms
-            .map(platform => `<span class="platform-tag">${platform}</span>`)
-            .join('');
-    }
-
-    // License Model
-    const licenseContainer = infoDiv.querySelector('.software-license');
-    if (licenseContainer && data.licenseModel) {
-        licenseContainer.innerHTML = data.licenseModel
-            .map(license => `<span class="license-tag">${license}</span>`)
-            .join('');
-    }
-
-    // Use Cases
-    const useCasesContainer = infoDiv.querySelector('.software-usecases');
-    if (useCasesContainer && data.useCases) {
-        useCasesContainer.innerHTML = data.useCases
-            .map(useCase => `<span class="usecase-tag">${useCase}</span>`)
-            .join('');
-    }
-
-    // Pricing
-    const pricing = infoDiv.querySelector('.software-pricing-text');
-    if (pricing) pricing.textContent = data.pricing || '-';
-
-    // Notes
-    const notes = infoDiv.querySelector('.software-notes-text');
-    if (notes) notes.textContent = data.notes || '';
-
-    // CPE Identifiers
-    const cpeContainer = infoDiv.querySelector('.software-cpe-list');
-    if (cpeContainer && data.cpe) {
-        cpeContainer.innerHTML = data.cpe
-            .map(cpe => `<div class="cpe-item">${cpe}</div>`)
-            .join('');
-    }
-}
-
-function hideFirewallSoftwareInfo() {
-    // Collapse the section
-    const section = document.getElementById('firewall-software-info-section');
-    if (section && !section.classList.contains('collapsed')) {
-        section.classList.add('collapsed');
+        hideSoftwareInfo('firewall-software-info-section');
     }
 }
 
