@@ -1,0 +1,101 @@
+/* ================================================================
+   COMPONENT MANAGEMENT – Layout & Spalten
+   ================================================================ */
+
+/* Outer layout: narrow create panel + full list panel */
+div.comp-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+div.comp-create-panel {
+    flex: 0 0 320px;
+    min-width: 0;
+}
+
+div.comp-list-panel {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+/* Component table columns */
+.complist-col-name {
+    flex: 0 0 190px;
+}
+
+.complist-col-ip {
+    flex: 0 0 140px;
+    font-size: 0.82em;
+    font-family: monospace;
+    color: #475569;
+}
+
+.complist-col-software {
+    flex: 0 0 175px;
+}
+
+.complist-col-system {
+    flex: 0 0 90px;
+    text-align: center;
+}
+
+.complist-col-status {
+    flex: 0 0 110px;
+    text-align: center;
+}
+
+.complist-col-actions {
+    flex: 0 0 40px;
+    text-align: right;
+}
+
+/* Software badge */
+span.comp-soft-badge {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 0.8em;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* IP monospace chip */
+code.comp-ip {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.88em;
+    background: transparent;
+    color: inherit;
+}
+
+/* Responsive – component layout */
+@media (max-width: 1100px) {
+    .complist-col-software {
+        display: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .complist-col-ip {
+        flex: 0 0 110px;
+    }
+
+    .complist-col-name {
+        flex: 1 1 0;
+    }
+}
+
+@media (max-width: 680px) {
+    div.comp-layout {
+        flex-direction: column;
+    }
+
+    div.comp-create-panel {
+        flex: unset;
+        width: 100%;
+    }
+}

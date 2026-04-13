@@ -1,0 +1,310 @@
+/* ============================================================
+   Wizard-spezifische Komponenten
+   ============================================================ */
+#cloudProviderGroup {
+    display: none;
+}
+
+/* Spezifisch etwas kleinere margin für Host-Assignment help-text */
+.host-assignment .help-text {
+    margin-bottom: 12px;
+}
+
+/* Cluster config box (vormals inline style) */
+.cluster-config {
+    display: none;
+    background: #f0f4ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Host assignment container styling (vormals inline style) */
+.host-assignment-box {
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+/* Checkbox sizing/margins die vorher inline gesetzt waren */
+.db-cluster-check {
+    width: auto;
+    margin: 0;
+}
+
+/* Label für Cluster-Checkbox (vormals inline style) */
+.cluster-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+/* Utility class für margin-top:20px */
+.mt-20 {
+    margin-top: 20px;
+}
+
+/* Interface-spezifische Styles */
+.interface-basic-section,
+.interface-data-section,
+.interface-technical-section {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border: 1px solid #e2e8f0;
+}
+
+.interface-source-section,
+.interface-target-section {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border-left: 3px solid #3498db;
+}
+
+.interface-target-section {
+    border-left-color: #2ecc71;
+}
+
+.interface-connection-section {
+    background: #fff8e1;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border-left: 3px solid #ffa726;
+}
+
+.connection-direct,
+.connection-commserver,
+.connection-fileshare,
+.connection-messagequeue {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+    border: 1px solid #e2e8f0;
+}
+
+.commserver-ha-config {
+    background: #f0f4ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.commserver-siem-config {
+    background: #fff3e0;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-left: 3px solid #ff9800;
+}
+
+.commserver-manual-fields {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.container-k8s-config,
+.container-volumes-config,
+.container-env-config {
+    background: #e3f2fd;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-left: 3px solid #2196f3;
+}
+
+.subsection-title {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Help Icon Styling */
+.subsection-header .help-icon {
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    font-size: 0.8em;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#firewall-software-info-section.collapsed,
+#hypervisor-software-info-section.collapsed {
+    display: none;
+}
+
+.software-info-container {}
+
+.software-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.software-info-title {
+    margin: 0;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: var(--font-color);
+}
+
+.software-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.software-info-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 2px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.software-info-item label {
+    display: block;
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.software-info-item span {
+    display: block;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+.software-info-description,
+.software-info-pricing,
+.software-info-notes {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 2px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.software-info-description label,
+.software-info-pricing label,
+.software-info-notes label,
+.software-info-section label,
+.software-info-cpe label {
+    display: block;
+    font-size: 0.8em;
+    opacity: 0.8;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.software-description-text,
+.software-notes-text,
+.software-pricing-text {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95em;
+    color: #737373;
+}
+
+.software-info-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 0px;
+}
+
+.software-info-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 2px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.software-features,
+.software-platforms,
+.software-license,
+.software-usecases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Generic badge styling for software info */
+.software-features .badge,
+.software-platforms .badge,
+.software-license .badge,
+.software-usecases .badge,
+.software-features .feature-tag,
+.software-platforms .platform-tag,
+.software-license .license-tag,
+.software-usecases .usecase-tag {
+    background: var(--primary-color);
+    padding: 5px 12px;
+    border-radius: 16px;
+    font-size: 0.75em;
+    white-space: nowrap;
+    color: white;
+    display: inline-block;
+}
+
+.software-info-cpe {
+    padding: 15px 2px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    display: none;
+}
+
+.software-cpe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.software-cpe-list .cpe-id,
+.software-cpe-list .cpe-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    word-break: break-all;
+    border-left: 3px solid rgba(255, 255, 255, 0.5);
+    font-family: 'Courier New', monospace;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .software-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .software-info-row {
+        grid-template-columns: 1fr;
+    }
+}
+

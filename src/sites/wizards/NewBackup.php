@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Sites\Wizards;
 
 use ARPI\Helper\BaseSite;
@@ -9,7 +10,7 @@ use ARPI\Helper\ODM\EntityHydrator;
 use ARPI\Helper\WizardSchemaBuilder;
 use ARPI\Helper\ODM\DynamicDocument;
 
-#[Css('/template/css/wizard.css', '/template/css/pages/assetmanagement.css')]
+#[Css('/template/css/wizard.css', '/template/css/wizard-components.css', '/template/css/pages/assetmanagement.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/backupwizard.js')]
 class NewBackup extends BaseSite
 {
@@ -22,7 +23,7 @@ class NewBackup extends BaseSite
     {
         return $this->renderWizard('backup');
     }
-    
+
     /**
      * Erstellt ein neues Backup-System
      * 
@@ -34,29 +35,29 @@ class NewBackup extends BaseSite
         // 1. Schema validieren
         $validator = new SchemaValidator();
         $schema = (new WizardSchemaBuilder())->buildSchema('backup');
-        
+
         if (!$validator->validate($data, $schema)) {
             return [
                 'success' => false,
                 'errors' => $validator->getErrors()
             ];
         }
-        
+
         // 2. Entity erstellen
         $backupSystem = new DynamicDocument('backup');
-        
+
         // 3. Daten hydratieren
         try {
             EntityHydrator::hydrate($backupSystem, $data);
-            
+
             // 4. Zeitstempel setzen
             $backupSystem->createdat = new \DateTime();
             $backupSystem->updatedat = new \DateTime();
-            
+
             // 5. In Datenbank speichern
             $this->persist($backupSystem);
             $this->flush();
-            
+
             // 6. Erfolgs-Response
             return [
                 'success' => true,
@@ -64,7 +65,6 @@ class NewBackup extends BaseSite
                 'message' => 'Backup-System erfolgreich erstellt',
                 'data' => EntityHydrator::extract($backupSystem)
             ];
-            
         } catch (\Exception $e) {
             return [
                 'success' => false,
@@ -72,7 +72,7 @@ class NewBackup extends BaseSite
             ];
         }
     }
-    
+
     /**
      * Aktualisiert ein bestehendes Backup-System
      * 
@@ -85,45 +85,44 @@ class NewBackup extends BaseSite
         // 1. Schema validieren
         $validator = new SchemaValidator();
         $schema = (new WizardSchemaBuilder())->buildSchema('backup');
-        
+
         // Für Update sind nicht alle Felder required
         $updateSchema = $schema;
         unset($updateSchema['required']);
-        
+
         if (!$validator->validate($data, $updateSchema)) {
             return [
                 'success' => false,
                 'errors' => $validator->getErrors()
             ];
         }
-        
+
         try {
             // 2. Backup-System aus DB laden
             $backupSystem = $this->findDynamic('backup', $id);
-            
+
             if (!$backupSystem) {
                 return [
                     'success' => false,
                     'errors' => ['Backup-System nicht gefunden']
                 ];
             }
-            
+
             // 3. Daten hydratieren
             EntityHydrator::hydrate($backupSystem, $data);
-            
+
             // 4. Zeitstempel aktualisieren
             $backupSystem->updatedat = new \DateTime();
-            
+
             // 5. Speichern
             $this->flush();
-            
+
             return [
                 'success' => true,
                 'id' => $id,
                 'message' => 'Backup-System erfolgreich aktualisiert',
                 'data' => EntityHydrator::extract($backupSystem)
             ];
-            
         } catch (\Exception $e) {
             return [
                 'success' => false,
@@ -131,7 +130,7 @@ class NewBackup extends BaseSite
             ];
         }
     }
-    
+
     /**
      * Löscht ein Backup-System
      * 
@@ -143,22 +142,21 @@ class NewBackup extends BaseSite
         try {
             // Backup-System aus DB laden
             $backupSystem = $this->findDynamic('backup', $id);
-            
+
             if (!$backupSystem) {
                 return [
                     'success' => false,
                     'errors' => ['Backup-System nicht gefunden']
                 ];
             }
-            
+
             $this->remove($backupSystem);
             $this->flush();
-            
+
             return [
                 'success' => true,
                 'message' => 'Backup-System erfolgreich gelöscht'
             ];
-            
         } catch (\Exception $e) {
             return [
                 'success' => false,

@@ -6,7 +6,7 @@ use ARPI\Helper\BaseSite;
 use ARPI\Entities\Annotations\Css;
 use ARPI\Entities\Annotations\Js;
 
-#[Css('/template/css/pages/assetmanagement.css')]
+#[Css('/template/css/pages/assetmanagement.css', '/template/css/pages/listtable.css')]
 #[Js('/template/js/system-management.js')]
 class SystemManagement extends BaseSite
 {
