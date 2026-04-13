@@ -133,6 +133,7 @@ function fillHypervisorSoftwareInfo(data) {
     }
 
     const infoDiv = document.querySelector('.software-info-container');
+    if (!infoDiv) return;
 
     // Title
     const title = infoDiv.querySelector('.software-info-title');
@@ -222,6 +223,7 @@ function getDataUri() {
 
 async function handleHypervisorSubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('Hypervisor Data:', formData);

@@ -273,15 +273,6 @@ class WizardRenderer
                 continue;
             }
 
-            // Software-select mit Info-Panel immer einzeln (volle Breite)
-            if ($type === 'software-select') {
-                $flush();
-                $html .= '        <div class="form-row">' . "\n";
-                $html .= $this->renderFieldInGroup($field, $formValues);
-                $html .= '        </div>' . "\n";
-                continue;
-            }
-
             $buffer[] = $field;
 
             // 2 Felder → Zeile abschließen
@@ -306,7 +297,18 @@ class WizardRenderer
         $condition  = $this->buildConditionAttr($field['condition'] ?? null);
         $inputHtml  = $this->renderInput($field, $value);
 
-        return '            <div class="form-group"' . $condition . '>' . "\n"
+        // Debug-Attribute
+        $dbgElement  = htmlspecialchars($field['_element'] ?? '', ENT_QUOTES);
+        $dbgOrigin   = $dbgElement !== '' ? 'catalog' : 'inline';
+        $dbgType     = htmlspecialchars($field['type'] ?? 'text', ENT_QUOTES);
+        $dbgRequired = !empty($field['required']) ? '1' : '0';
+        $dbgAttrs    = ' data-debug-origin="' . $dbgOrigin . '"'
+            . ' data-debug-element="' . $dbgElement . '"'
+            . ' data-debug-type="' . $dbgType . '"'
+            . ' data-debug-name="' . htmlspecialchars($name, ENT_QUOTES) . '"'
+            . ' data-debug-required="' . $dbgRequired . '"';
+
+        return '            <div class="form-group"' . $condition . $dbgAttrs . '>' . "\n"
             . $this->renderLabel($field)
             . $inputHtml
             . $this->renderHelpText($field)
@@ -603,16 +605,19 @@ class WizardRenderer
                 'group_id'    => $groupId,
                 'group_label' => $label,
             ]));
-            if ($condition !== '') {
-                return '        <div class="group-wrapper"' . $condition . '>' . "\n"
-                    . $partialHtml . "\n"
-                    . '        </div>' . "\n";
-            }
-            return $partialHtml;
+            $tplEsc = htmlspecialchars($templateFile, ENT_QUOTES);
+            $idEsc  = htmlspecialchars($groupId, ENT_QUOTES);
+            return '        <div class="group-wrapper" data-debug-origin="group-template"'
+                . ' data-debug-id="' . $idEsc . '" data-debug-template="' . $tplEsc . '"'
+                . $condition . '>' . "\n"
+                . $partialHtml . "\n"
+                . '        </div>' . "\n";
         }
 
         // Generisches Rendering
-        $html = '        <div class="group-wrapper"' . $condition . '>' . "\n";
+        $idEsc = htmlspecialchars($groupId, ENT_QUOTES);
+        $html  = '        <div class="group-wrapper" data-debug-origin="group-generic"'
+            . ' data-debug-id="' . $idEsc . '"' . $condition . '>' . "\n";
 
         if ($label !== '') {
             $html .= '            <div class="subsection-header">' . htmlspecialchars($label, ENT_QUOTES) . '</div>' . "\n";
@@ -641,14 +646,15 @@ class WizardRenderer
             }
             $name     = $field['name'] ?? '';
             $category = $field['attributes']['data-category'] ?? $name;
-            $html .= $this->renderSoftwareInfoPanel($name, $category);
+            $panelId  = $field['info_panel'] ?? ($name . '-software-info-section');
+            $html .= $this->renderSoftwareInfoPanel($panelId, $category);
         }
         return $html;
     }
 
-    private function renderSoftwareInfoPanel(string $fieldName, string $category): string
+    private function renderSoftwareInfoPanel(string $panelId, string $category): string
     {
-        $id = htmlspecialchars($fieldName . '-software-info-section', ENT_QUOTES);
+        $id = htmlspecialchars($panelId, ENT_QUOTES);
         $categoryLabel = htmlspecialchars(ucfirst($category), ENT_QUOTES);
 
         return '    <div id="' . $id . '" class="collapsed">' . "\n"
@@ -660,23 +666,23 @@ class WizardRenderer
             . '                    <div class="software-info-item"><label>Hersteller</label><span class="software-vendor"></span></div>' . "\n"
             . '                </div>' . "\n"
             . '                <div class="software-info-grid">' . "\n"
-            . '                    <div class="software-info-item"><label>Kategorie</label><span class="software-category"></span></div>' . "\n"
-            . '                    <div class="software-info-item"><label>Typ</label><span class="software-type"></span></div>' . "\n"
+            . '                    <div class="software-info-item"><label>Kategorie</label><span id="sw-category" class="software-category"></span></div>' . "\n"
+            . '                    <div class="software-info-item"><label>Typ</label><span id="sw-type" class="software-type"></span></div>' . "\n"
             . '                </div>' . "\n"
-            . '                <div class="software-info-description"><label>Beschreibung</label><p class="software-description-text"></p></div>' . "\n"
+            . '                <div class="software-info-description"><label>Beschreibung</label><p id="sw-description" class="software-description-text"></p></div>' . "\n"
             . '                <div class="software-info-row">' . "\n"
-            . '                    <div class="software-info-section"><label>Features</label><div class="software-features"></div></div>' . "\n"
-            . '                    <div class="software-info-section"><label>Plattformen</label><div class="software-platforms"></div></div>' . "\n"
-            . '                </div>' . "\n"
-            . '                <div class="software-info-row">' . "\n"
-            . '                    <div class="software-info-section"><label>Lizenzmodell</label><div class="software-license"></div></div>' . "\n"
-            . '                    <div class="software-info-section"><label>Anwendungsfälle</label><div class="software-usecases"></div></div>' . "\n"
+            . '                    <div class="software-info-section"><label>Features</label><div id="sw-features" class="software-features"></div></div>' . "\n"
+            . '                    <div class="software-info-section"><label>Plattformen</label><div id="sw-platforms" class="software-platforms"></div></div>' . "\n"
             . '                </div>' . "\n"
             . '                <div class="software-info-row">' . "\n"
-            . '                    <div class="software-info-pricing"><label>Preisbereich</label><span class="software-pricing-text"></span></div>' . "\n"
-            . '                    <div class="software-info-notes"><label>Hinweise</label><p class="software-notes-text"></p></div>' . "\n"
+            . '                    <div class="software-info-section"><label>Lizenzmodell</label><div id="sw-license" class="software-license"></div></div>' . "\n"
+            . '                    <div class="software-info-section"><label>Anwendungsfälle</label><div id="sw-usecases" class="software-usecases"></div></div>' . "\n"
             . '                </div>' . "\n"
-            . '                <div class="software-info-cpe"><label>CPE-Identifikatoren</label><div class="software-cpe-list"></div></div>' . "\n"
+            . '                <div class="software-info-row">' . "\n"
+            . '                    <div class="software-info-pricing"><label>Preisbereich</label><span id="sw-pricing" class="software-pricing-text"></span></div>' . "\n"
+            . '                    <div class="software-info-notes"><label>Hinweise</label><p id="sw-notes" class="software-notes-text"></p></div>' . "\n"
+            . '                </div>' . "\n"
+            . '                <div class="software-info-cpe"><label>CPE-Identifikatoren</label><div id="sw-cpe" class="software-cpe-list"></div></div>' . "\n"
             . '            </div>' . "\n"
             . '        </div>' . "\n"
             . '    </div>' . "\n";

@@ -4,14 +4,14 @@ export function initializeWizardNavigation() {
 
     // Create wizard navigation
     createWizardNavigation(sections);
-    
+
     // Ensure only first section is open
     sections.forEach((section, index) => {
         section.classList.add('collapsed');
         if (index === 0) {
             section.classList.remove('collapsed');
         }
-        
+
         // Hide section titles
         const title = section.querySelector('.section-title');
         if (title) {
@@ -29,7 +29,7 @@ export function initializeWizardNavigation() {
                 updateStepStatus(activeIndex);
             }
         }, 300));
-        
+
         form.addEventListener('change', () => {
             const activeSection = getActiveSection();
             if (activeSection) {
@@ -37,6 +37,17 @@ export function initializeWizardNavigation() {
                 updateStepStatus(activeIndex);
             }
         });
+
+        // Validierung beim Verlassen eines Feldes (blur)
+        form.addEventListener('blur', (e) => {
+            const input = e.target;
+            if (!(input instanceof HTMLInputElement) && !(input instanceof HTMLTextAreaElement)) return;
+            // Nur prüfen wenn das Feld einen Inhalt hat oder required ist
+            if (input.value !== '' || input.required) {
+                input.checkValidity();
+                input.reportValidity();
+            }
+        }, true); // capture=true, da blur nicht bubbled
     }
 
     // Initial status update for all steps
@@ -46,7 +57,7 @@ export function initializeWizardNavigation() {
 function createWizardNavigation(sections) {
     const container = document.createElement('div');
     container.className = 'wizard-navigation-container';
-    
+
     // Create steps indicator
     const stepsContainer = document.createElement('div');
     stepsContainer.className = 'wizard-steps';
@@ -67,7 +78,7 @@ function createWizardNavigation(sections) {
             Weiter <span>→</span>
         </button>
     `;
-    
+
     sections.forEach((section, index) => {
         const titleSpan = section.querySelector('.section-title span:first-child');
         const badge = section.querySelector('.section-badge');
@@ -114,7 +125,7 @@ function createWizardNavigation(sections) {
     sections.forEach(section => {
         const toggleIcon = section.querySelector('.section-toggle-icon');
         if (toggleIcon) toggleIcon.style.display = 'none';
-        
+
         // Make section title non-clickable
         const title = section.querySelector('.section-title');
         if (title) {
@@ -148,7 +159,19 @@ function goToStep(targetIndex) {
 function goToNextStep() {
     const sections = document.querySelectorAll('.form-section');
     const activeIndex = Array.from(sections).findIndex(s => !s.classList.contains('collapsed'));
-    
+    const activeSection = sections[activeIndex];
+
+    // Pflicht- und Muster-Validierung der aktuellen Seite
+    if (activeSection) {
+        const inputs = activeSection.querySelectorAll('input, textarea');
+        for (const input of inputs) {
+            if (!input.checkValidity()) {
+                input.reportValidity();
+                return;
+            }
+        }
+    }
+
     if (activeIndex < sections.length - 1) {
         goToStep(activeIndex + 1);
     }
@@ -157,7 +180,7 @@ function goToNextStep() {
 function goToPreviousStep() {
     const sections = document.querySelectorAll('.form-section');
     const activeIndex = Array.from(sections).findIndex(s => !s.classList.contains('collapsed'));
-    
+
     if (activeIndex > 0) {
         goToStep(activeIndex - 1);
     }
@@ -165,7 +188,7 @@ function goToPreviousStep() {
 
 function updateAllStepStatus() {
     const sections = document.querySelectorAll('.form-section');
-    
+
     sections.forEach((section, index) => {
         const stats = getSectionStats(section);
         updateStepDisplay(index, stats);
@@ -186,7 +209,7 @@ function updateStepStatus(index) {
     const sections = document.querySelectorAll('.form-section');
     const section = sections[index];
     if (!section) return;
-    
+
     const stats = getSectionStats(section);
     updateStepDisplay(index, stats);
 }

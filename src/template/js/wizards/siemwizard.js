@@ -52,6 +52,7 @@ function setupDistributedToggle() {
 
 async function handleSIEMSubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('SIEM System Data:', formData);

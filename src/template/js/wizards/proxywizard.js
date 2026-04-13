@@ -122,48 +122,61 @@ function fillProxySoftwareInfo(data) {
     if (vendorEl) vendorEl.textContent = data.vendor || '-';
 
     // Category and type
-    document.getElementById('sw-category').textContent = data.category || '-';
-    document.getElementById('sw-type').textContent = data.type || '-';
+    const categoryEl = document.getElementById('sw-category');
+    if (categoryEl) categoryEl.textContent = data.category || '-';
+    const typeEl = document.getElementById('sw-type');
+    if (typeEl) typeEl.textContent = data.type || '-';
 
     // Description
-    document.getElementById('sw-description').textContent = data.description || 'Keine Beschreibung verfügbar.';
+    const descEl = document.getElementById('sw-description');
+    if (descEl) descEl.textContent = data.description || 'Keine Beschreibung verfügbar.';
 
     // Features
     const featuresEl = document.getElementById('sw-features');
-    if (data.features && data.features.length > 0) {
-        featuresEl.innerHTML = data.features.map(f => `<span class="badge">${f}</span>`).join('');
-    } else {
-        featuresEl.textContent = '-';
+    if (featuresEl) {
+        if (data.features && data.features.length > 0) {
+            featuresEl.innerHTML = data.features.map(f => `<span class="badge">${f}</span>`).join('');
+        } else {
+            featuresEl.textContent = '-';
+        }
     }
 
     // Platforms
     const platformsEl = document.getElementById('sw-platforms');
-    if (data.platforms && data.platforms.length > 0) {
-        platformsEl.innerHTML = data.platforms.map(p => `<span class="badge">${p}</span>`).join('');
-    } else {
-        platformsEl.textContent = '-';
+    if (platformsEl) {
+        if (data.platforms && data.platforms.length > 0) {
+            platformsEl.innerHTML = data.platforms.map(p => `<span class="badge">${p}</span>`).join('');
+        } else {
+            platformsEl.textContent = '-';
+        }
     }
 
     // License models
     const licenseEl = document.getElementById('sw-license');
-    if (data.licenseModel && data.licenseModel.length > 0) {
-        licenseEl.innerHTML = data.licenseModel.map(l => `<span class="badge">${l}</span>`).join('');
-    } else {
-        licenseEl.textContent = '-';
+    if (licenseEl) {
+        if (data.licenseModel && data.licenseModel.length > 0) {
+            licenseEl.innerHTML = data.licenseModel.map(l => `<span class="badge">${l}</span>`).join('');
+        } else {
+            licenseEl.textContent = '-';
+        }
     }
 
     // Pricing
-    document.getElementById('sw-pricing').textContent = data.pricing || '-';
+    const pricingEl = document.getElementById('sw-pricing');
+    if (pricingEl) pricingEl.textContent = data.pricing || '-';
 
     // Notes
-    document.getElementById('sw-notes').textContent = data.notes || '-';
+    const notesEl = document.getElementById('sw-notes');
+    if (notesEl) notesEl.textContent = data.notes || '-';
 
     // CPE identifiers
     const cpeEl = document.getElementById('sw-cpe');
-    if (data.cpe && data.cpe.length > 0) {
-        cpeEl.innerHTML = data.cpe.map(c => `<code class="cpe-id">${c}</code>`).join('');
-    } else {
-        cpeEl.textContent = '-';
+    if (cpeEl) {
+        if (data.cpe && data.cpe.length > 0) {
+            cpeEl.innerHTML = data.cpe.map(c => `<code class="cpe-id">${c}</code>`).join('');
+        } else {
+            cpeEl.textContent = '-';
+        }
     }
 }
 
@@ -375,6 +388,7 @@ function setupConditionalFields() {
 
 async function handleProxySubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     // Formular-Daten sammeln
     const formData = collectFormData(event.target);

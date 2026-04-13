@@ -1,5 +1,6 @@
 import { initializeComponentSelect, refreshAllComponentSelects } from './componentlinking.js';
 import { initConditionalFields, reevaluateAll as reevaluateConditionalFields } from './conditional-fields.js';
+import './wizard-debug.js';
 
 // Global state for custom selects
 const customSelectsRegistry = new Map();

@@ -675,9 +675,9 @@ function renderElementList(query) {
 
     const filtered = query
         ? elements.filter(e =>
-            (e.label ?? '').toLowerCase().includes(query) ||
+            (e.settings_label ?? e.label ?? '').toLowerCase().includes(query) ||
             (e.id ?? '').toLowerCase().includes(query) ||
-            (e.description ?? '').toLowerCase().includes(query)
+            (e.settings_description ?? e.description ?? '').toLowerCase().includes(query)
         )
         : elements;
 
@@ -688,7 +688,7 @@ function renderElementList(query) {
 
     // Bei aktiver Suche: flache Liste ohne Gruppen
     if (query) {
-        const sorted = [...filtered].sort((a, b) => (a.label ?? a.id).localeCompare(b.label ?? b.id, 'de'));
+        const sorted = [...filtered].sort((a, b) => (a.settings_label ?? a.label ?? a.id).localeCompare(b.settings_label ?? b.label ?? b.id, 'de'));
         sorted.forEach(el => addFieldList.appendChild(buildElementItem(el)));
         return;
     }
@@ -709,7 +709,7 @@ function renderElementList(query) {
 
     orderedKeys.forEach(groupName => {
         const items = grouped[groupName].sort((a, b) =>
-            (a.label ?? a.id).localeCompare(b.label ?? b.id, 'de')
+            (a.settings_label ?? a.label ?? a.id).localeCompare(b.settings_label ?? b.label ?? b.id, 'de')
         );
 
         // Gruppen-Header
@@ -728,13 +728,13 @@ function buildElementItem(element) {
 
     const name = document.createElement('div');
     name.className = 'element-name';
-    name.textContent = element.label ?? element.id;
+    name.textContent = element.settings_label ?? element.label ?? element.id;
     li.appendChild(name);
 
     if (element.description) {
         const desc = document.createElement('div');
         desc.className = 'element-desc';
-        desc.textContent = element.description;
+        desc.textContent = element.settings_description ?? element.description ?? '';
         li.appendChild(desc);
     }
 
@@ -775,11 +775,11 @@ function showElementPreview(element) {
     previewType.dataset.type = element.type ?? '';
 
     // Label + ID
-    previewLabel.textContent = element.label ?? element.id;
+    previewLabel.textContent = element.settings_label ?? element.label ?? element.id;
 
     // Beschreibung
-    previewDesc.textContent = element.description ?? '';
-    previewDesc.hidden = !element.description;
+    previewDesc.textContent = element.settings_description ?? element.description ?? '';
+    previewDesc.hidden = !element.settings_description && !element.description;
 
     // HTML-Tag
     previewTag.textContent = element.html_tag ? `<${element.html_tag}>` : '';
@@ -842,7 +842,7 @@ function addFieldFromElement(element) {
     const newField = {
         name: element.id.replace(/-/g, '_'),
         element: element.id,
-        label: element.label ?? element.id,
+        label: element.settings_label ?? element.label ?? element.id,
     };
 
     if (!EditorState.config.pages[pendingAddFieldPageIdx].fields) {

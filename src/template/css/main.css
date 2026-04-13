@@ -289,7 +289,9 @@ body>main>aside.wizardnavigation-enabled.breadcrumb {
 }
 
 body>main>aside>div.breadcrumb>p,
-body>main>aside.breadcrumb>p {
+body>main>aside.breadcrumb>p,
+body>main>aside>div.breadcrumb>a,
+body>main>aside.breadcrumb>a {
     padding-left: 20px;
     padding-right: 20px;
     margin: 0;
@@ -299,7 +301,9 @@ body>main>aside.breadcrumb>p {
 }
 
 body>main>aside>div.breadcrumb>p:first-of-type,
-body>main>aside.breadcrumb>p:first-of-type {
+body>main>aside.breadcrumb>p:first-of-type,
+body>main>aside>div.breadcrumb>a:first-of-type,
+body>main>aside.breadcrumb>a:first-of-type {
     margin-left: 0;
 }
 
@@ -308,6 +312,17 @@ body>main>aside.breadcrumb>p:last-of-type {
     margin-right: 0;
     font-weight: 600;
     color: #2d3748;
+}
+
+body>main>aside>div.breadcrumb>a,
+body>main>aside.breadcrumb>a {
+    text-decoration: none;
+}
+
+body>main>aside>div.breadcrumb>a:hover,
+body>main>aside.breadcrumb>a:hover {
+    text-decoration: underline;
+    color: #2b6cb0;
 }
 
 body>main>aside>div.breadcrumb>i,

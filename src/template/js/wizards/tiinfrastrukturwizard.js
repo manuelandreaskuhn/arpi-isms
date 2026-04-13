@@ -52,6 +52,7 @@ function setupKonfigurationToggle() {
 
 async function handleTISubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('TI Infrastructure Data:', formData);

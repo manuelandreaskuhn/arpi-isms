@@ -207,10 +207,17 @@ abstract class BaseSite implements SiteInterface
                 . $this->render('partials/footer.html');
         }
 
+        $sectionUrlMap = [
+            'Komponenten'   => '/ComponentManagement.html',
+            'Systeme'       => '/SystemManagement.html',
+            'Applikationen' => '/ApplicationManagement.html',
+        ];
+        $sectionUrl = htmlspecialchars($sectionUrlMap[$config['breadcrumb_section'] ?? 'Komponenten'] ?? '/AssetManagement.html', ENT_QUOTES);
+
         $aside = '<aside class="wizardnavigation-enabled">' . "\n"
             . '    <div class="breadcrumb">' . "\n"
-            . '        <p>Assetmanagement</p><i>›</i>' . "\n"
-            . '        <p>' . $section . '</p><i>›</i>' . "\n"
+            . '        <a href="/AssetManagement.html">Assetmanagement</a><i>›</i>' . "\n"
+            . '        <a href="' . $sectionUrl . '">' . $section . '</a><i>›</i>' . "\n"
             . '        <p>' . $label . '</p>' . "\n"
             . '    </div>' . "\n"
             . '    <div class="page-header-container"><div class="page-header"></div></div>' . "\n"

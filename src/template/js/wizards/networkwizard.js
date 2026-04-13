@@ -51,6 +51,7 @@ function setupDHCPToggle() {
 
 async function handleNetworkSubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('Network Data:', formData);

@@ -226,7 +226,8 @@ class ConfigLoader
             if ($element !== null) {
                 // Feld-Definition überschreibt Element-Defaults
                 $resolved = array_merge($element, $fieldDef);
-                $resolved['_type'] = 'field';
+                $resolved['_type']    = 'field';
+                $resolved['_element'] = $fieldDef['element']; // Debug: Katalog-Element-ID merken
                 unset($resolved['element']); // Referenz-Key entfernen
                 return $resolved;
             }

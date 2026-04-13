@@ -67,6 +67,7 @@ function setupSecondaryGatewayToggle() {
 
 async function handleVPNSubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('VPN Data:', formData);

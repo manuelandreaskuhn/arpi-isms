@@ -15,6 +15,7 @@
     <meta name="theme-color" content="#007E9E">
 
     <link rel="stylesheet" href="/template/css/main.css">
+    <script src="/template/js/nav-active.js"></script>
     {{foreach:assetcss}}
     <link rel="stylesheet" href="{{property:value}}">
     {{/foreach}}
@@ -83,17 +84,5 @@
             </figure>
         </div>
     </header>
-
-    <script>
-        (function () {
-            const path = window.location.pathname.replace(/\/$/, '') || '/';
-            document.querySelectorAll('header nav a[href]').forEach(function (a) {
-                const href = a.getAttribute('href').replace(/\/$/, '') || '/';
-                if (path === href) {
-                    a.classList.add('active');
-                }
-            });
-        })();
-    </script>
 
     <main>

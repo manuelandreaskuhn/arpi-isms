@@ -64,6 +64,7 @@ function setupConditionalFields() {
 
 async function handleMedicalDeviceSubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('Medical Device Data:', formData);

@@ -139,6 +139,7 @@ function hideLBSoftwareInfo() {
 
 async function handleLoadBalancerSubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('Load Balancer Data:', formData);

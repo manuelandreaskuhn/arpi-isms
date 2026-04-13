@@ -690,12 +690,11 @@
             "label": "Server-Referenz",
             "description": "Referenz auf einen Server (VM oder Hardware-Server) mit optionaler manueller Eingabe von Hostname und IP.",
             "html_tag": "isms-server-ref",
-            "template_file": "partials/elements/groups/server-reference.html",
             "fields": [
                 {
                     "element_ref": "vm-hardware-reference",
                     "name": "serverid",
-                    "label": "Backup-Server / VM"
+                    "label": "Server / VM"
                 },
                 {
                     "element_ref": "hostname",

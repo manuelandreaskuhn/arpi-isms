@@ -110,6 +110,7 @@ function setupFirewallDiagram() {
 
 async function handleFirewallSubmit(event) {
     event.preventDefault();
+    if (!event.target.reportValidity()) return;
 
     const formData = collectFormData(event.target);
     console.log('Firewall Data:', formData);
@@ -207,6 +208,7 @@ function fillFirewallSoftwareInfo(data) {
     }
 
     const infoDiv = document.querySelector('.software-info-container');
+    if (!infoDiv) return;
 
     // Title and Badge
     const title = infoDiv.querySelector('.software-info-title');
