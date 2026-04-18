@@ -59,294 +59,50 @@ import { initializeHelpTooltips } from './helptooltip.js';
 import { refreshAllComponentSelects } from './componentlinking.js';
 import { collectFormData } from './formcollector.js';
 
+// ── Chip-Typ → Listen-ID Mapping ─────────────────────────────────────────────
+const DYNAMIC_LIST_TYPES = {
+    vm: 'vmList',
+    hardware: 'hardwareList',
+    database: 'databaseList',
+    backup: 'backupList',
+    loadbalancer: 'loadbalancerList',
+    firewall: 'firewallList',
+    client: 'clientList',
+    meddevice: 'medDeviceList',
+    medinterface: 'medInterfaceList',
+    container: 'containerList',
+};
+
+// Embedded-one Typen haben keine dynamische Liste – ihre Daten werden direkt aus
+// dem Karten-Body gesammelt.
+const EMBEDDED_ONE_TYPES = {
+    tiinfrastructure: 'tiinfrastructure',
+    proxy: 'proxyconfiguration',
+    siem: 'siemintegration',
+    vpn: 'vpnaccess',
+};
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize help tooltips
     initializeHelpTooltips();
-
-    // Initialize component selects
     refreshAllComponentSelects();
-
-    // Setup form submission
     setupSystemFormSubmit();
 
-    // Initially hide sections
-    const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
-    const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');
-    const databaseSection = document.querySelector('.form-section[data-name="databases"]');
-    const backupSection = document.querySelector('.form-section[data-name="backups"]');
-    const loadbalancerSection = document.querySelector('.form-section[data-name="loadbalancers"]');
-    const firewallSection = document.querySelector('.form-section[data-name="firewalls"]');
-    const clientSection = document.querySelector('.form-section[data-name="clients"]');
-    const medInterfaceSection = document.querySelector('.form-section[data-name="medinterfaces"]');
-    const containerSection = document.querySelector('.form-section[data-name="containers"]');
-    const medDeviceSection = document.querySelector('.form-section[data-name="meddevices"]');
+    // ── Chip-Toggle ───────────────────────────────────────────────
+    document.querySelectorAll('.sysw-type-chip input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', handleChipChange);
+    });
 
-    if (vmSection) vmSection.style.display = 'none';
-    if (hardwareSection) hardwareSection.style.display = 'none';
-    if (databaseSection) databaseSection.style.display = 'none';
-    if (backupSection) backupSection.style.display = 'none';
-    if (loadbalancerSection) loadbalancerSection.style.display = 'none';
-    if (firewallSection) firewallSection.style.display = 'none';
-    if (clientSection) clientSection.style.display = 'none';
-    if (medInterfaceSection) medInterfaceSection.style.display = 'none';
-    if (containerSection) containerSection.style.display = 'none';
-    if (medDeviceSection) medDeviceSection.style.display = 'none';
-
-    // VM checkbox handler
-    const vmCheckbox = document.getElementById('vm');
-    if (vmCheckbox) {
-        vmCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                vmSection.style.display = 'block';
-            } else {
-                vmSection.style.display = 'none';
-                document.getElementById('vmList').innerHTML = '';
-                updateSectionCounter(vmSection);
-                refreshHostAssignments();
-                refreshBackupHostAssignments();
-            }
+    // ── Karten-Header Collapse/Expand ─────────────────────────────
+    document.querySelectorAll('.sysw-comp-card-header').forEach(header => {
+        header.addEventListener('click', () => {
+            header.closest('.sysw-comp-card').classList.toggle('collapsed');
         });
-    }
+    });
 
-    // Hardware checkbox handler
-    const hardwareCheckbox = document.getElementById('hardware');
-    if (hardwareCheckbox) {
-        hardwareCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                hardwareSection.style.display = 'block';
-            } else {
-                hardwareSection.style.display = 'none';
-                document.getElementById('hardwareList').innerHTML = '';
-                updateSectionCounter(hardwareSection);
-                refreshHostAssignments();
-                refreshBackupHostAssignments();
-            }
-        });
-    }
+    // ── MutationObserver für Eintrags-Zähler ─────────────────────
+    setupCardCountObservers();
 
-    // Database checkbox handler
-    const databaseCheckbox = document.getElementById('database');
-    if (databaseCheckbox) {
-        databaseCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                databaseSection.style.display = 'block';
-            } else {
-                databaseSection.style.display = 'none';
-                document.getElementById('databaseList').innerHTML = '';
-                updateSectionCounter(databaseSection);
-                refreshBackupHostAssignments();
-            }
-        });
-    }
-
-    // Backup checkbox handler
-    const backupCheckbox = document.getElementById('backup');
-    if (backupCheckbox) {
-        backupCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                backupSection.style.display = 'block';
-            } else {
-                backupSection.style.display = 'none';
-                document.getElementById('backupList').innerHTML = '';
-                updateSectionCounter(backupSection);
-            }
-        });
-    }
-
-    // Load Balancer checkbox handler
-    const loadbalancerCheckbox = document.getElementById('loadbalancer');
-    if (loadbalancerCheckbox) {
-        loadbalancerCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                loadbalancerSection.style.display = 'block';
-            } else {
-                loadbalancerSection.style.display = 'none';
-                document.getElementById('loadbalancerList').innerHTML = '';
-                updateSectionCounter(loadbalancerSection);
-            }
-        });
-    }
-
-    // Firewall checkbox handler
-    const firewallCheckbox = document.getElementById('firewall');
-    if (firewallCheckbox) {
-        firewallCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                firewallSection.style.display = 'block';
-            } else {
-                firewallSection.style.display = 'none';
-                document.getElementById('firewallList').innerHTML = '';
-                updateSectionCounter(firewallSection);
-            }
-        });
-    }
-
-    // Client checkbox handler
-    const clientCheckbox = document.getElementById('client');
-    if (clientCheckbox) {
-        clientCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                clientSection.style.display = 'block';
-            } else {
-                clientSection.style.display = 'none';
-                document.getElementById('clientList').innerHTML = '';
-                updateSectionCounter(clientSection);
-            }
-        });
-    }
-
-    // Gematik TI checkbox handler
-    const gematictiCheckbox = document.getElementById('gematicti');
-    const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
-
-    if (gematictiCheckbox && gematictiSection) {
-        gematictiSection.style.display = 'none';
-
-        gematictiCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                gematictiSection.style.display = 'block';
-                setupTIConditionalFields(gematictiSection);
-                // Refresh component selects für TI-Komponenten
-                refreshAllComponentSelects();
-            } else {
-                gematictiSection.style.display = 'none';
-            }
-        });
-    }
-
-    // Proxy checkbox handler
-    const proxyCheckbox = document.getElementById('proxy');
-    const proxySection = document.querySelector('.form-section[data-name="proxy"]');
-
-    if (proxyCheckbox && proxySection) {
-        proxySection.style.display = 'none';
-
-        proxyCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                proxySection.style.display = 'block';
-                setupProxyConditionalFields(proxySection);
-            } else {
-                proxySection.style.display = 'none';
-            }
-        });
-    }
-
-    // SIEM checkbox handler
-    const siemCheckbox = document.getElementById('siem');
-    const siemSection = document.querySelector('.form-section[data-name="siem"]');
-
-    if (siemCheckbox && siemSection) {
-        siemSection.style.display = 'none';
-
-        siemCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                siemSection.style.display = 'block';
-                setupSIEMConditionalFields(siemSection);
-            } else {
-                siemSection.style.display = 'none';
-            }
-        });
-    }
-
-    // VPN checkbox handler
-    const vpnCheckbox = document.getElementById('vpn');
-    const vpnSection = document.querySelector('.form-section[data-name="vpn"]');
-
-    if (vpnCheckbox && vpnSection) {
-        vpnSection.style.display = 'none';
-
-        vpnCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                vpnSection.style.display = 'block';
-                setupVPNConditionalFields(vpnSection);
-            } else {
-                vpnSection.style.display = 'none';
-            }
-        });
-    }
-
-    // Medical Interface checkbox handler
-    const medInterfaceCheckbox = document.getElementById('medinterface');
-
-    if (medInterfaceCheckbox && medInterfaceSection) {
-        medInterfaceCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                medInterfaceSection.style.display = 'block';
-                // Refresh component selects für Interfaces
-                refreshAllComponentSelects();
-            } else {
-                medInterfaceSection.style.display = 'none';
-                document.getElementById('medInterfaceList').innerHTML = '';
-                updateSectionCounter(medInterfaceSection);
-            }
-        });
-    }
-
-    // Container checkbox handler
-    const containerCheckbox = document.getElementById('container');
-
-    if (containerCheckbox && containerSection) {
-        containerCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                containerSection.style.display = 'block';
-            } else {
-                containerSection.style.display = 'none';
-                document.getElementById('containerList').innerHTML = '';
-                updateSectionCounter(containerSection);
-            }
-        });
-    }
-
-    // Medical Device checkbox handler
-    const medDeviceCheckbox = document.getElementById('meddevice');
-
-    if (medDeviceCheckbox && medDeviceSection) {
-        medDeviceCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                medDeviceSection.style.display = 'block';
-            } else {
-                medDeviceSection.style.display = 'none';
-                document.getElementById('medDeviceList').innerHTML = '';
-                updateSectionCounter(medDeviceSection);
-            }
-        });
-    }
-
-    // Hypervisor checkbox handler
-    const hypervisorCheckbox = document.getElementById('hypervisor');
-    const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
-
-    if (hypervisorCheckbox && hypervisorSection) {
-        hypervisorSection.style.display = 'none';
-
-        hypervisorCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                hypervisorSection.style.display = 'block';
-                refreshAllComponentSelects();
-            } else {
-                hypervisorSection.style.display = 'none';
-            }
-        });
-    }
-
-    // CommunicationServer checkbox handler
-    const commserverCheckbox = document.getElementById('commserver');
-    const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
-
-    if (commserverCheckbox && commserverSection) {
-        commserverSection.style.display = 'none';
-
-        commserverCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                commserverSection.style.display = 'block';
-                refreshAllComponentSelects();
-            } else {
-                commserverSection.style.display = 'none';
-            }
-        });
-    }
-
-    // Cluster-Konfiguration anzeigen/ausblenden
+    // ── Cluster-Konfiguration anzeigen/ausblenden ─────────────────
     document.addEventListener('change', function (e) {
         if (e.target.classList && e.target.classList.contains('db-cluster-check')) {
             const clusterConfig = e.target.closest('.entry-content')?.querySelector('.cluster-config');
@@ -357,8 +113,389 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// ── Chip-Wechsel verarbeiten ──────────────────────────────────────────────────
+function handleChipChange(e) {
+    const checkbox = e.target;
+    const chip = checkbox.closest('.sysw-type-chip');
+    const type = chip.dataset.comptype;
+    const card = document.getElementById('compcard-' + type);
+
+    if (checkbox.checked) {
+        chip.classList.add('active');
+        if (card) {
+            card.style.display = '';
+            setupConditionalFieldsForType(type, card);
+            refreshAllComponentSelects();
+        }
+    } else {
+        chip.classList.remove('active');
+        if (card) {
+            card.style.display = 'none';
+            clearDynamicList(type);
+        }
+    }
+
+    updateEmptyState();
+}
+
+// ── Conditional-Fields je Typ initialisieren ─────────────────────────────────
+function setupConditionalFieldsForType(type, card) {
+    const body = card.querySelector('.sysw-comp-card-body');
+    if (!body) return;
+
+    switch (type) {
+        case 'backup': setupBackupConditionalFields(body); break;
+        case 'loadbalancer': setupLoadBalancerConditionalFields(body); break;
+        case 'firewall': setupFirewallConditionalFields(body); break;
+        case 'client': setupClientConditionalFields(body); break;
+        case 'tiinfrastructure': setupTIConditionalFields(body); break;
+        case 'proxy': setupProxyConditionalFields(body); break;
+        case 'siem':
+            setupSIEMConditionalFields(body);
+            refreshSIEMHostAssignments();
+            refreshSIEMDatabaseAssignments();
+            break;
+        case 'vpn':
+            setupVPNConditionalFields(body);
+            refreshVPNHostAssignments();
+            break;
+        case 'meddevice': setupMedDeviceConditionalFields(body); break;
+        case 'container': setupContainerConditionalFields(body); break;
+    }
+}
+
+// ── Dynamische Liste leeren ───────────────────────────────────────────────────
+function clearDynamicList(type) {
+    const listId = DYNAMIC_LIST_TYPES[type];
+    if (!listId) return;
+
+    const list = document.getElementById(listId);
+    if (list) list.innerHTML = '';
+
+    // Abhängige Selects neu laden
+    if (type === 'vm' || type === 'hardware') {
+        if (window.refreshHostAssignments) refreshHostAssignments();
+        if (window.refreshBackupHostAssignments) refreshBackupHostAssignments();
+        if (window.refreshVPNHostAssignments) refreshVPNHostAssignments();
+    } else if (type === 'database') {
+        if (window.refreshBackupHostAssignments) refreshBackupHostAssignments();
+    }
+
+    updateCardCount(type);
+}
+
+// ── Karten-Zähler aktualisieren ───────────────────────────────────────────────
+function updateCardCount(type) {
+    const listId = DYNAMIC_LIST_TYPES[type];
+    const badge = document.getElementById('compcount-' + type);
+    if (!badge || !listId) return;
+
+    const list = document.getElementById(listId);
+    const count = list ? list.querySelectorAll('.dynamic-entry').length : 0;
+    badge.textContent = count;
+    badge.classList.toggle('has-entries', count > 0);
+}
+
+// ── MutationObserver für alle dynamischen Listen ──────────────────────────────
+function setupCardCountObservers() {
+    Object.entries(DYNAMIC_LIST_TYPES).forEach(([type, listId]) => {
+        const list = document.getElementById(listId);
+        if (!list) return;
+
+        new MutationObserver(() => updateCardCount(type)).observe(list, { childList: true });
+    });
+}
+
+// ── Leerzustand steuern ───────────────────────────────────────────────────────
+function updateEmptyState() {
+    const anyActive = document.querySelector('.sysw-type-chip.active') !== null;
+    const emptyMsg = document.getElementById('sysw-comp-empty');
+    if (emptyMsg) emptyMsg.style.display = anyActive ? 'none' : '';
+}
+
+
+
+// Initially hide sections
+const vmSection = document.querySelector('.form-section[data-name="virtualmachines"]');
+const hardwareSection = document.querySelector('.form-section[data-name="hardwareservers"]');
+const databaseSection = document.querySelector('.form-section[data-name="databases"]');
+const backupSection = document.querySelector('.form-section[data-name="backups"]');
+const loadbalancerSection = document.querySelector('.form-section[data-name="loadbalancers"]');
+const firewallSection = document.querySelector('.form-section[data-name="firewalls"]');
+const clientSection = document.querySelector('.form-section[data-name="clients"]');
+const medInterfaceSection = document.querySelector('.form-section[data-name="medinterfaces"]');
+const containerSection = document.querySelector('.form-section[data-name="containers"]');
+const medDeviceSection = document.querySelector('.form-section[data-name="meddevices"]');
+
+if (vmSection) vmSection.style.display = 'none';
+if (hardwareSection) hardwareSection.style.display = 'none';
+if (databaseSection) databaseSection.style.display = 'none';
+if (backupSection) backupSection.style.display = 'none';
+if (loadbalancerSection) loadbalancerSection.style.display = 'none';
+if (firewallSection) firewallSection.style.display = 'none';
+if (clientSection) clientSection.style.display = 'none';
+if (medInterfaceSection) medInterfaceSection.style.display = 'none';
+if (containerSection) containerSection.style.display = 'none';
+if (medDeviceSection) medDeviceSection.style.display = 'none';
+
+// VM checkbox handler
+const vmCheckbox = document.getElementById('vm');
+if (vmCheckbox) {
+    vmCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            vmSection.style.display = 'block';
+        } else {
+            vmSection.style.display = 'none';
+            document.getElementById('vmList').innerHTML = '';
+            updateSectionCounter(vmSection);
+            refreshHostAssignments();
+            refreshBackupHostAssignments();
+        }
+    });
+}
+
+// Hardware checkbox handler
+const hardwareCheckbox = document.getElementById('hardware');
+if (hardwareCheckbox) {
+    hardwareCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            hardwareSection.style.display = 'block';
+        } else {
+            hardwareSection.style.display = 'none';
+            document.getElementById('hardwareList').innerHTML = '';
+            updateSectionCounter(hardwareSection);
+            refreshHostAssignments();
+            refreshBackupHostAssignments();
+        }
+    });
+}
+
+// Database checkbox handler
+const databaseCheckbox = document.getElementById('database');
+if (databaseCheckbox) {
+    databaseCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            databaseSection.style.display = 'block';
+        } else {
+            databaseSection.style.display = 'none';
+            document.getElementById('databaseList').innerHTML = '';
+            updateSectionCounter(databaseSection);
+            refreshBackupHostAssignments();
+        }
+    });
+}
+
+// Backup checkbox handler
+const backupCheckbox = document.getElementById('backup');
+if (backupCheckbox) {
+    backupCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            backupSection.style.display = 'block';
+        } else {
+            backupSection.style.display = 'none';
+            document.getElementById('backupList').innerHTML = '';
+            updateSectionCounter(backupSection);
+        }
+    });
+}
+
+// Load Balancer checkbox handler
+const loadbalancerCheckbox = document.getElementById('loadbalancer');
+if (loadbalancerCheckbox) {
+    loadbalancerCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            loadbalancerSection.style.display = 'block';
+        } else {
+            loadbalancerSection.style.display = 'none';
+            document.getElementById('loadbalancerList').innerHTML = '';
+            updateSectionCounter(loadbalancerSection);
+        }
+    });
+}
+
+// Firewall checkbox handler
+const firewallCheckbox = document.getElementById('firewall');
+if (firewallCheckbox) {
+    firewallCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            firewallSection.style.display = 'block';
+        } else {
+            firewallSection.style.display = 'none';
+            document.getElementById('firewallList').innerHTML = '';
+            updateSectionCounter(firewallSection);
+        }
+    });
+}
+
+// Client checkbox handler
+const clientCheckbox = document.getElementById('client');
+if (clientCheckbox) {
+    clientCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            clientSection.style.display = 'block';
+        } else {
+            clientSection.style.display = 'none';
+            document.getElementById('clientList').innerHTML = '';
+            updateSectionCounter(clientSection);
+        }
+    });
+}
+
+// Gematik TI checkbox handler
+const gematictiCheckbox = document.getElementById('gematicti');
+const gematictiSection = document.querySelector('.form-section[data-name="gematicti"]');
+
+if (gematictiCheckbox && gematictiSection) {
+    gematictiSection.style.display = 'none';
+
+    gematictiCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            gematictiSection.style.display = 'block';
+            setupTIConditionalFields(gematictiSection);
+            // Refresh component selects für TI-Komponenten
+            refreshAllComponentSelects();
+        } else {
+            gematictiSection.style.display = 'none';
+        }
+    });
+}
+
+// Proxy checkbox handler
+const proxyCheckbox = document.getElementById('proxy');
+const proxySection = document.querySelector('.form-section[data-name="proxy"]');
+
+if (proxyCheckbox && proxySection) {
+    proxySection.style.display = 'none';
+
+    proxyCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            proxySection.style.display = 'block';
+            setupProxyConditionalFields(proxySection);
+        } else {
+            proxySection.style.display = 'none';
+        }
+    });
+}
+
+// SIEM checkbox handler
+const siemCheckbox = document.getElementById('siem');
+const siemSection = document.querySelector('.form-section[data-name="siem"]');
+
+if (siemCheckbox && siemSection) {
+    siemSection.style.display = 'none';
+
+    siemCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            siemSection.style.display = 'block';
+            setupSIEMConditionalFields(siemSection);
+        } else {
+            siemSection.style.display = 'none';
+        }
+    });
+}
+
+// VPN checkbox handler
+const vpnCheckbox = document.getElementById('vpn');
+const vpnSection = document.querySelector('.form-section[data-name="vpn"]');
+
+if (vpnCheckbox && vpnSection) {
+    vpnSection.style.display = 'none';
+
+    vpnCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            vpnSection.style.display = 'block';
+            setupVPNConditionalFields(vpnSection);
+        } else {
+            vpnSection.style.display = 'none';
+        }
+    });
+}
+
+// Medical Interface checkbox handler
+const medInterfaceCheckbox = document.getElementById('medinterface');
+
+if (medInterfaceCheckbox && medInterfaceSection) {
+    medInterfaceCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            medInterfaceSection.style.display = 'block';
+            // Refresh component selects für Interfaces
+            refreshAllComponentSelects();
+        } else {
+            medInterfaceSection.style.display = 'none';
+            document.getElementById('medInterfaceList').innerHTML = '';
+            updateSectionCounter(medInterfaceSection);
+        }
+    });
+}
+
+// Container checkbox handler
+const containerCheckbox = document.getElementById('container');
+
+if (containerCheckbox && containerSection) {
+    containerCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            containerSection.style.display = 'block';
+        } else {
+            containerSection.style.display = 'none';
+            document.getElementById('containerList').innerHTML = '';
+            updateSectionCounter(containerSection);
+        }
+    });
+}
+
+// Medical Device checkbox handler
+const medDeviceCheckbox = document.getElementById('meddevice');
+
+if (medDeviceCheckbox && medDeviceSection) {
+    medDeviceCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            medDeviceSection.style.display = 'block';
+        } else {
+            medDeviceSection.style.display = 'none';
+            document.getElementById('medDeviceList').innerHTML = '';
+            updateSectionCounter(medDeviceSection);
+        }
+    });
+}
+
+// Hypervisor checkbox handler
+const hypervisorCheckbox = document.getElementById('hypervisor');
+const hypervisorSection = document.querySelector('.form-section[data-name="hypervisor"]');
+
+if (hypervisorCheckbox && hypervisorSection) {
+    hypervisorSection.style.display = 'none';
+
+    hypervisorCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            hypervisorSection.style.display = 'block';
+            refreshAllComponentSelects();
+        } else {
+            hypervisorSection.style.display = 'none';
+        }
+    });
+}
+
+// CommunicationServer checkbox handler
+const commserverCheckbox = document.getElementById('commserver');
+const commserverSection = document.querySelector('.form-section[data-name="commserver"]');
+
+if (commserverCheckbox && commserverSection) {
+    commserverSection.style.display = 'none';
+
+    commserverCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            commserverSection.style.display = 'block';
+            refreshAllComponentSelects();
+        } else {
+            commserverSection.style.display = 'none';
+        }
+    });
+}
+
+
+
 function setupSystemFormSubmit() {
-    const form = document.getElementById('newSystemForm');
+    const form = document.getElementById('systemWizardForm');
     if (!form) return;
 
     form.addEventListener('submit', handleSystemSubmit);
@@ -384,17 +521,17 @@ async function handleSystemSubmit(event) {
 
     // Collect embedded-one sections as nested sub-objects (required by SystemHelper)
     const embeddedOneSections = [
-        { selector: '.form-section[data-name="gematicti"]', key: 'tiinfrastructure', checkbox: 'gematicti' },
-        { selector: '.form-section[data-name="proxy"]', key: 'proxyconfiguration', checkbox: 'proxy' },
-        { selector: '.form-section[data-name="siem"]', key: 'siemintegration', checkbox: 'siem' },
-        { selector: '.form-section[data-name="vpn"]', key: 'vpnaccess', checkbox: 'vpn' },
+        { comptype: 'tiinfrastructure', key: 'tiinfrastructure' },
+        { comptype: 'proxy', key: 'proxyconfiguration' },
+        { comptype: 'siem', key: 'siemintegration' },
+        { comptype: 'vpn', key: 'vpnaccess' },
     ];
-    embeddedOneSections.forEach(({ selector, key, checkbox }) => {
-        const section = document.querySelector(selector);
-        const checkboxEl = document.getElementById(checkbox);
-        if (section && checkboxEl?.checked) {
-            formData[key] = collectFormData(section);
-        }
+    embeddedOneSections.forEach(({ comptype, key }) => {
+        const chip = document.querySelector(`.sysw-type-chip[data-comptype="${comptype}"] input`);
+        if (!chip?.checked) return;
+
+        const body = document.querySelector(`#compcard-${comptype} .sysw-comp-card-body`);
+        if (body) formData[key] = collectFormData(body);
     });
 
     console.log('System Data:', formData);
@@ -536,9 +673,12 @@ window.setupSIEMConditionalFields = setupSIEMConditionalFields;
 window.refreshSIEMHostAssignments = refreshSIEMHostAssignments;
 window.refreshSIEMDatabaseAssignments = refreshSIEMDatabaseAssignments;
 window.refreshVPNHostAssignments = refreshVPNHostAssignments;
+window.addMedDeviceEntry = addMedDeviceEntry;
 window.addMedInterfaceEntry = addMedInterfaceEntry;
+window.updateCardCount = updateCardCount;
 window.refreshInterfaceComponents = refreshInterfaceComponents;
 window.addContainerEntry = addContainerEntry;
+// updateCardCount already exported above
 window.setupContainerConditionalFields = setupContainerConditionalFields;
 window.refreshContainerHostAssignments = refreshContainerHostAssignments;
 window.addMedDeviceEntry = addMedDeviceEntry;

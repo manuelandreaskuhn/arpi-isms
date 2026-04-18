@@ -1,0 +1,414 @@
+<aside class="wizardnavigation-enabled">
+    <div class="breadcrumb">
+        <a href="/AssetManagement.html">Assetmanagement</a><i>›</i>
+        <a href="/SystemManagement.html">Systeme</a><i>›</i>
+        <p>Neues System</p>
+    </div>
+    <div class="page-header-container">
+        <div class="page-header">
+            <h1>Neues System anlegen</h1>
+            <p>Basis-Daten erfassen, dann IT-Komponenten zuordnen.</p>
+        </div>
+    </div>
+</aside>
+
+<div class="error-management" id="formErrorManagement" style="display:none;">
+    <div class="error-header">
+        <span class="error-icon">!</span>
+        <span class="error-title">Fehler im Formular</span>
+    </div>
+    <div class="error-content">
+        <ul class="error-list"></ul>
+    </div>
+</div>
+
+<!-- ================================================================
+     SPLIT-PANEL LAYOUT
+     Linke Spalte:  Stammdaten (sticky)
+     Rechte Spalte: IT-Komponenten (Chip-Selektor + Karten)
+     ================================================================ -->
+<div class="sysw-layout">
+
+    <!-- ==================== LINKE SPALTE: STAMMDATEN ==================== -->
+    <div class="sysw-stammdaten">
+        <form id="systemWizardForm" data-instance-uuid="" data-wizard-id="system">
+
+            <!-- Seite 1: Basis-Informationen (aufgeklappt) -->
+            <div class="form-section">
+                <div class="section-title">
+                    <span>Basis-Informationen</span>
+                    <span class="section-badge">Pflicht</span>
+                    <span class="section-counter" data-section="basic">0 / 1</span>
+                    <span class="section-toggle-icon">▾</span>
+                </div>
+                <div class="section-content">
+                    <!-- WizardRenderer generiert hier die Felder aus system.json page "basic" -->
+                    {{render:wizard:system:page:basic}}
+                </div>
+            </div>
+
+            <!-- Seite 2: Software-Informationen -->
+            <div class="form-section collapsed">
+                <div class="section-title">
+                    <span>Software-Informationen</span>
+                    <span class="section-counter" data-section="software">0 / 4</span>
+                    <span class="section-toggle-icon">▾</span>
+                </div>
+                <div class="section-content">
+                    {{render:wizard:system:page:software}}
+                </div>
+            </div>
+
+            <!-- Seite 3: Kategorisierung -->
+            <div class="form-section collapsed">
+                <div class="section-title">
+                    <span>Kategorisierung</span>
+                    <span class="section-counter" data-section="categorization">0 / 4</span>
+                    <span class="section-toggle-icon">▾</span>
+                </div>
+                <div class="section-content">
+                    {{render:wizard:system:page:categorization}}
+                </div>
+            </div>
+
+            <!-- Seite 4: IT-Sicherheit & Compliance -->
+            <div class="form-section collapsed">
+                <div class="section-title">
+                    <span>IT-Sicherheit &amp; Compliance</span>
+                    <span class="section-counter" data-section="security">0 / 5</span>
+                    <span class="section-toggle-icon">▾</span>
+                </div>
+                <div class="section-content">
+                    {{render:wizard:system:page:security}}
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- ==================== RECHTE SPALTE: IT-KOMPONENTEN ==================== -->
+    <div class="sysw-komponenten">
+
+        <!-- ── Komponenten-Typen Chip-Selektor ── -->
+        <!--
+            Jeder Chip ist ein <label> das eine versteckte Checkbox umschließt.
+            JS überwacht 'change' → toggle .active + zeigt/versteckt zugehörige Karte
+        -->
+        <div class="sysw-type-bar">
+            <span class="sysw-type-bar-label">Typ:</span>
+
+            <label class="sysw-type-chip" data-comptype="vm">
+                <input type="checkbox" value="vm" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>VM
+            </label>
+            <label class="sysw-type-chip" data-comptype="hardware">
+                <input type="checkbox" value="hardware" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Hardware
+            </label>
+            <label class="sysw-type-chip" data-comptype="database">
+                <input type="checkbox" value="database" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Datenbank
+            </label>
+            <label class="sysw-type-chip" data-comptype="backup">
+                <input type="checkbox" value="backup" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Backup
+            </label>
+            <label class="sysw-type-chip" data-comptype="loadbalancer">
+                <input type="checkbox" value="loadbalancer" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Load Balancer
+            </label>
+            <label class="sysw-type-chip" data-comptype="firewall">
+                <input type="checkbox" value="firewall" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Firewall
+            </label>
+            <label class="sysw-type-chip" data-comptype="client">
+                <input type="checkbox" value="client" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Clients
+            </label>
+            <label class="sysw-type-chip" data-comptype="meddevice">
+                <input type="checkbox" value="meddevice" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Medizingeräte
+            </label>
+            <label class="sysw-type-chip" data-comptype="tiinfrastructure">
+                <input type="checkbox" value="tiinfrastructure" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>TI-Infrastruktur
+            </label>
+            <label class="sysw-type-chip" data-comptype="proxy">
+                <input type="checkbox" value="proxy" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Proxy
+            </label>
+            <label class="sysw-type-chip" data-comptype="siem">
+                <input type="checkbox" value="siem" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>SIEM
+            </label>
+            <label class="sysw-type-chip" data-comptype="vpn">
+                <input type="checkbox" value="vpn" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>VPN
+            </label>
+            <label class="sysw-type-chip" data-comptype="medinterface">
+                <input type="checkbox" value="medinterface" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Med. Schnittstellen
+            </label>
+            <label class="sysw-type-chip" data-comptype="container">
+                <input type="checkbox" value="container" form="systemWizardForm" name="componenttypes[]">
+                <span class="sysw-type-chip-dot"></span>Container
+            </label>
+        </div>
+
+        <!-- ── Komponenten-Karten (je Typ eine, initial versteckt) ── -->
+        <!--
+            Jede Karte hat:
+            - .sysw-comp-card-header   → klickbar für collapse/expand
+            - .sysw-comp-entry-table   → kompakte Zusammenfassung aller Einträge
+            - .sysw-comp-add-form      → Inline-Formular (toggle per Add-Button)
+            - .sysw-comp-add-btn       → öffnet .sysw-comp-add-form
+        -->
+
+        <!-- Karte: Virtuelle Maschinen -->
+        <div class="sysw-comp-card" id="compcard-vm" data-comptype="vm" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🖥</span>
+                <span class="sysw-comp-card-title">Virtuelle Maschinen</span>
+                <span class="sysw-comp-card-count" id="compcount-vm">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="vmList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addVMEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Virtuelle Maschine hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Hardware-Server -->
+        <div class="sysw-comp-card" id="compcard-hardware" data-comptype="hardware" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🖴</span>
+                <span class="sysw-comp-card-title">Hardware-Server</span>
+                <span class="sysw-comp-card-count" id="compcount-hardware">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="hardwareList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addHardwareEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Hardware-Server hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Datenbanken -->
+        <div class="sysw-comp-card" id="compcard-database" data-comptype="database" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🗃</span>
+                <span class="sysw-comp-card-title">Datenbanken</span>
+                <span class="sysw-comp-card-count" id="compcount-database">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="databaseList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addDatabaseEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Datenbank hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Backup-Systeme -->
+        <div class="sysw-comp-card" id="compcard-backup" data-comptype="backup" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🗄</span>
+                <span class="sysw-comp-card-title">Backup-Systeme</span>
+                <span class="sysw-comp-card-count" id="compcount-backup">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="backupList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addBackupEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Backup-System hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Load Balancer -->
+        <div class="sysw-comp-card" id="compcard-loadbalancer" data-comptype="loadbalancer" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">⚖</span>
+                <span class="sysw-comp-card-title">Load Balancer</span>
+                <span class="sysw-comp-card-count" id="compcount-loadbalancer">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="loadbalancerList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addLoadBalancerEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Load Balancer hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Firewalls -->
+        <div class="sysw-comp-card" id="compcard-firewall" data-comptype="firewall" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🔥</span>
+                <span class="sysw-comp-card-title">Firewalls</span>
+                <span class="sysw-comp-card-count" id="compcount-firewall">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="firewallList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addFirewallEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Firewall hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Client-Arbeitsplätze -->
+        <div class="sysw-comp-card" id="compcard-client" data-comptype="client" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">💻</span>
+                <span class="sysw-comp-card-title">Client-Arbeitsplätze</span>
+                <span class="sysw-comp-card-count" id="compcount-client">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="clientList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addClientEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Client hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Medizingeräte -->
+        <div class="sysw-comp-card" id="compcard-meddevice" data-comptype="meddevice" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🏥</span>
+                <span class="sysw-comp-card-title">Medizinische Geräte</span>
+                <span class="sysw-comp-card-count" id="compcount-meddevice">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="medDeviceList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addMedDeviceEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Medizingerät hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: TI-Infrastruktur (embedded-one) -->
+        <div class="sysw-comp-card" id="compcard-tiinfrastructure" data-comptype="tiinfrastructure"
+            style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">📡</span>
+                <span class="sysw-comp-card-title">TI-Infrastruktur</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body sysw-comp-embedded-body">
+                {{render:wizard:system:page:tiinfrastructure}}
+            </div>
+        </div>
+
+        <!-- Karte: Proxy-Server (embedded-one) -->
+        <div class="sysw-comp-card" id="compcard-proxy" data-comptype="proxy" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">↔</span>
+                <span class="sysw-comp-card-title">Proxy-Server</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body sysw-comp-embedded-body">
+                {{render:wizard:system:page:proxyconfiguration}}
+            </div>
+        </div>
+
+        <!-- Karte: SIEM (embedded-one) -->
+        <div class="sysw-comp-card" id="compcard-siem" data-comptype="siem" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🛡</span>
+                <span class="sysw-comp-card-title">SIEM-System</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body sysw-comp-embedded-body">
+                {{render:wizard:system:page:siemintegration}}
+            </div>
+        </div>
+
+        <!-- Karte: VPN (embedded-one) -->
+        <div class="sysw-comp-card" id="compcard-vpn" data-comptype="vpn" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🔒</span>
+                <span class="sysw-comp-card-title">VPN-Zugang</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body sysw-comp-embedded-body">
+                {{render:wizard:system:page:vpnaccess}}
+            </div>
+        </div>
+
+        <!-- Karte: Medizinische Schnittstellen -->
+        <div class="sysw-comp-card" id="compcard-medinterface" data-comptype="medinterface" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">🔌</span>
+                <span class="sysw-comp-card-title">Medizinische Schnittstellen</span>
+                <span class="sysw-comp-card-count" id="compcount-medinterface">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="medInterfaceList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addMedInterfaceEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Med. Schnittstelle hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- Karte: Container -->
+        <div class="sysw-comp-card" id="compcard-container" data-comptype="container" style="display:none;">
+            <div class="sysw-comp-card-header">
+                <span class="sysw-comp-card-icon">📦</span>
+                <span class="sysw-comp-card-title">Container</span>
+                <span class="sysw-comp-card-count" id="compcount-container">0</span>
+                <span class="sysw-comp-card-toggle">▾</span>
+            </div>
+            <div class="sysw-comp-card-body">
+                <div class="dynamic-list" id="containerList"></div>
+                <button type="button" class="sysw-comp-add-btn" onclick="addContainerEntry()">
+                    <span class="sysw-comp-add-btn-icon">+</span>
+                    Container hinzufügen
+                </button>
+            </div>
+        </div>
+
+        <!-- ── Leerer Zustand ── -->
+        <div class="sysw-comp-empty" id="sysw-comp-empty">
+            <span class="sysw-comp-empty-icon">⬡</span>
+            <p class="sysw-comp-empty-text">
+                Wähle oben einen oder mehrere Komponenten-Typen, um sie dem System zuzuordnen.
+            </p>
+        </div>
+
+    </div><!-- /.sysw-komponenten -->
+
+</div><!-- /.sysw-layout -->
+
+<!-- Floating Save Bar -->
+<div class="floating-form-management">
+    <div class="form-status-container">
+        <span class="form-status-icon">●</span>
+        <div class="form-status-text">
+            <span class="form-status" data-lastchange="" data-status="unchanged">Keine Änderungen</span>
+            <span class="form-lastchange"></span>
+        </div>
+    </div>
+    <button type="submit" form="systemWizardForm" class="btn-save" disabled>
+        <span class="btn-save-icon"></span>
+        <span class="btn-save-text">Speichern</span>
+    </button>
+</div>
+
+<!-- Entry-Templates für systemwizard.js (außerhalb des <form>-Tags) -->
+{{render:wizard:system:templates}}

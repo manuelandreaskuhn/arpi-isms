@@ -5,6 +5,7 @@
   "uuid_prefix": "system_",
   "icon": "system",
   "note": "System nutzt MongoDB ObjectId statt UUID. Zeitstempel-Feld heißt updatedAt (camelCase) statt updatedat.",
+  "template_path": "pages/wizards/system/new-system.html",
   "messages": {
     "create_success": "System erfolgreich erstellt",
     "update_success": "System aktualisiert",

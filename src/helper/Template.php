@@ -1,4 +1,5 @@
 <?php
+
 namespace ARPI\Helper;
 
 use ARPI\Helper\Template\TemplateModule;
@@ -17,7 +18,7 @@ class Template
         if (empty($templateDir)) {
             $templateDir = dirname(__DIR__) . '/template';
         }
-        
+
         $this->templateDir = rtrim($templateDir, '/\\');
         $this->loadDefaultModules();
     }
@@ -34,6 +35,7 @@ class Template
         $this->registerModule(new Template\DateModule());
         $this->registerModule(new Template\ConditionalModule());
         $this->registerModule(new Template\IncludeModule());
+        $this->registerModule(new Template\WizardRenderModule());
     }
 
     /**
@@ -52,7 +54,7 @@ class Template
     public function render(string $templateFile, array $data = []): string
     {
         $filePath = $this->resolveTemplatePath($templateFile);
-        
+
         if (!file_exists($filePath)) {
             throw new \RuntimeException("Template file not found: {$filePath}");
         }
@@ -68,10 +70,10 @@ class Template
     {
         // Normalisiere Pfad-Separatoren
         $templateFile = str_replace('\\', '/', $templateFile);
-        
+
         // Entferne führende Slashes
         $templateFile = ltrim($templateFile, '/');
-        
+
         // Baue vollständigen Pfad
         return $this->templateDir . '/' . $templateFile;
     }

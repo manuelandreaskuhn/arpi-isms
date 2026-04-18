@@ -10,7 +10,7 @@ use ARPI\Helper\ODM\EntityHydrator;
 use ARPI\Helper\WizardSchemaBuilder;
 use ARPI\Helper\ODM\DynamicDocument;
 
-#[Css('/template/css/wizard.css', '/template/css/wizard-components.css', '/template/css/pages/assetmanagement.css')]
+#[Css('/template/css/wizard.css', '/template/css/wizard-components.css', '/template/css/pages/assetmanagement.css', '/template/css/pages/system-wizard.css')]
 #[Js('/template/js/wizards/wizards.js', '/template/js/wizards/systemwizard.js')]
 class NewSystem extends BaseSite
 {

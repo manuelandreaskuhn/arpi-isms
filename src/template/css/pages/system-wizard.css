@@ -1,0 +1,399 @@
+/* ================================================================
+   SYSTEM-WIZARD – Split-Panel Layout
+   ================================================================
+   Struktur:
+   .sysw-layout
+     ├── .sysw-stammdaten   (linke Spalte, sticky, ~360px)
+     └── .sysw-komponenten  (rechte Spalte, flex, scrollbar)
+           ├── .sysw-type-bar      (Chip-Selektor, klebt oben)
+           ├── .sysw-comp-card     (je aktivem Typ eine Karte)
+           │     ├── .sysw-comp-card-header
+           │     ├── .sysw-comp-entry-table
+           │     │     └── .sysw-comp-entry-row (×n)
+           │     ├── .sysw-comp-add-form   (inline, ein/ausklappbar)
+           │     └── .sysw-comp-add-btn
+           └── .sysw-comp-empty    (Leer-Zustand)
+   ================================================================ */
+
+/* ── Haupt-Layout ──────────────────────────────────────────────── */
+.sysw-layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ── Linke Spalte: Stammdaten ──────────────────────────────────── */
+.sysw-stammdaten {
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    /* Leichten Schatten damit sie sich vom Inhalt abhebt */
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 transparent;
+}
+
+.sysw-stammdaten::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sysw-stammdaten::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+}
+
+/* ── Rechte Spalte: Komponenten ────────────────────────────────── */
+.sysw-komponenten {
+    min-height: 300px;
+}
+
+/* ── Chip-Selektor (Typ-Auswahl) ───────────────────────────────── */
+.sysw-type-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.sysw-type-bar-label {
+    font-size: 0.75em;
+    font-weight: 600;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-self: center;
+    margin-right: 4px;
+    white-space: nowrap;
+}
+
+/* Unsichtbare Checkboxen hinter den Chips */
+.sysw-type-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1.5px solid #e2e8f0;
+    background: #fff;
+    color: #4a5568;
+    font-size: 0.8em;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.18s;
+    white-space: nowrap;
+}
+
+.sysw-type-chip:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: #eef1fd;
+}
+
+.sysw-type-chip input[type="checkbox"] {
+    display: none;
+}
+
+.sysw-type-chip.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+.sysw-type-chip-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.sysw-type-chip.active .sysw-type-chip-dot {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Komponenten-Karte ─────────────────────────────────────────── */
+.sysw-comp-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.sysw-comp-card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+/* Card-Header */
+.sysw-comp-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sysw-comp-card-icon {
+    font-size: 1.1em;
+    flex-shrink: 0;
+}
+
+.sysw-comp-card-title {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #2d3748;
+    flex: 1;
+}
+
+.sysw-comp-card-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 7px;
+    background: #e2e8f0;
+    color: #4a5568;
+    border-radius: 11px;
+    font-size: 0.75em;
+    font-weight: 700;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sysw-comp-card-count.has-entries {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.sysw-comp-card-toggle {
+    font-size: 0.7em;
+    color: #a0aec0;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.sysw-comp-card.collapsed .sysw-comp-card-toggle {
+    transform: rotate(-90deg);
+}
+
+/* Card-Body */
+.sysw-comp-card-body {
+    padding: 0;
+}
+
+.sysw-comp-card.collapsed .sysw-comp-card-body {
+    display: none;
+}
+
+/* ── Eintrags-Tabelle ──────────────────────────────────────────── */
+.sysw-comp-entry-table {
+    width: 100%;
+}
+
+.sysw-comp-entry-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.83em;
+    color: #4a5568;
+    transition: background 0.15s;
+}
+
+.sysw-comp-entry-row:hover {
+    background: #f8fafc;
+}
+
+.sysw-comp-entry-row:last-child {
+    border-bottom: none;
+}
+
+.sysw-comp-entry-name {
+    flex: 0 0 180px;
+    font-weight: 600;
+    color: #2d3748;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sysw-comp-entry-meta {
+    flex: 1;
+    color: #718096;
+    font-size: 0.95em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sysw-comp-entry-tag {
+    display: inline-block;
+    background: #edf2f7;
+    color: #4a5568;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 0.88em;
+    white-space: nowrap;
+}
+
+.sysw-comp-entry-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.sysw-comp-entry-row:hover .sysw-comp-entry-actions {
+    opacity: 1;
+}
+
+.sysw-comp-entry-btn {
+    background: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 0.85em;
+    cursor: pointer;
+    color: #718096;
+    transition: all 0.15s;
+}
+
+.sysw-comp-entry-btn:hover {
+    background: #edf2f7;
+    color: #2d3748;
+}
+
+.sysw-comp-entry-btn.delete:hover {
+    background: #fff5f5;
+    color: #e53e3e;
+    border-color: #fc8181;
+}
+
+/* ── Inline-Formular (ausgeklappt per "+ Hinzufügen") ──────────── */
+.sysw-comp-add-form {
+    display: none;
+    padding: 16px;
+    background: #f0f4ff;
+    border-top: 2px solid var(--primary-color);
+}
+
+.sysw-comp-add-form.open {
+    display: block;
+}
+
+.sysw-comp-add-form-title {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sysw-comp-add-form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
+/* ── Hinzufügen-Button (unterer Rand der Karte) ────────────────── */
+.sysw-comp-add-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    color: var(--primary-color);
+    font-size: 0.83em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-align: left;
+}
+
+.sysw-comp-add-btn:hover {
+    background: #eef1fd;
+}
+
+.sysw-comp-add-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* ── Leerer Zustand ────────────────────────────────────────────── */
+.sysw-comp-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 48px 24px;
+    border: 2px dashed #e2e8f0;
+    border-radius: 10px;
+    color: #a0aec0;
+    text-align: center;
+}
+
+.sysw-comp-empty-icon {
+    font-size: 2.5em;
+    opacity: 0.5;
+}
+
+.sysw-comp-empty-text {
+    font-size: 0.9em;
+    color: #718096;
+    max-width: 280px;
+}
+
+/* Embedded-one Karten-Inhalt */
+.sysw-comp-embedded-body {
+    padding: 16px;
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .sysw-layout {
+        grid-template-columns: 320px 1fr;
+    }
+}
+
+@media (max-width: 860px) {
+    .sysw-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sysw-stammdaten {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+    }
+}

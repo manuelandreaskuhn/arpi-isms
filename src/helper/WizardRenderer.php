@@ -56,6 +56,34 @@ class WizardRenderer
     }
 
     /**
+     * Rendert nur die Felder (form-rows) einer einzelnen Wizard-Seite.
+     * Geeignet für eingebettete Verwendung im Split-Panel-Layout,
+     * wo Section-Titel und Wrapper extern im Template stehen.
+     *
+     * Unterstützt Seiten vom Typ 'fields', 'dynamic-list' und 'embedded-one'.
+     * Bei 'dynamic-list'-Seiten werden die Felder so ausgegeben wie in den
+     * Entry-Templates (ohne den List-Container und den Add-Button).
+     *
+     * @param string $wizardId   ID des Wizards (z.B. "system")
+     * @param string $pageId     ID der Seite (z.B. "basic", "vms")
+     * @param array  $formValues Aktuelle Formular-Werte (für Edit-Ansicht)
+     */
+    public function renderPageFields(string $wizardId, string $pageId, array $formValues = []): string
+    {
+        $pages = $this->loader->getResolvedPages($wizardId);
+
+        foreach ($pages as $page) {
+            if (($page['id'] ?? '') !== $pageId) {
+                continue;
+            }
+
+            return $this->renderFields($page['fields'] ?? [], $formValues);
+        }
+
+        return '<!-- WizardRenderer: page "' . htmlspecialchars($pageId, ENT_QUOTES) . '" not found in wizard "' . htmlspecialchars($wizardId, ENT_QUOTES) . '" -->' . "\n";
+    }
+
+    /**
      * Rendert `<template>`-Blöcke für alle dynamic-list-Seiten eines Wizards.
      * Diese müssen AUSSERHALB des `<form>`-Tags in das DOM eingefügt werden.
      *
