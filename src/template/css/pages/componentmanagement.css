@@ -14,6 +14,30 @@ div.comp-create-panel {
     min-width: 0;
 }
 
+div.comp-create-panel>div.infobox {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+div.comp-create-panel>div.infobox>h3 {
+    margin-top: 0;
+    font-size: 1em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+div.comp-create-panel>div.infobox>i {
+    display: block;
+    margin-bottom: 0;
+    color: #666;
+    font-size: 0.85em;
+}
+
 div.comp-list-panel {
     flex: 1 1 0;
     min-width: 0;
