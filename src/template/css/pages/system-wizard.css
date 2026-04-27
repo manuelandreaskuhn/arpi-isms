@@ -379,6 +379,15 @@
     padding: 16px;
 }
 
+/* Stammdaten-Spalte: Felder immer einspaltig */
+.sysw-stammdaten .form-row {
+    grid-template-columns: 1fr;
+}
+
+.sysw-stammdaten .form-row .form-group {
+    margin-bottom: 0px;
+}
+
 /* ── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
     .sysw-layout {
